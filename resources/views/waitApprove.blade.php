@@ -24,10 +24,13 @@
 		<table class="teammem">
 			<tr>
 				<td>อ.พิเชฎฐ์ ลิ้มวชิรานันต์</td>
+				<th rowspan="2"><img height="50" src="img/waitApprove.png"></th>
 			</tr>
 			<tr>
 				<td>อ.เอกพงษ์ จึงเจริญสุขยิ่ง</td>
 			</tr>
 		</table>
+		</div>
+	</div>
 	</div>
 @stop

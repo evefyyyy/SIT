@@ -122,5 +122,5 @@
 		</style>
     	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
-        <script src="js/myscripts.js"></script>
+        <script src="js/create.js"></script>
 @stop
