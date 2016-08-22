@@ -19,15 +19,9 @@ Route::get('noProject', function () {
     return view('noProject');
 });
 
-Route::get('createProject', function () {
-    return view('createProject');
+Route::get('createProject', 'createProjectController@studentName');
+Route::get('waitApprove', function () {
+    return view('waitApprove');
 });
-Route::get('check-connect',function(){
- if(DB::connection()->getDatabaseName())
- {
- return "Yes! successfully connected to the DB: " . DB::connection()->getDatabaseName();
- }else{
- return 'Connection False !!';
- }
+
  
-});

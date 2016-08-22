@@ -54,9 +54,9 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
+            'host' => '103.27.200.119',
             'port' => '3306',
-            'database' => 'sitport_sitport',
+            'database' => 'sitport_SITPORT',
             'username' => 'sitport_sitport',
             'password' => 'p@ssw0rd',
             'charset' => 'utf8',

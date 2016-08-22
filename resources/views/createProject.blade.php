@@ -1,5 +1,6 @@
 @extends('tmp')
 @section('content')
+
 		<div class="page-wrap">
             <!-- multistep form -->
 		<form id="msform">
@@ -49,7 +50,9 @@
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" name="StudentNo" placeholder="Student no." /></div>
-					<div class="col-xs-6 col-md-6 stdname">จอห์นซีน่า กินทูน่า</div>
+					@foreach($students as $st)
+					<div class="col-xs-6 col-md-6 stdname">{{$st->Student_fname}}</div>
+					@endforeach
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" name="StudentNo" placeholder="Student no." /></div>
@@ -108,7 +111,7 @@
 					  </tr>
 					</table>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="submit" name="submit" class="submit action-button" value="submit" />
+				<input type="submit" name="submit" class="submit action-button" value="submit" onClick="window.location.href='/waitApprove'" />
 			</fieldset>
 		</form>
 	</div>

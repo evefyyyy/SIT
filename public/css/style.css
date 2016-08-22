@@ -426,3 +426,10 @@ input {
     text-align: left;
     margin-left: 20px;
 }
+#center {
+    text-align: center;
+}
+#waitApp {
+    width: 70%;
+    margin: 60px 15% 5% 15%;
+}
