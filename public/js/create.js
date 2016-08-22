@@ -83,10 +83,10 @@ $(".submit").click(function(){
 //dropdown list
 
 			function DropDown(el) {
-				this.dd = el;
-				this.ee = el;
-				this.placeholder = this.dd.children('span');
-				this.opts = this.dd.find('ul.dropdown > li');
+				this.type = el;
+				this.category = el;
+				this.placeholder = this.type.children('span');
+				this.opts = this.type.find('ul.dropdown > li');
 				this.val = '';
 				this.index = -1;
 				this.initEvents();
@@ -95,7 +95,7 @@ $(".submit").click(function(){
 				initEvents : function() {
 					var obj = this;
 
-					obj.dd.on('click', function(event){
+					obj.type.on('click', function(event){
 						$(this).toggleClass('active');
 						return false;
 					});
@@ -114,11 +114,13 @@ $(".submit").click(function(){
 					return this.index;
 				}
 			}
+var type;
+var category;
 
 			$(function() {
 
-				var dd = new DropDown( $('#dd') );
-				var ee = new DropDown( $('#ee') );
+				type = new DropDown( $('#type') );
+				category = new DropDown( $('#category') );
 
 				$(document).click(function() {
 					// all dropdowns
@@ -126,3 +128,31 @@ $(".submit").click(function(){
 				});
 
 			});
+function getValue() {
+    var a = document.getElementById("projectNameTH").value;
+    var b = document.getElementById("projectNameEN").value;
+    var c = document.getElementById("type").value;
+    var d = document.getElementById("category").value;
+    var e = document.getElementById("Student1No").value;
+    var f = document.getElementById("Student2No").value;
+    var g = document.getElementById("Student3No").value;
+    var h = document.getElementById("std1Name").value;
+    var i = document.getElementById("std2Name").value;
+    var j = document.getElementById("std3Name").value;
+    var k = document.getElementById("mainAdvisor").value;
+    var l = document.getElementById("coAdvisor").value;
+
+    document.getElementById("projectNameTH1").innerHTML = a;
+    document.getElementById("projectNameEN1").innerHTML = b;
+    document.getElementById("type1").innerHTML = c;
+    document.getElementById("category1").innerHTML = d;
+    document.getElementById("Student1No1").innerHTML = e;
+    document.getElementById("Student2No1").innerHTML = f;
+    document.getElementById("Student3No1").innerHTML = g;
+    document.getElementById("std1Name1").innerHTML = h;
+    document.getElementById("std2Name1").innerHTML = i;
+    document.getElementById("std3Name1").innerHTML = j;
+    document.getElementById("mainAdvisor1").innerHTML = k;
+    document.getElementById("coAdvisor1").innerHTML = l;
+}
+
