@@ -1,4 +1,4 @@
-@extends('tmp')
+@extends('stdTmp')
 @section('content')
 
 		<div class="page-wrap">
@@ -113,7 +113,7 @@
 					  </tr>
 					</table>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="submit" name="submit" class="submit action-button" value="submit" onClick="window.location.href='/waitApprove'" />
+				<input type="submit" name="submit" class="submit action-button" value="submit" />
 			</fieldset>
 		</form>
 	</div>
@@ -122,7 +122,8 @@
     			display: none;
     		}
 		</style>
-    	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
-        <script src="js/create.js"></script>
+		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}"></script>
+		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
+    	<script src="{!! URL::asset('js/create.js') !!}"></script>
+        <script src=""></script>
 @stop

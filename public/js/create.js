@@ -114,13 +114,11 @@ $(".submit").click(function(){
 					return this.index;
 				}
 			}
-var type;
-var category;
 
 			$(function() {
 
-				type = new DropDown( $('#type') );
-				category = new DropDown( $('#category') );
+				var type = new DropDown( $('#type') );
+				var category = new DropDown( $('#category') );
 
 				$(document).click(function() {
 					// all dropdowns
@@ -128,31 +126,22 @@ var category;
 				});
 
 			});
-function getValue() {
-    var a = document.getElementById("projectNameTH").value;
-    var b = document.getElementById("projectNameEN").value;
-    var c = document.getElementById("type").value;
-    var d = document.getElementById("category").value;
-    var e = document.getElementById("Student1No").value;
-    var f = document.getElementById("Student2No").value;
-    var g = document.getElementById("Student3No").value;
-    var h = document.getElementById("std1Name").value;
-    var i = document.getElementById("std2Name").value;
-    var j = document.getElementById("std3Name").value;
-    var k = document.getElementById("mainAdvisor").value;
-    var l = document.getElementById("coAdvisor").value;
 
-    document.getElementById("projectNameTH1").innerHTML = a;
-    document.getElementById("projectNameEN1").innerHTML = b;
-    document.getElementById("type1").innerHTML = c;
-    document.getElementById("category1").innerHTML = d;
-    document.getElementById("Student1No1").innerHTML = e;
-    document.getElementById("Student2No1").innerHTML = f;
-    document.getElementById("Student3No1").innerHTML = g;
-    document.getElementById("std1Name1").innerHTML = h;
-    document.getElementById("std2Name1").innerHTML = i;
-    document.getElementById("std3Name1").innerHTML = j;
-    document.getElementById("mainAdvisor1").innerHTML = k;
-    document.getElementById("coAdvisor1").innerHTML = l;
+function getValue() {
+	$("#projectNameEN1").html($("#projectNameEN").val());
+	$("#projectNameTH1").html($("#projectNameTH").val());
+	$("#type1").html($("#type span").html());
+	$("#category1").html($("#category span").html());
+	$("#Student1No1").html($("#Student1No").val());
+	$("#Student2No1").html($("#Student2No").val());
+	$("#Student3No1").html($("#Student3No").val());
+	$("#std1Name1").html($("#std1Name").html());
+	$("#std2Name1").html($("#std2Name").html());
+	$("#std3Name1").html($("#std3Name").html());
+	$("#mainAdvisor1").html($("#mainAdvisor").val());
+	$("#coAdvisor1").html($("#coAdvisor").val());
 }
 
+$(".submit").click(function(){
+	return window.location.href='details';
+})

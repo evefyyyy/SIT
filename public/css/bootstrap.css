@@ -2257,9 +2257,9 @@ th {
   text-align: left;
 }
 .table {
-  width: 100%;
+  width: 80%;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin: 30px auto 30px auto;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2271,10 +2271,14 @@ th {
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
+  text-transform: uppercase;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 5px solid #40c3a7;
+  width: 100%;
+  color: #40c3a7;
+  font-size: 1.1em;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,

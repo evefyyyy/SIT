@@ -1,4 +1,4 @@
-@extends('tmp')
+@extends('stdTmp')
 @section('content')
 	<div id="waitApp">
 	<div class="proname">Driving License Simulation Game</div>
@@ -24,7 +24,7 @@
 		<table class="teammem">
 			<tr>
 				<td>อ.พิเชฎฐ์ ลิ้มวชิรานันต์</td>
-				<th rowspan="2"><img height="50" src="img/waitApprove.png"></th>
+				<th rowspan="2"><img height="50" src="/img/waitApprove.png"></th>
 			</tr>
 			<tr>
 				<td>อ.เอกพงษ์ จึงเจริญสุขยิ่ง</td>

@@ -11,17 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('tmp');
+Route::get('/student', function () {
+    return view('stdTmp');
 });
 
-Route::get('noProject', function () {
+Route::get('/student/myproject/noproject', function () {
     return view('noProject');
 });
 
-Route::get('createProject', 'createProjectController@studentName');
-Route::get('waitApprove', function () {
+Route::get('/student/myproject/create', 'createProjectController@studentName');
+Route::get('/student/myproject/details', function () {
     return view('waitApprove');
+});
+
+Route::get('/admin', function () {
+    return view('adminTmp');
+});
+
+Route::get('/admin/project/pending', function () {
+    return view('approveProject');
 });
 
  

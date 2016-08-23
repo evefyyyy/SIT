@@ -1,9 +1,9 @@
-@extends('tmp')
+@extends('stdTmp')
 @section('content')
 	<div class="page-header">
             <div class="col-md-12 noProject">
                 <p>You did not have any project.</p>
-                <a href="/createProject">Create project</a>
+                <a href="/student/myproject/create">Create project</a>
             </div>
     </div>
     <style type="text/css">
