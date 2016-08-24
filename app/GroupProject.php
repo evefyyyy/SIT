@@ -20,4 +20,5 @@ class GroupProject extends Model
       'Type_idType',
       'Proposol_idProposol'
     ];
+    //hello
 }
