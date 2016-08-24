@@ -3,7 +3,8 @@
 
 		<div class="page-wrap">
             <!-- multistep form -->
-		<form id="msform">
+		<form id="msform" action="{{url('student/myproject/')}}" method="post">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
 				<li class="active">Create project</li>
@@ -15,8 +16,8 @@
 			<fieldset>
 				<h2 class="fs-title">Create project</h2>
 		    	<h3 class="fs-subtitle">Enter project name and select category</h3>
-		    	<input class="projectName" type="text" id="projectNameEN" placeholder="Project name (EN)" />
-				<input class="projectName" type="text" id="projectNameTH" placeholder="Project name (TH)" />
+		    	<input class="projectName" type="text" id="projectNameEN" placeholder="Project name (EN)" name="Engname" />
+				<input class="projectName" type="text" id="projectNameTH" placeholder="Project name (TH)" name="THname"/>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><label class="category">Project Type</label></div>
 							<div class="col-xs-6 col-md-6">
@@ -49,13 +50,13 @@
 				<h2 class="fs-title">Team members</h2>
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student1No" placeholder="Student no." /></div>
 					@foreach($students as $st)
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->Student_fname}}</div>
+					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student1No" placeholder="Student no." value="{{$st->idStudent}}"/></div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->Student_fname}} {{$st->Student_lname}}</div>
 					@endforeach
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student2No" placeholder="Student no." /></div>
+					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student2No" placeholder="Student no." name="idStudent"/></div>
 					<div class="col-xs-6 col-md-6 stdname" id="std2Name"></div>
 				</div>
 				<div class="row">
@@ -113,7 +114,7 @@
 					  </tr>
 					</table>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="submit" name="submit" class="submit action-button" value="submit" />
+				<button type="submit" name="submit" class="submit action-button" value="submit" /> SUBMIT </button>
 			</fieldset>
 		</form>
 	</div>
