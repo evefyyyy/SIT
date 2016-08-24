@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeCriteriaMainTable extends Migration
+class CreatePictureTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateTypeCriteriaMainTable extends Migration
      */
     public function up()
     {
-        Schema::create('types_criteria_main', function (Blueprint $table) {
+        Schema::create('picture_type', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('score');
-            $table->integer('round');
+            $table->string('picture_type_name');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateTypeCriteriaMainTable extends Migration
      */
     public function down()
     {
-        Schema::drop('type_criteria_main');
+        Schema::drop('picture_type');
     }
 }
