@@ -9,3 +9,4 @@ Homestead.json
 =======
 .DS_Store
 >>>>>>> 1685d7cc51cb310dc70596524fb69577825522c6
+.env.example
