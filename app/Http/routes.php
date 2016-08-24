@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('tmp');
 });
 
-Route::get('student/', function () {
+Route::get('student/myproject/noProject', function () {
     return view('noProject');
 });
 
@@ -24,4 +24,4 @@ Route::get('student/myproject/', function () {
     return view('waitApprove');
 });
 
-Route::resource('student/myproject','createProjectController');
+Route::resource('student/myproject/create','createProjectController');
