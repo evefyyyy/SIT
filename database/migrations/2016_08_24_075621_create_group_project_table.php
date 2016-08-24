@@ -14,6 +14,7 @@ class CreateGroupProjectTable extends Migration
     {
         Schema::create('group_projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('group_project_id');
             $table->string('group_project_eng_name');
             $table->string('group_project_th_name');
             $table->string('group_project_detail',10000);
