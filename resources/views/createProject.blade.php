@@ -24,9 +24,9 @@
 								<div id="type" class="wrapper-dropdown-3" tabindex="1">
 									<span>Select</span>
 									<ul class="dropdown">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Research</a></li>
-										<li><a href="#">Social</a></li>
+										@foreach($type as $ty)
+										<li>{{$ty->type_name}}</li>
+										@endforeach
 									</ul>
 								</div>
 							</div>
@@ -35,11 +35,9 @@
 								<div id="category" class="wrapper-dropdown-3" tabindex="1">
 									<span>Select</span>
 									<ul class="dropdown">
-										<li><a href="#">Education</a></li>
-										<li><a href="#">Games</a></li>
-										<li><a href="#">Health</a></li>
-										<li><a href="#">Sports</a></li>
-										<li><a href="#">Travel</a></li>
+										@foreach($category as $cat)
+										<li>{{$cat->category_name}}</li>
+										@endforeach
 									</ul>
 								</div>
 							</div>
@@ -56,11 +54,11 @@
 					@endforeach
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student2No" placeholder="Student no." name="idStudent"/></div>
+					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student2No" placeholder="Student no." name="idStudent2"/></div>
 					<div class="col-xs-6 col-md-6 stdname" id="std2Name"></div>
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student3No" placeholder="Student no." /></div>
+					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student3No" placeholder="Student no." name="idStudent3"/></div>
 					<div class="col-xs-6 col-md-6 stdname" id="std3Name"></div>
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
