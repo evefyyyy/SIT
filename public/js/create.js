@@ -152,5 +152,5 @@ function getValue() {
 }
 
 $(".submit").click(function(){
-	return window.location.href='details';
+	return window.location.href='waitApprove';
 })

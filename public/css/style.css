@@ -480,7 +480,7 @@ input {
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-.denybt {
+.rejectbt {
     width: 100px;
     background: #F14C56;
     font-weight: bold;
@@ -496,6 +496,6 @@ input {
 .approvebt:hover {
     background: #1CA88A;
 }
-.denybt:hover {
+.rejectbt:hover {
     background: #CF313B;
 }

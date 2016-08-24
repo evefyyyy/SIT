@@ -2,7 +2,7 @@
 @section('content')
 		<div class="page-wrap">
             <!-- multistep form -->
-		<form id="msform" action="{{url('student/myproject/')}}" method="post">
+		<form id="msform" action="{{url('student/myproject/create')}}" method="post">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
