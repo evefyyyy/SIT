@@ -421,15 +421,15 @@ input {
 }
 .teammem table {
     margin-top: 30px;
+    font-size: 0.875em;
 }
 .teammem td {
     padding: 5px;
     text-align: left;
     margin-left: 20px;
-    vertical-align: middle;
 }
 .teammem label {
-    font-size: 13px;
+    vertical-align: middle;
 }
 #center {
     text-align: center;
