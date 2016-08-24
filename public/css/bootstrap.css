@@ -2267,10 +2267,10 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
-  line-height: 1.42857143;
+  padding: 5px 10px 5px 10px;
+  line-height: 1.7em;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
   text-transform: uppercase;
 }
 .table > thead > tr > th {
@@ -2279,6 +2279,7 @@ th {
   width: 100%;
   color: #40c3a7;
   font-size: 1.1em;
+  text-transform: uppercase;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,

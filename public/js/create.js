@@ -120,12 +120,23 @@ $(".submit").click(function(){
 				var type = new DropDown( $('#type') );
 				var category = new DropDown( $('#category') );
 
-				$(document).click(function() {
-					// all dropdowns
-					$('.wrapper-dropdown-3').removeClass('active');
+				$('#type').on('click',function(){
+					if ($('#type').hasClass('active')) {
+						$('#category').removeClass('active');
+					} else {
+					}
 				});
 
+
+				$('#category').on('click',function(){
+					if ($('#category').hasClass('active')) {
+						$('#type').removeClass('active');
+					} else {
+					}
+				});
 			});
+
+
 
 function getValue() {
 	$("#projectNameEN1").html($("#projectNameEN").val());

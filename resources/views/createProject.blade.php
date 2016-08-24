@@ -1,6 +1,5 @@
 @extends('stdTmp')
 @section('content')
-
 		<div class="page-wrap">
             <!-- multistep form -->
 		<form id="msform">
@@ -23,9 +22,9 @@
 								<div id="type" class="wrapper-dropdown-3" tabindex="1">
 									<span>Select</span>
 									<ul class="dropdown">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Research</a></li>
-										<li><a href="#">Social</a></li>
+										<li>Business</li>
+										<li>Research</li>
+										<li>Social</li>
 									</ul>
 								</div>
 							</div>
@@ -34,11 +33,11 @@
 								<div id="category" class="wrapper-dropdown-3" tabindex="1">
 									<span>Select</span>
 									<ul class="dropdown">
-										<li><a href="#">Education</a></li>
-										<li><a href="#">Games</a></li>
-										<li><a href="#">Health</a></li>
-										<li><a href="#">Sports</a></li>
-										<li><a href="#">Travel</a></li>
+										<li>Education</li>
+										<li>Games</li>
+										<li>Health</li>
+										<li>Sports</li>
+										<li>Travel</li>
 									</ul>
 								</div>
 							</div>
@@ -125,5 +124,4 @@
 		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}"></script>
 		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
-        <script src=""></script>
 @stop
