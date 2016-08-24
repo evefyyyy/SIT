@@ -19,7 +19,7 @@
                  <ul class="nav navbar-nav">
                   <li><a href="#">News</a></li>
                   <li><a href="#">Exam</a></li>
-                  <li class="{{ strrpos(Request::path(),'admin/') === 0 ? 'active' : ''  }}"><a href="/admin/project/pending">Student projects</a></li>
+                  <li class="{{ strrpos(Request::path(),'admin/project') === 0 ? 'active' : ''  }}"><a href="/admin/project/pending">Student projects</a></li>
                   <li><a href="#">Back to homepage</a></li>
                 </ul>
                 <p class="navbar-text navbar-right"><a href="#" class="navbar-link"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Admin</a></p>     

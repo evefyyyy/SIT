@@ -15,13 +15,17 @@ Route::get('/', function () {
     return view('tmp');
 });
 
-Route::get('student/myproject/noProject', function () {
+Route::get('student/myproject/noproject', function () {
     return view('noProject');
 });
 
 //Route::get('createProject', 'createProjectController@studentName');
 Route::get('student/myproject/', function () {
     return view('waitApprove');
+});
+
+Route::get('admin/project/pending', function () {
+    return view('approveProject');
 });
 
 Route::resource('student/myproject/create','createProjectController');
