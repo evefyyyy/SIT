@@ -13,6 +13,10 @@ class CreateFkey extends Migration
     public function up()
     {
         //
+    Schema::table('students', function ($table) {
+        $table->integer('user_type_id')->unsigned();
+        $table->foreign('user_type_id')->references('id')->on('user_types');
+});
     }
 
     /**
