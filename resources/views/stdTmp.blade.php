@@ -18,11 +18,11 @@
                 </div>
                  <ul class="nav navbar-nav">
                   <li><a href="#">News</a></li>
-                  <li class="{{ strrpos(Request::path(),'/myproject') === 0 ? 'active' : ''  }}"><a href="/student/myproject">My project</a></li>
+                  <li class="{{ strrpos(Request::path(),'student/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noProject">My project</a></li>
                   <li><a href="#">My score</a></li>
                   <li><a href="#">Back to homepage</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><a href="#" class="navbar-link"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>RACHATAPON</a></p>     
+                <p class="navbar-text navbar-right"><a href="#" class="navbar-link"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>RACHATAPON</a></p>
           </nav>
         </div>
        <div id="content">
@@ -38,7 +38,7 @@
             <td class="kmutt">King Mongkut's University of Technology Thonburi</td>
           </tr>
           </table>
-        </div> 
+        </div>
       </div>
     </body>
 </html>
