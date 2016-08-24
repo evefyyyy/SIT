@@ -51,8 +51,8 @@
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
 					@foreach($students as $st)
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student1No" placeholder="Student no." value="{{$st->idStudent}}"/></div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->Student_fname}} {{$st->Student_lname}}</div>
+					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student1No" placeholder="Student no." value="{{$st->student_id}}"/></div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
 					@endforeach
 				</div>
 				<div class="row">

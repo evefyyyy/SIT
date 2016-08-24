@@ -17,8 +17,10 @@ class createProjectController extends Controller {
 	public function index()
 	{
 		$wantedStudent = null;
-		$students = \App\Student::where('idStudent','=','56130500078')->get();
+		$students = \App\Student::where('student_id','=','56130500078')->get();
 		return view('createProject',compact('students'));
+
+		
 
 	}
 
@@ -32,17 +34,13 @@ class createProjectController extends Controller {
 	public function store(Request $request)
 	{
 		$obj = new GroupProject();
-		$obj->idGroup_project = '8';
-		$obj->Group_project_ENG_name = $request['Engname'];
-		$obj->Group_project_TH_name = $request['THname'];
-		$obj->Category_idCategory = '1';
-		$obj->Type_idType = '1';
-		$obj->Proposol_idProposol = '1';
+		$obj->group_project_ENG_name = $request['Engname'];
+		$obj->group_project_TH_name = $request['THname'];
 		$obj->save();
 
 		$std = new Student();
-		$std->idStudent = $request['idStudent'];
-		$std->User_type_idUser_type = 'stu';
+		$std->student_id = $request['idStudent'];
+		$std->user_type_id = 1;
 		$std->save();
 
 
