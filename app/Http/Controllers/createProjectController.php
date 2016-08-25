@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Student;
 use App\Category;
 use App\Type;
+use App\Advisor;
 
 
 class createProjectController extends Controller {
@@ -26,6 +27,9 @@ class createProjectController extends Controller {
 
 		$type = Type::all();
 		$objs['type'] = $type;
+
+		$advisor = Advisor::all();
+		$objs['advisor'] = $advisor;
 
 		return view('createProject',$objs);
 

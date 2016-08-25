@@ -2,7 +2,7 @@
 @section('content')
 		<div class="page-wrap">
             <!-- multistep form -->
-		<form id="msform" action="{{url('student/myproject/')}}" method="post">
+		<form id="msform" action="{{url('student/myproject/create')}}" method="post">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
@@ -68,7 +68,19 @@
 				<h3 class="fs-subtitle">Choose your project advisors</h3>
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
-					<div class="col-xs-8 col-md-8"><input class="advisor" type="text" id="mainAdvisor" placeholder="Search or select" /></div>
+					<div class="col-xs-8 col-md-8">
+
+						<div class="col-xs-6 col-md-6">
+							<div id="mainAdvisor" class="wrapper-dropdown-3" tabindex="1">
+								<span>Select</span>
+								<ul class="dropdown">
+									@foreach($advisor as $ad)
+									<li>{{$ad->advisor_fname}} {{$ad->advisor_lname}}</li>
+									@endforeach
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
