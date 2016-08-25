@@ -24,6 +24,10 @@ Route::get('student/myproject/', function () {
     return view('waitApprove');
 });
 
+Route::get('admin/project/pending', function () {
+    return view('approveProject');
+});
+
 Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('admin/project/pending','approveProjectController');
