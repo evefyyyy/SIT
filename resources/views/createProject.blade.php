@@ -69,7 +69,6 @@
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-8 col-md-8">
-<<<<<<< HEAD
 						<div class="data" action="demo_form.asp" method="get">
 						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
 						  <datalist class="data" id="browsers">
@@ -79,18 +78,6 @@
 						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
 						    <option value="ศ.เซเวอรัส สเนป">
 						  </datalist>
-=======
-
-						<div class="col-xs-6 col-md-6">
-							<div id="mainAdvisor" class="wrapper-dropdown-3" tabindex="1">
-								<span>Select</span>
-								<ul class="dropdown">
-									@foreach($advisor as $ad)
-									<li>{{$ad->advisor_fname}} {{$ad->advisor_lname}}</li>
-									@endforeach
-								</ul>
-							</div>
->>>>>>> 1961da47e2b6dcd2971c298caa4ed51e1bdf07da
 						</div>
 					</div>
 				</div>
