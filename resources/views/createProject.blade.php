@@ -48,17 +48,42 @@
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
 					@foreach($students as $st)
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student1No" placeholder="Student no." value="{{$st->student_id}}"/></div>
+					<div class="col-xs-6 col-md-6">
+						<div class="input-group">
+						<input type="text" class="form-control" placeholder="Student ID">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+					      </span>
+					     </div>
+					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
 					@endforeach
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student2No" placeholder="Student no." name="idStudent2"/></div>
-					<div class="col-xs-6 col-md-6 stdname" id="std2Name"></div>
+					@foreach($students as $st)
+					<div class="col-xs-6 col-md-6">
+						<div class="input-group">
+						<input type="text" class="form-control" placeholder="Student ID">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+					      </span>
+					     </div>
+					</div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
+					@endforeach
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student3No" placeholder="Student no." name="idStudent3"/></div>
-					<div class="col-xs-6 col-md-6 stdname" id="std3Name"></div>
+					@foreach($students as $st)
+					<div class="col-xs-6 col-md-6">
+						<div class="input-group">
+						<input type="text" class="form-control" placeholder="Student ID">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+					      </span>
+					     </div>
+					</div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
+					@endforeach
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />

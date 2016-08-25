@@ -4,7 +4,7 @@
 		<thead>
 			<tr>
 				<th>
-					22 Pending Projects
+					<div id="rowCount"></div> Pending Projects
 				</th>
 			</tr>
 		</thead>

@@ -313,6 +313,7 @@ th {
 }
 .glyphicon-search:before {
   content: "\e003";
+  color: #666;
 }
 .glyphicon-heart:before {
   content: "\e005";
@@ -3002,7 +3003,7 @@ select[multiple].input-lg {
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -3825,9 +3826,10 @@ tbody.collapse.in {
 .input-group .form-control {
   position: relative;
   z-index: 2;
-  float: left;
-  width: 100%;
-  margin-bottom: 0;
+  float: right;
+  width: 50%;
+  font-size: 0.9em;
+  margin-bottom: 10px;
 }
 .input-group .form-control:focus {
   z-index: 3;

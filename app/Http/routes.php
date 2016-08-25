@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('tmp');
+    return view('stdTmp');
 });
 
 Route::get('student/myproject/noproject', function () {
