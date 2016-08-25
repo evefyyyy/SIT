@@ -45,10 +45,10 @@ class createProjectController extends Controller {
 		$obj->group_project_TH_name = $request['THname'];
 		$obj->save();
 
-		/*$std = new Student();
+		$std = new Student();
 		$std->student_id = $request['idStudent1'];
 		$std->user_type_id = 1;
-		$std->save();*/
+		$std->save();
 
 		$std = new Student();
 		$std->student_id = $request['idStudent2'];

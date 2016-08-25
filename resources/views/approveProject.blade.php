@@ -56,7 +56,7 @@
 			    <br>โปรแกรมช่วยเหลือผู้ป่วยโรคเบาหวานบนระบบปฏิบัติการแอนดรอยด์</td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
-					<button class="denybt">deny</button>
+					<button class="rejectbt">reject</button>
 			    	<input type="text" />
 			    </td>
 			  </tr>
@@ -82,7 +82,7 @@
 			    </td>
 			    <th>Advisor<span>:</span></th>
 			    <td>ศ.ฮอเรซ ซลักฮอร์น<label id="main">Main</label><br>
-			    	ศ. เซเวอรัส สเนป
+			    	ศ.เซเวอรัส สเนป
 			    </td>
 			  </tr>
 	        </table>

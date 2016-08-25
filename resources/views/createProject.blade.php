@@ -68,11 +68,33 @@
 				<h3 class="fs-subtitle">Choose your project advisors</h3>
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
-					<div class="col-xs-8 col-md-8"><input class="advisor" type="text" id="mainAdvisor" placeholder="Search or select" /></div>
+					<div class="col-xs-8 col-md-8">
+						<div class="data" action="demo_form.asp" method="get">
+						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
+						  <datalist class="data" id="browsers">
+						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
+						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
+						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
+						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
+						    <option value="ศ.เซเวอรัส สเนป">
+						  </datalist>
+						</div>
+					</div>
 				</div>
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
-					<div class="col-xs-8 col-md-8"><input class="advisor" type="text" id="coAdvisor" placeholder="Search or select" /></div>
+					<div class="col-xs-8 col-md-8">
+						<div class="data" action="demo_form.asp" method="get">
+						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select">
+						  <datalist class="data" id="browsers">
+						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
+						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
+						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
+						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
+						    <option value="ศ.เซเวอรัส สเนป">
+						  </datalist>
+						</div>
+					</div>
 				</div>
 		    	<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" id="myBtn" onclick="getValue()" />
