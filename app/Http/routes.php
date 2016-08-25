@@ -29,3 +29,5 @@ Route::get('admin/project/pending', function () {
 });
 
 Route::resource('student/myproject/create','createProjectController');
+
+Route::resource('admin/project/pending','approveProjectController');
