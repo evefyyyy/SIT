@@ -3,7 +3,13 @@
 	<table class="table" id="pendingTable">
 		<thead>
 			<tr>
+<<<<<<< HEAD
+				<th>
+					{{$countProject}} Pending Projects
+				</th>
+=======
 				<th>Pending Projects</th>
+>>>>>>> origin/master
 			</tr>
 		</thead>
 		<tbody>
@@ -11,12 +17,15 @@
 	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="4" rowspan="2" style="width:60%" id="name">Application for Diabetes Sufferers in Android Operating System
-			    <br>โปรแกรมช่วยเหลือผู้ป่วยโรคเบาหวานบนระบบปฏิบัติการแอนดรอยด์</td>
+			    <td colspan="4" rowspan="2" style="width:60%" id="name"></td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
 					<button class="rejectbt cd-popup-trigger">reject</button>
+<<<<<<< HEAD
+			    	<input type="text" class="form-control"/>
+=======
 			    	<input type="text" class="form-control" />
+>>>>>>> origin/master
 			    </td>
 			  </tr>
 			  <tr>
