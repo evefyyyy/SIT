@@ -3,9 +3,7 @@
 	<table class="table" id="pendingTable">
 		<thead>
 			<tr>
-				<th>
-					<span id="rowCount"></span> Pending Projects
-				</th>
+				<th>Pending Projects</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -18,7 +16,7 @@
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
 					<button class="rejectbt cd-popup-trigger">reject</button>
-			    	<input type="text" />
+			    	<input type="text" class="form-control" />
 			    </td>
 			  </tr>
 			  <tr>

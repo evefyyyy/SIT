@@ -2,7 +2,17 @@
     padding: 0;
     margin: 0;
 }
-
+nav > p > img {
+    vertical-align: top;
+}
+.logout {
+    font-size: 0.875em;
+}
+nav span {
+    padding: 0 10px 0 10px;
+    color: #CECECE;
+    font-weight: normal;
+}
 #header {
     padding: 25px;
 }
@@ -104,17 +114,9 @@ option {
     display: none;
 }
 /*inputs*/
-input {
-    padding: 10px 15px 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    color: #2C3E50;
-    box-sizing: border-box;
-}
 .projectName {
     width: 80%;
-    font-size: 15px;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
 }
 .stdno {
     width: 50%;
@@ -124,7 +126,6 @@ input {
 }
 .advisor {
     width: 70%;
-    font-size: 14px;
     margin-bottom: 10px;
     float: left;
 }
@@ -468,6 +469,8 @@ input {
     border-radius: 3px;
     color: #2C3E50;
     vertical-align: bottom;
+    font-size: 1em;
+    text-transform: uppercase;
 }
 .approvebt {
     width: 100px;
@@ -512,6 +515,7 @@ input {
   background-color: rgba(60, 59, 59, 0.75);
   opacity: 0;
   visibility: hidden;
+  font-size: 0.9em;
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   transition: opacity 0.3s 0s, visibility 0s 0.3s;
@@ -625,4 +629,54 @@ input {
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
   transform: translateY(0);
+}
+
+#login-dp{
+    min-width: 200px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+#login-dp .bottom{
+    background-color: rgba(255,255,255,.8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding:14px;
+}
+#login-dp .form-control{
+    width: 100%;
+    font-size: 0.9em;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+#login-dp .checkbox label {
+    font-size: 0.8em;
+    vertical-align: middle;
+    display: inline;
+}
+.btn-login {
+    width: 100%;
+    background: #40c3a7;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 7px;
+    border-style: none;
+    font-size: 0.875em;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    text-transform: uppercase;
+}
+.btn-login:hover {
+    background-color: #ff7f7f;
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
 }
