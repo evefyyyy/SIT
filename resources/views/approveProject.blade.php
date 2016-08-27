@@ -4,7 +4,7 @@
 		<thead>
 			<tr>
 				<th>
-					<span id="rowCount"></span> Pending Projects
+					{{$countProject}} Pending Projects
 				</th>
 			</tr>
 		</thead>
@@ -13,12 +13,11 @@
 	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="4" rowspan="2" style="width:60%" id="name">Application for Diabetes Sufferers in Android Operating System
-			    <br>โปรแกรมช่วยเหลือผู้ป่วยโรคเบาหวานบนระบบปฏิบัติการแอนดรอยด์</td>
+			    <td colspan="4" rowspan="2" style="width:60%" id="name"></td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
 					<button class="rejectbt cd-popup-trigger">reject</button>
-			    	<input type="text" />
+			    	<input type="text" class="form-control"/>
 			    </td>
 			  </tr>
 			  <tr>

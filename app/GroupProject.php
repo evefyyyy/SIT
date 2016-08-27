@@ -9,6 +9,7 @@ class GroupProject extends Model
     protected $table = 'group_projects';
     protected $fillable =
     [
+      'id',
       'group_project_ENG_name',
       'group_project_TH_name',
       'group_project_detail',
