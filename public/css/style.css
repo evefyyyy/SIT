@@ -113,6 +113,10 @@ option {
 #msform fieldset:not(:first-of-type) {
     display: none;
 }
+#stdno .form-control {
+    margin-bottom: 10px;
+    float: right;
+}
 /*inputs*/
 .projectName {
     width: 80%;
@@ -176,7 +180,7 @@ option {
 .stdname {
     font-size: 14px;
     color: black;
-    margin-top: 10px;
+    margin-top: 7px;
     margin-bottom: 0;
     text-align: left;
 }
