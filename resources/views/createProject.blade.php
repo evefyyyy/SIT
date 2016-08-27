@@ -167,7 +167,5 @@
     			display: none;
     		}
 		</style>
-		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}"></script>
-		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
 @stop
