@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('stdTmp');
+    return view('generalTmp');
 });
 
 Route::get('student/myproject/noproject', function () {
@@ -26,6 +26,10 @@ Route::get('student/myproject/', function () {
 
 Route::get('admin/project/pending', function () {
     return view('approveProject');
+});
+
+Route::get('index', function () {
+    return view('generalTmp');
 });
 
 Route::resource('student/myproject/create','createProjectController');

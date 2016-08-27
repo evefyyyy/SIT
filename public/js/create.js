@@ -6,7 +6,7 @@ var animating; //flag to prevent quick multi-click glitches
 $(".next").click(function(){
 	if(animating) return false;
 	animating = true;
-
+	
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
 
@@ -133,8 +133,6 @@ $(".previous").click(function(){
 					}
 				});
 			});
-
-
 
 function getValue() {
 	$("#projectNameEN1").html($("#projectNameEN").val());

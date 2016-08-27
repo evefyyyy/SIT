@@ -1090,7 +1090,7 @@ html {
 }
 body {
   font-family: "Prompt", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 1.375em;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -2548,7 +2548,6 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -4489,6 +4488,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-right {
     float: right !important;
     margin-right: 15px;
+    text-transform: capitalize;
+    font-size: 1.1em;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
@@ -4552,7 +4553,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
   color: #555;
-  background-color: #e7e7e7;
+  background-color: #f1f1f1;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -4567,7 +4568,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
-    background-color: #e7e7e7;
+    background-color: #f1f1f1;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,

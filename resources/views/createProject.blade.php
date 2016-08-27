@@ -15,8 +15,8 @@
 			<fieldset>
 				<h2 class="fs-title">Create project</h2>
 		    	<h3 class="fs-subtitle">Enter project name and select category</h3>
-		    	<input class="projectName" type="text" id="projectNameEN" placeholder="Project name (EN)" name="Engname" />
-				<input class="projectName" type="text" id="projectNameTH" placeholder="Project name (TH)" name="THname"/>
+		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="Engname" requried/>
+				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="THname" requried/>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><label class="category">Project Type</label></div>
 							<div class="col-xs-6 col-md-6">
@@ -95,7 +95,7 @@
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
+						  <input class="advisor form-control" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
 						  <datalist class="data" id="browsers">
 						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
 						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
@@ -110,7 +110,7 @@
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select">
+						  <input class="advisor form-control" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select">
 						  <datalist class="data" id="browsers">
 						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
 						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
