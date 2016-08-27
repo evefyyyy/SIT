@@ -31,6 +31,7 @@ class createProjectController extends Controller {
 		$advisor = Advisor::all();
 		$objs['advisor'] = $advisor;
 
+
 		return view('createProject',$objs);
 
 	}
@@ -54,7 +55,7 @@ class createProjectController extends Controller {
 		$obj->type_id = 1;
 		$obj->save();
 
-		/*$std = new Student();
+	/*	$std = new Student();
 		$std->student_id = $request['idStudent1'];
 		$std->user_type_id = 1;
 		$std->save();*/
@@ -69,7 +70,7 @@ class createProjectController extends Controller {
 		$obj->user_type_id = 1;
 		$obj->save();
 
-		return redirect::to('student/myproject/');
+		return view('waitApprove');
 	}
 
 	public function show($id)

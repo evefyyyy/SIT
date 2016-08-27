@@ -3,7 +3,7 @@
 		<div class="page-wrap">
             <!-- multistep form -->
 		<form id="msform" action="{{url('student/myproject/create')}}" method="post">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
 				<li class="active">Create project</li>
@@ -48,18 +48,44 @@
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
 					@foreach($students as $st)
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student1No" placeholder="Student no." value="{{$st->student_id}}"/></div>
+					<div class="col-xs-6 col-md-6">
+						<div class="input-group">
+						<input type="text" class="form-control" placeholder="Student ID" value="{{$st->student_id}}">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+					      </span>
+							</div>
+					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
 					@endforeach
 				</div>
-				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student2No" placeholder="Student no." name="idStudent2"/></div>
-					<div class="col-xs-6 col-md-6 stdname" id="std2Name"></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-6 col-md-6"><input class="stdno" type="text" id="Student3No" placeholder="Student no." name="idStudent3"/></div>
-					<div class="col-xs-6 col-md-6 stdname" id="std3Name"></div>
-				</div>
+
+					<div class="row">
+						<div class="col-xs-6 col-md-6">
+							<!-- <div class="input-group"> -->
+							<input type="text" class="form-control" placeholder="Student ID" name="stdId" id="stdId" onchange="check_name()">
+						      <!-- <span class="input-group-btn">
+						        <button type="search" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"></span></button>
+						      </span> -->
+						     <!-- </div> -->
+						</div>
+
+						<div class="col-xs-6 col-md-6 stdname"><h5 id="fname"></h5> <h5 id="lname"></h5></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6 col-md-6">
+							<div class="input-group">
+							<input type="text" class="form-control" placeholder="Student ID" name="searchbox" id="searchbox">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="search" id="search"><span class="glyphicon glyphicon-search"></span></button>
+						      </span>
+						     </div>
+						</div>
+
+						<div class="col-xs-6 col-md-6 stdname"></div>
+
+					</div>
+
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
 			</fieldset>
@@ -69,22 +95,32 @@
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-8 col-md-8">
-
-						<div class="col-xs-6 col-md-6">
-							<div id="mainAdvisor" class="wrapper-dropdown-3" tabindex="1">
-								<span>Select</span>
-								<ul class="dropdown">
-									@foreach($advisor as $ad)
-									<li>{{$ad->advisor_fname}} {{$ad->advisor_lname}}</li>
-									@endforeach
-								</ul>
-							</div>
+						<div class="data" action="demo_form.asp" method="get">
+						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
+						  <datalist class="data" id="browsers">
+						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
+						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
+						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
+						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
+						    <option value="ศ.เซเวอรัส สเนป">
+						  </datalist>
 						</div>
 					</div>
 				</div>
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
-					<div class="col-xs-8 col-md-8"><input class="advisor" type="text" id="coAdvisor" placeholder="Search or select" /></div>
+					<div class="col-xs-8 col-md-8">
+						<div class="data" action="demo_form.asp" method="get">
+						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select">
+						  <datalist class="data" id="browsers">
+						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
+						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
+						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
+						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
+						    <option value="ศ.เซเวอรัส สเนป">
+						  </datalist>
+						</div>
+					</div>
 				</div>
 		    	<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" id="myBtn" onclick="getValue()" />
@@ -135,4 +171,25 @@
 		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}"></script>
 		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
+			<script type="text/javascript">
+			    function check_name(){
+
+		         $.ajax({
+		                type:"post",
+		                dataType: "",
+		                url :"stdId",
+		                data: {stdId: $("#stdId").val() , _token:$("#_token").val() },
+		                    success:function(data){
+		                      if(data=='0'){
+		                        $('#fname').html('');
+		                        $('#lname').html('');
+		                      }else{
+		                        $('#fname').html(data.student_fname);
+		                        $('#lname').html(data.student_lname);
+		                      }
+		                }
+		             });
+		    }
+			</script>
+
 @stop

@@ -1,7 +1,7 @@
 @extends('stdTmp')
 @section('content')
 	<div id="waitApp">
-	<div class="proname">{{$Engname}}</div>
+	<div class="proname">Driving blablabla</div>
 	<div class="proname">เกมจำลองสถานการณ์การสอบใบอนุญาติขับขี่รถยนต์</div>
 	<div id="center"><div class="title">Category :</div><div class="info">Social</div>
 	<div class="title">Additional Category :</div><div class="info">Games</div></div>

@@ -79,7 +79,9 @@
     color: #ff7f7f;
     text-decoration: none;
 }
-
+option {
+    font-family: "Prompt", Helvetica, Arial, sans-serif;
+}
 /*form styles*/
 #msform {
     width: 100%;
@@ -110,7 +112,7 @@ input {
     box-sizing: border-box;
 }
 .projectName {
-    width: 100%;
+    width: 80%;
     font-size: 15px;
     margin-bottom: 10px;
 }

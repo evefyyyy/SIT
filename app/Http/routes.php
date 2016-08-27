@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('tmp');
+    return view('stdTmp');
 });
 
 Route::get('student/myproject/noproject', function () {
@@ -28,6 +28,21 @@ Route::get('admin/project/pending', function () {
     return view('approveProject');
 });
 
+Route::get('search',function(){
+  return view('createProject');
+});
+
+
 Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('admin/project/pending','approveProjectController');
+
+Route::post('student/myproject/stdId',function(){
+	$stdId = Request::Input('stdId');
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_fname','student_lname')->first();
+	if(isset($data)){
+		return Response::json($data);
+	}else{
+		return 0;
+	}
+});
