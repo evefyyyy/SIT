@@ -17,7 +17,11 @@
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
 					<button class="rejectbt cd-popup-trigger">reject</button>
+<<<<<<< HEAD
 			    	<input type="text" class="form-control" />
+=======
+			    	<input type="text" class="form-control"/>
+>>>>>>> 91a61365677d6ba3706e75ee0d3ead2e73d373e1
 			    </td>
 			  </tr>
 			  <tr>

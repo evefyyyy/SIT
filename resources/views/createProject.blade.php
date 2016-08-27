@@ -43,18 +43,13 @@
 				</div>
 				<input type="button" name="next" class="next action-button" value="Next" />
 			</fieldset>
-			<fieldset>
+			<fieldset id="stdno">
 				<h2 class="fs-title">Team members</h2>
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
 					@foreach($students as $st)
 					<div class="col-xs-6 col-md-6">
-						<div class="input-group">
 						<input type="text" class="form-control" placeholder="Student ID">
-					      <span class="input-group-btn">
-					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					      </span>
-					     </div>
 					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
 					@endforeach
@@ -62,12 +57,7 @@
 				<div class="row">
 					@foreach($students as $st)
 					<div class="col-xs-6 col-md-6">
-						<div class="input-group">
 						<input type="text" class="form-control" placeholder="Student ID">
-					      <span class="input-group-btn">
-					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					      </span>
-					     </div>
 					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
 					@endforeach
@@ -75,12 +65,7 @@
 				<div class="row">
 					@foreach($students as $st)
 					<div class="col-xs-6 col-md-6">
-						<div class="input-group">
 						<input type="text" class="form-control" placeholder="Student ID">
-					      <span class="input-group-btn">
-					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					      </span>
-					     </div>
 					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
 					@endforeach
