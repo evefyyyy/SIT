@@ -55,7 +55,7 @@ class createProjectController extends Controller {
 		$obj->type_id = 1;
 		$obj->save();
 
-	/*	$std = new Student();
+		/*$std = new Student();
 		$std->student_id = $request['idStudent1'];
 		$std->user_type_id = 1;
 		$std->save();*/

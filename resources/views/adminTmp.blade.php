@@ -5,6 +5,9 @@
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
+        <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
+        <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
+        <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
         <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
         <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
     </head>
@@ -22,7 +25,7 @@
                   <li class="{{ strrpos(Request::path(),'admin/project') === 0 ? 'active' : ''  }}"><a href="/admin/project/pending">Student projects</a></li>
                   <li><a href="#">Back to homepage</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><a href="#" class="navbar-link"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Admin</a></p>     
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span>|</span><a href="/index" class="navbar-link logout">Logout</a></p>     
           </nav>
         </div>
        <div id="content">

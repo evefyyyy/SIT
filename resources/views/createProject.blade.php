@@ -15,8 +15,8 @@
 			<fieldset>
 				<h2 class="fs-title">Create project</h2>
 		    	<h3 class="fs-subtitle">Enter project name and select category</h3>
-		    	<input class="projectName" type="text" id="projectNameEN" placeholder="Project name (EN)" name="Engname" />
-				<input class="projectName" type="text" id="projectNameTH" placeholder="Project name (TH)" name="THname"/>
+		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="Engname" requried/>
+				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="THname" requried/>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><label class="category">Project Type</label></div>
 							<div class="col-xs-6 col-md-6">
@@ -43,49 +43,29 @@
 				</div>
 				<input type="button" name="next" class="next action-button" value="Next" />
 			</fieldset>
-			<fieldset>
+			<fieldset id="stdno">
 				<h2 class="fs-title">Team members</h2>
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
-					@foreach($students as $st)
+					@foreach($students as $std)
 					<div class="col-xs-6 col-md-6">
-						<div class="input-group">
-						<input type="text" class="form-control" placeholder="Student ID" value="{{$st->student_id}}">
-					      <span class="input-group-btn">
-					        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					      </span>
-							</div>
+						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{$std->student_id}}" name="idStudent1">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$std->student_fname}} {{$std->student_lname}}</div>
 					@endforeach
 				</div>
-
-					<div class="row">
-						<div class="col-xs-6 col-md-6">
-							<!-- <div class="input-group"> -->
-							<input type="text" class="form-control" placeholder="Student ID" name="stdId" id="stdId" onchange="check_name()">
-						      <!-- <span class="input-group-btn">
-						        <button type="search" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"></span></button>
-						      </span> -->
-						     <!-- </div> -->
-						</div>
-
-						<div class="col-xs-6 col-md-6 stdname"><h5 id="fname"></h5> <h5 id="lname"></h5></div>
+				<div class="row">
+					<div class="col-xs-6 col-md-6">
+						<input type="text" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" onchange="check_name2()">
 					</div>
-					<div class="row">
-						<div class="col-xs-6 col-md-6">
-							<div class="input-group">
-							<input type="text" class="form-control" placeholder="Student ID" name="searchbox" id="searchbox">
-						      <span class="input-group-btn">
-						        <button class="btn btn-default" type="search" id="search"><span class="glyphicon glyphicon-search"></span></button>
-						      </span>
-						     </div>
-						</div>
-
-						<div class="col-xs-6 col-md-6 stdname"></div>
-
+					<div class="col-xs-6 col-md-6 stdname" id="fname2"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-md-6">
+						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" onchange="check_name3()">
 					</div>
-
+					<div class="col-xs-6 col-md-6 stdname" id="fname3"></div>
+				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
 			</fieldset>
@@ -96,14 +76,13 @@
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
+						  <input class="advisor form-control" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
 						  <datalist class="data" id="browsers">
-						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
-						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
-						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
-						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
-						    <option value="ศ.เซเวอรัส สเนป">
+								@foreach($advisor as $ad)
+						    <option value="{{$ad->advisor_fname}} {{$ad->advisor_lname}}">
+								@endforeach
 						  </datalist>
+
 						</div>
 					</div>
 				</div>
@@ -111,13 +90,11 @@
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select">
+						  <input class="advisor form-control" list="browsers" name="browser" id="coAdvisor" placeholder="Search or select">
 						  <datalist class="data" id="browsers">
-						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
-						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
-						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
-						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
-						    <option value="ศ.เซเวอรัส สเนป">
+								@foreach($advisor as $ad)
+						    <option value="{{$ad->advisor_fname}} {{$ad->advisor_lname}}">
+								@endforeach
 						  </datalist>
 						</div>
 					</div>
@@ -168,28 +145,43 @@
     			display: none;
     		}
 		</style>
-		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}"></script>
-		<script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
-			<script type="text/javascript">
-			    function check_name(){
 
+			<script type="text/javascript">
+			    function check_name2(){
 		         $.ajax({
 		                type:"post",
 		                dataType: "",
-		                url :"stdId",
-		                data: {stdId: $("#stdId").val() , _token:$("#_token").val() },
+		                url :"stdId2",
+		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
 		                    success:function(data){
 		                      if(data=='0'){
-		                        $('#fname').html('');
-		                        $('#lname').html('');
+														var _msg = "Data not found";
+		                        $('#fname2').html(_msg);
 		                      }else{
-		                        $('#fname').html(data.student_fname);
-		                        $('#lname').html(data.student_lname);
+														var _data = data.student_fname+' '+data.student_lname
+														$('#fname2').html(_data);
 		                      }
 		                }
 		             });
 		    }
+
+					function check_name3(){
+						 $.ajax({
+										type:"post",
+										dataType: "",
+										url :"stdId3",
+										data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+												success:function(data){
+													if(data=='0'){
+														$('#fname3').html('');
+													}else{
+														var _data = data.student_fname+' '+data.student_lname
+														$('#fname3').html(_data);
+													}
+										}
+								 });
+				}
 			</script>
 
 @stop
