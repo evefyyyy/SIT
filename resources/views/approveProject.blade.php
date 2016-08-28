@@ -10,7 +10,10 @@
 		</thead>
 		<tbody>
 		 <tr>
-	        <table class="table pending">
+		 	<tr>
+		 		<td colspan="4" class="no-project">no pending project</td>
+		 	</tr>
+	        <!--<table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
 			    <td colspan="4" rowspan="2" style="width:60%" id="name"></td>
@@ -46,7 +49,7 @@
 			    </td>
 			  </tr>
 	        </table>
-	      </tr>
+	      </tr>-->
     </tbody>
 	</table>
 		<div class="cd-popup" role="alert">
