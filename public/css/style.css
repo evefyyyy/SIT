@@ -685,9 +685,9 @@ option {
         }
     }
 }
-#projectTB a {
+#pendlink a {
     font-size: 1em;
-    color: #ff7f7f;#40c3a7;
+    color: #ff7f7f;
     float: right;
     text-decoration: none;
     margin: 30px 10%;
@@ -695,7 +695,7 @@ option {
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-#projectTB a:hover {
+#pendlink a:hover {
     text-decoration: underline;
 }
 .no-project {
@@ -704,4 +704,17 @@ option {
     border-bottom: none !important;
     font-weight: 600;
     color: #B6B6B6;
+}
+#projectTB a {
+  color: black;
+  text-decoration: none;
+  -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+#projectTB a:hover {
+  color: #40c3a7;
+}
+#projectTB img {
+  height: 35px;
+  margin: 5px 0 0 22px;
 }
