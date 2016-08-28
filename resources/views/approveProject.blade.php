@@ -9,11 +9,12 @@
 			</tr>
 		</thead>
 		<tbody>
+		@foreach($groupProject as $gp)
 		 <tr>
 	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="4" rowspan="2" style="width:60%" id="name"></td>
+			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$gp->group_project_th_name}}</td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
 					<button class="rejectbt cd-popup-trigger">reject</button>
@@ -47,6 +48,7 @@
 			  </tr>
 	        </table>
 	      </tr>
+	      @endforeach
     </tbody>
 	</table>
 		<div class="cd-popup" role="alert">

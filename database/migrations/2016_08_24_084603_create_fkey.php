@@ -31,8 +31,8 @@ class CreateFkey extends Migration
     Schema::table('best_projects', function ($table) {
         $table->integer('advisor_id')->unsigned();
         $table->foreign('advisor_id')->references('id')->on('advisors');
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
     });
      Schema::table('criteria_main_shops', function ($table) {
         $table->integer('type_id')->unsigned();
@@ -48,12 +48,12 @@ class CreateFkey extends Migration
         $table->foreign('criteria_sub_id')->references('id')->on('criteria_subs');
         $table->integer('advisor_id')->unsigned();
         $table->foreign('advisor_id')->references('id')->on('advisors');
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
     });
     Schema::table('dday', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
     });
 
     Schema::table('files_upload', function ($table) {
@@ -69,36 +69,36 @@ class CreateFkey extends Migration
     });
 
     Schema::table('pictures', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
         $table->integer('picture_type_id')->unsigned();
         $table->foreign('picture_type_id')->references('id')->on('picture_type');
     });
 
     Schema::table('project_advisors', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
         $table->integer('advisor_id')->unsigned();
         $table->foreign('advisor_id')->references('id')->on('advisors');
     });
 
     Schema::table('project_proposals', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
         $table->integer('proposal_id')->unsigned();
         $table->foreign('proposal_id')->references('id')->on('proposals');
     });
 
     Schema::table('project_students', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
         $table->integer('student_id')->unsigned();
         $table->foreign('student_id')->references('id')->on('students');
     });
 
     Schema::table('project_tools', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
         $table->integer('tool_id')->unsigned();
         $table->foreign('tool_id')->references('id')->on('tools');
     });
@@ -111,15 +111,15 @@ class CreateFkey extends Migration
     });
 
     Schema::table('rooms_exam', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
         $table->integer('room_id')->unsigned();
         $table->foreign('room_id')->references('id')->on('rooms');
     });
 
     Schema::table('score_tests', function ($table) {
-        $table->integer('group_project_id')->unsigned();
-        $table->foreign('group_project_id')->references('id')->on('group_projects');
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
     });
     Schema::table('project_advisors', function ($table) {
         $table->integer('advisor_position_id')->unsigned();
