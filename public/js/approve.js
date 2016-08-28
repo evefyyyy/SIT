@@ -15,7 +15,7 @@ jQuery(document).ready(function($){
 		event.preventDefault();
 		$('.cd-popup').addClass('is-visible');
 	});
-	
+
 	//close popup
 	$('.cd-popup').on('click', function(event){
 		if( $(event.target).is('.cd-close') || $(event.target).is('.cd-popup') ) {

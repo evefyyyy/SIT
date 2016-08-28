@@ -159,7 +159,7 @@ option {
     font-weight: 700;
     margin-top: 30px;
     padding-bottom: 5px;
-  
+
 }
 .fs-subtitle {
     font-size: 13px;
@@ -193,7 +193,7 @@ option {
     text-align: center;
     display: block;
 }
-.title { 
+.title {
     color: #666;
     margin-top: 15px;
     text-transform: uppercase;
@@ -264,7 +264,7 @@ option {
 }
 #progressbar li:first-child:after {
     /*connector not needed before the first step*/
-    content: none; 
+    content: none;
 }
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
@@ -344,7 +344,7 @@ option {
     bottom: 100%;
     border-width: 0 6px 6px 6px;
     border-style: solid;
-    border-color: #fff transparent;    
+    border-color: #fff transparent;
     z-index: 1;
 }
 
@@ -357,8 +357,8 @@ option {
     right: 13px;
     border-width: 0 8px 8px 8px;
     border-style: solid;
-    border-color: rgba(0,0,0,0.1) transparent; 
-    z-index: 1;   
+    border-color: rgba(0,0,0,0.1) transparent;
+    z-index: 1;
 }
 
 .wrapper-dropdown-3 .dropdown li {
@@ -424,7 +424,7 @@ option {
 .teammem {
     text-align: center;
     width: 50%;
-    margin: 10px 25% 0 25%; 
+    margin: 10px 25% 0 25%;
 }
 .teammem table {
     margin-top: 30px;
@@ -685,6 +685,7 @@ option {
         }
     }
 }
+<<<<<<< HEAD
 #projectTB a {
     font-size: 1em;
     color: #ff7f7f;#40c3a7;
@@ -705,3 +706,5 @@ option {
     font-weight: 600;
     color: #B6B6B6;
 }
+=======
+>>>>>>> 1230e9aa1f9524a117b45f621918fd12901883ed

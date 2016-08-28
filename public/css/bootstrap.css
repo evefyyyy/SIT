@@ -2277,7 +2277,6 @@ th {
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 5px solid #40c3a7;
-  width: 100%;
   color: #40c3a7;
   font-size: 1.1em;
   text-transform: uppercase;

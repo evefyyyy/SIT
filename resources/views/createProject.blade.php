@@ -3,7 +3,7 @@
 		<div class="page-wrap">
             <!-- multistep form -->
 		<form id="msform" action="{{url('student/myproject/create')}}" method="post">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
 				<li class="active">Create project</li>
@@ -47,28 +47,24 @@
 				<h2 class="fs-title">Team members</h2>
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
-					@foreach($students as $st)
+					@foreach($students as $std)
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID">
+						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{$std->student_id}}" name="idStudent1">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$std->student_fname}} {{$std->student_lname}}</div>
 					@endforeach
 				</div>
 				<div class="row">
-					@foreach($students as $st)
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID">
+						<input type="text" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" onchange="check_name2()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
-					@endforeach
+					<div class="col-xs-6 col-md-6 stdname" id="fname2"></div>
 				</div>
 				<div class="row">
-					@foreach($students as $st)
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID">
+						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" onchange="check_name3()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$st->student_fname}} {{$st->student_lname}}</div>
-					@endforeach
+					<div class="col-xs-6 col-md-6 stdname" id="fname3"></div>
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
@@ -82,12 +78,11 @@
 						<div class="data" action="demo_form.asp" method="get">
 						  <input class="advisor form-control" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
 						  <datalist class="data" id="browsers">
-						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
-						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
-						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
-						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
-						    <option value="ศ.เซเวอรัส สเนป">
+								@foreach($advisor as $ad)
+						    <option value="{{$ad->advisor_fname}} {{$ad->advisor_lname}}">
+								@endforeach
 						  </datalist>
+
 						</div>
 					</div>
 				</div>
@@ -95,13 +90,11 @@
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select">
+						  <input class="advisor form-control" list="browsers" name="browser" id="coAdvisor" placeholder="Search or select">
 						  <datalist class="data" id="browsers">
-						    <option value="ศ.อัลบัส ดัมเบิลดอร์">
-						    <option value="ศ.อลาสเตอร์ มู้ดดี้">
-						    <option value="ศ.มิเนอร์วา มักกอนนากัล">
-						    <option value="ศ.ฟิลิอัส ฟลิตวิก">
-						    <option value="ศ.เซเวอรัส สเนป">
+								@foreach($advisor as $ad)
+						    <option value="{{$ad->advisor_fname}} {{$ad->advisor_lname}}">
+								@endforeach
 						  </datalist>
 						</div>
 					</div>
@@ -153,4 +146,42 @@
     		}
 		</style>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
+
+			<script type="text/javascript">
+			    function check_name2(){
+		         $.ajax({
+		                type:"post",
+		                dataType: "",
+		                url :"stdId2",
+		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
+		                    success:function(data){
+		                      if(data=='0'){
+														var _msg = "Data not found";
+		                        $('#fname2').html(_msg);
+		                      }else{
+														var _data = data.student_fname+' '+data.student_lname
+														$('#fname2').html(_data);
+		                      }
+		                }
+		             });
+		    }
+
+					function check_name3(){
+						 $.ajax({
+										type:"post",
+										dataType: "",
+										url :"stdId3",
+										data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+												success:function(data){
+													if(data=='0'){
+														$('#fname3').html('');
+													}else{
+														var _data = data.student_fname+' '+data.student_lname
+														$('#fname3').html(_data);
+													}
+										}
+								 });
+				}
+			</script>
+
 @stop

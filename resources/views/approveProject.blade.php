@@ -4,6 +4,7 @@
 		<thead>
 			<tr>
 				<th>
+
 					{{$countProject}} Pending Projects
 				</th>
 			</tr>
@@ -19,8 +20,10 @@
 			    <td colspan="4" rowspan="2" style="width:60%" id="name"></td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
+
 					<button class="rejectbt cd-popup-trigger">reject</button>
 			    	<input type="text" class="form-control"/>
+
 			    </td>
 			  </tr>
 			  <tr>
@@ -45,7 +48,7 @@
 			    </td>
 			    <th>Advisor<span>:</span></th>
 			    <td>ศ.ฮอเรซ ซลักฮอร์น<label id="main">Main</label><br>
-			    	ศ. เซเวอรัส สเนป
+			    	ศ.เซเวอรัส สเนป
 			    </td>
 			  </tr>
 	        </table>
