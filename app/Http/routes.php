@@ -32,20 +32,16 @@ Route::get('admin/project/pending', function () {
     return view('approveProject');
 });
 
-<<<<<<< HEAD
 Route::get('admin/project', function () {
     return view('allProject');
-=======
+});
 
 Route::get('search',function(){
   return view('createProject');
 });
 
-
-
 Route::get('index', function () {
     return view('generalTmp');
->>>>>>> 1230e9aa1f9524a117b45f621918fd12901883ed
 });
 
 
