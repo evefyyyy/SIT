@@ -3,7 +3,7 @@
     <head>
         <title>SIT Portfolio</title>
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
+        <link href="{!! URL::asset('css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>

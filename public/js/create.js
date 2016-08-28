@@ -6,7 +6,7 @@ var animating; //flag to prevent quick multi-click glitches
 $(".next").click(function(){
 	if(animating) return false;
 	animating = true;
-	
+
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
 
@@ -140,11 +140,11 @@ function getValue() {
 	$("#type1").html($("#type span").html());
 	$("#category1").html($("#category span").html());
 	$("#Student1No1").html($("#Student1No").val());
-	$("#Student2No1").html($("#Student2No").val());
-	$("#Student3No1").html($("#Student3No").val());
+	$("#Student2No1").html($("#stdId2").val());
+	$("#Student3No1").html($("#stdId3").val());
 	$("#std1Name1").html($("#std1Name").html());
-	$("#std2Name1").html($("#std2Name").html());
-	$("#std3Name1").html($("#std3Name").html());
+	$("#std2Name1").html($("#fname2").html());
+	$("#std3Name1").html($("#fname3").html());
 	$("#mainAdvisor1").html($("#mainAdvisor").val());
 	$("#coAdvisor1").html($("#coAdvisor").val());
 }

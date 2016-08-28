@@ -4,21 +4,29 @@
 		<thead>
 			<tr>
 				<th>
+
 					{{$countProject}} Pending Projects
 				</th>
 			</tr>
 		</thead>
 		<tbody>
+<<<<<<< HEAD
 		@foreach($groupProject as $gp)
 		 <tr>
 	        <table class="table pending">
+=======
+	         <tr>
+	         	<table class="table pending">
+>>>>>>> 858890ad4f734e81a60e3e8c2854d6c0a0d4106f
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
 			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$gp->group_project_th_name}}</td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
+
 					<button class="rejectbt cd-popup-trigger">reject</button>
 			    	<input type="text" class="form-control"/>
+
 			    </td>
 			  </tr>
 			  <tr>
@@ -43,12 +51,19 @@
 			    </td>
 			    <th>Advisor<span>:</span></th>
 			    <td>ศ.ฮอเรซ ซลักฮอร์น<label id="main">Main</label><br>
-			    	ศ. เซเวอรัส สเนป
+			    	ศ.เซเวอรัส สเนป
 			    </td>
 			  </tr>
 	        </table>
 	      </tr>
+<<<<<<< HEAD
 	      @endforeach
+=======
+	       <!-- no pending project -->
+	      	<!--<tr>
+		 		<td colspan="4" class="no-project">no pending project</td>
+		 	</tr> -->
+>>>>>>> 858890ad4f734e81a60e3e8c2854d6c0a0d4106f
     </tbody>
 	</table>
 		<div class="cd-popup" role="alert">
