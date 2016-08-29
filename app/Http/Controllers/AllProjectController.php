@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
+use DB;
 use App\Advisor;
 use App\Category;
-use App\Type;
 use App\GroupProject;
-use App\Http\Requests;
+use App\GroupAdvisor;
 use App\ProjectStudent;
-use App\ProjectJoinStudents;
-use DB;
+use App\Student;
+use App\Type;
+use App\User;
+use App\Http\Requests;
 
-class approveProjectController extends Controller
+class AllProjectController extends Controller
 {
     public function index()
     {
@@ -39,7 +40,6 @@ class approveProjectController extends Controller
 		$projects = $unique->values()->all();
 		$objs['project'] = $projects;
 
-      	return view('approveProject',$objs);
-    }
+      	return view('allProject',$objs);
 }
-
+}
