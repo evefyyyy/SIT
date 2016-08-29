@@ -24,8 +24,12 @@ Route::get('student/myproject/noproject', function () {
 });
 
 //Route::get('createProject', 'createProjectController@studentName');
-Route::get('student/myproject', function () {
+Route::get('student/myproject/waitapprove', function () {
     return view('waitApprove');
+});
+
+Route::get('student/myproject/edit', function () {
+    return view('editProject');
 });
 
 Route::get('admin/project/pending', function () {
@@ -43,7 +47,6 @@ Route::get('search',function(){
 Route::get('index', function () {
     return view('generalTmp');
 });
-
 
 Route::resource('student/myproject/create','createProjectController');
 

@@ -8,6 +8,9 @@ nav > p > img {
 .logout {
     font-size: 0.875em;
 }
+.logout:hover {
+  color: #FF5C5C !important;
+}
 nav span {
     padding: 0 10px 0 10px;
     color: #CECECE;
@@ -687,7 +690,7 @@ option {
 }
 #pendlink a {
     font-size: 1em;
-    color: #ff7f7f;
+    color: #FF5C5C;
     float: right;
     text-decoration: none;
     margin: 30px 10%;
