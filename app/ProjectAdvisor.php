@@ -4,19 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProjectStudent extends Model
+class ProjectAdvisor extends Model
 {
 
-    protected $table = 'project_students';
+    protected $table = 'project_advisors';
 
     public function groupProject()
     {
       return $this->belongsTo('App\GroupProject', 'project_pkid');
-    }
-
-    public function student()
-    {
-      return $this->belongsTo('App\Student', 'student_pkid');
     }
 
     public function advisor()

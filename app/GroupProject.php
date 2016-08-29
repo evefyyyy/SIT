@@ -18,4 +18,17 @@ class GroupProject extends Model
       'group_project_approve'
     ];
     //hello
+
+    public function category()
+    {
+      return $this->belongsTo('App\Category');
+    }
+    public function type(){
+      return $this->belongsTo('App\Type');
+    }
+
+    public function projectStudents()
+    {
+      return $this->hasMany('App\ProjectStudent', 'project_pkid');
+    }
 }

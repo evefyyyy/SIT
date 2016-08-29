@@ -9,12 +9,12 @@
 			</tr>
 		</thead>
 		<tbody>
-		@foreach($group_projects as $gp)
+		@foreach($project as $pj)
 		 <tr>
 	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$gp->group_project_eng_name}}<br>{{$gp->group_project_th_name}}</td>
+			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$pj->groupProject->group_project_eng_name}}<br>{{$pj->groupProject->group_project_th_name}}</td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
 
@@ -27,24 +27,31 @@
 			  </tr>
 			  <tr>
 			    <th>Type<span>:</span></th>
-			    <td style="width:15%">{{$gp->type_name}}</td>
+			    <td style="width:15%">{{$pj->groupProject->type->type_name}}</td>
 			    <th style="width:15%">Category<span>:</span></th>
-			    <td style="width:15%">{{$gp->category_name}}</td>
+			    <td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
 			    <th>Project id<span>:</span></th>
 			  </tr>
 			  <tr>
 			    <th rowspan="3">Team member<span>:</span></th>
+			    <?php $teams = App\ProjectStudent::where('project_pkid', $pj->project_pkid)->get(); ?>
 			    <td>
-			    
+			    @foreach($teams as $team)
+			    	{{$team->student->student_id}}<br>
+			    @endforeach
 			    </td>
 			    <td colspan="2">
-			    	นาย ต้มแซ่บ กระดูกหมู<br>
-			    	นางสาว ส้มตำปูปลาร้า ยำคอหมูย่าง<br>
-			    	นาย ไก่ย่าง สิบเอ็ดดาว
+			    
+			    @foreach($teams as $team)
+			    	{{ $team->student->student_fname." ".$team->student->student_lname }}<br>
+			    @endforeach
 			    </td>
+			    <<?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get(); ?>
 			    <th>Advisor<span>:</span></th>
-			    <td>ศ.ฮอเรซ ซลักฮอร์น<label id="main">Main</label><br>
-			    	ศ.เซเวอรัส สเนป
+			    <td>
+			     @foreach($advisors as $key => $advisor)
+			    	{{ $advisor->advisor->advisor_fname." ".$advisor->advisor->advisor_lname }}@if($key < 1)<label id="main">Main</label>@endif<br>
+			    @endforeach
 			    </td>
 			  </tr>
 	        </table>
