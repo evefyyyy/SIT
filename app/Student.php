@@ -8,10 +8,8 @@ class Student extends Model
 {
     //
     protected $table = 'students';
-    protected $fillable = [
-      'student_id',
-      'student_fname',
-      'student_lname',
-      'student_email'
-    ];
+    
+    public function projectStudent(){
+    	return $this->hasmany('App\ProjectStudent', 'student_pkid');
+    }
 }
