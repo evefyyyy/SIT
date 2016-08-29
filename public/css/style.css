@@ -424,6 +424,7 @@ option {
 .no-pointerevents .wrapper-dropdown-3.active .dropdown {
     display: block;
 }
+
 .teammem {
     text-align: center;
     width: 50%;
@@ -451,6 +452,14 @@ option {
 #waitApp img {
     vertical-align: middle;
     float: right;
+}
+#waitApp a {
+  line-height: 3em;
+  text-decoration: none;
+  color: black;
+}
+#waitApp a:hover {
+  color: #ff7f7f;
 }
 .pending {
     font-size: 0.875em;
@@ -720,4 +729,83 @@ option {
 #projectTB img {
   height: 35px;
   margin: 5px 0 0 22px;
+}
+h6 img {
+    height: 15px;
+}
+.custom-file-upload-hidden {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+.custom-file-upload {
+    display: block;
+    width: auto;
+    font-size: 0.875;
+    margin-top: 10px;
+    //border: 1px solid #ccc;
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+.custom-file-upload p {
+    text-align: left;
+    color: #666;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+.file-upload-wrapper {
+    position: relative; 
+    margin: 5px auto 50px auto;
+    //border: 1px solid #ccc;
+}
+.file-upload-input {
+    display: block;
+    height: 31px;
+    padding: 5px 12px;
+    line-height: 1.22857143;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    color: #333;
+    font-size: 0.925em;
+    background-color: $file-upload-color; 
+    @include transition(all 0.2s ease-in); 
+    float: left; /* IE 9 Fix */
+    &:hover, &:focus { 
+        background-color: darken($file-upload-color, 5);
+        outline: none; 
+    }
+}
+.file-upload-input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.file-upload-button {
+    cursor: pointer; 
+    display: inline-block; 
+    color: #fff;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 4px;
+    margin-left: 5px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    background-color: darken($file-upload-color, 10); 
+    float: left; /* IE 9 Fix */
+    @include transition(all 0.2s ease-in);
+    &:hover {
+        background-color: darken($file-upload-color, 20);
+    }
+}
+.file-upload-button:hover {
+    background-color: #999;
 }

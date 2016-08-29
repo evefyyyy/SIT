@@ -26,21 +26,21 @@
 			<tr>
 				<td>TI55-02</td>
 				<td id="name">
-					<a href="#">apple apple apple banana banana banana orange orange<br>
-					อีฟฟี่ จุ้บปาจุ้บ อีฟฟี่ จุ้บปาจุ้บ อีฟฟี่ จุ้บปาจุ้บ อีฟฟี่ จุ้บปาจุ้บ อีฟฟี่ จุ้บปาจุ้บ
+					<a href="#">Driving simulation<br>
+					เกมจำลองสถานการณ์การสอบใบอนุญาติขับขี่รถยนต์
 					</a>
 				</td>
-				<td>Business</td>
+				<td>Research</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>TI55-02</td>
 				<td id="name">
-					<a href="#">This must be a very very longggggggggggggggggggggggg project name<br>
-					จ้ำจี้มะเขือเปาะ กระเทาะหน้าแว่น พายเรืออ้อนแอ้น กระแท่นต้นกุ่ม สาวๆ หนุ่มๆ อาบน้ำท่าไหน อาบน้ำท่าวัด เอาแป้งที่ไหนผัด เอากระจกที่ไหนส่อง เยี่ยมๆ มองๆ นกขุนทองร้องกรู๊
+					<a href="#">Dreamaker<br>
+					แอพพลิเคชั่นออมเงินสร้างฝัน
 					</a>
 				</td>	
-				<td>Research</td>
+				<td>Business</td>
 				<td></td>
 			</tr>
     	</tbody>

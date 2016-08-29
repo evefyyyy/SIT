@@ -3,7 +3,7 @@
 	<div id="waitApp">
 	<div class="proname">Driving blablabla</div>
 	<div class="proname">เกมจำลองสถานการณ์การสอบใบอนุญาติขับขี่รถยนต์</div>
-	<div id="center"><div class="title">Category :</div><div class="info">Social</div>
+	<div id="center"><div class="title">Category :</div><div class="info infoType">Social</div>
 	<div class="title">Additional Category :</div><div class="info">Games</div></div>
 	<div class="title" id="head">Team members</div>
 		<table class="teammem">
@@ -30,6 +30,8 @@
 				<td>อ.เอกพงษ์ จึงเจริญสุขยิ่ง</td>
 			</tr>
 		</table>
+		<div id="center">
+		<a href="/student/myproject/create"><< back to edit project</a>
 		</div>
 	</div>
 	</div>

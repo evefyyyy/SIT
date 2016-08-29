@@ -34,7 +34,6 @@ class approveProjectController extends Controller
 		$project = DB::table('group_projects')
 				->join('types', 'types.id', '=', 'group_projects.type_id')
 				->join('categories', 'categories.id', '=', 'group_projects.category_id')
-				->join('project_students', 'project_students.project_pkid', '=', 'group_projects.id')
 				->select('*')
 				->get();
 		$objs['group_projects'] = $project;

@@ -73,13 +73,13 @@
 				<h2 class="fs-title">Advisors</h2>
 				<h3 class="fs-subtitle">Choose your project advisors</h3>
 				<div class="row">
-					<div class="col-xs-4 col-md-4">Main advisor</div>
+					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
 						  <input class="advisor form-control" list="browsers" name="browser1" id="mainAdvisor" placeholder="Search or select" />
-						  <datalist>
+						  <datalist class="data" id="browsers">
 								@foreach($advisor as $ad)
-							    <option value="{{$ad->id}}" >{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
+							    <option>{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
 								@endforeach
 						  </datalist>
 
@@ -93,7 +93,7 @@
 						  <input class="advisor form-control" list="browsers" name="browser" id="coAdvisor" placeholder="Search or select">
 						  <datalist class="data" id="browsers">
 								@foreach($advisor as $ad)
-						    <option value="{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}" >
+						    <option>{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
 								@endforeach
 						  </datalist>
 						</div>
@@ -135,6 +135,15 @@
 					  	<td id="coAdvisor1"></td>
 					  </tr>
 					</table>
+				<div class="row">
+				<div class="hidden-sm col-md-3"></div>
+				<div class="col-sm-12 col-md-9">
+					<div class="custom-file-upload">
+				    <p>Upload your first draft proposal</p>
+				    <input type="file" id="file" name="myfiles[]" multiple />
+					</div>
+				</div>
+				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<button type="submit" name="submit" class="submit action-button" value="submit" /> SUBMIT </button>
 			</fieldset>
@@ -158,7 +167,7 @@
 		                      if(data=='0'){
 														var _msg = "Data not found";
 														var result = _msg.fontcolor("red");
-		                        $('#msg2').html(result);
+		                        						$('#msg2').html(result);
 		                      }else{
 														var _data = data.student_prefix+' '+data.student_fname+' '+data.student_lname
 														$('#fname2').html(_data);

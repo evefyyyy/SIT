@@ -5,9 +5,7 @@
 .editableform {
     margin-bottom: 0; /* overwrites bootstrap margin */
 }
-.editableform img {
-  height: 15px;
-}
+
 .editableform .control-group {
     margin-bottom: 0; /* overwrites bootstrap margin */
     white-space: nowrap; /* prevent wrapping buttons on new line */
