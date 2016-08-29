@@ -13,36 +13,18 @@
 			</tr>
 		</thead>
 		<tbody>
+			@foreach($project as $projects)
 			<tr>
-				<td>TI56-01</td>
+				<td>{{$projects->groupProject->group_project_id}}</td>
 				<td id="name">
-					<a href="#">Health & Nutrition on Mobile Phone<br>
-					โปรแกรมดูแลสุขภาพตามหลักโภชนาการบนโทรศัพท์มือถือ
+					<a href="#">{{$projects->groupProject->group_project_eng_name}}<br>
+					{{$projects->groupProject->group_project_th_name}}
 					</a>
 				</td>
-				<td>Social</td>
+				<td>{{$projects->groupProject->type->type_name}}</td>
 				<td><a href="#"><img src="/img/pdf.png"></td></a>
 			</tr>
-			<tr>
-				<td>TI55-02</td>
-				<td id="name">
-					<a href="#">Driving simulation<br>
-					เกมจำลองสถานการณ์การสอบใบอนุญาติขับขี่รถยนต์
-					</a>
-				</td>
-				<td>Research</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>TI55-02</td>
-				<td id="name">
-					<a href="#">Dreamaker<br>
-					แอพพลิเคชั่นออมเงินสร้างฝัน
-					</a>
-				</td>	
-				<td>Business</td>
-				<td></td>
-			</tr>
+			@endforeach
     	</tbody>
 	</table>
 @stop
