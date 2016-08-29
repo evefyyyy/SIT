@@ -14,7 +14,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-10">
 			<h6>details</h6>
 			<form class="form-inline editableform">
-			    <a href="#" id="username">enter project details</a>
+			    <a href="#" id="comments" data-type="textarea">details</a>
 			</form>
 		</div>
 		<div class="hidden-sm col-md-1"></div>
@@ -25,8 +25,9 @@
 		<div class="col-xs-12 col-sm-12 col-md-5">
 			<h6>author</h6>
 			<div class="col-xs-6 col-sm-6 col-md-6">นาย สุรพงษ์ เนตรประไพ</div>
-			<div class="col-xs-6 col-sm-6 col-md-6">รหัสนักศึกษา 56130500078</div>
-			
+			<div class="col-xs-6 col-sm-6 col-md-6">รหัสนักศึกษา 56130500078<br><img height="15" src="/img/email.png">
+				email
+			</div>
 			<h6>advisor</h6>
 		</div>
 		<div class="hidden-sm col-md-1"></div>

@@ -103,7 +103,6 @@
 				<input type="button" name="next" class="next action-button" value="Next" id="myBtn" onclick="getValue()" />
 		    </fieldset>
 			<fieldset>
-		    	<h2 class="fs-title">Submit</h2>
 		    	<h3 class="fs-subtitle">Ensure your information is correct before submission</h3>
 		    	<div class="proname" id="projectNameEN1"></div>
 		    	<div class="proname" id="projectNameTH1"></div>

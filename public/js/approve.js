@@ -37,3 +37,24 @@ jQuery(document).ready(function($){
 	    }
     });
 });
+$.fn.editable.defaults.mode = 'popup';
+
+$(function(){
+	$('#pronameEN').editable({
+    	type: 'text',
+    	url: '/post',  
+        title: 'project name (EN)',
+        ajaxOptions: {
+        type: 'put'
+    	} 
+    });
+});
+
+$.mockjax({
+    url: '/post',
+    responseTime: 200,
+    response: function(settings) {
+        console.log(settings);
+    }
+}); 
+
