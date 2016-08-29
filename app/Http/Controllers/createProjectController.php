@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 use App\Model\studentProfile;
-use Input;
-use Redirect;
-use File;
-use App\GroupProject;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use Redirect;
+use File;
+use DB;
+use App\GroupProject;
 use App\Student;
 use App\Category;
 use App\Type;
 use App\Advisor;
+use App\ProjectAdvisor;
+use App\ProjectStudent;
+
 
 
 class createProjectController extends Controller {
@@ -45,30 +49,53 @@ class createProjectController extends Controller {
 
 	public function store(Request $request)
 	{
-		//$cat = Category::get('category_id');
-
 
 		$obj = new GroupProject();
-		$obj->group_project_ENG_name = $request['Engname'];
-		$obj->group_project_TH_name = $request['THname'];
+		$obj->group_project_ENG_name = $request['projectNameEN'];
+		$obj->group_project_TH_name = $request['projectNameTH'];
 		$obj->category_id = 1;
 		$obj->type_id = 1;
 		$obj->save();
 
-		/*$std = new Student();
-		$std->student_id = $request['idStudent1'];
-		$std->user_type_id = 1;
-		$std->save();*/
+		$projectId = DB::table('group_projects')->max('id');
 
-		$obj = new Student();
-		$obj->student_id = $request['idStudent2'];
-		$obj->user_type_id = 1;
-		$obj->save();
 
-		$obj = new Student();
-		$obj->student_id = $request['idStudent3'];
-		$obj->user_type_id = 1;
-		$obj->save();
+		$stdId = $request->input('idStudent1');
+		$data = DB::table('students')->where('student_id',$stdId)->value('id');
+		$std = new ProjectStudent();
+		$std->project_pkid = $projectId;
+		$std->student_pkid = $data;
+		$std->save();
+
+		$stdId = $request->input('idStudent2');
+		$data = DB::table('students')->where('student_id',$stdId)->value('id');
+		$std = new ProjectStudent();
+		$std->project_pkid = $projectId;
+		$std->student_pkid = $data;
+		$std->save();
+
+		$stdId = $request->input('idStudent3');
+		if($stdId != null){
+		$data = DB::table('students')->where('student_id',$stdId)->value('id');
+		$std = new ProjectStudent();
+		$std->project_pkid = $projectId;
+		$std->student_pkid = $data;
+		$std->save();
+		}
+
+		// $advisor = $request->input('browser1');
+		// $data = DB::table('advisors')->where('id',$advisor)->value('id');
+		// $adv = new ProjectAdvisor();
+		// $adv->advisor_id = $advisor;
+		// $adv->project_pkid = $projectId;
+		// $adv->advisor_position_id = '1';
+		// $adv->save();
+		// //
+		// $adv = new ProjectAdvisor();
+		// $adv->advisor_id = $request['browser2'];
+		// $adv->project_pkid = $projectId;
+		// $adv->advisor_position_id = '2';
+		// $adv->save();
 
 		return view('waitApprove');
 	}
