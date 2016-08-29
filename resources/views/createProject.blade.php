@@ -22,9 +22,9 @@
 							<div class="col-xs-6 col-md-6">
 								<div id="type" class="wrapper-dropdown-3" tabindex="1">
 									<span>Select</span>
-									<ul class="dropdown">
+								<ul class="dropdown" id="myid">
 										@foreach($type as $ty)
-										<li value="{{$ty->id}}">{{$ty->type_name}}</li>
+										<li onclick="selectType({{$ty->id}})">{{$ty->type_name}}</li>
 										@endforeach
 									</ul>
 								</div>
@@ -35,7 +35,7 @@
 									<span>Select</span>
 									<ul class="dropdown">
 										@foreach($category as $cat)
-										<li>{{$cat->category_name}}</li>
+										<li onclick="selectCat({{$cat->id}})">{{$cat->category_name}}</li>
 										@endforeach
 									</ul>
 								</div>
@@ -49,7 +49,7 @@
 				<div class="row">
 					@foreach($students as $std)
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{$std->student_id}}" name="idStudent1">
+						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{$std->student_id}}" name="idStudent1" readonly/>
 					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$std->student_prefix}} {{$std->student_fname}} {{$std->student_lname}}</div>
 					@endforeach
@@ -79,7 +79,7 @@
 						  <input class="advisor form-control" list="browsers" name="browser1" id="mainAdvisor" placeholder="Search or select" />
 						  <datalist class="data" id="browsers">
 								@foreach($advisor as $ad)
-							    <option>{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
+							    <option onclick="selectAdv1({{$ad->id}})" >{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
 								@endforeach
 						  </datalist>
 
@@ -90,7 +90,7 @@
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser" id="coAdvisor" placeholder="Search or select">
+						  <input class="advisor form-control" list="browsers" name="browser2" id="coAdvisor" placeholder="Search or select">
 						  <datalist class="data" id="browsers">
 								@foreach($advisor as $ad)
 						    <option>{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
@@ -144,6 +144,9 @@
 					</div>
 				</div>
 				</div>
+				<input type="hidden" value="" id="selectType" name="selectType"/>
+				<input type="hidden" value="" id="selectCat" name="selectCat"/>
+				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<button type="submit" name="submit" class="submit action-button" value="submit" /> SUBMIT </button>
 			</fieldset>
@@ -157,6 +160,19 @@
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
 
 			<script type="text/javascript">
+					function selectType(x){
+						document.getElementById("selectType").value = x;
+					}
+
+					function selectCat(x){
+						document.getElementById("selectCat").value = x;
+					}
+
+					function selectAdv1(x){
+						console.log(x);
+						document.getElementById("selectAdv1").value = x;
+					}
+
 			    function check_name2(){
 		         $.ajax({
 		                type:"post",
