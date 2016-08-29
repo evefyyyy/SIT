@@ -75,7 +75,7 @@ Route::get('test',function(){
 		}
 		echo "<hr>";
 	}
-});
+}); 
 
 Route::post('student/myproject/stdId2',function(){
 	$stdId = Request::Input('stdId2');

@@ -9,6 +9,11 @@
 			</tr>
 		</thead>
 		<tbody>
+		@if($countProject===0)
+		<tr>
+			<td colspan="4" class="no-project">no pending project</td>
+		</tr>
+		@else
 		@foreach($project as $pj)
 		@if($pj->groupProject->group_project_approve===0)
 		 <tr>
@@ -59,10 +64,9 @@
 	      </tr>
 	      @endif
 	      @endforeach
+	      @endif
 	       <!-- no pending project -->
-	      	<!--<tr>
-		 		<td colspan="4" class="no-project">no pending project</td>
-		 	</tr> -->
+	      	
 		    </tbody>
 			</table>
 		<div class="cd-popup" role="alert">
