@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProjectStudent extends Model
+class ProjectAdvisor extends Model
 {
-    protected $table = 'project_students';
+    protected $table = 'project_advisors';
     protected $fillable =
     [
       'project_pkid',
-      'student_pkid'
+      'advisor_id',
+      'advisor_position_id'
     ];
 }

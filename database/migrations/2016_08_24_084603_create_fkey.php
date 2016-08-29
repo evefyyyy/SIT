@@ -92,8 +92,8 @@ class CreateFkey extends Migration
     Schema::table('project_students', function ($table) {
         $table->integer('project_pkid')->unsigned();
         $table->foreign('project_pkid')->references('id')->on('group_projects');
-        $table->integer('student_id')->unsigned();
-        $table->foreign('student_id')->references('id')->on('students');
+        $table->integer('student_pkid')->unsigned();
+        $table->foreign('student_pkid')->references('id')->on('students');
     });
 
     Schema::table('project_tools', function ($table) {
