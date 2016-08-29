@@ -9,12 +9,18 @@
 			</tr>
 		</thead>
 		<tbody>
-		@foreach($group_projects as $gp)
+		@if($countProject===0)
+		<tr>
+			<td colspan="4" class="no-project">no pending project</td>
+		</tr>
+		@else
+		@foreach($project as $pj)
+		@if($pj->groupProject->group_project_approve===0)
 		 <tr>
-	        <table class="table table-responsive pending">
+	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$gp->group_project_eng_name}}<br>{{$gp->group_project_th_name}}</td>
+			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$pj->groupProject->group_project_eng_name}}<br>{{$pj->groupProject->group_project_th_name}}</td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
 
@@ -27,33 +33,39 @@
 			  </tr>
 			  <tr>
 			    <th>Type<span>:</span></th>
-			    <td style="width:15%">{{$gp->type_name}}</td>
+			    <td style="width:15%">{{$pj->groupProject->type->type_name}}</td>
 			    <th style="width:15%">Category<span>:</span></th>
-			    <td style="width:15%">{{$gp->category_name}}</td>
+			    <td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
 			    <th>Project id<span>:</span></th>
 			  </tr>
 			  <tr>
 			    <th rowspan="3">Team member<span>:</span></th>
+			    <?php $teams = App\ProjectStudent::where('project_pkid', $pj->project_pkid)->get(); ?>
 			    <td>
-			    
+			    @foreach($teams as $team)
+			    	{{$team->student->student_id}}<br>
+			    @endforeach
 			    </td>
 			    <td colspan="2">
-			    	นาย สุรพงษ์ เนตรประไพ<br>
-			    	นางสาว รณพร เอมมาโนชญ์<br>
-			    	นางสาว อาทิมา จันทแสงสว่าง
+			    @foreach($teams as $team)
+			    	{{ $team->student->student_fname." ".$team->student->student_lname }}<br>
+			    @endforeach
 			    </td>
+			    <?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get(); ?>
 			    <th>Advisor<span>:</span></th>
-			    <td>อ. พิเชฏฐ์ ลิ่มวชิรานันต์<label id="main">Main</label><br>
-			    	ดร. อุมาพร สุภสิทธิเมธี
+			    <td>
+			     @foreach($advisors as $key => $advisor)
+			    	{{ $advisor->advisor->advisor_fname." ".$advisor->advisor->advisor_lname }}@if($key < 1)<label id="main">Main</label>@endif<br>
+			    @endforeach
 			    </td>
 			  </tr>
 	        </table>
 	      </tr>
+	      @endif
 	      @endforeach
+	      @endif
 	       <!-- no pending project -->
-	      	<!--<tr>
-		 		<td colspan="4" class="no-project">no pending project</td>
-		 	</tr> -->
+	      	
 		    </tbody>
 			</table>
 		<div class="cd-popup" role="alert">

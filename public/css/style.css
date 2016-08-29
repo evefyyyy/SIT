@@ -717,6 +717,9 @@ option {
     font-weight: 600;
     color: #B6B6B6;
 }
+#projectTB table{
+  margin-bottom: 30px;
+}
 #projectTB a {
   color: black;
   text-decoration: none;

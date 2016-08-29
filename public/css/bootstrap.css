@@ -1628,6 +1628,7 @@ pre code {
 }
 .col-xs-12 {
   width: 100%;
+  padding-left: 43px;
 }
 .col-xs-11 {
   width: 91.66666667%;
@@ -1785,6 +1786,7 @@ pre code {
   }
   .col-sm-12 {
     width: 100%;
+    padding-left: 60px;
   }
   .col-sm-11 {
     width: 91.66666667%;
