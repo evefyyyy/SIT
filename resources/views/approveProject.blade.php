@@ -10,6 +10,7 @@
 		</thead>
 		<tbody>
 		@foreach($project as $pj)
+		@if($pj->groupProject->group_project_approve===0)
 		 <tr>
 	        <table class="table table-responsive pending">
 	          <tr>
@@ -56,6 +57,7 @@
 			  </tr>
 	        </table>
 	      </tr>
+	      @endif
 	      @endforeach
 	       <!-- no pending project -->
 	      	<!--<tr>

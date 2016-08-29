@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectStudent extends Model
 {
-<<<<<<< HEAD
-
     protected $table = 'project_students';
 
     public function groupProject()
@@ -24,12 +22,5 @@ class ProjectStudent extends Model
     {
       return $this->belongsTo('App\Advisor', 'advisor_id');
     }
-=======
-    protected $table = 'project_students';
-    protected $fillable =
-    [
-      'project_pkid',
-      'student_pkid'
-    ];
->>>>>>> f8613601bf24d7f7ff93a0dec98d31815388ce88
+
 }
