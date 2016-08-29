@@ -29,23 +29,37 @@ class approveProjectController extends Controller
 		$objs['advisor'] = $advisor;
 
 		$projectStudent = ProjectStudent::all();
-		$objs['group_projects'] = $projectStudent;
+		$objs['project_student'] = $projectStudent;
 
-		$groupproject = GroupProject::all();
-		$objs['group_projects'] = $groupproject;
+		$project = DB::table('group_projects')
+				->join('types', 'types.id', '=', 'group_projects.type_id')
+				->join('categories', 'categories.id', '=', 'group_projects.category_id')
+				->join('project_students', 'project_students.project_pkid', '=', 'group_projects.id')
+				->select('*')
+				->get();
+		$objs['group_projects'] = $project;
 
-		$objs['countProject'] = \app\GroupProject::where('group_project_approve','=',0)->count();
+		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
 
-		$grouptProjectAll = DB::table('students')
-            	->join('project_students', 'students.student_id', '=', 'project_students.student_id')
-            	->join('group_projects', 'project_students.group_project_id', '=', 'group_projects.group_project_id')
+		$groupproject_student = DB::table('students')
+				->join('project_students', 'project_students.student_pkid', '=', 'students.id')
+				->join('group_projects', 'group_projects.id', '=', 'project_students.project_pkid')
+				->select('*')
+				->get();
+
+		$objs['group_project_student'] = $groupproject_student;
+
+		$groupProjectAll = DB::table('students')
+            	->join('project_students', 'students.id', '=', 'project_students.student_pkid')
+            	->rightjoin('group_projects', 'group_projects.id', '=', 'project_students.project_pkid')
             	->join('categories', 'categories.id', '=', 'group_projects.category_id')
             	->join('types', 'types.id', '=', 'group_projects.type_id')
-            	->join('project_advisors', 'project_advisors.group_project_id', '=', 'group_projects.group_project_id')
+            	->join('project_advisors', 'project_advisors.project_pkid', '=', 'group_projects.id')
             	->join('advisors', 'advisors.id', '=', 'project_advisors.advisor_id')
             	->join('advisor_positions', 'advisor_positions.id', '=', 'project_advisors.advisor_position_id')
+                ->select('*')
             	->get();
-        $objs['grouptProjectAll'] = $grouptProjectAll;
+        $objs['groupProject'] = $groupProjectAll;
       	return view('approveProject',$objs);
     }
 }

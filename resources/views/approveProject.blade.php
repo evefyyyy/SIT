@@ -1,5 +1,6 @@
 @extends('adminTmp')
 @section('content')
+{{dd($group_projects)}}
 	<table class="table" id="pendingTable">
 		<thead>
 			<tr>
@@ -9,35 +10,33 @@
 			</tr>
 		</thead>
 		<tbody>
+		@foreach($group_projects as $gp)
 		 <tr>
 	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="4" rowspan="2" style="width:60%" id="name"></td>
+			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$gp->group_project_eng_name}}<br>{{$gp->group_project_th_name}}</td>
 			    <td rowspan="3" style="width:35%">
 			    	<button class="delete approvebt">approve</button>
+
 					<button class="rejectbt cd-popup-trigger">reject</button>
-<<<<<<< HEAD
+
 			    	<input type="text" class="form-control" />
-=======
-			    	<input type="text" class="form-control"/>
->>>>>>> 91a61365677d6ba3706e75ee0d3ead2e73d373e1
 			    </td>
 			  </tr>
 			  <tr>
 			  </tr>
 			  <tr>
 			    <th>Type<span>:</span></th>
-			    <td style="width:15%">Research</td>
+			    <td style="width:15%">{{$gp->type_name}}</td>
 			    <th style="width:15%">Category<span>:</span></th>
-			    <td style="width:15%">Health</td>
+			    <td style="width:15%">{{$gp->category_name}}</td>
 			    <th>Project id<span>:</span></th>
 			  </tr>
 			  <tr>
 			    <th rowspan="3">Team member<span>:</span></th>
-			    <td>56130500056<br>
-			    	56130500002<br>
-			    	56130500100
+			    <td>
+			    
 			    </td>
 			    <td colspan="2">
 			    	นาย ต้มแซ่บ กระดูกหมู<br>
@@ -46,11 +45,16 @@
 			    </td>
 			    <th>Advisor<span>:</span></th>
 			    <td>ศ.ฮอเรซ ซลักฮอร์น<label id="main">Main</label><br>
-			    	ศ. เซเวอรัส สเนป
+			    	ศ.เซเวอรัส สเนป
 			    </td>
 			  </tr>
 	        </table>
 	      </tr>
+	      @endforeach
+	       <!-- no pending project -->
+	      	<!--<tr>
+		 		<td colspan="4" class="no-project">no pending project</td>
+		 	</tr> -->
     </tbody>
 	</table>
 		<div class="cd-popup" role="alert">

@@ -14,6 +14,7 @@ class CreateAdvisorTable extends Migration
     {
         Schema::create('advisors', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('prefix');
             $table->string('advisor_fname');
             $table->string('advisor_lname');
             $table->integer('admin_authen');
