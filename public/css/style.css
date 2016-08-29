@@ -674,13 +674,47 @@ option {
 }
 .btn-login:hover {
     background-color: #ff7f7f;
-@media(max-width:768px){
-    #login-dp{
-        background-color: inherit;
-        color: #fff;
+    @media(max-width:768px){
+        #login-dp{
+            background-color: inherit;
+            color: #fff;
+        }
+        #login-dp .bottom{
+            background-color: inherit;
+            border-top:0 none;
+        }
     }
-    #login-dp .bottom{
-        background-color: inherit;
-        border-top:0 none;
-    }
+}
+#pendlink a {
+    font-size: 1em;
+    color: #ff7f7f;
+    float: right;
+    text-decoration: none;
+    margin: 30px 10%;
+    text-transform: uppercase;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+#pendlink a:hover {
+    text-decoration: underline;
+}
+.no-project {
+    text-align: center;
+    line-height: 5em !important;
+    border-bottom: none !important;
+    font-weight: 600;
+    color: #B6B6B6;
+}
+#projectTB a {
+  color: black;
+  text-decoration: none;
+  -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+#projectTB a:hover {
+  color: #40c3a7;
+}
+#projectTB img {
+  height: 35px;
+  margin: 5px 0 0 22px;
 }

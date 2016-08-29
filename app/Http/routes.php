@@ -15,12 +15,16 @@ Route::get('/', function () {
     return view('generalTmp');
 });
 
+Route::get('index', function () {
+    return view('generalTmp');
+});
+
 Route::get('student/myproject/noproject', function () {
     return view('noProject');
 });
 
 //Route::get('createProject', 'createProjectController@studentName');
-Route::get('student/myproject/', function () {
+Route::get('student/myproject', function () {
     return view('waitApprove');
 });
 
@@ -28,12 +32,13 @@ Route::get('admin/project/pending', function () {
     return view('approveProject');
 });
 
+Route::get('admin/project', function () {
+    return view('allProject');
+});
 
 Route::get('search',function(){
   return view('createProject');
 });
-
-
 
 Route::get('index', function () {
     return view('generalTmp');

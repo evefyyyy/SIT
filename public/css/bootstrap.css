@@ -2277,7 +2277,6 @@ th {
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 5px solid #40c3a7;
-  width: 100%;
   color: #40c3a7;
   font-size: 1.1em;
   text-transform: uppercase;
@@ -2305,7 +2304,7 @@ th {
   padding: 5px;
 }
 .table-bordered {
-  border: 1px solid #ddd;
+  border-top: 1px solid #40c3a7;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -2313,11 +2312,12 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
+  border-color: #40c3a7;
 }
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #f9f9f9;
