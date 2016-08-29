@@ -84,9 +84,9 @@ class createProjectController extends Controller {
 		}
 
 		// $advisor = $request->input('browser1');
-		// $data = DB::table('advisors')->where('id',$advisor)->value('id');
+		// $data = $advisor;
 		// $adv = new ProjectAdvisor();
-		// $adv->advisor_id = $advisor;
+		// $adv->advisor_id = $data;
 		// $adv->project_pkid = $projectId;
 		// $adv->advisor_position_id = '1';
 		// $adv->save();

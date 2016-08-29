@@ -24,7 +24,7 @@
 									<span>Select</span>
 									<ul class="dropdown">
 										@foreach($type as $ty)
-										<li>{{$ty->type_name}}</li>
+										<li value="{{$ty->id}}">{{$ty->type_name}}</li>
 										@endforeach
 									</ul>
 								</div>
@@ -73,13 +73,13 @@
 				<h2 class="fs-title">Advisors</h2>
 				<h3 class="fs-subtitle">Choose your project advisors</h3>
 				<div class="row">
-					<div class="col-xs-4 col-md-4 category">Main advisor</div>
+					<div class="col-xs-4 col-md-4">Main advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser" id="mainAdvisor" placeholder="Search or select" />
-						  <datalist class="data" id="browsers">
+						  <input class="advisor form-control" list="browsers" name="browser1" id="mainAdvisor" placeholder="Search or select" />
+						  <datalist>
 								@foreach($advisor as $ad)
-						    <option value="{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}">
+							    <option value="{{$ad->id}}" >{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
 								@endforeach
 						  </datalist>
 
