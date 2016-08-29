@@ -1,6 +1,5 @@
 @extends('adminTmp')
 @section('content')
-{{dd($group_projects)}}
 	<table class="table" id="pendingTable">
 		<thead>
 			<tr>
