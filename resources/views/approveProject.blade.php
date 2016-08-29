@@ -1,6 +1,6 @@
 @extends('adminTmp')
 @section('content')
-	<table class="table" id="pendingTable">
+		<table class="table" id="pendingTable">
 		<thead>
 			<tr>
 				<th>
@@ -11,7 +11,7 @@
 		<tbody>
 		@foreach($project as $pj)
 		 <tr>
-	        <table class="table pending">
+	        <table class="table table-responsive pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
 			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$pj->groupProject->group_project_eng_name}}<br>{{$pj->groupProject->group_project_th_name}}</td>
@@ -61,8 +61,8 @@
 	      	<!--<tr>
 		 		<td colspan="4" class="no-project">no pending project</td>
 		 	</tr> -->
-    </tbody>
-	</table>
+		    </tbody>
+			</table>
 		<div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>

@@ -24,8 +24,12 @@ Route::get('student/myproject/noproject', function () {
 });
 
 //Route::get('createProject', 'createProjectController@studentName');
-Route::get('student/myproject', function () {
+Route::get('student/myproject/waitapprove', function () {
     return view('waitApprove');
+});
+
+Route::get('student/myproject/edit', function () {
+    return view('editProject');
 });
 
 Route::get('admin/project/pending', function () {
@@ -43,7 +47,6 @@ Route::get('search',function(){
 Route::get('index', function () {
     return view('generalTmp');
 });
-
 
 Route::resource('student/myproject/create','createProjectController');
 
@@ -76,7 +79,7 @@ Route::get('test',function(){
 
 Route::post('student/myproject/stdId2',function(){
 	$stdId = Request::Input('stdId2');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_fname','student_lname')->first();
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
 	if(isset($data)){
 		return Response::json($data);
 	}else{
@@ -86,7 +89,7 @@ Route::post('student/myproject/stdId2',function(){
 
 Route::post('student/myproject/stdId3',function(){
 	$stdId = Request::Input('stdId3');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_fname','student_lname')->first();
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
 	if(isset($data)){
 		return Response::json($data);
 	}else{
