@@ -39,7 +39,6 @@ class approveProjectController extends Controller
 		$projects = $unique->values()->all();
 		$objs['project'] = $projects;
 
-      	return view('approveProject',$objs);
+      	return view('admin.approveProject',$objs);
     }
 }
-
