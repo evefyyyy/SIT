@@ -81,11 +81,8 @@
 	      	
 		    </tbody>
 			</table>
-<<<<<<< HEAD
 		</div>
-=======
-		
->>>>>>> 74e4ec57e34fe1c356fac1a9fd5d3b7200728e7d
+
 		<div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
