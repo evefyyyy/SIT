@@ -51,7 +51,22 @@ Route::resource('student/myproject/create','createProjectController');
 Route::resource('admin/project/pending','approveProjectController');
 
 Route::get('test',function(){
-	// $project = App\GroupProject::find(1);
+	$projects = App\GroupProject::all();
+	foreach ($projects as $project) {
+		echo "<h1>".$project->group_project_th_name."</h1>";
+		foreach ($project->projectStudents as $team) {
+			echo "ชื่อ-นามสกุล: ".$team->student->student_fname." ".$team->student->student_lname;
+			echo "<br>";
+		}
+		echo "<h2>อาจารย์ที่ปรึกษา</h2>";
+		$advisors = App\ProjectAdvisor::where('project_pkid', $project->project_pkid)->get();
+		foreach($advisors as $advisor){
+			echo "ชื่อ-นามสกุล: ".$advisor->advisor->advisor_fname." ".$advisor->advisor->advisor_lname;
+			echo "<br>";
+		}
+		echo "<hr>";
+	}
+	return  'out';
 	// return $project->category->category_name;
 	// return $project->projectStudents;
 	$projects = App\ProjectStudent::all();
