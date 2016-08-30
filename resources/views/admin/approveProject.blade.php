@@ -1,11 +1,13 @@
 @extends('adminTmp')
 @section('content')
-		<table class="table" id="pendingTable">
+	<div id="projectTB">
+		<table class="table table-responsive">
 		<thead>
 			<tr>
 				<th>
 					{{$countProject}} Pending Projects
 				</th>
+				<th><a class="allpro" href="/admin/project">all projects</a></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -17,17 +19,18 @@
 		@foreach($project as $pj)
 		@if($pj->groupProject->group_project_approve===0)
 		 <tr>
-	        <table class="table pending">
+		 	<div id="pending">
+	        <table class="table table-responsive">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="3" rowspan="2" style="width:55%" id="name">
-			    	<a href="#" id="pronameEN" dataplacement="top">{{$pj->groupProject->group_project_eng_name}}s</a>
+			    <td colspan="3" rowspan="2" style="width:50%" id="name">
+			    	{{$pj->groupProject->group_project_eng_name}}s
 			    	<br>{{$pj->groupProject->group_project_th_name}}
 			    </td>
-			    <td rowspan="2" colspan="3" style="width:30%">
+			    <td rowspan="2" colspan="3" style="width:35%" id="proid">
 			    	<button class="rejectbt cd-popup-trigger">reject</button>
 			    	<button type="submit" class="delete approvebt">approve</button>
-			    	<input id="proid" type="text" class="form-control" placeholder="project ID"/>
+			    	<input type="text" class="form-control" placeholder="project ID"/>
 			    </td>
 			  </tr>
 			  <tr>
@@ -62,6 +65,7 @@
 			    </td>
 			  </tr>
 	        </table>
+	    	</div>
 	      </tr>
 	      @endif
 	      @endforeach
@@ -70,6 +74,7 @@
 	      	
 		    </tbody>
 			</table>
+		</div>
 		<div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>

@@ -2270,7 +2270,7 @@ th {
 .table {
   width: 80%;
   max-width: 100%;
-  margin: 20px auto 30px auto;
+  margin: 30px auto 30px auto;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2278,7 +2278,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 5px 10px 5px 10px;
+  padding: 10px;
   line-height: 1.7em;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
@@ -2288,7 +2288,7 @@ th {
   vertical-align: bottom;
   border-bottom: 5px solid #40c3a7;
   color: #40c3a7;
-  font-size: 1.1em;
+  font-size: 1em;
   text-transform: uppercase;
 }
 .table > caption + thead > tr:first-child > th,
@@ -2499,6 +2499,7 @@ table th[class*="col-"] {
   .table-responsive > .table-bordered > tfoot > tr:last-child > td {
     border-bottom: 0;
   }
+
 }
 fieldset {
   min-width: 0;
@@ -2573,6 +2574,7 @@ output {
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
