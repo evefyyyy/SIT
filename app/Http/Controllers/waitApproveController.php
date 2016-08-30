@@ -43,7 +43,7 @@ class waitApproveController extends Controller
                     ->where('project_pkid',$checkProject)
                     ->select('prefix','advisor_fname','advisor_lname')->get();
 
-        return view('waitApprove',$obj);
+        return view('student.waitApprove',$obj);
 
     }
 }

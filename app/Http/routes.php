@@ -20,7 +20,7 @@ Route::get('index', function () {
 });
 
 Route::get('student/myproject/noproject', function () {
-    return view('noProject');
+    return view('student.noProject');
 });
 
 //Route::get('createProject', 'createProjectController@studentName');
@@ -29,17 +29,17 @@ Route::get('student/myproject/noproject', function () {
 // });
 
 Route::get('student/myproject/edit', function () {
-    return view('editProject');
+    return view('student.editProject');
 });
 
 Route::get('admin/project/pending', function () {
-    return view('approveProject');
+    return view('admin.approveProject');
 });
 
 Route::resource('admin/project', 'AllProjectController');
 
 Route::get('search',function(){
-  return view('createProject');
+  return view('student.createProject');
 });
 
 Route::get('index', function () {

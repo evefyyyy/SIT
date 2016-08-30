@@ -2,7 +2,7 @@
 @section('content')
 		<div class="page-wrap">
             <!-- multistep form -->
-		<form id="msform" action="{{url('student/myproject/create')}}" method="post">
+		<form id="msform" action="{{url('student/myproject/create')}}" method="post" enctype="multipart/form-data">
 			<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
@@ -139,7 +139,7 @@
 				<div class="col-sm-12 col-md-9">
 					<div class="custom-file-upload">
 				    <p>Upload your first draft proposal</p>
-				    <input type="file" id="file" name="myfiles[]" multiple />
+				    <input type="file" id="file" name="myfiles"/>
 					</div>
 				</div>
 				</div>

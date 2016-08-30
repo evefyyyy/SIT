@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use Input;
+use Redirect;
+use File;
+
+use DB;
 use App\Model\studentProfile;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Input;
-use Redirect;
-use File;
-use DB;
 use App\GroupProject;
 use App\Student;
 use App\Category;
@@ -36,7 +37,7 @@ class createProjectController extends Controller {
 		$objs['advisor'] = $advisor;
 
 
-		return view('createProject',$objs);
+		return view('student.createProject',$objs);
 
 	}
 
@@ -44,7 +45,7 @@ class createProjectController extends Controller {
 	{
 		//$data['method'] = 'post';
 		//$data['url'] = url('student/myproject/');
-		return view('waitApprove');
+		return view('student.waitApprove');
 	}
 
 	public function store(Request $request)
@@ -116,6 +117,10 @@ class createProjectController extends Controller {
 		$adv->advisor_position_id = '2';
 		$adv->save();
 
+		$path = '/Applications/MAMP/htdocs/SIT-master/public/test';
+		$file = $request->file('myfiles')	;
+		$filename = $file->getClientOriginalName();
+		$move = $file->move($path,$filename);
 
 
 
@@ -126,7 +131,7 @@ class createProjectController extends Controller {
 	{
 		$obj = GroupProject::find($id);
 
-		return view('waitApprove');
+		return view('student.waitApprove');
 	}
 
 
