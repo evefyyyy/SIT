@@ -24,9 +24,9 @@ Route::get('student/myproject/noproject', function () {
 });
 
 //Route::get('createProject', 'createProjectController@studentName');
-Route::get('student/myproject/waitapprove', function () {
-    return view('waitApprove');
-});
+// Route::get('student/myproject/waitapprove', function () {
+//     return view('waitApprove');
+// });
 
 Route::get('student/myproject/edit', function () {
     return view('editProject');
@@ -52,6 +52,8 @@ Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('admin/project/pending','approveProjectController');
 
+Route::resource('student/myproject/waitapprove','waitApproveController');
+
 Route::get('test',function(){
 	// $project = App\GroupProject::find(1);
 	// return $project->category->category_name;
@@ -75,7 +77,7 @@ Route::get('test',function(){
 		}
 		echo "<hr>";
 	}
-}); 
+});
 
 Route::post('student/myproject/stdId2',function(){
 	$stdId = Request::Input('stdId2');

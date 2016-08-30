@@ -79,7 +79,7 @@
 						  <input class="advisor form-control" list="browsers" name="browser1" id="mainAdvisor" placeholder="Search or select" />
 						  <datalist class="data" id="browsers">
 								@foreach($advisor as $ad)
-							    <option onclick="selectAdv1({{$ad->id}})" >{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
+							    <option>{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
 								@endforeach
 						  </datalist>
 

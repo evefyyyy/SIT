@@ -3,32 +3,25 @@
 	<div id="waitApp">
 	<div class="proname">{{$projectNameEN}}</div>
 	<div class="proname">{{$projectNameTH}}</div>
-	<div id="center"><div class="title">Category :</div><div class="info">{{$categories}}</div>
-	<div class="title">Additional Category :</div><div class="info">{{$types}}</div></div>
+	<div id="center"><div class="title">Type :</div><div class="info infoType">{{$types}}</div>
+	<div class="title">Category :</div><div class="info">{{$categories}}</div></div>
 	<div class="title" id="head">Team members</div>
 		<table class="teammem">
+			@foreach($std as $s)
 			<tr>
-				<td>Student no. {{$stdId1}}</td>
-				<td>{{$stdName1}}</td>
+				<td>Student no. {{$s->student_id}}</td>
+				<td>{{$s->student_prefix}}{{$s->student_fname}} {{$s->student_lname}}</td>
 			</tr>
-			<tr>
-				<td>Student no. {{$stdId2}}</td>
-				<td>{{$stdName2}}</td>
-			</tr>
-			<tr>
-				<td>Student no. {{$stdId3}}</td>
-				<td>{{$stdName3}}</td>
-			</tr>
+			@endforeach
 		</table>
 	<div class="title" id="head">Advisor</div>
 		<table class="teammem">
+			@foreach($advisors as $adv)
 			<tr>
-				<td>อ.พิเชฎฐ์ ลิ้มวชิรานันต์</td>
+				<td>{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</td>
+			</tr>
+			@endforeach
 				<th rowspan="2"><img height="50" src="/img/waitApprove.png"></th>
-			</tr>
-			<tr>
-				<td>อ.เอกพงษ์ จึงเจริญสุขยิ่ง</td>
-			</tr>
 		</table>
 		<div id="center">
 		<a href="/student/myproject/create"><< back to edit project</a>
