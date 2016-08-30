@@ -26,8 +26,8 @@
 			    </td>
 			    <td rowspan="2" colspan="3" style="width:30%">
 			    	<button class="rejectbt cd-popup-trigger">reject</button>
-			    	<button class="delete approvebt">approve</button>
-			    	<input id="proid" type="text" class="form-control" placeholder="project ID" />
+			    	<button type="submit" class="delete approvebt">approve</button>
+			    	<input id="proid" type="text" class="form-control" placeholder="project ID"/>
 			    </td>
 			  </tr>
 			  <tr>

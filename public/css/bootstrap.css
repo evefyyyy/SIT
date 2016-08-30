@@ -1627,8 +1627,7 @@ pre code {
   float: left;
 }
 .col-xs-12 {
-  width: 100%;
-  padding-left: 43px;
+  width: 10
 }
 .col-xs-11 {
   width: 91.66666667%;

@@ -472,7 +472,6 @@ option {
 }
 #name {
     text-transform: capitalize;
-    font-weight: bold;
 }
 #main {
     color: #ff7f7f;
@@ -827,4 +826,11 @@ h6 img {
 }
 .file-upload-button:hover {
     background-color: #999;
+}
+#detail .text {
+  margin-bottom: 5px;
+}
+#detail .mail {
+  margin-bottom: 10px;
+  font-size: 0.895em;
 }

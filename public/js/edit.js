@@ -1,22 +1,52 @@
 $.fn.editable.defaults.mode = 'inline';
 
-$(function(){
-    $('#comments').editable({
-        url: '/post',
-        title: 'Enter comments',
-        inputclass : '100',
-        rows: 3,
-        ajaxOptions: {
+  $('#desc').editable({
+    url: '/post',
+    rows: 3,
+    inputclass: 'mytextarea',
+    ajaxOptions: {
+    type: 'put'
+    } 
+  });
+
+  $('#email1').editable({
+    type: 'text',
+    url: '/post',
+    ajaxOptions: {
         type: 'put'
-        } 
-    });
-});
+    }
+  });
+  $('#email2').editable({
+    type: 'text',
+    url: '/post',
+    ajaxOptions: {
+        type: 'put'
+    }
+  });
+  $('#email3').editable({
+    type: 'text',
+    url: '/post',
+    ajaxOptions: {
+        type: 'put'
+    }
+  });
+
+  $('#tools').editable({
+    url: '/post',
+    rows: 3,
+    inputclass: 'mytextarea',
+    placeholder: '• Mobile : Android JavaEE , Eclipse , SDK Emulator\n• Database : SQLite\n• Graphic : Adobe Photoshop , Illustratore',
+    ajaxOptions: {
+    type: 'put'
+    } 
+  });
+
 //ajax emulation
 $.mockjax({
     url: '/post',
     responseTime: 200,
     response: function(settings) {
-        console.log(settings);
+        console.log('done!');
     }
 }); 
 
