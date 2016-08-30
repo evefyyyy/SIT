@@ -41,4 +41,16 @@ class approveProjectController extends Controller
 
       	return view('admin.approveProject',$objs);
     }
+
+    public function updateApproveProject(Request $request){
+    	$project_id = $request->project_id;
+    	$group_id = $request->group_id;
+
+    	$group_project = GroupProject::where('id', $project_id);
+    	$group_project->group_project_id = $group_id;
+    	$group_project->group_project_approve = 1;
+    	$group_project->save();
+
+    	return view('approveProject');
+    }
 }

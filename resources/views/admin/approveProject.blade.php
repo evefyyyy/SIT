@@ -1,5 +1,12 @@
 @extends('adminTmp')
 @section('content')
+	<script type="text/javascript">
+    		function DataTo(value, id) {
+    			
+    			document.getElementById('btn'+id).setAttribute("onclick","window.location.href = 'pending/approve/"+id+"/"+value+"'");
+    			//alert("window.location.href = 'pending/approve/'"+id+"/"+value);
+    		}
+    		</script>
 	<div id="projectTB">
 		<table class="table table-responsive">
 		<thead>
@@ -29,8 +36,8 @@
 			    </td>
 			    <td rowspan="2" colspan="3" style="width:35%" id="proid">
 			    	<button class="rejectbt cd-popup-trigger">reject</button>
-			    	<button type="submit" class="delete approvebt">approve</button>
-			    	<input type="text" class="form-control" placeholder="project ID"/>
+			    	<button id="btn{{$pj->groupProject->id}}" class="delete approvebt">approve</button>
+			    	<input id="proid{{$pj->groupProject->id}}" onblur="DataTo(this.value, {{$pj->groupProject->id}});" type="text" class="form-control" placeholder="project ID" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -74,7 +81,11 @@
 	      	
 		    </tbody>
 			</table>
+<<<<<<< HEAD
 		</div>
+=======
+		
+>>>>>>> 74e4ec57e34fe1c356fac1a9fd5d3b7200728e7d
 		<div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
@@ -86,4 +97,5 @@
 			</div> <!-- cd-popup-container -->
 		</div> <!-- cd-popup -->
     	<script src="{!! URL::asset('js/approve.js') !!}"></script>
+
 @stop
