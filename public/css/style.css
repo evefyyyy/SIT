@@ -472,24 +472,37 @@ option {
 }
 #name {
     text-transform: capitalize;
+    font-weight: bold;
 }
 #main {
     color: #ff7f7f;
     text-transform: lowercase;
     padding-left: 10px;
 }
-.pending input {
-    margin-top: 10px;
-    padding: 4px 9px 4px 9px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+.pending #proid {
+    height: 30px !important;
+    float: right;
     color: #2C3E50;
-    vertical-align: bottom;
     font-size: 1em;
     text-transform: uppercase;
+    width: 100px;
+    display: inline;
+    margin-right: 10px;
+    text-align: center;
+}
+.pending a {
+    text-decoration: none;
+    color: black;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+.pending a:hover {
+    color: #40c3a7;
 }
 .approvebt {
-    width: 100px;
+    margin-right: 5px;
+    float: right;
+    width: 90px;
     background: #40c3a7;
     font-weight: bold;
     color: white;
@@ -502,7 +515,8 @@ option {
     transition-duration: 0.2s;
 }
 .rejectbt {
-    width: 100px;
+    float: right;
+    width: 90px;
     background: #FF5C5C;
     font-weight: bold;
     color: white;
@@ -646,7 +660,9 @@ option {
   -o-transform: translateY(0);
   transform: translateY(0);
 }
+.pending .form-control{
 
+}
 #login-dp{
     min-width: 200px;
     padding: 14px 14px 0;

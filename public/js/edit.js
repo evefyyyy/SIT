@@ -1,13 +1,14 @@
 $.fn.editable.defaults.mode = 'inline';
 
-$(document).ready(function() {
-    $('#username').editable({
-        type: 'text',
+$(function(){
+    $('#comments').editable({
         url: '/post',
-        title: 'Enter username',
+        title: 'Enter comments',
+        inputclass : '100',
+        rows: 3,
         ajaxOptions: {
         type: 'put'
-    	}  
+        } 
     });
 });
 //ajax emulation

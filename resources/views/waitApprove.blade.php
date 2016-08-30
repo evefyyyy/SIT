@@ -5,6 +5,7 @@
 	<div class="proname">{{$projectNameTH}}</div>
 	<div id="center"><div class="title">Type :</div><div class="info infoType">{{$types}}</div>
 	<div class="title">Category :</div><div class="info">{{$categories}}</div></div>
+
 	<div class="title" id="head">Team members</div>
 		<table class="teammem">
 			@foreach($std as $s)

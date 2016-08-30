@@ -36,9 +36,7 @@ Route::get('admin/project/pending', function () {
     return view('approveProject');
 });
 
-Route::get('admin/project', function () {
-    return view('allProject');
-});
+Route::resource('admin/project', 'AllProjectController');
 
 Route::get('search',function(){
   return view('createProject');

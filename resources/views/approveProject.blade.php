@@ -20,13 +20,14 @@
 	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="4" rowspan="2" style="width:60%" id="name">{{$pj->groupProject->group_project_eng_name}}<br>{{$pj->groupProject->group_project_th_name}}</td>
-			    <td rowspan="3" style="width:35%">
+			    <td colspan="3" rowspan="2" style="width:55%" id="name">
+			    	<a href="#" id="pronameEN" dataplacement="top">{{$pj->groupProject->group_project_eng_name}}s</a>
+			    	<br>{{$pj->groupProject->group_project_th_name}}
+			    </td>
+			    <td rowspan="2" colspan="3" style="width:30%">
+			    	<button class="rejectbt cd-popup-trigger">reject</button>
 			    	<button class="delete approvebt">approve</button>
-
-					<button class="rejectbt cd-popup-trigger">reject</button>
-
-			    	<input type="text" class="form-control" />
+			    	<input id="proid" type="text" class="form-control" placeholder="project ID" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -36,7 +37,8 @@
 			    <td style="width:15%">{{$pj->groupProject->type->type_name}}</td>
 			    <th style="width:15%">Category<span>:</span></th>
 			    <td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
-			    <th>Project id<span>:</span></th>
+			    <td></td>
+			    <td><a href="#" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
 			  </tr>
 			  <tr>
 			    <th rowspan="3">Team member<span>:</span></th>

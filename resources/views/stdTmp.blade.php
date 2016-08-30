@@ -23,7 +23,7 @@
                 </div>
                  <ul class="nav navbar-nav">
                   <li><a href="#">News</a></li>
-                  <li class="{{ strrpos(Request::path(),'student/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
+                  <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
                   <li><a href="#">My score</a></li>
                   <li><a href="#">Back to homepage</a></li>
                 </ul>
