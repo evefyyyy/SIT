@@ -33,8 +33,13 @@
 			    </td>
 			    <td rowspan="2" colspan="3" style="width:30%">
 			    	<button class="rejectbt cd-popup-trigger">reject</button>
+<<<<<<< HEAD:resources/views/approveProject.blade.php
 			    	<button id="btn{{$pj->groupProject->id}}" class="delete approvebt">approve</button>
 			    	<input id="proid{{$pj->groupProject->id}}" onblur="DataTo(this.value, {{$pj->groupProject->id}});" type="text" class="form-control" placeholder="project ID" />
+=======
+			    	<button type="submit" class="delete approvebt">approve</button>
+			    	<input id="proid" type="text" class="form-control" placeholder="project ID"/>
+>>>>>>> bc528a5d875fa0fd21be1a7e18827ed49620c2e7:resources/views/admin/approveProject.blade.php
 			    </td>
 			  </tr>
 			  <tr>

@@ -342,6 +342,7 @@ th {
 }
 .glyphicon-ok:before {
   content: "\e013";
+  color: #40c3a7;
 }
 .glyphicon-remove:before {
   content: "\e014";
@@ -1627,8 +1628,7 @@ pre code {
   float: left;
 }
 .col-xs-12 {
-  width: 100%;
-  padding-left: 43px;
+  width: 10
 }
 .col-xs-11 {
   width: 91.66666667%;

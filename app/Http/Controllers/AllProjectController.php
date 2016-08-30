@@ -40,6 +40,6 @@ class AllProjectController extends Controller
 		$projects = $unique->values()->all();
 		$objs['project'] = $projects;
 
-      	return view('allProject',$objs);
+      	return view('admin.allProject',$objs);
 }
 }

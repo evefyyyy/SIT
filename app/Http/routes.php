@@ -20,26 +20,26 @@ Route::get('index', function () {
 });
 
 Route::get('student/myproject/noproject', function () {
-    return view('noProject');
+    return view('student.noProject');
 });
 
 //Route::get('createProject', 'createProjectController@studentName');
-Route::get('student/myproject/waitapprove', function () {
-    return view('waitApprove');
-});
+// Route::get('student/myproject/waitapprove', function () {
+//     return view('waitApprove');
+// });
 
 Route::get('student/myproject/edit', function () {
-    return view('editProject');
+    return view('student.editProject');
 });
 
 Route::get('admin/project/pending', function () {
-    return view('approveProject');
+    return view('admin.approveProject');
 });
 
 Route::resource('admin/project', 'AllProjectController');
 
 Route::get('search',function(){
-  return view('createProject');
+  return view('student.createProject');
 });
 
 Route::get('index', function () {
@@ -51,6 +51,8 @@ Route::get('admin/project/pending/{project_id}/{group_id}', 'approveProjectContr
 Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('admin/project/pending','approveProjectController@index');
+
+Route::resource('student/myproject/waitapprove','waitApproveController');
 
 Route::get('test',function(){
 	$projects = App\GroupProject::all();
@@ -67,8 +69,12 @@ Route::get('test',function(){
 		}
 		echo "<hr>";
 	}
+<<<<<<< HEAD
 	return  'out';
 }); 
+=======
+});
+>>>>>>> bc528a5d875fa0fd21be1a7e18827ed49620c2e7
 
 Route::post('student/myproject/stdId2',function(){
 	$stdId = Request::Input('stdId2');
