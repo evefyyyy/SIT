@@ -14,13 +14,17 @@
 		<table class="table table-responsive table-hover">
 			<thead>
 				<tr>
-					<th style="width:80%">title</th>
+					<th colspan="2" style="width:80%">title</th>
 					<th style="width:20%">date</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-toggle="modal" data-target="#announce">
+				<tr class="news" data-toggle="modal" data-target="#announce">
 					<td>ตัวอย่างทฤษฏีงานวิจัยที่เกี่ยวข้องของแอปพลิเคชันเกมเพื่อส่งเสริมการเรียนรู้คำศัพท์ภาษาอังกฤษ</td>
+					<td>
+						<button class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
+						<button class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
+					</td>
 					<td>Jun 12, 2012</td>
 				</tr>
 				<div class="modal fade" id="announce" role="dialog">
