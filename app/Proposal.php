@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proposal extends Model
 {
-<<<<<<< HEAD
     protected $table = 'proposals';
     protected $fillable =
     [
