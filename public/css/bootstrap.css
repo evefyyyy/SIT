@@ -2334,6 +2334,7 @@ th {
 }
 .table-hover > tbody > tr:hover {
   background-color: #f5f5f5;
+  cursor: pointer;
 }
 table col[class*="col-"] {
   position: static;
@@ -3012,12 +3013,13 @@ select[multiple].input-lg {
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 0.975em;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
+  text-transform: uppercase;
   -ms-touch-action: manipulation;
       touch-action: manipulation;
   cursor: pointer;
@@ -3488,6 +3490,11 @@ input[type="button"].btn-block {
 }
 tr.collapse.in {
   display: table-row;
+  background-color: #DBF4EE;
+}
+tr.collapse.in:hover {
+  background-color: #DBF4EE !important;
+  cursor: auto !important;
 }
 tbody.collapse.in {
   display: table-row-group;
@@ -5858,9 +5865,9 @@ button.list-group-item-danger.active:focus {
 }
 .close {
   float: right;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
-  line-height: 0.8em;
+  line-height: 0.5em;
   color: #000;
   text-shadow: 0 1px 0 #fff;
   filter: alpha(opacity=20);
@@ -5963,7 +5970,7 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 15px 20px;
+  padding: 15px 25px;
 }
 .modal-footer {
   padding: 15px;

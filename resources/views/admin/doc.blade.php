@@ -5,7 +5,7 @@
 		<div class="col-xs-12 col-md-10 col-lg-10">
 			<img height="45" src="/img/document.png"><label>documents</label>
 			<span id="pendlink">
-        	 	<a class="btn" data-toggle="modal" data-target="#addDoc"><i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#addDoc"></i>add document</a>
+        	 	<a class="btn" data-toggle="modal" data-target="#addDoc"><i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#addDoc"></i>document</a>
     		</span>
 		</div>
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
@@ -20,21 +20,13 @@
 				</tr>
 			</thead>
 			<tbody>
+			@foreach ($news as $n)
 				<tr>
-					<td>รูปแบบการทำเล่มโครงงาน รหัส 56</td>
-					<td id="center"><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
-					<td>Jun 12, 2012</td>
+					<td>{{$n->title}}</td>
+					<td><a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
+					<td>{{date('F d,Y',strtotime($n->created_at))}}</td>
 				</tr>
-				<tr>
-					<td>แบบฟอร์มเปลี่ยนหัวข้อโครงงาน</td>
-					<td id="center"><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
-					<td>Apr 1, 2012</td>
-				</tr>
-				<tr>
-					<td>แบบเสนอหัวข้อโครงงานและศึกษางานที่เกี่ยวข้อง</td>
-					<td id="center"><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
-					<td>Sep 28, 2011</td>
-				</tr>
+			@endforeach
 			</tbody>
 		</table>
 	</div>
@@ -46,10 +38,11 @@
 	        <h4 class="modal-title" id="exampleModalLabel">New Document</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form>
+	        <form method="post" action="/admin/news/document" enctype="multipart/form-data">
+	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
-	            <input type="text" class="form-control" id="recipient-name">
+	            <input type="text" class="form-control" id="recipient-name" name="title">
 	           </div>
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
@@ -59,11 +52,12 @@
 				<br/>
 
 	          </div>
-	        </form>
+	        
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">add</button>
+	        <button type="submit" class="btn btn-primary">add</button>
+	        </form>
 	      </div>
 	    </div>
 	  </div>

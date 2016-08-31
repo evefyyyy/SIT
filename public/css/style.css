@@ -474,7 +474,7 @@ option {
   padding-top: 5px;
 }
 #pending {
-    font-size: 0.875em;
+    font-size: 0.7em;
 }
 #pending tr > th {
     color: #666;
@@ -494,20 +494,20 @@ option {
     height: 30px !important;
     float: right;
     color: #2C3E50;
-    font-size: 1em;
+    font-size: 0.9em;
     text-transform: uppercase;
     width: 100px;
     display: inline;
     margin-right: 10px;
     text-align: center;
 }
-#pending a {
+.pending a {
     text-decoration: none;
     color: black;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-#pending a:hover {
+.pending a:hover {
     color: #40c3a7;
 }
 .approvebt {
@@ -519,7 +519,7 @@ option {
     color: white;
     border-radius: 3px;
     cursor: pointer;
-    padding: 5px;
+    padding: 3.5px;
     border-style: none;
     text-transform: uppercase;
     -webkit-transition-duration: 0.2s;
@@ -533,7 +533,7 @@ option {
     color: white;
     border-radius: 3px;
     cursor: pointer;
-    padding: 5px;
+    padding: 3.5px;
     border-style: none;
     text-transform: uppercase;
     -webkit-transition-duration: 0.2s;
@@ -868,7 +868,7 @@ h6 img {
 }
 #newTB .table > tbody > tr > td, .table > tfoot > tr > td {
   vertical-align: middle;
-  padding: 8px 10px;
+  padding: 10px 10px;
   font-size: 1em;
   text-transform: capitalize;
 }
@@ -883,6 +883,22 @@ h6 img {
 }
 .modal-body input {
   width: 100%;
+}
+.modal-body textarea {
+  width: 100%; 
+}
+.modal-body a {
+  display: block;
+  padding-top: 10px;
+  vertical-align: bottom;
+}
+.hiddenRow {
+    padding: 0 !important;
+    border: none;
+}
+.news button {
+  float: right;
+  margin-left: 5px;
 }
 /** poster
 @media screen and (min-width: 640px) {
