@@ -51,10 +51,12 @@
 	            <label for="recipient-name" class="control-label">Title</label>
 	            <input type="text" class="form-control" id="recipient-name">
 	           </div>
-	          <div class="form-group" class="custom-file-upload">
+	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-				<input type="file" id="file" name="myfiles"/>
-				<br/><br/>
+	            <span class="custom-file-upload">
+				    <input type="file" id="file" name="myfiles"/>
+				</span>
+				<br/>
 	          </div>
 	        </form>
 	      </div>
