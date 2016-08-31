@@ -26,4 +26,8 @@ class GroupProject extends Model
     {
       return $this->hasMany('App\ProjectAdvisor', 'project_pkid');
     }
+    public function projectProposal()
+    {
+      return $this->hasMany('App\ProjectProposal', 'project_pkid');
+    }
 }

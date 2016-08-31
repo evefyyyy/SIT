@@ -6,15 +6,14 @@
     			document.getElementById('btn'+id).setAttribute("onclick","window.location.href = 'pending/approve/"+id+"/"+value+"'");
     			//alert("window.location.href = 'pending/approve/'"+id+"/"+value);
     		}
+
     		</script>
-	<div id="projectTB">
-		<table class="table table-responsive">
+		<table class="table" id="pendingTable">
 		<thead>
 			<tr>
 				<th>
 					{{$countProject}} Pending Projects
 				</th>
-				<th><a class="allpro" href="/admin/project">all projects</a></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,16 +25,15 @@
 		@foreach($project as $pj)
 		@if($pj->groupProject->group_project_approve===0)
 		 <tr>
-		 	<div id="pending">
-	        <table class="table table-responsive">
+	        <table class="table pending">
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
-			    <td colspan="3" rowspan="2" style="width:50%" id="name">
-			    	{{$pj->groupProject->group_project_eng_name}}s
+			    <td colspan="3" rowspan="2" style="width:55%" id="name">
+			    	{{$pj->groupProject->group_project_eng_name}}
 			    	<br>{{$pj->groupProject->group_project_th_name}}
 			    </td>
-			    <td rowspan="2" colspan="3" style="width:35%" id="proid">
-			    	<button class="rejectbt cd-popup-trigger">reject</button>
+			    <td rowspan="2" colspan="3" style="width:30%">
+			    	<button id = "delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
 			    	<button id="btn{{$pj->groupProject->id}}" class="delete approvebt">approve</button>
 			    	<input id="proid{{$pj->groupProject->id}}" onblur="DataTo(this.value, {{$pj->groupProject->id}});" type="text" class="form-control" placeholder="project ID" />
 			    </td>
@@ -72,18 +70,8 @@
 			    </td>
 			  </tr>
 	        </table>
-	    	</div>
 	      </tr>
-	      @endif
-	      @endforeach
-	      @endif
-	       <!-- no pending project -->
-	      	
-		    </tbody>
-			</table>
-		</div>
-
-		<div class="cd-popup" role="alert">
+	      <div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
 				<ul class="cd-buttons">
@@ -94,5 +82,12 @@
 			</div> <!-- cd-popup-container -->
 		</div> <!-- cd-popup -->
     	<script src="{!! URL::asset('js/approve.js') !!}"></script>
+	      @endif
+	      @endforeach
+	      @endif
+		    </tbody>
+			</table>
+		
+		
 
 @stop

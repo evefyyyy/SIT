@@ -27,6 +27,8 @@ jQuery(document).ready(function($){
 	$('.cd-popup').on('click', function(event){
 		if( $(event.target).is('.cd-delete') ) {
 			event.preventDefault();
+			var pjid = document.getElementById("delpj").value;
+			window.location="/admin/project/pending/delete/"+pjid;
 			$(this).removeClass('is-visible');
 		}
 	});
