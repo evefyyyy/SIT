@@ -46,8 +46,9 @@ Route::get('index', function () {
     return view('generalTmp');
 });
 
-
-Route::get('admin/project/pending/approve/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
+Route::post('admin/project/pending', 'approveProjectController@updateApproveProject');
+Route::get('admin/project/pending/{option}/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
+Route::get('admin/project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');	
 
 Route::resource('student/myproject/create','createProjectController');
 Route::resource('admin/project/pending','approveProjectController@index');

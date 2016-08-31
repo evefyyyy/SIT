@@ -6,6 +6,7 @@
     			document.getElementById('btn'+id).setAttribute("onclick","window.location.href = 'pending/approve/"+id+"/"+value+"'");
     			//alert("window.location.href = 'pending/approve/'"+id+"/"+value);
     		}
+
     		</script>
 		<table class="table" id="pendingTable">
 		<thead>
@@ -32,7 +33,7 @@
 			    	<br>{{$pj->groupProject->group_project_th_name}}
 			    </td>
 			    <td rowspan="2" colspan="3" style="width:30%">
-			    	<button class="rejectbt cd-popup-trigger">reject</button>
+			    	<button id = "delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
 			    	<button id="btn{{$pj->groupProject->id}}" class="delete approvebt">approve</button>
 			    	<input id="proid{{$pj->groupProject->id}}" onblur="DataTo(this.value, {{$pj->groupProject->id}});" type="text" class="form-control" placeholder="project ID" />
 			    </td>
@@ -70,15 +71,7 @@
 			  </tr>
 	        </table>
 	      </tr>
-	      @endif
-	      @endforeach
-	      @endif
-	       <!-- no pending project -->
-	      	
-		    </tbody>
-			</table>
-		
-		<div class="cd-popup" role="alert">
+	      <div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
 				<ul class="cd-buttons">
@@ -89,5 +82,12 @@
 			</div> <!-- cd-popup-container -->
 		</div> <!-- cd-popup -->
     	<script src="{!! URL::asset('js/approve.js') !!}"></script>
+	      @endif
+	      @endforeach
+	      @endif
+		    </tbody>
+			</table>
+		
+		
 
 @stop

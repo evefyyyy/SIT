@@ -11,6 +11,7 @@ use App\GroupProject;
 use App\Http\Requests;
 use App\ProjectStudent;
 use App\ProjectJoinStudents;
+use App\ProjectProposal;
 use DB;
 
 class approveProjectController extends Controller
@@ -43,22 +44,42 @@ class approveProjectController extends Controller
     }
 
     public function updateApproveProject(Request $request){
+    	$project_proposal = ProjectProposal::All();
+
     	$project_id = $request->project_id;
     	$group_id = $request->group_id;
+    	$option = $request->option;
 
-    	$group_project = GroupProject::find($project_id);
-    	$group_project->group_project_id = $group_id;
-    	$group_project->group_project_approve = 1;
-    	$group_project->save();
+    	$proposal = ProjectProposal::where('project_pkid', $project_id)->get();
+    	if($option === 'approve'){
+    		$group_project = GroupProject::find($project_id);
+    		$group_project->group_project_id = $group_id;
+    		$group_project->group_project_approve = 1;
+    		$group_project->save();
+    	} else {
+    		DB::table('project_students')
+    		->where('project_pkid',$project_id)
+    		->delete();
+    		
+    		DB::table('project_advisors')
+    		->where('project_pkid', $project_id)
+    		->delete();
+    		DB::table('project_proposals')
+    		->where('project_pkid', $project_id)
+    		->delete();
+    		foreach ($proposal as $proposals){
+    		DB::table('proposals')
+    		->where('id', $proposals->proposal_id)
+    		->delete();
+    		}	
+    		DB::table('group_projects')
+    		->where('id', $project_id)
+    		->delete();
+    	}
 
-    	$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
+		
 
-		$projects = \App\ProjectStudent::all();
-		$unique = $projects->unique('project_pkid');
-		$projects = $unique->values()->all();
-		$objs['project'] = $projects;
-
-    	return view('admin.approveProject', $objs);	
+    	return redirect('admin/project/pending');	
     }
 
     public function deleteProject(Request $request){
