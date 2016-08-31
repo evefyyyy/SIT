@@ -20,7 +20,7 @@ use App\ProjectStudent;
 
 
 
-class adminNewsController extends Controller {
+class adminDocumentController extends Controller {
 
 	public function index()
 	{
@@ -41,17 +41,14 @@ class adminNewsController extends Controller {
 		$path = base_path('public/adminNewsFiles') ;
 		$file = $request->file('myfiles');
 		$extension = $file->getClientOriginalExtension();
-		$filename = "News".$nId.".".$extension;
+		$filename = "Document".$nId.".".$extension;
 		$move = $file->move($path,$filename);
 		$news->file_path_name = $filename ;
 		$news->news_type_id = '2' ;
 		$news->save();
 
-	/*	$now = new DateTime();
-		dd($now->format('Y-m-d'));*/
-
 		$news = \App\News::where('news_type_id','=','2')->get();
-		return view('admin.doc')->with('news',$news);
+		return view('admin.doc')->with('news',$news->reverse());
 	}
 
 	public function show($id)
