@@ -39,9 +39,7 @@ Route::get('admin/project/pending', function () {
 Route::get('admin/news/announcement', function () {
     return view('admin.announce');
 });
-Route::get('admin/news/document', function () {
-    return view('admin.doc');
-});
+Route::resource('admin/news/document', 'adminNewsController');
 
 Route::resource('admin/project', 'AllProjectController');
 
