@@ -6,6 +6,7 @@
         <link href="{!! URL::asset('css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
         <link href="{!! URL::asset('css/bootstrap-editable.css') !!}" rel="stylesheet">
+        <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-editable.js') !!}"></script>
@@ -22,7 +23,13 @@
                     <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
                 </div>
                  <ul class="nav navbar-nav">
-                  <li><a href="#">News</a></li>
+                  <li class="dropdown {{ strrpos(Request::path(),'admin/news') === 0 ? 'active' : ''  }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">news</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/admin/news/announcement">Announcement</a></li>
+                      <li><a href="/admin/news/document">documents</a></li>
+                    </ul>
+                  </li>
                   <li><a href="#">Exam</a></li>
                   <li class="{{ strrpos(Request::path(),'admin/project') === 0 ? 'active' : ''  }}"><a href="/admin/project">Student projects</a></li>
                   <li><a href="#">Back to homepage</a></li>

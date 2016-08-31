@@ -286,7 +286,7 @@ th {
 }
 .glyphicon-plus:before {
   content: "\002b";
-  color: #40c3a7;
+  color: #ff7f7f;
   padding-right: 5px;
 }
 .glyphicon-euro:before,
@@ -2278,7 +2278,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 10px;
+  padding: 5px 10px;
   line-height: 1.7em;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
@@ -3012,7 +3012,6 @@ select[multiple].input-lg {
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 10px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -3029,6 +3028,8 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
 }
 .btn:focus,
 .btn:active:focus,
@@ -3557,11 +3558,13 @@ tbody.collapse.in {
 }
 .dropdown-menu > li > a {
   display: block;
-  padding: 3px 20px;
+  padding: 10px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
   color: #333;
+  font-size: 0.975em;
+  text-decoration: none;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
@@ -4012,7 +4015,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eee;
   border-color: #337ab7;
 }
 .nav .nav-divider {
@@ -4560,8 +4562,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  color: #555;
-  background-color: #f1f1f1;
+  color: #40c3a7;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -5857,9 +5858,9 @@ button.list-group-item-danger.active:focus {
 }
 .close {
   float: right;
-  font-size: 21px;
+  font-size: 30px;
   font-weight: bold;
-  line-height: 1;
+  line-height: 0.8em;
   color: #000;
   text-shadow: 0 1px 0 #fff;
   filter: alpha(opacity=20);
@@ -5951,6 +5952,7 @@ button.close {
 .modal-header {
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
+  vertical-align: middle;
 }
 .modal-header .close {
   margin-top: -2px;
@@ -5961,7 +5963,7 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: 15px 20px;
 }
 .modal-footer {
   padding: 15px;
