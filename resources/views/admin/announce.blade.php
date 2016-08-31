@@ -19,13 +19,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="news" data-toggle="modal" data-target="#announce">
-					<td>ตัวอย่างทฤษฏีงานวิจัยที่เกี่ยวข้องของแอปพลิเคชันเกมเพื่อส่งเสริมการเรียนรู้คำศัพท์ภาษาอังกฤษ</td>
-					<td>
-						<button class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
-						<button class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
-					</td>
-					<td>Jun 12, 2012</td>
 				@foreach($news as $n)
 				<tr data-toggle="modal" data-target="#announce{{$count}}">
 					<td>{{$n->title}}</td>
