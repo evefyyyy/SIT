@@ -22,17 +22,17 @@
 			<tbody>
 				<tr>
 					<td>รูปแบบการทำเล่มโครงงาน รหัส 56</td>
-					<td id="center"><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
+					<td><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>Jun 12, 2012</td>
 				</tr>
 				<tr>
 					<td>แบบฟอร์มเปลี่ยนหัวข้อโครงงาน</td>
-					<td id="center"><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
+					<td><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>Apr 1, 2012</td>
 				</tr>
 				<tr>
 					<td>แบบเสนอหัวข้อโครงงานและศึกษางานที่เกี่ยวข้อง</td>
-					<td id="center"><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
+					<td><a href="#" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>Sep 28, 2011</td>
 				</tr>
 			</tbody>
