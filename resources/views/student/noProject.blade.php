@@ -3,7 +3,7 @@
 	<div class="page-header">
             <div class="col-md-12 noProject">
                 <p>You did not have any project.</p>
-                <a href="/student/myproject/create">Create project</a>
+                <a href="{{url('student/myproject/create/create')}}">Create project</a>
             </div>
     </div>
     <style type="text/css">

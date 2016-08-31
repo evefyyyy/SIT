@@ -17,6 +17,8 @@ use App\Type;
 use App\Advisor;
 use App\ProjectAdvisor;
 use App\ProjectStudent;
+use App\ProjectProposal;
+use App\Proposal;
 
 
 
@@ -36,16 +38,26 @@ class createProjectController extends Controller {
 		$advisor = Advisor::all();
 		$objs['advisor'] = $advisor;
 
-
 		return view('student.createProject',$objs);
-
+	//
 	}
 
 	public function create()
 	{
-		//$data['method'] = 'post';
-		//$data['url'] = url('student/myproject/');
-		return view('student.waitApprove');
+		$data['method'] = 'post';
+		$data['url'] = url('student/myproject/create');
+
+		$data['students'] = \App\Student::where('student_id','=','56130500078')->get();
+
+		$category = Category::all();
+		$data['category'] = $category;
+
+		$type = Type::all();
+		$data['type'] = $type;
+
+		$advisor = Advisor::all();
+		$data['advisor'] = $advisor;
+		return view('student.createProject',$data);
 	}
 
 	public function store(Request $request)
@@ -122,7 +134,16 @@ class createProjectController extends Controller {
 		$filename = $file->getClientOriginalName();
 		$move = $file->move($path,$filename);
 
+		$proposal = new Proposal();
+		$proposal->proposal_path_name = $move;
+		$proposal->save();
 
+		$proposalId = DB::table('proposals')->max('id');
+
+		$fileUpload = new ProjectProposal();
+		$fileUpload->project_pkid = $projectId;
+		$fileUpload->proposal_id = $proposalId;
+		$fileUpload->save();
 
 		return redirect(url('student/myproject/waitapprove'));
 	}
@@ -130,10 +151,90 @@ class createProjectController extends Controller {
 	public function show($id)
 	{
 		$obj = GroupProject::find($id);
-
-		return view('student.waitApprove');
 	}
 
+	public function edit($id)
+	{
+		$data['students'] = \App\Student::where('student_id','=','56130500078')->get();
+
+		$category = Category::all();
+		$data['category'] = $category;
+
+		$type = Type::all();
+		$data['type'] = $type;
+
+		$advisor = Advisor::all();
+		$data['advisor'] = $advisor;
+
+		$data['url'] = url('student/myproject/create/'.$id);
+		$data['method'] = "put";
+
+		$obj1 = GroupProject::find($id);
+		$getId = $obj1->id;
+		$data['projectNameEN'] = $obj1->group_project_eng_name;
+		$data['projectNameTH'] = $obj1->group_project_th_name;
+
+		$getStd = DB::table('project_students')
+							->join('students','student_pkid','=','students.id')
+							->where('project_pkid',$getId)
+							->select('students.id','student_prefix','student_id','student_fname','student_lname')->get();
+		if(count($getStd) == 3){
+			$data['stdId2'] = $getStd[1]->student_id;
+			$data['stdPre2'] = $getStd[1]->student_prefix;
+			$data['stdFname2'] = $getStd[1]->student_fname;
+			$data['stdLname2'] = $getStd[1]->student_lname;
+			$data['stdId3'] = $getStd[2]->student_id;
+			$data['stdPre3'] = $getStd[2]->student_prefix;
+			$data['stdFname3'] = $getStd[2]->student_fname;
+			$data['stdLname3'] = $getStd[2]->student_lname;
+		}else if(count($getStd)==2){
+			$data['stdId2'] = $getStd[1]->student_id;
+			$data['stdPre2'] = $getStd[1]->student_prefix;
+			$data['stdFname2'] = $getStd[1]->student_fname;
+			$data['stdLname2'] = $getStd[1]->student_lname;
+		}
+
+		$getAdv = DB::table('project_advisors')
+							->join('advisors','advisor_id','=','advisors.id')
+							->where('project_pkid',$getId)
+							->select('prefix','advisor_fname','advisor_lname')->get();
+		$data['advPre1'] = $getAdv[0]->prefix;
+		$data['advFname1'] = $getAdv[0]->advisor_fname;
+		$data['advLname1'] = $getAdv[0]->advisor_lname;
+		$data['advPre2'] = $getAdv[1]->prefix;
+		$data['advFname2'] = $getAdv[1]->advisor_fname;
+		$data['advLname2'] = $getAdv[1]->advisor_lname;
+
+		$getFile = DB::table('project_proposals')
+							->join('proposals','proposal_id','=','proposals.id')
+							->where('project_pkid',$getId)
+							->value('proposal_path_name');
+		// $data['fileName'] = $getFile->proposal_path_name;
+
+		// dd($getFile);
+
+		return view('student.createProject',$data);
+
+	}
+
+	public function update(Request $request,$id)
+	{
+		$type = $request->input('selectType');
+		$data1 = DB::table('types')->where('id',$type)->value('id');
+
+		$cat = $request->input('selectCat');
+		$data2 = DB::table('categories')->where('id',$cat)->value('id');
+
+		$obj = GroupProject::find($id);
+		$getId = $obj->id;
+		$obj->group_project_ENG_name = $request['projectNameEN'];
+		$obj->group_project_TH_name = $request['projectNameTH'];
+		$obj->category_id = $data2;
+		$obj->type_id = $data1;
+		$obj->save();
+
+		return redirect(url('student/myproject/waitapprove'));
+	}
 
 
 

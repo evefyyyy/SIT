@@ -30,7 +30,7 @@
 				Already uploaded file <span class="glyphicon glyphicon-ok"></span>
 		</div>
 				<div class="col-lg-12" id="center">
-					<a href="/student/myproject/create"><< back to edit project</a>
+					<a href="{{url('student/myproject/create/'.$obj.'/edit')}}"><< back to edit project</a>
 				</div>
 	</div>
 	</div>
