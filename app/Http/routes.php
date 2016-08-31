@@ -46,10 +46,10 @@ Route::get('index', function () {
     return view('generalTmp');
 });
 
-Route::get('admin/project/pending/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
+
+Route::get('admin/project/pending/approve/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
 
 Route::resource('student/myproject/create','createProjectController');
-
 Route::resource('admin/project/pending','approveProjectController@index');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
@@ -69,7 +69,8 @@ Route::get('test',function(){
 		}
 		echo "<hr>";
 	}
-});
+}); 
+
 
 Route::post('student/myproject/stdId2',function(){
 	$stdId = Request::Input('stdId2');

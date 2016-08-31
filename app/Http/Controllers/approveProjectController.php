@@ -46,11 +46,22 @@ class approveProjectController extends Controller
     	$project_id = $request->project_id;
     	$group_id = $request->group_id;
 
-    	$group_project = GroupProject::where('id', $project_id);
+    	$group_project = GroupProject::find($project_id);
     	$group_project->group_project_id = $group_id;
     	$group_project->group_project_approve = 1;
     	$group_project->save();
 
-    	return view('approveProject');
+    	$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
+
+		$projects = \App\ProjectStudent::all();
+		$unique = $projects->unique('project_pkid');
+		$projects = $unique->values()->all();
+		$objs['project'] = $projects;
+
+    	return view('admin.approveProject', $objs);	
+    }
+
+    public function deleteProject(Request $request){
+    	
     }
 }
