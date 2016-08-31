@@ -1,5 +1,13 @@
 @extends('adminTmp')
 @section('content')
+	<script type="text/javascript">
+    		function DataTo(value, id) {
+    			
+    			document.getElementById('btn'+id).setAttribute("onclick","window.location.href = 'pending/approve/"+id+"/"+value+"'");
+    			//alert("window.location.href = 'pending/approve/'"+id+"/"+value);
+    		}
+
+    		</script>
 		<table class="table" id="pendingTable">
 		<thead>
 			<tr>
@@ -21,13 +29,13 @@
 	          <tr>
 			    <th rowspan="2" style="width:15%">Project name<span>:</span></th>
 			    <td colspan="3" rowspan="2" style="width:55%" id="name">
-			    	<a href="#" id="pronameEN" dataplacement="top">{{$pj->groupProject->group_project_eng_name}}s</a>
+			    	{{$pj->groupProject->group_project_eng_name}}
 			    	<br>{{$pj->groupProject->group_project_th_name}}
 			    </td>
 			    <td rowspan="2" colspan="3" style="width:30%">
-			    	<button class="rejectbt cd-popup-trigger">reject</button>
-			    	<button class="delete approvebt">approve</button>
-			    	<input id="proid" type="text" class="form-control" placeholder="project ID" />
+			    	<button id = "delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
+			    	<button id="btn{{$pj->groupProject->id}}" class="delete approvebt">approve</button>
+			    	<input id="proid{{$pj->groupProject->id}}" onblur="DataTo(this.value, {{$pj->groupProject->id}});" type="text" class="form-control" placeholder="project ID" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -63,14 +71,7 @@
 			  </tr>
 	        </table>
 	      </tr>
-	      @endif
-	      @endforeach
-	      @endif
-	       <!-- no pending project -->
-	      	
-		    </tbody>
-			</table>
-		<div class="cd-popup" role="alert">
+	      <div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
 				<ul class="cd-buttons">
@@ -81,4 +82,12 @@
 			</div> <!-- cd-popup-container -->
 		</div> <!-- cd-popup -->
     	<script src="{!! URL::asset('js/approve.js') !!}"></script>
+	      @endif
+	      @endforeach
+	      @endif
+		    </tbody>
+			</table>
+		
+		
+
 @stop

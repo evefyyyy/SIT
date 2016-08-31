@@ -472,25 +472,24 @@ option {
 #waitApp p {
   padding-top: 5px;
 }
-.pending {
+#pending {
     font-size: 0.875em;
 }
-.pending th {
+#pending tr > th {
     color: #666;
 }
-.pending span {
+#pending span {
     float: right;
 }
 #name {
     text-transform: capitalize;
-    font-weight: bold;
 }
 #main {
     color: #ff7f7f;
     text-transform: lowercase;
     padding-left: 10px;
 }
-.pending #proid {
+#proid .form-control {
     height: 30px !important;
     float: right;
     color: #2C3E50;
@@ -501,13 +500,13 @@ option {
     margin-right: 10px;
     text-align: center;
 }
-.pending a {
+#pending a {
     text-decoration: none;
     color: black;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-.pending a:hover {
+#pending a:hover {
     color: #40c3a7;
 }
 .approvebt {
@@ -671,9 +670,6 @@ option {
   -o-transform: translateY(0);
   transform: translateY(0);
 }
-.pending .form-control{
-
-}
 #login-dp{
     min-width: 200px;
     padding: 14px 14px 0;
@@ -725,27 +721,36 @@ option {
     }
 }
 #pendlink a {
-    font-size: 1em;
-    color: #FF5C5C;
+    font-size: 0.975em;
+    color: #ff7f7f;
+    background-color: #fff;
+    border-color: #ccc;
     float: right;
     text-decoration: none;
-    margin: 30px 10%;
+    margin: 30px 10% 0 0;
     text-transform: uppercase;
+    margin-bottom: 10px;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
 #pendlink a:hover {
-    text-decoration: underline;
+    color: #fff;
+    background-color: #ff7f7f;
+    border-color: #ccc;
 }
 .no-project {
     text-align: center;
     line-height: 5em !important;
-    border-bottom: none !important;
     font-weight: 600;
     color: #B6B6B6;
 }
+
 #projectTB table{
+  margin-top: 30px;
   margin-bottom: 30px;
+}
+#projectTB td, #projectTB th {
+  font-size: 0.9em;
 }
 #projectTB a {
   color: black;
@@ -759,6 +764,9 @@ option {
 #projectTB img {
   height: 35px;
   margin: 5px 0 0 22px;
+}
+#projectTB .allpro {
+  float: right;
 }
 h6 img {
     height: 15px;
@@ -839,3 +847,33 @@ h6 img {
 .file-upload-button:hover {
     background-color: #999;
 }
+#detail .text {
+  margin-bottom: 5px;
+}
+#detail .mail {
+  margin-bottom: 10px;
+  font-size: 0.895em;
+}
+.center-table {
+  margin: 0 auto !important;
+  float: none !important;
+}
+/** poster
+@media screen and (min-width: 640px) {
+    img {
+        width 100%;
+        height: 282px;
+    }
+}
+@media screen and (min-width: 1580px) {
+    img {
+        width 100%;
+        height: 670px;
+    }
+}
+@media screen and (min-width: 2180px) {
+    img {
+        width 100%;
+        height: 982px;
+    }
+}**/

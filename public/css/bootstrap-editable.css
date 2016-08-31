@@ -10,6 +10,7 @@
     margin-bottom: 0; /* overwrites bootstrap margin */
     white-space: nowrap; /* prevent wrapping buttons on new line */
     line-height: 20px; /* overwriting bootstrap line-height. See #133 */
+    word-wrap: break-word;
 }
 
 /* 
@@ -19,7 +20,6 @@
 .editableform .form-control {
     width: auto;
 }
-
 .editable-buttons {
    display: inline-block; /* should be inline to take effect of parent's white-space: nowrap */
    vertical-align: top;
