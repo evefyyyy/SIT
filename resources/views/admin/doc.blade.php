@@ -5,7 +5,7 @@
 		<div class="col-xs-12 col-md-10 col-lg-10">
 			<img height="45" src="/img/document.png"><label>documents</label>
 			<span id="pendlink">
-        	 	<a class="btn" data-toggle="modal" data-target="#addDoc"><i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#addDoc"></i>add document</a>
+        	 	<a class="btn" data-toggle="modal" data-target="#addDoc"><i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#addDoc"></i>document</a>
     		</span>
 		</div>
 		<div class="hidden-xs col-md-1 col-lg-1"></div>

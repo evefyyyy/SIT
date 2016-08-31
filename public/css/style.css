@@ -868,7 +868,7 @@ h6 img {
 }
 #newTB .table > tbody > tr > td, .table > tfoot > tr > td {
   vertical-align: middle;
-  padding: 8px 10px;
+  padding: 10px 10px;
   font-size: 1em;
   text-transform: capitalize;
 }
@@ -883,6 +883,18 @@ h6 img {
 }
 .modal-body input {
   width: 100%;
+}
+.modal-body textarea {
+  width: 100%; 
+}
+.modal-body a {
+  display: block;
+  padding-top: 10px;
+  vertical-align: bottom;
+}
+.hiddenRow {
+    padding: 0 !important;
+    border: none;
 }
 /** poster
 @media screen and (min-width: 640px) {
