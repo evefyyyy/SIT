@@ -35,8 +35,8 @@ $.fn.editable.defaults.mode = 'inline';
   $('#tools').editable({
     url: '/post',
     rows: 3,
-    inputclass: 'input-large',
-    placeholder: '• Mobile : Android JavaEE , Eclipse , SDK Emulator\n• Database : SQLite\n• Graphic : Adobe Photoshop , Illustratore',
+    inputclass: 'input-middle',
+    placeholder: '• Mobile : Android JavaEE, SDK Emulator\n• Database : SQLite\n• Graphic : Adobe Photoshop, Illustratore',
     ajaxOptions: {
     type: 'put'
     } 

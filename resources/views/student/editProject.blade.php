@@ -25,8 +25,8 @@
 	</div>
 	<div class="row">
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
-		<div class="col-xs-12 col-md-4 col-lg-4"></div>
-		<div class="col-xs-12 col-md-6 col-lg-6">
+		<div class="col-xs-12 col-md-5 col-lg-5"></div>
+		<div class="col-xs-12 col-md-5 col-lg-5">
 		<div class="panel panel-info">
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
@@ -44,18 +44,12 @@
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email3">email</a></div>
 			</div>
 		</div>
-		<div class="panel panel-info">
-			<div class="panel-heading">advisor</div>
-			<div class="panel-body">
-			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
-			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
-			</div>
 		</div>
-		</div>
+		<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
-		<div class="col-xs-12 col-md-10 col-lg-10">
+		<div class="col-xs-12 col-md-5 col-lg-5">
 		<div class="panel panel-info">
 			<div class="panel-heading">tools & techniques</div>
 			<div class="panel-body">
@@ -65,6 +59,16 @@
 			</div>
 		</div>
 		</div>
+		<div class="col-xs-12 col-md-5 col-lg-5">
+		<div class="panel panel-info">
+			<div class="panel-heading">advisor</div>
+			<div class="panel-body">
+			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
+			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
+			</div>
+		</div>
+		</div>
+		<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
 	</div>
 	<script src="{!! URL::asset('js/edit.js') !!}"></script>

@@ -906,6 +906,9 @@ h6 img {
 .input-large {
   width: 700px !important;
 }
+.input-middle {
+  width: 350px !important;
+}
 /** poster
 @media screen and (min-width: 640px) {
     img {
