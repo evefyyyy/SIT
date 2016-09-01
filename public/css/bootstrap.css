@@ -3080,8 +3080,8 @@ fieldset[disabled] a.btn {
 }
 .btn-default:hover {
   color: #333;
-  background-color: #e6e6e6;
-  border-color: #adadad;
+  background-color: #00AF87;
+  border-color: #00AF87;
 }
 .btn-default:active,
 .btn-default.active,
