@@ -2559,7 +2559,6 @@ output {
   color: #555;
 }
 .form-control {
-  display: block;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -3352,19 +3351,16 @@ fieldset[disabled] .btn-warning.focus {
 }
 .btn-danger {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  background-color: #FF5C5C;
 }
 .btn-danger:focus,
 .btn-danger.focus {
   color: #fff;
-  background-color: #c9302c;
-  border-color: #761c19;
+  background-color: #FF3232;
 }
 .btn-danger:hover {
   color: #fff;
-  background-color: #c9302c;
-  border-color: #ac2925;
+  background-color: #FF3232;
 }
 .btn-danger:active,
 .btn-danger.active,
@@ -5966,6 +5962,7 @@ button.close {
 }
 .modal-title {
   margin: 0;
+  text-transform: uppercase;
   line-height: 1.42857143;
 }
 .modal-body {

@@ -15,25 +15,52 @@
 			<thead>
 				<tr>
 					<th colspan="2" style="width:80%">title</th>
-					<th style="width:20%">date</th>
+					<th style="width:15%">date</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($news as $n)
-				<tr data-toggle="modal" data-target="#announce{{$count}}">
+				<tr data-toggle="modal" data-target="#announce{{$count}}" class="news">
 					<td>{{$n->title}}</td>
-					<td>
-						<button class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
-						<button class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
+					<td style="width:10%">
+						<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
 					</td>
-					<td>{{date('F d,Y',strtotime($n->created_at))}}</td>
+					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
 				</tr>
+				<!-- Admin -->
+				<!-- <div class="modal fade" role="dialog">
+				  <div class="modal-dialog modal-lg">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <input type="text" class="form-control" id="title" name="title">
+				      </div>
+				      <div class="modal-body">
+				      	<div class="form-group">
+				            <label for="message-text" class="control-label">Description</label>
+				            <textarea rows="4" class="form-control" id="desc" name="description"></textarea>
+				        </div>
+				        <div class="form-group">
+				            <label for="message-text" class="control-label">File</label>
+				            <span class="custom-file-upload">
+							    <input type="file" id="file" name="myfiles"/>
+							</span>
+							<br/>
+				         </div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="submit" class="btn btn-primary">save</button>
+				        </form>
+				      </div>
+				  </div>
+				</div> -->
 				<div class="modal fade" id="announce{{$count++}}" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="exampleModalLabel">{{$n->title}}</h4>
+				        <h4 class="modal-title">{{$n->title}}</h4>
 				      </div>
 				      <div class="modal-body">
 				      	{{$n->description}}
@@ -47,22 +74,22 @@
 		</table>
 	</div>
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="exampleModalLabel">New Document</h4>
+	        <h4 class="modal-title" id="exampleModalLabel">New Announcement</h4>
 	      </div>
 	      <div class="modal-body">
 	        <form method="post" action="/admin/news/announcement" enctype="multipart/form-data">
 	        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
-	            <input type="text" class="form-control" id="recipient-name" name="title">
+	            <input type="text" class="form-control" id="title" name="title">
 	           </div>
 	           <div class="form-group">
 	            <label for="message-text" class="control-label">Description</label>
-	            <textarea rows="4" class="form-control" id="message-text" name="description"></textarea>
+	            <textarea rows="4" class="form-control" id="desc" name="description"></textarea>
 	          </div>
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>

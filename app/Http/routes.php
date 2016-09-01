@@ -32,15 +32,15 @@ Route::get('student/myproject/edit', function () {
     return view('student.editProject');
 });
 
-Route::get('admin/project/pending', function () {
+Route::get('project/pending', function () {
     return view('admin.approveProject');
 });
 
-Route::resource('admin/news/announcement', 'adminAnnouncementController');
+Route::resource('news/announcement', 'adminAnnouncementController');
 
-Route::resource('admin/news/document', 'adminDocumentController');
+Route::resource('news/document', 'adminDocumentController');
 
-Route::resource('admin/project', 'AllProjectController');
+Route::resource('project', 'AllProjectController');
 
 Route::get('search',function(){
   return view('student.createProject');
@@ -50,12 +50,12 @@ Route::get('index', function () {
     return view('generalTmp');
 });
 
-Route::post('admin/project/pending', 'approveProjectController@updateApproveProject');
-Route::get('admin/project/pending/{option}/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
-Route::get('admin/project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');	
+Route::post('project/pending', 'approveProjectController@updateApproveProject');
+Route::get('project/pending/{option}/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
+Route::get('project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');	
 
 Route::resource('student/myproject/create','createProjectController');
-Route::resource('admin/project/pending','approveProjectController@index');
+Route::resource('project/pending','approveProjectController@index');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
 

@@ -543,7 +543,7 @@ option {
     background: #1CA88A;
 }
 .rejectbt:hover {
-    background: #ED3C3C;
+    background: #FF3232;
 }
 
 /* ------------ popup ------------- */
@@ -896,9 +896,11 @@ h6 img {
     padding: 0 !important;
     border: none;
 }
-.news button {
-  float: right;
-  margin-left: 5px;
+.modal-header input {
+  width: 90%;
+}
+.modal-header img {
+  margin-left: 10px;
 }
 /** poster
 @media screen and (min-width: 640px) {

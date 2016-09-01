@@ -13,6 +13,7 @@
 			<tr>
 				<th>
 					{{$countProject}} Pending Projects
+				<span class="allpro"><a href="/project">all projects</a></span>
 				</th>
 			</tr>
 		</thead>
