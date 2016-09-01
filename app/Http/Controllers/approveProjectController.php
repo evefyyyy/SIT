@@ -60,7 +60,7 @@ class approveProjectController extends Controller
     		DB::table('project_students')
     		->where('project_pkid',$project_id)
     		->delete();
-    		
+
     		DB::table('project_advisors')
     		->where('project_pkid', $project_id)
     		->delete();
@@ -71,18 +71,18 @@ class approveProjectController extends Controller
     		DB::table('proposals')
     		->where('id', $proposals->proposal_id)
     		->delete();
-    		}	
+    		}
     		DB::table('group_projects')
     		->where('id', $project_id)
     		->delete();
     	}
 
-		
 
-    	return redirect('admin/project/pending');	
+
+    	return redirect('project/pending');
     }
 
     public function deleteProject(Request $request){
-    	
+
     }
 }

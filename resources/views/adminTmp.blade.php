@@ -23,15 +23,15 @@
                     <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
                 </div>
                  <ul class="nav navbar-nav">
-                  <li class="dropdown {{ strrpos(Request::path(),'admin/news') === 0 ? 'active' : ''  }}">
+                  <li class="dropdown {{ strrpos(Request::path(),'news') === 0 ? 'active' : ''  }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">news</a>
                     <ul class="dropdown-menu">
-                      <li><a href="/admin/news/announcement">Announcement</a></li>
-                      <li><a href="/admin/news/document">documents</a></li>
+                      <li><a href="/news/announcement">Announcement</a></li>
+                      <li><a href="/news/document">documents</a></li>
                     </ul>
                   </li>
                   <li><a href="#">Exam</a></li>
-                  <li class="{{ strrpos(Request::path(),'admin/project') === 0 ? 'active' : ''  }}"><a href="/admin/project">Student projects</a></li>
+                  <li class="{{ strrpos(Request::path(),'project') === 0 ? 'active' : ''  }}"><a href="/project">Student projects</a></li>
                   <li><a href="#">Back to homepage</a></li>
                 </ul>
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span>|</span><a href="/index" class="navbar-link logout">Logout</a></p>     

@@ -28,7 +28,7 @@ jQuery(document).ready(function($){
 		if( $(event.target).is('.cd-delete') ) {
 			event.preventDefault();
 			var pjid = document.getElementById("delpj").value;
-			window.location="/admin/project/pending/delete/"+pjid;
+			window.location="/project/pending/delete/"+pjid;
 			$(this).removeClass('is-visible');
 		}
 	});
@@ -39,26 +39,6 @@ jQuery(document).ready(function($){
 	    }
     });
 });
-$.fn.editable.defaults.mode = 'popup';
-
-$(function(){
-	$('#pronameEN').editable({
-    	type: 'text',
-    	url: '/post',  
-        title: 'project name (EN)',
-        ajaxOptions: {
-        type: 'put'
-    	} 
-    });
-});
-
-$.mockjax({
-    url: '/post',
-    responseTime: 200,
-    response: function(settings) {
-        console.log(settings);
-    }
-}); 
 
 ;(function($) {
 

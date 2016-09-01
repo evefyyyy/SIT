@@ -473,13 +473,14 @@ option {
 #waitApp p {
   padding-top: 5px;
 }
-#pending {
-    font-size: 0.7em;
+.pending {
+    font-size: 0.975em;
 }
-#pending tr > th {
-    color: #666;
+.pending tr > th {
+    font-weight: bold;
+    color: #40c7a3;
 }
-#pending span {
+.pending span {
     float: right;
 }
 #name {
@@ -540,10 +541,10 @@ option {
     transition-duration: 0.2s;
 }
 .approvebt:hover {
-    background: #1CA88A;
+    background: #40c3a7;
 }
 .rejectbt:hover {
-    background: #ED3C3C;
+    background: #FF3232;
 }
 
 /* ------------ popup ------------- */
@@ -846,6 +847,9 @@ h6 img {
   margin-bottom: 10px;
   font-size: 0.895em;
 }
+#detail textarea {
+  width: 100%;
+}
 .center-table {
   margin: 0 auto !important;
   float: none !important;
@@ -895,6 +899,12 @@ h6 img {
 .hiddenRow {
     padding: 0 !important;
     border: none;
+}
+.modal-header input {
+  width: 90%;
+}
+.modal-header img {
+  margin-left: 10px;
 }
 /** poster
 @media screen and (min-width: 640px) {

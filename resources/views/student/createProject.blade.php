@@ -2,7 +2,8 @@
 @section('content')
 		<div class="page-wrap">
             <!-- multistep form -->
-		<form id="msform" action="{{url('student/myproject/create')}}" method="post" enctype="multipart/form-data">
+		<form id="msform" action="{{$url}}" method="POST" enctype="multipart/form-data">
+			{{method_field($method)}}
 			<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
@@ -15,8 +16,8 @@
 			<fieldset>
 				<h2 class="fs-title">Create project</h2>
 		    	<h3 class="fs-subtitle">Enter project name and select category</h3>
-		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="projectNameEN" requried/>
-				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="projectNameTH" requried/>
+		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="projectNameEN" value="{{$projectNameEN or ''}}" requried/>
+				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="projectNameTH" value="{{$projectNameTH or ''}}"requried/>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><label class="category">Project Type</label></div>
 							<div class="col-xs-6 col-md-6">
@@ -56,15 +57,15 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" onchange="check_name2()">
+						<input type="type" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" value="{{$stdId2 or ''}}" onchange="check_name2()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="fname2"><b id="msg2"></b></div>
+					<div class="col-xs-6 col-md-6 stdname" id="fname2">{{$stdPre2 or ''}} {{$stdFname2 or ''}} {{$stdLname2 or ''}}</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" onchange="check_name3()">
+						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" value="{{$stdId3 or ''}}" onchange="check_name3()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="fname3"><b id="msg3"></b></div>
+					<div class="col-xs-6 col-md-6 stdname" id="fname3">{{$stdPre3 or ''}} {{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
@@ -90,7 +91,7 @@
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-8 col-md-8">
 						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser2" id="coAdvisor" placeholder="Search or select">
+						  <input class="advisor form-control" list="browsers" name="browser2" id="coAdvisor" placeholder="Search or select"/>
 						  <datalist class="data" id="browsers">
 								@foreach($advisor as $ad)
 						    <option>{{$ad->prefix}} {{$ad->advisor_fname}} {{$ad->advisor_lname}}</option>
@@ -168,7 +169,6 @@
 					}
 
 					function selectAdv1(x){
-						console.log(x);
 						document.getElementById("selectAdv1").value = x;
 					}
 
@@ -180,9 +180,15 @@
 		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
 		                    success:function(data){
 		                      if(data=='0'){
-														var _msg = "Data not found";
-														var result = _msg.fontcolor("red");
-		                        						$('#msg2').html(result);
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId2').value === ''){
+															result =''
+														}else{
+															_msg = "Data not found";
+															result = _msg.fontcolor("red");
+														}
+		                        $('#fname2').html(result);
 		                      }else{
 														var _data = data.student_prefix+' '+data.student_fname+' '+data.student_lname
 														$('#fname2').html(_data);
@@ -191,25 +197,30 @@
 		             });
 		    }
 
-					function check_name3(){
-						 $.ajax({
-										type:"post",
-										dataType: "",
-										url :"stdId3",
-										data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
-												success:function(data){
-													if(data=='0'){
-														var _msg = "Data not found";
-														var result = _msg.fontcolor("red");
-														$('#msg3').html(result);
-
+				function check_name3(){
+					 $.ajax({
+									type:"post",
+									dataType: "",
+									url :"stdId3",
+									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+											success:function(data){
+												if(data=='0'){
+													var _msg = null;
+													var result = null;
+													if(document.getElementById('stdId3').value === ''){
+														result =''
 													}else{
-														var _data = data.student_prefix+' '+data.student_fname+' '+data.student_lname
-														$('#fname3').html(_data);
+														_msg = "Data not found";
+														result = _msg.fontcolor("red");
 													}
-										}
-								 });
-				}
+													$('#fname3').html(result);
+												}else{
+													var _data = data.student_prefix+' '+data.student_fname+' '+data.student_lname
+													$('#fname3').html(_data);
+												}
+									}
+							 });
+			}
 			</script>
 
 @stop
