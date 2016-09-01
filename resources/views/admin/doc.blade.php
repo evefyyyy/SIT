@@ -41,7 +41,7 @@
 	        <input type="text" class="form-control" id="title" name="title">
 	      </div>
 	      <div class="modal-body">
-	        <form method="post" action="/admin/news/document" enctype="multipart/form-data">
+	        <form method="post" action="/news/document" enctype="multipart/form-data">
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
@@ -49,7 +49,7 @@
 				    <input type="file" id="file" name="myfiles"/>
 				</span>
 				<br/>
-	          </div> 
+	          </div>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -67,7 +67,7 @@
 	        <h4 class="modal-title">New Document</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form method="post" action="/admin/news/document" enctype="multipart/form-data">
+	        <form method="post" action="/news/document" enctype="multipart/form-data">
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
@@ -79,7 +79,7 @@
 				    <input type="file" id="file" name="myfiles"/>
 				</span>
 				<br/>
-	       	   </div> 
+	       	   </div>
 	       </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

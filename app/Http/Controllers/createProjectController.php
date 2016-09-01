@@ -169,8 +169,8 @@ class createProjectController extends Controller {
 		$data['url'] = url('student/myproject/create/'.$id);
 		$data['method'] = "put";
 
-		$obj1 = GroupProject::find($id);
-		$getId = $obj1->id;
+		 $obj1 = GroupProject::find($id);
+		 $getId = $obj1->id;
 		$data['projectNameEN'] = $obj1->group_project_eng_name;
 		$data['projectNameTH'] = $obj1->group_project_th_name;
 
@@ -209,8 +209,7 @@ class createProjectController extends Controller {
 							->join('proposals','proposal_id','=','proposals.id')
 							->where('project_pkid',$getId)
 							->value('proposal_path_name');
-		// $data['fileName'] = $getFile->proposal_path_name;
-
+		$data['fileName'] = $getFile;
 
 		return view('student.createProject',$data);
 
@@ -292,15 +291,16 @@ class createProjectController extends Controller {
 		$obj->advisor_id = $advId;
 		$obj->advisor_position_id = '2';
 		$obj->save();
+		if($request->file('myfiles')){
+			$path = '/Applications/MAMP/htdocs/SIT-master/public/test';
+  		$file = $request->file('myfiles');
+  		$filename = $file->getClientOriginalName();
+  		$move = $file->move($path,$filename);
+  		$obj = Proposal::find($getProposal);
+  		$obj->proposal_path_name = $move;
+			$obj->save();
+		}
 
-		$path = '/Applications/MAMP/htdocs/SIT-master/public/test';
-		$file = $request->file('myfiles');
-		$filename = $file->getClientOriginalName();
-		$move = $file->move($path,$filename);
-
-		$obj = Proposal::find($getProposal);
-		$obj->proposal_path_name = $move;
-		$obj->save();
 		//
 		return redirect(url('student/myproject/waitapprove'));
 	}

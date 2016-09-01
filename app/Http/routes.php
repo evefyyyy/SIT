@@ -52,7 +52,7 @@ Route::get('index', function () {
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');
 Route::get('project/pending/{option}/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
-Route::get('project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');	
+Route::get('project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');
 
 Route::resource('student/myproject/create','createProjectController');
 Route::resource('project/pending','approveProjectController@index');
@@ -98,7 +98,7 @@ Route::post('student/myproject/create/stdId3',function(){
 	}
 });
 
-Route::post('student/myproject/create/{id}/edit/stdId2',function(){
+Route::post('student/myproject/create/{id}/stdId2',function(){
 	$stdId = Request::Input('stdId2');
 	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
 	if(isset($data)){
@@ -108,7 +108,7 @@ Route::post('student/myproject/create/{id}/edit/stdId2',function(){
 	}
 });
 
-Route::post('student/myproject/create/{id}/edit/stdId3',function(){
+Route::post('student/myproject/create/{id}/stdId3',function(){
 	$stdId = Request::Input('stdId3');
 	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
 	if(isset($data)){
