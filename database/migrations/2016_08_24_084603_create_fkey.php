@@ -56,11 +56,6 @@ class CreateFkey extends Migration
         $table->foreign('project_pkid')->references('id')->on('group_projects');
     });
 
-    Schema::table('files_upload', function ($table) {
-        $table->integer('news_id')->unsigned();
-        $table->foreign('news_id')->references('id')->on('news');
-    });
-
     Schema::table('group_projects', function ($table) {
         $table->integer('category_id')->unsigned();
         $table->foreign('category_id')->references('id')->on('categories');
@@ -115,6 +110,11 @@ class CreateFkey extends Migration
         $table->foreign('project_pkid')->references('id')->on('group_projects');
         $table->integer('room_id')->unsigned();
         $table->foreign('room_id')->references('id')->on('rooms');
+    });
+
+    Schema::table('news', function ($table) {
+        $table->integer('news_type_id')->unsigned();
+        $table->foreign('news_type_id')->references('id')->on('news_type');
     });
 
     Schema::table('score_tests', function ($table) {

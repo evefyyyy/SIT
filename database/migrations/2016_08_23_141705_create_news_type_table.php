@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFileUploadTable extends Migration
+class CreateNewsTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateFileUploadTable extends Migration
      */
     public function up()
     {
-        Schema::create('files_upload', function (Blueprint $table) {
+        Schema::create('news_type', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('file_upload_pathname');
+            $table->string('news_type_name');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateFileUploadTable extends Migration
      */
     public function down()
     {
-        Schema::drop('file_upload');
+        Schema::drop('news_type');
     }
 }

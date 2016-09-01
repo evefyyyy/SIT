@@ -27,18 +27,20 @@
 						<td colspan="5" class="no-project">no project</td>
 					</tr>
 					<!---->
-					@foreach($project as $projects)
+					@foreach($project as $pj)
+					@if($pj->groupProject->group_project_approve===1)
 					<tr>
-						<td>{{$projects->groupProject->group_project_id}}</td>
+						<td>{{$pj->groupProject->group_project_id}}</td>
 						<td id="name">
-							<a href="#">{{$projects->groupProject->group_project_eng_name}}<br>
-							{{$projects->groupProject->group_project_th_name}}
+							<a href="#">{{$pj->groupProject->group_project_eng_name}}<br>
+							{{$pj->groupProject->group_project_th_name}}
 							</a>
 						</td>
-						<td>{{$projects->groupProject->type->type_name}}</td>
+						<td>{{$pj->groupProject->type->type_name}}</td>
 						<td>health</td>
 						<td id="center"><a href="#" download><i class="flaticon-pdf-file-format-symbol"></td></a>
 					</tr>
+					@endif
 					@endforeach
 		    	</tbody>
 			</table>
