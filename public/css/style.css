@@ -473,13 +473,14 @@ option {
 #waitApp p {
   padding-top: 5px;
 }
-#pending {
-    font-size: 0.7em;
+.pending {
+    font-size: 0.975em;
 }
-#pending tr > th {
-    color: #666;
+.pending tr > th {
+    font-weight: bold;
+    color: #40c7a3;
 }
-#pending span {
+.pending span {
     float: right;
 }
 #name {
@@ -540,7 +541,7 @@ option {
     transition-duration: 0.2s;
 }
 .approvebt:hover {
-    background: #1CA88A;
+    background: #40c3a7;
 }
 .rejectbt:hover {
     background: #FF3232;
@@ -901,6 +902,12 @@ h6 img {
 }
 .modal-header img {
   margin-left: 10px;
+}
+.input-large {
+  width: 700px !important;
+}
+.input-middle {
+  width: 350px !important;
 }
 /** poster
 @media screen and (min-width: 640px) {

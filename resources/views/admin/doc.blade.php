@@ -23,11 +23,16 @@
 			@foreach ($news as $n)
 				<tr data-toggle="modal" data-target="#doc" >
 					<td>{{$n->title}}</td>
+<<<<<<< HEAD
+					<td><a href="{{'/adminNewsFiles/'.$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
+					<td>{{date('F d,Y',strtotime($n->created_at))}}</td>
+=======
 					<td style="width:10%">
 						<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
 					</td>
 					<td><a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
+>>>>>>> 9d1e3df0994473651e0091d05309cf8bfb3eed46
 				</tr>
 			@endforeach
 			</tbody>
@@ -41,7 +46,7 @@
 	        <input type="text" class="form-control" id="title" name="title">
 	      </div>
 	      <div class="modal-body">
-	        <form method="post" action="/admin/news/document" enctype="multipart/form-data">
+	        <form method="post" action="/news/document" enctype="multipart/form-data">
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
@@ -49,7 +54,7 @@
 				    <input type="file" id="file" name="myfiles"/>
 				</span>
 				<br/>
-	          </div> 
+	          </div>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -67,7 +72,7 @@
 	        <h4 class="modal-title">New Document</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form method="post" action="/admin/news/document" enctype="multipart/form-data">
+	        <form method="post" action="/news/document" enctype="multipart/form-data">
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
@@ -79,7 +84,7 @@
 				    <input type="file" id="file" name="myfiles"/>
 				</span>
 				<br/>
-	       	   </div> 
+	       	   </div>
 	       </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

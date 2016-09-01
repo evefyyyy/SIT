@@ -20,7 +20,7 @@
 			</thead>
 			<tbody>
 				@foreach($news as $n)
-				<tr data-toggle="modal" data-target="#announce{{$count}}" class="news">
+				<tr data-toggle="modal" data-target="#announce" class="news">
 					<td>{{$n->title}}</td>
 					<td style="width:10%">
 						<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
@@ -55,7 +55,7 @@
 				      </div>
 				  </div>
 				</div> -->
-				<div class="modal fade" id="announce{{$count++}}" role="dialog">
+				<div class="modal fade" id="announce" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -64,7 +64,7 @@
 				      </div>
 				      <div class="modal-body">
 				      	{{$n->description}}
-				      	<a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
+				      	<a href="{{'/adminNewsFiles/'.$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
 				      </div>
 				    </div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->
@@ -81,11 +81,11 @@
 	        <h4 class="modal-title" id="exampleModalLabel">New Announcement</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form method="post" action="/admin/news/announcement" enctype="multipart/form-data">
+	        <form method="post" action="/news/announcement" enctype="multipart/form-data">
 	        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
-	            <input type="text" class="form-control" id="title" name="title">
+	            <input type="text" class="form-control" id="title" name="title" required>
 	           </div>
 	           <div class="form-group">
 	            <label for="message-text" class="control-label">Description</label>
@@ -94,7 +94,7 @@
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
 	            <span class="custom-file-upload">
-				    <input type="file" id="file" name="myfiles"/>
+				    <input type="file" id="file" name="myfiles" required/>
 				</span>
 				<br/>
 	          </div>

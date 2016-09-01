@@ -3,7 +3,8 @@ $.fn.editable.defaults.mode = 'inline';
   $('#desc').editable({
     url: '/post',
     rows: 3,
-    inputclass: 'mytextarea',
+    inputclass: 'input-large',
+    placeholder: 'Enter a short description of your project here',
     ajaxOptions: {
     type: 'put'
     } 
@@ -34,8 +35,8 @@ $.fn.editable.defaults.mode = 'inline';
   $('#tools').editable({
     url: '/post',
     rows: 3,
-    inputclass: 'mytextarea',
-    placeholder: '• Mobile : Android JavaEE , Eclipse , SDK Emulator\n• Database : SQLite\n• Graphic : Adobe Photoshop , Illustratore',
+    inputclass: 'input-middle',
+    placeholder: '• Mobile : Android JavaEE, SDK Emulator\n• Database : SQLite\n• Graphic : Adobe Photoshop, Illustratore',
     ajaxOptions: {
     type: 'put'
     } 

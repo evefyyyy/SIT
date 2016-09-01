@@ -34,7 +34,7 @@
 			    	<br>{{$pj->groupProject->group_project_th_name}}
 			    </td>
 			    <td rowspan="2" colspan="3" style="width:30%" id="proid">
-			    	<button id = "delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
+			    	<button id="delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
 			    	<button id="btn{{$pj->groupProject->id}}" class="delete approvebt">approve</button>
 			    	<input id="proid{{$pj->groupProject->id}}" onblur="DataTo(this.value, {{$pj->groupProject->id}});" type="text" class="form-control" placeholder="project ID" />
 			    </td>

@@ -25,8 +25,8 @@ class adminAnnouncementController extends Controller {
 	public function index()
 	{
 		$news = \App\News::where('news_type_id','=','1')->get();
-		$count = 0 ;
-		return view('admin.announce')->with('news',$news->reverse())->with('count',$count);
+
+		return view('admin.announce')->with('news',$news->reverse());
 	}
 
 	public function create()
@@ -49,9 +49,9 @@ class adminAnnouncementController extends Controller {
 		$news->news_type_id = '1' ;
 		$news->save();
 
-		$count = 0 ;
+
 		$news = \App\News::where('news_type_id','=','1')->get();
-		return view('admin.announce')->with('news',$news->reverse());
+		return view('admin.announce')->with('news',$news->reverse())->with('count',$count);
 	}
 
 	public function show($id)
