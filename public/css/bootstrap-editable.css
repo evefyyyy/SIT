@@ -20,9 +20,6 @@
 .editableform .form-control {
     width: auto;
 }
-.editableform textarea {
-    width: 900px !important;
-}
 .editable-buttons {
    display: inline-block; /* should be inline to take effect of parent's white-space: nowrap */
    vertical-align: top;

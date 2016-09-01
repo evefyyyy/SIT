@@ -847,9 +847,6 @@ h6 img {
   margin-bottom: 10px;
   font-size: 0.895em;
 }
-#detail textarea {
-  width: 100%;
-}
 .center-table {
   margin: 0 auto !important;
   float: none !important;
@@ -905,6 +902,9 @@ h6 img {
 }
 .modal-header img {
   margin-left: 10px;
+}
+.input-large {
+  width: 700px !important;
 }
 /** poster
 @media screen and (min-width: 640px) {
