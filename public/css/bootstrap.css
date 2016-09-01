@@ -342,7 +342,6 @@ th {
 }
 .glyphicon-ok:before {
   content: "\e013";
-  color: #40c3a7;
 }
 .glyphicon-remove:before {
   content: "\e014";
@@ -3131,11 +3130,11 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background-color: #1CA88A;
+  background-color: #00AF87;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #1CA88A;
+  background-color: #00AF87;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -5484,6 +5483,8 @@ button.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -5758,12 +5759,12 @@ button.list-group-item-danger.active:focus {
   border-bottom-color: #d6e9c6;
 }
 .panel-info {
-  border-color: #bce8f1;
+  border-color: #ccc;
 }
 .panel-info > .panel-heading {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  color: #40c3a7;
+  background-color: #Eeeeee;
+  border-color: #ccc;
 }
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bce8f1;

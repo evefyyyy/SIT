@@ -34,7 +34,7 @@
 			    	<br>{{$pj->groupProject->group_project_th_name}}
 			    </td>
 			    <td rowspan="2" colspan="3" style="width:30%" id="proid">
-			    	<button id = "delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
+			    	<button id="delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
 			    	<button id="btn{{$pj->groupProject->id}}" class="delete approvebt">approve</button>
 			    	<input id="proid{{$pj->groupProject->id}}" onblur="DataTo(this.value, {{$pj->groupProject->id}});" type="text" class="form-control" placeholder="project ID" />
 			    </td>
@@ -72,7 +72,15 @@
 			  </tr>
 	        </table>
 	      </tr>
-	      <div class="cd-popup" role="alert">
+	      
+    	<script src="{!! URL::asset('js/approve.js') !!}"></script>
+	      @endif
+	      @endforeach
+	      @endif
+		    </tbody>
+			</table>
+
+			<div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
 				<ul class="cd-buttons">
@@ -82,12 +90,6 @@
 				<a class="cd-popup-close cd-close img-replace"></a>
 			</div> <!-- cd-popup-container -->
 		</div> <!-- cd-popup -->
-    	<script src="{!! URL::asset('js/approve.js') !!}"></script>
-	      @endif
-	      @endforeach
-	      @endif
-		    </tbody>
-			</table>
 		
 		
 
