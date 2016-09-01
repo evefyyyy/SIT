@@ -57,15 +57,15 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" value="{{$stdId2 or ''}}" onchange="check_name2()">
+						<input type="type" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" value="{{$stdId2 or ''}}" onchange="check_name2()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="fname2">{{$stdPre2 or ''}} {{$stdFname2 or ''}} {{$stdLname2 or ''}}<b id="msg2"></b></div>
+					<div class="col-xs-6 col-md-6 stdname" id="fname2">{{$stdPre2 or ''}} {{$stdFname2 or ''}} {{$stdLname2 or ''}}</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
 						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" value="{{$stdId3 or ''}}" onchange="check_name3()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="fname3">{{$stdPre3 or ''}} {{$stdFname3 or ''}} {{$stdLname3 or ''}}<b id="msg3"></b></div>
+					<div class="col-xs-6 col-md-6 stdname" id="fname3">{{$stdPre3 or ''}} {{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
@@ -169,7 +169,6 @@
 					}
 
 					function selectAdv1(x){
-						console.log(x);
 						document.getElementById("selectAdv1").value = x;
 					}
 
@@ -181,9 +180,15 @@
 		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
 		                    success:function(data){
 		                      if(data=='0'){
-														var _msg = "Data not found";
-														var result = _msg.fontcolor("red");
-		                        						$('#msg2').html(result);
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId2').value === ''){
+															result =''
+														}else{
+															_msg = "Data not found";
+															result = _msg.fontcolor("red");
+														}
+		                        $('#fname2').html(result);
 		                      }else{
 														var _data = data.student_prefix+' '+data.student_fname+' '+data.student_lname
 														$('#fname2').html(_data);
@@ -192,25 +197,30 @@
 		             });
 		    }
 
-					function check_name3(){
-						 $.ajax({
-										type:"post",
-										dataType: "",
-										url :"stdId3",
-										data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
-												success:function(data){
-													if(data=='0'){
-														var _msg = "Data not found";
-														var result = _msg.fontcolor("red");
-														$('#msg3').html(result);
-
+				function check_name3(){
+					 $.ajax({
+									type:"post",
+									dataType: "",
+									url :"stdId3",
+									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+											success:function(data){
+												if(data=='0'){
+													var _msg = null;
+													var result = null;
+													if(document.getElementById('stdId3').value === ''){
+														result =''
 													}else{
-														var _data = data.student_prefix+' '+data.student_fname+' '+data.student_lname
-														$('#fname3').html(_data);
+														_msg = "Data not found";
+														result = _msg.fontcolor("red");
 													}
-										}
-								 });
-				}
+													$('#fname3').html(result);
+												}else{
+													var _data = data.student_prefix+' '+data.student_fname+' '+data.student_lname
+													$('#fname3').html(_data);
+												}
+									}
+							 });
+			}
 			</script>
 
 @stop
