@@ -33,7 +33,7 @@
 				      </div>
 				      <div class="modal-body">
 				      	{{$n->description}}
-				      	<a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
+				      	<a href="{{'/adminNewsFiles/'.$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
 				      </div>
 				    </div>
 				  </div>

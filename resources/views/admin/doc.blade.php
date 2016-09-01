@@ -23,7 +23,7 @@
 			@foreach ($news as $n)
 				<tr>
 					<td>{{$n->title}}</td>
-					<td><a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
+					<td><a href="{{'/adminNewsFiles/'.$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>{{date('F d,Y',strtotime($n->created_at))}}</td>
 				</tr>
 			@endforeach
