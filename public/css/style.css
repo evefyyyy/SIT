@@ -876,11 +876,21 @@ h6 img {
 #newTB a {
   color: black;
   text-decoration: none;
+  cursor: pointer;
   -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-#newTB a:hover {
-  color: #40c3a7;
+#newTB h3 {
+  font-weight: normal;
+}
+#newTB .btn-primary {
+  color: white;
+}
+#newTB .btn-primary:hover {
+  color: white;
+}
+#newTB .btn-danger {
+  padding: 6px 10px;
 }
 .modal-body input {
   width: 100%;
