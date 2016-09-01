@@ -72,7 +72,15 @@
 			  </tr>
 	        </table>
 	      </tr>
-	      <div class="cd-popup" role="alert">
+	      
+    	<script src="{!! URL::asset('js/approve.js') !!}"></script>
+	      @endif
+	      @endforeach
+	      @endif
+		    </tbody>
+			</table>
+
+			<div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
 				<ul class="cd-buttons">
@@ -82,12 +90,6 @@
 				<a class="cd-popup-close cd-close img-replace"></a>
 			</div> <!-- cd-popup-container -->
 		</div> <!-- cd-popup -->
-    	<script src="{!! URL::asset('js/approve.js') !!}"></script>
-	      @endif
-	      @endforeach
-	      @endif
-		    </tbody>
-			</table>
 		
 		
 
