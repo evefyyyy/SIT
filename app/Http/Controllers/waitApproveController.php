@@ -43,6 +43,8 @@ class waitApproveController extends Controller
                     ->where('project_pkid',$checkProject)
                     ->select('prefix','advisor_fname','advisor_lname')->get();
 
+        $obj['obj'] = DB::table('group_projects')->where('id',$checkProject)->value('id');
+
         return view('student.waitApprove',$obj);
 
     }
