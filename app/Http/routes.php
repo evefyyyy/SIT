@@ -19,6 +19,10 @@ Route::get('index', function () {
     return view('generalTmp');
 });
 
+Route::get('testldap', function(){
+	return view('auth-ldap');
+});
+
 Route::get('student/myproject/noproject', function () {
     return view('student.noProject');
 });
