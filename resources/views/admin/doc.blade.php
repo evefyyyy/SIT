@@ -56,9 +56,9 @@
 	        <button type="submit" class="btn btn-primary">add</button>
 	        </form>
 	      </div>
-	    </div>
-	  </div>
-	</div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -79,15 +79,15 @@
 				    <input type="file" id="file" name="myfiles"/>
 				</span>
 				<br/>
-	          </div> 
-	      </div>
+	       	   </div> 
+	       </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="submit" class="btn btn-primary">add</button>
 	        </form>
 	      </div>
-	    </div>
-	  </div>
-	</div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<script src="{!! URL::asset('js/create.js') !!}"></script>
 @stop

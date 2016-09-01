@@ -57,6 +57,7 @@ Route::get('project/pending/{option}/{project_id}', 'approveProjectController@up
 Route::resource('student/myproject/create','createProjectController');
 Route::resource('project/pending','approveProjectController@index');
 
+
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
 Route::get('test',function(){
@@ -74,10 +75,10 @@ Route::get('test',function(){
 		}
 		echo "<hr>";
 	}
-}); 
+});
 
 
-Route::post('student/myproject/stdId2',function(){
+Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
 	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
 	if(isset($data)){
@@ -87,7 +88,27 @@ Route::post('student/myproject/stdId2',function(){
 	}
 });
 
-Route::post('student/myproject/stdId3',function(){
+Route::post('student/myproject/create/stdId3',function(){
+	$stdId = Request::Input('stdId3');
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
+	if(isset($data)){
+		return Response::json($data);
+	}else{
+		return 0;
+	}
+});
+
+Route::post('student/myproject/create/{id}/edit/stdId2',function(){
+	$stdId = Request::Input('stdId2');
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
+	if(isset($data)){
+		return Response::json($data);
+	}else{
+		return 0;
+	}
+});
+
+Route::post('student/myproject/create/{id}/edit/stdId3',function(){
 	$stdId = Request::Input('stdId3');
 	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
 	if(isset($data)){

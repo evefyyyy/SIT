@@ -66,9 +66,9 @@
 				      	{{$n->description}}
 				      	<a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
 				      </div>
-				    </div>
-				  </div>
-				</div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
 				@endforeach
 			</tbody>
 		</table>
@@ -104,8 +104,8 @@
 	        <button type="submit" class="btn btn-primary">add</button>
 	        </form>
 	      </div>
-	    </div>
-	  </div>
-	</div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<script src="{!! URL::asset('js/create.js') !!}"></script>
 @stop
