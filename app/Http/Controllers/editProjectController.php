@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Input;
 use Redirect;
 use File;
-
 use DB;
 use App\Model\studentProfile;
 use Illuminate\Http\Request;
@@ -26,8 +25,6 @@ class editProjectController extends Controller {
 
 	public function index(Request $request)
 	{
-
-	
 
 	}
 
