@@ -25,7 +25,8 @@ class adminDocumentController extends Controller {
 	public function index()
 	{
 		$news = \App\News::where('news_type_id','=','2')->get();
-		return view('admin.doc')->with('news',$news->reverse());
+		$count = 0 ;
+		return view('admin.doc')->with('news',$news->reverse())->with('count',$count);
 	}
 
 	public function create()
@@ -48,7 +49,8 @@ class adminDocumentController extends Controller {
 		$news->save();
 
 		$news = \App\News::where('news_type_id','=','2')->get();
-		return view('admin.doc')->with('news',$news->reverse());
+		$count = 0 ;
+		return view('admin.doc')->with('news',$news->reverse())->with('count',$count);
 	}
 
 	public function show($id)

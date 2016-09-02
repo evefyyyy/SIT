@@ -9,6 +9,7 @@
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-editable.js') !!}"></script>
+        <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
         <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
         <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
         <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>

@@ -44,6 +44,12 @@ Route::resource('news/announcement', 'adminAnnouncementController');
 
 Route::resource('news/document', 'adminDocumentController');
 
+Route::post('/news/document/edit',function(){
+	$data = Request::Input('stdId3');
+	return Response::json($data);
+
+});
+
 Route::resource('project', 'AllProjectController');
 
 Route::get('search',function(){
@@ -53,6 +59,10 @@ Route::get('search',function(){
 Route::get('index', function () {
     return view('generalTmp');
 });
+Route::get('ldap',function(){
+	return view('ldap');
+});
+Route::post('loginldp','LdapLoginController@Login');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');
 Route::get('project/pending/{option}/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');

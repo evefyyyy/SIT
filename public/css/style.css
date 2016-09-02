@@ -847,9 +847,6 @@ h6 img {
   margin-bottom: 10px;
   font-size: 0.895em;
 }
-#detail textarea {
-  width: 100%;
-}
 .center-table {
   margin: 0 auto !important;
   float: none !important;
@@ -879,11 +876,21 @@ h6 img {
 #newTB a {
   color: black;
   text-decoration: none;
+  cursor: pointer;
   -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-#newTB a:hover {
-  color: #40c3a7;
+#newTB h3 {
+  font-weight: normal;
+}
+#newTB .btn-primary {
+  color: white;
+}
+#newTB .btn-primary:hover {
+  color: white;
+}
+#newTB .btn-danger {
+  padding: 6px 10px;
 }
 .modal-body input {
   width: 100%;
@@ -896,15 +903,17 @@ h6 img {
   padding-top: 10px;
   vertical-align: bottom;
 }
-.hiddenRow {
-    padding: 0 !important;
-    border: none;
-}
 .modal-header input {
   width: 90%;
 }
 .modal-header img {
   margin-left: 10px;
+}
+.input-large {
+  width: 700px !important;
+}
+.input-middle {
+  width: 350px !important;
 }
 /** poster
 @media screen and (min-width: 640px) {
