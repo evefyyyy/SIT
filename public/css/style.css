@@ -903,10 +903,6 @@ h6 img {
   padding-top: 10px;
   vertical-align: bottom;
 }
-.hiddenRow {
-    padding: 0 !important;
-    border: none;
-}
 .modal-header input {
   width: 90%;
 }
