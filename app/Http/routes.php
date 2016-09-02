@@ -48,6 +48,10 @@ Route::get('search',function(){
 Route::get('index', function () {
     return view('generalTmp');
 });
+Route::get('ldap',function(){
+	return view('ldap');
+});
+Route::post('loginldp','LdapLoginController@Login');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');
 

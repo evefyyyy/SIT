@@ -51,7 +51,7 @@ class adminAnnouncementController extends Controller {
 
 
 		$news = \App\News::where('news_type_id','=','1')->get();
-		return view('admin.announce')->with('news',$news->reverse());
+		return view('admin.announce')->with('news',$news->reverse())->with('count',$count);
 	}
 
 	public function show($id)

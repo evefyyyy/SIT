@@ -21,10 +21,10 @@
 			</thead>
 			<tbody>
 			@foreach ($news as $n)
-				<tr data-toggle="modal" data-target="#doc" >
-					<td>{{$n->title}}</td>
+				<tr>
+					<td><a data-toggle="modal" data-target="#doc">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true"><i class="glyphicon glyphicon-trash"></i></button>
 					</td>
 					<td><a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
@@ -33,7 +33,8 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="modal fade" id="doc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	<!-- edit document for admin -->
+	 <div class="modal fade" id="doc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -53,12 +54,13 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary">add</button>
+	        <button type="submit" class="btn btn-primary">save</button>
 	        </form>
 	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	    </div>
+	  </div>
+	</div> 
+	<!-- add a document for admin -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -90,4 +92,10 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<script src="{!! URL::asset('js/create.js') !!}"></script>
+	<script>
+		$('[data-toggle=confirmation]').confirmation({
+		  rootSelector: '[data-toggle=confirmation]',
+		  // other options
+		});
+	</script>
 @stop

@@ -20,15 +20,15 @@
 			</thead>
 			<tbody>
 				@foreach($news as $n)
-				<tr data-toggle="modal" data-target="#announce" class="news">
-					<td>{{$n->title}}</td>
+				<tr class="news">
+					<td><a data-toggle="modal" data-target="#announce">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true"><i class="glyphicon glyphicon-trash"></i></button>
 					</td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
 				</tr>
-				<!-- Admin -->
-				<!-- <div class="modal fade" role="dialog">
+				<!-- edit announcement for Admin -->
+				<div class="modal fade" id="announce" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -54,8 +54,9 @@
 				        </form>
 				      </div>
 				  </div>
-				</div> -->
-				<div class="modal fade" id="announce" role="dialog">
+				</div>
+				<!-- show announccement for student -->
+				<!-- <div class="modal fade" id="announce" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -64,15 +65,16 @@
 				      </div>
 				      <div class="modal-body">
 				      	{{$n->description}}
-				      	<a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
+				      	<a href="{{'/adminNewsFiles/'.$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
 				      </div>
-				    </div><!-- /.modal-content -->
-				  </div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
+				    </div>
+				  </div>
+				</div> -->
 				@endforeach
 			</tbody>
 		</table>
 	</div>
+	<!-- add a new announccement for admin -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
@@ -108,4 +110,10 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<script src="{!! URL::asset('js/create.js') !!}"></script>
+	<script>
+		$('[data-toggle=confirmation]').confirmation({
+		  rootSelector: '[data-toggle=confirmation]',
+		  // other options
+		});
+	</script>
 @stop
