@@ -16,7 +16,7 @@
 			  <div class="panel-heading">details</div>
 			  <div class="panel-body">
 			  	<form class="form-inline editableform">
-			    	<a href="#" id="desc" data-type="textarea" data-title="Enter username">Enter a short description of your project here</a>
+			    	<a href="#" id="desc" data-type="textarea" data-title="Enter username">Enter a short description of your project.</a>
 				</form>
 			  </div>
 			</div>
