@@ -1,5 +1,6 @@
 @extends('adminTmp')
 @section('content')
+
 	<div class="row news-head">
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-md-10 col-lg-10">
@@ -36,14 +37,15 @@
 				<?php
 					$count = 0 ;
 				?>
-
-				@foreach($news as $n)
+			</tbody>
+		</table>
+		@foreach($news as $n)
 				<!-- edit announcement for Admin -->
-				<div class="modal fade" id="announce{{$count}}" role="dialog">
+				<div class="modal fade" id="announce{{$count}}" role="dialog" aria-labelledby="exampleModalLabel">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
-				      	<form method="get" action="/news/announcement/edit" enctype="multipart/form-data">
+				      	<form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				        <input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 				      </div>
@@ -88,8 +90,6 @@
 				  </div>
 				</div> -->
 				
-			</tbody>
-		</table>
 	</div>
 	<!-- add a new announccement for admin -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -113,7 +113,7 @@
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
 	            <span class="custom-file-upload">
-				    <input type="file" id="file" name="myfiles" required/>
+				    <input type="file" id="file" name="myfiles"/>
 				</span>
 				<br/>
 	          </div>

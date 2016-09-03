@@ -32,7 +32,7 @@ Route::get('student/myproject/edit', function () {
 });
 
 Route::resource('news/announcement', 'adminAnnouncementController');
-Route::get('news/announcement/edit', 'adminAnnouncementController@edit');
+Route::post('news/announcement/edit', 'adminAnnouncementController@edit');
 
 Route::resource('news/document', 'adminDocumentController');
 Route::post('news/document/edit', 'adminDocumentController@edit');
