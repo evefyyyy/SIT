@@ -24,7 +24,11 @@
 				<tr>
 					<td><a data-toggle="modal" data-target="#doc{{$count++}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true"><i class="glyphicon glyphicon-trash"></i></button>
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button>
+						<input type="hidden" id="nId" name="id" value="{{$n->id}}">
+						<input type="hidden" id="type" name="type" value="d">
 					</td>
 					<td><a href="/adminNewsFiles/{{$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
@@ -33,36 +37,40 @@
 			</tbody>
 		</table>
 	</div>
-	{{$count = 0}}
-	<!-- edit document for admin -->
+	<?php 
+		$count = 0 ;
+	?>
 	@foreach ($news as $n)
+	<!-- edit document for admin -->
 	 <div class="modal fade" id="doc{{$count}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <input type="text" class="form-control" id="title" name="title" value="{{$n->title}}">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+	        <input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})">
 	      </div>
 	      <div class="modal-body">
-
+	      	 <form method="post" action="/news/document/edit" enctype="multipart/form-data">
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
 	            <span class="custom-file-upload">
-				    <input type="file" id="file{{$count++}}" name="myfiles" value="{{$n->file_path_name}}"/>
+				    <input type="file" id="file" name="myfiles"/>
 				</span>
 				<br/>
 	          </div>
+	          	<input type="hidden" name="hId" value="{{$n->id}}">
+	          	<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary" onclick="edit()">save</button>
-
+	        <button type="submit" class="btn btn-primary">save</button>
+	        </form>
 	      </div>
 	    </div>
 	  </div>
-	</div>
-	@endforeach 
+	</div> 
+	@endforeach
 	<!-- add a document for admin -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
@@ -72,7 +80,7 @@
 	        <h4 class="modal-title">New Document</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form method="post" action="/news/document/edit" enctype="multipart/form-data">
+	        <form method="post" action="/news/document" enctype="multipart/form-data">
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
@@ -101,18 +109,9 @@
 		  // other options
 		});
 
-		function edit(){
-			alert($("#file1").val());
-			$.ajax({
-				type:"post",
-				dataType: "",
-				url :"/news/document/edit",
-				data: {stdId3: $("#file1").val() , _token:$("#_token").val() },
-					success:function(data){
-						console.log(data);
-					}
-				
-			});
+		function copy(x) {
+			$y = $("#title"+x).val() ;
+			document.getElementById('copy'+x).value = $y;			
 		}
 	</script>
 @stop

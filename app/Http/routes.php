@@ -41,13 +41,19 @@ Route::get('project/pending', function () {
 });
 
 Route::resource('news/announcement', 'adminAnnouncementController');
+Route::get('news/announcement/edit', 'adminAnnouncementController@edit');
 
 Route::resource('news/document', 'adminDocumentController');
+Route::post('news/document/edit', 'adminDocumentController@edit');
+Route::post('news/delete', function(){
+	$id = Request::Input('id');
+	$type = Request::Input('type');
+	$data = DB::table('news')->where('id',$id)->first();
+	$path = base_path('public/adminNewsFiles/') ;
+	\File::Delete($path.$data->file_path_name);
+	DB::table('news')->where('id',$id)->delete();
 
-Route::post('/news/document/edit',function(){
-	$data = Request::Input('stdId3');
-	return Response::json($data);
-
+	return Response::json($type);
 });
 
 Route::resource('project', 'AllProjectController');
