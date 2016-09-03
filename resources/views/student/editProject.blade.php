@@ -15,7 +15,6 @@
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
-	<div clas
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -48,16 +47,16 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
-			<div class="col-xs-6 col-md-6 col-lg-6 text">นายสุรพงษ์ เนตรประไพ</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500078</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">สุรพงษ์ เนตรประไพ</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500126</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email1">email</a></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">นางสาวอาทิมา จันทแสงสว่าง</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500078</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">สุรพงษ์ เนตรประไพ</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500126</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email2">email</a></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">นายสุรพงษ์ เนตรประไพ</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500078</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">สุรพงษ์ เนตรประไพ</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500126</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email3">email</a></div>
 			</div>
@@ -86,8 +85,7 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">advisor</div>
 			<div class="panel-body">
-			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
-			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
+			<div class="col-lg-12 text">อ.อุมาพร</div>
 			</div>
 		</div>
 		</div>

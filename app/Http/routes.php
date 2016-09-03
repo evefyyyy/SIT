@@ -27,22 +27,25 @@ Route::get('student/myproject/noproject', function () {
     return view('student.noProject');
 });
 
-//Route::get('createProject', 'createProjectController@studentName');
-// Route::get('student/myproject/waitapprove', function () {
-//     return view('waitApprove');
-// });
-
 Route::get('student/myproject/edit', function () {
     return view('student.editProject');
 });
 
-Route::get('project/pending', function () {
-    return view('admin.approveProject');
-});
-
 Route::resource('news/announcement', 'adminAnnouncementController');
+Route::get('news/announcement/edit', 'adminAnnouncementController@edit');
 
 Route::resource('news/document', 'adminDocumentController');
+Route::post('news/document/edit', 'adminDocumentController@edit');
+Route::post('news/delete', function(){
+	$id = Request::Input('id');
+	$type = Request::Input('type');
+	$data = DB::table('news')->where('id',$id)->first();
+	$path = base_path('public/adminNewsFiles/') ;
+	\File::Delete($path.$data->file_path_name);
+	DB::table('news')->where('id',$id)->delete();
+
+	return Response::json($type);
+});
 
 Route::resource('project', 'AllProjectController');
 
@@ -59,32 +62,18 @@ Route::get('ldap',function(){
 Route::post('loginldp','LdapLoginController@Login');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');
+
 Route::get('project/pending/{option}/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
+
 Route::get('project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');
 
-Route::resource('student/myproject/create','createProjectController');
 Route::resource('project/pending','approveProjectController@index');
 
+Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
-Route::get('test',function(){
-	$projects = App\GroupProject::all();
-	foreach ($projects as $project) {
-		echo "<h1>".$project->group_project_th_name."</h1>";
-		foreach ($project->projectStudents as $team) {
-			echo "ชื่อ-นามสกุล: ".$team->student->student_fname." ".$team->student->student_lname;
-			echo "<br>";
-		}
-		echo "<h2>อาจารย์ที่ปรึกษา</h2>";
-		foreach ($project->projectAdvisors as $advisor) {
-			echo "ชื่อ-นามสกุล: ".$advisor->advisor->advisor_fname." ".$advisor->advisor->advisor_lname;
-			echo "<br>";
-		}
-		echo "<hr>";
-	}
-});
-
+/**Route::resource('student/myproject/edit','editProjectController');**/
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');

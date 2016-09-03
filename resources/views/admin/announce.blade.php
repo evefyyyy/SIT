@@ -21,25 +21,37 @@
 			<tbody>
 				@foreach($news as $n)
 				<tr class="news">
-					<td><a data-toggle="modal" data-target="#announce">{{$n->title}}</a></td>
+					<td><a data-toggle="modal" data-target="#announce{{$count++}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true"><i class="glyphicon glyphicon-trash"></i></button>
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button>
+						<input type="hidden" id="nId" name="id" value="{{$n->id}}">
+						<input type="hidden" id="type" name="type" value="a">
 					</td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
 				</tr>
+				@endforeach
+
+				<?php
+					$count = 0 ;
+				?>
+
+				@foreach($news as $n)
 				<!-- edit announcement for Admin -->
-				<div class="modal fade" id="announce" role="dialog">
+				<div class="modal fade" id="announce{{$count}}" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
-				      	<form>
+				      	<form method="get" action="/news/announcement/edit" enctype="multipart/form-data">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <input type="text" class="form-control" id="title" name="title" required/>
+				        <input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 				      </div>
 				      <div class="modal-body">
+				      	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				      	<div class="form-group">
 				            <label for="message-text" class="control-label">Description</label>
-				            <textarea rows="4" class="form-control" id="desc" name="description"></textarea>
+				            <textarea rows="4" class="form-control" id="desc" name="description">{{$n->description}}</textarea>
 				        </div>
 				        <div class="form-group">
 				            <label for="message-text" class="control-label">File</label>
@@ -48,6 +60,8 @@
 							</span>
 							<br/>
 				         </div>
+				        <input type="hidden" name="hId" value="{{$n->id}}">
+	          			<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -55,7 +69,9 @@
 				        </form>
 				      </div>
 				  </div>
+				 </div>
 				</div>
+				@endforeach
 				<!-- show announccement for student -->
 				<!-- <div class="modal fade" id="announce" role="dialog">
 				  <div class="modal-dialog modal-lg">
@@ -71,7 +87,7 @@
 				    </div>
 				  </div>
 				</div> -->
-				@endforeach
+				
 			</tbody>
 		</table>
 	</div>
@@ -116,5 +132,9 @@
 		  rootSelector: '[data-toggle=confirmation]',
 		  // other options
 		});
+		function copy(x) {
+			$y = $("#title"+x).val() ;
+			document.getElementById('copy'+x).value = $y;			
+		}
 	</script>
 @stop
