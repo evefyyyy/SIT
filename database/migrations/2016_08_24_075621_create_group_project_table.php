@@ -17,8 +17,6 @@ class CreateGroupProjectTable extends Migration
             $table->string('group_project_id');
             $table->string('group_project_eng_name');
             $table->string('group_project_th_name');
-            $table->string('group_project_detail',10000);
-            $table->string('group_project_short_detail',1000);
             $table->integer('group_project_recommand');
             $table->integer('group_project_approve');
             $table->timestamps();

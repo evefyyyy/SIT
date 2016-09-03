@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectToolTable extends Migration
+class CreateProjectDetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,11 @@ class CreateProjectToolTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_tools', function (Blueprint $table) {
+        Schema::create('projects_detail', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('project_use');
+            $table->string('group_project_detail',10000);
+            $table->string('group_project_short_detail',1000);
+            $table->string('tools_detail');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateProjectToolTable extends Migration
      */
     public function down()
     {
-        Schema::drop('project_tool');
+        Schema::drop('projects_detail');
     }
 }
