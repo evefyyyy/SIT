@@ -4,8 +4,8 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<h3>Driving simulation</h3>
-			<h4>เกมจำลองสถานการณ์การสอบใบอนุญาติขับขี่รถยนต์</h4>
+			<h3>{{$projectNameEN}}</h3>
+			<h4>{{$projectNameTH}}</h4>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -16,7 +16,7 @@
 			  <div class="panel-heading">details</div>
 			  <div class="panel-body">
 			  	<form class="form-inline editableform">
-			    	<a href="#" id="desc" data-type="textarea" data-title="Enter username">Enter a short description of your project here</a>
+			    	<a href="#" id="desc" data-type="textarea" data-title="Enter username">Enter a short description of your project.</a>
 				</form>
 			  </div>
 			</div>
@@ -33,16 +33,16 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
-			<div class="col-xs-6 col-md-6 col-lg-6 text">นายสุรพงษ์ เนตรประไพ</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500078</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre1}}{{$stdFname1}} {{$stdLname1}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email1">email</a></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">นางสาวอาทิมา จันทแสงสว่าง</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500078</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre2}}{{$stdFname2}} {{$stdLname2}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email2">email</a></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">นายสุรพงษ์ เนตรประไพ</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500078</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre3 or ''}}{{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3 or ''}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email3">email</a></div>
 			</div>
@@ -71,8 +71,9 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">advisor</div>
 			<div class="panel-body">
-			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
-			<div class="col-lg-12 text">อ.พิเชฏฐ์ ลิ่มวชิรานันต์</div>
+			@foreach($advisors as $adv)
+			<div class="col-lg-12 text">{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</div>
+			@endforeach
 			</div>
 		</div>
 		</div>

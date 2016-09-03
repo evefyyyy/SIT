@@ -56,7 +56,7 @@
 				        <div class="form-group">
 				            <label for="message-text" class="control-label">File</label>
 				            <span class="custom-file-upload">
-							    <input type="file" id="file" name="myfiles"/>
+							    <input type="file" id="file" name="myfiles" />
 							</span>
 							<br/>
 				         </div>
@@ -104,7 +104,7 @@
 	        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
-	            <input type="text" class="form-control" id="title" name="title" required>
+	            <input type="text" class="form-control" id="title" name="title" required/>
 	           </div>
 	           <div class="form-group">
 	            <label for="message-text" class="control-label">Description</label>
