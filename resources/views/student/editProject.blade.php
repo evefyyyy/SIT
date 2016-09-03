@@ -4,6 +4,21 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+			<div id="image-cropper">
+			  <div class="cropit-preview"></div>
+			  <span class="glyphicon glyphicon-picture gi-1x"></span>
+			  <input type="range" class="cropit-image-zoom-input" />
+			  <span class="glyphicon glyphicon-picture gi-2x"></span>
+			  <input type="file" class="cropit-image-input" />
+			  <div class="select-image-btn">Select new image</div>
+			</div>
+		</div>
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+	</div>
+	<div clas
+	<div class="row">
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 			<h3>Driving simulation</h3>
 			<h4>เกมจำลองสถานการณ์การสอบใบอนุญาติขับขี่รถยนต์</h4>
 		</div>
@@ -80,4 +95,8 @@
 	</div>
 	</div>
 	<script src="{!! URL::asset('js/edit.js') !!}"></script>
+	<script src="{!! URL::asset('js/jquery.cropit.js') !!}"></script>
+	<script>
+      $('#image-cropper').cropit({ imageBackground: true });
+    </script>
 @stop
