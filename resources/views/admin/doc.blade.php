@@ -20,11 +20,15 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- no document -->
+				<!-- <tr>
+					<td colspan="4" class="no-project">There is no document.</td>
+				</tr> -->
 			@foreach ($news as $n)
 				<tr>
 					<td><a data-toggle="modal" data-target="#doc{{$count++}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true">
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button>
 						<input type="hidden" id="nId" name="id" value="{{$n->id}}">
@@ -54,7 +58,7 @@
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
+	            <span>
 				    <input type="file" id="file" name="myfiles" required/>
 				</span>
 				<br/>
@@ -88,9 +92,7 @@
 	           </div>
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
 				    <input type="file" id="file" name="myfiles" required/>
-				</span>
 				<br/>
 	       	   </div>
 	       </div>

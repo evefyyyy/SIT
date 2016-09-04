@@ -20,11 +20,15 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- no announcement -->
+				<!-- <tr>
+					<td colspan="3" class="no-project">There is no announcement.</td>
+				</tr> -->
 				@foreach($news as $n)
 				<tr class="news">
 					<td><a data-toggle="modal" data-target="#announce{{$count++}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true">
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button>
 						<input type="hidden" id="nId" name="id" value="{{$n->id}}">
@@ -57,9 +61,7 @@
 				        </div>
 				        <div class="form-group">
 				            <label for="message-text" class="control-label">File</label>
-				            <span class="custom-file-upload">
 							    <input type="file" id="file" name="myfiles" />
-							</span>
 							<br/>
 				         </div>
 				        <input type="hidden" name="hId" value="{{$n->id}}">
@@ -112,9 +114,7 @@
 	          </div>
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
 				    <input type="file" id="file" name="myfiles"/>
-				</span>
 				<br/>
 	          </div>
 	      </div>
