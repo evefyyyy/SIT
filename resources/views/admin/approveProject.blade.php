@@ -80,7 +80,7 @@
 		    </tbody>
 			</table>
 
-			<div class="cd-popup" role="alert">
+		<div class="cd-popup" role="alert">
 			<div class="cd-popup-container">
 				<p>Are you sure you want to reject this project?</p>
 				<ul class="cd-buttons">

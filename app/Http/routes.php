@@ -43,7 +43,7 @@ Route::post('news/delete', function(){
 	return Response::json($type);
 });
 
-Route::resource('project', 'AllProjectController');
+Route::get('project', 'AllProjectController@index');
 
 Route::get('search',function(){
   return view('student.createProject');

@@ -50,7 +50,7 @@ class adminDocumentController extends Controller {
 
 		$news = \App\News::where('news_type_id','=','2')->get();
 		$count = 0 ;
-		return view('admin.doc')->with('news',$news->reverse())->with('count',$count);
+		return redirect('news/document/');
 	}
 
 	public function show($id)
