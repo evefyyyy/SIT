@@ -41,11 +41,14 @@ class adminAnnouncementController extends Controller {
 		$news->title = $request['title'];
 		$path = base_path('public/adminNewsFiles/') ;
 		$file = $request->file('myfiles');
-		$extension = $file->getClientOriginalExtension();
-		$filename = "Announcement".$nId.".".$extension;
-		$move = $file->move($path,$filename);
+
+		if(isset($file)){
+			$extension = $file->getClientOriginalExtension();
+			$filename = "Announcement".$nId.".".$extension;
+			$move = $file->move($path,$filename);
+			$news->file_path_name = $filename ;
+		}
 		$news->description = $request['description'];
-		$news->file_path_name = $filename ;
 		$news->news_type_id = '1' ;
 		$news->save();
 
