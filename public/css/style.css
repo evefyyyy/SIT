@@ -840,13 +840,6 @@ h6 img {
 .file-upload-button:hover {
     background-color: #999;
 }
-#detail .text {
-  margin-bottom: 5px;
-}
-#detail .mail {
-  margin-bottom: 10px;
-  font-size: 0.895em;
-}
 .center-table {
   margin: 0 auto !important;
   float: none !important;
@@ -914,6 +907,72 @@ h6 img {
 }
 .input-middle {
   width: 350px !important;
+}
+.cropit-preview {
+        background-color: #f8f8f8;
+        background-size: cover;
+        border: 5px solid #ccc;
+        border-radius: 10px;
+        margin-top: 7px;
+        width: 100%;
+        height: 350px;
+        margin-bottom: 10px
+}
+      .cropit-preview-image-container {
+        cursor: move;
+      }
+
+      .cropit-preview-background {
+        opacity: .2;
+        cursor: auto;
+      }
+
+      .image-size-label {
+        margin-top: 10px;
+      }
+
+      input.export {
+        /* Use relative position to prevent from being covered by image background */
+        position: relative;
+        z-index: 10;
+        display: block;
+      }
+      /* Translucent background image */
+      .cropit-preview-background {
+        opacity: .2;
+      }
+
+      /*
+       * If the slider or anything else is covered by the background image,
+       * use relative or absolute position on it
+       */
+      input.cropit-image-zoom-input {
+        position: relative;
+      }
+
+      /* Limit the background image by adding overflow: hidden */
+      #image-cropper {
+        overflow: hidden;
+      }
+input[type="range"].cropit-image-zoom-input {
+    display: inline;
+    width: 200px;
+    vertical-align: middle;
+}
+.cropit-image-zoom-input{
+  background: #eee;
+  border: none;
+}
+#detail .text {
+  margin-bottom: 5px;
+}
+#detail .mail {
+  margin-bottom: 10px;
+  font-size: 0.895em;
+}
+#detail .glyphicon {
+  color: #737577;
+  vertical-align: middle;
 }
 /** poster
 @media screen and (min-width: 640px) {

@@ -27,10 +27,8 @@ Route::get('student/myproject/noproject', function () {
     return view('student.noProject');
 });
 
-
-
-Route::get('project/pending', function () {
-    return view('admin.approveProject');
+Route::get('student/myproject/edit', function () {
+    return view('student.editProject');
 });
 
 Route::resource('news/announcement', 'adminAnnouncementController');
@@ -75,9 +73,7 @@ Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
-Route::resource('student/myproject/edit','editProjectController');
-
-
+/**Route::resource('student/myproject/edit','editProjectController');**/
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');

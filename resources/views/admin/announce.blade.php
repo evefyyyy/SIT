@@ -45,11 +45,11 @@
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
+				      	<form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})">
+				        <input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 				      </div>
 				      <div class="modal-body">
-				      <form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
 				      	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				      	<div class="form-group">
 				            <label for="message-text" class="control-label">Description</label>
