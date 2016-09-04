@@ -66,7 +66,10 @@ class editProjectController extends Controller {
 													->select('prefix','advisor_fname','advisor_lname')->get();
 
 		return view('student.editProject',$obj);
-
 	}
+		public function edit($id)
+		{
+
+		}
 
 }

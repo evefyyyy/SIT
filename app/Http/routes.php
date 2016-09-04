@@ -27,15 +27,25 @@ Route::get('student/myproject/noproject', function () {
     return view('student.noProject');
 });
 
-
-
-Route::get('project/pending', function () {
-    return view('admin.approveProject');
+Route::get('student/myproject/edit', function () {
+    return view('student.editProject');
 });
 
 Route::resource('news/announcement', 'adminAnnouncementController');
+Route::post('news/announcement/edit', 'adminAnnouncementController@edit');
 
 Route::resource('news/document', 'adminDocumentController');
+Route::post('news/document/edit', 'adminDocumentController@edit');
+Route::post('news/delete', function(){
+	$id = Request::Input('id');
+	$type = Request::Input('type');
+	$data = DB::table('news')->where('id',$id)->first();
+	$path = base_path('public/adminNewsFiles/') ;
+	\File::Delete($path.$data->file_path_name);
+	DB::table('news')->where('id',$id)->delete();
+
+	return Response::json($type);
+});
 
 Route::resource('project', 'AllProjectController');
 
@@ -57,15 +67,13 @@ Route::get('project/pending/{option}/{project_id}/{group_id}', 'approveProjectCo
 
 Route::get('project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');
 
-Route::resource('project/pending','approveProjectController@index');
+Route::get('project/pending','approveProjectController@index');
 
 Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
 Route::resource('student/myproject/edit','editProjectController');
-
-
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
