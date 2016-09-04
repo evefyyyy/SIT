@@ -742,6 +742,7 @@ option {
     line-height: 5em !important;
     font-weight: 600;
     color: #B6B6B6;
+    text-transform: none !important;
 }
 
 #projectTB table{
@@ -908,61 +909,6 @@ h6 img {
 .input-middle {
   width: 350px !important;
 }
-.cropit-preview {
-        background-color: #f8f8f8;
-        background-size: cover;
-        border: 5px solid #ccc;
-        border-radius: 10px;
-        margin-top: 7px;
-        width: 100%;
-        height: 350px;
-        margin-bottom: 10px
-}
-      .cropit-preview-image-container {
-        cursor: move;
-      }
-
-      .cropit-preview-background {
-        opacity: .2;
-        cursor: auto;
-      }
-
-      .image-size-label {
-        margin-top: 10px;
-      }
-
-      input.export {
-        /* Use relative position to prevent from being covered by image background */
-        position: relative;
-        z-index: 10;
-        display: block;
-      }
-      /* Translucent background image */
-      .cropit-preview-background {
-        opacity: .2;
-      }
-
-      /*
-       * If the slider or anything else is covered by the background image,
-       * use relative or absolute position on it
-       */
-      input.cropit-image-zoom-input {
-        position: relative;
-      }
-
-      /* Limit the background image by adding overflow: hidden */
-      #image-cropper {
-        overflow: hidden;
-      }
-input[type="range"].cropit-image-zoom-input {
-    display: inline;
-    width: 200px;
-    vertical-align: middle;
-}
-.cropit-image-zoom-input{
-  background: #eee;
-  border: none;
-}
 #detail .text {
   margin-bottom: 5px;
 }
@@ -974,6 +920,76 @@ input[type="range"].cropit-image-zoom-input {
   color: #737577;
   vertical-align: middle;
 }
+/* cover pic */
+.cropit-preview {
+  background-color: #f8f8f8;
+  background-size: cover;
+  border: 5px solid #ccc;
+  border-radius: 10px;
+  margin-top: 7px;
+  margin-bottom: 10px;
+}
+.cropit-preview-image-container {
+  cursor: move;
+}
+
+.cropit-preview-background {
+  opacity: .2;
+  cursor: auto;
+}
+.image-size-label {
+  margin-top: 10px;
+}
+input.export {
+  /* Use relative position to prevent from being covered by image background */
+  position: relative;
+  z-index: 10;
+  display: block;
+}
+  /* Translucent background image */
+.cropit-preview-background {
+  opacity: .2;
+}
+ /* If the slider or anything else is covered by the background image,
+ * use relative or absolute position on it */
+input.cropit-image-zoom-input {
+  position: relative;
+}
+/* Limit the background image by adding overflow: hidden */
+#image-cropper {
+  overflow: hidden;
+}
+input[type="range"].cropit-image-zoom-input {
+  display: inline;
+  width: 150px;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+.cropit-image-zoom-input {
+  background: #eee;
+  border: none;
+}
+.cropit-image-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.image-btn {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+  text-transform: uppercase;
+}
+.zoom-image {
+  float: right;
+  margin-right: 20px;
+}
+
 /** poster
 @media screen and (min-width: 640px) {
     img {

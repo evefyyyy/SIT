@@ -17,13 +17,13 @@
 		</table>
 	<div class="title" id="head">Advisor</div>
 	<div class="row" style="margin-bottom:10px">
-		<div class="col-lg-3"></div>
-		<div class="col-lg-3">
+		<div class="col-md-3 col-lg-3"></div>
+		<div class="col-md-3 col-lg-3">
 			@foreach($advisors as $adv)
 				<p>{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</p>
 			@endforeach
 		</div>
-		<div class="col-lg-6"><th rowspan="2"><img height="50" src="/img/waitApprove.png"></th></div>
+		<div class="col-md-6 col-lg-6"><th rowspan="2"><img height="50" src="/img/waitApprove.png"></th></div>
 	</div>
 	<div class="row">
 		<div class="title" id="uploaded">

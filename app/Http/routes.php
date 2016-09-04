@@ -27,10 +27,6 @@ Route::get('student/myproject/noproject', function () {
     return view('student.noProject');
 });
 
-Route::get('student/myproject/edit', function () {
-    return view('student.editProject');
-});
-
 Route::resource('news/announcement', 'adminAnnouncementController');
 Route::post('news/announcement/edit', 'adminAnnouncementController@edit');
 
