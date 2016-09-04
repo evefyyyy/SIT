@@ -45,7 +45,7 @@ Route::post('news/delete', function(){
 
 Route::get('project', 'AllProjectController@index');
 
-Route::get('ldaptest', 'LdapTestController');
+
 
 Route::get('search',function(){
   return view('student.createProject');
