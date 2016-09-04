@@ -46,6 +46,8 @@ Route::resource('news/document', 'adminDocumentController');
 
 Route::resource('project', 'AllProjectController');
 
+Route::get('ldaptest', 'LdapTestController');
+
 Route::get('search',function(){
   return view('student.createProject');
 });
