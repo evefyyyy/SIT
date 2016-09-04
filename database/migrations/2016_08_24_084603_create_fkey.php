@@ -51,10 +51,6 @@ class CreateFkey extends Migration
         $table->integer('project_pkid')->unsigned();
         $table->foreign('project_pkid')->references('id')->on('group_projects');
     });
-    Schema::table('dday', function ($table) {
-        $table->integer('project_pkid')->unsigned();
-        $table->foreign('project_pkid')->references('id')->on('group_projects');
-    });
 
     Schema::table('group_projects', function ($table) {
         $table->integer('category_id')->unsigned();
@@ -122,6 +118,13 @@ class CreateFkey extends Migration
         $table->integer('project_pkid')->unsigned();
         $table->foreign('project_pkid')->references('id')->on('group_projects');
     });
+    Schema::table('dday_project', function($table){
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
+        $table->integer('dday_id')->unsigned();
+        $table->foreign('dday_id')->references('id')->on('dday');
+    });
+
 
     }
 
