@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Input;
 use Redirect;
 use File;
-
 use DB;
 use App\Model\studentProfile;
 use Illuminate\Http\Request;

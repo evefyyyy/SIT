@@ -1,5 +1,6 @@
 @extends('adminTmp')
 @section('content')
+
 	<div class="row news-head">
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-md-10 col-lg-10">
@@ -19,34 +20,53 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- no announcement -->
+				<!-- <tr>
+					<td colspan="3" class="no-project">There is no announcement.</td>
+				</tr> -->
 				@foreach($news as $n)
-				<tr data-toggle="modal" data-target="#announce" class="news">
-					<td>{{$n->title}}</td>
+				<tr class="news">
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true" onclick="setNum({{$count}})">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button>
+						<input type="hidden" id="num" name="id" value="">
+						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
+						<input type="hidden" id="type" name="type" value="a">
 					</td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
 				</tr>
-				<!-- Admin -->
-				<!-- <div class="modal fade" role="dialog">
+				@endforeach
+
+				<?php
+					$count = 0 ;
+				?>
+			</tbody>
+		</table>
+		@foreach($news as $n)
+				<!-- edit announcement for Admin -->
+				<div class="modal fade" id="announce{{$count}}" role="dialog" aria-labelledby="exampleModalLabel">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
+				      	<form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <input type="text" class="form-control" id="title" name="title">
+				        <input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 				      </div>
 				      <div class="modal-body">
+				      	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				      	<div class="form-group">
 				            <label for="message-text" class="control-label">Description</label>
-				            <textarea rows="4" class="form-control" id="desc" name="description"></textarea>
+				            <textarea rows="4" class="form-control" id="desc" name="description">{{$n->description}}</textarea>
 				        </div>
 				        <div class="form-group">
 				            <label for="message-text" class="control-label">File</label>
-				            <span class="custom-file-upload">
-							    <input type="file" id="file" name="myfiles"/>
-							</span>
+							    <input type="file" id="file" name="myfiles" />
 							<br/>
 				         </div>
+				        <input type="hidden" name="hId" value="{{$n->id}}">
+	          			<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -54,25 +74,26 @@
 				        </form>
 				      </div>
 				  </div>
-				</div> -->
-				<div class="modal fade" id="announce" role="dialog">
+				 </div>
+				</div>
+				@endforeach
+				<!-- show announccement for student -->
+				<!-- <div class="modal fade" id="announce" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title">{{$n->title}}</h4>
+				        <h4 class="modal-title"></h4>
 				      </div>
 				      <div class="modal-body">
-				      	{{$n->description}}
-				      	<a href="{{'/adminNewsFiles/'.$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
+				      	<a href="" download><i class="glyphicon glyphicon-download"></i> download file</a>
 				      </div>
-				    </div><!-- /.modal-content -->
-				  </div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
-				@endforeach
-			</tbody>
-		</table>
+				    </div>
+				  </div>
+				</div> -->
+				
 	</div>
+	<!-- add a new announccement for admin -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
@@ -85,7 +106,7 @@
 	        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
-	            <input type="text" class="form-control" id="title" name="title" required>
+	            <input type="text" class="form-control" id="title" name="title" required/>
 	           </div>
 	           <div class="form-group">
 	            <label for="message-text" class="control-label">Description</label>
@@ -93,9 +114,7 @@
 	          </div>
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
-				    <input type="file" id="file" name="myfiles" required/>
-				</span>
+				    <input type="file" id="file" name="myfiles"/>
 				<br/>
 	          </div>
 	      </div>
@@ -108,4 +127,17 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<script src="{!! URL::asset('js/create.js') !!}"></script>
+	<script>
+		$('[data-toggle=confirmation]').confirmation({
+		  rootSelector: '[data-toggle=confirmation]',
+		  // other options
+		});
+		function copy(x) {
+			$y = $("#title"+x).val() ;
+			document.getElementById('copy'+x).value = $y;			
+		}
+		function setNum(x){
+			document.getElementById('num').value = x;			
+		}
+	</script>
 @stop

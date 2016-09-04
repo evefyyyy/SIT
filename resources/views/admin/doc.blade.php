@@ -20,50 +20,63 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- no document -->
+				<!-- <tr>
+					<td colspan="4" class="no-project">There is no document.</td>
+				</tr> -->
 			@foreach ($news as $n)
-				<tr data-toggle="modal" data-target="#doc" >
-					<td>{{$n->title}}</td>
-<<<<<<< HEAD
-					<td><a href="{{'/adminNewsFiles/'.$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
-					<td>{{date('F d,Y',strtotime($n->created_at))}}</td>
-=======
+				<tr>
+					<td><a data-toggle="modal" data-target="#doc{{$count}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true" onclick="setNum({{$count}})">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button>
+						<input type="hidden" id="num" name="id" value="">
+						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
+						<input type="hidden" id="type" name="type" value="d">
 					</td>
-					<td><a href="{{base_path('public/adminNewsFiles/').$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
+					<td><a href="/adminNewsFiles/{{$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
->>>>>>> 9d1e3df0994473651e0091d05309cf8bfb3eed46
 				</tr>
 			@endforeach
 			</tbody>
 		</table>
 	</div>
-	<div class="modal fade" id="doc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	<?php 
+		$count = 0 ;
+	?>
+	@foreach ($news as $n)
+	<!-- edit document for admin -->
+	 <div class="modal fade" id="doc{{$count}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <input type="text" class="form-control" id="title" name="title">
+	      	<form method="post" action="/news/document/edit" enctype="multipart/form-data">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+	        <input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 	      </div>
 	      <div class="modal-body">
-	        <form method="post" action="/news/document" enctype="multipart/form-data">
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
-				    <input type="file" id="file" name="myfiles"/>
+	            <span>
+				    <input type="file" id="file" name="myfiles" required/>
 				</span>
 				<br/>
 	          </div>
+	          	<input type="hidden" name="hId" value="{{$n->id}}">
+	          	<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary">add</button>
+	        <button type="submit" class="btn btn-primary">save</button>
 	        </form>
 	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	    </div>
+	  </div>
+	</div> 
+	@endforeach
+	<!-- add a document for admin -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -76,13 +89,11 @@
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">Title</label>
-	            <input type="text" class="form-control" id="title" name="title">
+	            <input type="text" class="form-control" id="title" name="title" required/>
 	           </div>
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
-				    <input type="file" id="file" name="myfiles"/>
-				</span>
+				    <input type="file" id="file" name="myfiles" required/>
 				<br/>
 	       	   </div>
 	       </div>
@@ -95,4 +106,18 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<script src="{!! URL::asset('js/create.js') !!}"></script>
+	<script>
+		$('[data-toggle=confirmation]').confirmation({
+		  rootSelector: '[data-toggle=confirmation]',
+		  // other options
+		});
+
+		function copy(x) {
+			$y = $("#title"+x).val() ;
+			document.getElementById('copy'+x).value = $y;			
+		}
+		function setNum(x){
+			document.getElementById('num').value = x;			
+		}
+	</script>
 @stop

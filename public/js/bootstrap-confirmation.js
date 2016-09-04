@@ -17,7 +17,6 @@
  * limitations under the License.
  * =========================================================== */
 
-
 !function ($) {
 
 	"use strict"; // jshint ;_;
@@ -237,20 +236,17 @@
 	}
 
 	$.fn.confirmation.Constructor = Confirmation
-
 	$.fn.confirmation.defaults = $.extend({} , $.fn.tooltip.defaults, {
 		placement: 'top'
 		, trigger: 'click'
-		, target : '_self'
-		, href   : '#'
 		, title: 'Are you sure?'
 		, template: '<div class="popover">' +
 				'<div class="arrow"></div>' +
 				'<h3 class="popover-title"></h3>' +
 				'<div class="popover-content text-center">' +
 				'<div class="btn-group">' +
-				'<a class="btn btn-small" href="" target=""></a>' +
-				'<a class="btn btn-small" data-dismiss="confirmation"></a>' +
+				'<a class="btn btn-xs"></a>' +
+				'<a class="btn btn-xs btn-default" data-dismiss="confirmation"></a>' +
 				'</div>' +
 				'</div>' +
 				'</div>'
@@ -258,12 +254,28 @@
 		, btnCancelClass:  ''
 		, btnOkLabel: '<i class="icon-ok-sign icon-white"></i> Yes'
 		, btnCancelLabel: '<i class="icon-remove-sign"></i> No'
-		, singleton: false
-		, popout: false
-		, onConfirm: function(){}
+		, singleton: true
+		, popout: true
+		, onConfirm: function(){
+			var num = $("#num").val() ;
+		        $.ajax({
+		            type:"post",
+		            dataType: "",
+		            url :"/news/delete",
+		            data: {id: $("#nId"+num).val(),type: $("#type").val() , _token:$("#_token").val() },
+		            	success:function(data){
+		            		if(data == 'd'){
+		            			window.location.pathname = "/news/document/";
+		            		}else{
+		            			window.location.pathname = "/news/announcement/";
+		            		}
+		            		
+		            	}
+		     	});
+		}
 		, onCancel: function(){}
-	})
 
+	})
 
  /* POPOVER NO CONFLICT
 	* =================== */
