@@ -6,11 +6,14 @@
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 			<div id="image-cropper">
 			  <div class="cropit-preview"></div>
+			  <input type="file" name="file" id="file" class="cropit-image-input" />
+			  <label for="file" class="btn btn-default">Select new image</label>
+			  <button class="btn btn-primary">save</button>
+			  <span class="zoom-image">
 			  <span class="glyphicon glyphicon-picture gi-1x"></span>
 			  <input type="range" class="cropit-image-zoom-input" />
 			  <span class="glyphicon glyphicon-picture gi-2x"></span>
-			  <input type="file" class="cropit-image-input" />
-			  <div class="select-image-btn">Select new image</div>
+			  </span>
 			</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -39,7 +42,19 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5"></div>
+		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
+			<div id="image-cropper">
+			  <div class="cropit-preview"></div>
+			  <input type="file" name="file" id="file" class="cropit-image-input" />
+			  <label for="file" class="btn btn-default">Select new image</label>
+			  <button class="btn btn-primary">save</button>
+			  <span class="zoom-image">
+			  <span class="glyphicon glyphicon-picture gi-1x"></span>
+			  <input type="range" class="cropit-image-zoom-input" />
+			  <span class="glyphicon glyphicon-picture gi-2x"></span>
+			  </span>
+			</div>
+		</div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>

@@ -254,8 +254,8 @@
 		, btnCancelClass:  ''
 		, btnOkLabel: '<i class="icon-ok-sign icon-white"></i> Yes'
 		, btnCancelLabel: '<i class="icon-remove-sign"></i> No'
-		, singleton: false
-		, popout: false
+		, singleton: true
+		, popout: true
 		, onConfirm: function(){
 			var num = $("#num").val() ;
 		        $.ajax({

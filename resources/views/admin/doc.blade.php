@@ -20,6 +20,10 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- no document -->
+				<!-- <tr>
+					<td colspan="4" class="no-project">There is no document.</td>
+				</tr> -->
 			@foreach ($news as $n)
 				<tr>
 					<td><a data-toggle="modal" data-target="#doc{{$count}}">{{$n->title}}</a></td>
@@ -55,7 +59,7 @@
 	        	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
+	            <span>
 				    <input type="file" id="file" name="myfiles" required/>
 				</span>
 				<br/>
@@ -89,9 +93,7 @@
 	           </div>
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">File</label>
-	            <span class="custom-file-upload">
 				    <input type="file" id="file" name="myfiles" required/>
-				</span>
 				<br/>
 	       	   </div>
 	       </div>
