@@ -26,12 +26,13 @@
 				</tr> -->
 				@foreach($news as $n)
 				<tr class="news">
-					<td><a data-toggle="modal" data-target="#announce{{$count++}}">{{$n->title}}</a></td>
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top">
+						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true" onclick="setNum({{$count}})">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button>
-						<input type="hidden" id="nId" name="id" value="{{$n->id}}">
+						<input type="hidden" id="num" name="id" value="">
+						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
 						<input type="hidden" id="type" name="type" value="a">
 					</td>
 					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
@@ -134,6 +135,9 @@
 		function copy(x) {
 			$y = $("#title"+x).val() ;
 			document.getElementById('copy'+x).value = $y;			
+		}
+		function setNum(x){
+			document.getElementById('num').value = x;			
 		}
 	</script>
 @stop
