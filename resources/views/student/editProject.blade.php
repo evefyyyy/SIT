@@ -57,7 +57,7 @@
 					<input type="range" class="cropit-image-zoom-input" />
 					<span class="glyphicon glyphicon-picture gi-2x"></span>
 				</span>
-				<p class="pic-size">490 x 280 px</p>
+				<p class="pic-size">4:3 aspect ratio</p>
 			</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
