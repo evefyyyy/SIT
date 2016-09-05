@@ -41,9 +41,7 @@
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
 					<div class="col-lg-12">
-						<textarea class="form-control" rows="4" placeholder="Mobile : Android JavaEE, SDK Emulator
-Database : SQLite
-Graphic : Adobe Photoshop, Illustratore"></textarea>
+						Mobile : Android JavaEE, SDK Emulator<br>Database : SQLite<br>Graphic : Adobe Photoshop, Illustratore
 					</div>
 				</div>
 			</div>
@@ -58,15 +56,15 @@ Graphic : Adobe Photoshop, Illustratore"></textarea>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">อาทิมา จันทแสงสว่าง</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500126</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> email</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> evefyjubpajub@gmail.com</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">อาทิมา จันทแสงสว่าง</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500126</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> email</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> evefyjubpajub@gmail.com</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">อาทิมา จันทแสงสว่าง</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา 56130500126</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> email</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> evefyjubpajub@gmail.com</div>
 			</div>
 		</div>
 		<div class="panel panel-info">
