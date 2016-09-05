@@ -60,16 +60,28 @@ class editProjectController extends Controller {
 			$obj['stdLname2'] = $student[1]->student_lname;
 		}
 
-			$obj['advisors'] = DB::table('project_advisors')
+		$obj['advisors'] = DB::table('project_advisors')
 													->join('advisors','advisor_id','=','advisors.id')
 													->where('project_pkid',$checkProject)
 													->select('prefix','advisor_fname','advisor_lname')->get();
 
+		$obj['detailId'] = DB::table('group_projects')
+												->join('projects_detail','group_projects.id','=','project_pkid')
+												->where('group_projects.id',$checkProject)->value('projects_detail.id');
+
 		return view('student.editProject',$obj);
 	}
-		public function edit($id)
-		{
+	public function postEditDetail() {
 
+		$projectDetail = Input::get('pk');
+		$detail = Input::get('value');
+		$detailData = projectDetail::whereId($projectDetail)->first();
+		$detailData->group_project_detail = $detail;
+		if($detailData->save())
+			return Response::json(array('status'=>1));
+		else {
+			return Response::json(array('status'=>0));
 		}
 
+	}
 }

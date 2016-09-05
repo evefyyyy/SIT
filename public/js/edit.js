@@ -1,13 +1,15 @@
 $.fn.editable.defaults.mode = 'inline';
 
   $('#desc').editable({
-    url: '/post',
+    type: 'textarea',
+    url: '/editProjectController.php',
+    pk: 2,
     rows: 3,
     inputclass: 'input-large',
     placeholder: 'Enter a short description of your project here',
     ajaxOptions: {
     type: 'put'
-    } 
+    }
   });
 
   $('#email1').editable({
@@ -39,7 +41,7 @@ $.fn.editable.defaults.mode = 'inline';
     placeholder: '• Mobile : Android JavaEE, SDK Emulator\n• Database : SQLite\n• Graphic : Adobe Photoshop, Illustratore',
     ajaxOptions: {
     type: 'put'
-    } 
+    }
   });
 
 //ajax emulation
@@ -49,7 +51,7 @@ $.mockjax({
     response: function(settings) {
         console.log('done!');
     }
-}); 
+});
 
 ;(function($) {
 

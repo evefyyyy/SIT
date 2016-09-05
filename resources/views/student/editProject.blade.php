@@ -32,7 +32,7 @@
 			<div class="panel panel-info">
 			  <div class="panel-heading">details</div>
 			  <div class="panel-body">
-			  	<form class="form-inline editableform">
+			  	<form class="form-inline editableform" method="post" action="{{url('student/myproject/edit/$detailId')}}">
 			    	<a href="#" id="desc" data-type="textarea" data-title="Enter username">Enter a short description of your project.</a>
 				</form>
 			  </div>
