@@ -18,6 +18,7 @@ use App\ProjectAdvisor;
 use App\ProjectStudent;
 use App\ProjectProposal;
 use App\Proposal;
+use App\ProjectDetail;
 
 
 
@@ -115,7 +116,7 @@ class createProjectController extends Controller {
 		$adv->advisor_position_id = '1';
 		$adv->save();
 
-		$advisor = $request['browser2'];
+		if($advisor = $request['browser2']){
 		$index = mb_strpos($advisor," ");
 		$index2 = mb_strpos($advisor," ",$index+1);
 		$lname = mb_substr($advisor,$index2+1);
@@ -127,6 +128,7 @@ class createProjectController extends Controller {
 		$adv->project_pkid = $projectId;
 		$adv->advisor_position_id = '2';
 		$adv->save();
+		}
 
 		$path = '/Applications/MAMP/htdocs/SIT-master/public/test';
 		$file = $request->file('myfiles')	;
@@ -143,6 +145,12 @@ class createProjectController extends Controller {
 		$fileUpload->project_pkid = $projectId;
 		$fileUpload->proposal_id = $proposalId;
 		$fileUpload->save();
+
+		$detail = new ProjectDetail();
+		$detail->group_project_detail = '';
+		$detail->tools_detail = '';
+		$detail->project_pkid = $projectId;
+		$detail->save();
 
 		return redirect(url('student/myproject/waitapprove'));
 	}
@@ -168,8 +176,8 @@ class createProjectController extends Controller {
 		$data['url'] = url('student/myproject/create/'.$id);
 		$data['method'] = "put";
 
-		 $obj1 = GroupProject::find($id);
-		 $getId = $obj1->id;
+		$obj1 = GroupProject::find($id);
+		$getId = $obj1->id;
 		$data['projectNameEN'] = $obj1->group_project_eng_name;
 		$data['projectNameTH'] = $obj1->group_project_th_name;
 
@@ -197,12 +205,18 @@ class createProjectController extends Controller {
 							->join('advisors','advisor_id','=','advisors.id')
 							->where('project_pkid',$getId)
 							->select('prefix','advisor_fname','advisor_lname')->get();
-		$data['advPre1'] = $getAdv[0]->prefix;
-		$data['advFname1'] = $getAdv[0]->advisor_fname;
-		$data['advLname1'] = $getAdv[0]->advisor_lname;
-		$data['advPre2'] = $getAdv[1]->prefix;
-		$data['advFname2'] = $getAdv[1]->advisor_fname;
-		$data['advLname2'] = $getAdv[1]->advisor_lname;
+		if(count($getAdv)==2){
+			$data['advPre1'] = $getAdv[0]->prefix;
+			$data['advFname1'] = $getAdv[0]->advisor_fname;
+			$data['advLname1'] = $getAdv[0]->advisor_lname;
+			$data['advPre2'] = $getAdv[1]->prefix;
+			$data['advFname2'] = $getAdv[1]->advisor_fname;
+			$data['advLname2'] = $getAdv[1]->advisor_lname;
+		}else if(count($getAdv)==1){
+			$data['advPre1'] = $getAdv[0]->prefix;
+			$data['advFname1'] = $getAdv[0]->advisor_fname;
+			$data['advLname1'] = $getAdv[0]->advisor_lname;
+		}
 
 		$getFile = DB::table('project_proposals')
 							->join('proposals','proposal_id','=','proposals.id')
@@ -279,17 +293,31 @@ class createProjectController extends Controller {
 		$obj->advisor_position_id = '1';
 		$obj->save();
 
-		$obj = ProjectAdvisor::find($getAdv2);
-		$advisor = $request['browser2'];
-		$index = mb_strpos($advisor," ");
-		$index2 = mb_strpos($advisor," ",$index+1);
-		$lname = mb_substr($advisor,$index2+1);
-		$fname = mb_substr($advisor,$index+1,$index2-$index);
-		$advId = DB::table('advisors')->where('advisor_fname',$fname)
-									  							->where('advisor_lname',$lname)->value('id');
-		$obj->advisor_id = $advId;
-		$obj->advisor_position_id = '2';
-		$obj->save();
+		if($obj = ProjectAdvisor::find($getAdv2)){
+			$advisor = $request['browser2'];
+			$index = mb_strpos($advisor," ");
+			$index2 = mb_strpos($advisor," ",$index+1);
+			$lname = mb_substr($advisor,$index2+1);
+			$fname = mb_substr($advisor,$index+1,$index2-$index);
+			$advId = DB::table('advisors')->where('advisor_fname',$fname)
+										  							->where('advisor_lname',$lname)->value('id');
+			$obj->advisor_id = $advId;
+			$obj->advisor_position_id = '2';
+			$obj->save();
+		}else{
+			$obj = new ProjectAdvisor();
+			$advisor = $request['browser2'];
+			$index = mb_strpos($advisor," ");
+			$index2 = mb_strpos($advisor," ",$index+1);
+			$lname = mb_substr($advisor,$index2+1);
+			$fname = mb_substr($advisor,$index+1,$index2-$index);
+			$advId = DB::table('advisors')->where('advisor_fname',$fname)
+										  							->where('advisor_lname',$lname)->value('id');
+			$obj->project_pkid = $id;
+			$obj->advisor_id = $advId;
+			$obj->advisor_position_id = '2';
+		}
+
 		if($request->file('myfiles')){
 			$path = '/Applications/MAMP/htdocs/SIT-master/public/test';
   		$file = $request->file('myfiles');

@@ -79,7 +79,7 @@ class approveProjectController extends Controller
 
 
 
-    	return redirect('project/pending');
+    	return redirect(url('project/pending'));
     }
 
     public function deleteProject(Request $request){
