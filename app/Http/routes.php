@@ -19,9 +19,7 @@ Route::get('index', function () {
     return view('generalTmp');
 });
 
-Route::get('showproject', function () {
-    return view('showProject');
-});
+Route::resource('showproject','showProjectController');
 
 Route::get('testldap', function(){
 	return view('auth-ldap');
@@ -79,9 +77,8 @@ Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
-Route::get('student/myproject/edit','editProjectController@index');
+Route::resource('student/myproject/edit','editProjectController');
 
-Route::post('{post}/student/myproject/edit','editProjectController@postEditDetail');
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');

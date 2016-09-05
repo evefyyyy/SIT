@@ -4,6 +4,9 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+			<form class="" action="{{$url}}" method="post">
+				{{method_field($method)}}
+				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 			<div id="image-cropper">
 				<div class="cropit-preview cover-pic"></div>
 				<input type="file" name="file" id="file" class="cropit-image-input" />
@@ -37,7 +40,7 @@
 			  <div class="panel-heading">details</div>
 			  <div class="panel-body">
 			  	<div class="col-lg-12">
-			    	<textarea class="form-control" rows="3" placeholder="Enter a short description of your project"></textarea>
+			    	<textarea class="form-control" rows="3" placeholder="Enter a short description of your project" name="detail">{{$detail or ''}}</textarea>
 				</div>
 			  </div>
 			</div>
@@ -64,7 +67,7 @@
 					<div class="col-lg-12">
 						<textarea class="form-control" rows="4" placeholder="Mobile : Android JavaEE, SDK Emulator
 Database : SQLite
-Graphic : Adobe Photoshop, Illustratore"></textarea>
+Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea>
 					</div>
 				</div>
 			</div>
@@ -79,15 +82,15 @@ Graphic : Adobe Photoshop, Illustratore"></textarea>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre1}}{{$stdFname1}} {{$stdLname1}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
-			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre1}}{{$stdFname1}} {{$stdLname1}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
+			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email1" value="{{$email1 or ''}}"></div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre2}}{{$stdFname2}} {{$stdLname2}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
-			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre1}}{{$stdFname1}} {{$stdLname1}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
+			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email2" value="{{$email2 or ''}}"></div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre3 or ''}}{{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3 or ''}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
-			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email"></div>
+			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email3" value="{{$email3 or ''}}"></div>
 			</div>
 		</div>
 		<div class="panel panel-info">
@@ -110,7 +113,7 @@ Graphic : Adobe Photoshop, Illustratore"></textarea>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
-	
+		</form>
 </div>
 <script src="{!! URL::asset('js/jquery.cropit.js') !!}"></script>
 <script>
