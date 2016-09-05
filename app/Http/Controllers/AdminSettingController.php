@@ -32,7 +32,6 @@ class AdminSettingController extends Controller
 				['dday_gencode'=> $code, 'dday_type'=>2]
 				);
 		}
-		echo "Success";
 
 		return redirect('admin/setting');
 	}

@@ -920,6 +920,15 @@ h6 img {
   color: #737577;
   vertical-align: middle;
 }
+#detail .embed-responsive {
+  margin-bottom: 10px;
+}
+#detail .cover {
+  width: 100%;
+}
+#detail .form-control {
+  width: 100%;
+}
 /* cover pic */
 .cropit-preview {
   background-color: #f8f8f8;
@@ -927,15 +936,20 @@ h6 img {
   border: 5px solid #ccc;
   border-radius: 10px;
   margin-top: 10px;
-  width: 100%;
   margin-bottom: 10px;
 }
 .cover-pic {
-  height: 350px;
+  width: 1030px;
+  height: 458px;
 }
 .group-pic {
-  height: 300px;
+  width: 490px;
+  height: 280px;
   margin-top: 0;
+}
+.pic-size {
+  margin-left: 20px;
+  color: #999;
 }
 .cropit-preview-image-container {
   cursor: move;
@@ -997,14 +1011,7 @@ input[type="range"].cropit-image-zoom-input {
   float: right;
   margin-right: 20px;
 }
-.filestyle {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
+
 /** poster
 @media screen and (min-width: 640px) {
     img {

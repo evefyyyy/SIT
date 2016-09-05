@@ -3842,9 +3842,8 @@ tbody.collapse.in {
   position: relative;
   z-index: 2;
   float: right;
-  width: 50%;
+  width: 100%;
   font-size: 0.9em;
-  margin-bottom: 10px;
 }
 .input-group .form-control:focus {
   z-index: 3;
@@ -3964,11 +3963,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .input-group-btn {
   position: relative;
-  font-size: 0;
+  font-size: 0.975em;
   white-space: nowrap;
 }
 .input-group-btn > .btn {
   position: relative;
+  padding: 7px 12px;
 }
 .input-group-btn > .btn + .btn {
   margin-left: -1px;

@@ -19,6 +19,10 @@ Route::get('index', function () {
     return view('generalTmp');
 });
 
+Route::get('showproject', function () {
+    return view('showProject');
+});
+
 Route::get('testldap', function(){
 	return view('auth-ldap');
 });
@@ -45,7 +49,9 @@ Route::post('news/delete', function(){
 
 Route::get('project', 'AllProjectController@index');
 
-Route::get('dday', 'DdayController@genCode');
+Route::get('dday', 'DdayController@index');
+Route::get('dday/voteproject/{gencode}', 'DdayController@checkGenCode');
+
 Route::get('admin/setting', 'AdminSettingController@index');
 Route::get('admin/setting/{numbergencode}', 'AdminSettingController@enterGenCode');
 
