@@ -19,9 +19,7 @@ Route::get('index', function () {
     return view('generalTmp');
 });
 
-Route::get('showproject', function () {
-    return view('showProject');
-});
+Route::resource('showproject','showProjectController');
 
 Route::get('testldap', function(){
 	return view('auth-ldap');
