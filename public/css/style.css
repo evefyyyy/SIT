@@ -933,10 +933,10 @@ h6 img {
 #detail .form-control {
   width: 100%;
 }
-#detail .btn-primary,.btn-default {
-  float: right;
+.btn-save {
+  text-align: right;
   margin-top: 10px;
-  margin-left: 10px;
+  margin-right: 0;
 }
 /* cover pic */
 .cropit-preview {

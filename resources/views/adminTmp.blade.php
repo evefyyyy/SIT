@@ -5,11 +5,9 @@
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
-        <link href="{!! URL::asset('css/bootstrap-editable.css') !!}" rel="stylesheet">
         <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
-        <script src="{!! URL::asset('js/bootstrap-editable.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
         <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
         <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">

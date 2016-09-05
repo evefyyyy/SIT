@@ -256,23 +256,6 @@
 		, btnCancelLabel: '<i class="icon-remove-sign"></i> No'
 		, singleton: true
 		, popout: true
-		, onConfirm: function(){
-			var num = $("#num").val() ;
-		        $.ajax({
-		            type:"post",
-		            dataType: "",
-		            url :"/news/delete",
-		            data: {id: $("#nId"+num).val(),type: $("#type").val() , _token:$("#_token").val() },
-		            	success:function(data){
-		            		if(data == 'd'){
-		            			window.location.pathname = "/news/document/";
-		            		}else{
-		            			window.location.pathname = "/news/announcement/";
-		            		}
-		            		
-		            	}
-		     	});
-		}
 		, onCancel: function(){}
 
 	})
