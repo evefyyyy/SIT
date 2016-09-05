@@ -916,7 +916,7 @@ h6 img {
   margin-bottom: 10px;
   font-size: 0.895em;
 }
-#detail .glyphicon {
+#detail .glyphicon-picture {
   color: #737577;
   vertical-align: middle;
 }
@@ -926,8 +926,16 @@ h6 img {
   background-size: cover;
   border: 5px solid #ccc;
   border-radius: 10px;
-  margin-top: 7px;
+  margin-top: 10px;
+  width: 100%;
   margin-bottom: 10px;
+}
+.cover-pic {
+  height: 350px;
+}
+.group-pic {
+  height: 300px;
+  margin-top: 0;
 }
 .cropit-preview-image-container {
   cursor: move;
@@ -989,7 +997,14 @@ input[type="range"].cropit-image-zoom-input {
   float: right;
   margin-right: 20px;
 }
-
+.filestyle {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
 /** poster
 @media screen and (min-width: 640px) {
     img {

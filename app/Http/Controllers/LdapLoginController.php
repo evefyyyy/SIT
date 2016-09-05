@@ -23,6 +23,7 @@ class LdapLoginController extends Controller
 				$ldapbind = ldap_bind($ldapconn, $ldaprdn, $ldappass);
 			
 				echo "LDAP Success";
+
 			}catch(Exception $e){
 				echo "Incorrect Password or Something when wrong";
 			}

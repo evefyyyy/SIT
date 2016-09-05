@@ -30,4 +30,8 @@ class GroupProject extends Model
     {
       return $this->hasMany('App\ProjectProposal', 'project_pkid');
     }
+    public function ddayProject()
+    {
+      return $this->hasMany('App\DdayProject', 'project_pkid');
+    }
 }

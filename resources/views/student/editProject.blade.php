@@ -5,7 +5,7 @@
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 			<div id="image-cropper">
-			  <div class="cropit-preview"></div>
+			  <div class="cropit-preview cover-pic"></div>
 			  <input type="file" name="file" id="file" class="cropit-image-input" />
 			  <label for="file" class="btn btn-default">Select new image</label>
 			  <button class="btn btn-primary">save</button>
@@ -21,8 +21,8 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<h3>Driving simulation</h3>
-			<h4>เกมจำลองสถานการณ์การสอบใบอนุญาติขับขี่รถยนต์</h4>
+			<h3>{{$projectNameEN}}</h3>
+			<h4>{{$projectNameTH}}</h4>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -32,9 +32,12 @@
 			<div class="panel panel-info">
 			  <div class="panel-heading">details</div>
 			  <div class="panel-body">
-			  	<form class="form-inline editableform" method="post" action="{{url('student/myproject/edit/$detailId')}}">
+			  	<div class="col-lg-12">
+			  	<form class="form-inline editableform text">
+
 			    	<a href="#" id="desc" data-type="textarea" data-title="Enter username">Enter a short description of your project.</a>
 				</form>
+			</div>
 			  </div>
 			</div>
 		</div>
@@ -44,7 +47,7 @@
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
 			<div id="image-cropper">
-			  <div class="cropit-preview"></div>
+			  <div class="cropit-preview group-pic"></div>
 			  <input type="file" name="file" id="file" class="cropit-image-input" />
 			  <label for="file" class="btn btn-default">Select new image</label>
 			  <button class="btn btn-primary">save</button>
@@ -76,6 +79,14 @@
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> <a href="#" id="email3">email</a></div>
 			</div>
 		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">advisor</div>
+			<div class="panel-body">
+			@foreach($advisors as $adv)
+			<div class="col-lg-12 text">{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</div>
+			@endforeach
+			</div>
+		</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -96,15 +107,9 @@
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
+
 		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
-		<div class="panel panel-info">
-			<div class="panel-heading">advisor</div>
-			<div class="panel-body">
-				@foreach($advisors as $adv)
-			<div class="col-lg-12 text">{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</div>
-			@endforeach
-			</div>
-		</div>
+
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>

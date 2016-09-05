@@ -66,8 +66,8 @@ class editProjectController extends Controller {
 													->select('prefix','advisor_fname','advisor_lname')->get();
 
 		$obj['detailId'] = DB::table('group_projects')
-												->join('projects_detail','group_projects.id','=','project_pkid')
-												->where('group_projects.id',$checkProject)->value('projects_detail.id');
+												->join('project_detail','group_projects.id','=','project_pkid')
+												->where('group_projects.id',$checkProject)->value('project_detail.id');
 
 		return view('student.editProject',$obj);
 	}
