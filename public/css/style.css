@@ -923,11 +923,20 @@ h6 img {
 #detail .embed-responsive {
   margin-bottom: 10px;
 }
-#detail .cover {
+#detail img.cover {
   width: 100%;
+}
+#detail img.group-member {
+  width: 100%;
+  margin-bottom: 20px;
 }
 #detail .form-control {
   width: 100%;
+}
+#detail .btn-primary,.btn-default {
+  float: right;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 /* cover pic */
 .cropit-preview {
@@ -938,17 +947,40 @@ h6 img {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.cover-pic {
-  width: 1030px;
-  height: 458px;
+
+@media (min-width : 320px) {
+  .cover-pic {
+    height: 212px;
+  }
 }
+@media (min-width : 1082px) {
+  .cover-pic {
+    height: 477px;
+  }
+}
+@media (min-width : 1591px) {
+  .cover-pic {
+    height: 702px;
+  }
+}
+@media (min-width : 2004px) {
+  .cover-pic {
+    height: 884px;
+  }
+}
+@media (min-width : 2435px) {
+  .cover-pic {
+    height: 1074px;
+  }
+}
+
 .group-pic {
   width: 490px;
   height: 280px;
   margin-top: 0;
 }
 .pic-size {
-  margin-left: 20px;
+  margin: 0 20px;
   color: #999;
 }
 .cropit-preview-image-container {
@@ -1007,11 +1039,6 @@ input[type="range"].cropit-image-zoom-input {
   display: inline-block;
   text-transform: uppercase;
 }
-.zoom-image {
-  float: right;
-  margin-right: 20px;
-}
-
 /** poster
 @media screen and (min-width: 640px) {
     img {
