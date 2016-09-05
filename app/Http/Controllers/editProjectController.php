@@ -72,7 +72,7 @@ class editProjectController extends Controller {
 		return view('student.editProject',$obj);
 	}
 	public function postEditDetail() {
-
+		dd('editjaaa');
 		$projectDetail = Input::get('pk');
 		$detail = Input::get('value');
 		$detailData = projectDetail::whereId($projectDetail)->first();

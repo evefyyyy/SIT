@@ -75,7 +75,9 @@ Route::resource('student/myproject/waitapprove','waitApproveController');
 
 Route::get('student/myproject/edit','editProjectController@index');
 
-Route::post('{post}/student/myproject/edit','editProjectController@postEditDetail');
+Route::post('student/myproject/editja',function(){
+  dd('oatlnwza');
+});
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
