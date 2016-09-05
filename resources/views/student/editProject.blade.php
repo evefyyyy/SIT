@@ -4,6 +4,8 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+			<form class="" action="{{$url}}" method="post">
+				{{method_field($method)}}
 			<div id="image-cropper">
 				<div class="cropit-preview cover-pic"></div>
 				<input type="file" name="file" id="file" class="cropit-image-input" />
@@ -109,7 +111,7 @@ Graphic : Adobe Photoshop, Illustratore"></textarea>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
-	
+		</form>
 </div>
 <script src="{!! URL::asset('js/jquery.cropit.js') !!}"></script>
 <script>

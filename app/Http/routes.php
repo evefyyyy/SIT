@@ -79,11 +79,8 @@ Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
-Route::get('student/myproject/edit','editProjectController@index');
+Route::resource('student/myproject/edit','editProjectController');
 
-Route::post('student/myproject/editja',function(){
-  dd('oatlnwza');
-});
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');

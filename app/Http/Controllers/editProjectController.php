@@ -69,19 +69,28 @@ class editProjectController extends Controller {
 												->join('project_detail','group_projects.id','=','project_pkid')
 												->where('group_projects.id',$checkProject)->value('project_detail.id');
 
+		$obj['url'] = url('student/myproject/edit/'.$checkProject.'/edit');
+		$obj['method'] = "post";
+
 		return view('student.editProject',$obj);
 	}
-	public function postEditDetail() {
-		dd('editjaaa');
-		$projectDetail = Input::get('pk');
-		$detail = Input::get('value');
-		$detailData = projectDetail::whereId($projectDetail)->first();
-		$detailData->group_project_detail = $detail;
-		if($detailData->save())
-			return Response::json(array('status'=>1));
-		else {
-			return Response::json(array('status'=>0));
-		}
+
+	public function edit($id)
+	{
+		$data['url'] = url('student/myproject/edit/'.$id);
+		$data['method'] = "put";
+
+		$obj1 = GroupProject::find($id);
+		$getId = $obj1->id;
+
+		$getStdData = DB::table('project_students')
+									->join('group_projects','project_pkid','=','proup_projects.id')
+									->where('')
+
+	}
+
+	public function update(Request $request,$id)
+	{
 
 	}
 }
