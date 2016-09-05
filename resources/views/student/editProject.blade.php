@@ -9,7 +9,7 @@
 			<div id="image-cropper">
 				<div class="cropit-preview cover-pic"></div>
 				<input type="file" name="file" id="file" class="cropit-image-input" />
-				<label for="file" class="btn btn-default">Select new image</label>
+				<label for="file" class="btn btn-browse">Select new image</label>
 				<label class="pic-size">2480 x 1094 px</label>
 				<span class="zoom-image">
 					<span class="glyphicon glyphicon-picture gi-1x"></span>
@@ -27,7 +27,8 @@
 			<h4>{{$projectNameTH}}</h4>
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<button class="btn btn-primary" href="/showproject">save & show my project</button>
+				<button class="btn btn-primary" onclick="window.location.href='/showproject'">save & show my project</button>
+				<a class="btn btn-default" onclick="goBack()">back</a>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -51,13 +52,13 @@
 			<div id="image-cropper">
 				<div class="cropit-preview group-pic"></div>
 				<input type="file" name="file" id="file1" class="cropit-image-input" />
-				<label for="file1" class="btn btn-default">Select new image</label>
-				<span class="zoom-image">
+				<label for="file1" class="btn btn-browse">Select new image</label>
+				<label class="pic-size">4:3 aspect ratio</label>
+				<div class="zoom-image" style="float:right">
 					<span class="glyphicon glyphicon-picture gi-1x"></span>
 					<input type="range" class="cropit-image-zoom-input" />
 					<span class="glyphicon glyphicon-picture gi-2x"></span>
-					<p class="pic-size">4:3 aspect ratio</p>
-				</span>
+				</div>
 			</div><br>
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
@@ -100,7 +101,7 @@ Graphic : Adobe Photoshop, Illustratore"></textarea>
 			</div>
 		</div>
 		<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/QyhrOruvT1c"></iframe>
+				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DE7vsFYj81c"></iframe>
 			</div>
 			<div class="input-group">
 				<input type="text" class="form-control" value="" placeholder="Paste a youtube embed link">
@@ -115,6 +116,9 @@ Graphic : Adobe Photoshop, Illustratore"></textarea>
 </div>
 <script src="{!! URL::asset('js/jquery.cropit.js') !!}"></script>
 <script>
+function goBack() {
+  window.history.back()
+}
 $('#image-cropper').cropit({ imageBackground: true });
 </script>
 @stop

@@ -3295,6 +3295,21 @@ fieldset[disabled] .btn-info.focus {
   color: #5bc0de;
   background-color: #fff;
 }
+.btn-browse {
+    font-size: 0.975em;
+    color: #ff7f7f;
+    background-color: #fff;
+    border-color: #ccc;
+    margin: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+.btn-browse:hover {
+    color: #ff7f7f;
+    border-color: #ff7f7f;
+}
 .btn-warning {
   color: #fff;
   background-color: #f0ad4e;
