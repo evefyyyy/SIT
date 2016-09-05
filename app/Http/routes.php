@@ -45,6 +45,10 @@ Route::post('news/delete', function(){
 
 Route::get('project', 'AllProjectController@index');
 
+Route::get('dday', 'DdayController@genCode');
+Route::get('admin/setting', 'AdminSettingController@index');
+Route::get('admin/setting/{numbergencode}', 'AdminSettingController@enterGenCode');
+
 Route::get('search',function(){
   return view('student.createProject');
 });
@@ -63,13 +67,15 @@ Route::get('project/pending/{option}/{project_id}/{group_id}', 'approveProjectCo
 
 Route::get('project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');
 
-Route::resource('project/pending','approveProjectController@index');
+Route::get('project/pending','approveProjectController@index');
 
 Route::resource('student/myproject/create','createProjectController');
 
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
-Route::resource('student/myproject/edit','editProjectController');
+Route::get('student/myproject/edit','editProjectController@index');
+
+Route::post('{post}/student/myproject/edit','editProjectController@postEditDetail');
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
