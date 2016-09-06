@@ -4,12 +4,12 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<form class="" action="{{$url}}" method="post">
+			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 			<div id="image-cropper">
 				<div class="cropit-preview cover-pic"></div>
-				<input type="file" name="file" id="file" class="cropit-image-input" />
+				<input type="file" name="poster" id="file" class="cropit-image-input" />
 				<label for="file" class="btn btn-browse">Select new image</label>
 				<label class="pic-size">2480 x 1094 px</label>
 				<span class="zoom-image">

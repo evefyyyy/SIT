@@ -19,6 +19,7 @@ use App\ProjectStudent;
 use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
+use App\Picture;
 
 class showProjectController extends Controller
 {
@@ -79,6 +80,10 @@ class showProjectController extends Controller
                       ->join('project_detail','group_projects.id','=','project_pkid')
                       ->where('group_projects.id',$checkProject)
                       ->value('tools_detail');
+
+    $obj['picture'] = DB::table('pictures')
+                      ->where('project_pkid',$checkProject)
+                      ->value('picture_path_name');      
 
 
     return view('showProject',$obj);

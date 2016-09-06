@@ -19,12 +19,13 @@ use App\ProjectStudent;
 use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
+use App\Picture;
 
 
 
 class editProjectController extends Controller {
 
-	
+
 
 	public function edit($id)
 	{
@@ -149,6 +150,31 @@ class editProjectController extends Controller {
 		$obj->group_project_detail = $request['detail'];
 		$obj->tools_detail = $request['tools'];
 		$obj->save();
+
+		$picture = DB::table('pictures')
+								->join('group_projects','project_pkid','=','group_projects.id')
+								->where('project_pkid',$getId)
+								->value('pictures.id');
+
+		if($request->file('poster')){
+			$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+			$file = $request->file('poster');
+			$filename = $file->getClientOriginalName();
+			$move = $file->move($path,$filename);
+			$obj = Picture::find($picture);
+			$obj->picture_path_name = $move;
+			$obj->save();
+		}
+								// dd($obj);
+
+			// $path = base_path('public/projectPoster/');
+			// $file = $request->file('poster');
+			// $extension = $file->getClientOriginalExtension();
+			// $filename = "Poster".$getId.".".$extension;
+			// $move = $file->move($path,$filename);
+			// $obj = Picture::find($picture);
+			// $obj->picture_path_name = $move;
+			// $obj->save();
 
 		return redirect(url('showproject'));
 	}

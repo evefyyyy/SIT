@@ -19,7 +19,7 @@ use App\ProjectStudent;
 use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
-
+use App\Picture;
 
 
 class createProjectController extends Controller {
@@ -130,11 +130,6 @@ class createProjectController extends Controller {
 		$adv->save();
 		}
 
-		$path = '/Applications/MAMP/htdocs/SIT-master/public/test';
-		$file = $request->file('myfiles')	;
-		$filename = $file->getClientOriginalName();
-		$move = $file->move($path,$filename);
-
 		$proposal = new Proposal();
 		$proposal->proposal_path_name = $move;
 		$proposal->save();
@@ -151,6 +146,12 @@ class createProjectController extends Controller {
 		$detail->tools_detail = '';
 		$detail->project_pkid = $projectId;
 		$detail->save();
+
+		$picture = new Picture();
+		$picture->picture_path_name = '';
+		$picture->project_pkid = $projectId;
+		// $picture->
+		$picture->save();
 
 		return redirect(url('student/myproject/waitapprove'));
 	}
@@ -325,6 +326,7 @@ class createProjectController extends Controller {
   		$move = $file->move($path,$filename);
   		$obj = Proposal::find($getProposal);
   		$obj->proposal_path_name = $move;
+			dd($obj);
 			$obj->save();
 		}
 
