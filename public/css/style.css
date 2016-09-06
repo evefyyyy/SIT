@@ -930,8 +930,25 @@ h6 img {
   width: 100%;
   margin-bottom: 20px;
 }
+#detail img#group-member {
+  width: 500px;
+  height: 333px;
+  margin-bottom: 10px;
+  background:url(/img/no-image.png) no-repeat center;
+}
+#detail .group {
+  margin-bottom: 20px;
+}
 #detail .form-control {
   width: 100%;
+}
+#detail input[type=file] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 .btn-save {
   text-align: right;
@@ -982,6 +999,7 @@ h6 img {
 .pic-size {
   margin: 0 20px;
   color: #999;
+  vertical-align: top;
 }
 .cropit-preview-image-container {
   cursor: move;

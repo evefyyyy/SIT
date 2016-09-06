@@ -50,7 +50,13 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
-			<div id="image-cropper">
+			<form id="form1" runat="server">
+				<img id="group-member" src="#" alt="your image" />
+				<input type="file" id="imgInp"/>
+				<label for="imgInp" class="btn btn-browse group">Select new image</label>
+				<label class="pic-size">group member picture (4:3)</label>
+		    </form>
+			<!--<div id="image-cropper">
 				<div class="cropit-preview group-pic"></div>
 				<input type="file" name="file" id="file1" class="cropit-image-input" />
 				<label for="file1" class="btn btn-browse">Select new image</label>
@@ -60,7 +66,7 @@
 					<input type="range" class="cropit-image-zoom-input" />
 					<span class="glyphicon glyphicon-picture gi-2x"></span>
 				</div>
-			</div><br>
+			</div><br> -->
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
@@ -121,5 +127,20 @@ function goBack() {
   window.history.back()
 }
 $('#image-cropper').cropit({ imageBackground: true });
+ function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#group-member').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
 </script>
 @stop
