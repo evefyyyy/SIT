@@ -81,9 +81,15 @@ class showProjectController extends Controller
                       ->where('group_projects.id',$checkProject)
                       ->value('tools_detail');
 
-    $obj['picture'] = DB::table('pictures')
+    $obj['poster'] = DB::table('pictures')
                       ->where('project_pkid',$checkProject)
+                      ->where('picture_type_id','=','1')
                       ->value('picture_path_name');
+
+    $obj['groupPic'] = DB::table('pictures')
+                    ->where('project_pkid',$checkProject)
+                    ->where('picture_type_id','=','2')
+                    ->value('picture_path_name');
 
     return view('showProject',$obj);
   }

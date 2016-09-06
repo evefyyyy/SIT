@@ -156,20 +156,70 @@ class editProjectController extends Controller {
 		$obj->tools_detail = $request['tools'];
 		$obj->save();
 
-		$picture = DB::table('pictures')
+		$poster = DB::table('pictures')
 								->join('group_projects','project_pkid','=','group_projects.id')
 								->where('project_pkid',$getId)
+								->where('picture_type_id','=','1')
 								->value('pictures.id');
 
-		if($request->file('poster')){
-			$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
-			$file = $request->file('poster');
-			$filename = $file->getClientOriginalName();
-			$move = $file->move($path,$filename);
-			$obj = Picture::find($picture);
-			$naja = '/projectPoster'."/".$filename ;
-			$obj->picture_path_name = $naja;
-			$obj->save();
+		if($poster != null){
+				if($request->file('poster')){
+					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+					$file = $request->file('poster');
+					$filename = $file->getClientOriginalName();
+					$move = $file->move($path,$filename);
+					$obj = Picture::find($poster);
+					$savePic = '/projectPoster'."/".$filename ;
+					$obj->picture_path_name = $savePic;
+					$obj->picture_type_id = '1';
+					$obj->save();
+				}
+		}else if($poster == null){
+			if($request->file('poster')){
+				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+				$file = $request->file('poster');
+				$filename = $file->getClientOriginalName();
+				$move = $file->move($path,$filename);
+				$obj = new Picture();
+				$savePic = '/projectPoster'."/".$filename ;
+				$obj->picture_path_name = $savePic;
+				$obj->picture_type_id = '1';
+				$obj->project_pkid = $getId;
+				$obj->save();
+			}
+		}
+
+		$groupPic = DB::table('pictures')
+								->join('group_projects','project_pkid','=','group_projects.id')
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','2')
+								->value('pictures.id');
+
+		if($groupPic != null){
+				if($request->file('groupPicture')){
+					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+					$file = $request->file('groupPicture');
+					$filename = $file->getClientOriginalName();
+					$move = $file->move($path,$filename);
+					$obj = Picture::find($groupPic);
+					$savePic = '/projectPoster'."/".$filename ;
+					$obj->picture_path_name = $savePic;
+					$obj->picture_type_id = '2';
+					$obj->save();
+				}
+		}else if($groupPic == null){
+			if($request->file('groupPicture')){
+				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+				$file = $request->file('groupPicture');
+				$filename = $file->getClientOriginalName();
+				$move = $file->move($path,$filename);
+				$obj = new Picture();
+				$savePic = '/projectPoster'."/".$filename ;
+				$obj->picture_path_name = $savePic;
+				$obj->picture_type_id = '2';
+				$obj->project_pkid = $getId;
+				$obj->save();
+			}
 		}
 
 		return redirect(url('showproject'));
