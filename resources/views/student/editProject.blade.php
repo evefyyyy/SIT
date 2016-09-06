@@ -7,17 +7,10 @@
 			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-			<div id="image-cropper">
-				<div class="cropit-preview cover-pic"></div>
-				<input type="file" name="poster" id="file" class="cropit-image-input" />
-				<label for="file" class="btn btn-browse">Select new image</label>
-				<label class="pic-size">2480 x 1094 px</label>
-				<span class="zoom-image">
-					<span class="glyphicon glyphicon-picture gi-1x"></span>
-					<input type="range" class="cropit-image-zoom-input" />
-					<span class="glyphicon glyphicon-picture gi-2x"></span>
-				</span>
-			</div>
+				<img id="cover" src="#" alt="your image" />
+				<input type="file" id="img-cover"/>
+				<label for="img-cover" class="btn btn-browse group">Select new image</label>
+				<label class="pic-size">poster 2480 x 1094 px</label>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -108,18 +101,20 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 	</div>
 		</form>
 </div>
-<script src="{!! URL::asset('js/jquery.cropit.js') !!}"></script>
 <script>
 function goBack() {
   window.history.back()
 }
-$('#image-cropper').cropit({ imageBackground: true });
  function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
+            console.log('group-member')
             reader.onload = function (e) {
-                $('#group-member').attr('src', e.target.result);
+            	if(input.id === 'imgInp'){
+                	$('#group-member').attr('src', e.target.result);
+            	}else if(input.id === 'img-cover'){
+            		$('#cover').attr('src', e.target.result);
+            	}
             }
 
             reader.readAsDataURL(input.files[0]);
@@ -129,5 +124,13 @@ $('#image-cropper').cropit({ imageBackground: true });
     $("#imgInp").change(function(){
         readURL(this);
     });
+
+    $("#img-cover").change(function(){
+        readURL(this);
+    });
+
+
+
+
 </script>
 @stop

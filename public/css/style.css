@@ -965,29 +965,44 @@ h6 img {
   margin-bottom: 10px;
 }
 
-@media (min-width : 320px) {
-  .cover-pic {
-    height: 212px;
+@media (min-width : 964px) {
+  img#cover {
+    width: 964px;
+    height: 425px;
+    margin-bottom: 10px;
+    background:url(/img/no-poster.png) no-repeat center;
   }
 }
-@media (min-width : 1082px) {
-  .cover-pic {
-    height: 477px;
+@media (min-width : 1024px) {
+  img#cover {
+    width: 1024px;
+    height: 452px;
+    margin-bottom: 10px;
+    background:url(/img/no-poster.png) no-repeat center;
   }
 }
-@media (min-width : 1591px) {
-  .cover-pic {
-    height: 702px;
+@media (min-width : 1737px) {
+  img#cover {
+    width: 1737px;
+    height: 766px;
+    margin-bottom: 10px;
+    background:url(/img/no-poster.png) no-repeat center;
   }
 }
-@media (min-width : 2004px) {
-  .cover-pic {
-    height: 884px;
+@media (min-width : 2103px) {
+  img#cover {
+    width:  2103px;
+    height: 928px;
+    margin-bottom: 10px;
+    background:url(/img/no-poster.png) no-repeat center;
   }
 }
-@media (min-width : 2435px) {
-  .cover-pic {
-    height: 1074px;
+@media (min-width : 2480px) {
+  img#cover {
+    width: 2480px;
+    height: 1094px;
+    margin-bottom: 10px;
+    background:url(/img/no-poster.png) no-repeat center;
   }
 }
 
