@@ -96,6 +96,11 @@ class editProjectController extends Controller {
 										->where('project_pkid',$getId)
 										->value('tools_detail');
 
+		$data['picture'] = DB::table('pictures')
+										->join('group_projects','project_pkid','=','group_projects.id')
+										->where('project_pkid',$getId)
+						 			  ->value('pictures.picture_path_name');
+
 		return view('student.editProject',$data);
 
 	}

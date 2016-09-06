@@ -83,8 +83,7 @@ class showProjectController extends Controller
 
     $obj['picture'] = DB::table('pictures')
                       ->where('project_pkid',$checkProject)
-                      ->value('picture_path_name');      
-
+                      ->value('picture_path_name');
 
     return view('showProject',$obj);
   }
