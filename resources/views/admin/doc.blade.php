@@ -81,7 +81,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
 	        <h4 class="modal-title">New Document</h4>
 	      </div>
 	      <div class="modal-body">
@@ -108,10 +108,26 @@
 	<script src="{!! URL::asset('js/create.js') !!}"></script>
 	<script>
 		$('[data-toggle=confirmation]').confirmation({
-		  rootSelector: '[data-toggle=confirmation]',
-		  // other options
-		});
+				rootSelector: '[data-toggle=confirmation]',
+				placement: 'top',
+				onConfirm: function() {
+					var num = $("#num").val() ;
+					$.ajax({
+						type:"post",
+						dataType: "",
+						url :"/news/delete",
+						data: {id: $("#nId"+num).val(),type: $("#type").val() , _token:$("#_token").val() },
+						success:function(data){
+							if(data == 'd'){
+								window.location.pathname = "/news/document/";
+							}else{
+								window.location.pathname = "/news/announcement/";
+							}
 
+						}
+					});
+				}
+		});
 		function copy(x) {
 			$y = $("#title"+x).val() ;
 			document.getElementById('copy'+x).value = $y;			
