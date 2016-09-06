@@ -130,6 +130,12 @@ class createProjectController extends Controller {
 		$adv->save();
 		}
 
+		$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+		$file = $request->file('myfiles');
+		$filename = $file->getClientOriginalName();
+		$move = $file->move($path,$filename);
+			
+
 		$proposal = new Proposal();
 		$proposal->proposal_path_name = $move;
 		$proposal->save();
@@ -150,7 +156,7 @@ class createProjectController extends Controller {
 		$picture = new Picture();
 		$picture->picture_path_name = '';
 		$picture->project_pkid = $projectId;
-		// $picture->
+		$picture->picture_type_id = '1';
 		$picture->save();
 
 		return redirect(url('student/myproject/waitapprove'));
@@ -326,8 +332,7 @@ class createProjectController extends Controller {
   		$move = $file->move($path,$filename);
   		$obj = Proposal::find($getProposal);
   		$obj->proposal_path_name = $move;
-			dd($obj);
-			$obj->save();
+					$obj->save();
 		}
 
 		//

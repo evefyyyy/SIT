@@ -1101,7 +1101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    name: 'smallImage',
 	    type: 'string',
 	    description: 'When set to `\'reject\'`, `onImageError` would be called when cropit loads an image that is smaller than the container.\n        When set to `\'allow\'`, images smaller than the container can be zoomed down to its original size, overiding `minZoom` option.\n        When set to `\'stretch\'`, the minimum zoom of small images would follow `minZoom` option.',
-	    'default': 'reject'
+	    'default': 'allow'
 	  }],
 
 	  callbacks: [{
