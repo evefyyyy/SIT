@@ -162,19 +162,10 @@ class editProjectController extends Controller {
 			$filename = $file->getClientOriginalName();
 			$move = $file->move($path,$filename);
 			$obj = Picture::find($picture);
-			$obj->picture_path_name = $move;
+			$naja = '/projectPoster'."/".$filename ;
+			$obj->picture_path_name = $naja;
 			$obj->save();
 		}
-								// dd($obj);
-
-			// $path = base_path('public/projectPoster/');
-			// $file = $request->file('poster');
-			// $extension = $file->getClientOriginalExtension();
-			// $filename = "Poster".$getId.".".$extension;
-			// $move = $file->move($path,$filename);
-			// $obj = Picture::find($picture);
-			// $obj->picture_path_name = $move;
-			// $obj->save();
 
 		return redirect(url('showproject'));
 	}
