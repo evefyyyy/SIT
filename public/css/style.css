@@ -491,16 +491,20 @@ option {
     text-transform: lowercase;
     padding-left: 10px;
 }
-#proid .form-control {
-    height: 30px !important;
+#proid label {
     float: right;
-    color: #2C3E50;
-    font-size: 0.9em;
+    font-size: 1.1em;
     text-transform: uppercase;
     width: 100px;
+    color: #555;
     display: inline;
     margin-right: 10px;
+    padding: 2px 5px;
     text-align: center;
+    border: 2px solid #FFF8BC;
+    background-color: #FFF8BC;
+    border-radius: 3px;
+    font-weight: bold;
 }
 .pending a {
     text-decoration: none;
@@ -546,7 +550,6 @@ option {
 .rejectbt:hover {
     background: #FF3232;
 }
-
 /* ------------ popup ------------- */
 .cd-popup {
   position: fixed;
@@ -744,7 +747,11 @@ option {
     color: #B6B6B6;
     text-transform: none !important;
 }
-
+#projectTB i {
+    padding: 0 15px;
+    color: #CECECE;
+    font-weight: normal;
+}
 #projectTB table{
   margin-top: 30px;
   margin-bottom: 30px;
@@ -760,9 +767,6 @@ option {
 }
 #projectTB a:hover {
   color: #40c3a7;
-}
-#projectTB .allpro {
-  float: right;
 }
 h6 img {
     height: 15px;
