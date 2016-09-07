@@ -67,8 +67,8 @@ function DataTo(value, id) {
     									@endforeach
     								</td>
     								<?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get(); ?>
-    								<th>main advisor<span>:</span></th>
-    								<td>
+    								<th style="border:0">main advisor<span>:</span></th>
+    								<td style="border:0">
     									@foreach($advisors as $key => $advisor)
     									{{ $advisor->advisor->advisor_fname." ".$advisor->advisor->advisor_lname }}<br>
     									@endforeach
