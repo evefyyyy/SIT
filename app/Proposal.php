@@ -6,17 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proposal extends Model
 {
-    protected $table = 'proposals';
-    protected $fillable =
-    [
-      'proposal_path_name',
-      'proposal_sourcode_path_name',
-      'date'
-    ];
+    protected $table = 'proposals';ß
 
     public function projectProposal()
     {
-      return $this->hasMany('App\projectProposal','proposal_id');
+      return $this->hasMany('App\ProjectProposal','proposal_id');
     }
 
 }

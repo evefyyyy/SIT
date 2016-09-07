@@ -7,14 +7,14 @@
 			<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 			<!-- progressbar -->
 			<ul id="progressbar">
-				<li class="active">Create project</li>
+				<li class="active">Edit project</li>
 				<li>Team members</li>
 				<li>Advisors</li>
 		    	<li>Submit</li>
 			</ul>
 			<!-- fieldsets -->
 			<fieldset>
-				<h2 class="fs-title">Create project</h2>
+				<h2 class="fs-title">Edit project</h2>
 		    	<h3 class="fs-subtitle">Enter project name and select category</h3>
 		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="projectNameEN" value="{{$projectNameEN or ''}}" requried/>
 				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="projectNameTH" value="{{$projectNameTH or ''}}"requried/>
