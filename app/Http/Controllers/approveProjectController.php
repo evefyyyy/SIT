@@ -12,6 +12,7 @@ use App\Http\Requests;
 use App\ProjectStudent;
 use App\ProjectJoinStudents;
 use App\ProjectProposal;
+use App\Proposal;
 use DB;
 
 class approveProjectController extends Controller
