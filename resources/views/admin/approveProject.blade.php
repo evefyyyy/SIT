@@ -15,8 +15,8 @@ function DataTo(value, id) {
     					<tr>
     						<th colspan="4">
     							{{$countProject}} Pending Projects
-    						<span style="float:right">
-    							<a href="#">approve all</a><i>|</i><a href="/project">back to approved projects</a>
+    						<span class="approveall">
+    							<a href="#">approve all</a><i>|</i><a class="back" href="/project">back to approved projects</a>
     						</span>
     						</th>
     					</tr>

@@ -768,6 +768,13 @@ option {
 #projectTB a:hover {
   color: #40c3a7;
 }
+#projectTB .approveall {
+  float: right;
+  font-weight: normal;
+}
+#projectTB .back:hover {
+  color: #ff7f7f;
+}
 h6 img {
     height: 15px;
 }
