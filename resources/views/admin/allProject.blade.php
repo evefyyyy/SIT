@@ -39,7 +39,7 @@
 					</td>
 					<td>{{$pj->groupProject->type->type_name}}</td>
 					<td>health</td>
-					<td id="center"><a href="#" download><i class="flaticon-pdf-file-format-symbol"></td></a>
+					<td id="center"><a href="#" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
 				</tr>
 				@endif
 				@endforeach
