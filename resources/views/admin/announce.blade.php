@@ -65,6 +65,15 @@
 								<input type="file" id="file" name="myfiles" />
 								<br/>
 							</div>
+							<div class="form-group" style="width:30%">
+								<label for="message-text" class="control-label">Expiration date</label>
+								<div class='input-group date datetimepicker'>
+									<input type='text' class="form-control" />
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
 							<input type="hidden" name="hId" value="{{$n->id}}">
 							<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 						</div>
@@ -115,7 +124,16 @@
 								<div class="form-group">
 									<label for="message-text" class="control-label">File</label>
 									<input type="file" id="file" name="myfiles"/>
-									<br/>
+									<br>
+								</div>
+								<div class="form-group" style="width:30%">
+									<label for="message-text" class="control-label">Expiration date</label>
+									<div class='input-group date datetimepicker'>
+										<input type='text' class="form-control" />
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -127,7 +145,12 @@
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 			<script src="{!! URL::asset('js/create.js') !!}"></script>
-			<script>
+			<script type="text/javascript">
+			$(function () {
+				$('.datetimepicker').datetimepicker({
+					format: 'DD/MM/YYYY'
+				});
+			});
 			$('[data-toggle=confirmation]').confirmation({
 				rootSelector: '[data-toggle=confirmation]',
 				placement: 'top',
@@ -157,5 +180,5 @@
 				document.getElementById('num').value = x;			
 			}
 
-					</script>
-					@stop
+			</script>
+			@stop
