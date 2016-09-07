@@ -153,18 +153,6 @@ class createProjectController extends Controller {
 		$detail->project_pkid = $projectId;
 		$detail->save();
 
-		// $picture = new Picture();
-		// $picture->picture_path_name = '';
-		// $picture->project_pkid = $projectId;
-		// $picture->picture_type_id = '1';
-		// $picture->save();
-		//
-		// $picture = new Picture();
-		// $picture->picture_path_name = '';
-		// $picture->project_pkid = $projectId;
-		// $picture->picture_type_id = '2';
-		// $picture->save();
-
 		return redirect(url('student/myproject/waitapprove'));
 	}
 

@@ -8,7 +8,7 @@
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				<img id="cover" src="#" alt="your image" />
-				<input type="file" id="img-cover"/>
+				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse group">Select new image</label>
 				<label class="pic-size">poster 2480 x 1094 px</label>
 		</div>

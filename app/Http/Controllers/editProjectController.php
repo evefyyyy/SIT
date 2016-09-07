@@ -5,6 +5,7 @@ use Input;
 use Redirect;
 use File;
 use DB;
+use Image;
 use App\Model\studentProfile;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -164,22 +165,20 @@ class editProjectController extends Controller {
 
 		if($poster != null){
 				if($request->file('poster')){
-					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 					$file = $request->file('poster');
 					$filename = $file->getClientOriginalName();
-					$move = $file->move($path,$filename);
 					$obj = Picture::find($poster);
 					$savePic = '/projectPoster'."/".$filename ;
 					$obj->picture_path_name = $savePic;
 					$obj->picture_type_id = '1';
 					$obj->save();
+
+
 				}
 		}else if($poster == null){
 			if($request->file('poster')){
-				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 				$file = $request->file('poster');
 				$filename = $file->getClientOriginalName();
-				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
 				$obj->picture_path_name = $savePic;
@@ -197,10 +196,8 @@ class editProjectController extends Controller {
 
 		if($groupPic != null){
 				if($request->file('groupPicture')){
-					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 					$file = $request->file('groupPicture');
 					$filename = $file->getClientOriginalName();
-					$move = $file->move($path,$filename);
 					$obj = Picture::find($groupPic);
 					$savePic = '/projectPoster'."/".$filename ;
 					$obj->picture_path_name = $savePic;
@@ -209,10 +206,8 @@ class editProjectController extends Controller {
 				}
 		}else if($groupPic == null){
 			if($request->file('groupPicture')){
-				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 				$file = $request->file('groupPicture');
 				$filename = $file->getClientOriginalName();
-				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
 				$obj->picture_path_name = $savePic;
