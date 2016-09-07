@@ -106,7 +106,7 @@ class editProjectController extends Controller {
 
 	}
 
-	public function update(Request $request,$id)
+	public function update(Request $request,$id,Image $image)
 	{
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;

@@ -225,7 +225,7 @@ class createProjectController extends Controller {
 							->value('proposal_path_name');
 		$data['fileName'] = $getFile;
 
-		return view('student.createProject',$data);
+		return view('student.editInfo',$data);
 
 	}
 
