@@ -134,7 +134,7 @@ class createProjectController extends Controller {
 		$file = $request->file('myfiles');
 		$filename = $file->getClientOriginalName();
 		$move = $file->move($path,$filename);
-			
+
 
 		$proposal = new Proposal();
 		$proposal->proposal_path_name = $move;
@@ -152,12 +152,6 @@ class createProjectController extends Controller {
 		$detail->tools_detail = '';
 		$detail->project_pkid = $projectId;
 		$detail->save();
-
-		$picture = new Picture();
-		$picture->picture_path_name = '';
-		$picture->project_pkid = $projectId;
-		$picture->picture_type_id = '1';
-		$picture->save();
 
 		return redirect(url('student/myproject/waitapprove'));
 	}
@@ -231,7 +225,7 @@ class createProjectController extends Controller {
 							->value('proposal_path_name');
 		$data['fileName'] = $getFile;
 
-		return view('student.createProject',$data);
+		return view('student.editInfo',$data);
 
 	}
 

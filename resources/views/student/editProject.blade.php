@@ -8,7 +8,7 @@
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				<img id="cover" src="#" alt="your image" />
-				<input type="file" id="img-cover"/>
+				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse group">Select new image</label>
 				<label class="pic-size">poster 2480 x 1094 px</label>
 		</div>
@@ -44,7 +44,7 @@
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
 				<img id="group-member" src="#" alt="your image" />
-				<input type="file" id="imgInp"/>
+				<input type="file" id="imgInp" name="groupPicture"/>
 				<label for="imgInp" class="btn btn-browse group">Select new image</label>
 				<label class="pic-size">group member picture (4:3)</label>
 			<div class="panel panel-info">
