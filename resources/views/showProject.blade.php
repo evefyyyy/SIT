@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<img src="{{$poster}}" class="cover" height="315px">
+			<img src="{{$poster}}" class="cover">
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -38,7 +38,7 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
-			<img src="{{$groupPic}}" class="group-member img-thumbnail" width="330px" height="500px">
+			<img src="{{$groupPic}}" class="group-member img-thumbnail">
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">

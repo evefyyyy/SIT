@@ -962,6 +962,9 @@ h6 img {
   position: absolute;
   z-index: -1;
 }
+#detail .upload-btn {
+  float: right;
+}
 .btn-save {
   text-align: right;
   margin-top: 10px;

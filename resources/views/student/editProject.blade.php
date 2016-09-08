@@ -57,6 +57,22 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 					</div>
 				</div>
 			</div>
+			<!-- gallery pic -->
+			<input type="file" name="uploader" id="uploader"/>
+			<label for="imgInp" class="btn btn-browse">Select image</label>
+			<span class="upload-btn">
+			<button class="btn btn-primary" type="submit" name="btn-upload" title="Upload image"><i class="fa fa-upload" ></i> Upload</button>
+            <button class="btn btn-danger del" type="submit" name="btn-delete" title="Delete Multiple image"><i class="fa fa-trash-o" ></i> Delete</button>
+        	</span>
+            <div class="panel panel-default" style="margin-top:10px">
+		        <div class="panel-body">
+		            <div class="dataTable_wrapper">
+		                <div class="row image-view">
+		 
+		                </div>
+		            </div>
+		        </div>
+		    </div>
 		</div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>
@@ -128,9 +144,5 @@ function goBack() {
     $("#img-cover").change(function(){
         readURL(this);
     });
-
-
-
-
 </script>
 @stop
