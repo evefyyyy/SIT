@@ -97,16 +97,23 @@ class editProjectController extends Controller {
 										->where('project_pkid',$getId)
 										->value('tools_detail');
 
-		$data['picture'] = DB::table('pictures')
+		$data['poster'] = DB::table('pictures')
 										->join('group_projects','project_pkid','=','group_projects.id')
 										->where('project_pkid',$getId)
+										->where('picture_type_id','=','1')
 						 			  ->value('pictures.picture_path_name');
+
+		$data['groupPic'] = DB::table('pictures')
+											->join('group_projects','project_pkid','=','group_projects.id')
+											->where('project_pkid',$getId)
+											->where('picture_type_id','=','2')
+										  ->value('pictures.picture_path_name');
 
 		return view('student.editProject',$data);
 
 	}
 
-	public function update(Request $request,$id,Image $image)
+	public function update(Request $request,$id)
 	{
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;
@@ -165,20 +172,22 @@ class editProjectController extends Controller {
 
 		if($poster != null){
 				if($request->file('poster')){
+					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 					$file = $request->file('poster');
 					$filename = $file->getClientOriginalName();
+					$move = $file->move($path,$filename);
 					$obj = Picture::find($poster);
 					$savePic = '/projectPoster'."/".$filename ;
 					$obj->picture_path_name = $savePic;
 					$obj->picture_type_id = '1';
 					$obj->save();
-
-
 				}
 		}else if($poster == null){
 			if($request->file('poster')){
+				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 				$file = $request->file('poster');
 				$filename = $file->getClientOriginalName();
+				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
 				$obj->picture_path_name = $savePic;
@@ -196,8 +205,10 @@ class editProjectController extends Controller {
 
 		if($groupPic != null){
 				if($request->file('groupPicture')){
+					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 					$file = $request->file('groupPicture');
 					$filename = $file->getClientOriginalName();
+					$move = $file->move($path,$filename);
 					$obj = Picture::find($groupPic);
 					$savePic = '/projectPoster'."/".$filename ;
 					$obj->picture_path_name = $savePic;
@@ -206,8 +217,10 @@ class editProjectController extends Controller {
 				}
 		}else if($groupPic == null){
 			if($request->file('groupPicture')){
+				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
 				$file = $request->file('groupPicture');
 				$filename = $file->getClientOriginalName();
+				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
 				$obj->picture_path_name = $savePic;

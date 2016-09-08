@@ -134,10 +134,9 @@ class createProjectController extends Controller {
 		$file = $request->file('myfiles');
 		$filename = $file->getClientOriginalName();
 		$move = $file->move($path,$filename);
-
-
 		$proposal = new Proposal();
-		$proposal->proposal_path_name = $move;
+		$saveFile = '/test'."/".$filename;
+		$proposal->proposal_path_name = $saveFile;
 		$proposal->save();
 
 		$proposalId = DB::table('proposals')->max('id');
@@ -223,7 +222,8 @@ class createProjectController extends Controller {
 							->join('proposals','proposal_id','=','proposals.id')
 							->where('project_pkid',$getId)
 							->value('proposal_path_name');
-		$data['fileName'] = $getFile;
+		$start = 6;
+		$data['filename'] = mb_substr($getFile,$start);
 
 		return view('student.editInfo',$data);
 
@@ -294,6 +294,7 @@ class createProjectController extends Controller {
 		$obj->advisor_position_id = '1';
 		$obj->save();
 
+
 		if($obj = ProjectAdvisor::find($getAdv2)){
 			$advisor = $request['browser2'];
 			$index = mb_strpos($advisor," ");
@@ -324,12 +325,12 @@ class createProjectController extends Controller {
   		$file = $request->file('myfiles');
   		$filename = $file->getClientOriginalName();
   		$move = $file->move($path,$filename);
+			$saveFile = '/test'."/".$filename;
   		$obj = Proposal::find($getProposal);
-  		$obj->proposal_path_name = $move;
-					$obj->save();
+  		$obj->proposal_path_name = $saveFile;
+			$obj->save();
 		}
 
-		//
 		return redirect(url('student/myproject/waitapprove'));
 	}
 

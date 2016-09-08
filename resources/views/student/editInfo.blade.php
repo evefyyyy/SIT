@@ -52,20 +52,20 @@
 					<div class="col-xs-6 col-md-6">
 						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{$std->student_id}}" name="idStudent1" readonly/>
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$std->student_prefix}} {{$std->student_fname}} {{$std->student_lname}}</div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$std->student_prefix}}{{$std->student_fname}} {{$std->student_lname}}</div>
 					@endforeach
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
 						<input type="type" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" value="{{$stdId2 or ''}}" onchange="check_name2()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="fname2">{{$stdPre2 or ''}} {{$stdFname2 or ''}} {{$stdLname2 or ''}}</div>
+					<div class="col-xs-6 col-md-6 stdname" id="fname2">{{$stdPre2 or ''}}{{$stdFname2 or ''}} {{$stdLname2 or ''}}</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
 						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" value="{{$stdId3 or ''}}" onchange="check_name3()">
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="fname3">{{$stdPre3 or ''}} {{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
+					<div class="col-xs-6 col-md-6 stdname" id="fname3">{{$stdPre3 or ''}}{{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
@@ -141,6 +141,7 @@
 				<div class="col-sm-12 col-md-9">
 					<div class="custom-file-upload">
 				    <p>Upload your first draft proposal</p>
+						<!-- <p>Your old file name is : {{$filename}}</p> -->
 				    <input type="file" id="file" name="myfiles"/>
 					</div>
 				</div>
