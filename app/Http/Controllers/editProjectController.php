@@ -88,26 +88,27 @@ class editProjectController extends Controller {
 												->select('prefix','advisor_fname','advisor_lname')->get();
 
 		$data['detail'] = DB::table('project_detail')
-											->join('group_projects','project_pkid','=','group_projects.id')
 											->where('project_pkid',$getId)
 											->value('group_project_detail');
 
 		$data['tools'] = DB::table('project_detail')
-										->join('group_projects','project_pkid','=','group_projects.id')
 										->where('project_pkid',$getId)
 										->value('tools_detail');
 
 		$data['poster'] = DB::table('pictures')
-										->join('group_projects','project_pkid','=','group_projects.id')
 										->where('project_pkid',$getId)
 										->where('picture_type_id','=','1')
-						 			  ->value('pictures.picture_path_name');
+						 			  ->value('picture_path_name');
 
 		$data['groupPic'] = DB::table('pictures')
-											->join('group_projects','project_pkid','=','group_projects.id')
 											->where('project_pkid',$getId)
 											->where('picture_type_id','=','2')
-										  ->value('pictures.picture_path_name');
+										  ->value('picture_path_name');
+
+		$data['screenshot'] = DB::table('pictures')
+													->where('project_pkid',$getId)
+													->where('picture_type_id','=','3')
+													->select('picture_path_name')->get();
 
 		return view('student.editProject',$data);
 
@@ -205,30 +206,59 @@ class editProjectController extends Controller {
 
 		if($groupPic != null){
 				if($request->file('groupPicture')){
-					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+					$path = '/Applications/MAMP/htdocs/SIT-master/public/groupPicture';
 					$file = $request->file('groupPicture');
 					$filename = $file->getClientOriginalName();
 					$move = $file->move($path,$filename);
 					$obj = Picture::find($groupPic);
-					$savePic = '/projectPoster'."/".$filename ;
+					$savePic = '/groupPicture'."/".$filename ;
 					$obj->picture_path_name = $savePic;
 					$obj->picture_type_id = '2';
 					$obj->save();
 				}
 		}else if($groupPic == null){
 			if($request->file('groupPicture')){
-				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+				$path = '/Applications/MAMP/htdocs/SIT-master/public/groupPicture';
 				$file = $request->file('groupPicture');
 				$filename = $file->getClientOriginalName();
 				$move = $file->move($path,$filename);
 				$obj = new Picture();
-				$savePic = '/projectPoster'."/".$filename ;
+				$savePic = '/groupPicture'."/".$filename ;
 				$obj->picture_path_name = $savePic;
 				$obj->picture_type_id = '2';
 				$obj->project_pkid = $getId;
 				$obj->save();
 			}
 		}
+
+		$screenshot = DB::table('pictures')
+								->join('group_projects','project_pkid','=','group_projects.id')
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','3')
+								->value('pictures.id');
+
+		$countPic = DB::table('pictures')
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','3')
+								->select('project_pkid')->get();
+
+		if(count($countPic)<5){
+			if($request->file('screenshot')){
+				if($request->exists('btn-upload')){
+					$file = $request->file('screenshot');
+					$path = '/Applications/MAMP/htdocs/SIT-master/public/screenshot';
+					$filename = $file->getClientOriginalName();
+					$move = $file->move($path,$filename);
+					$obj = new Picture();
+					$savePic = '/screenshot'."/".$filename;
+					$obj->picture_path_name = $savePic;
+					$obj->picture_type_id = '3';
+					$obj->project_pkid = $getId;
+					$obj->save();
+				}
+			}
+		}
+
 
 		return redirect(url('showproject'));
 	}
