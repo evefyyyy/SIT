@@ -58,8 +58,8 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 				</div>
 			</div>
 			<!-- gallery pic -->
-			<input type="file" name="uploader" id="uploader"/>
-			<label for="imgInp" class="btn btn-browse">Select image</label>
+			<input type="file" name="screenshot" id="uploader"/>
+			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
 			<button class="btn btn-primary" type="submit" name="btn-upload" title="Upload image"><i class="fa fa-upload" ></i> Upload</button>
             <button class="btn btn-danger del" type="submit" name="btn-delete" title="Delete Multiple image"><i class="fa fa-trash-o" ></i> Delete</button>
@@ -68,7 +68,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		        <div class="panel-body">
 		            <div class="dataTable_wrapper">
 		                <div class="row image-view">
-		 
+
 		                </div>
 		            </div>
 		        </div>
