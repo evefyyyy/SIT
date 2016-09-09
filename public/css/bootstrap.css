@@ -1095,7 +1095,7 @@ html {
 }
 body {
   font-family: "Prompt", Helvetica, Arial, sans-serif;
-  font-size: 1.375em;
+  font-size: 1.475em;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -1275,12 +1275,12 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 1.375em;
+  font-size: 1.725em;
   font-weight: bold;
 }
 h4,
 .h4 {
-  font-size: 1.125em;
+  font-size: 1.275em;
   font-weight: bold;
   color: grey;
 }
@@ -2563,7 +2563,7 @@ output {
 .form-control {
   height: 34px;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 1.1em;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
