@@ -173,7 +173,7 @@ class editProjectController extends Controller {
 
 		if($poster != null){
 				if($request->file('poster')){
-					$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+					$path = base_path('public/projectPoster');
 					$file = $request->file('poster');
 					$filename = $file->getClientOriginalName();
 					$move = $file->move($path,$filename);
@@ -185,7 +185,7 @@ class editProjectController extends Controller {
 				}
 		}else if($poster == null){
 			if($request->file('poster')){
-				$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+				$path = base_path('public/projectPoster');
 				$file = $request->file('poster');
 				$filename = $file->getClientOriginalName();
 				$move = $file->move($path,$filename);
@@ -206,7 +206,7 @@ class editProjectController extends Controller {
 
 		if($groupPic != null){
 				if($request->file('groupPicture')){
-					$path = '/Applications/MAMP/htdocs/SIT-master/public/groupPicture';
+					$path = base_path('public/groupPicture');
 					$file = $request->file('groupPicture');
 					$filename = $file->getClientOriginalName();
 					$move = $file->move($path,$filename);
@@ -218,7 +218,7 @@ class editProjectController extends Controller {
 				}
 		}else if($groupPic == null){
 			if($request->file('groupPicture')){
-				$path = '/Applications/MAMP/htdocs/SIT-master/public/groupPicture';
+				$path = base_path('public/groupPicture');
 				$file = $request->file('groupPicture');
 				$filename = $file->getClientOriginalName();
 				$move = $file->move($path,$filename);
@@ -246,7 +246,7 @@ class editProjectController extends Controller {
 			if($request->file('screenshot')){
 				if($request->exists('btn-upload')){
 					$file = $request->file('screenshot');
-					$path = '/Applications/MAMP/htdocs/SIT-master/public/screenshot';
+					$path = base_path('public/screenshot');
 					$filename = $file->getClientOriginalName();
 					$move = $file->move($path,$filename);
 					$obj = new Picture();
