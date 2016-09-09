@@ -58,17 +58,17 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 				</div>
 			</div>
 			<!-- gallery pic -->
-			<input type="file" name="uploader" id="uploader"/>
+			<input type="file" name="screenshot" id="uploader"/>
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
-			<button class="btn btn-primary" type="submit" name="btn-upload" title="Upload image"><i class="fa fa-upload" ></i> Upload</button>
-            <button class="btn btn-danger del" type="submit" name="btn-delete" title="Delete Multiple image"><i class="fa fa-trash-o" ></i> Delete</button>
+			<button class="btn btn-primary" type="submit" name="btn-upload" title="Upload image">Upload</button>
+            <button class="btn btn-danger del" name="btn-delete" title="Delete Multiple image" data-toggle="confirmation" data-placement="top" data-singleton="true">Delete</button>
         	</span>
             <div class="panel panel-default" style="margin-top:10px">
 		        <div class="panel-body">
 		            <div class="dataTable_wrapper">
 		                <div class="row image-view">
-		 
+
 		                </div>
 		            </div>
 		        </div>
@@ -117,32 +117,5 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 	</div>
 		</form>
 </div>
-<script>
-function goBack() {
-  window.history.back()
-}
- function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            console.log('group-member')
-            reader.onload = function (e) {
-            	if(input.id === 'imgInp'){
-                	$('#group-member').attr('src', e.target.result);
-            	}else if(input.id === 'img-cover'){
-            		$('#cover').attr('src', e.target.result);
-            	}
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function(){
-        readURL(this);
-    });
-
-    $("#img-cover").change(function(){
-        readURL(this);
-    });
-</script>
+<script src="{!! URL::asset('js/edit.js') !!}"></script>
 @stop

@@ -23,7 +23,7 @@
 			</thead>
 			<tbody>
 				@if($countProject===0)
-				
+
 				<tr>
 					<td colspan="5" class="no-project">no project</td>
 				</tr>
