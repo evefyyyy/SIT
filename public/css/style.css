@@ -1021,19 +1021,9 @@ h6 img {
   }
 }
 
-.group-pic {
-  width: 490px;
-  height: 280px;
-  margin-top: 0;
-}
-.pic-size {
-  margin: 0 20px;
-  color: #999;
-  vertical-align: top;
-}
-.cropit-preview-image-container {
-  cursor: move;
-}
+.group-pic {width:490px; height: 280px; margin-top: 0;}
+.pic-size {margin: 0 20px; color:#999; vertical-align:top;}
+.cropit-preview-image-container {cursor: move;}
 
 .cropit-preview-background {
   opacity: .2;
@@ -1087,6 +1077,8 @@ input[type="range"].cropit-image-zoom-input {
   display: inline-block;
   text-transform: uppercase;
 }
+.gallery {margin-bottom:10px; overflow:hidden; height:auto;}
+.gallery img{width:100%;}
 /** poster
 @media screen and (min-width: 640px) {
     img {

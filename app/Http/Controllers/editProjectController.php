@@ -259,7 +259,5 @@ class editProjectController extends Controller {
 			}
 		}
 
-
-		return redirect(url('showproject'));
 	}
 }
