@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
 				<a class="btn btn-default" onclick="goBack()">back</a>
-				<button class="btn btn-primary" onclick="window.location.href='/showproject'">save & show my project</button>
+				<button class="btn btn-primary">save & show my project</button>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -61,8 +61,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 			<input type="file" name="screenshot" id="uploader"/>
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
-			<button class="btn btn-primary" id="upload" name="btn-upload" title="Upload image">Upload</button>
-            <button class="btn btn-danger del" name="btn-delete" title="Delete Multiple image" data-toggle="confirmation" data-placement="top" data-singleton="true">Delete</button>
+            <a class="btn btn-danger del" name="btn-delete" title="Delete Multiple image">Delete</a>
         	</span>
             <div class="panel panel-default" style="margin-top:10px">
 		        <div class="panel-body">
