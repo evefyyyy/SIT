@@ -2,9 +2,8 @@
 
 #ninja-slider {
     width:100%;
-    background:rgba(0,0,0,0.8);
-    padding-top:30px;
-    padding-bottom:10px;
+    background:#ffffff;
+    padding-bottom:20px;
 
     margin:0 auto;
     overflow:hidden;
@@ -28,11 +27,11 @@
     right:0px;
     width:45px;
     height:45px;
-    background: rgba(0,0,0,0.1) url(/img/fullscreen.png) no-repeat 0 0;
+    background: rgba(0,0,0,0.4) url(/img/fullscreen.png) no-repeat 0 0;
     z-index:2;
     opacity:0;
-    -webkit-transition:opacity 0.8s;
-    transition:opacity 0.8s;
+    -webkit-transition:opacity 0.5s;
+    transition:opacity 0.5s;
 }
 
 #ninja-slider:hover .fs-icon {
@@ -89,7 +88,7 @@
 
 /* --------- slider image ------- */  
 #ninja-slider .ns-img {
-    background-color:rgba(0,0,0,0.3);
+    background-color:#ffffff;
     background-size:contain;/*Note: If transitionType is zoom, it will be overridden to cover.*/
 
     border-radius:3px;
@@ -350,8 +349,8 @@
     display: block;
     width: 20px;
     height: 20px;
-    border-left: 3px solid #DDD;
-    border-top: 3px solid #DDD;
+    border-left: 3px solid #777;
+    border-top: 3px solid #777;
 }
 
 #thumbnail-slider-prev::before {

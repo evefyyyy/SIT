@@ -1,5 +1,7 @@
 @extends('generalTmp')
 @section('content')
+<link href="{!! URL::asset('css/ninja-slider.css') !!}" rel="stylesheet">
+<script src="{!! URL::asset('js/ninja-slider.js') !!}"></script>
 <div id="detail">
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -47,6 +49,37 @@
 					</div>
 				</div>
 			</div>
+		<div id='ninja-slider'>
+        <div>
+            <div class="slider-inner">
+                <ul>
+                    <li><a class="ns-img" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a></li>
+                    <li><a class="ns-img" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a></li>
+                    <li><a class="ns-img" href="/screenshot/PPG_8.jpg"></a></li>
+                    <li><a class="ns-img" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a></li>
+                </ul>
+                <div class="fs-icon" title="Expand/Close"></div>
+            </div>
+            <div id="thumbnail-slider">
+                <div class="inner">
+                    <ul>
+                        <li>
+                            <a class="thumb" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a>
+                        </li>
+                        <li>
+                            <a class="thumb" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a>
+                        </li>
+                        <li>
+                            <a class="thumb" href="/screenshot/PPG_8.jpg"></a>
+                        </li>
+                        <li>
+                            <a class="thumb" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+   		</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>
@@ -83,6 +116,43 @@
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
-
+	<!-- in case no video -->
+<!-- <div class="row">
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+			<div id='ninja-slider'>
+        <div>
+            <div class="slider-inner">
+                <ul>
+                    <li><a class="ns-img" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a></li>
+                    <li><a class="ns-img" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a></li>
+                    <li><a class="ns-img" href="/screenshot/PPG_8.jpg"></a></li>
+                    <li><a class="ns-img" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a></li>
+                </ul>
+                <div class="fs-icon" title="Expand/Close"></div>
+            </div>
+            <div id="thumbnail-slider">
+                <div class="inner">
+                    <ul>
+                        <li>
+                            <a class="thumb" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a>
+                        </li>
+                        <li>
+                            <a class="thumb" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a>
+                        </li>
+                        <li>
+                            <a class="thumb" href="/screenshot/PPG_8.jpg"></a>
+                        </li>
+                        <li>
+                            <a class="thumb" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+   		</div>
+		</div>
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+	</div> -->
 </div>
 @stop
