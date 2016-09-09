@@ -68,7 +68,13 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		        <div class="panel-body">
 		            <div class="dataTable_wrapper">
 		                <div class="row image-view">
-
+											@if($screenshot)
+									 			@foreach($screenshot as $img)
+										 			<div class="col-xs-3 gallery">
+												 		<img src="{{asset($img->picture_path_name)}}" />
+										 			</div>
+									 			@endforeach
+							 				@endif
 		                </div>
 		            </div>
 		        </div>
