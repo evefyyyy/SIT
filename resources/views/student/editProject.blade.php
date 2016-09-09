@@ -61,7 +61,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 			<input type="file" name="screenshot" id="uploader"/>
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
-			<button class="btn btn-primary" name="btn-upload" title="Upload image">Upload</button>
+			<button class="btn btn-primary" id="upload" name="btn-upload" title="Upload image">Upload</button>
             <button class="btn btn-danger del" name="btn-delete" title="Delete Multiple image" data-toggle="confirmation" data-placement="top" data-singleton="true">Delete</button>
         	</span>
             <div class="panel panel-default" style="margin-top:10px">

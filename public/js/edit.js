@@ -24,3 +24,14 @@ $("#imgInp").change(function(){
 $("#img-cover").change(function(){
     readURL(this);
 });
+
+$('#upload').on('click', function() {
+  $.ajax({
+    url: '',
+    dataType: 'html',
+    type: 'GET',
+    success: function() {
+      
+    }
+  })
+});
