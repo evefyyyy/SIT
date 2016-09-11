@@ -73,13 +73,16 @@ class CreateFkey extends Migration
         $table->foreign('advisor_id')->references('id')->on('advisors');
     });
 
-    Schema::table('project_proposals', function ($table) {
+    Schema::table('proposals', function ($table) {
         $table->integer('project_pkid')->unsigned();
         $table->foreign('project_pkid')->references('id')->on('group_projects');
-        $table->integer('proposal_id')->unsigned();
-        $table->foreign('proposal_id')->references('id')->on('proposals');
+        $table->integer('proposol_type_id')->unsigned();
+        $table->foreign('proposol_type_id')->references('id')->on('proposol_type');
     });
-
+    Schema::table('proposol_sourcecode', function ($table) {
+        $table->integer('project_pkid')->unsigned();
+        $table->foreign('project_pkid')->references('id')->on('group_projects');
+    });
     Schema::table('project_students', function ($table) {
         $table->integer('project_pkid')->unsigned();
         $table->foreign('project_pkid')->references('id')->on('group_projects');
@@ -114,7 +117,7 @@ class CreateFkey extends Migration
         $table->integer('advisor_position_id')->unsigned();
         $table->foreign('advisor_position_id')->references('id')->on('advisor_positions');
     });
-    Schema::table('projects_detail', function($table){
+    Schema::table('project_detail', function($table){
         $table->integer('project_pkid')->unsigned();
         $table->foreign('project_pkid')->references('id')->on('group_projects');
     });

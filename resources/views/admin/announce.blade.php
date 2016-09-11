@@ -68,7 +68,7 @@
 							<div class="form-group" style="width:30%">
 								<label for="message-text" class="control-label">Expiration date</label>
 								<div class='input-group date datetimepicker'>
-									<input type='text' class="form-control" />
+									<input type='text' class="form-control"/>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -100,7 +100,7 @@
 				    </div>
 				  </div>
 				</div> -->
-				
+
 			</div>
 			<!-- add a new announccement for admin -->
 			<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -129,7 +129,7 @@
 								<div class="form-group" style="width:30%">
 									<label for="message-text" class="control-label">Expiration date</label>
 									<div class='input-group date datetimepicker'>
-										<input type='text' class="form-control" />
+										<input type='text' class="form-control"/>
 										<span class="input-group-addon">
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -174,10 +174,10 @@
 			});
 			function copy(x) {
 				$y = $("#title"+x).val() ;
-				document.getElementById('copy'+x).value = $y;			
+				document.getElementById('copy'+x).value = $y;
 			}
 			function setNum(x){
-				document.getElementById('num').value = x;			
+				document.getElementById('num').value = x;
 			}
 
 			</script>

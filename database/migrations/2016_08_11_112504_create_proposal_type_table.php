@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdvisorTable extends Migration
+class CreateProposalTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateAdvisorTable extends Migration
      */
     public function up()
     {
-        Schema::create('advisors', function (Blueprint $table) {
+        Schema::create('proposal_type', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('advisor_name');
-            $table->integer('admin_authen');
+            $table->string('proposal_type_name');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateAdvisorTable extends Migration
      */
     public function down()
     {
-        Schema::drop('advisors');
+        Schema::drop('proposal_type');
     }
 }

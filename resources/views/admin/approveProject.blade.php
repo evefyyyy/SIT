@@ -51,7 +51,7 @@ function DataTo(value, id) {
     								<th style="width:15%">Category<span>:</span></th>
     								<td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
     								<td></td>
-    								<td><a href="#" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
+    								<td><a href="/proposalFile/{{$pj->groupProject->proposal}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
     							</tr>
     							<tr>
     								<th rowspan="2">Team member<span>:</span></th>
@@ -63,15 +63,13 @@ function DataTo(value, id) {
     								</td>
     								<td rowspan="2" colspan="2">
     									@foreach($teams as $team)
-    									{{ $team->student->student_fname." ".$team->student->student_lname }}<br>
+    									{{ $team->student->student_name }}<br>
     									@endforeach
     								</td>
     								<?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get(); ?>
     								<th style="border:0">main advisor<span>:</span></th>
     								<td style="border:0">
-    									@foreach($advisors as $key => $advisor)
-    									{{ $advisor->advisor->advisor_fname." ".$advisor->advisor->advisor_lname }}<br>
-    									@endforeach
+    									
     								</td>
     							</tr>
     							<tr><th>co-advisor<span>:<span></th>
