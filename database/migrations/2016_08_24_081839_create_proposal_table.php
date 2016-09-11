@@ -15,7 +15,6 @@ class CreateProposalTable extends Migration
         Schema::create('proposals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('proposal_path_name',1000);
-            $table->string('proposal_sourcecode_path_name',1000);
             $table->datetime('date');
             $table->timestamps();
         });
