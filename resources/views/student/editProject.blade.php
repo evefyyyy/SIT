@@ -10,7 +10,7 @@
 				<img id="cover" src="{{$poster or ''}}" alt="your image"/>
 				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse group">Select new image</label>
-				<label class="pic-size">poster 2480 x 1094 px</label>
+				<label class="pic-size">poster 1280 x 768 px</label>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>

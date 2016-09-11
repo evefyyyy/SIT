@@ -1286,7 +1286,10 @@ h4,
 }
 h5,
 .h5 {
-  font-size: 14px;
+  font-size: 1em;
+  color: grey;
+  margin: 30px auto;
+  text-align: center;
 }
 h6,
 .h6 {
