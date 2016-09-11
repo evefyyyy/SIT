@@ -82,7 +82,7 @@ Route::resource('student/myproject/edit','editProjectController');
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
 	if(isset($data)){
 		return Response::json($data);
 	}else{
@@ -92,7 +92,7 @@ Route::post('student/myproject/create/stdId2',function(){
 
 Route::post('student/myproject/create/stdId3',function(){
 	$stdId = Request::Input('stdId3');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
 	if(isset($data)){
 		return Response::json($data);
 	}else{
@@ -102,7 +102,7 @@ Route::post('student/myproject/create/stdId3',function(){
 
 Route::post('student/myproject/create/{id}/stdId2',function(){
 	$stdId = Request::Input('stdId2');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
 	if(isset($data)){
 		return Response::json($data);
 	}else{
@@ -112,7 +112,7 @@ Route::post('student/myproject/create/{id}/stdId2',function(){
 
 Route::post('student/myproject/create/{id}/stdId3',function(){
 	$stdId = Request::Input('stdId3');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_prefix','student_fname','student_lname')->first();
+	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
 	if(isset($data)){
 		return Response::json($data);
 	}else{

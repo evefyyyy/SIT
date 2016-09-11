@@ -30,7 +30,7 @@ class waitApproveController extends Controller
         $obj['std'] = DB::table('project_students')
                     ->join('students','student_pkid','=','students.id')
                     ->where('project_pkid',$checkProject)
-                    ->select('student_id','student_prefix','student_fname','student_lname')->get();
+                    ->select('student_id','student_name')->get();
 
         $obj['projectNameEN'] = DB::table('group_projects')->where('id',$checkProject)->value('group_project_ENG_name');
         $obj['projectNameTH'] = DB::table('group_projects')->where('id',$checkProject)->value('group_project_TH_name');
@@ -41,9 +41,8 @@ class waitApproveController extends Controller
         $obj['advisors'] = DB::table('project_advisors')
                     ->join('advisors','advisor_id','=','advisors.id')
                     ->where('project_pkid',$checkProject)
-                    ->select('prefix','advisor_fname','advisor_lname')->get();
-        $proposal = DB::table('project_proposals')
-                            ->join('proposals','proposal_id','=','proposals.id')
+                    ->select('advisor_name')->get();
+        $proposal = DB::table('proposals')
                             ->where('project_pkid',$checkProject)
                             ->value('proposal_path_name');
         $obj['proposal'] = mb_substr($proposal,6);

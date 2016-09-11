@@ -35,33 +35,22 @@ class showProjectController extends Controller
     $student = DB::table('project_students')
                 ->join('students','student_pkid','=','students.id')
                 ->where('project_pkid',$checkProject)
-                ->select('student_id','student_prefix','student_fname','student_lname','student_email')->get();
-
+                ->select('student_id','student_name','student_email')->get();
     if(count($student)==3){
       $obj['stdId1'] = $student[0]->student_id;
       $obj['stdId2'] = $student[1]->student_id;
       $obj['stdId3'] = $student[2]->student_id;
-      $obj['stdPre1'] = $student[0]->student_prefix;
-      $obj['stdPre2'] = $student[1]->student_prefix;
-      $obj['stdPre3'] = $student[2]->student_prefix;
-      $obj['stdFname1'] = $student[0]->student_fname;
-      $obj['stdFname2'] = $student[1]->student_fname;
-      $obj['stdFname3'] = $student[2]->student_fname;
-      $obj['stdLname1'] = $student[0]->student_lname;
-      $obj['stdLname2'] = $student[1]->student_lname;
-      $obj['stdLname3'] = $student[2]->student_lname;
+      $obj['stdName1'] = $student[0]->student_name;
+      $obj['stdName2'] = $student[1]->student_name;
+      $obj['stdName3'] = $student[2]->student_name;
       $obj['email1'] = $student[0]->student_email;
       $obj['email2'] = $student[1]->student_email;
       $obj['email3'] = $student[2]->student_email;
     }else if(count($student)==2){
       $obj['stdId1'] = $student[0]->student_id;
       $obj['stdId2'] = $student[1]->student_id;
-      $obj['stdPre1'] = $student[0]->student_prefix;
-      $obj['stdPre2'] = $student[1]->student_prefix;
-      $obj['stdFname1'] = $student[0]->student_fname;
-      $obj['stdFname2'] = $student[1]->student_fname;
-      $obj['stdLname1'] = $student[0]->student_lname;
-      $obj['stdLname2'] = $student[1]->student_lname;
+      $obj['stdName1'] = $student[0]->student_name;
+      $obj['stdName2'] = $student[1]->student_name;
       $obj['email1'] = $student[0]->student_email;
       $obj['email2'] = $student[1]->student_email;
     }
@@ -69,7 +58,7 @@ class showProjectController extends Controller
     $obj['advisors'] = DB::table('project_advisors')
                         ->join('advisors','advisor_id','=','advisors.id')
                         ->where('project_pkid',$checkProject)
-                        ->select('prefix','advisor_fname','advisor_lname')->get();
+                        ->select('advisor_name')->get();
 
     $obj['detail'] = DB::table('group_projects')
                       ->join('project_detail','group_projects.id','=','project_pkid')
@@ -95,7 +84,6 @@ class showProjectController extends Controller
                         ->where('project_pkid',$checkProject)
                         ->where('picture_type_id','=','3')
                         ->select('picture_path_name')->get();
-    
 
     return view('showProject',$obj);
   }

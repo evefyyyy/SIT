@@ -14,7 +14,6 @@ use App\Type;
 use App\User;
 use App\Http\Requests;
 use App\Proposal;
-use App\ProjectProposal;
 
 class AllProjectController extends Controller
 {
@@ -36,8 +35,6 @@ class AllProjectController extends Controller
 		$objs['project_student'] = $projectStudent;
 
     $objs['proposal'] = Proposal::all();
-
-    $objs['projectProposal'] = ProjectProposal::all();
 
 		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
 

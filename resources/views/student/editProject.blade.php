@@ -86,15 +86,15 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		<div class="panel panel-info">
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre1}}{{$stdFname1}} {{$stdLname1}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName1}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email1" value="{{$email1 or ''}}"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre2}}{{$stdFname2}} {{$stdLname2}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName2}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email2" value="{{$email2 or ''}}"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre3 or ''}}{{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName3 or ''}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3 or ''}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email3" value="{{$email3 or ''}}"></div>
@@ -104,7 +104,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 			<div class="panel-heading">advisor</div>
 			<div class="panel-body">
 			@foreach($advisors as $adv)
-			<div class="col-lg-12 text">{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</div>
+			<div class="col-lg-12 text">{{$adv->advisor_name}}</div>
 			@endforeach
 			</div>
 		</div>

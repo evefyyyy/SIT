@@ -11,7 +11,7 @@
 			@foreach($std as $s)
 			<tr>
 				<td>Student no. {{$s->student_id}}</td>
-				<td>{{$s->student_prefix}}{{$s->student_fname}} {{$s->student_lname}}</td>
+				<td>{{$s->student_name}}</td>
 			</tr>
 			@endforeach
 		</table>
@@ -20,7 +20,7 @@
 		<div class="col-md-3 col-lg-3"></div>
 		<div class="col-md-3 col-lg-3">
 			@foreach($advisors as $adv)
-				<p>{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</p>
+				<p>{{$adv->advisor_name}}</p>
 			@endforeach
 		</div>
 		<div class="col-md-6 col-lg-6"><th rowspan="2"><img height="50" src="/img/waitApprove.png"></th></div>
