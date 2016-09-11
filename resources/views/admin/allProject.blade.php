@@ -30,6 +30,7 @@
 				@else
 				@foreach($project as $pj)
 				@if($pj->groupProject->group_project_approve===1)
+
 				<tr>
 					<td>{{$pj->groupProject->group_project_id}}</td>
 					<td id="name">
@@ -38,9 +39,12 @@
 						</a>
 					</td>
 					<td>{{$pj->groupProject->type->type_name}}</td>
-					<td>health</td>
+					<td>{{$pj->groupProject->category->category_name}}</td>
+
 					<td id="center"><a href="#" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
+
 				</tr>
+
 				@endif
 				@endforeach
 				@endif

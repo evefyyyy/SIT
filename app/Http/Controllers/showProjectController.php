@@ -91,6 +91,12 @@ class showProjectController extends Controller
                     ->where('picture_type_id','=','2')
                     ->value('picture_path_name');
 
+    $obj['screenshot'] = DB::table('pictures')
+                        ->where('project_pkid',$checkProject)
+                        ->where('picture_type_id','=','3')
+                        ->select('picture_path_name')->get();
+    
+
     return view('showProject',$obj);
   }
 }

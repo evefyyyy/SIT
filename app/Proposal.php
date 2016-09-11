@@ -15,7 +15,7 @@ class Proposal extends Model
 
     public function projectProposal()
     {
-      return $this->hasMany('App\ProjectProposal','proposal_id');
+      return $this->hasOne('App\ProjectProposal','proposal_id');
     }
 
 }

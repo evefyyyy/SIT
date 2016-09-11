@@ -130,12 +130,12 @@ class createProjectController extends Controller {
 		$adv->save();
 		}
 
-		$path = '/Applications/MAMP/htdocs/SIT-master/public/projectPoster';
+		$path = base_path('public/proposalFile');
 		$file = $request->file('myfiles');
 		$filename = $file->getClientOriginalName();
 		$move = $file->move($path,$filename);
 		$proposal = new Proposal();
-		$saveFile = '/test'."/".$filename;
+		$saveFile = '/proposalFile'."/".$filename;
 		$proposal->proposal_path_name = $saveFile;
 		$proposal->save();
 

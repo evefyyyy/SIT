@@ -15,7 +15,7 @@ class ProjectProposal extends Model
     ];
     public function proposal()
     {
-      return $this->belongsTo('App\Proposal');
+      return $this->hasOne('App\Proposal');
     }
     public function project()
     {

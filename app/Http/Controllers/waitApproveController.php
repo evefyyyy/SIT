@@ -42,6 +42,11 @@ class waitApproveController extends Controller
                     ->join('advisors','advisor_id','=','advisors.id')
                     ->where('project_pkid',$checkProject)
                     ->select('prefix','advisor_fname','advisor_lname')->get();
+        $proposal = DB::table('project_proposals')
+                            ->join('proposals','proposal_id','=','proposals.id')
+                            ->where('project_pkid',$checkProject)
+                            ->value('proposal_path_name');
+        $obj['proposal'] = mb_substr($proposal,6);
 
         $obj['obj'] = DB::table('group_projects')->where('id',$checkProject)->value('id');
 

@@ -53,28 +53,20 @@
         <div>
             <div class="slider-inner">
                 <ul>
-                    <li><a class="ns-img" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/PPG_8.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a></li>
+										@foreach($screenshot as $img)
+                    <li><a class="ns-img" href="{{$img->picture_path_name}}"></a></li>
+										@endforeach
                 </ul>
                 <div class="fs-icon" title="Expand/Close"></div>
             </div>
             <div id="thumbnail-slider">
                 <div class="inner">
                     <ul>
+												@foreach($screenshot as $img)
                         <li>
-                            <a class="thumb" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a>
+                            <a class="thumb" href="{{$img->picture_path_name}}"></a>
                         </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a>
-                        </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/PPG_8.jpg"></a>
-                        </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a>
-                        </li>
+												@endforeach
                     </ul>
                 </div>
             </div>

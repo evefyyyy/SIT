@@ -242,9 +242,8 @@ class editProjectController extends Controller {
 								->where('picture_type_id','=','3')
 								->select('project_pkid')->get();
 
-		if(count($countPic)<5){
+		if(count($countPic)<10){
 			if($request->file('screenshot')){
-				if($request->exists('btn-upload')){
 					$file = $request->file('screenshot');
 					$path = base_path('public/screenshot');
 					$filename = $file->getClientOriginalName();
@@ -255,7 +254,6 @@ class editProjectController extends Controller {
 					$obj->picture_type_id = '3';
 					$obj->project_pkid = $getId;
 					$obj->save();
-				}
 			}
 		}
 			return redirect('/showproject');
