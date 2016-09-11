@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectProposalTable extends Migration
+class CreateProposalSourcecodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,9 @@ class CreateProjectProposalTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_proposals', function (Blueprint $table) {
+        Schema::create('proposal_sourcecode', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('source_code_path_name');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ class CreateProjectProposalTable extends Migration
      */
     public function down()
     {
-        Schema::drop('project_proposal');
+        Schema::drop('proposal_sourcecode');
     }
 }

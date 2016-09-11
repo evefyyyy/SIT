@@ -26,12 +26,16 @@ class GroupProject extends Model
     {
       return $this->hasMany('App\ProjectAdvisor', 'project_pkid');
     }
-    public function projectProposal()
+    public function proposal()
     {
-      return $this->hasMany('App\ProjectProposal', 'project_pkid');
+      return $this->hasMany('App\Proposal', 'project_pkid');
     }
     public function ddayProject()
     {
       return $this->hasMany('App\DdayProject', 'project_pkid');
+    }
+    public function proposalSourceCode()
+    {
+      return $this->hasMany('App\ProposalSourceCode', 'project_pkid');
     }
 }
