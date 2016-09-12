@@ -98,8 +98,7 @@ class editProjectController extends Controller {
 		$data['screenshot'] = DB::table('pictures')
 													->where('project_pkid',$getId)
 													->where('picture_type_id','=','3')
-													->select('picture_path_name')->get();
-
+													->select('picture_path_name','id')->get();
 		return view('student.editProject',$data);
 
 	}

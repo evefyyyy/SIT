@@ -28,6 +28,6 @@ class Kernel extends ConsoleKernel
        $schedule->call(function () {
 	    \Log::info('check');
             DB::table('news')->where('end_date',date('Y-m-d'))->delete();
-        })
+        });
     }
 }

@@ -78,7 +78,13 @@ Route::resource('student/myproject/create','createProjectController');
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
 Route::resource('student/myproject/edit','editProjectController');
-
+Route::post('edit/pic/delete', function(){
+	$id = Request::Input('id');
+	$data = DB::table('pictures')->where('id',$id)->first();
+	$path = base_path('public') ;
+	\File::Delete($path.$data->picture_path_name);
+	DB::table('pictures')->where('id',$id)->delete();
+});
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
