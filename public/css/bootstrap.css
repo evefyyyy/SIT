@@ -5048,6 +5048,7 @@ a.badge:focus {
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   border-radius: 4px;
+  text-decoration: none;
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;
           transition: border .2s ease-in-out;
@@ -5056,11 +5057,17 @@ a.badge:focus {
 .thumbnail a > img {
   margin-right: auto;
   margin-left: auto;
+  background-color: black;
+  -webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
 }
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #337ab7;
+  opacity: 0.6;
 }
 .thumbnail .caption {
   padding: 9px;
