@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('generalTmp');
 });
 
+Route::get('home',function(){
+  return view('home');
+});
+
 Route::get('index', function () {
     return view('home');
 });
 
-Route::get('projects', function () {
-    return view('projects');
-});
+Route::resource('home/projects','projectController');
 
 Route::resource('showproject','showProjectController');
 
@@ -45,7 +47,6 @@ Route::post('news/delete', function(){
 	$path = base_path('public/adminNewsFiles/') ;
 	\File::Delete($path.$data->file_path_name);
 	DB::table('news')->where('id',$id)->delete();
-
 	return Response::json($type);
 });
 

@@ -33,12 +33,13 @@ $('.gallery').on('click', function() {
   } else {
     $(this).addClass('active');
   }
-  
+
 });
 
 $('.del').on('click', function(e) {
   e.preventDefault();
   $('.gallery.active').remove();
+
 });
 
 $("#imgInp").change(function(){
