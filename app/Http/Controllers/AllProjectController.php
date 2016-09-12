@@ -31,16 +31,10 @@ class AllProjectController extends Controller
 		$advisor = Advisor::all();
 		$objs['advisor'] = $advisor;
 
-		$projectStudent = ProjectStudent::all();
-		$objs['project_student'] = $projectStudent;
-
     $objs['proposal'] = Proposal::all();
 
 		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
 
-    // $objs['proposal'] = DB::table('project_proposals')
-    //                     ->join('proposals','proposal_id','=','proposals.id')
-    //                     ->select('proposal_path_name')->get();
 
 		$projects = \App\ProjectStudent::all();
 		$unique = $projects->unique('project_pkid');

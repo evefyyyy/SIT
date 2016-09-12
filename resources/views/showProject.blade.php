@@ -109,7 +109,7 @@
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<!-- in case no video -->
-<div class="row">
+<!-- <div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 			<div id='ninja-slider'>
@@ -137,6 +137,6 @@
    		</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-	</div>
+	</div> -->
 </div>
 @stop

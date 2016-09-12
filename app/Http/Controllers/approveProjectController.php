@@ -28,7 +28,11 @@ class approveProjectController extends Controller
 		$type = Type::all();
 		$objs['type'] = $type;
 
-    $advisor['advisor'] = Advisor::all();
+		$advisor = Advisor::all();
+		$objs['advisor'] = $advisor;
+
+    $projectAdvisor = ProjectAdvisor::all();
+    $objs['projectAdvisor'] = $projectAdvisor;
 
 		$projectStudent = ProjectStudent::all();
 		$objs['project_student'] = $projectStudent;
