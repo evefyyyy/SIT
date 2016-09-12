@@ -1081,19 +1081,94 @@ input[type="range"].cropit-image-zoom-input {
 .gallery img{width:100%;}
 .gallery img:hover{opacity:0.7; cursor:pointer;}
 .image-view .active{box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);}
-/** poster
-@media screen and (min-width: 640px) {
-    img {
-        height: 282px;
-    }
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
-@media screen and (min-width: 1580px) {
-    img {
-        height: 670px;
-    }
+.fancy span {
+  display: inline-block;
+  position: relative;  
 }
-@media screen and (min-width: 2180px) {
-    img {
-        height: 982px;
-    }
-}**/
+.fancy span:before,
+.fancy span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 2px solid #40c3a7;
+  top: 0;
+  width: 280px;
+}
+.fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancy span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+.fancyy {
+  line-height: 0.5;
+  text-align: center;
+  font-size: 1em;
+  margin: 30px auto;
+  color: #40c3a7;
+  text-decoration: none;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.fancyy:hover {
+  color: #ff7f7f;
+  text-decoration: none;
+  font-weight: 600;
+}
+.fancyy span {
+  display: inline-block;
+  position: relative;  
+}
+.fancyy span:before,
+.fancyy span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid #40c3a7;
+  top: 0;
+  width: 280px;
+}
+.fancyy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancyy span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.caption h6 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 0.9em; 
+  text-transform: capitalize;
+}
+.caption p {
+  font-size: 0.775em;
+}
+.filter-head {
+  margin: 30px auto;
+}
+.filter-head .btn {
+  margin: 0 2px;
+  font-weight: 600;
+  border-color: none;
+  outline: none;
+  padding: 5px 20px;
+  color: #40c3a7;
+  background-color: #ffffff;
+}
+.filter-head .btn:hover, .btn:focus {
+  color: #40c3a7;
+  border-color: #40c3a7;
+}

@@ -8,6 +8,7 @@
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
+        <script src="{!! URL::asset('js/jquery.dotdotdot.min.js') !!}"></script>
         <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
         <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
         <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
@@ -21,8 +22,7 @@
                   <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
               </div>
                  <ul class="nav navbar-nav">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Category</a></li>
+                  <li><a href="/index">Home</a></li>
                 </ul>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">

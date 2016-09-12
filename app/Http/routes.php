@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('index', function () {
-    return view('generalTmp');
+    return view('home');
+});
+
+Route::get('projects', function () {
+    return view('projects');
 });
 
 Route::resource('showproject','showProjectController');
@@ -55,10 +59,6 @@ Route::get('admin/setting/{numbergencode}', 'AdminSettingController@enterGenCode
 
 Route::get('search',function(){
   return view('student.createProject');
-});
-
-Route::get('index', function () {
-    return view('generalTmp');
 });
 Route::get('ldap',function(){
 	return view('ldap');
