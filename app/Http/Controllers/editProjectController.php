@@ -98,7 +98,8 @@ class editProjectController extends Controller {
 		$data['screenshot'] = DB::table('pictures')
 													->where('project_pkid',$getId)
 													->where('picture_type_id','=','3')
-													->select('picture_path_name','id')->get();
+													->select('id','picture_path_name')->get();
+
 		return view('student.editProject',$data);
 
 	}
@@ -234,24 +235,25 @@ class editProjectController extends Controller {
 								->where('picture_type_id','=','3')
 								->select('project_pkid')->get();
 
-								if($request->file('screenshot') != null) {
-									if(count($countPic)<10){
-										$x = $request->file('screenshot');
-										// if(count($x)){
-										// 	foreach ($x as $xs) {
-														 $path = base_path('public/screenshot');
-														 $filename = $x->getClientOriginalName();
-														 $move = $x->move($path,$filename);
-														 $savePic = '/screenshot'."/".$filename;
-														 $obj = new Picture();
-														 $obj->picture_path_name = $savePic;
-														 $obj->picture_type_id = '3';
-														 $obj->project_pkid = $getId;
-														 $obj->save();
-												//  }
-											// }
-									}
+								if(count($countPic)<10){
+										$x = $request->file('screenshot') ;
+										if($x[0] != null){
+											if(count($x)){
+												foreach ($x as $xs) {
+													$path = base_path('public/screenshot');
+													$filename = $xs->getClientOriginalName();
+													$move = $xs->move($path,$filename);
+													$savePic = '/screenshot'."/".$filename;
+													$obj = new Picture();
+													$obj->picture_path_name = $savePic;
+													$obj->picture_type_id = '3';
+	 												$obj->project_pkid = $getId;
+													$obj->save();
+												}
+											}
+										}
 								}
+							
 
 			return redirect('/showproject');
 	}
