@@ -37,10 +37,15 @@ class approveProjectController extends Controller
 		$projectStudent = ProjectStudent::all();
 		$objs['project_student'] = $projectStudent;
 
+<<<<<<< HEAD
+		$objs['countProject'] = GroupProject::where('group_project_approve',0)->count();
+        $objs['countProjectApp'] = GroupProject::where('group_project_approve',1)->count();
+=======
     $proposal = Proposal::all();
     $objs['proposal'] = $proposal;
 
 		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
+>>>>>>> 98263b776d8eb93b9a6731d93751c33e740e8bbe
 
 		$projects = \App\ProjectStudent::all();
 		$unique = $projects->unique('project_pkid');
@@ -51,13 +56,12 @@ class approveProjectController extends Controller
     }
 
     public function updateApproveProject(Request $request){
-    	$project_proposal = ProjectProposal::All();
 
     	$project_id = $request->project_id;
     	$group_id = $request->group_id;
     	$option = $request->option;
 
-    	$proposal = ProjectProposal::where('project_pkid', $project_id)->get();
+    	$proposal = Proposal::where('project_pkid', $project_id)->get();
     	if($option === 'approve'){
     		$group_project = GroupProject::find($project_id);
     		$group_project->group_project_id = $group_id;
@@ -69,9 +73,6 @@ class approveProjectController extends Controller
     		->delete();
 
     		DB::table('project_advisors')
-    		->where('project_pkid', $project_id)
-    		->delete();
-    		DB::table('project_proposals')
     		->where('project_pkid', $project_id)
     		->delete();
     		foreach ($proposal as $proposals){

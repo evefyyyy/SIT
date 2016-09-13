@@ -25,8 +25,7 @@ class LdapLoginController extends Controller
 				$justthese = array("uid", "cn", "gecos", "mail");
 				$sr=ldap_search($ds, "ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th", "uid=".$username."",$justthese);
 				$info = ldap_get_entries($ds, $sr);
-				print_r($info[0]);
-				echo "success";
+				return redirect('/');
 			}catch(Exception $e){
 				echo "Incorrect Password or Something when wrong";
 			}

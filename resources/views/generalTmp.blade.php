@@ -15,12 +15,57 @@
   <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
 </head>
 
+<<<<<<< HEAD
+    <body>
+      <div id="wrapper">
+        <div id="header">
+          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
+              </div>
+                 <ul class="nav navbar-nav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Category</a></li>
+                </ul>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
+                      <ul id="login-dp" class="dropdown-menu">
+                        <li>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <form class="form" role="form" method="post" action="/loginldp" accept-charset="UTF-8" id="login-nav">
+                                 {{ csrf_field() }}
+                                    <div class="form-group">
+                                       <input type="text" class="form-control" placeholder="Username" name="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                       <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                       <button type="submit" class="btn-login">Login</button>
+                                    </div>
+                                    <div class="checkbox">
+                                       <label><input type="checkbox"> keep me logged-in</label>
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        </li>
+                      </ul>
+                  </li>
+                </ul> 
+                </div>    
+          </nav>
+=======
 <body>
   <div id="wrapper">
     <div id="header">
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
+>>>>>>> 98263b776d8eb93b9a6731d93751c33e740e8bbe
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
