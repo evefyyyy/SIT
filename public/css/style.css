@@ -11,7 +11,7 @@ nav > p > img {
 .logout:hover {
   color: #FF5C5C !important;
 }
-nav span {
+nav span.lol {
     padding: 0 10px 0 10px;
     color: #CECECE;
     font-weight: normal;
@@ -1180,7 +1180,7 @@ input[type="range"].cropit-image-zoom-input {
   text-align: center;
   position: absolute;
   transition: background 0.2s ease, padding 0.8s linear;
-  background-color: rgba(64, 195, 167, 0.58);
+  background-color: rgba(0, 0, 0, 0.40);
   color: #fff;
   width: 100%;
   height: 100%;

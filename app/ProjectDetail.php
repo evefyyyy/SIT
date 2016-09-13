@@ -13,4 +13,9 @@ class ProjectDetail extends Model
       'tools_detail',
       'project_pkid'
     ];
+
+    public function groupProject()
+    {
+      return $this->belongsTo('App\GroupProject');
+    }
 }

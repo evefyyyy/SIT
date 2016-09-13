@@ -6,47 +6,44 @@
                 <button class="btn btn-sm" data-toggle="portfilter" data-target="all">
                     All
                 </button>
-                <button class="btn btn-sm" data-toggle="portfilter" data-target="education">
-                    education
+                @foreach($category as $cat)
+                <button class="btn btn-sm" data-toggle="portfilter" data-target="{{$cat->category_name}}">
+                    {{$cat->category_name}}
                 </button>
-                <button class="btn btn-sm" data-toggle="portfilter" data-target="games">
-                    games
-                </button>
-                <button class="btn btn-sm" data-toggle="portfilter" data-target="health">
-                    health
-                </button>
-                <button class="btn btn-sm" data-toggle="portfilter" data-target="sports">
-                    sports
-                </button>
-                <button class="btn btn-sm" data-toggle="portfilter" data-target="travel">
-                    travel
-                </button>
-                <button class="btn btn-sm" data-toggle="portfilter" data-target="others">
-                    others
-                </button>
+                @endforeach
             </div>
         </div>
     </div>
 <div class="row">
 	<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-			<div class="col-xs-18 col-sm-6 col-md-3" data-tag='education'>
+
+      @foreach($groupProject as $project)
+			<div class="col-xs-18 col-sm-6 col-md-3" data-tag='{{$project->category->category_name}}'>
 	          <div class="thumbnail">
 	          	<div class="pdf-thumb-box">
 			      <a href="/showproject">
-			        <div class="pdf-thumb-box-overlay">
+			      	 <div class="pdf-thumb-box-overlay">
 			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i> 
        				 </div>
-	            	<img src="/img/the_secret_life_of_pets.jpg" alt="">
-	        	</a>
-	   		 </div>
+              @if(count($project->picture)===0)
+              <img src="#">
+              @else
+	          <img src="{{$project->picture[0]->picture_path_name}}" alt=""> 
+              @endif
+          		</a>
+          		</div>
 	              <div class="caption">
-	                <h6>SIT Portfolio</h6>
-	                <p>เว็บไซต์แสดงผลงานนักศึกษาคณะเทคโนโลยีสารสนเทศ</p>
+	                <h6>{{$project->group_project_eng_name}}</h6>
+                  @if(count($project->ProjectDetail) === 0)
+                    <p></p>
+                  @else
+	                   <p>{{$project->projectDetail[0]->group_project_detail}}</p>
+                  @endif
 	            </div>
-	          </a>
-	        </div>
-		</div>
+	       	  </div>
+	       	</div>
+          @endforeach
 	<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 </div>
 	<script>

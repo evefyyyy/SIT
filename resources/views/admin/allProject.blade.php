@@ -40,9 +40,7 @@
 					</td>
 					<td>{{$pj->groupProject->type->type_name}}</td>
 					<td>{{$pj->groupProject->category->category_name}}</td>
-
-					<td id="center"><a href="#" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
-
+					<td id="center"><a href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
 				</tr>
 
 				@endif

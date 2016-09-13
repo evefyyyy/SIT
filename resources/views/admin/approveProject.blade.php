@@ -51,7 +51,7 @@ function DataTo(value, id) {
     								<th style="width:15%">Category<span>:</span></th>
     								<td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
     								<td></td>
-    								<td><a href="/proposalFile/{{$pj->groupProject->proposal}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
+    								<td><a href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
     							</tr>
     							<tr>
     								<th rowspan="2">Team member<span>:</span></th>
@@ -69,12 +69,12 @@ function DataTo(value, id) {
     								<?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get(); ?>
     								<th style="border:0">main advisor<span>:</span></th>
     								<td style="border:0">
-    									
+    									{{ $advisors[0]->advisor->advisor_name}}
     								</td>
     							</tr>
     							<tr><th>co-advisor<span>:<span></th>
     								<td>
-    									<!-- co-advisor name -->
+										{{ $advisors[1]->advisor->advisor_name}}
     								</td>
     							</tr>
     						</table>

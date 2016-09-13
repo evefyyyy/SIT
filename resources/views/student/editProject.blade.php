@@ -58,7 +58,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 				</div>
 			</div>
 			<!-- gallery pic -->
-			<input type="file" name="screenshot" id="uploader"/>
+			<input type="file" name="screenshot[]" id="uploader" multiple/>
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
             <a class="btn btn-danger del" name="btn-delete" title="Delete Multiple image">Delete</a>
@@ -67,10 +67,14 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		        <div class="panel-body">
 		            <div class="dataTable_wrapper">
 		                <div class="row image-view">
+		                <?php
+		                	$count = 0 ;
+		                ?>
 											@if($screenshot)
 									 			@foreach($screenshot as $img)
-										 			<div class="col-xs-4 gallery">
-												 		<img src="{{asset($img->picture_path_name)}}" />
+										 			<div class="col-xs-4 gallery" id="pic{{$count}}">
+												 		<img src="{{asset($img->picture_path_name)}}"/>
+												 		<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
 										 			</div>
 									 			@endforeach
 							 				@endif
@@ -78,6 +82,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		            </div>
 		        </div>
 		    </div>
+		    <input type="hidden" id="cpic" value="{{$count}}">
 		</div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>

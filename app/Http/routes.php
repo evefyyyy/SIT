@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('generalTmp');
 });
 
+Route::get('home',function(){
+  return view('home');
+});
+
 Route::get('index', function () {
     return view('home');
 });
 
-Route::get('projects', function () {
-    return view('projects');
-});
+Route::resource('home/projects','projectController');
 
 Route::resource('showproject','showProjectController');
 
@@ -45,7 +47,6 @@ Route::post('news/delete', function(){
 	$path = base_path('public/adminNewsFiles/') ;
 	\File::Delete($path.$data->file_path_name);
 	DB::table('news')->where('id',$id)->delete();
-
 	return Response::json($type);
 });
 
@@ -78,7 +79,13 @@ Route::resource('student/myproject/create','createProjectController');
 Route::resource('student/myproject/waitapprove','waitApproveController');
 
 Route::resource('student/myproject/edit','editProjectController');
-
+Route::post('edit/pic/delete', function(){
+	$id = Request::Input('id');
+	$data = DB::table('pictures')->where('id',$id)->first();
+	$path = base_path('public') ;
+	\File::Delete($path.$data->picture_path_name);
+	DB::table('pictures')->where('id',$id)->delete();
+});
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
