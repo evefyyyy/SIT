@@ -71,14 +71,14 @@ class adminDocumentController extends Controller {
 			$move = $file->move($path,$filename);
 			$oldFile = DB::table('news')->where('id',$id)->first();
 			\File::Delete($path.$oldFile->file_path_name);
-			DB::table('news')->where('id',$id)->update(['title'=> $title , 'file_path_name' => $filename]) ;		
+			DB::table('news')->where('id',$id)->update(['title'=> $title , 'file_path_name' => $filename]) ;
 		}else{
 			DB::table('news')->where('id',$id)->update(['title'=> $title]) ;
 		}
 
 		$news = \App\News::where('news_type_id','=','2')->get();
 		$count = 0 ;
-		return view('admin.doc')->with('news',$news->reverse())->with('count',$count);
+		return redirect(url('news/document'))->with('news',$news->reverse())->with('count',$count);
 	}
 
 

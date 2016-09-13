@@ -21,9 +21,12 @@
 		</thead>
 		<tbody>
 			<!-- no announcement -->
-				<!-- <tr>
+			@if(count($news) == null)
+				<tr>
 					<td colspan="3" class="no-project">There is no announcement.</td>
-				</tr> -->
+				</tr>
+				@else
+				<!-- show announcement -->
 				@foreach($news as $n)
 				<tr class="news">
 					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
@@ -35,10 +38,10 @@
 						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
 						<input type="hidden" id="type" name="type" value="a">
 					</td>
-					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
+					<td>{{date('M d, Y',strtotime($n->created_at))}}</td>
 				</tr>
 				@endforeach
-
+				@endif
 				<?php
 				$count = 0 ;
 				?>
@@ -68,7 +71,7 @@
 							<div class="form-group" style="width:30%">
 								<label for="message-text" class="control-label">Expiration date</label>
 								<div class='input-group date datetimepicker'>
-									<input type='text' class="form-control"/>
+									<input type='text' class="form-control" name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -87,20 +90,27 @@
 		</div>
 		@endforeach
 		<!-- show announccement for student -->
-				<!-- <div class="modal fade" id="announce" role="dialog">
+		<!-- <?php
+		$count = 0 ;
+		?>
+		@foreach($news as $n)
+				<div class="modal fade" id="announce{{$count++}}" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title"></h4>
+				        <h4 class="modal-title">{{$n->title}}</h4>
 				      </div>
 				      <div class="modal-body">
-				      	<a href="" download><i class="glyphicon glyphicon-download"></i> download file</a>
-				      </div>
+								{{$n->description}}
+								@if($n->file_path_name != null)
+				      	<a href="/public/adminNewsFiles/{{$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
+								@endif
+							</div>
 				    </div>
 				  </div>
-				</div> -->
-
+				</div>
+				@endforeach -->
 			</div>
 			<!-- add a new announccement for admin -->
 			<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -129,7 +139,7 @@
 								<div class="form-group" style="width:30%">
 									<label for="message-text" class="control-label">Expiration date</label>
 									<div class='input-group date datetimepicker'>
-										<input type='text' class="form-control"/>
+										<input type='text' class="form-control" name="exp"/>
 										<span class="input-group-addon">
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
