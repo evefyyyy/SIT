@@ -32,12 +32,13 @@
                         <li>
                            <div class="row">
                               <div class="col-md-12">
-                                 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                 <form class="form" role="form" method="post" action="/loginldp" accept-charset="UTF-8" id="login-nav">
+                                 {{ csrf_field() }}
                                     <div class="form-group">
-                                       <input type="text" class="form-control" placeholder="Username" required>
+                                       <input type="text" class="form-control" placeholder="Username" name="username" required>
                                     </div>
                                     <div class="form-group">
-                                       <input type="password" class="form-control" placeholder="Password" required>
+                                       <input type="password" class="form-control" placeholder="Password" name="password" required>
                                     </div>
                                     <div class="form-group">
                                        <button type="submit" class="btn-login">Login</button>
