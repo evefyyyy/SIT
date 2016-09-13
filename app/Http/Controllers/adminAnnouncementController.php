@@ -36,6 +36,8 @@ class adminAnnouncementController extends Controller {
 
 	public function store(Request $request)
 	{
+		$time = strtotime($request['exp']);
+		$date = date('Y-d-m',$time);
 		$nId = (DB::table('news')->max('id'))+1 ;
 		$news = new News();
 		$news->title = $request['title'];
@@ -49,19 +51,15 @@ class adminAnnouncementController extends Controller {
 			$news->file_path_name = $filename ;
 		}
 		$news->description = $request['description'];
+		$news->end_date = $date;
 		$news->news_type_id = '1' ;
 		$news->save();
 
 
 		$news = \App\News::where('news_type_id','=','1')->get();
 		$count = 0 ;
-		
+
 		return redirect('news/announcement/');
-	}
-
-	public function show($id)
-	{
-
 	}
 
 	public function edit(Request $request){
@@ -77,13 +75,16 @@ class adminAnnouncementController extends Controller {
 			$move = $file->move($path,$filename);
 			$oldFile = DB::table('news')->where('id',$id)->first();
 			\File::Delete($path.$oldFile->file_path_name);
-			DB::table('news')->where('id',$id)->update(['title'=> $title , 'description'=> $description , 'file_path_name' => $filename]) ;		
+			DB::table('news')->where('id',$id)->update(['title'=> $title , 'description'=> $description , 'file_path_name' => $filename]) ;
 		}else{
 			DB::table('news')->where('id',$id)->update(['title'=> $title , 'description'=> $description]) ;
 		}
 
 		$news = \App\News::where('news_type_id','=','1')->get();
 		$count = 0 ;
+
+
+
 		return view('admin.announce')->with('news',$news->reverse())->with('count',$count);
 	}
 

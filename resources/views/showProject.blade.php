@@ -53,28 +53,20 @@
         <div>
             <div class="slider-inner">
                 <ul>
-                    <li><a class="ns-img" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/PPG_8.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a></li>
+										@foreach($screenshot as $img)
+                    <li><a class="ns-img" href="{{$img->picture_path_name}}"></a></li>
+										@endforeach
                 </ul>
                 <div class="fs-icon" title="Expand/Close"></div>
             </div>
             <div id="thumbnail-slider">
                 <div class="inner">
                     <ul>
+												@foreach($screenshot as $img)
                         <li>
-                            <a class="thumb" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a>
+                            <a class="thumb" href="{{$img->picture_path_name}}"></a>
                         </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a>
-                        </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/PPG_8.jpg"></a>
-                        </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a>
-                        </li>
+												@endforeach
                     </ul>
                 </div>
             </div>
@@ -88,15 +80,15 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre1}}{{$stdFname1}} {{$stdLname1}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName1}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> {{$email1}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre2}}{{$stdFname2}} {{$stdLname2}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName2}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> {{$email2}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre3}}{{$stdFname3}} {{$stdLname3}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName3}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6"></div>
 			<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> {{$email3}}</div>
@@ -106,7 +98,7 @@
 			<div class="panel-heading">advisor</div>
 			<div class="panel-body">
 			@foreach($advisors as $adv)
-			<div class="col-lg-12 text">{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</div>
+			<div class="col-lg-12 text">{{$adv->advisor_name}}</div>
 			@endforeach
 			</div>
 		</div>
@@ -124,28 +116,20 @@
         <div>
             <div class="slider-inner">
                 <ul>
-                    <li><a class="ns-img" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/PPG_8.jpg"></a></li>
-                    <li><a class="ns-img" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a></li>
+										@foreach($screenshot as $img)
+                    <li><a class="ns-img" href="{{$img->picture_path_name}}"></a></li>
+        						@endforeach
                 </ul>
                 <div class="fs-icon" title="Expand/Close"></div>
             </div>
             <div id="thumbnail-slider">
                 <div class="inner">
                     <ul>
+												@foreach($screenshot as $img)
                         <li>
-                            <a class="thumb" href="/screenshot/08ae5fa73167162ce70681dec175185e.jpg"></a>
+                            <a class="thumb" href="{{$img->picture_path_name}}"></a>
                         </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/9cdf6da742cc36bfb79bb6473219d469.jpg"></a>
-                        </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/PPG_8.jpg"></a>
-                        </li>
-                        <li>
-                            <a class="thumb" href="/screenshot/o-BARBIE-BODY-facebook.jpg"></a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -13,4 +13,9 @@ class Picture extends Model
         'project_pkid',
         'picture_type_id'
     ];
+
+    public function groupProject()
+    {
+      return $this->belongsTo('App\GroupProject');
+    }
 }

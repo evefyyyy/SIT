@@ -38,4 +38,12 @@ class GroupProject extends Model
     {
       return $this->hasMany('App\ProposalSourceCode', 'project_pkid');
     }
+    public function picture()
+    {
+      return $this->hasMany('App\Picture','project_pkid');
+    }
+    public function projectDetail()
+    {
+      return $this->hasMany('App\ProjectDetail','project_pkid');
+    }
 }

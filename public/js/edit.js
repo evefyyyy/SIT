@@ -33,12 +33,30 @@ $('.gallery').on('click', function() {
   } else {
     $(this).addClass('active');
   }
-  
+
 });
 
 $('.del').on('click', function(e) {
   e.preventDefault();
+  var count = $("#cpic").val();
+  var cn ;
+  var x ; 
+  var y ;
+  for(var i=0; i<count ; i++){
+    x = document.getElementById('pic'+i) ;
+    cn = x.className ;
+    if(cn.indexOf("active") != -1){
+      y = x.getElementsByTagName('img')[0]; 
+      $.ajax({
+          type:"post",
+          dataType: "",
+          url : "/edit/pic/delete",
+          data: {id: $("#ssid"+i).val() , _token:$("#_token").val() },
+      });
+    }
+  }
   $('.gallery.active').remove();
+
 });
 
 $("#imgInp").change(function(){

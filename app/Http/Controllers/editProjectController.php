@@ -51,33 +51,23 @@ class editProjectController extends Controller {
 		$student = DB::table('project_students')
 							->join('students','student_pkid','=','students.id')
 							->where('project_pkid',$getId)
-							->select('student_id','student_prefix','student_fname','student_lname','student_email')->get();
+							->select('student_id','student_name','student_email')->get();
 
 		if(count($student)==3){
 			$data['stdId1'] = $student[0]->student_id;
 			$data['stdId2'] = $student[1]->student_id;
 			$data['stdId3'] = $student[2]->student_id;
-			$data['stdPre1'] = $student[0]->student_prefix;
-			$data['stdPre2'] = $student[1]->student_prefix;
-			$data['stdPre3'] = $student[2]->student_prefix;
-			$data['stdFname1'] = $student[0]->student_fname;
-			$data['stdFname2'] = $student[1]->student_fname;
-			$data['stdFname3'] = $student[2]->student_fname;
-			$data['stdLname1'] = $student[0]->student_lname;
-			$data['stdLname2'] = $student[1]->student_lname;
-			$data['stdLname3'] = $student[2]->student_lname;
+			$data['stdName1'] = $student[0]->student_name;
+			$data['stdName2'] = $student[1]->student_name;
+			$data['stdName3'] = $student[2]->student_name;
 			$data['email1'] = $student[0]->student_email;
 			$data['email2'] = $student[1]->student_email;
 			$data['email3'] = $student[2]->student_email;
 		}else if(count($student)==2){
 			$data['stdId1'] = $student[0]->student_id;
 			$data['stdId2'] = $student[1]->student_id;
-			$data['stdPre1'] = $student[0]->student_prefix;
-			$data['stdPre2'] = $student[1]->student_prefix;
-			$data['stdFname1'] = $student[0]->student_fname;
-			$data['stdFname2'] = $student[1]->student_fname;
-			$data['stdLname1'] = $student[0]->student_lname;
-			$data['stdLname2'] = $student[1]->student_lname;
+			$data['stdName1'] = $student[0]->student_name;
+			$data['stdName2'] = $student[1]->student_name;
 			$data['email1'] = $student[0]->student_email;
 			$data['email2'] = $student[1]->student_email;
 		}
@@ -85,7 +75,7 @@ class editProjectController extends Controller {
 		$data['advisors'] = DB::table('project_advisors')
 												->join('advisors','advisor_id','=','advisors.id')
 												->where('project_pkid',$getId)
-												->select('prefix','advisor_fname','advisor_lname')->get();
+												->select('advisor_name')->get();
 
 		$data['detail'] = DB::table('project_detail')
 											->where('project_pkid',$getId)
@@ -108,7 +98,7 @@ class editProjectController extends Controller {
 		$data['screenshot'] = DB::table('pictures')
 													->where('project_pkid',$getId)
 													->where('picture_type_id','=','3')
-													->select('picture_path_name')->get();
+													->select('id','picture_path_name')->get();
 
 		return view('student.editProject',$data);
 
@@ -116,6 +106,7 @@ class editProjectController extends Controller {
 
 	public function update(Request $request,$id)
 	{
+
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;
 
@@ -160,10 +151,18 @@ class editProjectController extends Controller {
 							->where('project_pkid',$getId)
 							->value('project_detail.id');
 
-		$obj = ProjectDetail::find($detail);
-		$obj->group_project_detail = $request['detail'];
-		$obj->tools_detail = $request['tools'];
-		$obj->save();
+		if($detail != null){
+			$obj = ProjectDetail::find($detail);
+			$obj->group_project_detail = $request['detail'];
+			$obj->tools_detail = $request['tools'];
+			$obj->save();
+		}else if($detail == null){
+			$obj = new ProjectDetail();
+			$obj->project_pkid = $getId;
+			$obj->group_project_detail = $request['detail'];
+			$obj->tools_detail = $request['tools'];
+			$obj->save();
+		}
 
 		$poster = DB::table('pictures')
 								->join('group_projects','project_pkid','=','group_projects.id')
@@ -231,33 +230,31 @@ class editProjectController extends Controller {
 			}
 		}
 
-		$screenshot = DB::table('pictures')
-								->join('group_projects','project_pkid','=','group_projects.id')
-								->where('project_pkid',$getId)
-								->where('picture_type_id','=','3')
-								->value('pictures.id');
-
 		$countPic = DB::table('pictures')
 								->where('project_pkid',$getId)
 								->where('picture_type_id','=','3')
 								->select('project_pkid')->get();
 
-		if(count($countPic)<5){
-			if($request->file('screenshot')){
-				if($request->exists('btn-upload')){
-					$file = $request->file('screenshot');
-					$path = base_path('public/screenshot');
-					$filename = $file->getClientOriginalName();
-					$move = $file->move($path,$filename);
-					$obj = new Picture();
-					$savePic = '/screenshot'."/".$filename;
-					$obj->picture_path_name = $savePic;
-					$obj->picture_type_id = '3';
-					$obj->project_pkid = $getId;
-					$obj->save();
-				}
-			}
-		}
+								if(count($countPic)<10){
+										$x = $request->file('screenshot') ;
+										if($x[0] != null){
+											if(count($x)){
+												foreach ($x as $xs) {
+													$path = base_path('public/screenshot');
+													$filename = $xs->getClientOriginalName();
+													$move = $xs->move($path,$filename);
+													$savePic = '/screenshot'."/".$filename;
+													$obj = new Picture();
+													$obj->picture_path_name = $savePic;
+													$obj->picture_type_id = '3';
+	 												$obj->project_pkid = $getId;
+													$obj->save();
+												}
+											}
+										}
+								}
+							
+
 			return redirect('/showproject');
 	}
 }

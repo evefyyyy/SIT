@@ -10,7 +10,7 @@
 				<img id="cover" src="{{$poster or ''}}" alt="your image"/>
 				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse group">Select new image</label>
-				<label class="pic-size">poster 2480 x 1094 px</label>
+				<label class="pic-size">poster 1280 x 768 px</label>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -58,7 +58,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 				</div>
 			</div>
 			<!-- gallery pic -->
-			<input type="file" name="screenshot" id="uploader"/>
+			<input type="file" name="screenshot[]" id="uploader" multiple/>
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
             <a class="btn btn-danger del" name="btn-delete" title="Delete Multiple image">Delete</a>
@@ -67,10 +67,14 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		        <div class="panel-body">
 		            <div class="dataTable_wrapper">
 		                <div class="row image-view">
+		                <?php
+		                	$count = 0 ;
+		                ?>
 											@if($screenshot)
 									 			@foreach($screenshot as $img)
-										 			<div class="col-xs-4 gallery">
-												 		<img src="{{asset($img->picture_path_name)}}" />
+										 			<div class="col-xs-4 gallery" id="pic{{$count}}">
+												 		<img src="{{asset($img->picture_path_name)}}"/>
+												 		<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
 										 			</div>
 									 			@endforeach
 							 				@endif
@@ -78,6 +82,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		            </div>
 		        </div>
 		    </div>
+		    <input type="hidden" id="cpic" value="{{$count}}">
 		</div>
 		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>
@@ -86,15 +91,15 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 		<div class="panel panel-info">
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre1}}{{$stdFname1}} {{$stdLname1}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName1}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email1" value="{{$email1 or ''}}"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre2}}{{$stdFname2}} {{$stdLname2}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName2}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email2" value="{{$email2 or ''}}"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdPre3 or ''}}{{$stdFname3 or ''}} {{$stdLname3 or ''}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName3 or ''}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3 or ''}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email3" value="{{$email3 or ''}}"></div>
@@ -104,7 +109,7 @@ Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea
 			<div class="panel-heading">advisor</div>
 			<div class="panel-body">
 			@foreach($advisors as $adv)
-			<div class="col-lg-12 text">{{$adv->prefix}}{{$adv->advisor_fname}} {{$adv->advisor_lname}}</div>
+			<div class="col-lg-12 text">{{$adv->advisor_name}}</div>
 			@endforeach
 			</div>
 		</div>

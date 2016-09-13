@@ -57,7 +57,7 @@
                     <th style="width:15%">Category<span>:</span></th>
                     <td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
                     <td></td>
-                    <td><a href="#" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
+                    <td><a href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
                 </tr>
                 <tr>
                     <th rowspan="2">Team member<span>:</span></th>
@@ -90,6 +90,7 @@
        </table>
    </tr>
 
+
    <script src="{!! URL::asset('js/approve.js') !!}"></script>
    @endif
    @endforeach
@@ -108,6 +109,7 @@
       <a class="cd-popup-close cd-close img-replace"></a>
   </div> <!-- cd-popup-container -->
 </div> <!-- cd-popup -->
+
 
 
 

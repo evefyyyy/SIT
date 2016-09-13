@@ -36,7 +36,7 @@
                   <li class="{{ strrpos(Request::path(),'project') === 0 ? 'active' : ''  }}"><a href="/project">Student projects</a></li>
                   <li><a href="#">Back to homepage</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span>|</span><a href="/index" class="navbar-link logout">Logout</a></p>     
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>     
           </nav>
         </div>
        <div id="content">

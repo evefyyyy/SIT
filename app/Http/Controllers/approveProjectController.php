@@ -11,9 +11,9 @@ use App\GroupProject;
 use App\Http\Requests;
 use App\ProjectStudent;
 use App\ProjectJoinStudents;
-use App\ProjectProposal;
 use App\Proposal;
 use DB;
+use App\ProjectAdvisor;
 
 class approveProjectController extends Controller
 {
@@ -31,11 +31,21 @@ class approveProjectController extends Controller
 		$advisor = Advisor::all();
 		$objs['advisor'] = $advisor;
 
+    $projectAdvisor = ProjectAdvisor::all();
+    $objs['projectAdvisor'] = $projectAdvisor;
+
 		$projectStudent = ProjectStudent::all();
 		$objs['project_student'] = $projectStudent;
 
+<<<<<<< HEAD
 		$objs['countProject'] = GroupProject::where('group_project_approve',0)->count();
         $objs['countProjectApp'] = GroupProject::where('group_project_approve',1)->count();
+=======
+    $proposal = Proposal::all();
+    $objs['proposal'] = $proposal;
+
+		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
+>>>>>>> 98263b776d8eb93b9a6731d93751c33e740e8bbe
 
 		$projects = \App\ProjectStudent::all();
 		$unique = $projects->unique('project_pkid');

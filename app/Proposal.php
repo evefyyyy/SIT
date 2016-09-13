@@ -15,6 +15,7 @@ class Proposal extends Model
     public function proposalType()
     {
       return $this->belongsTo('App\ProposalType');
+
     }
 
 }
