@@ -21,9 +21,12 @@
 		</thead>
 		<tbody>
 			<!-- no document -->
-				<!-- <tr>
+			@if(count($news)==null)
+				<tr>
 					<td colspan="4" class="no-project">There is no document.</td>
-				</tr> -->
+				</tr>
+			@else
+			<!-- show document -->
 				@foreach ($news as $n)
 				<tr>
 					<td><a data-toggle="modal" data-target="#doc{{$count}}">{{$n->title}}</a></td>
@@ -36,13 +39,14 @@
 						<input type="hidden" id="type" name="type" value="d">
 					</td>
 					<td><a href="/adminNewsFiles/{{$n->file_path_name}}" download><i class="flaticon-doc-file-format-symbol"></i></a></td>
-					<td>{{date('F d, Y',strtotime($n->created_at))}}</td>
+					<td>{{date('M d, Y',strtotime($n->created_at))}}</td>
 				</tr>
 				@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
-	<?php 
+	<?php
 	$count = 0 ;
 	?>
 	@foreach ($news as $n)
@@ -52,7 +56,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<form method="post" action="/news/document/edit" enctype="multipart/form-data">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 					</div>
 					<div class="modal-body">
@@ -64,7 +68,7 @@
 							</span>
 							<br/>
 						</div>
-						<div class="form-group" style="width:40%">
+						<!-- <div class="form-group" style="width:40%">
 							<label for="message-text" class="control-label">Expiration date</label>
 							<div class='input-group date datetimepicker'>
 								<input type='text' class="form-control" />
@@ -72,7 +76,7 @@
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
 							</div>
-						</div>
+						</div> -->
 						<input type="hidden" name="hId" value="{{$n->id}}">
 						<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 					</div>
@@ -83,7 +87,7 @@
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
 	@endforeach
 	<!-- add a document for admin -->
 	<div class="modal fade" id="addDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -105,7 +109,7 @@
 							<input type="file" id="file" name="myfiles" required/>
 							<br/>
 						</div>
-						<div class="form-group" style="width:40%">
+						<!-- <div class="form-group" style="width:40%">
 							<label for="message-text" class="control-label">Expiration date</label>
 							<div class='input-group date datetimepicker'>
 								<input type='text' class="form-control" />
@@ -113,7 +117,7 @@
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -153,10 +157,10 @@
 	});
 	function copy(x) {
 		$y = $("#title"+x).val() ;
-		document.getElementById('copy'+x).value = $y;			
+		document.getElementById('copy'+x).value = $y;
 	}
 	function setNum(x){
-		document.getElementById('num').value = x;			
+		document.getElementById('num').value = x;
 	}
 	</script>
 	@stop

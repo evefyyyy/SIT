@@ -1,5 +1,8 @@
 $(document).ready(function(){
  $(".delete").on('click',function(){
+ 		var projectid = document.getElementById("btn").value;
+ 		var gpjid = document.getElementById("groupid").innerText;
+ 		window.location="/project/pending/approve/"+projectid+"/"+gpjid;
        $(this).parent().parent().parent().fadeOut(400);
      });
 });

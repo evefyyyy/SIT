@@ -15,22 +15,24 @@
   <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
 </head>
 
+
 <body>
   <div id="wrapper">
     <div id="header">
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
+
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
         </ul>
-        
+
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" action="{{url('home/projects/search')}}" method="get">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search here" aria-describedby="ddlsearch">
+            <input type="text" class="form-control" placeholder="Search here" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
               <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default">
                 <option>all years</option>
@@ -38,7 +40,7 @@
               </select>
             </div>
             <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-search"></span>
+                    <span><button type="submit" class="glyphicon glyphicon-search"></button></span>
             </span>
           </div>
         </form>
@@ -67,8 +69,8 @@
            </li>
          </ul>
        </li>
-     </ul> 
-   </div>    
+     </ul>
+   </div>
  </nav>
 </div>
 <div id="content">
@@ -84,7 +86,7 @@
       <td class="kmutt">King Mongkut's University of Technology Thonburi</td>
     </tr>
   </table>
-</div> 
+</div>
 </div>
 </body>
 </html>

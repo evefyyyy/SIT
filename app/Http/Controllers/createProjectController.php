@@ -187,11 +187,10 @@ class createProjectController extends Controller {
 			$data['advName1'] = $getAdv[0]->advisor_name;
 		}
 
-		$getFile = DB::table('proposals')
+		$data['filename'] = DB::table('proposals')
 							->where('project_pkid',$getId)
 							->value('proposal_path_name');
-		$start = 6;
-		$data['filename'] = mb_substr($getFile,$start);
+
 
 		return view('student.editInfo',$data);
 
