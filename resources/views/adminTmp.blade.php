@@ -12,6 +12,7 @@
         <script src="{!! URL::asset('js/moment.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-datetimepicker.min.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
+        <script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
         <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
         <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
         <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
@@ -32,7 +33,14 @@
                       <li><a href="/news/document">documents</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Exam</a></li>
+                  <li class="dropdown {{ strrpos(Request::path(),'exam') === 0 ? 'active' : ''  }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">exam</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/exam/manageroom">exam room</a></li>
+                      <li><a href="">score sheet</a></li>
+                      <li><a href="">score record</a></li>
+                    </ul>
+                  </li>
                   <li class="{{ strrpos(Request::path(),'project') === 0 ? 'active' : ''  }}"><a href="/project">Student projects</a></li>
                   <li><a href="#">Back to homepage</a></li>
                 </ul>

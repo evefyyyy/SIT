@@ -137,7 +137,7 @@ option {
     float: left;
 }
 /*buttons*/
-#msform .action-button {
+#msform .action-button, #addroom .action-button {
     width: 100px;
     background: #40c3a7;
     font-weight: bold;
@@ -148,10 +148,13 @@ option {
     border-style: none;
     margin-top: 20px;
     text-transform: uppercase;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
-#msform .action-button:hover, #msform .action-button:focus {
+#msform .action-button:hover,
+#msform .action-button:focus,
+#addroom .action-button:hover,
+#addroom .action-button:focus {
     background: #ff7f7f;
 }
 /*headings*/
@@ -1192,4 +1195,39 @@ input[type="range"].cropit-image-zoom-input {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+.panel-body .titlee {
+  color: #40c3a7;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#examroom .panel-body {
+  text-transform: capitalize;
+}
+#examroom .row {
+  margin-bottom: 5px;
+}
+#addroom .titlee {
+  color: #40c3a7;
+  font-weight: 600;
+  text-align: right;
+  text-transform: uppercase;
+  padding-top: 6px;
+}
+#addroom {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+#addroom .row {
+  margin-bottom: 25px;
+}
+#addroom .time {
+  display: inline;
+  margin-top: 6px;
+  text-align: left;
+  padding-left: 0;
+}
+#addroom input[type=number] {
+  width: 80px;
+  float: right;
 }
