@@ -32,8 +32,8 @@
                        <td rowspan="2" colspan="3" style="width:30%" id="proid">
                            <button id="delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
                            <button id="btn" class="delete approvebt" value="{{$pj->groupProject->id}}">approve</button>
-                           <?php 
-                               $countProjectApp++;  
+                           <?php
+                               $countProjectApp++;
                                if($pj->groupProject->type_id===1){
                                     $typeAbb = 'BU';
                                } else if($pj->groupProject->type_id===2){

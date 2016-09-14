@@ -23,7 +23,9 @@ Route::get('index', function () {
     return view('home');
 });
 
-Route::resource('home/projects','projectController');
+Route::get('home/projects','projectController@index');
+
+Route::get('home/projects/search','projectController@search');
 
 Route::resource('showproject','showProjectController');
 

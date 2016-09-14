@@ -37,15 +37,11 @@ class approveProjectController extends Controller
 		$projectStudent = ProjectStudent::all();
 		$objs['project_student'] = $projectStudent;
 
-<<<<<<< HEAD
-		$objs['countProject'] = GroupProject::where('group_project_approve',0)->count();
-        $objs['countProjectApp'] = GroupProject::where('group_project_approve',1)->count();
-=======
     $proposal = Proposal::all();
     $objs['proposal'] = $proposal;
 
 		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
->>>>>>> 98263b776d8eb93b9a6731d93751c33e740e8bbe
+    $objs['countProjectApp'] = GroupProject::where('group_project_approve', 1)->count();
 
 		$projects = \App\ProjectStudent::all();
 		$unique = $projects->unique('project_pkid');
