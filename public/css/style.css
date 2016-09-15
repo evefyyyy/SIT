@@ -22,6 +22,8 @@ nav span.lol {
 
 #content {
     position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #footer {
@@ -137,7 +139,7 @@ option {
     float: left;
 }
 /*buttons*/
-#msform .action-button, #addroom .action-button {
+.action-button {
     width: 100px;
     background: #40c3a7;
     font-weight: bold;
@@ -478,10 +480,14 @@ option {
 }
 .pending {
     font-size: 0.975em;
+    margin-top: 20px !important;
 }
 .pending tr > th {
     font-weight: bold;
     color: #40c7a3;
+}
+.pending tr > td {
+    text-transform: capitalize;
 }
 .pending span {
     float: right;
@@ -548,7 +554,7 @@ option {
     transition-duration: 0.2s;
 }
 .approvebt:hover {
-    background: #40c3a7;
+    background: #00AF87;
 }
 .rejectbt:hover {
     background: #FF3232;
@@ -755,10 +761,6 @@ option {
     color: #CECECE;
     font-weight: normal;
 }
-#projectTB table{
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
 #projectTB td, #projectTB th {
   font-size: 0.975em;
 }
@@ -861,6 +863,7 @@ h6 img {
 }
 .news-head {
   display: inline !important;
+  margin: 0 auto !important;
 }
 .news-head label {
   vertical-align: -webkit-baseline-middle;
@@ -1207,11 +1210,13 @@ input[type="range"].cropit-image-zoom-input {
 #examroom .row {
   margin-bottom: 5px;
 }
-#addroom .titlee {
+.titlee {
   color: #40c3a7;
   font-weight: 600;
-  text-align: right;
   text-transform: uppercase;
+}
+#addroom .titlee {
+  text-align: right;
   padding-top: 6px;
 }
 #addroom {
@@ -1230,4 +1235,22 @@ input[type="range"].cropit-image-zoom-input {
 #addroom input[type=number] {
   width: 80px;
   float: right;
+}
+#roomTB thead, #roomTB tbody {
+  font-size: 0.9em;
+}
+#roomTB tbody > tr > td {
+  text-transform: none;
+}
+#roomTB table {
+  width: 90%;
+}
+#editroom .titlee {
+  color: #40c3a7;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: right;
+}
+#editroom .row {
+  margin-bottom: 5px;
 }

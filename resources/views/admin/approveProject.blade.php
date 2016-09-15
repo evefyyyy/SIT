@@ -60,15 +60,15 @@
                     <td><a href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
                 </tr>
                 <tr>
-                    <th rowspan="2">Team member<span>:</span></th>
+                    <th rowspan="3">Team member<span>:</span></th>
                     <?php $teams = App\ProjectStudent::where('project_pkid', $pj->project_pkid)->get(); ?>
 
-                    <td rowspan="2">
+                    <td rowspan="3">
                        @foreach($teams as $team)
                        {{$team->student->student_id}}<br>
                        @endforeach
                    </td>
-                   <td rowspan="2" colspan="2">
+                   <td rowspan="3" colspan="2">
                        @foreach($teams as $team)
                        {{ $team->student->student_name}}<br>
                        @endforeach
@@ -82,7 +82,7 @@
                        {{ $advisorsNo1 }}
                    </td>
                </tr>
-               <tr><th>co-advisor<span>:<span></th>
+               <tr rowspan="2"><th>co-advisor<span>:<span></th>
                 <td>
                         {{ $advisorsNo2}}
                </td>

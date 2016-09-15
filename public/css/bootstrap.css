@@ -133,6 +133,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+  outline: none;
 }
 button[disabled],
 html input[disabled] {
@@ -2280,7 +2281,7 @@ th {
 .table {
   width: 80%;
   max-width: 100%;
-  margin: 30px auto 30px auto;
+  margin: 0 auto;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2292,6 +2293,9 @@ th {
   line-height: 1.7em;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
+  text-transform: capitalize;
+}
+.table > tbody > tr > th {
   text-transform: uppercase;
 }
 .table > thead > tr > th {
@@ -5762,6 +5766,7 @@ button.list-group-item-danger.active:focus {
   color: #fff;
   background-color: #40c3a7;
   border-color: #40c3a7;
+  padding: 5px 15px;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #337ab7;

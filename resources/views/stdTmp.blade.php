@@ -24,7 +24,7 @@
                   <li><a href="#">News</a></li>
                   <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
                   <li><a href="#">My score</a></li>
-                  <li><a href="#">Back to homepage</a></li>
+                  <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> rachatapon<span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>
           </nav>
