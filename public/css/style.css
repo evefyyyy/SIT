@@ -153,10 +153,8 @@ option {
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
-#msform .action-button:hover,
-#msform .action-button:focus,
-#addroom .action-button:hover,
-#addroom .action-button:focus {
+.action-button:hover,
+.action-button:focus {
     background: #ff7f7f;
 }
 /*headings*/
@@ -1113,7 +1111,7 @@ input[type="range"].cropit-image-zoom-input {
   line-height: 0.5;
   text-align: center;
   font-size: 1em;
-  margin: 30px auto;
+  margin-top: 30px;
   color: #40c3a7;
   text-decoration: none;
   -webkit-transition-duration: 0.3s;
@@ -1199,12 +1197,9 @@ input[type="range"].cropit-image-zoom-input {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
 .search > .input-group-btn > .btn {
   padding: 5px 12px;
-  background-color: #40c3a7;
 }
-
 .panel-body .titlee {
   color: #40c3a7;
   font-weight: 600;
@@ -1212,6 +1207,9 @@ input[type="range"].cropit-image-zoom-input {
 }
 #examroom .panel-body {
   text-transform: capitalize;
+}
+#examroom {
+  margin-top: 20px;
 }
 #examroom .row {
   margin-bottom: 5px;
@@ -1240,7 +1238,6 @@ input[type="range"].cropit-image-zoom-input {
 }
 #addroom input[type=number] {
   width: 80px;
-  float: right;
 }
 #roomTB thead, #roomTB tbody {
   font-size: 0.9em;
@@ -1250,6 +1247,11 @@ input[type="range"].cropit-image-zoom-input {
 }
 #roomTB table {
   width: 90%;
+  margin-top: 20px;
+}
+#roomTB .btn-danger {
+  vertical-align: bottom;
+  float: right;
 }
 #editroom .titlee {
   color: #40c3a7;
@@ -1259,4 +1261,10 @@ input[type="range"].cropit-image-zoom-input {
 }
 #editroom .row {
   margin-bottom: 5px;
+}
+.savepdf {
+  float: right;
+  margin-top: 5px;
+  color: black;
+  text-decoration: none;
 }

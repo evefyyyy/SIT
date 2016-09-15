@@ -35,6 +35,10 @@ Route::get('exam/manageroom/addroom/editroom', function () {
     return view('admin.editRoom');
 });
 
+Route::get('exam/manageroom/addroom/preview', function () {
+    return view('admin.confirmRoom');
+});
+
 Route::get('home/projects','projectController@index');
 
 Route::get('home/projects/search','projectController@search');
