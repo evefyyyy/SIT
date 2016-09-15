@@ -42,18 +42,27 @@ class projectController extends Controller
 
       $search = $request['search'];
 
-      $result = DB::table('group_projects')
-                ->join('project_detail','group_projects.id','=','project_pkid')
-                ->where('group_project_eng_name','like','%'.$search.'%')
-                ->orwhere('group_project_detail','like','%'.$search.'%')
-                ->select('project_pkid')->get();
-
-      foreach($result as $r){
-        $id = $r->project_pkid;
+      if($search === " "){
+        $obj['groupProject'] = GroupProject::all();
+      }else{
+        $result = DB::table('group_projects')
+                  ->join('project_detail','group_projects.id','=','project_pkid')
+                  ->where('group_project_eng_name','like','%'.$search.'%')
+                  ->orwhere('group_project_detail','like','%'.$search.'%')
+                  ->select('project_pkid')->get();
+        $obj['groupProject']  = [];
+        if(count($result) != null){
+          $countObj = count($result);
+          for($i=0; $i< $countObj; $i++){
+            $id[$i] = $result[$i]->project_pkid;
+          }
+          $obj['groupProject'] =[];
+          foreach($id as $i){
+            array_push($obj['groupProject'],GroupProject::where('id',$i)->get()[0]);
+          }
+        }
       }
-
-      $obj['groupProject'] = GroupProject::where('id',$id)->get();
-
+    
       return view(('searchResult'),$obj);
     }
 }
