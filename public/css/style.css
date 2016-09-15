@@ -908,7 +908,7 @@ h6 img {
   font-size: 1em;
 }
 .modal-body textarea {
-  width: 100%; 
+  width: 100%;
 }
 .modal-body a {
   display: block;
@@ -1071,7 +1071,7 @@ input[type="range"].cropit-image-zoom-input {
 .image-btn {
   font-size: 1.25em;
   font-weight: 700;
-  color: white;margin-bottom:10px; 
+  color: white;margin-bottom:10px;
   background-color: black;
   display: inline-block;
   text-transform: uppercase;
@@ -1090,7 +1090,7 @@ input[type="range"].cropit-image-zoom-input {
 }
 .fancy span {
   display: inline-block;
-  position: relative;  
+  position: relative;
 }
 .fancy span:before,
 .fancy span:after {
@@ -1126,7 +1126,7 @@ input[type="range"].cropit-image-zoom-input {
 }
 .fancyy span {
   display: inline-block;
-  position: relative;  
+  position: relative;
 }
 .fancyy span:before,
 .fancyy span:after {
@@ -1149,7 +1149,7 @@ input[type="range"].cropit-image-zoom-input {
 .caption h6 {
   margin-top: 0;
   margin-bottom: 5px;
-  font-size: 0.9em; 
+  font-size: 0.9em;
   text-decoration: none;
   text-transform: capitalize;
 }
@@ -1199,6 +1199,12 @@ input[type="range"].cropit-image-zoom-input {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+.search > .input-group-btn > .btn {
+  padding: 5px 12px;
+  background-color: #40c3a7;
+}
+
 .panel-body .titlee {
   color: #40c3a7;
   font-weight: 600;

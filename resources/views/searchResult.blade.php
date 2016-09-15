@@ -17,7 +17,9 @@
 <div class="row">
 	<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-
+    @if(count($groupProject) == 0)
+      <h4 class="text-center noProject">no project found</h4>
+      @else
       @foreach($groupProject as $project)
 			<div class="col-xs-18 col-sm-6 col-md-3" data-tag='{{$project->category->category_name}}'>
 	          <div class="thumbnail">
@@ -44,6 +46,8 @@
 	       	  </div>
 	       	</div>
           @endforeach
+          @endif
+    </div>
 	<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 </div>
 	<script>
