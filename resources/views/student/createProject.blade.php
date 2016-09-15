@@ -83,7 +83,6 @@
 							    <option>{{$ad->advisor_name}}</option>
 								@endforeach
 						  </datalist>
-
 						</div>
 					</div>
 				</div>

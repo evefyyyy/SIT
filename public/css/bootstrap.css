@@ -1271,7 +1271,11 @@ h1,
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 1.325em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 30px auto;
+  text-align: center;
 }
 h3,
 .h3 {
@@ -5752,12 +5756,12 @@ button.list-group-item-danger.active:focus {
   border-bottom-color: #ddd;
 }
 .panel-primary {
-  border-color: #337ab7;
+  border-color: #40c3a7;
 }
 .panel-primary > .panel-heading {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #40c3a7;
+  border-color: #40c3a7;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #337ab7;
@@ -7107,7 +7111,7 @@ select.selectpicker {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-.btn.dropdown-toggle{
-  border-radius:0;
+.input-group .btn.dropdown-toggle{
+  border-radius:0px;
 }
 /*# sourceMappingURL=bootstrap-select.css.map */
