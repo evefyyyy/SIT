@@ -1,21 +1,21 @@
 @extends('adminTmp')
 @section('content')
 <div class="row" id="editroom">
-	<div class="col-xs-1 col-md-2 col-lg-2"></div>
-	<div class="col-xs-10 col-md-8 col-lg-8">
+	<div class="col-xs-1 col-md-1 col-lg-2"></div>
+	<div class="col-xs-10 col-md-10 col-lg-8">
 	<h2>exam room 3</h2>
 	<div class="row">
 		<div class="col-xs-6 col-md-3 col-lg-3 titlee">room</div>
 		<div class="col-xs-6 col-md-3 col-lg-3">Training room 3</div>
 		<div class="col-xs-6 col-md-2 col-lg-2 titlee">date</div>
-		<div class="col-xs-6 col-md-4 col-lg-4">19 September 2016 (9.30-15.00)</div>
+		<div class="col-xs-6 col-md-4 col-lg-4">19 September 2016 (9.30am-5.30pm)</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-6 col-md-3 col-lg-3 titlee">exam commitee</div>
 		<div class="col-xs-6 col-md-8 col-lg-8">Sumet, Olarn, Ekapong, Patcharaporn</div>
 	</div>
 	</div>
-	<div class="col-xs-1 col-md-2 col-lg-2"></div>
+	<div class="col-xs-1 col-md-1 col-lg-2"></div>
 </div>
 <div class="row">
 	<div id="roomTB">

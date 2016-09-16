@@ -25,16 +25,6 @@
 					</div>
 				</div>
 				</div>
-				<div class="row">
-				<div class="col-xs-4 col-md-3 col-lg-3 titlee">Time</div>
-				<div class="col-xs-4 col-md-3 col-lg-4">
-					<div class='input-group date' id='timepicker1'>
-                    <input type='text' class="form-control" placeholder="start"/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                	</div>
-                </div>
                 <div class="col-xs-2 col-md-2 col-lg-2">
                     <input type='number' min="0" class="form-control">
                 </div>

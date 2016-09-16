@@ -1268,3 +1268,6 @@ input[type="range"].cropit-image-zoom-input {
   color: black;
   text-decoration: none;
 }
+.move-btn {
+  border: none !important;
+}

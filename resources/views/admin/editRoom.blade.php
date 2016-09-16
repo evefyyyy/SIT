@@ -34,6 +34,9 @@
 							<i class="glyphicon glyphicon-remove"></i>
 						</button>
 					</td>
+					<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
+						<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+					</td>
 				</tr>
 				<tr>
 					<td>IT56-RE12</td>
@@ -46,6 +49,9 @@
 						<button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true">
 							<i class="glyphicon glyphicon-remove"></i>
 						</button>
+					</td>
+					<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
+						<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
 					</td>
 				</tr>
 				<tr>
@@ -60,22 +66,17 @@
 							<i class="glyphicon glyphicon-remove"></i>
 						</button>
 					</td>
+					<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
+						<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
 	<div id="center">
-			<a href="/exam/manageroom"><button class="action-button">back</button></a>
+			<a href="/exam/manageroom/create"><button class="action-button">back</button></a>
 			<a href="preview"><button class="action-button">next</button></a>
 		</div>
-<script>
-$('[data-toggle=confirmation]').confirmation({
-				rootSelector: '[data-toggle=confirmation]',
-				placement: 'top',
-				onConfirm: function() {
-					$(this).closest('tr').remove();
-				}
-			});
-</script>
+<script src="{!! URL::asset('js/room.js') !!}"></script>
 @stop
