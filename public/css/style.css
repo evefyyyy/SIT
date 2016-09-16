@@ -1246,7 +1246,7 @@ input[type="range"].cropit-image-zoom-input {
   text-transform: none;
 }
 #roomTB table {
-  width: 90%;
+  width: 95%;
   margin-top: 20px;
 }
 #roomTB .btn-danger {
@@ -1268,6 +1268,9 @@ input[type="range"].cropit-image-zoom-input {
   color: black;
   text-decoration: none;
 }
-.move-btn {
+#roomTB td.move-btn {
   border: none !important;
+}
+.table-hover td.move-btn:hover {
+  background-color: #fff !important;
 }

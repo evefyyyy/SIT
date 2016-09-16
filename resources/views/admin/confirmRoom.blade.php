@@ -19,7 +19,7 @@
 </div>
 <div class="row">
 	<div id="roomTB">
-		<table class="table table-bordered">
+		<table class="table table-bordered" style="width:90%">
 			<thead>
 				<tr>
 					<th style="width:8%">project id</th>
