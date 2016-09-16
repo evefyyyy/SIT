@@ -23,13 +23,13 @@ Route::get('index', function () {
     return view('home');
 });
 
-Route::get('exam/manageroom', function () {
-    return view('admin.manageRoom');
-});
+Route::resource('exam/manageroom','examRoomController');
 
-Route::get('exam/manageroom/addroom', function () {
-    return view('admin.addRoom');
-});
+// Route::get('exam/manageroom',function(){
+//   return view('admin.manageRoom');
+// });
+
+// Route::get('exam/manageroom/addroom','examRoomController@create');
 
 Route::get('home/projects','projectController@index');
 

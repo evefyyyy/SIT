@@ -8,10 +8,9 @@
 			    <div class="col-xs-4 col-md-3 col-lg-3 titlee">room</div>
 				<div class="col-xs-3 col-md-5 col-lg-5">
 					<select class="selectroom">
-					  <option>Training 1</option>
-					  <option>Training 2</option>
-					  <option>Training 3</option>
-					  <option>Training 5</option>
+						@foreach($rooms as $room)
+					  <option>{{$room->room_name}}</option>
+						@endforeach
 					</select>
 				</div>
 				</div>
@@ -45,13 +44,9 @@
 				<div class="col-xs-4 col-md-3 col-lg-3 titlee">exam commitee</div>
 				<div class="col-xs-8 col-md-9 col-lg-9">
 					<select class="selectpicker" multiple data-width="100%" data-max-options="5">
-					  <option>Ekapong</option>
-					  <option>Kittiphan</option>
-					  <option>Olarn</option>
-					  <option>Pichai</option>
-					  <option>Sumet</option>
-					  <option>Umaporn</option>
-					  <option>Wichai</option>
+						@foreach($advisor as $adv)
+					  <option>{{$adv->advisor_name}}</option>
+						@endforeach
 					</select>
 				</div>
 				</div>

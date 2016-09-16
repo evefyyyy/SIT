@@ -46,4 +46,8 @@ class GroupProject extends Model
     {
       return $this->hasMany('App\ProjectDetail','project_pkid');
     }
+    public function roomExam()
+    {
+      return $this->hasMany('App\RoomExam','project_pkid');
+    }
 }
