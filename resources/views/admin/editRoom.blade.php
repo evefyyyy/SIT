@@ -66,7 +66,7 @@
 	</div>
 </div>
 	<div id="center">
-			<a href="/exam/manageroom"><button class="action-button">back</button></a>
+			<a href="/exam/manageroom/create"><button class="action-button">back</button></a>
 			<a href="preview"><button class="action-button">next</button></a>
 		</div>
 <script>

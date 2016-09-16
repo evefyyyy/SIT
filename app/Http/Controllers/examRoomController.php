@@ -14,7 +14,6 @@ use App\Room;
 use App\RoomExam;
 use App\RoomAdvisor;
 use App\GroupProject;
-use App\Advisor;
 
 class examRoomController extends Controller
 {
@@ -26,10 +25,8 @@ class examRoomController extends Controller
 
     public function create()
     {
-      $obj['rooms'] = Room::all();
-      $obj['advisor'] = Advisor::all();
-
-      return view('admin.addRoom',$obj);
+      
+      return view('admin.addRoom');
     }
 
     public function store()
