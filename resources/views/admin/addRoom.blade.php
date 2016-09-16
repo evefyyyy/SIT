@@ -25,11 +25,6 @@
 					</div>
 				</div>
 				</div>
-                <div class="col-xs-2 col-md-2 col-lg-2">
-                    <input type='number' min="0" class="form-control">
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3 time">minutes per group</div>
-            	</div>
    				<div class="row">
 				<div class="col-xs-4 col-md-3 col-lg-3 titlee">exam commitee</div>
 				<div class="col-xs-8 col-md-9 col-lg-9">

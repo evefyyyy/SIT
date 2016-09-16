@@ -3256,19 +3256,19 @@ fieldset[disabled] .btn-success.focus {
 .btn-info:focus,
 .btn-info.focus {
   color: #333;
-  background-color: #ccc;
+  background-color: #eee;
   border: none
 }
 .btn-info:hover {
   color: #333;
-  background-color: #ccc;
+  background-color: #eee;
   border: none;
 }
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
   color: #333;
-  background-color: #ccc;
+  background-color: #eee;
   border: none;
 }
 .btn-info:active:hover,
