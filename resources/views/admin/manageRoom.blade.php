@@ -5,7 +5,7 @@
 	<div class="col-xs-12 col-md-10 col-lg-10">
 		<img height="45" src="/img/exam.png"><label>manage exam room</label>
 		<span id="pendlink">
-			<a class="btn" href="manageroom/addroom"><i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#addDoc"></i>add room</a>
+			<a class="btn" id="create" href="{{url('exam/manageroom/create')}}"><i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#addDoc"></i>add room</a>
 		</span>
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
