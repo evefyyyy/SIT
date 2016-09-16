@@ -3,14 +3,14 @@
 <div class="row">
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-12 col-md-10 col-lg-10">
-		<div id="pendlink" style="margin-top:30px">
+		<div id="pendlink">
 			<a class="btn" href="/project/pending">Pending Projects</a>
 		</div>
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
 <div class="row">
-	<div id="projectTB">
+	<div id="projectTB" style="margin-top:30px">
 		<table class="table table-bordered">
 			<thead>
 				<tr>

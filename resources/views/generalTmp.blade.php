@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <form class="navbar-form navbar-left" role="search" action="{{url('home/projects/search')}}" method="get">
-          <div class="input-group search">
+          <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
             <input type="text" class="form-control" placeholder="Search here" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
               <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default">

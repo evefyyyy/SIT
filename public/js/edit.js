@@ -3,28 +3,38 @@ var count = $('.gallery').length;
 function goBack() {
   window.history.back()
 }
+
 function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-           if(input.id === 'imgInp'){
-               $('#group-member').attr('src', e.target.result);
-           }else if(input.id === 'img-cover'){
-              $('#cover').attr('src', e.target.result);
-          }else if (input.id == 'uploader') {
-            if ( count == 9 ) {
-              alert('Cannot upload more than 9 pictures');
-            } else {
-              count++;
-              $('.image-view').append('<div class="col-xs-4 gallery"></div>');
-              $('.gallery').last().append("<img id=image-" + count  + " />")
-              $('#image-' + count).attr('src', e.target.result);
-              console.log(count);
-            }
-          }
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        if(input.id === 'imgInp') {
+          $('#group-member').attr('src', e.target.result);
+        } else if(input.id === 'img-cover') {
+          $('#cover').attr('src', e.target.result);
+        } else if (input.id == 'uploader') {
+        if ( count == 9 ) {
+          alert('Cannot upload more than 9 pictures');
+        } else {
+          $.each(input.files, function(key, file) {
+            multipleURL(file);
+          });
+        }
       }
-      reader.readAsDataURL(input.files[0]);
+    }
+    reader.readAsDataURL(input.files[0]);
   }
+}
+
+function multipleURL(file) {
+  var reader = new FileReader();
+  reader.onload = function (e) {  
+    count++;
+    $('.image-view').append('<div class="col-xs-4 gallery"></div>');
+    $('.gallery').last().append("<img id=image-" + count  + " />");
+    $('#image-' + count).attr('src', e.target.result);
+  }
+  reader.readAsDataURL(file);
 }
 
 $('.gallery').on('click', function() {

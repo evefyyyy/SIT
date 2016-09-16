@@ -6,7 +6,7 @@
 	<h2>exam room 3</h2>
 				<div class="row">
 			    <div class="col-xs-4 col-md-3 col-lg-3 titlee">room</div>
-				<div class="col-xs-3 col-md-5 col-lg-5">
+				<div class="col-xs-3 col-md-3 col-lg-4">
 					<select class="selectroom">
 						@foreach($rooms as $room)
 					  <option>{{$room->room_name}}</option>
@@ -52,8 +52,8 @@
 				</div>
 			<div id="center">
 			<a href="/exam/manageroom"><button class="action-button">back</button></a>
-			<button class="action-button">next</button>
-		</div>
+			<a href="addroom/editroom"><button class="action-button">next</button></a>
+			</div>
 	</div>
 	<div class="col-xs-1 col-md-2 col-lg-3"></div>
 </div>

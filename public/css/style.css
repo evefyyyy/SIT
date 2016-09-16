@@ -22,6 +22,8 @@ nav span.lol {
 
 #content {
     position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #footer {
@@ -137,7 +139,7 @@ option {
     float: left;
 }
 /*buttons*/
-#msform .action-button, #addroom .action-button {
+.action-button {
     width: 100px;
     background: #40c3a7;
     font-weight: bold;
@@ -151,10 +153,8 @@ option {
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
-#msform .action-button:hover,
-#msform .action-button:focus,
-#addroom .action-button:hover,
-#addroom .action-button:focus {
+.action-button:hover,
+.action-button:focus {
     background: #ff7f7f;
 }
 /*headings*/
@@ -478,10 +478,14 @@ option {
 }
 .pending {
     font-size: 0.975em;
+    margin-top: 20px !important;
 }
 .pending tr > th {
     font-weight: bold;
     color: #40c7a3;
+}
+.pending tr > td {
+    text-transform: capitalize;
 }
 .pending span {
     float: right;
@@ -548,7 +552,7 @@ option {
     transition-duration: 0.2s;
 }
 .approvebt:hover {
-    background: #40c3a7;
+    background: #00AF87;
 }
 .rejectbt:hover {
     background: #FF3232;
@@ -755,10 +759,6 @@ option {
     color: #CECECE;
     font-weight: normal;
 }
-#projectTB table{
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
 #projectTB td, #projectTB th {
   font-size: 0.975em;
 }
@@ -861,6 +861,7 @@ h6 img {
 }
 .news-head {
   display: inline !important;
+  margin: 0 auto !important;
 }
 .news-head label {
   vertical-align: -webkit-baseline-middle;
@@ -1110,7 +1111,7 @@ input[type="range"].cropit-image-zoom-input {
   line-height: 0.5;
   text-align: center;
   font-size: 1em;
-  margin: 30px auto;
+  margin-top: 30px;
   color: #40c3a7;
   text-decoration: none;
   -webkit-transition-duration: 0.3s;
@@ -1196,12 +1197,9 @@ input[type="range"].cropit-image-zoom-input {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
 .search > .input-group-btn > .btn {
   padding: 5px 12px;
-  background-color: #40c3a7;
 }
-
 .panel-body .titlee {
   color: #40c3a7;
   font-weight: 600;
@@ -1210,14 +1208,19 @@ input[type="range"].cropit-image-zoom-input {
 #examroom .panel-body {
   text-transform: capitalize;
 }
+#examroom {
+  margin-top: 20px;
+}
 #examroom .row {
   margin-bottom: 5px;
 }
-#addroom .titlee {
+.titlee {
   color: #40c3a7;
   font-weight: 600;
-  text-align: right;
   text-transform: uppercase;
+}
+#addroom .titlee {
+  text-align: right;
   padding-top: 6px;
 }
 #addroom {
@@ -1235,5 +1238,33 @@ input[type="range"].cropit-image-zoom-input {
 }
 #addroom input[type=number] {
   width: 80px;
+}
+#roomTB thead, #roomTB tbody {
+  font-size: 0.9em;
+}
+#roomTB tbody > tr > td {
+  text-transform: none;
+}
+#roomTB table {
+  width: 90%;
+  margin-top: 20px;
+}
+#roomTB .btn-danger {
+  vertical-align: bottom;
   float: right;
+}
+#editroom .titlee {
+  color: #40c3a7;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: right;
+}
+#editroom .row {
+  margin-bottom: 5px;
+}
+.savepdf {
+  float: right;
+  margin-top: 5px;
+  color: black;
+  text-decoration: none;
 }
