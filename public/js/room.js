@@ -1,3 +1,34 @@
+$(function () {
+		$('.selectroom').selectpicker({
+		});
+	});
+	$(function () {
+		$('.datepicker').datetimepicker({
+			format: 'DD/MM/YYYY'
+		});
+	});
+	$(function () {
+        $('#timepicker1').datetimepicker({
+            format: 'LT'
+        });
+    });	
+	$(function () {
+		$('.selectpicker').selectpicker({
+			liveSearch: true,
+			maxOptionsText: 'limit reach (5 commitees max)',
+			noneSelectedText: 'no commitee selected',
+		});
+	});
+function divFunction() {
+$( ".selectpicker" ).each(function() {
+	var targets = [];
+	$.each($(".selectpicker option:selected"), function(){
+	targets.push($(this).val());
+	});
+	console.log(targets.join(", "))
+});
+}
+
 $('[data-toggle=confirmation]').confirmation({
 				rootSelector: '[data-toggle=confirmation]',
 				placement: 'left',
