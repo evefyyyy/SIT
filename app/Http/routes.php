@@ -23,7 +23,11 @@ Route::get('index', function () {
     return view('home');
 });
 
-Route::resource('exam/manageroom','examRoomController');
+Route::get('exam/manageroom','examRoomController@index');
+
+Route::get('exam/manageroom/create','examRoomController@create');
+
+Route::post('exam/manageroom/create/editroom','examRoomController@genGroup');
 
 // Route::get('exam/manageroom',function(){
 //   return view('admin.manageRoom');

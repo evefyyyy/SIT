@@ -1274,7 +1274,7 @@ h2,
   font-size: 1.325em;
   font-weight: bold;
   text-transform: uppercase;
-  margin: 30px auto;
+  margin: 10px auto 30px auto;
   text-align: center;
 }
 h3,
@@ -3249,27 +3249,27 @@ fieldset[disabled] .btn-success.focus {
   background-color: #fff;
 }
 .btn-info {
-  color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  color: #333;
+  background-color: #fff;
+  border: none;
 }
 .btn-info:focus,
 .btn-info.focus {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #1b6d85;
+  color: #333;
+  background-color: #eee;
+  border: none
 }
 .btn-info:hover {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #269abc;
+  color: #333;
+  background-color: #eee;
+  border: none;
 }
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #269abc;
+  color: #333;
+  background-color: #eee;
+  border: none;
 }
 .btn-info:active:hover,
 .btn-info.active:hover,

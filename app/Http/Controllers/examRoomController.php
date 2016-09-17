@@ -14,6 +14,7 @@ use App\Room;
 use App\RoomExam;
 use App\RoomAdvisor;
 use App\GroupProject;
+use App\Advisor;
 
 class examRoomController extends Controller
 {
@@ -25,12 +26,19 @@ class examRoomController extends Controller
 
     public function create()
     {
-      
-      return view('admin.addRoom');
+      $obj['rooms'] = Room::all();
+      $obj['advisor'] = Advisor::all();
+
+      return view('admin.addRoom',$obj);
     }
 
-    public function store()
+    public function genGroup(Request $request)
     {
-      return view('admin.addRoom');
+      $test = $request['selectAdv'];
+      dd($test);
+      $adv = DB::table('advisors')->where('id',$test)->value('id');
+
+
+      return view('admin.editRoom');
     }
 }
