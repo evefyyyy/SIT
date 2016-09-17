@@ -153,6 +153,22 @@ $(".submit").click(function(){
 	return window.location.href='waitApprove';
 })
 
+$(function () {
+		$('.selectpicker').selectpicker({
+			liveSearch: true,
+
+			noneSelectedText: 'no advisor selected',
+		});
+	});
+
+$(document).ready(function() {
+    var max_fields      = 100; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
 //Reference: 
 //http://www.onextrapixel.com/2012/12/10/how-to-create-a-custom-file-input-with-jquery-css3-and-php/
 ;(function($) {
@@ -282,3 +298,65 @@ $(".submit").click(function(){
 }(jQuery));
 
 $('input[type=file]').customFile();
+
+function selectType(x){
+						document.getElementById("selectType").value = x;
+					}
+
+					function selectCat(x){
+						document.getElementById("selectCat").value = x;
+					}
+
+					function selectAdv1(x){
+						document.getElementById("selectAdv1").value = x;
+					}
+
+			    function check_name2(){
+		         $.ajax({
+		                type:"post",
+		                dataType: "",
+		                url :"stdId2",
+		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
+		                    success:function(data){
+		                      if(data=='0'){
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId2').value === ''){
+															result =''
+														}else{
+															_msg = "Data not found";
+															result = _msg.fontcolor("red");
+														}
+		                        $('#fname2').html(result);
+		                      }else{
+														var _data = data.student_name
+														$('#fname2').html(_data);
+		                      }
+		                }
+		             });
+		    }
+
+				function check_name3(){
+					 $.ajax({
+									type:"post",
+									dataType: "",
+									url :"stdId3",
+									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+											success:function(data){
+												if(data=='0'){
+													var _msg = null;
+													var result = null;
+													if(document.getElementById('stdId3').value === ''){
+														result =''
+													}else{
+														_msg = "Data not found";
+														result = _msg.fontcolor("red");
+													}
+													$('#fname3').html(result);
+												}else{
+													var _data = data.student_name
+													$('#fname3').html(_data);
+												}
+									}
+							 });
+			}

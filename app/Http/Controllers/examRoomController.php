@@ -34,8 +34,9 @@ class examRoomController extends Controller
 
     public function genGroup(Request $request)
     {
-      $test = $request['selectAdv'];
-      dd($test);
+      $test = $request['selectroom'];
+      $adv[] = $request->get('selectAdv[]');
+      dd($adv);
       $adv = DB::table('advisors')->where('id',$test)->value('id');
 
 

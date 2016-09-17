@@ -75,28 +75,22 @@
 				<h3 class="fs-subtitle">Choose your project advisors</h3>
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
-					<div class="col-xs-8 col-md-8">
-						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser1" id="mainAdvisor" placeholder="Search or select" />
-						  <datalist class="data" id="browsers">
+					<div class="col-xs-4 col-md-4">
+						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
 								@foreach($advisor as $ad)
 							    <option>{{$ad->advisor_name}}</option>
 								@endforeach
-						  </datalist>
-						</div>
+						  </select>
 					</div>
 				</div>
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
-					<div class="col-xs-8 col-md-8">
-						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser2" id="coAdvisor" placeholder="Search or select"/>
-						  <datalist class="data" id="browsers">
+					<div class="col-xs-4 col-md-4">
+						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="coAdvisor">
 								@foreach($advisor as $ad)
-						    <option>{$ad->advisor_name}}</option>
+						    <option>{{$ad->advisor_name}}</option>
 								@endforeach
-						  </datalist>
-						</div>
+						  </select>
 					</div>
 				</div>
 		    	<input type="button" name="previous" class="previous action-button" value="Previous" />
@@ -135,15 +129,13 @@
 					  	<td id="coAdvisor1"></td>
 					  </tr>
 					</table>
-				<div class="row">
-				<div class="hidden-sm col-md-3"></div>
-				<div class="col-sm-12 col-md-9">
 					<div class="custom-file-upload">
 				    <p>Upload your first draft proposal</p>
 				    <input type="file" id="file" name="myfiles"/>
+				    </div>
+				    <div class="input_fields_wrap">
+					    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
 					</div>
-				</div>
-				</div>
 				<input type="hidden" value="" id="selectType" name="selectType"/>
 				<input type="hidden" value="" id="selectCat" name="selectCat"/>
 				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>
@@ -158,69 +150,5 @@
     		}
 		</style>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
-
-			<script type="text/javascript">
-					function selectType(x){
-						document.getElementById("selectType").value = x;
-					}
-
-					function selectCat(x){
-						document.getElementById("selectCat").value = x;
-					}
-
-					function selectAdv1(x){
-						document.getElementById("selectAdv1").value = x;
-					}
-
-			    function check_name2(){
-		         $.ajax({
-		                type:"post",
-		                dataType: "",
-		                url :"stdId2",
-		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
-		                    success:function(data){
-		                      if(data=='0'){
-														var _msg = null;
-														var result = null;
-														if(document.getElementById('stdId2').value === ''){
-															result =''
-														}else{
-															_msg = "Data not found";
-															result = _msg.fontcolor("red");
-														}
-		                        $('#fname2').html(result);
-		                      }else{
-														var _data = data.student_name
-														$('#fname2').html(_data);
-		                      }
-		                }
-		             });
-		    }
-
-				function check_name3(){
-					 $.ajax({
-									type:"post",
-									dataType: "",
-									url :"stdId3",
-									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
-											success:function(data){
-												if(data=='0'){
-													var _msg = null;
-													var result = null;
-													if(document.getElementById('stdId3').value === ''){
-														result =''
-													}else{
-														_msg = "Data not found";
-														result = _msg.fontcolor("red");
-													}
-													$('#fname3').html(result);
-												}else{
-													var _data = data.student_name
-													$('#fname3').html(_data);
-												}
-									}
-							 });
-			}
-			</script>
-
+    	<script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
 @stop

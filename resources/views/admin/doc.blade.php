@@ -66,7 +66,9 @@
 							<span>
 								<input type="file" id="file" name="myfiles" required/>
 							</span>
-							<br/>
+							 <div class="input_fields_wrap">
+							    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
+							</div>
 						</div>
 						<!-- <div class="form-group" style="width:40%">
 							<label for="message-text" class="control-label">Expiration date</label>
@@ -107,7 +109,6 @@
 						<div class="form-group">
 							<label for="message-text" class="control-label">File</label>
 							<input type="file" id="file" name="myfiles" required/>
-							<br/>
 						</div>
 						<!-- <div class="form-group" style="width:40%">
 							<label for="message-text" class="control-label">Expiration date</label>

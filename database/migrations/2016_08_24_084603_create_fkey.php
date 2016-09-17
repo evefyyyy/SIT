@@ -127,6 +127,14 @@ class CreateFkey extends Migration
         $table->integer('dday_id')->unsigned();
         $table->foreign('dday_id')->references('id')->on('dday');
     });
+    Schema::table('users', function($table){
+        $table->integer('student_pkid')->unsigned();
+        $table->foreign('student_pkid')->references('id')->on('students');
+    });
+    Schema::table('admins', function($table){
+        $table->integer('advisor_id')->unsigned();
+        $table->foreign('advisor_id')->references('id')->on('advisors');
+    });
 
 
     }
