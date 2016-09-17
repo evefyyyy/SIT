@@ -76,28 +76,21 @@
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-8 col-md-8">
-						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser1" id="mainAdvisor" placeholder="Search or select" />
-						  <datalist class="data" id="browsers">
+						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
 								@foreach($advisor as $ad)
 							    <option>{{$ad->advisor_name}}</option>
 								@endforeach
-						  </datalist>
-
-						</div>
+						  </select>
 					</div>
 				</div>
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-8 col-md-8">
-						<div class="data" action="demo_form.asp" method="get">
-						  <input class="advisor form-control" list="browsers" name="browser2" id="coAdvisor" placeholder="Search or select"/>
-						  <datalist class="data" id="browsers">
+						<select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
 								@foreach($advisor as $ad)
-						    <option>{{$ad->advisor_name}}</option>
+							    <option>{{$ad->advisor_name}}</option>
 								@endforeach
-						  </datalist>
-						</div>
+						  </select>
 					</div>
 				</div>
 		    	<input type="button" name="previous" class="previous action-button" value="Previous" />
@@ -141,9 +134,11 @@
 				<div class="col-sm-12 col-md-9">
 					<div class="custom-file-upload">
 				    <p>Upload your first draft proposal</p>
-						<!-- <p>Your old file name is : {{$filename}}</p> -->
 				    <input type="file" id="file" name="myfiles"/>
-					</div>
+				    </div>
+				    <div class="input_fields_wrap">
+					    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
+					</div>	
 				</div>
 				</div>
 				<input type="hidden" value="" id="selectType" name="selectType"/>
