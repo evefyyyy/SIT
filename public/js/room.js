@@ -25,7 +25,7 @@ $( ".selectpicker" ).each(function() {
 	$.each($(".selectpicker option:selected"), function(){
 	targets.push($(this).val());
 	});
-	console.log(targets.join(", "))
+	var commitee = (targets.join(", "))
 });
 }
 
@@ -94,3 +94,15 @@ function parseTime(timeString)
   d.setSeconds(0, 0);
   return d;
 } // parseTime()
+
+function highlight(e) {
+    if (selectpj[0]) selectpj[0].className = '';
+    e.target.parentNode.className = 'selectpj';
+}
+var table = document.getElementById('addroomTB'),
+    selectpj = table.getElementsByClassName('selectpj');
+table.onclick = highlight;
+// add project
+function pjselect(){
+    var addpj = $("tr.selectpj td:first").html();
+}

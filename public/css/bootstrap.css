@@ -287,7 +287,6 @@ th {
 }
 .glyphicon-plus:before {
   content: "\002b";
-  color: #ff7f7f;
   padding-right: 5px;
 }
 .glyphicon-euro:before,
