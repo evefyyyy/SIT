@@ -432,7 +432,10 @@ option {
 .no-pointerevents .wrapper-dropdown-3.active .dropdown {
     display: block;
 }
-
+.input_fields_wrap label {
+  margin-left: 10px;
+  cursor: pointer;
+}
 .teammem {
     text-align: center;
     width: 50%;
@@ -798,11 +801,10 @@ h6 img {
     }
 }
 .custom-file-upload p {
-    text-align: left;
     color: #666;
     font-size: 0.875em;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
 }
 .file-upload-wrapper {
     position: relative;
@@ -810,7 +812,7 @@ h6 img {
 }
 .file-upload-input {
     height: 31px;
-    margin-bottom: 15px !important;
+    margin: 0 auto 10px auto;
     padding: 5px 12px;
     line-height: 1.22857143;
     color: #555;
@@ -821,7 +823,6 @@ h6 img {
     font-size: 0.925em;
     background-color: $file-upload-color;
     @include transition(all 0.2s ease-in);
-    float: left; /* IE 9 Fix */
     &:hover, &:focus {
         background-color: darken($file-upload-color, 5);
         outline: none;
@@ -846,7 +847,6 @@ h6 img {
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     background-color: darken($file-upload-color, 10);
-    float: left; /* IE 9 Fix */
     @include transition(all 0.2s ease-in);
     &:hover {
         background-color: darken($file-upload-color, 20);
