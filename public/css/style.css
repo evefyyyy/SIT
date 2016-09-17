@@ -873,6 +873,12 @@ h6 img {
 .news-head a {
   margin-top: 10px !important;
 }
+.form-group .file-upload-wrapper > input.file-upload-input {
+  margin-bottom: 0;
+}
+.form-group .input_fields_wrap {
+  margin-top: 10px;
+}
 #newTB .table {
   margin-top: 0;
 }
