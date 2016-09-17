@@ -82,7 +82,7 @@ Route::get('search',function(){
 Route::get('ldap',function(){
 	return view('ldap');
 });
-Route::post('login','LdapLoginController@Login');
+Route::post('loginldp','LdapLoginController@Login');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');
 

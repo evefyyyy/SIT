@@ -31,9 +31,9 @@ class AllProjectController extends Controller
 		$advisor = Advisor::all();
 		$objs['advisor'] = $advisor;
 
-    $objs['proposal'] = Proposal::all();
+    	$objs['proposal'] = Proposal::all();
 
-		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
+		$objs['countProject'] = GroupProject::where('group_project_approve','=',1)->count();
 
 
 		$projects = \App\ProjectStudent::all();
