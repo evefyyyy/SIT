@@ -75,8 +75,8 @@
 				<h3 class="fs-subtitle">Choose your project advisors</h3>
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
-					<div class="col-xs-8 col-md-8">
-						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
+					<div class="col-xs-8 col-md-5">
+						  <select class="selectpicker1 advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
 								@foreach($advisor as $ad)
 							    <option>{{$ad->advisor_name}}</option>
 								@endforeach
@@ -85,10 +85,10 @@
 				</div>
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
-					<div class="col-xs-8 col-md-8">
-						<select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
+					<div class="col-xs-8 col-md-5">
+						  <select class="selectpicker1 advisor" multiple data-width="100%" data-max-options="1" id="coAdvisor">
 								@foreach($advisor as $ad)
-							    <option>{{$ad->advisor_name}}</option>
+						    <option>{{$ad->advisor_name}}</option>
 								@endforeach
 						  </select>
 					</div>
@@ -129,9 +129,6 @@
 					  	<td id="coAdvisor1"></td>
 					  </tr>
 					</table>
-				<div class="row">
-				<div class="hidden-sm col-md-3"></div>
-				<div class="col-sm-12 col-md-9">
 					<div class="custom-file-upload">
 				    <p>Upload your first draft proposal</p>
 				    <input type="file" id="file" name="myfiles"/>
@@ -139,8 +136,6 @@
 				    <div class="input_fields_wrap">
 					    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
 					</div>	
-				</div>
-				</div>
 				<input type="hidden" value="" id="selectType" name="selectType"/>
 				<input type="hidden" value="" id="selectCat" name="selectCat"/>
 				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>
@@ -155,6 +150,7 @@
     		}
 		</style>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
+    	<script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
 
 			<script type="text/javascript">
 					function selectType(x){

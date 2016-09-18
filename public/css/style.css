@@ -2,15 +2,12 @@
     padding: 0;
     margin: 0;
 }
-nav > p > img {
+p.navbar-text > img {
     vertical-align: top;
 }
 a {
   -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
-}
-.logout {
-    font-size: 0.875em;
 }
 .logout:hover {
   color: #FF5C5C !important;
@@ -1198,7 +1195,7 @@ input[type="range"].cropit-image-zoom-input {
   transform: translateY(-50%);
 }
 .search > .input-group-btn > .btn {
-  padding: 5px 12px;
+  padding: 6px 12px !important;
 }
 .panel-body .titlee {
   color: #40c3a7;
@@ -1295,6 +1292,39 @@ input[type="range"].cropit-image-zoom-input {
   cursor: pointer;
 }
 .selectpj {
-    background-color: #40c3a7;
-    color: #FFF;
+  background-color: #40c3a7;
+  color: #FFF;
+}
+#year.dropdown {
+  display: inline;
+  margin-left: 5px;
+}
+.pjsearch.form-control {
+  width: 100%;
+  font-size: 1em;
+}
+#scoresheet table {
+  width: 100%
+}
+#scoresheet .row {
+  margin-top: 30px;
+}
+#scoresheet label {
+  text-transform: uppercase;
+}
+#scoresheet p {
+  color: black;
+  font-size: 1.1em;
+  display: inline;
+  text-transform: uppercase;
+}
+#scoresheet h2 {
+  margin: 20px auto;
+}
+#scoresheet button {
+  float: right;
+  margin-bottom: 5px;
+}
+h2 > img {
+  padding-right: 15px
 }
