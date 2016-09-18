@@ -24,9 +24,9 @@ class LdapLoginController extends Controller
 
 	public function Login(Request $request){
 
-		DB::table('users')
-					->where('name', $request->name)
-					->update(['password' => bcrypt($request->password)]);
+		// DB::table('users')
+		// ->where('name', $request->name)
+		// ->update(['password' => bcrypt($request->password)]);
 
 		$username  = $request->name;
 		$ldaprdn  = "uid=".$username.",ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th";
@@ -42,21 +42,28 @@ class LdapLoginController extends Controller
 		//dd($username);
 
 		
-		/*if ($ds) {
+		if ($ds) {
 			if (@ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)==0) echo "Failed to set protocol version to 3";
-			/*try{
+			try{
 				$ldapbind = ldap_bind($ds, $ldaprdn, $ldappass);
-				$justthese = array("uid", "cn", "gecos", "mail");
-				$sr=ldap_search($ds, "ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th", "uid=".$username."",$justthese);
-				$info = ldap_get_entries($ds, $sr);
+				// $justthese = array("uid", "cn", "gecos", "mail");
+				// $sr=ldap_search($ds, "ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th", "uid=".$username."",$justthese);
+				// $info = ldap_get_entries($ds, $sr);
+				if(DB::table('users')->where('name', $username)->first()===null){
+					DB::table('users')->insert(
+						['name' => $username, 'password' => bcrypt($request->password), 'student_pkid' => (DB::table('students')->where('student_id', $username)->first())->id]
+						);
+				} 
+				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
+					return redirect()->intended('/home');
+				} else {
+					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
+				}
 				//$info = ldap_pull($info[0], 'uid');
-				
 				//print_r($info[0]);
-
-				echo "success";
 			}catch(Exception $e){
 				echo "Incorrect Password or Something when wrong";
-			}*/
+			}
 			/*$ldapbind = ldap_bind($ds, $ldaprdn, $ldappass);
 			if($ldapbind){
 				$justthese = array("uid", "cn", "gecos", "mail");
@@ -69,25 +76,26 @@ class LdapLoginController extends Controller
 						);
 				} 
 				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
-					return redirect('/home');
-				} else {
-					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
-				}
+			 return redirect()->intended('/home');
+
+		} else {
+			return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
+		}
 				//$info2 = array_pull($info[0], 'cn');
 				//print_r($info[0]);
 
 
 
 			}
-
+			*/
 			ldap_close($ds);
-		}*/
-		if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
-			 return redirect()->intended('/home');
-
-		} else {
-			return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 		}
+		// if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
+		// 	 return redirect()->intended('/home');
+
+		// } else {
+		// 	return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
+		// }
 
 	}
 	public function getLogout(){

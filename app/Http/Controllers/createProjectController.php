@@ -293,7 +293,7 @@ class createProjectController extends Controller {
 		return redirect(url('student/myproject/waitapprove'));
 	}
 
-
+	
 
 
 
