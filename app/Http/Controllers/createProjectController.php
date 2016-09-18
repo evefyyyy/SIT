@@ -102,7 +102,7 @@ class createProjectController extends Controller {
 		}
 
 
-		$advisor = $request['browser1'];
+		$advisor = $request['mainAdv'];
 		$checkAdv = DB::table('advisors')
 								->where('advisor_name','=',$advisor)
 								->value('id');
@@ -112,7 +112,7 @@ class createProjectController extends Controller {
 		$adv->advisor_position_id = '1';
 		$adv->save();
 
-		if($advisor = $request['browser2']){
+		if($advisor = $request['coAdv']){
 			$checkAdv = DB::table('advisors')
 									->where('advisor_name','=',$advisor)
 									->value('id');
@@ -249,7 +249,7 @@ class createProjectController extends Controller {
 		$obj->save();
 
 		$obj = ProjectAdvisor::find($getAdv1);
-		$advisor = $request['browser1'];
+		$advisor = $request['mainAdv'];
 		$checkAdv = DB::table('advisors')
 								->where('advisor_name','=',$advisor)
 								->value('id');
@@ -259,7 +259,7 @@ class createProjectController extends Controller {
 
 		if($getAdv2 !=null ){
 			$obj = ProjectAdvisor::find($getAdv2);
-			$advisor = $request['browser2'];
+			$advisor = $request['coAdv'];
 			$checkAdv = DB::table('advisors')
 									->where('advisor_name','=',$advisor)
 									->value('id');
@@ -267,7 +267,7 @@ class createProjectController extends Controller {
 			$obj->advisor_position_id = '2';
 			$obj->save();
 		}else if($getAdv2 == null){
-			$advisor = $request['browser2'];
+			$advisor = $request['coAdv'];
 			$checkAdv = DB::table('advisors')
 									->where('advisor_name','=',$advisor)
 									->value('id');
@@ -293,7 +293,7 @@ class createProjectController extends Controller {
 		return redirect(url('student/myproject/waitapprove'));
 	}
 
-
+	
 
 
 

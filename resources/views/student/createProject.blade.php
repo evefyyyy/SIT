@@ -17,7 +17,7 @@
 				<h2 class="fs-title">Create project</h2>
 		    	<h3 class="fs-subtitle">Enter project name and select category</h3>
 		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="projectNameEN" value="{{$projectNameEN or ''}}" requried/>
-				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="projectNameTH" value="{{$projectNameTH or ''}}"requried/>
+				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="projectNameTH" value="{{$projectNameTH or ''}}" requried/>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><label class="category">Project Type</label></div>
 							<div class="col-xs-6 col-md-6">
@@ -48,12 +48,10 @@
 				<h2 class="fs-title">Team members</h2>
 				<h3 class="fs-subtitle">Choose your team members</h3>
 				<div class="row">
-					@foreach($students as $std)
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{$std->student_id}}" name="idStudent1" readonly/>
+						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{Auth::user()->student->student_id	}}" name="idStudent1" readonly/>
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{$std->student_name}}</div>
-					@endforeach
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{Auth::user()->student->student_name}}</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
@@ -76,9 +74,9 @@
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-4 col-md-4">
-						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
+						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
 								@foreach($advisor as $ad)
-							    <option>{{$ad->advisor_name}}</option>
+							    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
 								@endforeach
 						  </select>
 					</div>
@@ -86,9 +84,9 @@
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-4 col-md-4">
-						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="coAdvisor">
+						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="coAdvisor" name="coAdv">
 								@foreach($advisor as $ad)
-						    <option>{{$ad->advisor_name}}</option>
+						    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
 								@endforeach
 						  </select>
 					</div>
@@ -133,6 +131,7 @@
 				    <p>Upload your first draft proposal</p>
 				    <input type="file" id="file" name="myfiles"/>
 				    </div>
+
 				<input type="hidden" value="" id="selectType" name="selectType"/>
 				<input type="hidden" value="" id="selectCat" name="selectCat"/>
 				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>

@@ -5,6 +5,9 @@
 	<div class="col-xs-10 col-md-10 col-lg-8">
 	<h2>exam room 3</h2>
 	<div class="row">
+	
+
+
 		<div class="col-xs-6 col-md-3 col-lg-3 titlee">room</div>
 		<div class="col-xs-6 col-md-3 col-lg-3">Training room 3</div>
 		<div class="col-xs-6 col-md-2 col-lg-2 titlee">date</div>
@@ -66,9 +69,15 @@
 <div class="row" id="center">
 	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 	<div class="col-xs-10 col-md-10 col-lg-10">
-			<a href="editroom"><button class="action-button">back</button></a>
-			<a href=""><button class="action-button">submit</button></a>
+			<button class="action-button" onclick="back()">back</button>
+			<button class="action-button">submit</button>
 	</div>
 	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 </div>
+
+<script>
+	function back() {
+		history.back()
+	}
+</script>
 @stop

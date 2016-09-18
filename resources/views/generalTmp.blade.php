@@ -26,7 +26,17 @@
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
           @if(Auth::check())
-          <li><a href="#">manage project</a></li> 
+            <?php $id_group_project = Auth::user()->student->projectStudent->first()->project_pkid;
+                $approve_project = DB::table('group_projects')
+                                      ->where('id', $id_group_project)->first();
+           ?>
+            @if(Auth::user()->student->projectStudent->first()===null)
+              <li><a href="/student/myproject/noproject">manage project</a></li>
+            @elseif($approve_project->group_project_approve==0)
+              <li><a href="/student/myproject/waitapprove">manage project</a></li>
+            @else
+              <li><a href="/showproject">manage project</a></li>
+            @endif
           @endif
         </ul>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

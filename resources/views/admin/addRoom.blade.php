@@ -4,12 +4,14 @@
 	<div class="col-xs-1 col-md-2 col-lg-3"></div>
 	<div class="col-xs-10 col-md-8 col-lg-6">
 	<h2>exam room 3</h2>
+	<form action="{{url('exam/manageroom/create/editroom')}}" method="post">
+		<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				<div class="row">
 			    <div class="col-xs-4 col-md-3 col-lg-3 titlee">room</div>
-				<div class="col-xs-3 col-md-3 col-lg-4">
-					<select class="selectroom">
+				<div class="col-xs-3 col-md-5 col-lg-5">
+					<select class="selectroom" name="selectroom">
 						@foreach($rooms as $room)
-					  <option>{{$room->room_name}}</option>
+					  <option value="{{$room->id}}">{{$room->room_name}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -29,14 +31,14 @@
 				<div class="col-xs-4 col-md-3 col-lg-3 titlee">Time</div>
 				<div class="col-xs-4 col-md-3 col-lg-4">
 					<div class='input-group date' id='timepicker1'>
-                    <input type='text' class="form-control" placeholder="start" id="starttime"/>
+                    <input type='text' class="form-control" placeholder="start" id="starttime" name="startTime"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
                 	</div>
                 </div>
                 <div class="col-xs-2 col-md-2 col-lg-2">
-                    <input type='number' min="0" class="form-control" id="minute">
+                    <input type='number' min="0" class="form-control" id="minute" name="minute">
                 </div>
                 <div class="col-xs-3 col-md-3 col-lg-3 time">minutes per group</div>
             	</div>
@@ -52,10 +54,19 @@
 				</div>
 			<div id="center">
 			<a href="/exam/manageroom"><button class="action-button">back</button></a>
-			<a href="addroom/editroom"><button class="action-button" onClick="divFunction()">next</button></a>
+
+			<!-- <button class="action-button">next</button>
+		</div> -->
+
+		<button class="action-button" onClick="divFunction()">next</button>
 			</div>
+
 	</div>
+	<input type="hidden" id="selectAdv" name="selectAdv"/>
+</form>
 	<div class="col-xs-1 col-md-2 col-lg-3"></div>
 </div>
 <script src="{!! URL::asset('js/room.js') !!}"></script>
+
+
 @stop
