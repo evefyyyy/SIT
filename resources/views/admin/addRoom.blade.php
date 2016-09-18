@@ -57,6 +57,5 @@
 	</div>
 	<div class="col-xs-1 col-md-2 col-lg-3"></div>
 </div>
-<script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
 <script src="{!! URL::asset('js/room.js') !!}"></script>
 @stop

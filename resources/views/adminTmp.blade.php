@@ -37,14 +37,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">exam</a>
                     <ul class="dropdown-menu">
                       <li><a href="/exam/manageroom">exam room</a></li>
-                      <li><a href="">score sheet</a></li>
-                      <li><a href="">score record</a></li>
+                      <li><a href="/exam/managescore">score sheet</a></li>
+                      <li><a href="/exam/scorerecord">score record</a></li>
                     </ul>
                   </li>
                   <li class="{{ strrpos(Request::path(),'project') === 0 ? 'active' : ''  }}"><a href="/project">Student projects</a></li>
                   <li><a href="/index">Back to homepage</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>     
+                <ul class="nav navbar-nav navbar-right">
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  
+                </ul>   
           </nav>
         </div>
        <div id="content">

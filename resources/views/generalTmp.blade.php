@@ -22,17 +22,16 @@
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
-
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
+          <!-- li><a href="#">manage project</a></li> -->
         </ul>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <form class="navbar-form navbar-left" role="search" action="{{url('home/projects/search')}}" method="get">
           <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
-            <input type="text" class="form-control" placeholder="Search here" aria-describedby="ddlsearch" name="search">
+            <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
               <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default">
                 <option>all years</option>
@@ -46,6 +45,7 @@
             </span>
           </div>
         </form>
+        <!-- <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p> -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
               <ul id="login-dp" class="dropdown-menu">
