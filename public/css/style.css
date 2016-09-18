@@ -12,7 +12,7 @@ a {
 .logout:hover {
   color: #FF5C5C !important;
 }
-nav span.lol {
+span.lol {
     padding: 0 10px 0 10px;
     color: #CECECE;
     font-weight: normal;
@@ -1311,6 +1311,7 @@ input[type="range"].cropit-image-zoom-input {
 }
 #scoresheet label {
   text-transform: uppercase;
+  margin-right: 10px;
 }
 #scoresheet p {
   color: black;
@@ -1327,4 +1328,39 @@ input[type="range"].cropit-image-zoom-input {
 }
 h2 > img {
   padding-right: 15px
+}
+#scoreTB table {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 0.975em;
+}
+#scoreTB table > thead > tr > th,
+a.toggle-vis {
+  cursor: pointer;
+  text-transform: uppercase;
+}
+a.toggle-vis:hover {
+  color: #40c3a7;
+}
+.dataTables_info {
+  display: none;
+}
+table.myscore > tbody > tr >td {
+  text-transform: uppercase;
+} 
+td.poor {
+  font-weight: 900;
+  color: #EF1010;
+}
+td.fair {
+  font-weight: 900;
+  color: #FFC026;
+}
+td.verygood {
+  font-weight: 900;
+  color: #1CC68D;
+}
+td.good {
+  font-weight: 900;
+  color: #0BC7D3;
 }
