@@ -65,7 +65,7 @@ return [
     */
 
     'providers' => [
-        'students' => [
+        'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],

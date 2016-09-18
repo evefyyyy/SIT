@@ -39,13 +39,6 @@ Route::get('exam/manageroom/addroom/preview', function () {
     return view('admin.confirmRoom');
 });
 
-Route::get('exam/managescore', function () {
-    return view('admin.manageScore');
-});
-Route::get('exam/scorerecord', function () {
-    return view('admin.scoreRecord');
-});
-
 Route::get('home/projects','projectController@index');
 
 Route::get('home/projects/search','projectController@search');
@@ -89,10 +82,7 @@ Route::get('search',function(){
 Route::get('ldap',function(){
 	return view('ldap');
 });
-Route::auth();
-
-Route::post('login','LdapLoginController@Login');
-Route::get('logout','LdapLoginController@getLogout');
+Route::post('loginldp','LdapLoginController@Login');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');
 
