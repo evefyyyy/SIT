@@ -1,11 +1,14 @@
 @extends('adminTmp')
 @section('content')
 <div class="row" id="editroom">
-	<div class="col-xs-1 col-md-2 col-lg-2"></div>
-	<div class="col-xs-10 col-md-8 col-lg-8">
+	<div class="col-xs-1 col-md-1 col-lg-1"></div>
+	<div class="col-xs-10 col-md-10 col-lg-10">
+
+			<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	<h2 style="margin-bottom:0">exam room 3</h2>
+		<a data-toggle="modal" data-target="#addproject"><i class="glyphicon glyphicon-plus"></i>add project</a>
 	</div>
-	<div class="col-xs-1 col-md-2 col-lg-2"></div>
+	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 </div>
 <div class="row">
 	<div id="roomTB">
@@ -55,22 +58,56 @@
 		</table>
 	</div>
 </div>
-<p id="starttime1"></p>
 	<div id="center">
 			<a href="/exam/manageroom/create"><button class="action-button">back</button></a>
-			<a href="preview"><button class="action-button">next</button></a>
+			<a href="/exam/manageroom/create/preview"><button class="action-button">next</button></a>
 		</div>
 
-<script>
-$('[data-toggle=confirmation]').confirmation({
-				rootSelector: '[data-toggle=confirmation]',
-				placement: 'top',
-				onConfirm: function() {
-					$(this).closest('tr').remove();
-				}
-			});
-</script>
 
+	<!-- add project -->
+		<div class="modal fade" id="addproject" role="dialog" aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title">Add Project</h4>
+				      </div>
+				      	<div class="modal-body">
+							<div id="addroomTB">
+								<table class="table table-bordered">
+									<thead>
+										<th>project id</th>
+										<th>project name</th>
+									</thead>
+									<tbody>
+										@if($project == 0)
+										@foreach($addProject as $pj)
+										<tr>
+											<td>{{$pj->group_project_id}}</td>
+											<td>{{$pj->group_project_th_name}}</td>
+										</tr>
+										@endforeach
+										@else
+										@foreach($addProject as $pj)
+										<tr>
+											<td>{{$pj->group_project_id}}</td>
+											<td>{{$pj->group_project_th_name}}</td>
+										</tr>
+										@endforeach
+										@endif
+									</tdoby>
+								</table>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="pjselect()">add</button>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 <script src="{!! URL::asset('js/room.js') !!}"></script>
 @stop

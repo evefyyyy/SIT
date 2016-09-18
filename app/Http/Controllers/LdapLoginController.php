@@ -16,14 +16,19 @@ class LdapLoginController extends Controller
 {
 	public function getIndex(){
 		if(Auth::check()){
-			return redirect('/home');
+			return redirect('/showproject');
 		}else{
-			return view('/home');
+			return view('/');
 		}
 	}
 
 	public function Login(Request $request){
-		$username  = $request->username;
+
+		DB::table('users')
+					->where('name', $request->name)
+					->update(['password' => bcrypt($request->password)]);
+
+		$username  = $request->name;
 		$ldaprdn  = "uid=".$username.",ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th";
 		$ldappass = $request->password;
 		$base="";
@@ -34,8 +39,10 @@ class LdapLoginController extends Controller
 		$student = Student::all();
 		//$test = DB::table('users')->where('name', $username)->first();
 		//dd($test);
+		//dd($username);
 
-		if ($ds) {
+		
+		/*if ($ds) {
 			if (@ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)==0) echo "Failed to set protocol version to 3";
 			/*try{
 				$ldapbind = ldap_bind($ds, $ldaprdn, $ldappass);
@@ -50,7 +57,7 @@ class LdapLoginController extends Controller
 			}catch(Exception $e){
 				echo "Incorrect Password or Something when wrong";
 			}*/
-			$ldapbind = ldap_bind($ds, $ldaprdn, $ldappass);
+			/*$ldapbind = ldap_bind($ds, $ldaprdn, $ldappass);
 			if($ldapbind){
 				$justthese = array("uid", "cn", "gecos", "mail");
 				$sr=ldap_search($ds, "ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th", "uid=".$username."",$justthese);
@@ -74,10 +81,17 @@ class LdapLoginController extends Controller
 			}
 
 			ldap_close($ds);
+		}*/
+		if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
+			 return redirect()->intended('/home');
+
+		} else {
+			return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 		}
+
 	}
 	public function getLogout(){
 		Auth::logout();
-		return redirect('/');
+		return redirect('/index');
 	}
 }

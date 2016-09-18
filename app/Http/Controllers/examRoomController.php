@@ -40,18 +40,29 @@ class examRoomController extends Controller
       $selectAdv = $request['selectAdv'];
       $startTime = $request['startTime'];
       $minute = $request['minute'];
+      $obj['addProject'] = [];
       $explode = explode(",",$selectAdv);
       $count = count($explode);
+      $allProject = DB::table('group_projects')->select('id')->get();
+      $getData1 = [];
+      foreach($allProject as $pj){
+        array_push($getData1,$pj->id);
+      }
       for($i=0;$i<$count;$i++){
-        $adv[$i] = DB::table('project_advisors')
+        $mainadv[$i] = DB::table('project_advisors')
                     ->where('advisor_id',$explode[$i])
                     ->where('advisor_position_id','=','1')
                     ->select('project_pkid')->get();
       }
-        $flatdata = array_flatten($adv);
+        $flatdata = array_flatten($mainadv);
+        $getData2 = [];
+        foreach($flatdata as $adv){
+          array_push($getData2,$adv->project_pkid);
+        }
         $count1 = count($flatdata);
         if($count1 == 0){
           $obj['project'] = 0;
+          $obj['addProject'] = GroupProject::all();
         }else{
           for($i=0;$i<$count1;$i++){
             $get[$i] = $flatdata[$i]->project_pkid;
@@ -72,8 +83,27 @@ class examRoomController extends Controller
                           ->select('advisor_name')->get();
             $obj['project'][$i]['advisor'] = $advisor[$i];
           }
+          $roomexam = DB::table('rooms_exam')->select('project_pkid')->get();
+          $getData3 = [];
+          foreach($roomexam as $re){
+            array_push($getData3,$re->project_pkid);
+          }
+          $result = array_diff($getData1,$getData2,$getData3);
+          $newresult = [];
+          foreach($result as $s){
+            array_push($newresult,$s);
+          }
+          $count3 = count($newresult);
+          for($i=0;$i<$count3;$i++){
+            $addProject[$i] = GroupProject::where('id',$newresult[$i])->get();
+          }
+          $obj['addProject'] = array_flatten($addProject);
         }
-
       return view('admin.editRoom',$obj);
+    }
+
+    public function preview()
+    {
+      return view('admin.confirmRoom');
     }
 }

@@ -76,9 +76,9 @@
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-4 col-md-4">
-						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor">
+						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
 								@foreach($advisor as $ad)
-							    <option>{{$ad->advisor_name}}</option>
+							    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
 								@endforeach
 						  </select>
 					</div>
@@ -86,9 +86,9 @@
 		    	<div class="row">
 					<div class="col-xs-4 col-md-4 category">Co-advisor</div>
 					<div class="col-xs-4 col-md-4">
-						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="coAdvisor">
+						  <select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="coAdvisor" name="coAdv">
 								@foreach($advisor as $ad)
-						    <option>{{$ad->advisor_name}}</option>
+						    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
 								@endforeach
 						  </select>
 					</div>
@@ -149,4 +149,67 @@
 		</style>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
     	<script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
+    	<script>
+    	function selectType(x){
+						document.getElementById("selectType").value = x;
+					}
+
+					function selectCat(x){
+						document.getElementById("selectCat").value = x;
+					}
+
+					function selectAdv1(x){
+						document.getElementById("selectAdv1").value = x;
+					}
+
+			    function check_name2(){
+		         $.ajax({
+		                type:"post",
+		                dataType: "",
+		                url :"stdId2",
+		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
+		                    success:function(data){
+		                      if(data=='0'){
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId2').value === ''){
+															result =''
+														}else{
+															_msg = "Data not found";
+															result = _msg.fontcolor("red");
+														}
+		                        $('#fname2').html(result);
+		                      }else{
+														var _data = data.student_name
+														$('#fname2').html(_data);
+		                      }
+		                }
+		             });
+		    }
+
+				function check_name3(){
+					 $.ajax({
+									type:"post",
+									dataType: "",
+									url :"stdId3",
+									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+											success:function(data){
+												if(data=='0'){
+													var _msg = null;
+													var result = null;
+													if(document.getElementById('stdId3').value === ''){
+														result =''
+													}else{
+														_msg = "Data not found";
+														result = _msg.fontcolor("red");
+													}
+													$('#fname3').html(result);
+												}else{
+													var _data = data.student_name
+													$('#fname3').html(_data);
+												}
+									}
+							 });
+			}
+    	</script>
 @stop

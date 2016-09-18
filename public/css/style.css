@@ -5,6 +5,10 @@
 nav > p > img {
     vertical-align: top;
 }
+a {
+  -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
 .logout {
     font-size: 0.875em;
 }
@@ -86,8 +90,6 @@ nav span.lol {
     border-style: solid;
     border-width: 2px;
     padding: 5px 10px 5px 10px;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
 }
 
 .noProject a:hover {
@@ -469,8 +471,6 @@ option {
   font-weight: 600;
   text-decoration: none;
   color: #40c3a7;
-  -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s;
 }
 #waitApp a:hover {
   text-decoration: none;
@@ -519,8 +519,6 @@ option {
 .pending a {
     text-decoration: none;
     color: black;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
 }
 .pending a:hover {
     color: #40c3a7;
@@ -628,8 +626,6 @@ option {
   color: #FFF;
   text-decoration: none;
   font-size: 1.2em;
-  -webkit-transition: background-color 0.2s;
-  -moz-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 .cd-popup-container .cd-buttons li:first-child a {
@@ -892,8 +888,6 @@ h6 img {
   color: black;
   text-decoration: none;
   cursor: pointer;
-  -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
 }
 #newTB h3 {
   font-weight: normal;
@@ -1245,8 +1239,12 @@ input[type="range"].cropit-image-zoom-input {
 #addroom input[type=number] {
   width: 80px;
 }
-#roomTB thead, #roomTB tbody {
+#roomTB thead, #roomTB tbody,
+#addroomTB thead, #addroomTB tbody {
   font-size: 0.9em;
+}
+#addproject .modal-body {
+  padding: 15px 0;
 }
 #roomTB tbody > tr > td {
   text-transform: none;
@@ -1268,6 +1266,16 @@ input[type="range"].cropit-image-zoom-input {
 #editroom .row {
   margin-bottom: 5px;
 }
+#editroom a {
+  text-transform: uppercase;
+  font-weight: 600;
+  float: right;
+  color: #40c3a7;
+  cursor: pointer;
+}
+#editroom a:hover {
+  color: #ff7f7f;
+}
 .savepdf {
   float: right;
   margin-top: 5px;
@@ -1279,4 +1287,14 @@ input[type="range"].cropit-image-zoom-input {
 }
 .table-hover td.move-btn:hover {
   background-color: #fff !important;
+}
+#addroomTB table {
+  width: 90%;
+}
+#addroomTB tr {
+  cursor: pointer;
+}
+.selectpj {
+    background-color: #40c3a7;
+    color: #FFF;
 }

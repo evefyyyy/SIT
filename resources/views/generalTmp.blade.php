@@ -26,6 +26,9 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
+          @if(Auth::check())
+          <li><a href="#">manage project</a></li> 
+          @endif
         </ul>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,18 +49,22 @@
             </span>
           </div>
         </form>
+        @if(Auth::check())
+        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> {{Auth::user()->student->student_name}}<span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+        @else
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
               <ul id="login-dp" class="dropdown-menu">
                 <li>
                  <div class="row">
                   <div class="col-md-12">
-                   <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                   <form class="form" role="form" method="post" action="/login" accept-charset="UTF-8" id="login-nav">
+                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
-                     <input type="text" class="form-control" placeholder="Username" required>
+                     <input type="text" class="form-control" placeholder="Username" name="name" required>
                    </div>
                    <div class="form-group">
-                     <input type="password" class="form-control" placeholder="Password" required>
+                     <input type="password" class="form-control" placeholder="Password" name="password" required>
                    </div>
                    <div class="form-group">
                      <button type="submit" class="btn-login">Login</button>
@@ -71,6 +78,7 @@
            </li>
          </ul>
        </li>
+       @endif
      </ul>
    </div>
  </nav>
