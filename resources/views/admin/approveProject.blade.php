@@ -19,24 +19,24 @@
                   <td colspan="4" class="no-project">no pending project</td>
               </tr>
               @else
-              @foreach($project as $pj)
-              @if($pj->groupProject->group_project_approve===0)
+              @foreach($group_project as $gp)
+              @if($gp->group_project_approve===0)
               <tr>
                   <table class="table pending">
                      <tr>
                         <th rowspan="2" style="width:15%">Project name<span>:</span></th>
                         <td colspan="3" rowspan="2" style="width:55%" id="name">
-                           {{$pj->groupProject->group_project_eng_name}}
-                           <br>{{$pj->groupProject->group_project_th_name}}
+                           {{$gp->group_project_eng_name}}
+                           <br>{{$gp->group_project_th_name}}
                        </td>
                        <td rowspan="2" colspan="3" style="width:30%" id="proid">
-                           <button id="delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
-                           <button id="btn" class="delete approvebt" value="{{$pj->groupProject->id}}">approve</button>
+                           <button id="delpj" class="rejectbt cd-popup-trigger" value="{{$gp->id}}">reject</button>
+                           <button id="btn" class="delete approvebt" value="{{$gp->id}}">approve</button>
                            <?php
                                $countProjectApp++;
-                               if($pj->groupProject->type_id===1){
+                               if($gp->type_id===1){
                                     $typeAbb = 'BU';
-                               } else if($pj->groupProject->type_id===2){
+                               } else if($gp->type_id===2){
                                     $typeAbb = 'SO';
                                } else {
                                     $typeAbb = 'RE';
@@ -53,15 +53,15 @@
                    </tr>
                    <tr>
                     <th>Type<span>:</span></th>
-                    <td style="width:15%">{{$pj->groupProject->type->type_name}}</td>
+                    <td style="width:15%">{{$gp->type->type_name}}</td>
                     <th style="width:15%">Category<span>:</span></th>
-                    <td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
+                    <td style="width:15%">{{$gp->category->category_name}}</td>
                     <td></td>
-                    <td><a href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
+                    <td><a href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
                 </tr>
                 <tr>
                     <th rowspan="3">Team member<span>:</span></th>
-                    <?php $teams = App\ProjectStudent::where('project_pkid', $pj->project_pkid)->get(); ?>
+                    <?php $teams = App\ProjectStudent::where('project_pkid', $gp->id)->get(); ?>
 
                     <td rowspan="3">
                        @foreach($teams as $team)
@@ -73,7 +73,7 @@
                        {{ $team->student->student_name}}<br>
                        @endforeach
                    </td>
-                   <?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get();
+                   <?php $advisors = App\ProjectAdvisor::where('project_pkid', $pg->id)->get();
                         $advisorsNo1 = $advisors[0]->advisor->advisor_name;
                         $advisorsNo2 = $advisors[1]->advisor->advisor_name;
                    ?>

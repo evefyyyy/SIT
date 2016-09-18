@@ -19,8 +19,8 @@ class CreateFkey extends Migration
     });
 
     Schema::table('admins', function ($table) {
-        $table->integer('user_type_id')->unsigned();
-        $table->foreign('user_type_id')->references('id')->on('user_types');
+        $table->integer('advisor_id')->unsigned();
+        $table->foreign('advisor_id')->references('id')->on('advisors');
     });
 
     Schema::table('advisors', function ($table) {

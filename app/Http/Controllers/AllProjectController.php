@@ -29,7 +29,7 @@ class AllProjectController extends Controller
 		$objs['type'] = $type;
 
 		$advisor = Advisor::all();
-		$objs['advisor'] = $advisor;
+		$objs['advisors'] = $advisor;
 
     	$objs['proposal'] = Proposal::all();
 
@@ -40,6 +40,9 @@ class AllProjectController extends Controller
 		$unique = $projects->unique('project_pkid');
 		$projects = $unique->values()->all();
 		$objs['project'] = $projects;
+
+		$groupProject = GroupProject::all();
+        $objs['group_project'] = $groupProject;
 
       	return view('admin.allProject',$objs);
       }
