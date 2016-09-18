@@ -22,20 +22,28 @@
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
-
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
           @if(Auth::check())
-          <li><a href="#">manage project</a></li> 
+            <?php $id_group_project = Auth::user()->student->projectStudent->first()->project_pkid;
+                $approve_project = DB::table('group_projects')
+                                      ->where('id', $id_group_project)->first();
+           ?>
+            @if(Auth::user()->student->projectStudent->first()===null)
+              <li><a href="/student/myproject/noproject">manage project</a></li>
+            @elseif($approve_project->group_project_approve==0)
+              <li><a href="/student/myproject/waitapprove">manage project</a></li>
+            @else
+              <li><a href="/showproject">manage project</a></li>
+            @endif
           @endif
         </ul>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <form class="navbar-form navbar-left" role="search" action="{{url('home/projects/search')}}" method="get">
           <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
-            <input type="text" class="form-control" placeholder="Search here" aria-describedby="ddlsearch" name="search">
+            <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
               <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default">
                 <option>all years</option>
@@ -50,7 +58,7 @@
           </div>
         </form>
         @if(Auth::check())
-        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> {{Auth::user()->student->student_name}}<span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
         @else
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
@@ -99,4 +107,9 @@
 </div>
 </div>
 </body>
+<script>
+$('.firstname').each(function(index) {
+  document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
+});
+</script>
 </html>

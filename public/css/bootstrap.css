@@ -3280,9 +3280,9 @@ fieldset[disabled] .btn-success.focus {
 .btn-info:active.focus,
 .btn-info.active.focus,
 .open > .dropdown-toggle.btn-info.focus {
-  color: #fff;
-  background-color: #269abc;
-  border-color: #1b6d85;
+  color: #333;
+  background-color: #eee;
+  border-color: none;
 }
 .btn-info:active,
 .btn-info.active,
@@ -3571,7 +3571,6 @@ tbody.collapse.in {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0;
   font-size: 14px;
@@ -3876,7 +3875,7 @@ tbody.collapse.in {
   position: relative;
   z-index: 2;
   width: 100%;
-  font-size: 0.9em;
+  font-size: 0.975em;
 }
 .input-group .form-control:focus {
   z-index: 3;
@@ -4539,7 +4538,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: right !important;
     margin-right: 15px;
     text-transform: capitalize;
-    font-size: 1.1em;
+    font-size: 1em;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
@@ -5154,9 +5153,10 @@ a.thumbnail.active {
   color: #66512c;
 }
 .alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
+  color: #ff4242;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
 }
 .alert-danger hr {
   border-top-color: #e4b9c0;

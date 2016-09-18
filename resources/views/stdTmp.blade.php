@@ -26,7 +26,9 @@
                   <li><a href="#">My score</a></li>
                   <li><a href="/index">Back to homepage</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> rachatapon<span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>
+                <ul class="nav navbar-nav navbar-right">
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+              </ul>
           </nav>
         </div>
        <div id="content">
@@ -45,4 +47,9 @@
         </div>
       </div>
     </body>
+    <script>
+    $('.firstname').each(function(index) {
+      document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
+    });
+    </script>
 </html>

@@ -37,6 +37,22 @@ Route::get('exam/manageroom/create/preview','examRoomController@preview');
 
 // Route::get('exam/manageroom/addroom','examRoomController@create');
 
+
+Route::get('exam/manageroom/addroom/editroom', function () {
+    return view('admin.editRoom');
+});
+
+Route::get('exam/manageroom/addroom/preview', function () {
+    return view('admin.confirmRoom');
+});
+
+Route::get('exam/managescore', function () {
+    return view('admin.manageScore');
+});
+Route::get('exam/scorerecord', function () {
+    return view('admin.scoreRecord');
+});
+
 Route::get('home/projects','projectController@index');
 
 Route::get('home/projects/search','projectController@search');

@@ -160,6 +160,13 @@ $(function () {
 			noneSelectedText: 'no advisor selected',
 		});
 	});
+$(function () {
+		$('.selectpicker1').selectpicker({
+			liveSearch: true,
+
+			noneSelectedText: 'no advisor selected',
+		});
+	});
 
 $(document).ready(function() {
     var max_fields      = 100; //maximum input boxes allowed
