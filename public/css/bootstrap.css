@@ -1285,6 +1285,7 @@ h4,
 .h4 {
   font-size: 1.275em;
   font-weight: bold;
+  text-transform: uppercase;
   color: grey;
 }
 h5,

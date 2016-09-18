@@ -45,7 +45,9 @@ Route::get('exam/managescore', function () {
 Route::get('exam/scorerecord', function () {
     return view('admin.scoreRecord');
 });
-
+Route::get('myscore', function () {
+    return view('student.myScore');
+});
 Route::get('home/projects','projectController@index');
 
 Route::get('home/projects/search','projectController@search');

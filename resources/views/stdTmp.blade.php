@@ -21,9 +21,15 @@
                     <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
                 </div>
                  <ul class="nav navbar-nav">
-                  <li><a href="#">News</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">news</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/news/announcement">Announcement</a></li>
+                      <li><a href="/news/document">documents</a></li>
+                    </ul>
+                  </li>
                   <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
-                  <li><a href="#">My score</a></li>
+                  <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
                   <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
