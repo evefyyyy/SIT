@@ -83,7 +83,8 @@ class LdapLoginController extends Controller
 			ldap_close($ds);
 		}*/
 		if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
-			 return redirect()->intended('/showproject');
+			 return redirect()->intended('/home');
+
 		} else {
 			return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 		}
@@ -91,6 +92,6 @@ class LdapLoginController extends Controller
 	}
 	public function getLogout(){
 		Auth::logout();
-		return redirect('/');
+		return redirect('/index');
 	}
 }

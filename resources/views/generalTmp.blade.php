@@ -26,7 +26,9 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
-          <!-- li><a href="#">manage project</a></li> -->
+          @if(Auth::check())
+          <li><a href="#">manage project</a></li> 
+          @endif
         </ul>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,7 +49,9 @@
             </span>
           </div>
         </form>
-        <!-- <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> Admin<span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p> -->
+        @if(Auth::check())
+        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> {{Auth::user()->student->student_name}}<span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+        @else
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
               <ul id="login-dp" class="dropdown-menu">
@@ -74,6 +78,7 @@
            </li>
          </ul>
        </li>
+       @endif
      </ul>
    </div>
  </nav>
