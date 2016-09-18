@@ -31,21 +31,21 @@
 				<div class="col-xs-4 col-md-3 col-lg-3 titlee">Time</div>
 				<div class="col-xs-4 col-md-3 col-lg-4">
 					<div class='input-group date' id='timepicker1'>
-                    <input type='text' class="form-control" placeholder="start" id="starttime"/>
+                    <input type='text' class="form-control" placeholder="start" id="starttime" name="startTime"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
                 	</div>
                 </div>
                 <div class="col-xs-2 col-md-2 col-lg-2">
-                    <input type='number' min="0" class="form-control" id="minute">
+                    <input type='number' min="0" class="form-control" id="minute" name="minute">
                 </div>
                 <div class="col-xs-3 col-md-3 col-lg-3 time">minutes per group</div>
             	</div>
    				<div class="row">
 				<div class="col-xs-4 col-md-3 col-lg-3 titlee">exam commitee</div>
 				<div class="col-xs-8 col-md-9 col-lg-9">
-					<select class="selectpicker" name="selectAdv" data-width="100%" data-max-options="5">
+					<select class="selectpicker" multiple data-width="100%" data-max-options="5">
 						@foreach($advisor as $adv)
 					  <option value="{{$adv->id}}">{{$adv->advisor_name}}</option>
 						@endforeach
@@ -54,8 +54,13 @@
 				</div>
 			<div id="center">
 			<a href="/exam/manageroom"><button class="action-button">back</button></a>
-			<button class="action-button">next</button>
-		</div>
+
+			<!-- <button class="action-button">next</button>
+		</div> -->
+
+		<button class="action-button" onClick="divFunction()">next</button>
+			</div>
+
 	</div>
 	<input type="hidden" id="selectAdv" name="selectAdv"/>
 </form>
@@ -63,32 +68,5 @@
 </div>
 <script src="{!! URL::asset('js/room.js') !!}"></script>
 
-<script type="text/javascript">
 
-	function selectAdv(x){
-		document.getElementById("selectAdv").value = x;
-		console.log(x);
-	}
-	$(function () {
-		$('.selectroom').selectpicker({
-		});
-	});
-	$(function () {
-		$('.datepicker').datetimepicker({
-			format: 'DD/MM/YYYY'
-		});
-	});
-	$(function () {
-        $('#timepicker1').datetimepicker({
-            format: 'LT'
-        });
-    });
-	$(function () {
-		$('.selectpicker').selectpicker({
-			liveSearch: true,
-			maxOptionsText: 'limit reach (5 commitees max)',
-			noneSelectedText: 'no commitee selected',
-		});
-	});
-</script>
 @stop

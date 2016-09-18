@@ -133,9 +133,7 @@
 				    <p>Upload your first draft proposal</p>
 				    <input type="file" id="file" name="myfiles"/>
 				    </div>
-				    <div class="input_fields_wrap">
-					    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
-					</div>
+
 				<input type="hidden" value="" id="selectType" name="selectType"/>
 				<input type="hidden" value="" id="selectCat" name="selectCat"/>
 				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>

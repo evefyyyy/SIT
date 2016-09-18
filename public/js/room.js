@@ -1,3 +1,35 @@
+$(function () {
+		$('.selectroom').selectpicker({
+		});
+	});
+	$(function () {
+		$('.datepicker').datetimepicker({
+			format: 'DD/MM/YYYY'
+		});
+	});
+	$(function () {
+        $('#timepicker1').datetimepicker({
+            format: 'LT'
+        });
+    });
+	$(function () {
+		$('.selectpicker').selectpicker({
+			liveSearch: true,
+			maxOptionsText: 'limit reach (5 commitees max)',
+			noneSelectedText: 'no commitee selected',
+		});
+	});
+function divFunction() {
+$( ".selectpicker" ).each(function() {
+	var targets = [];
+	$.each($(".selectpicker option:selected"), function(){
+	targets.push($(this).val());
+	});
+	document.getElementById("selectAdv").value =targets
+	console.log(document.getElementById("selectAdv").value);
+});
+}
+
 $('[data-toggle=confirmation]').confirmation({
 				rootSelector: '[data-toggle=confirmation]',
 				placement: 'left',
@@ -9,7 +41,7 @@ $('[data-toggle=confirmation]').confirmation({
 $('table').on('click', '.move-up', function () {
 
     var thisRow = $(this).closest('tr');
-    var thisColumn = thisRow.children('td')[2]; 
+    var thisColumn = thisRow.children('td')[2];
     var thisDateColumn = thisColumn.innerHTML;
 
     var prevRow = thisRow.prev();
@@ -32,7 +64,7 @@ $('table').on('click', '.move-up', function () {
 
 $('table').on('click', '.move-down', function () {
     var thisRow = $(this).closest('tr');
-    var thisColumn = thisRow.children('td')[2]; 
+    var thisColumn = thisRow.children('td')[2];
     var thisDateColumn = thisColumn.innerHTML;
 
     var nextRow = thisRow.next();

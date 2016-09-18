@@ -24,45 +24,33 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
-						<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
-					</td>
-					<td>IT56-BU02</td>
-					<td>9.00am - 9.30am</td>
-					<td>56130500065<br>56130500078<br>56130500126</td>
-					<td>Ronnaporn Aimmanoj<br>Surapong Nateprapai<br>Artima Chanthasangsawang</td>
-					<td>ระบบบริหารจัดการอุปกรณ์แบบฝังตัว เพื่อการเฝ้าระวังหรือควบคุมผ่านเครือข่ายอินเทอร์เน็ต</td>
-					<td>Olarn</td>
-					<td>Kittiphan</td>
-					<td class="move-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
-				</tr>
-				<tr>
-					<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
-						<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
-					</td>
-					<td>IT56-RE12</td>
-					<td>9.30am - 10.00am</td>
-					<td>56130500054<br>56130500077
-					<td>Saranya Sitthimunkhong<br>Mangkorn Jungroongrit
-					<td>แผนที่ท่องเที่ยวไทย</td>
-					<td>Olarn</td>
-					<td>Ekapong</td>
-					<td class="move-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
-				</tr>
-				<tr>
-					<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
-						<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
-					</td>
-					<td>IT56-RE05</td>
-					<td>10.00am - 10.30am</td>
-					<td>56130500063<br>56130500114<br>56130500125
-					<td>Warit Kosolwattanasombat<br>Chanon Phueksamut<br>Boonyanuch Keeratiratana
-					<td>แอปพลิเคชั่นช่วยเหลือในการแปลภาษาและสนทนากับชาวต่างชาติ</td>
-					<td>Olarn</td>
-					<td>Autchara</td>
-					<td class="move-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
-				</tr>
+				@if($project == 0)
+				@else
+					@foreach($project as $data)
+					<tr>
+						<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
+							<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+						</td>
+						<td>{{$data->group_project_id}}</td>
+						<td>9.00am - 9.30am</td>
+						<td>
+							@foreach($data->student as $std)
+							{{$std->student_id}}<br>
+							@endforeach
+						</td>
+						<td>
+							@foreach($data->student as $std)
+							{{$std->student_name}}<br>
+							@endforeach
+						</td>
+						<td>{{$data->group_project_th_name}}</td>
+						@foreach($data->advisor as $adv)
+						<td><span>{{$adv->advisor_name}}</span></td>
+						@endforeach
+						<td class="move-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
+					</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
