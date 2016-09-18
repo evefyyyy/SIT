@@ -15,7 +15,7 @@ class Student extends Model
       'student_pkid'
     ];
 
-    public function projectStudents(){
+    public function projectStudent(){
     	return $this->hasMany('App\ProjectStudent', 'student_pkid');
     }
 }
