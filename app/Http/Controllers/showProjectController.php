@@ -20,12 +20,13 @@ use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
 use App\Picture;
+use Auth;
 
 class showProjectController extends Controller
 {
   public function index()
   {
-    $objs = '56130500078';
+    $objs = Auth::user()->student->student_id;
 
     $checkStd = DB::table('students')->where('student_id',$objs)->value('id');
     $checkProject = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');

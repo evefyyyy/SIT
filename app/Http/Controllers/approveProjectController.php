@@ -31,22 +31,25 @@ class approveProjectController extends Controller
 		$advisor = Advisor::all();
 		$objs['advisor'] = $advisor;
 
-    $projectAdvisor = ProjectAdvisor::all();
-    $objs['projectAdvisor'] = $projectAdvisor;
+        $projectAdvisor = ProjectAdvisor::all();
+        $objs['projectAdvisor'] = $projectAdvisor;
 
 		$projectStudent = ProjectStudent::all();
 		$objs['project_student'] = $projectStudent;
 
-    $proposal = Proposal::all();
-    $objs['proposal'] = $proposal;
+        $proposal = Proposal::all();
+        $objs['proposal'] = $proposal;
 
 		$objs['countProject'] = GroupProject::where('group_project_approve','=',0)->count();
-    $objs['countProjectApp'] = GroupProject::where('group_project_approve', 1)->count();
+        $objs['countProjectApp'] = GroupProject::where('group_project_approve', 1)->count();
 
 		$projects = \App\ProjectStudent::all();
 		$unique = $projects->unique('project_pkid');
 		$projects = $unique->values()->all();
 		$objs['project'] = $projects;
+
+        $groupProject = GroupProject::all();
+        $objs['group_project'] = $groupProject;
 
       	return view('admin.approveProject',$objs);
     }

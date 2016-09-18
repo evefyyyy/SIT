@@ -43,24 +43,25 @@
 					<td colspan="6" class="no-project">no project found</td>
 				</tr>
 				@else
-				@foreach($project as $pj)
-				@if($pj->groupProject->group_project_approve===1)
+				@foreach($group_project as $gp)
+				@if($gp->group_project_approve===1)
+				
 
 				<tr>
-					<td>{{$pj->groupProject->group_project_id}}</td>
+					<td>{{$gp->group_project_id}}</td>
 					<td id="name">
-						<a href="#">{{$pj->groupProject->group_project_eng_name}}<br>
-							{{$pj->groupProject->group_project_th_name}}
+						<a href="#">{{$gp->group_project_eng_name}}<br>
+							{{$gp->group_project_th_name}}
 						</a>
 					</td>
-					<td>{{$pj->groupProject->type->type_name}}</td>
-					<td>{{$pj->groupProject->category->category_name}}</td>
-					<?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get();
+					<td>{{$gp->type->type_name}}</td>
+					<td>{{$gp->category->category_name}}</td>
+					<?php $advisors = App\ProjectAdvisor::where('project_pkid', $gp->id)->get();
                         $advisorsNo1 = $advisors[0]->advisor->advisor_name;
                         $advisorsNo2 = $advisors[1]->advisor->advisor_name;
                     ?>
 					<td class="firstname">{{ $advisorsNo1 }}</td>
-					<td id="center"><a href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
+					<td id="center"><a href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
 				</tr>
 
 				@endif
