@@ -61,21 +61,22 @@
                 </tr>
                 <tr>
                     <th rowspan="3">Team member<span>:</span></th>
-                    <?php $teams = App\ProjectStudent::where('project_pkid', $gp->id)->get(); ?>
+                    <?php $teams = App\GroupProject::where('id', $gp->first()->id)->get(); ?>
 
                     <td rowspan="3">
                        @foreach($teams as $team)
-                       {{$team->student->student_id}}<br>
+                       {{$team->projectStudents->student->student_id}}<br>
                        @endforeach
                    </td>
                    <td rowspan="3" colspan="2">
                        @foreach($teams as $team)
-                       {{ $team->student->student_name}}<br>
+                       {{ $team->projectStudents->student->student_name}}<br>
                        @endforeach
                    </td>
-                   <?php $advisors = App\ProjectAdvisor::where('project_pkid', $pg->id)->get();
-                        $advisorsNo1 = $advisors[0]->advisor->advisor_name;
-                        $advisorsNo2 = $advisors[1]->advisor->advisor_name;
+                   <?php $advisors = App\GroupProject::where('id', $gp->first->id)->get();
+
+                        $advisorsNo1 = $advisors[0]->projectAdvisors->advisor->advisor_name;
+                        $advisorsNo2 = $advisors[1]->projectAdvisors->advisor->advisor_name;
                    ?>
                    <th style="border:0; width:15%;">main advisor<span>:</span></th>
                    <td style="border:0; width:25%;">
