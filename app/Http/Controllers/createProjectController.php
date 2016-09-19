@@ -20,6 +20,7 @@ use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
 use App\Picture;
+use Auth;
 
 
 class createProjectController extends Controller {
@@ -143,7 +144,7 @@ class createProjectController extends Controller {
 
 	public function edit($id)
 	{
-		$data['students'] = \App\Student::where('student_id','=','56130500078')->get();
+		// $data['students'] = \App\Student::where('student_id','=','56130500078')->get();
 
 		$category = Category::all();
 		$data['category'] = $category;
@@ -162,18 +163,33 @@ class createProjectController extends Controller {
 		$data['projectNameEN'] = $obj1->group_project_eng_name;
 		$data['projectNameTH'] = $obj1->group_project_th_name;
 
-		$getStd = DB::table('project_students')
+
+
+		$groupStd = DB::table('project_students')
 							->join('students','student_pkid','=','students.id')
 							->where('project_pkid',$getId)
-							->select('students.id','student_id','student_name')->get();
-		if(count($getStd) == 3){
-			$data['stdId2'] = $getStd[1]->student_id;
-			$data['stdName2'] = $getStd[1]->student_name;
-			$data['stdId3'] = $getStd[2]->student_id;
-			$data['stdName3'] = $getStd[2]->student_name;
-		}else if(count($getStd)==2){
-			$data['stdId2'] = $getStd[1]->student_id;
-			$data['stdName2'] = $getStd[1]->student_name;
+							->select('student_id')->get();
+		$logInStd[] = Auth::user()->student->student_id;
+		$getData = [];
+		foreach($groupStd as $std){
+			array_push($getData,$std->student_id);
+		}
+		$result = array_diff($getData,$logInStd);
+		$newresult = [];
+		foreach($result as $s){
+			array_push($newresult,$s);
+		}
+		if(count($newresult) == 2){
+			$getStd2 = DB::table('students')->where('student_id',$newresult[0])->select('student_id','student_name')->get();
+			$getStd3 = DB::table('students')->where('student_id',$newresult[1])->select('student_id','student_name')->get();
+			$data['stdId2'] = $getStd2[0]->student_id;
+			$data['stdName2'] = $getStd2[0]->student_name;
+			$data['stdId3'] = $getStd3[0]->student_id;
+			$data['stdName3'] = $getStd3[0]->student_name;
+		}else if(count($newresult)== 1){
+			$getStd2 = DB::table('students')->where('student_id',$newresult[0])->select('student_id','student_name')->get();
+			$data['stdId2'] = $getStd2[0]->student_id;
+			$data['stdName2'] = $getStd2[0]->student_name;
 		}
 
 		$getAdv = DB::table('project_advisors')
@@ -293,7 +309,7 @@ class createProjectController extends Controller {
 		return redirect(url('student/myproject/waitapprove'));
 	}
 
-	
+
 
 
 
