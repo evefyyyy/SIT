@@ -22,14 +22,14 @@
 			<div class="col-xs-18 col-sm-6 col-md-3" data-tag='{{$project->category->category_name}}'>
 	          <div class="thumbnail">
 	          	<div class="pdf-thumb-box">
-			      <a href="/showproject">
+			      <a href="/showproject/{{$project->id}}">
 			      	 <div class="pdf-thumb-box-overlay">
-			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i> 
+			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i>
        				 </div>
               @if(count($project->picture)===0)
               <img src="#">
               @else
-	          <img src="{{$project->picture[0]->picture_path_name}}" alt=""> 
+	          <img src="{{$project->picture[0]->picture_path_name}}" alt="">
               @endif
           		</a>
           		</div>

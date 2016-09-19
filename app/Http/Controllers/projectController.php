@@ -27,7 +27,7 @@ class projectController extends Controller
     {
       $obj['category'] = Category::all();
 
-      $obj['groupProject'] = GroupProject::all();
+      $obj['groupProject'] = GroupProject::where('group_project_approve','=','1')->get();
 
       $obj['detail'] = ProjectDetail::all();
 
@@ -43,10 +43,11 @@ class projectController extends Controller
       $search = $request['search'];
 
       if($search === " "){
-        $obj['groupProject'] = GroupProject::all();
+        $obj['groupProject'] = GroupProject::where('group_project_approve','=','1')->get();
       }else{
         $result = DB::table('group_projects')
                   ->join('project_detail','group_projects.id','=','project_pkid')
+                  ->where('group_project_approve','=','1')
                   ->where('group_project_eng_name','like','%'.$search.'%')
                   ->orwhere('group_project_detail','like','%'.$search.'%')
                   ->select('project_pkid')->get();
@@ -62,7 +63,7 @@ class projectController extends Controller
           }
         }
       }
-    
+
       return view(('searchResult'),$obj);
     }
 }
