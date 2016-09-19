@@ -55,6 +55,17 @@ Route::get('exam/scorerecord', function () {
 Route::get('myscore', function () {
     return view('student.myScore');
 });
+Route::get('advproject', function () {
+    return view('advisor.advProject');
+});
+Route::get('exam/givemarks', function () {
+    return view('advisor.giveMark');
+});
+Route::resource('student/news/announcement', 'StudentAnnoucementController');
+// Route::post('news/announcement/edit', 'adminAnnouncementController@edit');
+
+Route::resource('student/news/document', 'StudentDocumentController');
+// Route::post('news/document/edit', 'adminDocumentController@edit');
 Route::get('home/projects','projectController@index');
 
 Route::get('home/projects/search','projectController@search');

@@ -26,7 +26,8 @@ $( ".selectpicker" ).each(function() {
 	targets.push($(this).val());
 	});
 	document.getElementById("selectAdv").value =targets
-
+	document.getElementById("starttime").value;
+	document.getElementById("minute").value;
 });
 }
 
