@@ -5,6 +5,7 @@
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
+        <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
@@ -33,7 +34,7 @@
                   <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Umaporn</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
               </ul>
           </nav>
         </div>

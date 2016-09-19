@@ -5,6 +5,7 @@
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
+        <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
@@ -24,8 +25,8 @@
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">news</a>
                     <ul class="dropdown-menu">
-                      <li><a href="/news/announcement">Announcement</a></li>
-                      <li><a href="/news/document">documents</a></li>
+                      <li><a href="/student/news/announcement">Announcement</a></li>
+                      <li><a href="/student/news/document">documents</a></li>
                     </ul>
                   </li>
                   <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>

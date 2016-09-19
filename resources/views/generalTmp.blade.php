@@ -5,6 +5,7 @@
   <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
   <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
   <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
+  <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
   <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
   <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
   <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
@@ -24,15 +25,15 @@
           <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
         </div>
         <ul class="nav navbar-nav">
-          <li><a href="/home">Home</a></li>
+          <li><a href="/index">Home</a></li>
           @if(Auth::check())
-            <li><a href="/news/announcement">manage project</a></li>
+            <li><a href="/student/news/announcement">manage project</a></li>
           @endif
         </ul>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <form class="navbar-form navbar-left" role="search" action="{{url('home/projects/search')}}" method="get">
-          <div class="input-group search {{ strrpos(Request::path(),'home') === 0 ? 'hidden' : ''  }}">
+          <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
             <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
               <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default">

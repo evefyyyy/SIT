@@ -8,6 +8,7 @@ p.navbar-text > img {
 a {
   -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 .logout:hover {
   color: #FF5C5C !important;
@@ -616,7 +617,6 @@ option {
 }
 .cd-popup-container .cd-buttons a {
   display: block;
-  cursor: pointer;
   height: 60px;
   line-height: 60px;
   text-transform: uppercase;
@@ -884,7 +884,6 @@ h6 img {
 #newTB a {
   color: black;
   text-decoration: none;
-  cursor: pointer;
 }
 #newTB h3 {
   font-weight: normal;
@@ -1268,7 +1267,6 @@ input[type="range"].cropit-image-zoom-input {
   font-weight: 600;
   float: right;
   color: #40c3a7;
-  cursor: pointer;
 }
 #editroom a:hover {
   color: #ff7f7f;
@@ -1336,8 +1334,8 @@ h2 > img {
 }
 #scoreTB table > thead > tr > th,
 a.toggle-vis {
-  cursor: pointer;
   text-transform: uppercase;
+  cursor: pointer;
 }
 a.toggle-vis:hover {
   color: #40c3a7;
