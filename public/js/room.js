@@ -19,6 +19,8 @@ $(function () {
 			noneSelectedText: 'no commitee selected',
 		});
 	});
+
+var x = divFunction()
 function divFunction() {
 $( ".selectpicker" ).each(function() {
 	var targets = [];
