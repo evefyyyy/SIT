@@ -29,9 +29,23 @@
                       <li><a href="/student/news/document">documents</a></li>
                     </ul>
                   </li>
-                  <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
-                  <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
-                  <li><a href="/index">Back to homepage</a></li>
+
+                  
+                  <?php 
+                    $id_group_project = Auth::user()->student->projectStudent->first()->project_pkid;
+
+                    $approve_project = DB::table('group_projects')
+                                        ->where('id', $id_group_project)->first();
+                   ?>
+                  @if(Auth::user()->student->projectStudent->first()===null)
+                      <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
+                    @elseif($approve_project->group_project_approve==0)
+                      <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/waitapprove">My project</a></li>
+                    @else
+                    <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject">My project</a></li>
+                    @endif
+                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
+                      <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
