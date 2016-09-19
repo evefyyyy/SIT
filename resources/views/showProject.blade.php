@@ -18,7 +18,7 @@
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
 			@if(Auth::check())
-		<form class="" action="{{url('student/myproject/edit/'.$checkProject.'/edit')}}" method="get">
+		<form action="{{url('student/myproject/edit/'.$checkProject.'/edit')}}" method="get">
 			<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
 		</form>
 		@endif
