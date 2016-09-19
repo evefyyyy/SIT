@@ -99,6 +99,7 @@ class examRoomController extends Controller
           }
           $obj['addProject'] = array_flatten($addProject);
         }
+
       return view('admin.editRoom',$obj);
     }
 
