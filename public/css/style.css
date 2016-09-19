@@ -980,8 +980,11 @@ h6 img {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+img#cover {
+      width: 100%;
+}
 
-@media (min-width : 480px) {
+/*@media (min-width : 480px) {
   img#cover {
     width: 480px;
     height: 288px;
@@ -1012,7 +1015,7 @@ h6 img {
     margin-bottom: 10px;
     background:url(/img/no-poster.png) no-repeat center;
   }
-}
+}*/
 
 .group-pic {width:490px; height: 280px; margin-top: 0;}
 .pic-size {margin: 0 20px; color:#999; vertical-align:top;}

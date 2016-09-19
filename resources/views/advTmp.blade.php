@@ -34,7 +34,7 @@
                   <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Umaporn</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Umaporn</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>
               </ul>
           </nav>
         </div>
