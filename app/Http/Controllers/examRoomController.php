@@ -89,15 +89,17 @@ class examRoomController extends Controller
             array_push($getData3,$re->project_pkid);
           }
           $result = array_diff($getData1,$getData2,$getData3);
-          $newresult = [];
-          foreach($result as $s){
-            array_push($newresult,$s);
+          if(count($result) != null){
+            $newresult = [];
+            foreach($result as $s){
+              array_push($newresult,$s);
+            }
+            $count3 = count($newresult);
+            for($i=0;$i<$count3;$i++){
+              $addProject[$i] = GroupProject::where('id',$newresult[$i])->get();
+            }
+            $obj['addProject'] = array_flatten($addProject);
           }
-          $count3 = count($newresult);
-          for($i=0;$i<$count3;$i++){
-            $addProject[$i] = GroupProject::where('id',$newresult[$i])->get();
-          }
-          $obj['addProject'] = array_flatten($addProject);
         }
 
       return view('admin.editRoom',$obj);
