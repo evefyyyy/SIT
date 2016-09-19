@@ -27,7 +27,6 @@ class waitApproveController extends Controller
 
         $checkStd = DB::table('students')->where('student_id',$objs)->value('id');
         $checkProject = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
-
         $obj['std'] = DB::table('project_students')
                     ->join('students','student_pkid','=','students.id')
                     ->where('project_pkid',$checkProject)

@@ -74,7 +74,7 @@
 				<div class="row">
 					<div class="col-xs-4 col-md-4 category">Main advisor</div>
 					<div class="col-xs-8 col-md-5">
-						  <select class="selectpicker1 advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainadv">
+						  <select class="selectpicker1 advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
 								@foreach($advisor as $ad)
 							    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
 								@endforeach

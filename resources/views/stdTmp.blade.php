@@ -30,19 +30,21 @@
                     </ul>
                   </li>
 
-                  
-                  <?php 
-                    $id_group_project = Auth::user()->student->projectStudent->first()->project_pkid;
 
-                    $approve_project = DB::table('group_projects')
-                                        ->where('id', $id_group_project)->first();
-                   ?>
+
                   @if(Auth::user()->student->projectStudent->first()===null)
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
-                    @elseif($approve_project->group_project_approve==0)
-                      <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/waitapprove">My project</a></li>
                     @else
-                    <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject">My project</a></li>
+                    <?php
+                      $id_group_project = Auth::user()->student->projectStudent->first()->project_pkid;
+                      $approve_project = DB::table('group_projects')
+                                          ->where('id', $id_group_project)->first();
+                     ?>
+                      @if($approve_project->group_project_approve==0)
+                      <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/waitapprove">My project</a></li>
+                      @else
+                      <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject">My project</a></li>
+                      @endif
                     @endif
                       <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
                       <li><a href="/index">Back to homepage</a></li>

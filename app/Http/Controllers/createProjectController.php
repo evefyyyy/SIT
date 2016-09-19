@@ -237,9 +237,6 @@ class createProjectController extends Controller {
 							->where('project_pkid',$id)
 							->select('project_students.id')->get();
 
-		$std1 = $getStd[1]->id;
-		$std2 = $getStd[2]->id;
-
 		$getProposal = DB::table('proposals')
 									->where('project_pkid',$id)
 									->value('proposals.id');
@@ -252,17 +249,45 @@ class createProjectController extends Controller {
 		$obj->type_id = $data1;
 		$obj->save();
 
-		$obj = ProjectStudent::find($std1);
-		$stdId = $request->input('idStudent2');
-		$data = DB::table('students')->where('student_id',$stdId)->value('id');
-		$obj->student_pkid = $data;
-		$obj->save();
+		if(count($getStd) == 3){
+			$std1 = $getStd[0]->id;
+			$std2 = $getStd[1]->id;
+			$std3 = $getStd[2]->id;
 
-		$obj = ProjectStudent::find($std2);
-		$stdId = $request->input('idStudent3');
-		$data = DB::table('students')->where('student_id',$stdId)->value('id');
-		$obj->student_pkid = $data;
-		$obj->save();
+			$obj = ProjectStudent::find($std1);
+			$stdId = $request->input('idStudent1');
+			$data = DB::table('students')->where('student_id',$stdId)->value('id');
+			$obj->student_pkid = $data;
+			$obj->save();
+
+			$obj = ProjectStudent::find($std2);
+			$stdId = $request->input('idStudent2');
+			$data = DB::table('students')->where('student_id',$stdId)->value('id');
+			$obj->student_pkid = $data;
+			$obj->save();
+
+			$obj = ProjectStudent::find($std3);
+			$stdId = $request->input('idStudent3');
+			$data = DB::table('students')->where('student_id',$stdId)->value('id');
+			$obj->student_pkid = $data;
+			$obj->save();
+		}
+		if(count($getStd) == 2){
+			$std1 = $getStd[0]->id;
+			$std2 = $getStd[1]->id;
+
+			$obj = ProjectStudent::find($std1);
+			$stdId = $request->input('idStudent1');
+			$data = DB::table('students')->where('student_id',$stdId)->value('id');
+			$obj->student_pkid = $data;
+			$obj->save();
+
+			$obj = ProjectStudent::find($std2);
+			$stdId = $request->input('idStudent2');
+			$data = DB::table('students')->where('student_id',$stdId)->value('id');
+			$obj->student_pkid = $data;
+			$obj->save();
+		}
 
 		$obj = ProjectAdvisor::find($getAdv1);
 		$advisor = $request['mainAdv'];
