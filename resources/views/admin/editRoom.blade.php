@@ -35,7 +35,7 @@
 							<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
 						</td>
 						<td>{{$data->group_project_id}}</td>
-						<td>9.00am - 9.30am</td>
+						<td>{{$data->starttime}} - {{$data->endtime}}</td>
 						<td>
 							@foreach($data->student as $std)
 							{{$std->student_id}}<br>

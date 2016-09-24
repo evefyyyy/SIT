@@ -39,7 +39,9 @@ class examRoomController extends Controller
       $obj['selectroom'] = $request['selectroom'];
       $selectAdv = $request['selectAdv'];
       $startTime = $request['startTime'];
-      $minute = $request['minute'];
+      $endTime = $startTime;
+      $getMin = $request['minute'];
+
       $obj['addProject'] = [];
       $explode = explode(",",$selectAdv);
       $count = count($explode);
@@ -82,7 +84,20 @@ class examRoomController extends Controller
                           ->where('project_pkid',$project_pkid[$i])
                           ->select('advisor_name')->get();
             $obj['project'][$i]['advisor'] = $advisor[$i];
+
+// start time and end time in each group
+            $getTime = strtotime($endTime);
+            $minFormat = '+'.$getMin.' minutes';
+            $endTime = date("g:i A",strtotime($minFormat,$getTime));
+            $obj['project'][$i]['endtime']= $endTime;
+
+            $getStartTime = strtotime($endTime);
+            $minFormat = '-'.$getMin.' minutes';
+            $startTime = date("g:i A",strtotime($minFormat,$getStartTime));
+            $obj['project'][$i]['starttime']= $startTime;
           }
+
+// addroom
           $roomexam = DB::table('rooms_exam')->select('project_pkid')->get();
           $getData3 = [];
           foreach($roomexam as $re){
@@ -109,5 +124,5 @@ class examRoomController extends Controller
     {
       return view('admin.confirmRoom');
     }
-    vbvb
+
 }
