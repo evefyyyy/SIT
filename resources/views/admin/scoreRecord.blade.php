@@ -3,14 +3,34 @@
 <h2><img height="45" src="/img/exam.png">score record</h2>
 <div class="row">
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
-	<div class="col-xs-6 col-md-5 col-lg-5" style="padding-top:5px">
-		<a class="toggle-vis" data-column="2">round 1</a><span class="lol">/</span>
-		<a class="toggle-vis" data-column="3">round 2</a><span class="lol">/</span>
-		<a class="toggle-vis" data-column="4">round 3</a><span class="lol">/</span>
-		<a class="toggle-vis" data-column="5">round 4</a>
-	</div>
-	<div class="col-xs-6 col-md-5 col-lg-5">
+	<div class="col-xs-6 col-md-5 col-lg-5"></div>
+	<div class="col-xs-6 col-md-5 col-lg-5 table-bar">
+		<div class="button-group">
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
+			<ul class="dropdown-menu dropdown-menu-right">
+				  <li>
+				    <a href="#" class="small toggle-vis" data-value="option1" tabIndex="-1" data-column="2">
+				      <input type="checkbox" checked/>&nbsp;Round 1
+				    </a>
+				  </li>
+				  <li>
+				    <a href="#" class="small toggle-vis" data-value="option2" tabIndex="-1" data-column="3">
+				      <input type="checkbox" checked/>&nbsp;Round 2
+				    </a>
+				  </li>
+				  <li>
+				    <a href="#" class="small toggle-vis" data-value="option3" tabIndex="-1" data-column="4">
+				       <input type="checkbox" checked/>&nbsp;Round 3
+				    </a>
+				  </li>
+				  <li>
+				     <a href="#" class="small toggle-vis" data-value="option4" tabIndex="-1" data-column="5">
+				       <input type="checkbox" checked/>&nbsp;Round 4
+				     </a>
+				  </li>
+			</ul>
        <input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
+       </div>
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
@@ -105,7 +125,6 @@
 	</div>
 <div class="hidden-xs col-md-1 col-lg-1"></div>
 <script src="{!! URL::asset('js/search.js') !!}"></script>
-<script src="{!! URL::asset('js/jquery.dataTables.min.js') !!}"></script>
 <script>
 $('table').filterForTable();
 $('#searchInput').on( 'keyup', function () {
@@ -113,12 +132,10 @@ $('#searchInput').on( 'keyup', function () {
 } );
 $(document).ready(function() {
     var table = $('#example').DataTable( {
-    	paging: false,
-    	searching: false
+    	 "searching": false
     } );
  
     $('a.toggle-vis').on( 'click', function (e) {
-        e.preventDefault();
  
         // Get the column API object
         var column = table.column( $(this).attr('data-column') );

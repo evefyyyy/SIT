@@ -103,18 +103,6 @@ $('#table1').editableTableWidget().numericInputExample();
 $('#table1').editableTableWidget({
     cloneProperties: ['background', 'border', 'outline']
 });
-$('#table2').editableTableWidget().numericInputExample();
-$('#table2').editableTableWidget({
-    cloneProperties: ['background', 'border', 'outline']
-});
-$('#table3').editableTableWidget().numericInputExample();
-$('#table3').editableTableWidget({
-    cloneProperties: ['background', 'border', 'outline']
-});
-$('#table4').editableTableWidget().numericInputExample();
-$('#table4').editableTableWidget({
-    cloneProperties: ['background', 'border', 'outline']
-});
 $('.alert .close').on("click", function(e) {
 e.stopPropagation();
 e.preventDefault();

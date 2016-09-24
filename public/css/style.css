@@ -981,10 +981,11 @@ h6 img {
   margin-bottom: 10px;
 }
 img#cover {
-      width: 100%;
+  width: 100%;
+  margin-bottom: 10px;
 }
-
-/*@media (min-width : 480px) {
+/*
+@media (min-width : 480px) {
   img#cover {
     width: 480px;
     height: 288px;
@@ -1015,8 +1016,8 @@ img#cover {
     margin-bottom: 10px;
     background:url(/img/no-poster.png) no-repeat center;
   }
-}*/
-
+}
+*/
 .group-pic {width:490px; height: 280px; margin-top: 0;}
 .pic-size {margin: 0 20px; color:#999; vertical-align:top;}
 .cropit-preview-image-container {cursor: move;}
@@ -1243,14 +1244,10 @@ input[type="range"].cropit-image-zoom-input {
   font-size: 0.9em;
 }
 #addproject .modal-body {
-  padding: 15px 0;
+  padding: 15px 30px;
 }
 #roomTB tbody > tr > td {
   text-transform: none;
-}
-#roomTB table {
-  width: 95%;
-  margin-top: 20px;
 }
 #roomTB .btn-danger {
   vertical-align: bottom;
@@ -1286,9 +1283,6 @@ input[type="range"].cropit-image-zoom-input {
 .table-hover td.move-btn:hover {
   background-color: #fff !important;
 }
-#addroomTB table {
-  width: 90%;
-}
 #addroomTB tr {
   cursor: pointer;
 }
@@ -1301,11 +1295,8 @@ input[type="range"].cropit-image-zoom-input {
   margin-left: 5px;
 }
 .pjsearch.form-control {
-  width: 100%;
+  width: 80%;
   font-size: 1em;
-}
-#scoresheet table {
-  width: 100%
 }
 #scoresheet .row {
   margin-top: 30px;
@@ -1340,9 +1331,6 @@ a.toggle-vis {
   text-transform: uppercase;
   cursor: pointer;
 }
-a.toggle-vis:hover {
-  color: #40c3a7;
-}
 .dataTables_info {
   display: none;
 }
@@ -1364,4 +1352,13 @@ td.verygood {
 td.good {
   font-weight: 900;
   color: #0BC7D3;
+}
+.table-bar {
+  text-align: right;
+  display: inline;
+}
+.table-bar button {
+  margin-bottom: 3px;
+  float: right;
+  margin-left: 5px;
 }

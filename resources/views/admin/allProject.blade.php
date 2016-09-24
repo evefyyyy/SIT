@@ -24,7 +24,8 @@
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
 <div class="row">
-	<div id="projectTB" style="margin-top:30px">
+	<div class="hidden-xs col-md-1 col-lg-1"></div>
+	<div class="col-xs-12 col-md-10 col-lg-10" id="projectTB" style="margin-top:30px">
 		<table class="table table-bordered results">
 			<thead>
 				<tr>
@@ -32,7 +33,8 @@
 					<th style="width:54%">Project name</th>
 					<th style="width:8%">Type</th>
 					<th style="width:8%">category</th>
-					<th style="width:10%">advisor</th>
+					<th style="width:10%">main advisor</th>
+					<th style="width:10%">co-advisor</th>
 					<th style="width:0%">Proposal</th>
 				</tr>
 			</thead>
@@ -61,6 +63,7 @@
                         $advisorsNo2 = $advisors[1]->advisor->advisor_name;
                     ?>
 					<td class="firstname">{{ $advisorsNo1 }}</td>
+					<td class="firstname">{{ $advisorsNo2 }}</td>
 					<td id="center"><a href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
 				</tr>
 
@@ -69,6 +72,8 @@
 				@endif
 			</tbody>
 		</table>
+	</div>
+	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
 </div>
 <script src="{!! URL::asset('js/search.js') !!}"></script>

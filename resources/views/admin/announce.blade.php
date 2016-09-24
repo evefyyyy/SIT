@@ -12,6 +12,8 @@
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
 <div class="row" id="newTB">
+	<div class="hidden-xs col-md-1 col-lg-1"></div>
+	<div class="col-xs-12 col-md-10 col-lg-10">
 	<table class="table table-responsive table-hover">
 		<thead>
 			<tr>
@@ -47,6 +49,9 @@
 				?>
 			</tbody>
 		</table>
+	</div>
+	<div class="hidden-xs col-md-1 col-lg-1"></div>
+</div>
 		@foreach($news as $n)
 		<!-- edit announcement for Admin -->
 		<div class="modal fade" id="announce{{$count}}" role="dialog" aria-labelledby="exampleModalLabel">
