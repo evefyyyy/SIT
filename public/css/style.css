@@ -1377,3 +1377,10 @@ td.good {
   float: right;
   margin-left: 5px;
 }
+  @media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
