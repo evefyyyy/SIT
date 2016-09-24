@@ -492,7 +492,7 @@ option {
     float: right;
 }
 #name {
-    text-transform: capitalize;
+    text-transform: none;
 }
 #main {
     color: #ff7f7f;
@@ -1246,11 +1246,18 @@ input[type="range"].cropit-image-zoom-input {
 #addroomTB thead, #addroomTB tbody {
   font-size: 0.9em;
 }
+#roomTB table {
+  width: 98%;
+  margin-top: 10px;
+}
 #addproject .modal-body {
   padding: 15px 30px;
 }
 #roomTB tbody > tr > td {
   text-transform: none;
+}
+.pjtype {
+  text-transform: capitalize !important;
 }
 #roomTB .btn-danger {
   vertical-align: bottom;
@@ -1282,8 +1289,13 @@ input[type="range"].cropit-image-zoom-input {
 }
 #roomTB td.move-btn {
   border: none !important;
+  padding-right: 0
 }
-.table-hover td.move-btn:hover {
+#roomTB td.del-btn {
+  border: none !important;
+}
+.table-hover td.move-btn:hover,
+.table-hover td.del-btn:hover {
   background-color: #fff !important;
 }
 #addroomTB tr {

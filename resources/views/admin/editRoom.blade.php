@@ -20,10 +20,11 @@
 					<th style="width:8%">exam time</th>
 					<th style="width:10%">student id</th>
 					<th style="width:18%">student name</th>
-					<th style="width:36%">project name</th>
-					<th style="width:8%">main advisor</th>
-					<th style="width:8%">co-advisor</th>
-					<td style="width:2%" class="move-btn"></td>
+					<th style="width:32%">project name</th>
+					<th style="width:6%">type</th>
+					<th style="width:7%">main advisor</th>
+					<th style="width:7%">co-advisor</th>
+					<td style="width:2%" class="del-btn"></td>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,10 +48,11 @@
 							@endforeach
 						</td>
 						<td>{{$data->group_project_th_name}}</td>
+						<td class="pjtype">research</td>
 						@foreach($data->advisor as $adv)
-						<td><span>{{$adv->advisor_name}}</span></td>
+						<td><span class="firstname">{{$adv->advisor_name}}</span></td>
 						@endforeach
-						<td class="move-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
+						<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
 					</tr>
 					@endforeach
 				@endif
@@ -78,6 +80,7 @@
 									<thead>
 										<th>project id</th>
 										<th>project name</th>
+										<th>type</th>
 									</thead>
 									<tbody>
 										@if($project == 0)
@@ -85,6 +88,7 @@
 										<tr>
 											<td>{{$pj->group_project_id}}</td>
 											<td>{{$pj->group_project_th_name}}</td>
+											<td class="pjtype">business</td>
 										</tr>
 										@endforeach
 										@else
@@ -92,6 +96,7 @@
 										<tr>
 											<td>{{$pj->group_project_id}}</td>
 											<td>{{$pj->group_project_th_name}}</td>
+											<td class="pjtype">business</td>
 										</tr>
 										@endforeach
 										@endif
@@ -109,4 +114,9 @@
 		</div>
 
 <script src="{!! URL::asset('js/room.js') !!}"></script>
+<script>
+$('.firstname').each(function(index) {
+	document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
+});
+</script>
 @stop
