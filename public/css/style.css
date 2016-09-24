@@ -758,13 +758,16 @@ option {
 #projectTB td, #projectTB th {
   font-size: 0.975em;
 }
-#projectTB a {
+#projectTB > tbody > tr > th a,
+#pjtable > tbody > tr > td a,
+#projectTB span.approveall a {
   color: black;
   text-decoration: none;
   -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-#projectTB a:hover {
+#projectTB > tbody > tr > th a:hover,
+#pjtable > tbody > tr > td a:hover {
   color: #40c3a7;
 }
 #projectTB .approveall {

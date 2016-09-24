@@ -36,7 +36,7 @@
 </div>
 <div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-12 col-md-10 col-lg-10" id="scoreTB">
-		<table id="example" class="table table-bordered" style="width:100%">
+		<table id="pjtable" class="table table-bordered" style="width:100%">
 			<thead>
 				<tr>
 					<th>project id</th>
@@ -131,7 +131,7 @@ $('#searchInput').on( 'keyup', function () {
     table.search( this.value ).draw();
 } );
 $(document).ready(function() {
-    var table = $('#example').DataTable( {
+    var table = $('#pjtable').DataTable( {
     	 "searching": false
     } );
  

@@ -13,8 +13,33 @@
 	    </ul>
 	  </div>
 	</div>
-	<div class="col-xs-4 col-md-6 col-lg-6">
-            <input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
+	<div class="col-xs-4 col-md-6 col-lg-6 table-bar">
+        <div class="button-group">
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
+			<ul class="dropdown-menu dropdown-menu-right">
+				  <li>
+				    <a href="#" class="small toggle-vis" data-value="option1" tabIndex="-1" data-column="2">
+				      <input type="checkbox" checked/>&nbsp;Round 1
+				    </a>
+				  </li>
+				  <li>
+				    <a href="#" class="small toggle-vis" data-value="option2" tabIndex="-1" data-column="3">
+				      <input type="checkbox" checked/>&nbsp;Round 2
+				    </a>
+				  </li>
+				  <li>
+				    <a href="#" class="small toggle-vis" data-value="option3" tabIndex="-1" data-column="4">
+				       <input type="checkbox" checked/>&nbsp;Round 3
+				    </a>
+				  </li>
+				  <li>
+				     <a href="#" class="small toggle-vis" data-value="option4" tabIndex="-1" data-column="5">
+				       <input type="checkbox" checked/>&nbsp;Round 4
+				     </a>
+				  </li>
+			</ul>
+       <input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
+       </div>
 	</div>
 	<div class="col-xs-4 col-md-2 col-lg-2">
 		<span id="pendlink">
@@ -26,7 +51,7 @@
 <div class="row">
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-12 col-md-10 col-lg-10" id="projectTB" style="margin-top:30px">
-		<table class="table table-bordered results">
+		<table id="pjtable" class="table table-bordered results">
 			<thead>
 				<tr>
 					<th style="width:12%">Project ID</th>
@@ -79,8 +104,27 @@
 <script src="{!! URL::asset('js/search.js') !!}"></script>
 <script>
 $('table').filterForTable();
+$('#searchInput').on( 'keyup', function () {
+    table.search( this.value ).draw();
+} );
 $('.firstname').each(function(index) {
 	document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
 });
+$(document).ready(function() {
+    var table = $('#pjtable').DataTable( {
+    	 "searching": false
+    } );
+ 
+    $('a.toggle-vis').on( 'click', function (e) {
+ 
+        // Get the column API object
+        var column = table.column( $(this).attr('data-column') );
+ 
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+
+
+    } );
+} );
 </script>
 @stop

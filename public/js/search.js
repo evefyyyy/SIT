@@ -122,7 +122,7 @@
 
 var options = [];
  
-$( '.dropdown-menu a' ).on( 'click', function( event ) {
+$( 'a.toggle-vis' ).on( 'click', function( event ) {
     
    var $target = $( event.currentTarget ),
        val = $target.attr( 'data-value' ),
