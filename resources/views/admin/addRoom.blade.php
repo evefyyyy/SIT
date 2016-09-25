@@ -53,7 +53,7 @@
 				</div>
 				</div>
 			<div id="center">
-			<a href="/exam/manageroom"><button class="action-button">back</button></a>
+			<button class="action-button" onclick="back()">back</button>
 
 			<!-- <button class="action-button">next</button>
 		</div> -->

@@ -5,7 +5,7 @@
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-6 col-md-5 col-lg-5"></div>
 	<div class="col-xs-6 col-md-5 col-lg-5 table-bar">
-		<div class="button-group">
+		<div class="btn-group">
         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
 			<ul class="dropdown-menu dropdown-menu-right">
 				  <li>
@@ -29,8 +29,8 @@
 				     </a>
 				  </li>
 			</ul>
+		</div>
        <input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
-       </div>
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>

@@ -110,3 +110,7 @@ table.onclick = highlight;
 function pjselect(){
     var addpj = $("tr.selectpj td:first").html();
 }
+
+function back() {
+		window.history.back()
+	}

@@ -45,7 +45,9 @@ Route::get('exam/manageroom/create/preview','examRoomController@preview');
 // Route::get('exam/manageroom/addroom/preview', function () {
 //     return view('admin.confirmRoom');
 // });
-
+Route::get('exam/manageroom/preview', function () {
+    return view('admin.previewRoom');
+});
 Route::get('exam/managescore', function () {
     return view('admin.manageScore');
 });

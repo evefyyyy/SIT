@@ -561,9 +561,10 @@ option {
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 1050;
   height: 100%;
   width: 100%;
-  background-color: rgba(60, 59, 59, 0.75);
+  background-color: rgba(8,8,8,0.50);
   opacity: 0;
   visibility: hidden;
   font-size: 0.9em;
@@ -587,7 +588,8 @@ option {
   background: #FFF;
   border-radius: .25em .25em .4em .4em;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
   -webkit-transform: translateY(-40px);
   -moz-transform: translateY(-40px);
   -ms-transform: translateY(-40px);
@@ -876,7 +878,7 @@ h6 img {
   margin-top: 10px;
 }
 #newTB .table {
-  margin-top: 0;
+  margin-top: 20px;
 }
 #newTB .table > tbody > tr > td, .table > tfoot > tr > td {
   vertical-align: middle;
@@ -1211,6 +1213,9 @@ input[type="range"].cropit-image-zoom-input {
 #examroom .panel-body {
   text-transform: capitalize;
 }
+#examroom .panel-body button {
+  float: right;
+}
 #examroom {
   margin-top: 20px;
 }
@@ -1312,6 +1317,7 @@ input[type="range"].cropit-image-zoom-input {
 .pjsearch.form-control {
   width: 80%;
   font-size: 1em;
+  margin-right: 5px
 }
 #scoresheet .row {
   margin-top: 30px;
@@ -1372,11 +1378,14 @@ td.good {
   text-align: right;
   display: inline;
 }
-.table-bar button {
+.table-bar .btn-group{
   margin-bottom: 3px;
   float: right;
-  margin-left: 5px;
 }
+a.delete:focus{
+  background-color: #FF5C5C !important;
+}
+
   @media print
 {    
     .no-print, .no-print *

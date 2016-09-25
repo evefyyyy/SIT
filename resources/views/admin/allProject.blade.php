@@ -14,32 +14,47 @@
 	  </div>
 	</div>
 	<div class="col-xs-4 col-md-6 col-lg-6 table-bar">
-        <div class="button-group">
+        <div class="btn-group">
         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
 			<ul class="dropdown-menu dropdown-menu-right">
 				  <li>
-				    <a href="#" class="small toggle-vis" data-value="option1" tabIndex="-1" data-column="2">
-				      <input type="checkbox" checked/>&nbsp;Round 1
+				    <a class="small toggle-vis" data-value="option1" tabIndex="-1" data-column="0">
+				      <input type="checkbox" checked/>&nbsp;Project ID
 				    </a>
 				  </li>
 				  <li>
-				    <a href="#" class="small toggle-vis" data-value="option2" tabIndex="-1" data-column="3">
-				      <input type="checkbox" checked/>&nbsp;Round 2
+				    <a class="small toggle-vis" data-value="option2" tabIndex="-1" data-column="1">
+				      <input type="checkbox" checked/>&nbsp;Project name
 				    </a>
 				  </li>
 				  <li>
-				    <a href="#" class="small toggle-vis" data-value="option3" tabIndex="-1" data-column="4">
-				       <input type="checkbox" checked/>&nbsp;Round 3
+				    <a class="small toggle-vis" data-value="option3" tabIndex="-1" data-column="2">
+				      <input type="checkbox" checked/>&nbsp;Type
 				    </a>
 				  </li>
 				  <li>
-				     <a href="#" class="small toggle-vis" data-value="option4" tabIndex="-1" data-column="5">
-				       <input type="checkbox" checked/>&nbsp;Round 4
+				     <a class="small toggle-vis" data-value="option4" tabIndex="-1" data-column="3">
+				       <input type="checkbox" checked/>&nbsp;Category
+				     </a>
+				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option5" tabIndex="-1" data-column="4">
+				       <input type="checkbox" checked/>&nbsp;Main advisor
+				     </a>
+				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option6" tabIndex="-1" data-column="5">
+				       <input type="checkbox" checked/>&nbsp;Co-advisor
+				     </a>
+				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option7" tabIndex="-1" data-column="6">
+				       <input type="checkbox" checked/>&nbsp;Proposal
 				     </a>
 				  </li>
 			</ul>
+		</div>
        <input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
-       </div>
 	</div>
 	<div class="col-xs-4 col-md-2 col-lg-2">
 		<span id="pendlink">
@@ -54,13 +69,13 @@
 		<table id="pjtable" class="table table-bordered results">
 			<thead>
 				<tr>
-					<th style="width:12%">Project ID</th>
-					<th style="width:54%">Project name</th>
-					<th style="width:8%">Type</th>
-					<th style="width:8%">category</th>
-					<th style="width:10%">main advisor</th>
-					<th style="width:10%">co-advisor</th>
-					<th style="width:0%">Proposal</th>
+					<th>Project ID</th>
+					<th>Project name</th>
+					<th>Type</th>
+					<th>Category</th>
+					<th>main advisor</th>
+					<th>co-advisor</th>
+					<th>Proposal</th>
 				</tr>
 			</thead>
 			<tbody>

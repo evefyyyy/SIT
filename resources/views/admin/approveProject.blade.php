@@ -33,7 +33,7 @@
                        </td>
                        <td rowspan="2" colspan="3" style="width:30%" id="proid">
                            <button id="delpj" class="rejectbt cd-popup-trigger" value="{{$gp->id}}">reject</button>
-                           <button id="btn" class="delete approvebt" value="{{$gp->id}}">approve</button>
+                           <button id="btn" class="approvebt" value="{{$gp->id}}">approve</button>
                            <?php
                                $countProjectApp++;
                                if($gp->type_id===1){
@@ -94,9 +94,6 @@
      </div>
      <div class="hidden-xs col-md-1 col-lg-1"></div>
    </tr>
-
-
-   <script src="{!! URL::asset('js/approve.js') !!}"></script>
    @endif
    @endforeach
    @endif
@@ -114,8 +111,26 @@
       <a class="cd-popup-close cd-close img-replace"></a>
   </div> <!-- cd-popup-container -->
 </div> <!-- cd-popup -->
-
-
-
-
+<script src="{!! URL::asset('js/approve.js') !!}"></script>
+<script>
+jQuery(document).ready(function($){
+  //close popup and delete row
+  $('.cd-popup').on('click', function(event){
+    if( $(event.target).is('.cd-delete') ) {
+      event.preventDefault();
+      var pjid = document.getElementById("delpj").value;
+      window.location="/project/pending/delete/"+pjid;
+      $(this).removeClass('is-visible');
+    }
+  });
+});
+$(document).ready(function(){
+ $(".approvebt").on('click',function(){
+    var projectid = document.getElementById("btn").value;
+    var gpjid = document.getElementById("groupid").innerText;
+    window.location="/project/pending/approve/"+projectid+"/"+gpjid;
+       $(this).parent().parent().parent().fadeOut(400);
+     });
+});
+</script>
 @stop

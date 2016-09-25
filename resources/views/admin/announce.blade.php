@@ -33,7 +33,7 @@
 				<tr class="news">
 					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true" onclick="setNum({{$count}})">
+						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button>
 						<input type="hidden" id="num" name="id" value="">
@@ -170,7 +170,6 @@
 			});
 			$('[data-toggle=confirmation]').confirmation({
 				rootSelector: '[data-toggle=confirmation]',
-				placement: 'top',
 				onConfirm: function() {
 					var num = $("#num").val() ;
 					$.ajax({

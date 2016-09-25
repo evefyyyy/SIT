@@ -14,7 +14,16 @@
 	<div class="col-xs-1 col-md-3 col-lg-3"></div>
 	<div class="col-xs-10 col-md-6 col-lg-6">
 		<div class="panel panel-primary">
-			<div class="panel-heading">exam room 1</div>
+			<div class="panel-heading">exam room 1
+			<div class="btn-group pull-right">
+				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
+				<div class="dropdown-menu">
+					<li><a href="manageroom/preview">preview</a></li>
+					<li><a href="manageroom/create">edit</a></li>
+					<li><a class="cd-popup-trigger">delete</a></li>
+				</div>
+			</div>
+			</div>
 			<div class="panel-body">
 				<div class="row">
 			    <div class="col-xs-4 col-md-4 col-lg-4 titlee">room</div>
@@ -31,7 +40,16 @@
 			</div>
 		</div>
 		<div class="panel panel-primary">
-			<div class="panel-heading">exam room 2</div>
+			<div class="panel-heading">exam room 2
+				<div class="btn-group pull-right">
+				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
+				<div class="dropdown-menu">
+					<li><a href="manageroom/preview">preview</a></li>
+					<li><a href="manageroom/create">edit</a></li>
+					<li><a class="cd-popup-trigger">delete</a></li>
+				</div>
+			</div>
+			</div>
 			<div class="panel-body">
 				<div class="row">
 			    <div class="col-xs-4 col-md-4 col-lg-4 titlee">room</div>
@@ -50,4 +68,27 @@
 	</div>
 	<div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
+<div class="cd-popup" role="alert">
+    <div class="cd-popup-container">
+       <p>Are you sure you want to delete this room?</p>
+       <ul class="cd-buttons">
+          <li><a class="cd-delete">Yes</a></li>
+          <li><a class="cd-close">No</a></li>
+      </ul>
+      <a class="cd-popup-close cd-close img-replace"></a>
+  </div> <!-- cd-popup-container -->
+</div> <!-- cd-popup -->
+<script src="{!! URL::asset('js/approve.js') !!}"></script>
+<script>
+jQuery(document).ready(function($){
+  //close popup and delete panel
+  $('.cd-popup').on('click', function(event){
+    if( $(event.target).is('.cd-delete') ) {
+      event.preventDefault();
+      $(this).removeClass('is-visible');
+      $(this).fadeOut(400);
+    }
+  });
+});
+</script>
 @stop
