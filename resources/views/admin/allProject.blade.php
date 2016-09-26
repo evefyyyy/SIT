@@ -92,7 +92,7 @@
 				<tr>
 					<td>{{$gp->group_project_id}}</td>
 					<td id="name">
-						<a class="tblink" href="#">{{$gp->group_project_eng_name}}<br>
+						<a class="tblink" href="showproject/{{$gp->id}}" target="_blank">{{$gp->group_project_eng_name}}<br>
 							{{$gp->group_project_th_name}}
 						</a>
 					</td>

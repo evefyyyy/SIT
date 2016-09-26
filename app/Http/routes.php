@@ -117,12 +117,10 @@ Route::post('login','LdapLoginController@Login');
 Route::get('logout','LdapLoginController@getLogout');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');
-
 Route::get('project/pending/{option}/{project_id}/{group_id}', 'approveProjectController@updateApproveProject');
-
 Route::get('project/pending/{option}/{project_id}', 'approveProjectController@updateApproveProject');
-
 Route::get('project/pending','approveProjectController@index');
+Route::get('project/pending/approveallproject', 'approveProjectController@updateApproveProject');
 
 Route::resource('student/myproject/create','createProjectController');
 
