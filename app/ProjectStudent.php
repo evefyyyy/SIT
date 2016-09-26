@@ -10,12 +10,12 @@ class ProjectStudent extends Model
 
     public function groupProject()
     {
-      return $this->belongsTo('App\GroupProject');
+      return $this->belongsTo('App\GroupProject', 'project_pkid');
     }
 
     public function student()
     {
-      return $this->belongsTo('App\Student');
+      return $this->belongsTo('App\Student', 'student_pkid');
     }
 
     public function advisor()
