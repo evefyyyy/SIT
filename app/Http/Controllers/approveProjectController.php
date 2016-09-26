@@ -74,11 +74,9 @@ class approveProjectController extends Controller
     		DB::table('project_advisors')
     		->where('project_pkid', $project_id)
     		->delete();
-    		foreach ($proposal as $proposals){
     		DB::table('proposals')
-    		->where('id', $proposals->proposal_id)
+    		->where('project_pkid', $project_id)
     		->delete();
-    		}
     		DB::table('group_projects')
     		->where('id', $project_id)
     		->delete();
