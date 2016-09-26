@@ -769,7 +769,8 @@ option {
     transition-duration: 0.2s;
 }
 #projectTB > tbody > tr > th a:hover,
-#pjtable > tbody > tr > td a:hover {
+#pjtable > tbody > tr > td a:hover,
+#projectTB span.approveall a {
   color: #40c3a7;
 }
 #projectTB .approveall {

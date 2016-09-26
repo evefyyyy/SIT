@@ -1,7 +1,8 @@
   @extends('adminTmp')
         @section('content')
         <div class="row">
-          <div id="projectTB">
+          <div class="hidden-xs col-md-1 col-lg-1"></div>
+          <div class="col-xs-12 col-md-10 col-lg-10" id="projectTB">
              <table class="table">
                 <thead>
                    <tr>
@@ -89,15 +90,13 @@
            </tr>
        </table>
    </tr>
-
-
-   <script src="{!! URL::asset('js/approve.js') !!}"></script>
    @endif
    @endforeach
    @endif
 </tbody>
 </table>
 </div>
+<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
 <div class="cd-popup" role="alert">
     <div class="cd-popup-container">
