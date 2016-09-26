@@ -9,7 +9,7 @@
                       <th colspan="4">
                          {{$countProject}} Pending Projects
                          <span class="approveall">
-                             <a href="#">approve all</a><i>|</i><a class="back" href="/project">back to approved projects</a>
+                             <a class="tblink" href="#">approve all</a><i>|</i><a class="back" href="/project">back to approved projects</a>
                          </span>
                      </th>
                  </tr>
@@ -31,8 +31,8 @@
                            <br>{{$pj->groupProject->group_project_th_name}}
                        </td>
                        <td rowspan="2" colspan="3" style="width:30%" id="proid">
-                           <button id="delpj" class="rejectbt cd-popup-trigger" value="{{$pj->groupProject->id}}">reject</button>
-                           <button id="btn" class="delete approvebt" value="{{$pj->groupProject->id}}">approve</button>
+                           <button id="delpj" class="rejectbt" data-toggle="confirmation" value="{{$pj->groupProject->id}}">reject</button>
+                           <button id="btn" class="approvebt" value="{{$pj->groupProject->id}}">approve</button>
                            <?php
                                $countProjectApp++;
                                if($pj->groupProject->type_id===1){
@@ -58,7 +58,7 @@
                     <th style="width:15%">Category<span>:</span></th>
                     <td style="width:15%">{{$pj->groupProject->category->category_name}}</td>
                     <td></td>
-                    <td><a href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
+                    <td><a class="tblink" href="/proposalFile/{{$pj->groupProject->proposal[0]->proposal_path_name}}" download><div class="glyphicon glyphicon-download"></div> download proposal</a></td>
                 </tr>
                 <tr>
                     <th rowspan="3">Team member<span>:</span></th>
@@ -98,29 +98,20 @@
 </div>
 <div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
-<div class="cd-popup" role="alert">
-    <div class="cd-popup-container">
-       <p>Are you sure you want to reject this project?</p>
-       <ul class="cd-buttons">
-          <li><a class="cd-delete">Yes</a></li>
-          <li><a class="cd-close">No</a></li>
-      </ul>
-      <a class="cd-popup-close cd-close img-replace"></a>
-  </div> <!-- cd-popup-container -->
-</div> <!-- cd-popup -->
+
 <script src="{!! URL::asset('js/approve.js') !!}"></script>
 <script>
-jQuery(document).ready(function($){
-  //close popup and delete row
-  $('.cd-popup').on('click', function(event){
-    if( $(event.target).is('.cd-delete') ) {
-      event.preventDefault();
-      var pjid = document.getElementById("delpj").value;
-      window.location="/project/pending/delete/"+pjid;
-      $(this).removeClass('is-visible');
-    }
-  });
-});
+// jQuery(document).ready(function($){
+//   //close popup and delete row
+//   $('.cd-popup').on('click', function(event){
+//     if( $(event.target).is('.cd-delete') ) {
+//       event.preventDefault();
+//       var pjid = document.getElementById("delpj").value;
+//       window.location="/project/pending/delete/"+pjid;
+//       $(this).removeClass('is-visible');
+//     }
+//   });
+// });
 $(document).ready(function(){
  $(".approvebt").on('click',function(){
     var projectid = document.getElementById("btn").value;
@@ -129,5 +120,10 @@ $(document).ready(function(){
        $(this).parent().parent().parent().fadeOut(400);
      });
 });
+$('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+        onConfirm: function() {
+        }
+      });
 </script>
 @stop
