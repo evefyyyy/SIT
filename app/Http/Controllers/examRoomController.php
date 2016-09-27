@@ -36,11 +36,15 @@ class examRoomController extends Controller
 
     public function genGroup(Request $request)
     {
-      $obj['selectroom'] = $request['selectroom'];
+      $selectRoom = $request['selectroom'];
       $selectAdv = $request['selectAdv'];
-      $startTime = $request['startTime'];
-      $endTime = $startTime;
+      $time = $request['startTime'];
+      $endTime = $time;
       $getMin = $request['minute'];
+      $examdate = $request['examdate'];
+      $replace = str_replace('/', '-', $examdate);
+  		$str = strtotime($replace);
+  		$date = date('Y-m-d',$str);
 
       $obj['addProject'] = [];
       $explode = explode(",",$selectAdv);
@@ -86,15 +90,15 @@ class examRoomController extends Controller
             $obj['project'][$i]['advisor'] = $advisor[$i];
 
 // start time and end time in each group
-            $getTime = strtotime($endTime);
-            $minFormat = '+'.$getMin.' minutes';
-            $endTime = date("g:i A",strtotime($minFormat,$getTime));
-            $obj['project'][$i]['endtime']= $endTime;
+              $getTime = strtotime($endTime);
+              $minFormat = '+'.$getMin.' minutes';
+              $endTime = date("g:ia",strtotime($minFormat,$getTime));
+              $obj['project'][$i]['endtime']= $endTime;
 
-            $getStartTime = strtotime($endTime);
-            $minFormat = '-'.$getMin.' minutes';
-            $startTime = date("g:i A",strtotime($minFormat,$getStartTime));
-            $obj['project'][$i]['starttime']= $startTime;
+              $getStartTime = strtotime($endTime);
+              $minFormat = '-'.$getMin.' minutes';
+              $startTime = date("g:ia",strtotime($minFormat,$getStartTime));
+              $obj['project'][$i]['starttime']= $startTime;
           }
 
 // addroom

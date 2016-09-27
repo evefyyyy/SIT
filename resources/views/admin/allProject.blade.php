@@ -93,7 +93,7 @@
 				@else
 				@foreach($group_project as $gp)
 				@if($gp->group_project_approve===1)
-				
+
 
 				<tr>
 					<td>{{$gp->group_project_id}}</td>
@@ -195,12 +195,12 @@ $(document).ready(function() {
     var table = $('#pjtable').DataTable( {
     	 "searching": false
     } );
- 
+
     $('a.toggle-vis').on( 'click', function (e) {
- 
+
         // Get the column API object
         var column = table.column( $(this).attr('data-column') );
- 
+
         // Toggle the visibility
         column.visible( ! column.visible() );
 

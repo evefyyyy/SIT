@@ -48,7 +48,7 @@
 							@endforeach
 						</td>
 						<td>{{$data->group_project_th_name}}</td>
-						<td class="pjtype">research</td>
+						<td class="pjtype">{{$data->type->type_name}}</td>
 						@foreach($data->advisor as $adv)
 						<td><span class="firstname">{{$adv->advisor_name}}</span></td>
 						@endforeach
@@ -88,7 +88,7 @@
 										<tr>
 											<td>{{$pj->group_project_id}}</td>
 											<td>{{$pj->group_project_th_name}}</td>
-											<td class="pjtype">business</td>
+											<td class="pjtype">{{$pj->type->type_name}}</td>
 										</tr>
 										@endforeach
 										@else
@@ -96,7 +96,7 @@
 										<tr>
 											<td>{{$pj->group_project_id}}</td>
 											<td>{{$pj->group_project_th_name}}</td>
-											<td class="pjtype">business</td>
+											<td class="pjtype">{{$pj->type->type_name}}</td>
 										</tr>
 										@endforeach
 										@endif

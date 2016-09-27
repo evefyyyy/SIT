@@ -51,7 +51,7 @@
 	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 	<div class="col-xs-10 col-md-10 col-lg-10">
 			<button class="no-print action-button" onclick="back()">back</button>
-			<button class="no-print action-button">submit</button>
+			<!-- <button class="no-print action-button">submit</button> -->
 	</div>
 	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 </div>

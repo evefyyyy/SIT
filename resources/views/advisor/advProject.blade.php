@@ -76,17 +76,20 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($project as $pj)
 					<tr>
-						<td>IT56-BU05</td>
+						<td>{{$pj->group_project_id}}</td>
 						<td id="name">
-							<a class="tblink" href="#">KMUTT Network dormitory booking web application<br>เว็บแอปพลิเคชั่นจองหอพักในเครือข่ายรอบ มจธ.</a>
+							<a class="tblink" href="#">{{$pj->group_project_eng_name}}<br>{{$pj->group_project_th_name}}</a>
 						</td>
-						<td>Business</td>
-						<td class="firstname">Umaporn A</td>
-						<td class="firstname">Montri Supattatham</td>
+						<td>{{$pj->type->type_name}}</td>
+						@foreach($pj->advisor as $adv)
+						<td class="firstname">{{$adv->advisor_name}}</td>
+						@endforeach
 						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
 						<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal"><span class="glyphicon glyphicon-list-alt gi-3x"></span></a></td>
 					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
@@ -162,12 +165,12 @@
     var table = $('#pjtable').DataTable( {
     	 "searching": false
     } );
- 
+
     $('a.toggle-vis').on( 'click', function (e) {
- 
+
         // Get the column API object
         var column = table.column( $(this).attr('data-column') );
- 
+
         // Toggle the visibility
         column.visible( ! column.visible() );
 

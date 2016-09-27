@@ -38,14 +38,15 @@ class AllProjectController extends Controller
 
 		$projects = \App\ProjectStudent::all();
 		$unique = $projects->unique('project_pkid');
-		$projects = $unique->values()->all();
 		$objs['project'] = $projects;
 
 		$groupProject = GroupProject::all();
-        $objs['group_project'] = $groupProject;
+    $objs['group_project'] = $groupProject;
 
       	return view('admin.allProject',$objs);
       }
+
+    
 
 
 }
