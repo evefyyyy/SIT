@@ -114,10 +114,10 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			</div>
 		</div>
 		<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TW9sK8G2eW4"></iframe>
+				<iframe width="1280" height="720" src="https://www.youtube.com/embed/TW9sK8G2eW4" frameborder="0" allowfullscreen></iframe>
 			</div>
 			<div class="input-group">
-				<input type="text" class="form-control" value="" placeholder="Paste a youtube embed link">
+				<input type="text" class="form-control" value="" placeholder="Paste a youtube embed code">
 				<span class="input-group-btn">
 					<button class="btn btn-primary" onclick="" type="button">Embed</button>
 				</span>
