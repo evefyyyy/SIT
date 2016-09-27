@@ -96,7 +96,7 @@
         var showFooter = function (table) {
             var columns = table.find('thead tr td').length;
             table.find('tbody').append('' +
-                '<tr id="' + settings.emptyTrId + '"><td colspan="6" class="no-project">' + settings.emptyMsg + '</td></tr>'
+                '<tr id="' + settings.emptyTrId + '"><td colspan="7" class="no-project">' + settings.emptyMsg + '</td></tr>'
             );
         };
 
