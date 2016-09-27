@@ -54,9 +54,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
-					<div class="col-lg-12 tools">
-						{{$tools}}
-					</div>
+					<div class="col-lg-12 tools">{!!$tools!!}</div>
 				</div>
 			</div>
 		<div id='ninja-slider'>
@@ -150,14 +148,13 @@
 	</div> -->
 </div>
 <script>
+$(document).ready(function() {
+        var str = $("div.tools").html();
+        console.log(str)
+		$("div.tools").html(str.replace(/\n/g, "<br />"));
 
-var text = $('div.tools').text();
-text = text.replace(/\r?\n/g, '<br/>');
-console.log(text);
-// $('#tools').ready(function($){
-// var text = $("#tools").val();
-// console.log(text)
-// 
-// }
+    }
+);
+
 </script>
 @stop
