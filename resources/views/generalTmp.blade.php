@@ -20,19 +20,24 @@
 <body>
   <div id="wrapper">
     <div id="header">
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
           <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"></a>
         </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="/index">Home</a></li>
           @if(Auth::check())
             <li><a href="/student/news/announcement">manage project</a></li>
-          @endif
-        </ul>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form navbar-left" role="search" action="{{url('home/projects/search')}}" method="get">
+          @endif 
+          <li>     
+          <form class="navbar-form" role="search" action="{{url('home/projects/search')}}" method="get">
           <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
             <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
@@ -43,14 +48,17 @@
             </div>
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit" class="btn">
-                    <span class="glyphicon glyphicon-search"</span>
+                    <span class="glyphicon glyphicon-search"></span>
               </button>
             </span>
           </div>
         </form>
+      </li>
+      </ul>
         @if(Auth::check())
         <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
         @else
+        <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
               <ul id="login-dp" class="dropdown-menu">
@@ -77,9 +85,9 @@
            </li>
          </ul>
        </li>
-       @endif
-     </ul>
+    </ul>
    </div>
+       @endif
  </nav>
 </div>
 <div id="content">

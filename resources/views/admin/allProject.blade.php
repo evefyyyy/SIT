@@ -92,8 +92,7 @@
 				<tr>
 					<td>{{$gp->group_project_id}}</td>
 					<td id="name">
-
-						<a href="{{url('showproject/'.$gp->id)}}">{{$gp->group_project_eng_name}}<br>
+						<a class="tblink" href="showproject/{{$gp->id}}" target="_blank">{{$gp->group_project_eng_name}}<br>
 							{{$gp->group_project_th_name}}
 						</a>
 					</td>
@@ -105,7 +104,7 @@
                     ?>
 					<td class="firstname">{{ $advisorsNo1 }}</td>
 					<td class="firstname">{{ $advisorsNo2 }}</td>
-					<td id="center"><a href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
+					<td id="center"><a class="tblink" href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
 				</tr>
 
 				@endif

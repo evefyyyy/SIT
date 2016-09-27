@@ -99,9 +99,6 @@ class examRoomController extends Controller
               $minFormat = '-'.$getMin.' minutes';
               $startTime = date("g:ia",strtotime($minFormat,$getStartTime));
               $obj['project'][$i]['starttime']= $startTime;
-
-
-
           }
 
 // addroom
