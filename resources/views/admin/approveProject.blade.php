@@ -9,7 +9,7 @@
                       <th colspan="4">
                          {{$countProject}} Pending Projects
                          <span class="approveall">
-                             <a class="tblink" href="#">approve all</a><i>|</i><a class="back" href="/project">back to approved projects</a>
+                             <a class="tblink" href="/project/pending/approveallproject">approve all</a><i>|</i><a class="back" href="/project">back to approved projects</a>
                          </span>
                      </th>
                  </tr>
@@ -123,6 +123,8 @@ $(document).ready(function(){
 $('[data-toggle=confirmation]').confirmation({
         rootSelector: '[data-toggle=confirmation]',
         onConfirm: function() {
+          var pjid = document.getElementById("delpj").value;
+          window.location="/project/pending/delete/"+pjid;
         }
       });
 </script>
