@@ -1350,9 +1350,15 @@ a.toggle-vis {
 .dataTables_info {
   display: none;
 }
-table.myscore > tbody > tr >td {
+table.myscore > tbody > tr >td, table.myprop > tbody > tr >td {
   text-transform: uppercase;
+  line-height: 2em;
+  vertical-align: middle;
 } 
+table.myprop > tbody > tr > td:nth-child(2n+1) {  
+  text-align: left;
+  padding-left: 6%;
+}
 td.poor {
   font-weight: 900;
   color: #EF1010;
