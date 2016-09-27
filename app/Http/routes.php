@@ -57,9 +57,8 @@ Route::get('exam/scorerecord', function () {
 Route::get('myscore', function () {
     return view('student.myScore');
 });
-Route::get('advproject', function () {
-    return view('advisor.advProject');
-});
+// Route::get('advproject','AdvisorProjectController');
+
 Route::get('exam/givemarks', function () {
     return view('advisor.giveMark');
 });
