@@ -53,7 +53,7 @@
 					<div class="col-lg-12">
 						<textarea class="form-control" rows="4" placeholder="Mobile : Android JavaEE, SDK Emulator
 Database : SQLite
-Graphic : Adobe Photoshop, Illustratore" name="tools">{{$tools or ''}}</textarea>
+Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 					</div>
 				</div>
 			</div>
