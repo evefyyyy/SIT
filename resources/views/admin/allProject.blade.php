@@ -52,6 +52,11 @@
 				       <input type="checkbox" checked/>&nbsp;Proposal
 				     </a>
 				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option8" tabIndex="-1" data-column="7">
+				       <input type="checkbox" checked/>&nbsp;score
+				     </a>
+				  </li>
 			</ul>
 		</div>
        <input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
@@ -76,6 +81,7 @@
 					<th>main advisor</th>
 					<th>co-advisor</th>
 					<th>Proposal</th>
+					<th>score</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -104,7 +110,8 @@
                     ?>
 					<td class="firstname">{{ $advisorsNo1 }}</td>
 					<td class="firstname">{{ $advisorsNo2 }}</td>
-					<td id="center"><a class="tblink" href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
+					<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
+					<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal"><span class="glyphicon glyphicon-list-alt gi-3x"></span></a></td>
 				</tr>
 
 				@endif
@@ -116,6 +123,65 @@
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
 </div>
+<div class="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" id="center">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">IT56-BU05</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-bordered myscore">
+						<tbody>
+							<tr>
+								<td width="50%">exam round 1</td><td width="50%" class="good">good</td>
+							</tr>
+							<tr>
+								<td>exam round 2</td><td class="fair">fair</td>
+							</tr>
+							<tr>
+								<td>exam round 3</td><td class="verygood">very good</td>
+							</tr>
+							<tr>
+								<td>exam round 4</td><td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="propModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" id="center">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">IT56-BU05</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-bordered myprop">
+						<tbody>
+							<tr>
+								<td width="60%">first draft proposal</td><td width="40%"><a class="tblink" href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							</tr>
+							<tr>
+								<td>first proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							</tr>
+							<tr>
+								<td>second proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							</tr>
+							<tr>
+								<td>third proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							</tr>
+							<tr>
+								<td>final proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 <script src="{!! URL::asset('js/search.js') !!}"></script>
 <script>
 $('table').filterForTable();
