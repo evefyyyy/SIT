@@ -66,7 +66,7 @@
 <div class="row">
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-12 col-md-10 col-lg-10" id="projectTB" style="margin-top:30px">
-		<table id="pjtable" class="table table-bordered results">
+		<table id="pjtable" class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Project ID</th>

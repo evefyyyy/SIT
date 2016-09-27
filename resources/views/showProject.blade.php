@@ -54,7 +54,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
-					<div class="col-lg-12">
+					<div class="col-lg-12 tools">
 						{{$tools}}
 					</div>
 				</div>
@@ -149,4 +149,15 @@
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div> -->
 </div>
+<script>
+
+var text = $('div.tools').text();
+text = text.replace(/\r?\n/g, '<br/>');
+console.log(text);
+// $('#tools').ready(function($){
+// var text = $("#tools").val();
+// console.log(text)
+// 
+// }
+</script>
 @stop

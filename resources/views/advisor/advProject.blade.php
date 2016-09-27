@@ -1,8 +1,10 @@
 @extends('advTmp')
 @section('content')
+<link href="{!! URL::asset('css/datatables.css') !!}" rel="stylesheet">
+<script src="{!! URL::asset('js/datatables.min.js') !!}"></script>
 <div class="row">
-	<div class="hidden-xs col-md-1 col-lg-1"></div>
-	<div class="col-xs-4 col-md-2 col-lg-2">
+	<div class="col-xs-1 col-md-1 col-lg-1"></div>
+	<div class="col-xs-4 col-md-4 col-lg-4">
 		YEAR
 		<div class="dropdown" id="year">
 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">All
@@ -13,74 +15,85 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-xs-4 col-md-6 col-lg-6">
-			<input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
+		<div class="col-xs-6 col-md-6 col-lg-6 table-bar">
+        <div class="btn-group">
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
+			<ul class="dropdown-menu dropdown-menu-right">
+				  <li>
+				    <a class="small toggle-vis" data-value="option1" tabIndex="-1" data-column="0">
+				      <input type="checkbox" checked/>&nbsp;Project ID
+				    </a>
+				  </li>
+				  <li>
+				    <a class="small toggle-vis" data-value="option2" tabIndex="-1" data-column="1">
+				      <input type="checkbox" checked/>&nbsp;Project name
+				    </a>
+				  </li>
+				  <li>
+				    <a class="small toggle-vis" data-value="option3" tabIndex="-1" data-column="2">
+				      <input type="checkbox" checked/>&nbsp;Type
+				    </a>
+				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option4" tabIndex="-1" data-column="3">
+				       <input type="checkbox" checked/>&nbsp;Main advisor
+				     </a>
+				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option5" tabIndex="-1" data-column="4">
+				       <input type="checkbox" checked/>&nbsp;Co-advisor
+				     </a>
+				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option6" tabIndex="-1" data-column="5">
+				       <input type="checkbox" checked/>&nbsp;Proposal
+				     </a>
+				  </li>
+				  <li>
+				     <a class="small toggle-vis" data-value="option7" tabIndex="-1" data-column="6">
+				       <input type="checkbox" checked/>&nbsp;Score
+				     </a>
+				  </li>
+			</ul>
 		</div>
-		<div class="col-xs-4 col-md-2 col-lg-2">	</div>
-		<div class="hidden-xs col-md-1 col-lg-1"></div>
+       <input id="searchInput" name="search" class="pjsearch form-control" placeholder="Search here"/>
+	</div>
+	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
-		<div id="projectTB" style="margin-top:30px">
-			<table class="table table-bordered results">
+		<div class="hidden-xs col-md-1 col-lg-1"></div>
+        <div class="col-xs-12 col-md-10 col-lg-10" id="projectTB" style="margin-top:30px">
+			<table id="pjtable" class="table table-bordered results">
 				<thead>
 					<tr>
-						<th style="width:12%">Project ID</th>
-						<th style="width:57%">Project name</th>
-						<th style="width:8%">Type</th>
-						<th style="width:12%">co-advisor</th>
-						<th style="width:10%">proposal</th>
-						<th style="width:7%">score</th>
+						<th>Project ID</th>
+						<th>Project name</th>
+						<th>Type</th>
+						<th>Main advisor</th>
+						<th>co-advisor</th>
+						<th>proposal</th>
+						<th>score</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td colspan="6" class="no-project">no project found</td>
-					</tr>
-					<tr>
 						<td>IT56-BU05</td>
 						<td id="name">
-							<a href="#">KMUTT Network dormitory booking web application<br>เว็บแอปพลิเคชั่นจองหอพักในเครือข่ายรอบ มจธ.</a>
+							<a class="tblink" href="#">KMUTT Network dormitory booking web application<br>เว็บแอปพลิเคชั่นจองหอพักในเครือข่ายรอบ มจธ.</a>
 						</td>
 						<td>Business</td>
+						<td class="firstname">Umaporn A</td>
 						<td class="firstname">Montri Supattatham</td>
-						<td id="center"><a href="#" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
-						<td id="center"><a data-toggle="modal" data-target="#scoreModal1"><span class="glyphicon glyphicon-list"></span></a></td>
-					</tr>
-					<tr>
-						<td>IT56-RE11</td>
-						<td id="name">
-							<a href="#">System management of health center<br>ระบบบริหารงานสถานีอนามัย</a>
-						</td>
-						<td>research</td>
-						<td class="firstname">Pichet Limvachiranan</td>
-						<td id="center"><a href="#" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
-						<td id="center"><a data-toggle="modal" data-target="#scoreModal2"><span class="glyphicon glyphicon-list"></span></a></td>
-					</tr>
-					<tr>
-						<td>IT56-SO06</td>
-						<td id="name">
-							<a href="#">Xinchao Vietnam language learning game<br>สื่อการเรียนรู้ภาษาเวียดนาม</a>
-						</td>
-						<td>social</td>
-						<td class="firstname">Ekapong Jungcharoensukying</td>
-						<td id="center"><a href="#" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
-						<td id="center"><a data-toggle="modal" data-target="#scoreModal3"><span class="glyphicon glyphicon-list"></span></a></td>
-					</tr>
-					<tr>
-						<td>IT56-SO10</td>
-						<td id="name">
-							<a href="#">driving license simulation game<br>เกมจำลองสถานการณ์สอบใบอนุญาติขับขี่รถยนต์</a>
-						</td>
-						<td>social</td>
-						<td class="firstname">Ekapong Jungcharoensukying</td>
-						<td id="center"><a href="#" download><span class="flaticon-pdf-file-format-symbol"></span></td></a>
-						<td id="center"><a data-toggle="modal" data-target="#scoreModal4"><span class="glyphicon glyphicon-list"></span></a></td>
+						<td id="center"><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+						<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal"><span class="glyphicon glyphicon-list"></span></a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<div class="modal fade" id="scoreModal1" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+	<div class="hidden-xs col-md-1 col-lg-1"></div>
+</div>
+	<div class="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content" id="center">
 				<div class="modal-header">
@@ -108,96 +121,27 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="scoreModal2" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content" id="center">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">IT56-RE11</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered myscore">
-						<tbody>
-							<tr>
-								<td>exam round 1</td><td class="verygood">very good</td>
-							</tr>
-							<tr>
-								<td>exam round 2</td><td class="verygood">very good</td>
-							</tr>
-							<tr>
-								<td>exam round 3</td><td class="verygood">very good</td>
-							</tr>
-							<tr>
-								<td>exam round 4</td><td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="scoreModal3" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content" id="center">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">IT56-SO06</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered myscore">
-						<tbody>
-							<tr>
-								<td>exam round 1</td><td class="poor">poor</td>
-							</tr>
-							<tr>
-								<td>exam round 2</td><td class="good">good</td>
-							</tr>
-							<tr>
-								<td>exam round 3</td><td class="good">good</td>
-							</tr>
-							<tr>
-								<td>exam round 4</td><td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="scoreModal4" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content" id="center">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">IT56-SO10</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered myscore">
-						<tbody>
-							<tr>
-								<td>exam round 1</td><td class="good">good</td>
-							</tr>
-							<tr>
-								<td>exam round 2</td><td class="fair">fair</td>
-							</tr>
-							<tr>
-								<td>exam round 3</td><td class="good">good</td>
-							</tr>
-							<tr>
-								<td>exam round 4</td><td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
 	<script src="{!! URL::asset('js/search.js') !!}"></script>
 	<script>
-	$('.no-project').hide();
 	$('.results').filterForTable();
 	$('.firstname').each(function(index) {
 		document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
 	});
+	$(document).ready(function() {
+    var table = $('#pjtable').DataTable( {
+    	 "searching": false
+    } );
+ 
+    $('a.toggle-vis').on( 'click', function (e) {
+ 
+        // Get the column API object
+        var column = table.column( $(this).attr('data-column') );
+ 
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+
+
+    } );
+} );
 	</script>
 	@stop
