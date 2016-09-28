@@ -16,6 +16,7 @@ class CreateProjectDetailTable extends Migration
             $table->increments('id');
             $table->string('group_project_detail',10000);
             $table->string('tools_detail');
+            $table->string('video', 1000);
             $table->timestamps();
         });
     }
