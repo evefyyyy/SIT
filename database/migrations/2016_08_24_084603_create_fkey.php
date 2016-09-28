@@ -57,6 +57,8 @@ class CreateFkey extends Migration
         $table->foreign('category_id')->references('id')->on('categories');
         $table->integer('type_id')->unsigned();
         $table->foreign('type_id')->references('id')->on('types');
+        $table->integer('year_id')->unsigned();
+        $table->foreign('year_id')->references('id')->on('years');
     });
 
     Schema::table('pictures', function ($table) {
