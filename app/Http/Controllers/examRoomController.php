@@ -128,5 +128,8 @@ class examRoomController extends Controller
     {
       return view('admin.confirmRoom');
     }
+    public function submitRoom(Request $request){
+      
+    }
 
 }

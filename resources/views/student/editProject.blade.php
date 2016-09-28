@@ -115,7 +115,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		</div>
 		<div class="embed-responsive embed-responsive-16by9" id="vdo"></div>
 			<div class="input-group">
-				<input type="text" class="form-control" id="embedcode" placeholder="Paste a youtube embed code">
+				<input type="text" class="form-control" placeholder="Paste a youtube embed code" id="embedcode" name="video" value="{{$video or ''}}">
 				<span class="input-group-btn">
 					<button class="btn btn-primary embed" type="button">Embed</button>
 				</span>
