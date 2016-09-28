@@ -74,7 +74,7 @@
 							    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
 							</div>
 						</div>
-						<!-- <div class="form-group" style="width:40%">
+						<div class="form-group" style="width:40%">
 							<label for="message-text" class="control-label">Expiration date</label>
 							<div class='input-group date datetimepicker'>
 								<input type='text' class="form-control" />
@@ -82,7 +82,8 @@
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
 							</div>
-						</div> -->
+						</div>
+
 						<input type="hidden" name="hId" value="{{$n->id}}">
 						<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 					</div>
@@ -114,7 +115,7 @@
 							<label for="message-text" class="control-label">File</label>
 							<input type="file" id="file" name="myfiles" required/>
 						</div>
-						<!-- <div class="form-group" style="width:40%">
+						<div class="form-group" style="width:40%">
 							<label for="message-text" class="control-label">Expiration date</label>
 							<div class='input-group date datetimepicker'>
 								<input type='text' class="form-control" />
@@ -122,7 +123,7 @@
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
 							</div>
-						</div> -->
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -167,5 +168,6 @@
 	function setNum(x){
 		document.getElementById('num').value = x;
 	}
+
 	</script>
 	@stop

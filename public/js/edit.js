@@ -91,3 +91,8 @@ $('#upload').on('click', function() {
     }
   })
 });
+
+$('.embed').on('click', function() {
+    var x = $("#embedcode").val(); 
+    document.getElementById("vdo").innerHTML = x ;
+});
