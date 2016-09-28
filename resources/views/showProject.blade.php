@@ -111,7 +111,9 @@
 			</div>
 		</div>
 		<div class="embed-responsive embed-responsive-16by9">
-			<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TW9sK8G2eW4"></iframe>
+			<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/mBZdHuZCfic" frameborder="0" allowfullscreen></iframe> -->
+			{!! $video !!}
+
 		</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>

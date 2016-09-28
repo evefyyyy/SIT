@@ -71,6 +71,11 @@ class showProjectController extends Controller
                         ->where('group_projects.id',$checkProject)
                         ->value('tools_detail');
 
+      $obj['video'] = DB::table('group_projects')
+                      ->join('project_detail','group_projects.id','=','project_pkid')
+                      ->where('group_projects.id',$checkProject)
+                      ->value('video');
+
       $obj['poster'] = DB::table('pictures')
                         ->where('project_pkid',$checkProject)
                         ->where('picture_type_id','=','1')
@@ -130,6 +135,11 @@ class showProjectController extends Controller
                       ->join('project_detail','group_projects.id','=','project_pkid')
                       ->where('group_projects.id',$id)
                       ->value('tools_detail');
+
+    $obj['video'] = DB::table('group_projects')
+                    ->join('project_detail','group_projects.id','=','project_pkid')
+                    ->where('group_projects.id',$checkProject)
+                    ->value('video');
 
     $obj['poster'] = DB::table('pictures')
                       ->where('project_pkid',$id)

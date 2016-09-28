@@ -117,7 +117,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TW9sK8G2eW4"></iframe>
 			</div>
 			<div class="input-group">
-				<input type="text" class="form-control" value="" placeholder="Paste a youtube embed link">
+				<input type="text" class="form-control" placeholder="Paste a youtube embed link" name="video" value="{{$video or ''}}">
 				<span class="input-group-btn">
 					<button class="btn btn-primary" onclick="" type="button">Embed</button>
 				</span>
