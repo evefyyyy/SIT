@@ -138,7 +138,7 @@ class showProjectController extends Controller
 
     $obj['video'] = DB::table('group_projects')
                     ->join('project_detail','group_projects.id','=','project_pkid')
-                    ->where('group_projects.id',$checkProject)
+                    ->where('group_projects.id',$id)
                     ->value('video');
 
     $obj['poster'] = DB::table('pictures')
