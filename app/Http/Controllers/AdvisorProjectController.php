@@ -29,13 +29,45 @@ class AdvisorProjectController extends Controller
     $obj['project'] = array_flatten($project);
     for($i=0;$i<$count;$i++){
       $id[$i] = $advProject[$i]->project_pkid;
+
+
+// advisor
       $adv[$i] = DB::table('project_advisors')
-      ->join('advisors','advisor_id','=','advisors.id')
-      ->where('project_pkid',$id[$i])
-      ->select('advisor_name')->get();
+                  ->join('advisors','advisor_id','=','advisors.id')
+                  ->where('project_pkid',$id[$i])
+                  ->select('advisor_name')->get();
       $obj['project'][$i]['advisor'] = $adv[$i];
+
+// proposal file
+      $firstDraftProposal[$i] = DB::table('proposals')
+                                ->where('project_pkid',$id[$i])
+                                ->where('proposal_type_id','=','1')
+                                ->value('proposal_path_name');
+      $firstProposal[$i] = DB::table('proposals')
+                                ->where('project_pkid',$id[$i])
+                                ->where('proposal_type_id','=','2')
+                                ->value('proposal_path_name');
+      $secondProposal[$i] = DB::table('proposals')
+                                ->where('project_pkid',$id[$i])
+                                ->where('proposal_type_id','=','3')
+                                ->value('proposal_path_name');
+      $thirdProposal[$i] = DB::table('proposals')
+                                ->where('project_pkid',$id[$i])
+                                ->where('proposal_type_id','=','4')
+                                ->value('proposal_path_name');
+      $finalProposal[$i] = DB::table('proposals')
+                                ->where('project_pkid',$id[$i])
+                                ->where('proposal_type_id','=','5')
+                                ->value('proposal_path_name');
+
+      $obj['project'][$i]['firstDraftProposal'] = $firstDraftProposal[$i];
+      $obj['project'][$i]['firstProposal'] = $firstProposal[$i];
+      $obj['project'][$i]['secondProposal'] = $secondProposal[$i];
+      $obj['project'][$i]['thirdProposal'] = $thirdProposal[$i];
+      $obj['project'][$i]['finalProposal'] = $finalProposal[$i];
     }
-    
+
+
     return view('advisor.advProject',$obj);
   }
 }
