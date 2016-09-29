@@ -37,10 +37,14 @@ class adminAnnouncementController extends Controller {
 
 	public function store(Request $request)
 	{
-		$time = $request['exp'];
-		$replace = str_replace('/', '-', $time);
-		$str = strtotime($replace);
-		$date = date('Y-m-d',$str);
+		if($time = $request['exp']){
+			$replace = str_replace('/', '-', $time);
+			$str = strtotime($replace);
+			$date = date('Y-m-d',$str);
+		}else{
+			$date = '0000-00-00';
+		}
+
 		$nId = (DB::table('news')->max('id'))+1 ;
 		$news = new News();
 		$news->title = $request['title'];
@@ -72,10 +76,14 @@ class adminAnnouncementController extends Controller {
 		$description = $request['description'] ;
 		$id = $request['hId'];
 		$path = base_path('public/adminNewsFiles/') ;
-		$time = $request['exp'];
-		$replace = str_replace('/', '-', $time);
-		$str = strtotime($replace);
-		$date = date('Y-m-d',$str);
+
+		if($time = $request['exp']){
+			$replace = str_replace('/', '-', $time);
+			$str = strtotime($replace);
+			$date = date('Y-m-d',$str);
+		}else{
+			$date = "0000-00-00";
+		}
 
 		if(isset($file)){
 			$extension = $file->getClientOriginalExtension();

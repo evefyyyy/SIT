@@ -78,7 +78,11 @@
 							<div class="form-group" style="width:30%">
 								<label for="message-text" class="control-label">Expiration date</label>
 								<div class='input-group date datetimepicker'>
+									@if($n->end_date == '0000-00-00')
+									<input type='text' class="form-control" name="exp"/>
+									@else
 									<input type='text' class="form-control" name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
+									@endif
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
