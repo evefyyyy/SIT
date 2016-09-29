@@ -2,6 +2,9 @@
 @section('content')
 <link href="{!! URL::asset('css/ninja-slider.css') !!}" rel="stylesheet">
 <script src="{!! URL::asset('js/ninja-slider.js') !!}"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="{!! URL::asset('css/contact-buttons.css') !!}" rel="stylesheet">
+<script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <div id="detail">
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -150,11 +153,34 @@
 <script>
 $(document).ready(function() {
         var str = $("div.tools").html();
-        console.log(str)
 		$("div.tools").html(str.replace(/\n/g, "<br />"));
 
     }
 );
+WebFontConfig = {
+  google: { families: [ 'Lato:400,700,300:latin' ] }
+};
+(function() {
+  var wf = document.createElement('script');
+  wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+  wf.type = 'text/javascript';
+  wf.async = 'true';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(wf, s);
+})();
 
+// Initialize Share-Buttons
+$.contactButtons({
+  effect  : 'slide-on-scroll',
+  buttons : {
+    'facebook':   { class: 'facebook', use: true, extras: 'target="_blank"' },
+    'twitter':    { class: 'twitter',   use: true, },
+    'linkedin':   { class: 'linkedin', use: true, },
+    'google':     { class: 'gplus',    use: true, },
+    'pinterest':  { class: 'pinterest', use: true, },
+    'email':      { class: 'email',    use: true, link: 'test@web.com' }
+  }
+});
 </script>
 @stop

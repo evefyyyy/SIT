@@ -8,7 +8,6 @@
         <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
         <link href="{!! URL::asset('css/bootstrap-datetimepicker.css') !!}" rel="stylesheet">
         <link href="{!! URL::asset('css/datatables.css') !!}" rel="stylesheet">
-        <link href="{!! URL::asset('css/lc_switch.css') !!}" rel="stylesheet">
         <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
         <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
         <script src="{!! URL::asset('js/moment.js') !!}"></script>
@@ -17,7 +16,6 @@
         <script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
         <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
         <script src="{!! URL::asset('js/datatables.min.js') !!}"></script>
-        <script src="{!! URL::asset('js/lc_switch.js') !!}"></script>
         <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
         <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
     </head>
