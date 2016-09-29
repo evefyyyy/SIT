@@ -91,3 +91,13 @@ $('#upload').on('click', function() {
     }
   })
 });
+
+$("#embedcode").ready(function() {
+   var x = $("#embedcode").val(); 
+  document.getElementById("vdo").innerHTML = x ;
+});
+
+$('.embed').on('click', function() {
+    var x = $("#embedcode").val(); 
+    document.getElementById("vdo").innerHTML = x ;
+});

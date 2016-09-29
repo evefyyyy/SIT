@@ -933,7 +933,10 @@ h6 img {
   vertical-align: middle;
 }
 #detail .embed-responsive {
+  width: 100%;
   margin-bottom: 10px;
+  background:url(/img/no-video.png) no-repeat;
+  background-size: 100% 100%;
 }
 #detail img.cover {
   width: 100%;
@@ -943,10 +946,10 @@ h6 img {
   margin-bottom: 20px;
 }
 #detail img#group-member {
-  width: 500px;
-  height: 333px;
   margin-bottom: 10px;
-  background:url(/img/no-image.png) no-repeat center;
+  width: 100%;
+  background:url(/img/no-image.png) no-repeat;
+  background-size: 100% 100%;
 }
 #detail .group {
   margin-bottom: 20px;
@@ -983,6 +986,8 @@ h6 img {
 img#cover {
   width: 100%;
   margin-bottom: 10px;
+  background:url(/img/no-poster.png) no-repeat;
+  background-size: 100% 100%;
 }
 /*
 @media (min-width : 480px) {
@@ -1386,7 +1391,9 @@ td.good {
 a.delete:focus{
   background-color: #FF5C5C !important;
 }
-
+#detail .input-group-btn > button.embed {
+  padding: 6px 12px;
+}
   @media print
 {    
     .no-print, .no-print *
