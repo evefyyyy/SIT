@@ -86,10 +86,14 @@
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-5 col-md-3 col-lg-3">
-								<label for="message-text" class="control-label">Expiration Date</label>
-								<div class='input-group date' id='datetimepicker2'>
-									<input type='text' class="form-control"  name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
+							<div class="form-group" style="width:30%">
+								<label for="message-text" class="control-label">Expiration date</label>
+								<div class='input-group date datetimepicker'>
+									@if($n->end_date == '0000-00-00')
+									<input type='text' class="form-control" name="exp"/>
+									@else
+									<input type='text' class="form-control" name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
+									@endif
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -190,7 +194,7 @@
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 			<script src="{!! URL::asset('js/create.js') !!}"></script>
-			<script type="text/javascript">			
+			<script type="text/javascript">
 			$('[data-toggle=confirmation]').confirmation({
 				rootSelector: '[data-toggle=confirmation]',
 				onConfirm: function() {
