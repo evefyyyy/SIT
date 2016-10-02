@@ -219,5 +219,10 @@
 				document.getElementById('num').value = x;
 			}
 
+			$('table tbody tr.news').each(function(){
+				if () {
+					$(this).addClass("expired");
+				}
+			});
 			</script>
 			@stop
