@@ -51,6 +51,9 @@ Route::get('exam/manageroom/preview', function () {
 Route::get('exam/managescore', function () {
     return view('admin.manageScore');
 });
+Route::get('exam/managescore/create', function () {
+    return view('admin.createSheet');
+});
 Route::get('exam/scorerecord', function () {
     return view('admin.scoreRecord');
 });

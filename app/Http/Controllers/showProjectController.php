@@ -37,6 +37,7 @@ class showProjectController extends Controller
                   ->join('students','student_pkid','=','students.id')
                   ->where('project_pkid',$checkProject)
                   ->select('student_id','student_name','student_email')->get();
+      $obj['student'] = $student;
       if(count($student)==3){
         $obj['stdId1'] = $student[0]->student_id;
         $obj['stdId2'] = $student[1]->student_id;
@@ -102,6 +103,8 @@ class showProjectController extends Controller
                 ->join('students','student_pkid','=','students.id')
                 ->where('project_pkid',$id)
                 ->select('student_id','student_name','student_email')->get();
+    $obj['student'] = $student;
+
     if(count($student)==3){
       $obj['stdId1'] = $student[0]->student_id;
       $obj['stdId2'] = $student[1]->student_id;
