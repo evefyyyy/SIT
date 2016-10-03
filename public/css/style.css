@@ -1353,8 +1353,8 @@ input[type="range"].cropit-image-zoom-input {
 }
 #scoresheet label {
   text-transform: uppercase;
-  margin-right: 10px;
   font-weight: normal;
+  display: inline;
 }
 #scoresheet .round .row {
   margin: 10px 0;
@@ -1371,7 +1371,7 @@ input[type="range"].cropit-image-zoom-input {
 #scoresheet > a.text-center {
   margin: 0 auto
 }
-#scoresheet button {
+#scoresheet button.btn-primary {
   float: right;
   margin-bottom: 5px;
 }
@@ -1437,6 +1437,15 @@ a.delete:focus{
         display: none !important;
     }
 }
-.selecttype {
+#scoresheet .bootstrap-select > .dropdown-toggle {
   text-transform: capitalize;
+  display: inline;
+  width: 200px;
+}
+#scoresheet .bootstrap-select.btn-group .dropdown-menu {
+  min-width: 80%;
+  text-transform: capitalize;
+}
+.expired, .expired a {
+  color: #c1c1c1 !important;
 }
