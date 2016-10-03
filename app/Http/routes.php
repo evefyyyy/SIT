@@ -54,9 +54,7 @@ Route::get('exam/managescore', function () {
 Route::get('exam/managescore/create', function () {
     return view('admin.createSheet');
 });
-Route::get('exam/scorerecord', function () {
-    return view('admin.scoreRecord');
-});
+Route::resource('exam/scorerecord','ScoreRecordController');
 Route::get('myscore', function () {
     return view('student.myScore');
 });

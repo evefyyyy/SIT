@@ -50,4 +50,8 @@ class GroupProject extends Model
     {
       return $this->hasMany('App\RoomExam','project_pkid');
     }
+    public function scoreTest()
+    {
+      return $this->hasMany('App\ScoreTest','project_pkid');
+    }
 }
