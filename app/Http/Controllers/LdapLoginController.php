@@ -60,6 +60,7 @@ class LdapLoginController extends Controller
 				} else {
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 				}
+				//if(auth()->guard('admins')->attempt(['admin_username' => $username, 'admin_password' => $ldappass]))
 				//$info = ldap_pull($info[0], 'uid');
 				//print_r($info[0]);
 			// }catch(Exception $e){

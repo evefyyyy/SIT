@@ -4,17 +4,22 @@
     <h2><img height="45" src="/img/exam.png">manage score sheet</h2>
     <div class="row">
         <div class="col-xs-1 col-md-3 col-lg-3"></div>
-        <div class="col-xs-10 col-md-6 col-lg-6">
+        <div class="col-xs-5 col-md-3 col-lg-3">
           <label>project type</label>
           <select class="selecttype">
              <option value="business">business</option>
              <option value="research">research</option>
              <option value="social">social</option>
          </select>
-         <span id="pendlink">
-            <a class="btn">Manage criteria</a>
-        </span>
-     </div>
+        </div>
+        <div class="col-xs-5 col-md-3 col-lg-3">
+         <label>template</label>
+          <select class="selecttype">
+             <option>score sheet 1</option>
+             <option>score sheet 2</option>
+             <option>score sheet 3</option>
+         </select>
+        </div>
      <div class="col-xs-1 col-md-3 col-lg-3"></div>
  </div>
  <div class="business research box">
