@@ -200,7 +200,7 @@
 									type:"post",
 									dataType: "",
 									url :"stdId3",
-									data: {stdId2: $("#stdId3").val() , _token:$("#_token").val() },
+									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
 											success:function(data){
 												if(data=='0'){
 													var _msg = null;
