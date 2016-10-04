@@ -48,78 +48,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($project as $pj)
 				<tr>
-					<td>IT56-BU21</td>
-					<td>ระบบจัดการศูนย์ข้อมูล</td>
-					<td>92</td>
-					<td>90</td>
-					<td>95</td>
-					<td></td>
+					<td>{{$pj->group_project_id}}</td>
+					<td>{{$pj->group_project_th_name}}</td>
+					<td>{{$pj->score1 !== [] ? $pj->score1[0]->score_test_sum : ''}}</td>
+					<td>{{$pj->score2 !== [] ? $pj->score2[0]->score_test_sum : ''}}</td>
+					<td>{{$pj->score3 !== [] ? $pj->score3[0]->score_test_sum : ''}}</td>
+					<td>{{$pj->score4 !== [] ? $pj->score4[0]->score_test_sum : ''}}</td>
 				</tr>
-				<tr>
-					<td>IT56-SO02</td>
-					<td>ระบบควบคุมพลังงานไฟฟ้าภายในอาคาร</td>
-					<td>80</td>
-					<td>95</td>
-					<td>92</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>IT56-RE11</td>
-					<td>เทคนิคการระบุตัวตนระหว่างเครือข่ายสังคมออนไลน์</td>
-					<td>82</td>
-					<td>69</td>
-					<td>86</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>IT56-BU01</td>
-					<td>ระบบดูแลสุขภาพอัจฉริยะ</td>
-					<td>72</td>
-					<td>64</td>
-					<td>88</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>IT56-RE20</td>
-					<td>อุปกรณ์ติดตามพฤติกรรมสุนัข</td>
-					<td>77</td>
-					<td>74</td>
-					<td>63</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>IT56-BU08</td>
-					<td>ระบบการเรียนอัจฉริยะ</td>
-					<td>77</td>
-					<td>55</td>
-					<td>65</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>IT56-SO21</td>
-					<td>เว็บไซต์แสดงผลงานนักศึกษาคณะเทคโนโลยีสารสนเทศ</td>
-					<td>89</td>
-					<td>73</td>
-					<td>65</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>IT56-SO22</td>
-					<td>เว็บแอปพบิเคชั่นสำหรับจัดการค่าย</td>
-					<td>69</td>
-					<td>59</td>
-					<td>65</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>IT56-SO05</td>
-					<td>เว็บไซส์ศูนย์รวมสำหรับผู้สูงอายุ</td>
-					<td>90</td>
-					<td>59</td>
-					<td>82</td>
-					<td></td>
-				</tr>
+				@endforeach
 			</tbody>
     	</table>
 	</div>
@@ -134,12 +72,12 @@ $(document).ready(function() {
     var table = $('#pjtable').DataTable( {
     	 "searching": false
     } );
- 
+
     $('a.toggle-vis').on( 'click', function (e) {
- 
+
         // Get the column API object
         var column = table.column( $(this).attr('data-column') );
- 
+
         // Toggle the visibility
         column.visible( ! column.visible() );
 
