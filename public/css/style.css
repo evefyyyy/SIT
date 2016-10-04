@@ -890,6 +890,15 @@ h6 img {
   font-size: 1em;
   text-transform: capitalize;
 }
+.news td span {
+  font-size: 0.9em;
+}
+.news .pending {
+  color: #999;
+}
+.news .published {
+  color: #34a990;
+}
 #newTB a {
   color: black;
   text-decoration: none;
@@ -1355,6 +1364,7 @@ input[type="range"].cropit-image-zoom-input {
   text-transform: uppercase;
   font-weight: normal;
   display: inline;
+  margin: 6px 10px 0 0;
 }
 #scoresheet .round .row {
   margin: 10px 0;
@@ -1365,15 +1375,29 @@ input[type="range"].cropit-image-zoom-input {
   display: inline;
   text-transform: uppercase;
 }
+#scoresheet h6 {
+  display: inline;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 30px;
+  padding: 5px 10px;
+  border: 1px solid;
+  border-radius: 5px;
+}
 #scoresheet h2 {
   margin: 20px auto;
 }
 #scoresheet > a.text-center {
-  margin: 0 auto
+  margin: 0 auto;
 }
-#scoresheet button.btn-primary {
-  float: right;
-  margin-bottom: 5px;
+#scorecheet .table > tbody > tr > td > input[type=number] {
+  margin: 0 auto;
+}
+#scoresheet .table > tbody > tr > td {
+  vertical-align: middle;
+}
+#scoresheet table {
+  margin-top: 10px
 }
 h2 > img {
   padding-right: 15px
@@ -1440,10 +1464,10 @@ a.delete:focus{
 #scoresheet .bootstrap-select > .dropdown-toggle {
   text-transform: capitalize;
   display: inline;
-  width: 200px;
+  width: 150px;
 }
 #scoresheet .bootstrap-select.btn-group .dropdown-menu {
-  min-width: 80%;
+  min-width: 150px;
   text-transform: capitalize;
 }
 .expired, .expired a {
