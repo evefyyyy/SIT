@@ -30,8 +30,8 @@
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
-				<tr class="news">
-					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}<span></span></a></td>
+				<tr class="news  {{$n->end_date <= date('Y-m-d')?"expired":""}}">
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a><span></span></td>
 					<td style="width:10%">
 						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
 							<i class="glyphicon glyphicon-trash"></i>
@@ -223,19 +223,15 @@
 				document.getElementById('num').value = x;
 			}
 
-			// $('table tbody tr.news').each(function(){
-			// 	if () {
-			// 		$(this).addClass("expired");
-			// 	}
-			// });
 			$('table tbody tr.news span').each(function(){
-				// if () {
-					// $(this).text(' - pending');
-					// $(this).addClass(' - pending');
-				// } else {
+				if () {
+					$(this).text(' - pending');
+					$(this).addClass('pending');
+				} else {
 					$(this).text(' - published');
-					$(this).addClass(' - published');
-				// }
+					$(this).addClass('published');
+				}
 			});
+
 			</script>
 			@stop

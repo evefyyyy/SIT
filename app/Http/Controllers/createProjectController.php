@@ -59,6 +59,7 @@ class createProjectController extends Controller {
 
 		$advisor = Advisor::all();
 		$data['advisor'] = $advisor;
+	
 		return view('student.createProject',$data);
 	}
 
