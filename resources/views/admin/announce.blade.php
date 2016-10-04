@@ -86,7 +86,8 @@
 									</span>
 								</div>
 							</div>
-							<div class="form-group" style="width:30%">
+						<div class="form-group" style="width:30%">
+							<div class="col-xs-5 col-md-3 col-lg-3">
 								<label for="message-text" class="control-label">Expiration date</label>
 								<div class='input-group date datetimepicker'>
 									@if($n->end_date == '0000-00-00')
