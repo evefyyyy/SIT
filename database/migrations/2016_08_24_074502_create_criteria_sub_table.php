@@ -15,7 +15,6 @@ class CreateCriteriaSubTable extends Migration
         Schema::create('criteria_subs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('criteria_sub_name');
-            $table->string('criteria_sub_score');
             $table->timestamps();
         });
     }
