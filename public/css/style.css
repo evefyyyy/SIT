@@ -890,6 +890,15 @@ h6 img {
   font-size: 1em;
   text-transform: capitalize;
 }
+.news td span {
+  font-size: 0.9em;
+}
+.news .pending {
+  color: #999;
+}
+.news .published {
+  color: #34a990;
+}
 #newTB a {
   color: black;
   text-decoration: none;

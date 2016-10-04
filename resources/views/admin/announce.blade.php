@@ -31,7 +31,7 @@
 				<!-- show announcement -->
 				@foreach($news as $n)
 				<tr class="news">
-					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}<span></span></a></td>
 					<td style="width:10%">
 						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
 							<i class="glyphicon glyphicon-trash"></i>
@@ -86,7 +86,6 @@
 									</span>
 								</div>
 							</div>
-						<div class="form-group" style="width:30%">
 							<div class="col-xs-5 col-md-3 col-lg-3">
 								<label for="message-text" class="control-label">Expiration date</label>
 								<div class='input-group date datetimepicker'>
@@ -224,10 +223,19 @@
 				document.getElementById('num').value = x;
 			}
 
-			$('table tbody tr.news').each(function(){
-				if () {
-					$(this).addClass("expired");
-				}
+			// $('table tbody tr.news').each(function(){
+			// 	if () {
+			// 		$(this).addClass("expired");
+			// 	}
+			// });
+			$('table tbody tr.news span').each(function(){
+				// if () {
+					// $(this).text(' - pending');
+					// $(this).addClass(' - pending');
+				// } else {
+					$(this).text(' - published');
+					$(this).addClass(' - published');
+				// }
 			});
 			</script>
 			@stop
