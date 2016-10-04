@@ -26,9 +26,9 @@ $(".next").click(function(){
 			//3. increase opacity of next_fs to 1 as it moves in
 			opacity = 1 - now;
 			current_fs.css({
-        'transform': 'scale('+scale+')',
-        'position': 'absolute'
-      });
+				'transform': 'scale('+scale+')',
+				'position': 'absolute'
+			});
 			next_fs.css({'left': left, 'opacity': opacity});
 		},
 		duration: 900,
@@ -80,59 +80,59 @@ $(".previous").click(function(){
 
 //dropdown list
 
-			function DropDown(el) {
-				this.type = el;
-				this.category = el;
-				this.placeholder = this.type.children('span');
-				this.opts = this.type.find('ul.dropdown > li');
-				this.val = '';
-				this.index = -1;
-				this.initEvents();
-			}
-			DropDown.prototype = {
-				initEvents : function() {
-					var obj = this;
+function DropDown(el) {
+	this.type = el;
+	this.category = el;
+	this.placeholder = this.type.children('span');
+	this.opts = this.type.find('ul.dropdown > li');
+	this.val = '';
+	this.index = -1;
+	this.initEvents();
+}
+DropDown.prototype = {
+	initEvents : function() {
+		var obj = this;
 
-					obj.type.on('click', function(event){
-						$(this).toggleClass('active');
-						return false;
-					});
+		obj.type.on('click', function(event){
+			$(this).toggleClass('active');
+			return false;
+		});
 
-					obj.opts.on('click',function(){
-						var opt = $(this);
-						obj.val = opt.text();
-						obj.index = opt.index();
-						obj.placeholder.text(obj.val);
-					});
-				},
-				getValue : function() {
-					return this.val;
-				},
-				getIndex : function() {
-					return this.index;
-				}
-			}
+		obj.opts.on('click',function(){
+			var opt = $(this);
+			obj.val = opt.text();
+			obj.index = opt.index();
+			obj.placeholder.text(obj.val);
+		});
+	},
+	getValue : function() {
+		return this.val;
+	},
+	getIndex : function() {
+		return this.index;
+	}
+}
 
-			$(function() {
+$(function() {
 
-				var type = new DropDown( $('#type') );
-				var category = new DropDown( $('#category') );
+	var type = new DropDown( $('#type') );
+	var category = new DropDown( $('#category') );
 
-				$('#type').on('click',function(){
-					if ($('#type').hasClass('active')) {
-						$('#category').removeClass('active');
-					} else {
-					}
-				});
+	$('#type').on('click',function(){
+		if ($('#type').hasClass('active')) {
+			$('#category').removeClass('active');
+		} else {
+		}
+	});
 
 
-				$('#category').on('click',function(){
-					if ($('#category').hasClass('active')) {
-						$('#type').removeClass('active');
-					} else {
-					}
-				});
-			});
+	$('#category').on('click',function(){
+		if ($('#category').hasClass('active')) {
+			$('#type').removeClass('active');
+		} else {
+		}
+	});
+});
 
 function getValue() {
 	$("#projectNameEN1").html($("#projectNameEN").val());
@@ -154,26 +154,26 @@ $(".submit").click(function(){
 })
 
 $(function () {
-		$('.selectpicker').selectpicker({
-			liveSearch: true,
+	$('.selectpicker').selectpicker({
+		liveSearch: true,
 
-			noneSelectedText: 'no advisor selected',
-		});
+		noneSelectedText: 'no advisor selected',
 	});
+});
 $(function () {
-		$('.selectpicker1').selectpicker({
-			liveSearch: true,
+	$('.selectpicker1').selectpicker({
+		liveSearch: true,
 
-			noneSelectedText: 'no advisor selected',
-		});
+		noneSelectedText: 'no advisor selected',
 	});
+});
 
 $(document).ready(function() {
     var max_fields      = 100; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+    	e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 });
 //Reference: 
@@ -182,15 +182,15 @@ $(document).ready(function() {
 
 		  // Browser supports HTML5 multiple file?
 		  var multipleSupport = typeof $('<input/>')[0].multiple !== 'undefined',
-		      isIE = /msie/i.test( navigator.userAgent );
+		  isIE = /msie/i.test( navigator.userAgent );
 
 		  $.fn.customFile = function() {
 
-		    return this.each(function() {
+		  	return this.each(function() {
 
 		      var $file = $(this).addClass('custom-file-upload-hidden'), // the original file input
-		          $wrap = $('<div class="file-upload-wrapper">'),
-		          $input = $('<input type="text" class="file-upload-input" />'),
+		      $wrap = $('<div class="file-upload-wrapper">'),
+		      $input = $('<input type="text" class="file-upload-input" />'),
 		          // Button that will be used in non-IE browsers
 		          $button = $('<button type="button" class="file-upload-button">Select a File</button>'),
 		          // Hack for IE
@@ -199,12 +199,12 @@ $(document).ready(function() {
 		      // Hide by shifting to the left so we
 		      // can still trigger events
 		      $file.css({
-		        position: 'absolute',
-		        left: '-9999px'
+		      	position: 'absolute',
+		      	left: '-9999px'
 		      });
 
 		      $wrap.insertAfter( $file )
-		        .append( $file, $input, ( isIE ? $label : $button ) );
+		      .append( $file, $input, ( isIE ? $label : $button ) );
 
 		      // Prevent focus
 		      $file.attr('tabIndex', -1);
@@ -212,26 +212,26 @@ $(document).ready(function() {
 
 		      $button.click(function () {
 		        $file.focus().click(); // Open dialog
-		      });
+		    });
 
 		      $file.change(function() {
 
-		        var files = [], fileArr, filename;
+		      	var files = [], fileArr, filename;
 
 		        // If multiple is supported then extract
 		        // all filenames from the file array
 		        if ( multipleSupport ) {
-		          fileArr = $file[0].files;
-		          for ( var i = 0, len = fileArr.length; i < len; i++ ) {
-		            files.push( fileArr[i].name );
-		          }
-		          filename = files.join(', ');
+		        	fileArr = $file[0].files;
+		        	for ( var i = 0, len = fileArr.length; i < len; i++ ) {
+		        		files.push( fileArr[i].name );
+		        	}
+		        	filename = files.join(', ');
 
 		        // If not supported then just take the value
 		        // and remove the path to just show the filename
-		        } else {
-		          filename = $file.val().split('\\').pop();
-		        }
+		    } else {
+		    	filename = $file.val().split('\\').pop();
+		    }
 
 		        $input.val( filename ) // Set the value
 		          .attr('title', filename) // Show filename in title tootlip
@@ -240,10 +240,10 @@ $(document).ready(function() {
 		      });
 
 		      $input.on({
-		        blur: function() { $file.trigger('blur'); },
-		        keydown: function( e ) {
+		      	blur: function() { $file.trigger('blur'); },
+		      	keydown: function( e ) {
 		          if ( e.which === 13 ) { // Enter
-		            if ( !isIE ) { $file.trigger('click'); }
+		          	if ( !isIE ) { $file.trigger('click'); }
 		          } else if ( e.which === 8 || e.which === 46 ) { // Backspace & Del
 		            // On some browsers the value is read-only
 		            // with this trick we remove the old input and add
@@ -252,22 +252,22 @@ $(document).ready(function() {
 		            $file.trigger('change');
 		            $input.val('');
 		          } else if ( e.which === 9 ){ // TAB
-		            return;
+		          	return;
 		          } else { // All other keys
-		            return false;
+		          	return false;
 		          }
-		        }
-		      });
+		      }
+		  });
 
-		    });
+		  });
 
-		  };
+};
 
 		  // Old browser fallback
 		  if ( !multipleSupport ) {
-		    $( document ).on('change', 'input.customfile', function() {
+		  	$( document ).on('change', 'input.customfile', function() {
 
-		      var $this = $(this),
+		  		var $this = $(this),
 		          // Create a unique ID so we
 		          // can attach the label to the input
 		          uniqId = 'customfile_'+ (new Date()).getTime(),
@@ -275,7 +275,7 @@ $(document).ready(function() {
 
 		          // Filter empty input
 		          $inputs = $wrap.siblings().find('.file-upload-input')
-		            .filter(function(){ return !this.value }),
+		          .filter(function(){ return !this.value }),
 
 		          $file = $('<input type="file" id="'+ uniqId +'" name="'+ $this.attr('name') +'"/>');
 
@@ -287,21 +287,54 @@ $(document).ready(function() {
 		          // Check for empty fields to prevent
 		          // creating new inputs when changing files
 		          if ( !$inputs.length ) {
-		            $wrap.after( $file );
-		            $file.customFile();
+		          	$wrap.after( $file );
+		          	$file.customFile();
 		          }
 		        // Remove and reorganize inputs
-		        } else {
-		          $inputs.parent().remove();
+		    } else {
+		    	$inputs.parent().remove();
 		          // Move the input so it's always last on the list
 		          $wrap.appendTo( $wrap.parent() );
 		          $wrap.find('input').focus();
-		        }
-		      }, 1);
+		      }
+		  }, 1);
 
-		    });
-		  }
+		  });
+}
 
 }(jQuery));
 
 $('input[type=file]').customFile();
+
+//datepicker in announcement
+$(function () {
+	$('#datetimepicker1').datetimepicker({
+		format: 'DD/MM/YYYY',
+	});
+	$('#datetimepicker2').datetimepicker({
+		format: 'DD/MM/YYYY',
+			            useCurrent: false //Important! See issue #1025
+			        });
+	$("#datetimepicker1").on("dp.change", function (e) {
+		$('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+	});
+	$("#datetimepicker2").on("dp.change", function (e) {
+		$('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+	});
+});
+$(function () {
+	$('#datetimepicker6').datetimepicker({
+		format: 'DD/MM/YYYY',
+		defaultDate: new Date()
+	});
+	$('#datetimepicker7').datetimepicker({
+		format: 'DD/MM/YYYY',
+			            useCurrent: false //Important! See issue #1075
+			        });
+	$("#datetimepicker6").on("dp.change", function (e) {
+		$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+	});
+	$("#datetimepicker7").on("dp.change", function (e) {
+		$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+	});
+});

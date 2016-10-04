@@ -14,24 +14,24 @@
 <div class="row" id="newTB">
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-12 col-md-10 col-lg-10">
-	<table class="table table-responsive table-hover">
-		<thead>
-			<tr>
-				<th colspan="2" style="width:80%">title</th>
-				<th style="width:15%">date</th>
-			</tr>
-		</thead>
-		<tbody>
-			<!-- no announcement -->
-			@if(count($news) == null)
+		<table class="table table-responsive table-hover">
+			<thead>
+				<tr>
+					<th colspan="2" style="width:80%">title</th>
+					<th style="width:15%">post date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- no announcement -->
+				@if(count($news) == null)
 				<tr>
 					<td colspan="3" class="no-project">There is no announcement.</td>
 				</tr>
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
-				<tr class="news">
-					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
+				<tr class="news  {{$n->end_date <= date('Y-m-d')?"expired":""}}">
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a><span></span></td>
 					<td style="width:10%">
 						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
 							<i class="glyphicon glyphicon-trash"></i>
@@ -52,51 +52,69 @@
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
-		@foreach($news as $n)
-		<!-- edit announcement for Admin -->
-		<div class="modal fade" id="announce{{$count}}" role="dialog" aria-labelledby="exampleModalLabel">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
+@foreach($news as $n)
+<!-- edit announcement for Admin -->
+<div class="modal fade" id="announce{{$count}}" role="dialog" aria-labelledby="exampleModalLabel">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+					<div class="form-group">
+						<label for="message-text" class="control-label">Description</label>
+						<textarea rows="4" class="form-control" id="desc" name="description">{{$n->description}}</textarea>
+					</div>
+					<div class="form-group">
+						<label for="message-text" class="control-label">File</label>
+						<input type="file" id="file" name="myfiles" />
+						<div class="input_fields_wrap">
+							<div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
 						</div>
-						<div class="modal-body">
-							<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-							<div class="form-group">
-								<label for="message-text" class="control-label">Description</label>
-								<textarea rows="4" class="form-control" id="desc" name="description">{{$n->description}}</textarea>
-							</div>
-							<div class="form-group">
-								<label for="message-text" class="control-label">File</label>
-								<input type="file" id="file" name="myfiles" />
-								<div class="input_fields_wrap">
-							    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
-							</div>
-							</div>
-							<div class="form-group" style="width:30%">
-								<label for="message-text" class="control-label">Expiration date</label>
-								<div class='input-group date datetimepicker'>
-									<input type='text' class="form-control" name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-5 col-md-3 col-lg-3">
+								<label for="message-text" class="control-label">Publish Date</label>
+								<div class='input-group date' id='datetimepicker1'>
+									<input type='text' class="form-control"/>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
 								</div>
 							</div>
-							<input type="hidden" name="hId" value="{{$n->id}}">
-							<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
+							<div class="col-xs-5 col-md-3 col-lg-3">
+								<label for="message-text" class="control-label">Expiration date</label>
+								<div class='input-group date datetimepicker'>
+									@if($n->end_date == '0000-00-00')
+									<input type='text' class="form-control" name="exp"/>
+									@else
+									<input type='text' class="form-control" name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
+									@endif
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="col-xs-2 col-md-6 col-lg-6"></div>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">save</button>
-						</form>
 					</div>
+					<input type="hidden" name="hId" value="{{$n->id}}">
+					<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">save</button>
+				</form>
 			</div>
 		</div>
-		@endforeach
-		<!-- show announccement for student -->
+	</div>
+</div>
+@endforeach
+<!-- show announccement for student -->
 		<!-- <?php
 		$count = 0 ;
 		?>
@@ -143,13 +161,27 @@
 									<input type="file" id="file" name="myfiles"/>
 									<br>
 								</div>
-								<div class="form-group" style="width:30%">
-									<label for="message-text" class="control-label">Expiration date</label>
-									<div class='input-group date datetimepicker'>
-										<input type='text' class="form-control" name="exp"/>
-										<span class="input-group-addon">
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-xs-5 col-md-3 col-lg-3">
+											<label for="message-text" class="control-label">Publish Date</label>
+											<div class='input-group date' id='datetimepicker6'>
+												<input type='text' class="form-control"/>
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+										<div class="col-xs-5 col-md-3 col-lg-3">
+											<label for="message-text" class="control-label">Expiration Date</label>
+											<div class='input-group date' id='datetimepicker7'>
+												<input type='text' class="form-control" name="exp"/>
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+										<div class="col-xs-2 col-md-6 col-lg-6"></div>
 									</div>
 								</div>
 							</div>
@@ -163,11 +195,6 @@
 			</div><!-- /.modal -->
 			<script src="{!! URL::asset('js/create.js') !!}"></script>
 			<script type="text/javascript">
-			$(function () {
-				$('.datetimepicker').datetimepicker({
-					format: 'DD/MM/YYYY'
-				});
-			});
 			$('[data-toggle=confirmation]').confirmation({
 				rootSelector: '[data-toggle=confirmation]',
 				onConfirm: function() {
@@ -195,6 +222,16 @@
 			function setNum(x){
 				document.getElementById('num').value = x;
 			}
+
+			$('table tbody tr.news span').each(function(){
+				if () {
+					$(this).text(' - pending');
+					$(this).addClass('pending');
+				} else {
+					$(this).text(' - published');
+					$(this).addClass('published');
+				}
+			});
 
 			</script>
 			@stop

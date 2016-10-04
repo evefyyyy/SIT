@@ -76,6 +76,10 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php
+						$proCount = 0;
+						$scoreCount = 0;
+					 ?>
 					@foreach($project as $pj)
 					<tr>
 						<td>{{$pj->group_project_id}}</td>
@@ -86,8 +90,8 @@
 						@foreach($pj->advisor as $adv)
 						<td class="firstname">{{$adv->advisor_name}}</td>
 						@endforeach
-						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
-						<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal"><span class="glyphicon glyphicon-list-alt gi-3x"></span></a></td>
+						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal{{$proCount++}}"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
+						<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal{{$scoreCount++}}"><span class="glyphicon glyphicon-list-alt gi-3x"></span></a></td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -96,24 +100,29 @@
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 </div>
-	<div class="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+	<?php
+		$proCount = 0;
+		$scoreCount = 0;
+	 ?>
+	 @foreach($project as $pj)
+	<div class="modal fade" id="scoreModal{{$scoreCount++}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content" id="center">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">IT56-BU05</h4>
+					<h4 class="modal-title">{{$pj->group_project_id}}</h4>
 				</div>
 				<div class="modal-body">
 					<table class="table table-bordered myscore">
 						<tbody>
 							<tr>
-								<td width="50%">exam round 1</td><td width="50%" class="good">good</td>
+								<td width="50%">exam round 1</td><td>A</td>
 							</tr>
 							<tr>
-								<td>exam round 2</td><td class="fair">fair</td>
+								<td>exam round 2</td><td>B+</td>
 							</tr>
 							<tr>
-								<td>exam round 3</td><td class="verygood">very good</td>
+								<td>exam round 3</td><td>C</td>
 							</tr>
 							<tr>
 								<td>exam round 4</td><td></td>
@@ -124,30 +133,51 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="propModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+	@endforeach
+	<?php
+		$proCount = 0;
+		$scoreCount = 0;
+	 ?>
+	@foreach($project as $pj)
+	<div class="modal fade" id="propModal{{$proCount++}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content" id="center">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">IT56-BU05</h4>
+					<h4 class="modal-title">{{$pj->group_project_id}}</h4>
 				</div>
 				<div class="modal-body">
 					<table class="table table-bordered myprop">
 						<tbody>
 							<tr>
-								<td width="60%">first draft proposal</td><td width="40%"><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@if($pj->firstDraftProposal === null)
+								@else
+								<td width="60%">first draft proposal</td><td width="40%"><a class="tblink" href="/proposalFile/{{$pj->firstDraftProposal}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@endif
 							</tr>
 							<tr>
-								<td>first proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@if($pj->firstProposal === null)
+								@else
+								<td>first proposal</td><td><a class="tblink" href="/proposalFile/{{$pj->firstProposal}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@endif
 							</tr>
 							<tr>
-								<td>second proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@if($pj->secondProposal === null)
+								@else
+								<td>second proposal</td><td><a class="tblink" href="/proposalFile/{{$pj->secondProposal}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@endif
 							</tr>
 							<tr>
-								<td>third proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@if($pj->thirdProposal === null)
+								@else
+								<td>third proposal</td><td><a class="tblink" href="/proposalFile/{{$pj->thirdProposal}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@endif
 							</tr>
 							<tr>
-								<td>final proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@if($pj->finalProposal === null)
+								@else
+								<td>final proposal</td><td><a class="tblink" href="/proposalFile/{{$pj->finalProposal}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								@endif
 							</tr>
 						</tbody>
 					</table>
@@ -155,6 +185,7 @@
 			</div>
 		</div>
 	</div>
+	@endforeach
 	<script src="{!! URL::asset('js/search.js') !!}"></script>
 	<script>
 	$('.results').filterForTable();

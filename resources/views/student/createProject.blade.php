@@ -177,10 +177,20 @@
 															result = _msg.fontcolor("red");
 														}
 		                        $('#fname2').html(result);
-		                      }else{
-														var _data = data.student_name
-														$('#fname2').html(_data);
-		                      }
+		                      }else if(data=='1'){
+															var _msg = null;
+															var result = null;
+															if(document.getElementById('stdId2').value === ''){
+																result =''
+															}else{
+																_msg = "This student already has group";
+																result = _msg.fontcolor("red");
+															}
+			                        $('#fname2').html(result);
+														}else{
+															var _data = data.student_name
+															$('#fname2').html(_data);
+		                      	}
 		                }
 		             });
 		    }
@@ -190,7 +200,7 @@
 									type:"post",
 									dataType: "",
 									url :"stdId3",
-									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+									data: {stdId2: $("#stdId3").val() , _token:$("#_token").val() },
 											success:function(data){
 												if(data=='0'){
 													var _msg = null;
@@ -202,10 +212,20 @@
 														result = _msg.fontcolor("red");
 													}
 													$('#fname3').html(result);
-												}else{
-													var _data = data.student_name
-													$('#fname3').html(_data);
-												}
+												}else if(data=='1'){
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId3').value === ''){
+															result =''
+														}else{
+															_msg = "This student already has group";
+															result = _msg.fontcolor("red");
+														}
+														$('#fname3').html(result);
+													}else{
+														var _data = data.student_name
+														$('#fname3').html(_data);
+													}
 									}
 							 });
 			}

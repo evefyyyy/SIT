@@ -35,15 +35,15 @@
           <li><a href="/index">Home</a></li>
           @if(Auth::check())
             <li><a href="/student/news/announcement">manage project</a></li>
-          @endif 
-          <li>     
+          @endif
+          <li>
           <form class="navbar-form" role="search" action="{{url('home/projects/search')}}" method="get">
           <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
             <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
-              <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default">
+              <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default" name="year">
                 <option>all years</option>
-                <option>2016</option>
+                <option value="2016">2016</option>
               </select>
             </div>
             <span class="input-group-btn">

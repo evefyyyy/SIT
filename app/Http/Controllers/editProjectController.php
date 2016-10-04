@@ -85,6 +85,10 @@ class editProjectController extends Controller {
 										->where('project_pkid',$getId)
 										->value('tools_detail');
 
+		$data['video'] = DB::table('project_detail')
+											->where('project_pkid',$getId)
+											->value('video');
+
 		$data['poster'] = DB::table('pictures')
 										->where('project_pkid',$getId)
 										->where('picture_type_id','=','1')
@@ -155,12 +159,14 @@ class editProjectController extends Controller {
 			$obj = ProjectDetail::find($detail);
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
+			$obj->video = $request['video'];
 			$obj->save();
 		}else if($detail == null){
 			$obj = new ProjectDetail();
 			$obj->project_pkid = $getId;
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
+			$obj->video = $request['video'];
 			$obj->save();
 		}
 
@@ -253,7 +259,7 @@ class editProjectController extends Controller {
 											}
 										}
 								}
-							
+
 
 			return redirect('/showproject');
 	}

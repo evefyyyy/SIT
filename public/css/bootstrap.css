@@ -6853,7 +6853,7 @@ select.selectpicker {
 .bootstrap-select > .dropdown-toggle.bs-placeholder:hover,
 .bootstrap-select > .dropdown-toggle.bs-placeholder:focus,
 .bootstrap-select > .dropdown-toggle.bs-placeholder:active {
-  color: #999;
+  color: #999 !important;
 }
 .bootstrap-select > select {
   position: absolute !important;
@@ -6881,7 +6881,7 @@ select.selectpicker {
   width: auto !important;
 }
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-  width: 220px;
+  width: 100%;
 }
 .bootstrap-select .dropdown-toggle:focus {
 }

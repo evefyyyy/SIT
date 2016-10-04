@@ -67,8 +67,6 @@ span.lol {
     text-align: right;
     padding: 0 10px 0 0;
 }
-
-
 .noProject {
     text-align: center;
     font-size: 1.2em;
@@ -291,7 +289,7 @@ option {
     position: relative;
     width: 200px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 10px 20px;
     float: left;
     margin-left: 20px;
 
@@ -379,9 +377,10 @@ option {
     width: 100%;
     margin: 0;
     display: block;
-    padding: 10px;
+    padding: 10px 20px;
     text-decoration: none;
     color: black;
+    text-transform: capitalize;
     border-bottom: 1px solid #e6e8ea;
     box-shadow: inset 0 1px 0 rgba(255,255,255,1);
     -webkit-transition: all 0.2s ease-out;
@@ -730,6 +729,18 @@ option {
         }
     }
 }
+#createlink a {
+    font-size: 0.975em;
+    color: #40c3a7;
+    background-color: #fff;
+    border-color: #ccc;
+    margin-bottom: 30px;
+    float: right;
+    text-decoration: none;
+}
+#createlink a:hover {
+    border-color: #40c3a7;
+}
 #pendlink a {
     font-size: 0.975em;
     color: #ff7f7f;
@@ -739,8 +750,6 @@ option {
     margin: 0;
     text-decoration: none;
     text-transform: uppercase;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
 }
 #pendlink a:hover {
     border-color: #ff7f7f;
@@ -881,6 +890,15 @@ h6 img {
   font-size: 1em;
   text-transform: capitalize;
 }
+.news td span {
+  font-size: 0.9em;
+}
+.news .pending {
+  color: #999;
+}
+.news .published {
+  color: #34a990;
+}
 #newTB a {
   color: black;
   text-decoration: none;
@@ -933,7 +951,10 @@ h6 img {
   vertical-align: middle;
 }
 #detail .embed-responsive {
+  width: 100%;
   margin-bottom: 10px;
+  background:url(/img/no-video.png) no-repeat;
+  background-size: 100% 100%;
 }
 #detail img.cover {
   width: 100%;
@@ -943,10 +964,10 @@ h6 img {
   margin-bottom: 20px;
 }
 #detail img#group-member {
-  width: 500px;
-  height: 333px;
   margin-bottom: 10px;
-  background:url(/img/no-image.png) no-repeat center;
+  width: 100%;
+  background:url(/img/no-image.png) no-repeat;
+  background-size: 100% 100%;
 }
 #detail .group {
   margin-bottom: 20px;
@@ -983,6 +1004,8 @@ h6 img {
 img#cover {
   width: 100%;
   margin-bottom: 10px;
+  background:url(/img/no-poster.png) no-repeat;
+  background-size: 100% 100%;
 }
 /*
 @media (min-width : 480px) {
@@ -1316,10 +1339,35 @@ input[type="range"].cropit-image-zoom-input {
 }
 #scoresheet .row {
   margin-top: 30px;
+  text-transform: uppercase;
+}
+#scoresheet .amount {
+  margin-left: 30px;
+}
+#scoresheet .amount input {
+  width: 60px;
+  margin-left: 10px;
+  text-align: right;
+}
+#scoresheet .round button {
+  margin-bottom: 0;
+}
+#scoresheet .round input {
+  width: 70px;
+  margin-left: 20px;
+  text-align: right;
+}
+#scoresheet .round label {
+  margin-top: 6px;
 }
 #scoresheet label {
   text-transform: uppercase;
-  margin-right: 10px;
+  font-weight: normal;
+  display: inline;
+  margin: 6px 10px 0 0;
+}
+#scoresheet .round .row {
+  margin: 10px 0;
 }
 #scoresheet p {
   color: black;
@@ -1327,12 +1375,29 @@ input[type="range"].cropit-image-zoom-input {
   display: inline;
   text-transform: uppercase;
 }
+#scoresheet h6 {
+  display: inline;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 30px;
+  padding: 5px 10px;
+  border: 1px solid;
+  border-radius: 5px;
+}
 #scoresheet h2 {
   margin: 20px auto;
 }
-#scoresheet button {
-  float: right;
-  margin-bottom: 5px;
+#scoresheet > a.text-center {
+  margin: 0 auto;
+}
+#scorecheet .table > tbody > tr > td > input[type=number] {
+  margin: 0 auto;
+}
+#scoresheet .table > tbody > tr > td {
+  vertical-align: middle;
+}
+#scoresheet table {
+  margin-top: 10px
 }
 h2 > img {
   padding-right: 15px
@@ -1386,11 +1451,25 @@ td.good {
 a.delete:focus{
   background-color: #FF5C5C !important;
 }
-
+#detail .input-group-btn > button.embed {
+  padding: 6px 12px;
+}
   @media print
 {    
     .no-print, .no-print *
     {
         display: none !important;
     }
+}
+#scoresheet .bootstrap-select > .dropdown-toggle {
+  text-transform: capitalize;
+  display: inline;
+  width: 150px;
+}
+#scoresheet .bootstrap-select.btn-group .dropdown-menu {
+  min-width: 150px;
+  text-transform: capitalize;
+}
+.expired, .expired a {
+  color: #c1c1c1 !important;
 }
