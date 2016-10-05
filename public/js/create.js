@@ -171,12 +171,12 @@ $(function () {
 $(document).ready(function() {
     var max_fields      = 100; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    
+
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
     	e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 });
-//Reference: 
+//Reference:
 //http://www.onextrapixel.com/2012/12/10/how-to-create-a-custom-file-input-with-jquery-css3-and-php/
 ;(function($) {
 
@@ -308,29 +308,21 @@ $('input[type=file]').customFile();
 
 //datepicker in announcement
 $(function () {
-	$('#datetimepicker1').datetimepicker({
+	$('.datetimepicker1').datetimepicker({
 		format: 'DD/MM/YYYY',
 	});
-	$('#datetimepicker2').datetimepicker({
+	$('.datetimepicker2').datetimepicker({
 		format: 'DD/MM/YYYY',
-			            useCurrent: false //Important! See issue #1025
-			        });
-	$("#datetimepicker1").on("dp.change", function (e) {
-		$('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+		useCurrent: false //Important! See issue #1025
 	});
-	$("#datetimepicker2").on("dp.change", function (e) {
-		$('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
-	});
-});
-$(function () {
 	$('#datetimepicker6').datetimepicker({
 		format: 'DD/MM/YYYY',
 		defaultDate: new Date()
 	});
 	$('#datetimepicker7').datetimepicker({
 		format: 'DD/MM/YYYY',
-			            useCurrent: false //Important! See issue #1075
-			        });
+		useCurrent: false //Important! See issue #1075
+	});
 	$("#datetimepicker6").on("dp.change", function (e) {
 		$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
 	});

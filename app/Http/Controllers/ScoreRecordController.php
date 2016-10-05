@@ -49,20 +49,6 @@ class ScoreRecordController extends Controller
                 ->where('project_pkid',$get[$i])->get();
       $obj['project'][$i]['score4'] = $score4[$i];
     }
-    $stdId = '561305000';
-    $data = DB::table('project_students')->select('student_pkid')->get();
-    foreach($data as $d){
-      $id[] = $d->student_pkid;
-    }
-    $data1 = DB::table('students')
-            ->where('student_id',$stdId)
-            ->whereNotIn('students.id',$id)
-            ->select('student_name')->first();
-            dd($data1);
-
-
-
-
     return view('admin.scoreRecord',$obj);
   }
 }

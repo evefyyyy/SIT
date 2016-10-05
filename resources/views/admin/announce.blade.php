@@ -30,8 +30,14 @@
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
-				<tr class="news  {{$n->end_date <= date('Y-m-d')?"expired":""}}">
-					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a><span></span></td>
+				<tr class="news {{$n->end_date <= date('Y-m-d') && $n->end_date != '0000-00-00' ? "expired" : ""}}">
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a>
+							@if($n->start_date > date('Y-m-d'))
+									<span class="pending"> - pending</span>
+							@elseif($n->start_date <= date('Y-m-d'))
+									<span class="published"> - published</span>
+							@endif
+					</td>
 					<td style="width:10%">
 						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
 							<i class="glyphicon glyphicon-trash"></i>
@@ -40,7 +46,7 @@
 						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
 						<input type="hidden" id="type" name="type" value="a">
 					</td>
-					<td>{{date('M d, Y',strtotime($n->created_at))}}</td>
+					<td>{{date('M d, Y',strtotime($n->start_date))}}</td>
 				</tr>
 				@endforeach
 				@endif
@@ -72,15 +78,18 @@
 						<label for="message-text" class="control-label">File</label>
 						<input type="file" id="file" name="myfiles" />
 						<div class="input_fields_wrap">
-							<div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
+							@if($n->file_path_name != null)
+							<div name="mytext[]">{{$n->file_path_name}}<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
+							@else
+							@endif
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-xs-5 col-md-3 col-lg-3">
 								<label for="message-text" class="control-label">Publish Date</label>
-								<div class='input-group date' id='datetimepicker1'>
-									<input type='text' class="form-control"/>
+								<div class='input-group date datetimepicker1'>
+									<input type='text' class="form-control" name="published" placeholder="{{date('d/m/y',strtotime($n->start_date))}}"/>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -88,7 +97,7 @@
 							</div>
 							<div class="col-xs-5 col-md-3 col-lg-3">
 								<label for="message-text" class="control-label">Expiration date</label>
-								<div class='input-group date datetimepicker'>
+								<div class='input-group date datetimepicker2'>
 									@if($n->end_date == '0000-00-00')
 									<input type='text' class="form-control" name="exp"/>
 									@else
@@ -224,13 +233,13 @@
 			}
 
 			$('table tbody tr.news span').each(function(){
-				if () {
-					$(this).text(' - pending');
+			/*	if () {
+					$(this).text(' - pending'); //ก่อนโพส
 					$(this).addClass('pending');
 				} else {
-					$(this).text(' - published');
+					$(this).text(' - published'); // โพสแล้วแต่ยังไม่หมดอายุ
 					$(this).addClass('published');
-				}
+				}*/
 			});
 
 			</script>
