@@ -49,7 +49,7 @@ class ScoreRecordController extends Controller
                 ->where('project_pkid',$get[$i])->get();
       $obj['project'][$i]['score4'] = $score4[$i];
     }
-    
+
     return view('admin.scoreRecord',$obj);
   }
 }
