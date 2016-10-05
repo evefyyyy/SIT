@@ -71,7 +71,7 @@
 								<input type="file" id="file" name="myfiles" required/>
 							</span>
 							 <div class="input_fields_wrap">
-							    <div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
+							    <div name="mytext[]">{{$n->file_path_name}}<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
 							</div>
 						</div>
 						<input type="hidden" name="hId" value="{{$n->id}}">

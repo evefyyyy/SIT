@@ -84,14 +84,14 @@ class adminAnnouncementController extends Controller {
 		$title = $request['cTitle'] ;
 		$description = $request['description'] ;
 		$id = $request['hId'];
-		$path = base_path('public/adminNewsFiles/') ;
 
 		if(isset($file)){
+			$path = base_path('public/adminNewsFiles/') ;
 			$extension = $file->getClientOriginalExtension();
 			$filename = "Announcement".$id.".".$extension;
 			$move = $file->move($path,$filename);
-			$oldFile = DB::table('news')->where('id',$id)->first();
-			\File::Delete($path.$oldFile->file_path_name);
+			$oldFile = DB::table('news')->where('id',$id)->select('file_path_name')->first();
+			File::Delete($path.$oldFile);
 			DB::table('news')->where('id',$id)->update(['title'=> $title , 'description'=> $description , 'file_path_name' => $filename]) ;
 		}else{
 			DB::table('news')->where('id',$id)->update(['title'=> $title , 'description'=> $description]) ;

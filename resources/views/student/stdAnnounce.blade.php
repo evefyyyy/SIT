@@ -26,18 +26,30 @@
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
+				@if($n->end_date == '0000-00-00' && date('Y-m-d')>= $n->start_date)
 				<tr class="news">
-					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
+					<td><a data-toggle="modal" data-target="#announce{{$n->id}}">{{$n->title}}</a></td>
 					<td style="width:10%">
-						<button class="btn btn-danger" data-toggle="confirmation" data-placement="top" data-singleton="true" onclick="setNum({{$count}})">
-							<i class="glyphicon glyphicon-trash"></i>
-						</button>
 						<input type="hidden" id="num" name="id" value="">
 						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
 						<input type="hidden" id="type" name="type" value="a">
 					</td>
-					<td>{{date('M d, Y',strtotime($n->created_at))}}</td>
+					<td>{{date('M d, Y',strtotime($n->start_date))}}</td>
 				</tr>
+				@else
+				@if(date('Y-m-d')>= $n->start_date && date('Y-m-d')<= $n->end_date)
+				<tr class="news">
+					<td><a data-toggle="modal" data-target="#announce{{$n->id}}">{{$n->title}}</a></td>
+					<td style="width:10%">
+						<input type="hidden" id="num" name="id" value="">
+						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
+						<input type="hidden" id="type" name="type" value="a">
+					</td>
+					<td>{{date('M d, Y',strtotime($n->start_date))}}</td>
+				</tr>
+				@else
+				@endif
+				@endif
 				@endforeach
 				@endif
 				<?php
@@ -53,7 +65,7 @@
 		$count = 0 ;
 		?>
 		@foreach($news as $n)
-				<div class="modal fade" id="announce{{$count++}}" role="dialog">
+				<div class="modal fade" id="announce{{$n->id}}" role="dialog">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -63,7 +75,7 @@
 				      <div class="modal-body">
 								{{$n->description}}
 								@if($n->file_path_name != null)
-				      	<a href="/public/adminNewsFiles/{{$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
+				      	<a href="/adminNewsFiles/{{$n->file_path_name}}" download><i class="glyphicon glyphicon-download"></i> download file</a>
 								@endif
 							</div>
 				    </div>
