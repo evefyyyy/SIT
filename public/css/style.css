@@ -13,7 +13,7 @@ a {
 .logout:hover {
   color: #FF5C5C !important;
 }
-span.lol {
+span.lol, i.lol {
     padding: 0 10px 0 10px;
     color: #CECECE;
     font-weight: normal;
@@ -1341,24 +1341,11 @@ input[type="range"].cropit-image-zoom-input {
   margin-top: 30px;
   text-transform: uppercase;
 }
-#scoresheet .amount {
+#scoresheet .titlee {
+  font-size: 1.175em;
+}
+#scoresheet .btn-primary {
   margin-left: 30px;
-}
-#scoresheet .amount input {
-  width: 60px;
-  margin-left: 10px;
-  text-align: right;
-}
-#scoresheet .round button {
-  margin-bottom: 0;
-}
-#scoresheet .round input {
-  width: 70px;
-  margin-left: 20px;
-  text-align: right;
-}
-#scoresheet .round label {
-  margin-top: 6px;
 }
 #scoresheet label {
   text-transform: uppercase;
@@ -1366,11 +1353,9 @@ input[type="range"].cropit-image-zoom-input {
   display: inline;
   margin: 6px 10px 0 0;
 }
-#scoresheet .round .row {
-  margin: 10px 0;
-}
 #scoresheet p {
   color: black;
+  margin-left: 10%;
   font-size: 1.1em;
   display: inline;
   text-transform: uppercase;
@@ -1397,7 +1382,80 @@ input[type="range"].cropit-image-zoom-input {
   vertical-align: middle;
 }
 #scoresheet table {
-  margin-top: 10px
+  margin-top: 10px;
+  width: 80%;
+}
+#scoresheet a#deselect-all, #scoresheet a#select-all,
+#scoresheet a#deselect-all1, #scoresheet a#select-all1 {
+  margin-right: 0;
+  float: right;
+  text-decoration: none;
+  text-transform: none;
+  color: black;
+}
+#scoresheet a#deselect-all:hover, #scoresheet a#select-all:hover,
+#scoresheet a#deselect-all1:hover, #scoresheet a#select-all1:hover {
+  color: #40c3a7;
+}
+#scoresheet i {
+  float: right;
+}
+#scoresheet .cri label {
+  margin-bottom: 20px;
+}
+#scoreyear table {
+  margin: 20px auto 0 auto;
+}
+#scoreyear .table > tbody > tr > td {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+}
+#scoreyear .table > tbody > tr > td:nth-child(2n+1) {
+  font-weight: 900;
+  background-color: #eee;
+}
+#scoresheet .bootstrap-select > .dropdown-toggle {
+  text-transform: capitalize;
+  display: inline;
+  width: 150px;
+}
+#scoresheet .bootstrap-select.btn-group .dropdown-menu {
+  min-width: 150px;
+  text-transform: capitalize;
+}
+#scoreyear .table a {
+  text-decoration: none;
+  color: black;
+  text-transform: none;
+}
+#scoreyear .table a:hover {
+  text-decoration: none;
+  color: #40c3a7;
+}
+#scoreyear .table i {
+  vertical-align: middle;
+  padding-bottom: 3px;
+} 
+#scoreyear a {
+    font-size: 0.975em;
+    background-color: #fff;
+    border-color: #ccc;
+    margin: 0 20px 0 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#scoreyear a#temp-btn {
+  color: #ff7f7f;
+}
+#scoreyear a#temp-btn:hover {
+  border-color: #ff7f7f;
+}
+#scoreyear a#cri-btn {
+  color: #40c3a7;
+}
+#scoreyear a#cri-btn:hover {
+    border-color: #40c3a7;
 }
 h2 > img {
   padding-right: 15px
@@ -1461,15 +1519,6 @@ a.delete:focus{
         display: none !important;
     }
 }
-#scoresheet .bootstrap-select > .dropdown-toggle {
-  text-transform: capitalize;
-  display: inline;
-  width: 150px;
-}
-#scoresheet .bootstrap-select.btn-group .dropdown-menu {
-  min-width: 150px;
-  text-transform: capitalize;
-}
-.expired, .expired a {
+.expired, .expired a[data-toggle="modal"]{
   color: #c1c1c1 !important;
 }

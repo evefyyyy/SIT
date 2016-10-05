@@ -48,11 +48,14 @@ Route::get('exam/manageroom/create/preview','examRoomController@preview');
 Route::get('exam/manageroom/preview', function () {
     return view('admin.previewRoom');
 });
-Route::get('exam/managescore', function () {
+Route::get('exam/managescore/year', function () {
     return view('admin.manageScore');
 });
 Route::get('exam/managescore/create', function () {
     return view('admin.createSheet');
+});
+Route::get('exam/scoresheet', function () {
+    return view('admin.scoreSheet');
 });
 Route::resource('exam/scorerecord','ScoreRecordController');
 Route::get('myscore', function () {

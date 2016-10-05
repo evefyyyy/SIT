@@ -235,6 +235,17 @@
 				document.getElementById('num').value = x;
 			}
 
+<<<<<<< HEAD
+			// $('table tbody tr.news span').each(function(){
+			// 	if () {
+			// 		$(this).text(' - pending');
+			// 		$(this).addClass('pending');
+			// 	} else {
+			// 		$(this).text(' - published');
+			// 		$(this).addClass('published');
+			// 	}
+			// });
+=======
 			$('table tbody tr.news span').each(function(){
 			/*	if () {
 					$(this).text(' - pending'); //ก่อนโพส
@@ -244,6 +255,7 @@
 					$(this).addClass('published');
 				}*/
 			});
+>>>>>>> df453b6ef8a3147b8b1c261564072ffc85be0c16
 
 			</script>
 			@stop
