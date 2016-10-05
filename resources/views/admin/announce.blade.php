@@ -223,15 +223,15 @@
 				document.getElementById('num').value = x;
 			}
 
-			$('table tbody tr.news span').each(function(){
-				if () {
-					$(this).text(' - pending');
-					$(this).addClass('pending');
-				} else {
-					$(this).text(' - published');
-					$(this).addClass('published');
-				}
-			});
+			// $('table tbody tr.news span').each(function(){
+			// 	if () {
+			// 		$(this).text(' - pending');
+			// 		$(this).addClass('pending');
+			// 	} else {
+			// 		$(this).text(' - published');
+			// 		$(this).addClass('published');
+			// 	}
+			// });
 
 			</script>
 			@stop

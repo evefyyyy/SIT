@@ -3,21 +3,29 @@
 <div id="scoresheet">
   <h2><img height="45" src="/img/exam.png">manage score sheet</h2>
   <div class="row">
-    <div class="col-xs-2 col-md-3 col-lg-3"></div>
-    <div class="col-xs-8 col-md-6 col-lg-6" id="center">
+    <div class="col-xs-2 col-md-2 col-lg-2"></div>
+    <div class="col-xs-8 col-md-8 col-lg-8" id="center">
      <h6>Year 2016</h6>
       <label>project type</label>
-      <div class="btn-group" style="margin-right:50px">
+      <div class="btn-group" style="margin-right:30px">
         <select class="selecttype">
-         <option value="business">business</option>
-         <option value="research">research</option>
-         <option value="social">social</option>
+         <option>business</option>
+         <option>research</option>
+         <option>social</option>
        </select>
      </div>
- </div>
- <div class="col-xs-2 col-md-3 col-lg-3"></div>
+     <label>score sheet</label>
+      <div class="btn-group">
+        <select class="selecttemp" title="select">
+         <option value="temp1">template 1</option>
+         <option value="temp2">template 2</option>
+         <option value="temp3">template 3</option>
+       </select>
+     </div>
+    </div>
+ <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
-<div class="business social box">
+<div class="temp1 box">
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
     <div class="col-xs-10 col-md-6 col-lg-6">

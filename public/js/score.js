@@ -1,24 +1,24 @@
 //select type
 $(function () {
-		$('.selecttype').selectpicker({
-		});
-		$('.selecttemp').selectpicker({
-		});
+	$('.selecttype').selectpicker({
 	});
+	$('.selecttemp').selectpicker({
+	});
+});
 $(document).ready(function(){
-    $("select").change(function(){
+    $("select.selecttemp").change(function(){
         $(this).find("option:selected").each(function(){
-            if($(this).attr("value")=="research"){
-                $(".box").not(".research").hide();
-                $(".research").show();
+            if($(this).attr("value")=="temp1"){
+                $(".box").not(".temp1").hide();
+                $(".temp1").show();
             }
-            else if($(this).attr("value")=="business"){
-                $(".box").not(".business").hide();
-                $(".business").show();
+            else if($(this).attr("value")=="temp2"){
+                $(".box").not(".temp2").hide();
+                $(".temp2").show();
             }
-            else if($(this).attr("value")=="social"){
-                $(".box").not(".social").hide();
-                $(".social").show();
+            else if($(this).attr("value")=="temp3"){
+                $(".box").not(".temp3").hide();
+                $(".temp3").show();
             }
             else{
                 $(".box").hide();
