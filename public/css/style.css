@@ -1433,10 +1433,6 @@ input[type="range"].cropit-image-zoom-input {
   text-decoration: none;
   color: #40c3a7;
 }
-#scoreyear .table i {
-  vertical-align: middle;
-  padding-bottom: 3px;
-} 
 #scoreyear a {
     font-size: 0.975em;
     background-color: #fff;
