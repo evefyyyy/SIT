@@ -467,11 +467,11 @@ option {
   line-height: 3em;
   font-weight: 600;
   text-decoration: none;
-  color: #40c3a7;
+  color: #ff7f7f;
 }
 #waitApp a:hover {
   text-decoration: none;
-  color: #ff7f7f;
+  color: #eb3652;
 }
 #waitApp p {
   padding-top: 5px;
@@ -926,6 +926,8 @@ h6 img {
   display: block;
   padding-top: 10px;
   vertical-align: bottom;
+  color: #40c3a7;
+  text-decoration: none;
 }
 .modal-header input {
   width: 90%;
