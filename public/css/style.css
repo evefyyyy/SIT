@@ -101,6 +101,7 @@ option {
     height: 100%;
     text-align: center;
     position: absolute;
+    text-transform: capitalize;
 }
 
 #msform fieldset {
@@ -1417,6 +1418,9 @@ input[type="range"].cropit-image-zoom-input {
   font-weight: 900;
   background-color: #eee;
 }
+#scoreyear .table > tbody > tr > td:nth-child(2n+2) {
+  text-transform: capitalize;
+}
 #scoresheet .bootstrap-select > .dropdown-toggle {
   text-transform: capitalize;
   display: inline;
@@ -1430,14 +1434,10 @@ input[type="range"].cropit-image-zoom-input {
   text-decoration: none;
   color: black;
   text-transform: none;
-}
-#scoreyear .table a:hover {
-  text-decoration: none;
-  color: #40c3a7;
+  display: block;
 }
 #scoreyear a {
     font-size: 0.975em;
-    background-color: #fff;
     border-color: #ccc;
     margin: 0 20px 0 20px;
     text-decoration: none;

@@ -22,10 +22,20 @@
 					<div class="col-xs-6 col-md-6"><label class="category">Project Type</label></div>
 							<div class="col-xs-6 col-md-6">
 								<div id="type" class="wrapper-dropdown-3" tabindex="1">
-									<span>Select</span>
+									<span>
+										@if($projectType!=null)
+										{{$projectType->type_name}}
+										@else
+										Select
+										@endif
+									</span>
 								<ul class="dropdown" id="myid">
 										@foreach($type as $ty)
-										<li onclick="selectType({{$ty->id}})">{{$ty->type_name}}</li>
+											@if($ty->id===$projectType)
+											<li active onclick="selectType({{$ty->id}})">{{$ty->type_name}}</li>
+											@else
+											<li onclick="selectType({{$ty->id}})">{{$ty->type_name}}</li>
+											@endif
 										@endforeach
 									</ul>
 								</div>
@@ -33,7 +43,13 @@
 					<div class="col-xs-6 col-md-6"><label class="category">Category</label></div>
 							<div class="col-xs-6 col-md-6">
 								<div id="category" class="wrapper-dropdown-3" tabindex="1">
-									<span>Select</span>
+									<span>
+										@if($projectCategory!=null)
+										{{$projectCategory->category_name}}
+										@else
+										Select
+										@endif
+									</span>
 									<ul class="dropdown">
 										@foreach($category as $cat)
 										<li onclick="selectCat({{$cat->id}})">{{$cat->category_name}}</li>
@@ -76,7 +92,12 @@
 					<div class="col-xs-8 col-md-5">
 						  <select class="selectpicker1 advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
 								@foreach($advisor as $ad)
+								@if($advName1===$ad->advisor_name)
+							    <option value="{{$ad->advisor_name}}" selected>{{$ad->advisor_name}}</option>
+							    @else
 							    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
+							    @endif
+
 								@endforeach
 						  </select>
 					</div>
@@ -86,7 +107,11 @@
 					<div class="col-xs-8 col-md-5">
 						  <select class="selectpicker1 advisor" multiple data-width="100%" data-max-options="1" id="coAdvisor" name="coAdv">
 								@foreach($advisor as $ad)
-						    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
+						    @if($advName2===$ad->advisor_name)
+							    <option value="{{$ad->advisor_name}}" selected>{{$ad->advisor_name}}</option>
+							    @else
+							    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
+							    @endif
 								@endforeach
 						  </select>
 					</div>
@@ -233,5 +258,8 @@
 							 });
 			}
 			</script>
-
+<script type="text/javascript">
+selectType({{$projectType->id}});
+selectCat({{$projectCategory->id}});
+</script>
 @stop
