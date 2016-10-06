@@ -7,9 +7,9 @@
 		<div class="col-xs-10 col-md-6 col-lg-6" id="scoreyear">
 			<div id="center">
 				<a href="managescore/create" id="temp-btn" class="btn">manage template</a>
-				<a href="" id="cri-btn" class="btn">manage criteria</a>
+				<a href="managescore/criteria" id="cri-btn" class="btn">manage criteria</a>
 			</div>
-			<table class="table table-bordered">
+			<table class="table table-bordered table-hover">
 				<tbody>
 					<tr>
 						<td width="35%">year 2016</td><td width="65%"><a href="managescore/year">view score sheet <i class="glyphicon glyphicon-list-alt gi-1x"></i></a></td>

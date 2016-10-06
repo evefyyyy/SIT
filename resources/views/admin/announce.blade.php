@@ -52,6 +52,23 @@
 					<td>{{date('M d, Y',strtotime($n->start_date))}}</td>
 				</tr>
 				@endforeach
+
+				@foreach($expired as $n)
+				<tr class="news {{$n->end_date <= date('Y-m-d') && $n->end_date != '0000-00-00' ? "expired" : ""}}">
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a>
+					</td>
+					<td style="width:10%">
+						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button>
+						<input type="hidden" id="num" name="id" value="">
+						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
+						<input type="hidden" id="type" name="type" value="a">
+					</td>
+					<td>{{date('M d, Y',strtotime($n->start_date))}}</td>
+				</tr>
+				@endforeach
+
 				@endif
 				<?php
 				$count = 0 ;

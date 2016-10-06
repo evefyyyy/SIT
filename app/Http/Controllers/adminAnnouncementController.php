@@ -24,10 +24,11 @@ class adminAnnouncementController extends Controller {
 
 	public function index()
 	{
-		$news = \App\News::where('news_type_id','=','1')->get();
+		$news = \App\News::where('news_type_id','=','1')->where('end_date','>',date('Y-m-d'))->get();
+		$expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->get();
 		$count = 0 ;
 
-		return view('admin.announce')->with('news',$news->reverse())->with('count',$count);
+		return view('admin.announce')->with('news',$news->reverse())->with('expired',$expired->reverse())->with('count',$count);
 	}
 
 	public function create()
@@ -73,7 +74,8 @@ class adminAnnouncementController extends Controller {
 		$news->save();
 
 
-		$news = \App\News::where('news_type_id','=','1')->get();
+		$news = \App\News::where('news_type_id','=','1')->where('end_date','>',date('Y-m-d'))->get();
+		$expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->get();
 		$count = 0 ;
 
 		return redirect('news/announcement/');
@@ -111,12 +113,13 @@ class adminAnnouncementController extends Controller {
 			DB::table('news')->where('id',$id)->update(['end_date' => $enddate]) ;
 		}
 
-		$news = \App\News::where('news_type_id','=','1')->get();
+		$news = \App\News::where('news_type_id','=','1')->where('end_date','>',date('Y-m-d'))->get();
+		$expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->get();
 		$count = 0 ;
 
 
 
-		return redirect(url('news/announcement'))->with('news',$news->reverse())->with('count',$count);
+		return redirect(url('news/announcement'))->with('news',$news->reverse())->with('expired',$expired->reverse())->with('count',$count);
 	}
 
 
