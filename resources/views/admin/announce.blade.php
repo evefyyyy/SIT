@@ -30,7 +30,7 @@
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
-				<tr class="news">
+				<tr class="news" >
 					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
 					<td style="width:10%">
 						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
