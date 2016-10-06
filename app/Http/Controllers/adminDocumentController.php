@@ -68,9 +68,9 @@ class adminDocumentController extends Controller {
 		if(isset($file)){
 			$extension = $file->getClientOriginalExtension();
 			$filename = "Document".$id.".".$extension;
-			$move = $file->move($path,$filename);
 			$oldFile = DB::table('news')->where('id',$id)->first();
 			\File::Delete($path.$oldFile->file_path_name);
+			$move = $file->move($path,$filename);
 			DB::table('news')->where('id',$id)->update(['title'=> $title , 'file_path_name' => $filename]) ;
 		}else{
 			DB::table('news')->where('id',$id)->update(['title'=> $title]) ;
