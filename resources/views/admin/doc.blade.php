@@ -58,8 +58,8 @@
 	<div class="modal fade" id="doc{{$count}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<div class="modal-header">
-					<form method="post" action="/news/document/edit" enctype="multipart/form-data">
+				<form method="post" action="/news/document/edit" enctype="multipart/form-data">
+					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 					</div>
