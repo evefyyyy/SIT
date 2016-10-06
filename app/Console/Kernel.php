@@ -26,8 +26,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
        $schedule->call(function () {
-	    \Log::info('check');
-            DB::table('news')->where('end_date',date('Y-m-d'))->delete();
-        });
+	      });
     }
 }

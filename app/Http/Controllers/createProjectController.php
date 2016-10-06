@@ -5,6 +5,7 @@ use Input;
 use Redirect;
 use File;
 use DB;
+use Storage;
 use App\Model\studentProfile;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -58,6 +59,7 @@ class createProjectController extends Controller {
 
 		$advisor = Advisor::all();
 		$data['advisor'] = $advisor;
+	
 		return view('student.createProject',$data);
 	}
 
@@ -320,6 +322,13 @@ class createProjectController extends Controller {
 		}
 
 		if($request->file('myfiles')){
+// delete old file
+			$proposal = DB::table('proposals')
+										->where('project_pkid',$id)
+										->value('proposal_path_name');
+			$path = base_path('public/proposalFile/');
+			File::delete($path.$proposal);
+// add new file
 			$path = base_path('public/proposalFile');
   		$file = $request->file('myfiles');
   		$filename = $file->getClientOriginalName();
@@ -329,7 +338,6 @@ class createProjectController extends Controller {
   		$obj->proposal_path_name = $saveFile;
 			$obj->save();
 		}
-
 
 		return redirect(url('student/myproject/waitapprove'));
 	}

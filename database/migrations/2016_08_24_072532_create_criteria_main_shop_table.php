@@ -16,6 +16,7 @@ class CreateCriteriaMainShopTable extends Migration
             $table->increments('id');
             $table->integer('criteria_main_score');
             $table->datetime('criteria_main_shop_datetime');
+            $table->integer('round');
             $table->timestamps();
         });
     }

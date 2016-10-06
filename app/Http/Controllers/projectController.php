@@ -20,6 +20,7 @@ use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
 use App\Picture;
+use App\Year;
 
 class projectController extends Controller
 {
@@ -32,7 +33,7 @@ class projectController extends Controller
       $obj['detail'] = ProjectDetail::all();
 
       $obj['poster'] = Picture::all();
-
+      
       return view('projects',$obj);
     }
 

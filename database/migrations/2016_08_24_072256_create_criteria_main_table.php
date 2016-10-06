@@ -15,7 +15,6 @@ class CreateCriteriaMainTable extends Migration
         Schema::create('criteria_mains', function (Blueprint $table) {
             $table->increments('id');
             $table->string('criteria_main_name');
-            $table->integer('criteria_main_round');
             $table->timestamps();
         });
     }

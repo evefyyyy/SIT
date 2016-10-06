@@ -170,7 +170,7 @@
 		                url :"stdId2",
 		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
 		                    success:function(data){
-		                      if(data=='0'){
+													if(data=='0'){
 														var _msg = null;
 														var result = null;
 														if(document.getElementById('stdId2').value === ''){
@@ -180,10 +180,20 @@
 															result = _msg.fontcolor("red");
 														}
 		                        $('#fname2').html(result);
-		                      }else{
-														var _data = data.student_name
-														$('#fname2').html(_data);
-		                      }
+		                      }else if(data=='1'){
+															var _msg = null;
+															var result = null;
+															if(document.getElementById('stdId2').value === ''){
+																result =''
+															}else{
+																_msg = "This student already has group";
+																result = _msg.fontcolor("red");
+															}
+			                        $('#fname2').html(result);
+														}else{
+															var _data = data.student_name
+															$('#fname2').html(_data);
+		                      	}
 		                }
 		             });
 		    }
@@ -205,10 +215,20 @@
 														result = _msg.fontcolor("red");
 													}
 													$('#fname3').html(result);
-												}else{
-													var _data = data.student_name
-													$('#fname3').html(_data);
-												}
+												}else if(data=='1'){
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId3').value === ''){
+															result =''
+														}else{
+															_msg = "This student already has group";
+															result = _msg.fontcolor("red");
+														}
+														$('#fname3').html(result);
+													}else{
+														var _data = data.student_name
+														$('#fname3').html(_data);
+													}
 									}
 							 });
 			}

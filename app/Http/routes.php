@@ -48,15 +48,16 @@ Route::get('exam/manageroom/create/preview','examRoomController@preview');
 Route::get('exam/manageroom/preview', function () {
     return view('admin.previewRoom');
 });
-Route::get('exam/managescore', function () {
+Route::get('exam/managescore/year', function () {
     return view('admin.manageScore');
 });
 Route::get('exam/managescore/create', function () {
     return view('admin.createSheet');
 });
-Route::get('exam/scorerecord', function () {
-    return view('admin.scoreRecord');
+Route::get('exam/scoresheet', function () {
+    return view('admin.scoreSheet');
 });
+Route::resource('exam/scorerecord','ScoreRecordController');
 Route::get('myscore', function () {
     return view('student.myScore');
 });
@@ -139,40 +140,96 @@ Route::post('edit/pic/delete', function(){
 
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
-	if(isset($data)){
-		return Response::json($data);
-	}else{
-		return 0;
-	}
+  $data = DB::table('students')
+          ->where('student_id',$stdId)
+          ->select('student_name')->first();
+  if(isset($data)){
+    $projectStd = DB::table('project_students')->select('student_pkid')->get();
+    foreach($projectStd as $ps){
+      $id[] = $ps->student_pkid;
+    }
+    $data = DB::table('students')
+            ->where('student_id',$stdId)
+            ->whereNotIn('students.id',$id)
+            ->select('student_name')->first();
+    if(isset($data)){
+  	   return Response::json($data);
+    }else{
+      return 1;
+    }
+  }else{
+  		return 0;
+  }
 });
 
 Route::post('student/myproject/create/stdId3',function(){
-	$stdId = Request::Input('stdId3');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
-	if(isset($data)){
-		return Response::json($data);
-	}else{
-		return 0;
-	}
+  $stdId = Request::Input('stdId3');
+  $data = DB::table('students')
+          ->where('student_id',$stdId)
+          ->select('student_name')->first();
+  if(isset($data)){
+    $projectStd = DB::table('project_students')->select('student_pkid')->get();
+    foreach($projectStd as $ps){
+      $id[] = $ps->student_pkid;
+    }
+    $data = DB::table('students')
+            ->where('student_id',$stdId)
+            ->whereNotIn('students.id',$id)
+            ->select('student_name')->first();
+    if(isset($data)){
+  	   return Response::json($data);
+    }else{
+      return 1;
+    }
+  }else{
+  		return 0;
+  }
 });
 
 Route::post('student/myproject/create/{id}/stdId2',function(){
-	$stdId = Request::Input('stdId2');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
-	if(isset($data)){
-		return Response::json($data);
-	}else{
-		return 0;
-	}
+  $stdId = Request::Input('stdId2');
+  $data = DB::table('students')
+          ->where('student_id',$stdId)
+          ->select('student_name')->first();
+  if(isset($data)){
+    $projectStd = DB::table('project_students')->select('student_pkid')->get();
+    foreach($projectStd as $ps){
+      $id[] = $ps->student_pkid;
+    }
+    $data = DB::table('students')
+            ->where('student_id',$stdId)
+            ->whereNotIn('students.id',$id)
+            ->select('student_name')->first();
+    if(isset($data)){
+  	   return Response::json($data);
+    }else{
+      return 1;
+    }
+  }else{
+  		return 0;
+  }
 });
 
 Route::post('student/myproject/create/{id}/stdId3',function(){
-	$stdId = Request::Input('stdId3');
-	$data = DB::table('students')->where('student_id',$stdId)->select('student_name')->first();
-	if(isset($data)){
-		return Response::json($data);
-	}else{
-		return 0;
-	}
+  $stdId = Request::Input('stdId3');
+  $data = DB::table('students')
+          ->where('student_id',$stdId)
+          ->select('student_name')->first();
+  if(isset($data)){
+    $projectStd = DB::table('project_students')->select('student_pkid')->get();
+    foreach($projectStd as $ps){
+      $id[] = $ps->student_pkid;
+    }
+    $data = DB::table('students')
+            ->where('student_id',$stdId)
+            ->whereNotIn('students.id',$id)
+            ->select('student_name')->first();
+    if(isset($data)){
+       return Response::json($data);
+    }else{
+      return 1;
+    }
+  }else{
+      return 0;
+  }
 });

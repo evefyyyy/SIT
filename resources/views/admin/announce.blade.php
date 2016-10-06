@@ -30,8 +30,17 @@
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
-				<tr class="news" >
-					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a></td>
+				<tr class="news {{$n->end_date <= date('Y-m-d') && $n->end_date != '0000-00-00' ? "expired" : ""}}">
+					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a>
+							@if($n->start_date > date('Y-m-d'))
+									<span class="pending"> - pending</span>
+							@elseif($n->start_date <= date('Y-m-d'))
+									@if(date('Y-m-d') < $n->end_date || $n->end_date == '0000-00-00')
+									<span class="published"> - published</span>
+									@else
+									@endif
+							@endif
+					</td>
 					<td style="width:10%">
 						<button class="btn btn-danger" data-toggle="confirmation" onclick="setNum({{$count}})">
 							<i class="glyphicon glyphicon-trash"></i>
@@ -40,7 +49,7 @@
 						<input type="hidden" id="nId{{$count++}}" name="id" value="{{$n->id}}">
 						<input type="hidden" id="type" name="type" value="a">
 					</td>
-					<td>{{date('M d, Y',strtotime($n->created_at))}}</td>
+					<td>{{date('M d, Y',strtotime($n->start_date))}}</td>
 				</tr>
 				@endforeach
 				@endif
@@ -57,8 +66,8 @@
 <div class="modal fade" id="announce{{$count}}" role="dialog" aria-labelledby="exampleModalLabel">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header">
-				<form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
+			<form method="post" action="/news/announcement/edit" enctype="multipart/form-data">
+				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 				</div>
@@ -70,26 +79,33 @@
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">File</label>
-						<input type="file" id="file" name="myfiles" />
+						<input type="file" id="file" name="myfiles"/>
 						<div class="input_fields_wrap">
-							<div name="mytext[]">proposal.pdf<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
+							@if($n->file_path_name != null)
+							<div name="mytext[]">{{$n->file_path_name}}<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
+							@else
+							@endif
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-xs-5 col-md-3 col-lg-3">
 								<label for="message-text" class="control-label">Publish Date</label>
-								<div class='input-group date' id='datetimepicker1'>
-									<input type='text' class="form-control"/>
+								<div class='input-group date datetimepicker1'>
+									<input type='text' class="form-control" name="published" placeholder="{{date('d/m/y',strtotime($n->start_date))}}"/>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
 								</div>
 							</div>
 							<div class="col-xs-5 col-md-3 col-lg-3">
-								<label for="message-text" class="control-label">Expiration Date</label>
-								<div class='input-group date' id='datetimepicker2'>
-									<input type='text' class="form-control"  name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
+								<label for="message-text" class="control-label">Expiration date</label>
+								<div class='input-group date datetimepicker2'>
+									@if($n->end_date == '0000-00-00')
+									<input type='text' class="form-control" name="exp"/>
+									@else
+									<input type='text' class="form-control" name="exp" placeholder="{{date('d/m/y',strtotime($n->end_date))}}"/>
+									@endif
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -162,7 +178,7 @@
 										<div class="col-xs-5 col-md-3 col-lg-3">
 											<label for="message-text" class="control-label">Publish Date</label>
 											<div class='input-group date' id='datetimepicker6'>
-												<input type='text' class="form-control"/>
+												<input type='text' class="form-control" name="published"/>
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-calendar"></span>
 												</span>
@@ -190,7 +206,7 @@
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 			<script src="{!! URL::asset('js/create.js') !!}"></script>
-			<script type="text/javascript">			
+			<script type="text/javascript">
 			$('[data-toggle=confirmation]').confirmation({
 				rootSelector: '[data-toggle=confirmation]',
 				onConfirm: function() {
@@ -218,6 +234,5 @@
 			function setNum(x){
 				document.getElementById('num').value = x;
 			}
-
 			</script>
 			@stop
