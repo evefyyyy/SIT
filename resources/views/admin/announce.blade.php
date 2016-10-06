@@ -35,7 +35,10 @@
 							@if($n->start_date > date('Y-m-d'))
 									<span class="pending"> - pending</span>
 							@elseif($n->start_date <= date('Y-m-d'))
+									@if(date('Y-m-d') < $n->end_date || $n->end_date == '0000-00-00')
 									<span class="published"> - published</span>
+									@else
+									@endif
 							@endif
 					</td>
 					<td style="width:10%">
@@ -76,7 +79,7 @@
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">File</label>
-						<input type="file" id="file" name="myfiles" />
+						<input type="file" id="file" name="myfiles"/>
 						<div class="input_fields_wrap">
 							@if($n->file_path_name != null)
 							<div name="mytext[]">{{$n->file_path_name}}<label class="remove_field"><span class="glyphicon glyphicon-remove"></span></label></div>
@@ -175,7 +178,7 @@
 										<div class="col-xs-5 col-md-3 col-lg-3">
 											<label for="message-text" class="control-label">Publish Date</label>
 											<div class='input-group date' id='datetimepicker6'>
-												<input type='text' class="form-control"/>
+												<input type='text' class="form-control" name="published"/>
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-calendar"></span>
 												</span>

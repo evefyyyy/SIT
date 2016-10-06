@@ -23,7 +23,7 @@ class ScoreRecordController extends Controller
 {
   public function index()
   {
-    $project = GroupProject::all();
+    $project = GroupProject::where('group_project_approve','=','1')->get();
     $obj['project'] = array_flatten($project);
     $count = count($obj['project']);
 

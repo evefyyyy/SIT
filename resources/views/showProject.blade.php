@@ -1,10 +1,11 @@
 @extends('generalTmp')
 @section('content')
 <link href="{!! URL::asset('css/ninja-slider.css') !!}" rel="stylesheet">
-<script src="{!! URL::asset('js/ninja-slider.js') !!}"></script>
+
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href="{!! URL::asset('css/contact-buttons.css') !!}" rel="stylesheet">
-<script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
+<?php $link = url()->current(); ?>
+<input type="hidden" id="linkurl" value="{{$link}}"></div>
 <div id="detail">
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -157,6 +158,8 @@
 	</div>
   @endif
 </div>
+<script src="{!! URL::asset('js/ninja-slider.js') !!}"></script>
+<script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <script>
 $(document).ready(function() {
         var str = $("div.tools").html();
