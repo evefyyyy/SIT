@@ -17,15 +17,15 @@
      <label>score sheet</label>
       <div class="btn-group">
         <select class="selecttemp" title="select">
-         <option value="temp1">template 1</option>
-         <option value="temp2">template 2</option>
-         <option value="temp3">template 3</option>
+         <option value="1">template 1</option>
+         <option value="2">template 2</option>
+         <option value="3">template 3</option>
        </select>
      </div>
     </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
-<div class="temp1 box">
+<div class="1 box">
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
     <div class="col-xs-10 col-md-6 col-lg-6">
@@ -104,6 +104,24 @@
     </tbody>
     <tfoot><tr><th><strong>TOTAL</strong></th><th></th></tr></tfoot>
   </table>
+</div>
+<div class="col-xs-1 col-md-3 col-lg-3"></div>
+</div>
+</div>
+<div class="2 box">
+  <div class="row">
+    <div class="col-xs-1 col-md-3 col-lg-3"></div>
+    <div class="col-xs-10 col-md-6 col-lg-6">
+      template 2
+</div>
+<div class="col-xs-1 col-md-3 col-lg-3"></div>
+</div>
+</div>
+<div class="3 box">
+  <div class="row">
+    <div class="col-xs-1 col-md-3 col-lg-3"></div>
+    <div class="col-xs-10 col-md-6 col-lg-6">
+      template 3
 </div>
 <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>

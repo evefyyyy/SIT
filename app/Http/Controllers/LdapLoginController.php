@@ -9,6 +9,7 @@ use App\Http\Requests;
 // use Illuminate\Contracts\Auth\Authenticatable;
 use App\User;
 use App\Student;
+use App\UserStudent;
 use DB;
 
 
@@ -52,7 +53,11 @@ class LdapLoginController extends Controller
 				$studentid = DB::table('students')->where('student_id', $username)->first()->id;
 				if(DB::table('users')->where('name', $username)->first()===null){
 					DB::table('users')->insert(
-						['name' => $username, 'password' => bcrypt($request->password), 'student_pkid' => $studentid]
+						['name' => $username, 'password' => bcrypt($request->password)]
+						);
+					$user_id = DB::table('users')->where('name', $username)->first()->id;
+					DB::table('user_student')->insert(
+						['student_pkid' => $studentid, 'user_id' => $user_id]
 						);
 				}
 				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
@@ -63,7 +68,7 @@ class LdapLoginController extends Controller
 				//if(auth()->guard('admins')->attempt(['admin_username' => $username, 'admin_password' => $ldappass]))
 				//$info = ldap_pull($info[0], 'uid');
 				//print_r($info[0]);
-			}catch(Exception $e){
+			// }catch(Exception $e){
 				// $ldapbind = ldap_bind($ds, $ldapsta, $ldappass);
 				// $justthese = array("uid", "cn", "gecos", "mail");
 				// $sr=ldap_search($ds, "ou=People,ou=staff,dc=sit,dc=kmutt,dc=ac,dc=th", "uid=".$username."",$justthese);
