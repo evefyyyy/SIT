@@ -38,13 +38,15 @@
                   </li>
 
 
-
-                  @if(Auth::user()->student->projectStudent->first()===null)
+                  <?php 
+                      $student_pkid = Auth::user()->user_student->first()->student_pkid; 
+                      $student = DB::table('students', $student_pkid)->first();
+                  ?>
+                  @if($student->projectStudent->first()===null)
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
                     @else
                     <?php
-                      $student_pkid = Auth::user()->user_student->first()->student_pkid; 
-                      $student = DB::table('students', $student_pkid)->first();
+                      
                       $id_group_project = $student->projectStudent->first()->project_pkid;
                       $approve_project = DB::table('group_projects')
                                           ->where('id', $id_group_project)->first();
