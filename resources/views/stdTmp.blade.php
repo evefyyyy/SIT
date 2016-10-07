@@ -40,7 +40,7 @@
 
                   <?php 
                       $student_pkid = Auth::user()->user_student->first()->student_pkid; 
-                      $student = DB::table('students', $student_pkid)->first();
+                      $student = DB::table('students')->where('id', $student_pkid)->first();
                   ?>
                   @if($student->projectStudent->first()===null)
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>

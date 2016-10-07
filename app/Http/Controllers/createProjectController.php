@@ -176,7 +176,7 @@ class createProjectController extends Controller {
 							->select('student_id')->get();
 
 		$student_pkid = Auth::user()->user_student->first()->student_pkid; 
-        $student_profile = DB::table('students', $student_pkid)->first();
+        $student_profile =  DB::table('students')->where('id', $student_pkid)->first();
 		$logInStd[] = $student_profile->student_id;
 		$getData = [];
 		foreach($groupStd as $std){
