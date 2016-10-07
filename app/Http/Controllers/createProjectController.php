@@ -164,8 +164,11 @@ class createProjectController extends Controller {
 		$getId = $obj1->id;
 		$data['projectNameEN'] = $obj1->group_project_eng_name;
 		$data['projectNameTH'] = $obj1->group_project_th_name;
+		$projectType = $obj1->type_id;
+		$projectCategory = $obj1->category_id;
 
-
+		$data['projectType'] = DB::table('types')->where('id',$projectType)->first();
+		$data['projectCategory'] = DB::table('categories')->where('id',$projectCategory)->first();
 
 		$groupStd = DB::table('project_students')
 							->join('students','student_pkid','=','students.id')
