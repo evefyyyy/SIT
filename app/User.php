@@ -19,10 +19,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'remember_token',
+    'remember_token',
     ];
-    public function student()
-  {
-    return $this->belongsTo('App\Student', 'student_pkid');
-  }
+    public function user_student()
+    {
+        return $this->hasMany('App\UserStudent', 'user_id');
+    }
+    public function user_advisor()
+    {
+        return $this->hasMany('App\UserAdvisor');
+    }
+    public function user_staff()
+    {
+        return $this->hasMany('App\UserStaff');
+    }
 }

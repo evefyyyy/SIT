@@ -12,4 +12,8 @@ class Student extends Model
     public function projectStudent(){
     	return $this->hasMany('App\ProjectStudent', 'student_pkid');
     }
+    public function username()
+	{
+		return $this->belongsTo('App\UserStudent', 'student_pkid');
+	}
 }
