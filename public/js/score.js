@@ -6,19 +6,13 @@ $(function () {
 	});
 });
 $(document).ready(function(){
+    $(".box").hide();   
     $("select.selecttemp").change(function(){
         $(this).find("option:selected").each(function(){
-            if($(this).attr("value")=="temp1"){
-                $(".box").not(".temp1").hide();
-                $(".temp1").show();
-            }
-            else if($(this).attr("value")=="temp2"){
-                $(".box").not(".temp2").hide();
-                $(".temp2").show();
-            }
-            else if($(this).attr("value")=="temp3"){
-                $(".box").not(".temp3").hide();
-                $(".temp3").show();
+            var x = $(this).attr("value");
+            if($(this).attr("value")==x){
+                $(".box").not("."+x).hide();
+                $("."+x).show();
             }
             else{
                 $(".box").hide();
@@ -26,7 +20,29 @@ $(document).ready(function(){
         });
     }).change();
 });
+$('#main-order').multiSelect({ keepOrder: true });
+    $('#sub-order').multiSelect({ keepOrder: true });
+    $('#select-all').click(function(){
+      $('#main-order').multiSelect('select_all');
+      return false;
+    });
+    $('#deselect-all').click(function(){
+      $('#main-order').multiSelect('deselect_all');
+      return false;
+    });
+    $('#select-all1').click(function(){
+      $('#sub-order').multiSelect('select_all');
+      return false;
+    });
+    $('#deselect-all1').click(function(){
+      $('#sub-order').multiSelect('deselect_all');
+      return false;
+    });
+    function back() {
+    window.history.back()
+  }
 function back() {
 		window.history.back()
-	}
+}
+
 

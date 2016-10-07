@@ -1,7 +1,7 @@
 @extends('adminTmp')
 @section('content')
 <div id="scoresheet">
-    <h2><img height="45" src="/img/exam.png">create score sheet</h2>
+    <h2><img height="45" src="/img/exam.png">create template</h2>
      <div class="row">
         <div class="col-xs-1 col-md-3 col-lg-3"></div>
         <div class="col-xs-10 col-md-6 col-lg-6 titlee" id="center">
@@ -41,28 +41,5 @@
 </div>
  </div>
 <script src="{!! URL::asset('js/jquery.multi-select.js') !!}"></script>
-<script>
-$('#main-order').multiSelect({ keepOrder: true });
-    $('#sub-order').multiSelect({ keepOrder: true });
-    $('#select-all').click(function(){
-      $('#main-order').multiSelect('select_all');
-      return false;
-    });
-    $('#deselect-all').click(function(){
-      $('#main-order').multiSelect('deselect_all');
-      return false;
-    });
-    $('#select-all1').click(function(){
-      $('#sub-order').multiSelect('select_all');
-      return false;
-    });
-    $('#deselect-all1').click(function(){
-      $('#sub-order').multiSelect('deselect_all');
-      return false;
-    });
-    function back() {
-		window.history.back()
-	}
-
-</script>
+<script src="{!! URL::asset('js/score.js') !!}"></script>
 @stop

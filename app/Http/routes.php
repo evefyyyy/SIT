@@ -51,11 +51,14 @@ Route::get('exam/manageroom/preview', function () {
 Route::get('exam/managescore/year', function () {
     return view('admin.manageScore');
 });
-Route::get('exam/managescore/create', function () {
+Route::get('exam/managescore/template/create', function () {
     return view('admin.createSheet');
 });
 Route::get('exam/scoresheet', function () {
     return view('admin.scoreSheet');
+});
+Route::get('exam/managescore/template', function () {
+    return view('admin.manageSheet');
 });
 Route::get('exam/managescore/criteria', function () {
     return view('admin.manageCriteria');

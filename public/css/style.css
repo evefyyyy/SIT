@@ -1340,6 +1340,23 @@ input[type="range"].cropit-image-zoom-input {
   font-size: 1em;
   margin-right: 5px
 }
+#scoresheet .input-group-btn > .btn-remove {
+  padding: 6px 12px;
+}
+#scoresheet .input-group-btn > .btn-success {
+  padding: 7px 13px;
+}
+#scoresheet .input-group > .form-control {
+  width: 100%;
+}
+#scoresheet h5 {
+  margin-bottom: 15px;
+  color: #40c3a7;
+  text-align: left;
+}
+#scoresheet .glyphicon-plus:before {
+  padding-right: 0;
+}
 #scoresheet .row {
   margin-top: 30px;
   text-transform: uppercase;
@@ -1349,6 +1366,12 @@ input[type="range"].cropit-image-zoom-input {
 }
 #scoresheet .btn-primary {
   margin-left: 30px;
+}
+#scoresheet .entry:not(:first-of-type){
+    margin-top: 10px;
+}
+#scoresheet small {
+  color: #999;
 }
 #scoresheet label {
   text-transform: uppercase;
