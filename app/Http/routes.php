@@ -54,16 +54,18 @@ Route::get('exam/managescore/year', function () {
 Route::get('exam/managescore/template/create', function () {
     return view('admin.createSheet');
 });
-Route::get('exam/scoresheet', function () {
-    return view('admin.scoreSheet');
-});
+Route::get('exam/scoresheet','ScoreSheetController@index');
+
 Route::get('exam/managescore/template', function () {
     return view('admin.manageSheet');
 });
-Route::get('exam/managescore/criteria', function () {
-    return view('admin.manageCriteria');
-});
+
+Route::get('exam/managescore/criteria/create','ScoreSheetController@createCriteria');
+
+Route::post('exam/managescore/criteria','ScoreSheetController@storeCriteria');
+
 Route::resource('exam/scorerecord','ScoreRecordController');
+
 Route::get('myscore', function () {
     return view('student.myScore');
 });

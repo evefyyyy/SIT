@@ -7,32 +7,33 @@
 		<div class="col-xs-10 col-md-6 col-lg-6">
 					<div class="control-group" id="fields">
 						<h5>main criteria</h5>
-						<div class="controls"> 
-							<form role="form" autocomplete="off">
+						<div class="controls">
+							<form action="{{$url}}" method = "post" role="form" autocomplete="off">
+								<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 								<div class="entry input-group">
-									<input class="form-control" name="fields[]" type="text" placeholder="Type something" />
+									<input class="form-control" name="mainfields[]" type="text" placeholder="Type something" />
 									<span class="input-group-btn">
 										<button class="btn btn-success btn-add" type="button">
 											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</span>
 								</div>
-							</form>
+
 							<small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another criteria</small>
 						</div>
 					</div>
 		</div>
 		<div class="col-xs-1 col-md-3 col-lg-3"></div>
 	</div>
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-xs-1 col-md-3 col-lg-3"></div>
 		<div class="col-xs-10 col-md-6 col-lg-6">
 					<div class="control-group" id="fields">
 						<h5>sub criteria</h5>
-						<div class="controls1"> 
+						<div class="controls1">
 							<form role="form" autocomplete="off">
 								<div class="entry input-group">
-									<input class="form-control" name="fields[]" type="text" placeholder="Type something" />
+									<input class="form-control" name="subfields[]" type="text" placeholder="Type something" />
 									<span class="input-group-btn">
 										<button class="btn btn-success btn-add1" type="button">
 											<span class="glyphicon glyphicon-plus"></span>
@@ -45,11 +46,12 @@
 					</div>
 		</div>
 		<div class="col-xs-1 col-md-3 col-lg-3"></div>
-	</div>
+	</div> -->
 	<div id="center">
 	  <a><button class="action-button" onclick="back()">back</button></a>
 	  <a href="#"><button type="submit" class="action-button">save</button></a>
 	</div>
+	</form>
 </div>
 <script>
 $(function()
