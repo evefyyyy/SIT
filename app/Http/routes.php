@@ -63,6 +63,12 @@ Route::get('exam/managescore/template', function () {
 Route::get('exam/managescore/criteria', function () {
     return view('admin.manageCriteria');
 });
+Route::get('exam/managescore/criteria/main', function () {
+    return view('admin.mainCriteria');
+});
+Route::get('exam/managescore/criteria/sub', function () {
+    return view('admin.subCriteria');
+});
 Route::resource('exam/scorerecord','ScoreRecordController');
 Route::get('myscore', function () {
     return view('student.myScore');
