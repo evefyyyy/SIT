@@ -60,9 +60,13 @@ Route::get('exam/managescore/template', function () {
     return view('admin.manageSheet');
 });
 
-Route::get('exam/managescore/criteria/create','ScoreSheetController@createCriteria');
+Route::get('exam/managescore/criteria',function(){
+  return view('admin.manageCriteria');
+});
 
-Route::post('exam/managescore/criteria','ScoreSheetController@storeCriteria');
+Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createMainCriteria');
+
+Route::post('exam/managescore/criteria/main','ScoreSheetController@storeMainCriteria');
 
 Route::resource('exam/scorerecord','ScoreRecordController');
 

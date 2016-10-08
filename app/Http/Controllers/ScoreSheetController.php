@@ -33,24 +33,38 @@ class ScoreSheetController extends Controller
       return view ('admin.scoreSheet');
     }
 
-    public function createCriteria()
+    public function createMainCriteria()
     {
-      $data['url'] = url('exam/managescore/criteria');
-      return view ('admin.manageCriteria',$data);
+      $data['url'] = url('exam/managescore/criteria/main');
+
+      $mainCriteria = DB::table('criteria_mains')->select('criteria_main_name')->get();
+      $count = count($mainCriteria);
+      $data['count'] = $count;
+      for($i=0;$i<$count;$i++){
+        $data['mainCriteria'][$i] = $mainCriteria[$i]->criteria_main_name;
+      }
+      return view ('admin.mainCriteria',$data);
     }
 
-    public function storeCriteria(Request $request)
+    public function storeMainCriteria(Request $request)
     {
       $main = $request['mainfields'];
       $count = count($main);
       for($i=0;$i<$count;$i++){
-        $obj = new CriteriaMain();
-        $obj->criteria_main_name = $main[$i];
-        $obj->save();
+        if($main[$i] != null){
+          $checkDup[$i] = DB::table('criteria_mains')
+                        ->where('criteria_main_name',$main[$i])
+                        ->value('id');
+          if($checkDup[$i] === null){
+            $obj = new CriteriaMain();
+            $obj->criteria_main_name = $main[$i];
+            $obj->save();
+          }
+        }
       }
-      return redirect(url('exam/managescore/criteria/create'));
+      return redirect(url('exam/managescore/criteria/main/create'));
     }
-    public function editCriteria($id)
+    public function editMainCriteria($id)
     {
 
     }
