@@ -1466,16 +1466,25 @@ input[type="range"].cropit-image-zoom-input {
     text-decoration: none;
     text-transform: uppercase;
 }
-#scoreyear a#temp-btn {
+#managecri a{
+  font-size: 0.975em;
+  border-color: #ccc;
+  margin-bottom: 20px;
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+a#temp-btn {
   color: #ff7f7f;
 }
-#scoreyear a#temp-btn:hover {
+a#temp-btn:hover {
   border-color: #ff7f7f;
 }
-#scoreyear a#cri-btn {
+a#cri-btn {
   color: #40c3a7;
 }
-#scoreyear a#cri-btn:hover {
+a#cri-btn:hover {
     border-color: #40c3a7;
 }
 h2 > img {
