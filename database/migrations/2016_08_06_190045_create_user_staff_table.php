@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScoreTestTable extends Migration
+class CreateUserStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,8 @@ class CreateScoreTestTable extends Migration
      */
     public function up()
     {
-        Schema::create('score_tests', function (Blueprint $table) {
+         Schema::create('user_staff', function (Blueprint $table) {
             $table->increments('id');
-             $table->string('score_test_sum');
-            $table->integer('score_test_round');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ class CreateScoreTestTable extends Migration
      */
     public function down()
     {
-        Schema::drop('score_test');
+        //
     }
 }

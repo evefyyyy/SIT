@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminTable extends Migration
+class CreateUserStudentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreateAdminTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('user_student', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('admin_username');
-            $table->string('admin_password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ class CreateAdminTable extends Migration
      */
     public function down()
     {
-        Schema::drop('admins');
+        //
     }
 }

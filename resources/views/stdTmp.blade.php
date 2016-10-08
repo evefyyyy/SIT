@@ -38,12 +38,16 @@
                   </li>
 
 
-
-                  @if(Auth::user()->student->projectStudent->first()===null)
+                  <?php 
+                      $student_pkid = Auth::user()->user_student->first()->student_pkid; 
+                      $student = DB::table('students')->where('id', $student_pkid)->first();
+                  ?>
+                  @if($student->projectStudent->first()===null)
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/noproject">My project</a></li>
                     @else
                     <?php
-                      $id_group_project = Auth::user()->student->projectStudent->first()->project_pkid;
+                      
+                      $id_group_project = $student->projectStudent->first()->project_pkid;
                       $approve_project = DB::table('group_projects')
                                           ->where('id', $id_group_project)->first();
                      ?>
@@ -57,7 +61,7 @@
                       <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{$student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
               </ul>
             </div>
           </nav>
