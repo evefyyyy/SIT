@@ -49,13 +49,23 @@ class ScoreSheetController extends Controller
     public function storeMainCriteria(Request $request)
     {
       $main = $request['mainfields'];
-      $count = count($main);
-      for($i=0;$i<$count;$i++){
-        if($main[$i] != null){
-          $checkDup[$i] = DB::table('criteria_mains')
-                        ->where('criteria_main_name',$main[$i])
-                        ->value('id');
-          if($checkDup[$i] === null){
+      $countMain = count($main);
+      if($countMain != 1 && $main[0] != ""){
+        $allMainCriteria = DB::table('criteria_mains')->select('id','criteria_main_name')->get();
+        $countAllMain = count($allMainCriteria);
+        for($i=0;$i<$countAllMain;$i++){
+          $id[$i] = $allMainCriteria[$i]->id;
+          $getMainName[$i] = $allMainCriteria[$i]->criteria_main_name;
+          $obj = CriteriaMain::find($id[$i]);
+          if($main[$i] != null){
+            $obj->criteria_main_name = $main[$i];
+            $obj->save();
+          }else{
+            $obj->delete();
+          }
+        }
+        for($i = $countAllMain; $i < $countMain; $i++){
+          if($main[$i] != null){
             $obj = new CriteriaMain();
             $obj->criteria_main_name = $main[$i];
             $obj->save();

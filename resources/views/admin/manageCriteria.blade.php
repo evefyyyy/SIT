@@ -3,16 +3,17 @@
 <div id="scoresheet">
 	<h2><img height="45" src="/img/exam.png">manage criteria</h2>
 	<div class="row">
-		<div class="col-xs-1 col-md-3 col-lg-3"></div>
-		<div class="col-xs-10 col-md-6 col-lg-6" id="scoreyear">
+		<div class="col-xs-3 col-md-4 col-lg-4"></div>
+		<div class="col-xs-6 col-md-4 col-lg-4" id="managecri">
+			<div id="center">
 				<a href="criteria/main/create" id="cri-btn" class="btn">main criteria</a>
 				<a href="criteria/sub" id="cri-btn" class="btn">sub criteria</a>
+			</div>
 		</div>
-		<div class="col-xs-1 col-md-3 col-lg-3"></div>
-	</div> -->
+		<div class="col-xs-3 col-md-4 col-lg-4"></div>
+	</div>
 	<div id="center">
 	  <a><button class="action-button" onclick="back()">back</button></a>
-	  <a href="#"><button type="submit" class="action-button">save</button></a>
 	</div>
 	</form>
 </div>
