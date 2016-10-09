@@ -68,6 +68,10 @@ Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createM
 
 Route::post('exam/managescore/criteria/main','ScoreSheetController@storeMainCriteria');
 
+Route::get('exam/managescore/criteria/sub/create','ScoreSheetController@createSubCriteria');
+
+Route::post('exam/managescore/criteria/sub','ScoreSheetController@storeSubCriteria');
+
 Route::resource('exam/scorerecord','ScoreRecordController');
 
 Route::get('myscore', function () {

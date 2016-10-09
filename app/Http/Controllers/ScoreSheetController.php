@@ -74,8 +74,46 @@ class ScoreSheetController extends Controller
       }
       return redirect(url('exam/managescore/criteria/main/create'));
     }
-    public function editMainCriteria($id)
-    {
 
+    public function createSubCriteria()
+    {
+      $data['url'] = url('exam/managescore/criteria/sub');
+
+      $subCriteria = DB::table('criteria_subs')->select('criteria_sub_name')->get();
+      $count = count($subCriteria);
+      $data['count'] = $count;
+      for($i=0;$i<$count;$i++){
+        $data['subCriteria'][$i] = $subCriteria[$i]->criteria_sub_name;
+      }
+      return view ('admin.subCriteria',$data);
+    }
+
+    public function storeSubCriteria(Request $request)
+    {
+      $sub = $request['subfields'];
+      $countSub = count($sub);
+      if($countSub != 1 && $sub[0] != ""){
+        $allSubCriteria = DB::table('criteria_subs')->select('id','criteria_sub_name')->get();
+        $countAllSub = count($allSubCriteria);
+        for($i=0;$i<$countAllSub;$i++){
+          $id[$i] = $allSubCriteria[$i]->id;
+          $getSubName[$i] = $allSubCriteria[$i]->criteria_sub_name;
+          $obj = CriteriaSub::find($id[$i]);
+          if($sub[$i] != null){
+            $obj->criteria_sub_name = $sub[$i];
+            $obj->save();
+          }else{
+            $obj->delete();
+          }
+        }
+        for($i = $countAllSub; $i < $countSub; $i++){
+          if($sub[$i] != null){
+            $obj = new CriteriaSub();
+            $obj->criteria_sub_name = $sub[$i];
+            $obj->save();
+          }
+        }
+      }
+      return redirect(url('exam/managescore/criteria/sub/create'));
     }
 }
