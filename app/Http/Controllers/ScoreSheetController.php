@@ -116,4 +116,24 @@ class ScoreSheetController extends Controller
       }
       return redirect(url('exam/managescore/criteria/sub/create'));
     }
+
+    public function createTemplate()
+    {
+      $data['mainCriteria'] = CriteriaMain::all();
+      $data['subCriteria'] = CriteriaSub::all();
+      return view('admin.createSheet',$data);
+    }
+
+    public function storeTemplate(Request $request)
+    {
+      $obj = $request['mainCriteria'];
+
+      return redirect(url('exam/managescore/template'));
+    }
+
+    public function viewScoreSheet()
+    {
+      $data['type'] = Type::all();
+      return view('admin.managescore',$data);
+    }
 }
