@@ -67,7 +67,7 @@
 					<div class="col-xs-6 col-md-6">
 						<input type="text" class="form-control" placeholder="Student ID" id="Student1No" value="{{Auth::user()->student->student_id}}" name="idStudent1" readonly/>
 					</div>
-					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{Auth::user()->student->student_name}}</div>
+					<div class="col-xs-6 col-md-6 stdname" id="std1Name">{{Auth::user()->user_student->student->student_name}}</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">

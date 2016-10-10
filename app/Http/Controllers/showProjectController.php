@@ -27,9 +27,7 @@ class showProjectController extends Controller
   public function index()
   {
     if(Auth::check()){
-      $student_pkid = Auth::user()->user_student->first()->student_pkid; 
-      $student_profile = DB::table('students')->where('id', $student_pkid)->first();
-      $objs = $student_profile->student_id;
+      $objs = Auth::user()->user_student->student->student_id;
       $checkStd = DB::table('students')->where('student_id',$objs)->value('id');
       $checkProject = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
       $obj['checkProject'] = $checkProject;
