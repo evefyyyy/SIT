@@ -159,6 +159,12 @@ class CreateFkey extends Migration
             $table->integer('project_pkid')->unsigned();
             $table->foreign('project_pkid')->references('id')->on('group_projects');
         });
+        Schema::table('templates', function($table){
+            $table->integer('criteria_main_id')->unsigned();
+            $table->foreign('criteria_main_id')->references('id')->on('criteria_mains');
+            $table->integer('criteria_sub_id')->unsigned();
+            $table->foreign('criteria_sub_id')->references('id')->on('criteria_subs');
+        })
 
 
 
