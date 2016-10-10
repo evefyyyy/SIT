@@ -1490,7 +1490,8 @@ input[type="range"].cropit-image-zoom-input {
 #editmain .table > tfoot > tr > th:nth-child(2n+1) {
   text-align: right;
 }
-#editmain .table > tfoot > tr > th > span {
+#editmain .table > tfoot > tr > th > span,
+#editmain .table > tfoot > tr > th:nth-child(2) > strong {
   float: right;
 }
 #editmain .table > tbody > tr > td > span {
@@ -1503,10 +1504,12 @@ input[type="range"].cropit-image-zoom-input {
 }
 #editmain strong {
   text-transform: uppercase;
-  float: right;
+  float: left;
 }
 #warning {
   color: red;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 a#temp-btn {
   color: #ff7f7f;

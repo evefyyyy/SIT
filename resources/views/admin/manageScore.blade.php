@@ -30,7 +30,7 @@
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
     <div class="col-xs-10 col-md-6 col-lg-6">
       <a data-toggle="modal" data-target="#editmain"><p><strong>round1</strong> การศึกษาความเป็นไปได้ (15%)</p></a>
-      <table class="table table-bordered">
+      <table class="counttable table table-bordered">
         <thead>
          <tr><th>criteria</th><th width="15%">score</th></tr>
        </thead>
@@ -49,7 +49,7 @@
   <div class="col-xs-1 col-md-3 col-lg-3"></div>
   <div class="col-xs-10 col-md-6 col-lg-6">
     <a data-toggle="modal" data-target="#editmain"><p><strong>round2</strong> การวิเคราะห์และออกแบบ (25%)</p></a>
-    <table class="table table-bordered">
+    <table class="counttable table table-bordered">
       <thead>
        <tr><th>criteria</th><th width="15%">score</th></tr>
      </thead>
@@ -68,7 +68,7 @@
   <div class="col-xs-1 col-md-3 col-lg-3"></div>
   <div class="col-xs-10 col-md-6 col-lg-6">
     <a data-toggle="modal" data-target="#editmain"><p><strong>round3</strong> การทำงานของโปรแกรม (30%)</p></a>
-    <table class="table table-bordered">
+    <table class="counttable table table-bordered">
       <thead>
        <tr><th>criteria</th><th width="15%">score</th></tr>
      </thead>
@@ -87,7 +87,7 @@
   <div class="col-xs-1 col-md-3 col-lg-3"></div>
   <div class="col-xs-10 col-md-6 col-lg-6">
     <a data-toggle="modal" data-target="#editmain"><p><strong>round4</strong> การทำงานของโปรแกรมที่สมบูรณ์ (30%)</p></a>
-    <table class="table table-bordered">
+    <table class="counttable table table-bordered">
       <thead>
        <tr><th>criteria</th><th width="15%">score</th></tr>
      </thead>
@@ -113,7 +113,7 @@
         <div class="modal-body">
           <table class="table table-bordered">
              <tbody>
-              <tr><td width="10%"><strong>round1</strong></td><td>ความสมบูรณ์ของงาน</td><td width="20%"><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
+              <tr><td width="10%"><strong>round1</strong></td><td>การศึกษาความเป็นไปได้</td><td width="20%"><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
               <tr><td><strong>round2</strong></td><td>คุณภาพของงาน</td><td><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
               <tr><td><strong>round3</strong></td><td>การตอบคำถาม</td><td><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
               <tr><td><strong>round4</strong></td><td>การนำเสนองานและเอกสาร</td><td><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
@@ -123,7 +123,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
-            <button type="submit" class="btn btn-primary">save</button>
+            <button type="submit" class="btn btn-primary" onclick="countTotal()">save</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -137,6 +137,6 @@
 <script src="{!! URL::asset('js/score.js') !!}"></script>
 <script>
 $(".box").not(".business").show();
-$('.alert').hide();
+// $('.alert').hide();
 </script>
 @stop
