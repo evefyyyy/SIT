@@ -23,7 +23,7 @@ class User extends Authenticatable
     ];
     public function user_student()
     {
-        return $this->hasMany('App\UserStudent', 'user_id');
+        return $this->hasOne('App\UserStudent', 'user_id');
     }
     public function user_advisor()
     {

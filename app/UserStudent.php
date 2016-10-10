@@ -12,8 +12,8 @@ class UserStudent extends Model
 	{
 		return $this->belongsTo('App\User', 'user_id');
 	}
-	public function student_profile()
+	public function student()
 	{
-		return $this->belongsToMany('App\Student', 'student_pkid');
+		return $this->belongsTo('App\Student', 'student_pkid');
 	}
 }
