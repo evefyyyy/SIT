@@ -92,6 +92,7 @@
 					<div class="col-xs-8 col-md-5">
 						  <select class="selectpicker1 advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
 								@foreach($advisor as $ad)
+
 								@if($advName1===$ad->advisor_name)
 							    <option value="{{$ad->advisor_name}}" selected>{{$ad->advisor_name}}</option>
 							    @else
