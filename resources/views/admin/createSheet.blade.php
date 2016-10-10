@@ -44,5 +44,27 @@
 </form>
  </div>
 <script src="{!! URL::asset('js/jquery.multi-select.js') !!}"></script>
-<script src="{!! URL::asset('js/score.js') !!}"></script>
+<script>
+$('#main-order').multiSelect({ keepOrder: true });
+    $('#sub-order').multiSelect({ keepOrder: true });
+    $('#select-all').click(function(){
+      $('#main-order').multiSelect('select_all');
+      return false;
+    });
+    $('#deselect-all').click(function(){
+      $('#main-order').multiSelect('deselect_all');
+      return false;
+    });
+    $('#select-all1').click(function(){
+      $('#sub-order').multiSelect('select_all');
+      return false;
+    });
+    $('#deselect-all1').click(function(){
+      $('#sub-order').multiSelect('deselect_all');
+      return false;
+    });
+    function back() {
+    window.history.back()
+}
+</script>
 @stop
