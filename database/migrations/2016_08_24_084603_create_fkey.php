@@ -29,31 +29,6 @@ class CreateFkey extends Migration
             $table->integer('project_pkid')->unsigned();
             $table->foreign('project_pkid')->references('id')->on('group_projects');
         });
-        Schema::table('criteria_main_shops', function ($table) {
-            $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('types');
-            $table->integer('criteria_main_id')->unsigned();
-            $table->foreign('criteria_main_id')->references('id')->on('criteria_mains');
-            $table->integer('year_id')->unsigned();
-            $table->foreign('year_id')->references('id')->on('years');
-        });
-        Schema::table('criteria_scoresheet', function ($table){
-            $table->integer('criteria_main_shop_id')->unsigned();
-            $table->foreign('criteria_main_shop_id')->references('id')->on('criteria_main_shops');
-            $table->integer('criteria_sub_id')->unsigned();
-            $table->foreign('criteria_sub_id')->references('id')->on('criteria_subs');
-        });
-
-        Schema::table('criterias', function ($table) {
-            $table->integer('criteria_main_shop_id')->unsigned();
-            $table->foreign('criteria_main_shop_id')->references('id')->on('criteria_main_shops');
-            $table->integer('criteria_sub_id')->unsigned();
-            $table->foreign('criteria_sub_id')->references('id')->on('criteria_subs');
-            $table->integer('advisor_id')->unsigned();
-            $table->foreign('advisor_id')->references('id')->on('advisors');
-            $table->integer('project_pkid')->unsigned();
-            $table->foreign('project_pkid')->references('id')->on('group_projects');
-        });
 
         Schema::table('group_projects', function ($table) {
             $table->integer('category_id')->unsigned();
