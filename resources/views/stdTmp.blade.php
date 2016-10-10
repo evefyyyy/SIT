@@ -41,7 +41,7 @@
                     @else
                     <?php
 
-                      $id_group_project = $student->projectStudent->first()->project_pkid;
+                      $id_group_project = Auth::user()->user_student->student->projectStudent->first()->project_pkid;
                       $approve_project = DB::table('group_projects')
                                           ->where('id', $id_group_project)->first();
                      ?>
