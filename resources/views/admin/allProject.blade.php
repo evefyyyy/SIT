@@ -162,7 +162,7 @@
 					<table class="table table-bordered myprop">
 						<tbody>
 							<tr>
-								<td width="60%">first draft proposal</td><td width="40%"><a class="tblink" href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+								<td width="60%">first draft proposal</td><td width="40%"><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
 							</tr>
 							<tr>
 								<td>first proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>

@@ -27,7 +27,7 @@
 			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i>
        				 </div>
               @if(count($project->picture)===0)
-              <img src="#">
+              <img src="/img/no-poster.png">
               @else
 	          <img src="{{$project->picture[0]->picture_path_name}}" alt="">
               @endif
