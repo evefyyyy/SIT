@@ -56,11 +56,7 @@
       </li>
       </ul>
         @if(Auth::check())
-        <?php $student_pkid = Auth::user()->user_student->first()->student_pkid; 
-          $student = DB::table('students')->where('id', $student_pkid)->first();
-
-        ?>
-        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{$student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_student->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
         @else
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

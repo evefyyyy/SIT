@@ -29,7 +29,7 @@ class createProjectController extends Controller {
 	public function index()
 	{
 		$wantedStudent = null;
-		$objs['students'] = \App\Student::where('student_id','=','56130500078')->get();
+		// $objs['students'] = \App\Student::where('student_id','=','56130500078')->get();
 
 		$category = Category::all();
 		$objs['category'] = $category;
@@ -49,7 +49,7 @@ class createProjectController extends Controller {
 		$data['method'] = 'post';
 		$data['url'] = url('student/myproject/create');
 
-		$data['students'] = \App\Student::where('student_id','=','56130500078')->get();
+		// $data['students'] = \App\Student::where('student_id','=','56130500078')->get();
 
 		$category = Category::all();
 		$data['category'] = $category;
