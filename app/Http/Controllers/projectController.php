@@ -33,7 +33,7 @@ class projectController extends Controller
       $obj['detail'] = ProjectDetail::all();
 
       $obj['poster'] = Picture::all();
-      
+
       return view('projects',$obj);
     }
 
