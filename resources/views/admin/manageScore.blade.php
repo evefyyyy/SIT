@@ -108,21 +108,6 @@
 <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
 </div>
-<div class="2 box">
-  <div class="row">
-    <div class="col-xs-1 col-md-3 col-lg-3"></div>
-    <div class="col-xs-10 col-md-6 col-lg-6">
-      template 2
-</div>
-<div class="col-xs-1 col-md-3 col-lg-3"></div>
-</div>
-</div>
-<div class="3 box">
-  <div class="row">
-    <div class="col-xs-1 col-md-3 col-lg-3"></div>
-    <div class="col-xs-10 col-md-6 col-lg-6">
-      template 3
-</div>
 <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
 </div>
