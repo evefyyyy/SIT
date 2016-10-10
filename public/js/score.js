@@ -68,14 +68,17 @@ function back() {
 		window.history.back()
 }
 $('.action-button').click(function(){
-  var i = $('.counttable').length;
-  if("#subtotal"+i == 100){
-    console.log("#subtotal"+i);
+  $i = $('.counttable').length;
+  $x = 1;
+  for($x=1;$x<=$i;$x++){
+  if($("#subtotal"+$x).html() != 100){
+    $('#alert'+$x).show();
+  } else {
+    if ($('#alert'+$x).show()) {
+      $('#alert'+$x).hide();
+    } else {
+      $('#alert'+$x).hide();
+    }
   }
+}
 });
-
-// <div class="alert alert-danger" role="alert">
-//      <a class="close" data-dismiss="alert">×</a>
-//      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-//      Total score must be 100
-//    </div>
