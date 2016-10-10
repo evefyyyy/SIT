@@ -121,7 +121,7 @@ class ScoreSheetController extends Controller
     {
       $data['mainCriteria'] = CriteriaMain::all();
       $data['subCriteria'] = CriteriaSub::all();
-      return view('admin.createSheet',$data);
+      return view('admin.createTemplate',$data);
     }
 
     public function storeTemplate(Request $request)
@@ -134,6 +134,13 @@ class ScoreSheetController extends Controller
     public function viewScoreSheet()
     {
       $data['type'] = Type::all();
-      return view('admin.managescore',$data);
+      return view('admin.manageScoreSheet',$data);
+    }
+
+    public function editTemplate()
+    {
+      $data['mainCriteria'] = CriteriaMain::all();
+      $data['subCriteria'] = CriteriaSub::all();
+      return view('admin.editTemplate',$data);
     }
 }

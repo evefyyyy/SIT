@@ -102,6 +102,7 @@
 </div>
 <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
+
 <!-- edit main criteria -->
   <div class="modal fade" id="editmain" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
@@ -128,6 +129,7 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
 </div>
 </div>
 <div id="center">
