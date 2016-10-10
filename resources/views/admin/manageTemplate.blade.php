@@ -13,7 +13,7 @@
              <option value="3">template 3</option>
            </select>
           </div>
-          <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>edit</a>
+          <a href="/exam/managescore/template/edit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>edit</a>
           <span id="pendlink"><a href="template/create" class="btn"><span class="glyphicon glyphicon-plus"></span> new template</a></span>
         </div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>

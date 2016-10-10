@@ -58,8 +58,10 @@ Route::get('exam/managescore/template/create','ScoreSheetController@createTempla
 Route::post('exam/managescore/template','ScoreSheetController@storeTemplate');
 
 Route::get('exam/managescore/template', function () {
-    return view('admin.manageSheet');
+    return view('admin.manageTemplate');
 });
+
+Route::get('exam/managescore/template/edit','ScoreSheetController@editTemplate');
 
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
