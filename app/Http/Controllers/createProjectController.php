@@ -71,11 +71,15 @@ class createProjectController extends Controller {
 		$cat = $request->input('selectCat');
 		$data2 = DB::table('categories')->where('id',$cat)->value('id');
 
+		$currentYear = date("Y");
+		$getYear = DB::table('years')->where('year',$currentYear)->value('id');
+
 		$obj = new GroupProject();
 		$obj->group_project_ENG_name = $request['projectNameEN'];
 		$obj->group_project_TH_name = $request['projectNameTH'];
 		$obj->category_id = $data2;
 		$obj->type_id = $data1;
+		$obj->year_id = $getYear;
 		$obj->save();
 
 		$projectId = DB::table('group_projects')->max('id');
@@ -175,9 +179,8 @@ class createProjectController extends Controller {
 							->where('project_pkid',$getId)
 							->select('student_id')->get();
 
-		$student_pkid = Auth::user()->user_student->first()->student_pkid; 
-        $student_profile =  DB::table('students')->where('id', $student_pkid)->first();
-		$logInStd[] = $student_profile->student_id;
+
+		$logInStd[] = Auth::user()->user_student->student->student_id;
 		$getData = [];
 		foreach($groupStd as $std){
 			array_push($getData,$std->student_id);

@@ -164,17 +164,21 @@ Route::post('student/myproject/create/stdId2',function(){
           ->select('student_name')->first();
   if(isset($data)){
     $projectStd = DB::table('project_students')->select('student_pkid')->get();
-    foreach($projectStd as $ps){
-      $id[] = $ps->student_pkid;
-    }
-    $data = DB::table('students')
-            ->where('student_id',$stdId)
-            ->whereNotIn('students.id',$id)
-            ->select('student_name')->first();
-    if(isset($data)){
-  	   return Response::json($data);
+    if($projectStd != null){
+      foreach($projectStd as $ps){
+        $id[] = $ps->student_pkid;
+      }
+      $data = DB::table('students')
+              ->where('student_id',$stdId)
+              ->whereNotIn('id',$id)
+              ->select('student_name')->first();
+      if(isset($data)){
+        return Response::json($data);
+      }else{
+        return 1;
+      }
     }else{
-      return 1;
+      return Response::json($data);
     }
   }else{
   		return 0;
@@ -188,17 +192,21 @@ Route::post('student/myproject/create/stdId3',function(){
           ->select('student_name')->first();
   if(isset($data)){
     $projectStd = DB::table('project_students')->select('student_pkid')->get();
-    foreach($projectStd as $ps){
-      $id[] = $ps->student_pkid;
-    }
-    $data = DB::table('students')
-            ->where('student_id',$stdId)
-            ->whereNotIn('students.id',$id)
-            ->select('student_name')->first();
-    if(isset($data)){
-  	   return Response::json($data);
+    if($projectStd != null){
+      foreach($projectStd as $ps){
+        $id[] = $ps->student_pkid;
+      }
+      $data = DB::table('students')
+              ->where('student_id',$stdId)
+              ->whereNotIn('students.id',$id)
+              ->select('student_name')->first();
+      if(isset($data)){
+    	   return Response::json($data);
+      }else{
+        return 1;
+      }
     }else{
-      return 1;
+      return Response::json($data);
     }
   }else{
   		return 0;
@@ -212,17 +220,21 @@ Route::post('student/myproject/create/{id}/stdId2',function(){
           ->select('student_name')->first();
   if(isset($data)){
     $projectStd = DB::table('project_students')->select('student_pkid')->get();
-    foreach($projectStd as $ps){
-      $id[] = $ps->student_pkid;
-    }
-    $data = DB::table('students')
-            ->where('student_id',$stdId)
-            ->whereNotIn('students.id',$id)
-            ->select('student_name')->first();
-    if(isset($data)){
-  	   return Response::json($data);
+    if($projectStd != null){
+      foreach($projectStd as $ps){
+        $id[] = $ps->student_pkid;
+      }
+      $data = DB::table('students')
+              ->where('student_id',$stdId)
+              ->whereNotIn('students.id',$id)
+              ->select('student_name')->first();
+      if(isset($data)){
+    	   return Response::json($data);
+      }else{
+        return 1;
+      }
     }else{
-      return 1;
+      return Response::json($data);
     }
   }else{
   		return 0;
@@ -236,18 +248,22 @@ Route::post('student/myproject/create/{id}/stdId3',function(){
           ->select('student_name')->first();
   if(isset($data)){
     $projectStd = DB::table('project_students')->select('student_pkid')->get();
-    foreach($projectStd as $ps){
-      $id[] = $ps->student_pkid;
-    }
-    $data = DB::table('students')
-            ->where('student_id',$stdId)
-            ->whereNotIn('students.id',$id)
-            ->select('student_name')->first();
-    if(isset($data)){
-       return Response::json($data);
+    if($projectStd != null){
+      foreach($projectStd as $ps){
+        $id[] = $ps->student_pkid;
+      }
+      $data = DB::table('students')
+              ->where('student_id',$stdId)
+              ->whereNotIn('students.id',$id)
+              ->select('student_name')->first();
+      if(isset($data)){
+         return Response::json($data);
+      }else{
+        return 1;
+      }
     }else{
-      return 1;
-    }
+      return Response::json($data);
+    }  
   }else{
       return 0;
   }

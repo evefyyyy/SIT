@@ -30,6 +30,16 @@ class ScoreSheetController extends Controller
 {
     public function index()
     {
+      $projectStd = DB::table('project_students')->select('student_pkid')->get();
+      if($projectStd != null){
+        foreach($projectStd as $ps){
+          $id[] = $ps->student_pkid;
+        }
+      }else{
+        dd('hello');
+      }
+
+        dd('bye');
       return view ('admin.scoreSheet');
     }
 
