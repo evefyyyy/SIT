@@ -59,7 +59,7 @@ class createProjectController extends Controller {
 
 		$advisor = Advisor::all();
 		$data['advisor'] = $advisor;
-	
+
 		return view('student.createProject',$data);
 	}
 
@@ -187,6 +187,7 @@ class createProjectController extends Controller {
 		foreach($result as $s){
 			array_push($newresult,$s);
 		}
+
 		if(count($newresult) == 2){
 			$getStd2 = DB::table('students')->where('student_id',$newresult[0])->select('student_id','student_name')->get();
 			$getStd3 = DB::table('students')->where('student_id',$newresult[1])->select('student_id','student_name')->get();

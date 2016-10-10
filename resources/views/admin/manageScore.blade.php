@@ -8,10 +8,10 @@
      <h6>Year 2016</h6>
       <label>project type</label>
       <div class="btn-group" style="margin-right:30px">
-        <select class="selecttype">
-         <option>business</option>
-         <option>research</option>
-         <option>social</option>
+        <select class="selecttype" name="selectType">
+          @foreach($type as $ty)
+         <option value="{{$ty->id}}">{{$ty->type_name}}</option>
+         @endforeach
        </select>
      </div>
      <label>score sheet</label>

@@ -7,17 +7,30 @@
 		<div class="col-xs-10 col-md-6 col-lg-6">
 					<div class="control-group" id="fields">
 						<h5>main criteria</h5>
-						<div class="controls"> 
-							<form role="form" autocomplete="off">
+						<div class="controls">
+							<form role="form" autocomplete="off" action="{{$url}}" method="post">
+									<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+								@if($count != 0)
+								@foreach($mainCriteria as $main)
 								<div class="entry input-group">
-									<input class="form-control" name="fields[]" type="text" placeholder="Type something" />
+									<input class="form-control" name="mainfields[]" type="text" placeholder="Type something" value="{{$main}}"/>
 									<span class="input-group-btn">
 										<button class="btn btn-success btn-add" type="button">
 											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</span>
 								</div>
-							</form>
+								@endforeach
+								@else
+								<div class="entry input-group">
+									<input class="form-control" name="mainfields[]" type="text" placeholder="Type something"/>
+									<span class="input-group-btn">
+										<button class="btn btn-success btn-add" type="button">
+											<span class="glyphicon glyphicon-plus"></span>
+										</button>
+									</span>
+								</div>
+								@endif
 							<small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another criteria</small>
 						</div>
 					</div>
@@ -26,8 +39,9 @@
 	</div>
 	<div id="center">
 	  <a><button class="action-button" onclick="back()">back</button></a>
-	  <a href="#"><button type="submit" class="action-button">save</button></a>
+	  <button type="submit" class="action-button">save</button>
 	</div>
+	</form>
 </div>
 <script>
 $(function()

@@ -48,28 +48,33 @@ Route::get('exam/manageroom/create/preview','examRoomController@preview');
 Route::get('exam/manageroom/preview', function () {
     return view('admin.previewRoom');
 });
-Route::get('exam/managescore/year', function () {
-    return view('admin.manageScore');
-});
-Route::get('exam/managescore/template/create', function () {
-    return view('admin.createSheet');
-});
-Route::get('exam/scoresheet', function () {
-    return view('admin.scoreSheet');
-});
+
+Route::get('exam/scoresheet','ScoreSheetController@index');
+
+Route::get('exam/managescore/year','ScoreSheetController@viewScoreSheet');
+
+Route::get('exam/managescore/template/create','ScoreSheetController@createTemplate');
+
+Route::post('exam/managescore/template','ScoreSheetController@storeTemplate');
+
 Route::get('exam/managescore/template', function () {
     return view('admin.manageSheet');
 });
-Route::get('exam/managescore/criteria', function () {
-    return view('admin.manageCriteria');
+
+Route::get('exam/managescore/criteria',function(){
+  return view('admin.manageCriteria');
 });
-Route::get('exam/managescore/criteria/main', function () {
-    return view('admin.mainCriteria');
-});
-Route::get('exam/managescore/criteria/sub', function () {
-    return view('admin.subCriteria');
-});
+
+Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createMainCriteria');
+
+Route::post('exam/managescore/criteria/main','ScoreSheetController@storeMainCriteria');
+
+Route::get('exam/managescore/criteria/sub/create','ScoreSheetController@createSubCriteria');
+
+Route::post('exam/managescore/criteria/sub','ScoreSheetController@storeSubCriteria');
+
 Route::resource('exam/scorerecord','ScoreRecordController');
+
 Route::get('myscore', function () {
     return view('student.myScore');
 });

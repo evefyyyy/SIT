@@ -9,15 +9,16 @@
      	</div>
      <div class="col-xs-1 col-md-3 col-lg-3"></div>
  	</div>
+  <form action="{{url('exam/managescore/template')}}" method="post">
+    	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
  	<div class="row">
         <div class="col-xs-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-10 col-md-8 col-lg-8 cri">
           <label>choose main criteria</label><a href='#' id='deselect-all'>deselect all</a><i class="lol">/</i><a href='#' id='select-all'>select all</a>
-          <select id='main-order' multiple='multiple'>/</span>
-			  <option value='1'>การศึกษาความเป็นไปได้</option>
-			  <option value='2'>การวิเคราะห์และออกแบบ</option>
-			  <option value='3'>การทำงานของโปรแกรม</option>
-			  <option value='4'>การทำงานของโปรแกรมที่สมบูรณ์</option>
+          <select id='main-order' multiple='multiple' name="mainCriteria[]">/</span>
+        @foreach($mainCriteria as $main)
+			  <option value="{{$main->id}}">{{$main->criteria_main_name}}</option>
+        @endforeach
 		  </select>
 		</div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
@@ -26,19 +27,21 @@
         <div class="col-xs-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-10 col-md-8 col-lg-8 cri">
           <label>choose sub criteria</label><a href='#' id='deselect-all1'>deselect all</a><i class="lol">/</i><a href='#' id='select-all1'>select all</a>
-          <select id='sub-order' multiple='multiple'>
-			  <option value='1'>ความสมบูรณ์ของงาน</option>
-			  <option value='2'>คุณภาพของงาน</option>
-			  <option value='3'>การตอบคำถาม</option>
-			  <option value='4'>การนำเสนองานและเอกสาร</option>
+          <select id='sub-order' multiple='multiple' name="subCriteria[]">
+        @foreach($subCriteria as $sub)
+			  <option value="{{$sub->id}}">{{$sub->criteria_sub_name}}</option>
+        @endforeach
 		  </select>
 		</div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
  	</div>
  	<div id="center" style="margin-top:15px">
   <a><button class="action-button" onclick="back()">back</button></a>
-  <a href="#"><button type="submit" class="action-button">save</button></a>
+  <button type="submit" class="action-button">save</button>
 </div>
+<!-- <input type="hidden" name="mainCriteria" id="mainCriteria">
+<input type="hidden" name="subCriteria" id="subCriteria"> -->
+</form>
  </div>
 <script src="{!! URL::asset('js/jquery.multi-select.js') !!}"></script>
 <script>
