@@ -58,16 +58,27 @@ $(document).on("change", ".main1", function() {
 });
 function countTotal() {
   if($("#maintotal1").html() != 100){
-    $('#warning').html( "total must be 100%" );
+    $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
   } else {
     $('#warning').html( "" );
+    $('#editmain').modal('hide');
   }
 }
 function back() {
 		window.history.back()
 }
-// <div class="alert alert-danger" role="alert">
-//      <a class="close" data-dismiss="alert">×</a>
-//      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-//      Total score must be 100
-//    </div>
+$('.action-button').click(function(){
+  $i = $('.counttable').length;
+  $x = 1;
+  for($x=1;$x<=$i;$x++){
+  if($("#subtotal"+$x).html() != 100){
+    $('#alert'+$x).show();
+  } else {
+    if ($('#alert'+$x).show()) {
+      $('#alert'+$x).hide();
+    } else {
+      $('#alert'+$x).hide();
+    }
+  }
+}
+});
