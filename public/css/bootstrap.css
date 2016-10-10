@@ -304,6 +304,7 @@ th {
 }
 .glyphicon-pencil:before {
   content: "\270f";
+  padding-right: 5px;
 }
 .glyphicon-glass:before {
   content: "\e001";
@@ -5306,12 +5307,13 @@ a.thumbnail.active {
 }
 .list-group {
   padding-left: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 8px 15px;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;

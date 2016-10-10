@@ -20,29 +20,54 @@ $(document).ready(function(){
         });
     }).change();
 });
-$('#main-order').multiSelect({ keepOrder: true });
-    $('#sub-order').multiSelect({ keepOrder: true });
-    $('#select-all').click(function(){
-      $('#main-order').multiSelect('select_all');
-      return false;
+
+$(document).on("change", ".score1", function() {
+    var sum = 0;
+    $(".score1").each(function(){
+        sum += +$(this).val();
     });
-    $('#deselect-all').click(function(){
-      $('#main-order').multiSelect('deselect_all');
-      return false;
+     $("#subtotal1").html(sum);
+});
+$(document).on("change", ".score2", function() {
+    var sum = 0;
+    $(".score2").each(function(){
+        sum += +$(this).val();
     });
-    $('#select-all1').click(function(){
-      $('#sub-order').multiSelect('select_all');
-      return false;
+     $("#subtotal2").html(sum);
+});
+$(document).on("change", ".score3", function() {
+    var sum = 0;
+    $(".score3").each(function(){
+        sum += +$(this).val();
     });
-    $('#deselect-all1').click(function(){
-      $('#sub-order').multiSelect('deselect_all');
-      return false;
+     $("#subtotal3").html(sum);
+});
+$(document).on("change", ".score4", function() {
+    var sum = 0;
+    $(".score4").each(function(){
+        sum += +$(this).val();
     });
-    function back() {
-    window.history.back()
+     $("#subtotal4").html(sum);
+});
+$(document).on("change", ".main1", function() {
+    var sum = 0;
+    $(".main1").each(function(){
+        sum += +$(this).val();
+    });
+     $("#maintotal1").html(sum);
+});
+function countTotal() {
+  if($("#maintotal1").html() != 100){
+    $('#warning').html( "total must be 100%" );
+  } else {
+    $('#warning').html( "" );
   }
+}
 function back() {
 		window.history.back()
 }
-
-
+// <div class="alert alert-danger" role="alert">
+//      <a class="close" data-dismiss="alert">×</a>
+//      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+//      Total score must be 100
+//    </div>
