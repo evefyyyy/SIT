@@ -32,7 +32,7 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/index">Home</a></li>
+          <li><a href="/home/projects">Home</a></li>
           @if(Auth::check())
             <li><a href="/student/news/announcement">manage project</a></li>
           @endif
@@ -56,7 +56,7 @@
       </li>
       </ul>
         @if(Auth::check())
-        <?php $student_pkid = Auth::user()->user_student->first()->student_pkid; 
+        <?php $student_pkid = Auth::user()->user_student->first()->student_pkid;
           $student = DB::table('students')->where('id', $student_pkid)->first();
 
         ?>
