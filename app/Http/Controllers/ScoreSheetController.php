@@ -24,6 +24,8 @@ use App\ProjectDetail;
 use App\Picture;
 use App\CriteriaMain;
 use App\CriteriaSub;
+use App\Template;
+use App\MainTemplate;
 use Auth;
 
 class ScoreSheetController extends Controller
@@ -126,8 +128,18 @@ class ScoreSheetController extends Controller
 
     public function storeTemplate(Request $request)
     {
-      $obj = $request['mainCriteria'];
+      $temp = DB::table('templates')->get();
+      $countTemp = count($temp);
+      $obj = new Template();
+      $obj->template_number = $countTemp+1;
+      $obj->save();
 
+      $main = $request['mainCriteria'];
+      $countMain = count($main);
+      for($i=0;$i<$count;$i++){
+        $obj = new
+      }
+      $sub = $request['subCriteria'];
       return redirect(url('exam/managescore/template'));
     }
 
