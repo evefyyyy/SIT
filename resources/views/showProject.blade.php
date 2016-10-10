@@ -24,7 +24,7 @@
 
 			@if(Auth::check())
 			<?php
-				$objs = Auth::user()->student->student_id;
+				$objs = Auth::user()->user_student->student->student_id;
 		    $checkStd = DB::table('students')->where('student_id',$objs)->value('id');
 		    $projectId = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
 			?>
