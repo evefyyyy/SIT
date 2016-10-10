@@ -14,7 +14,7 @@
            </select>
           </div>
           <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>edit</a>
-          <span id="pendlink"><a href="template/create" class="btn">create template</a></span>
+          <span id="pendlink"><a href="template/create" class="btn"><span class="glyphicon glyphicon-plus"></span> new template</a></span>
         </div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
   </div>
