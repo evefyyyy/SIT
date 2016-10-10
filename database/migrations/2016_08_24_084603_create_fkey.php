@@ -132,7 +132,34 @@ class CreateFkey extends Migration
         Schema::table('main_templates', function($table){
             $table->integer('template_id')->unsigned();
             $table->foreign('template_id')->references('id')->on('templates');
+            $table->integer('year_id')->unsigned();
+            $table->foreign('year_id')->references('id')->on('years');
+            $table->integer('type_id')->unsigned();
+            $table->foreign('type_id')->references('id')->on('types');
         });
+        Schema::table('sub_templates', function($table){
+            $table->integer('main_template_id')->unsigned();
+            $table->foreign('main_template_id')->references('id')->on('main_templates');
+            $table->integer('template_id')->unsigned();
+            $table->foreign('template_id')->references('id')->on('templates');
+        });
+        Schema::table('grade_advisor', function($table){
+            $table->integer('advisor_id')->unsigned();
+            $table->foreign('advisor_id')->references('id')->on('advisors');
+            $table->integer('main_template_id')->unsigned();
+            $table->foreign('main_template_id')->references('id')->on('main_templates');
+            $table->integer('project_pkid')->unsigned();
+            $table->foreign('project_pkid')->references('id')->on('group_projects');
+        });
+        Schema::table('advisor_scoresheet', function($table){
+            $table->integer('sub_template_id')->unsigned();
+            $table->foreign('sub_template_id')->references('id')->on('sub_templates');
+            $table->integer('advisor_id')->unsigned();
+            $table->foreign('advisor_id')->references('id')->on('advisors');
+            $table->integer('project_pkid')->unsigned();
+            $table->foreign('project_pkid')->references('id')->on('group_projects');
+        });
+
 
 
     }
