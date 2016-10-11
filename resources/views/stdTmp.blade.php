@@ -52,6 +52,7 @@
                       @endif
                     @endif
                       <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
+                      <li><a href="#">documents</a></li>
                       <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
