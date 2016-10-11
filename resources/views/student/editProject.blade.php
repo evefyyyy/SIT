@@ -7,7 +7,7 @@
 			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-				<img id="cover" src="{{$poster or ''}}" alt="your image"/>
+				<img class="img-responsive" id="cover" src="{{$poster or ''}}"/>
 				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse group">Select new image</label>
 				<label class="pic-size">poster 1280 x 768 px</label>
