@@ -128,25 +128,26 @@ class ScoreSheetController extends Controller
 
     public function storeTemplate(Request $request)
     {
-      $temp = DB::table('templates')->get();
+      $temp = DB::table('templates')->groupBy('template_number')->get();
       $countTemp = count($temp);
-      $obj = new Template();
-      $obj->template_number = $countTemp+1;
-      $obj->save();
 
       $main = $request['mainCriteria'];
       $countMain = count($main);
-      for($i=0;$i<$count;$i++){
-        $obj = new
-      }
-      $sub = $request['subCriteria'];
-      return redirect(url('exam/managescore/template'));
-    }
 
-    public function viewScoreSheet()
-    {
-      $data['type'] = Type::all();
-      return view('admin.manageScoreSheet',$data);
+      $sub = $request['subCriteria'];
+      $countSub = count($sub);
+
+      for($m=0;$m<$countMain;$m++){
+        for($s=0;$s<$countSub;$s++){
+          $obj = new Template();
+          $obj->template_number = $countTemp+1;
+          $obj->round = $m+1;
+          $obj->criteria_main_id = $main[$m];
+          $obj->criteria_sub_id = $sub[$s];
+          $obj->save();
+        }
+      }
+      return redirect(url('exam/managescore/template'));
     }
 
     public function editTemplate()
@@ -155,4 +156,37 @@ class ScoreSheetController extends Controller
       $data['subCriteria'] = CriteriaSub::all();
       return view('admin.editTemplate',$data);
     }
+
+    public function manageTemplate()
+    {
+      $data['template'] = DB::table('templates')->groupBy('template_number')->get();
+      $count = count($data['template']);
+      $data['count'] = $count;
+
+      for($i=0;$i<$count;$i++){
+        $data['mainCriteria'] = DB::table('templates')
+                            ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                            ->select('criteria_main_name')->groupBy('template_number','criteria_main_id')
+                            ->having('template_number','=',$i+1)->get();
+
+        $data['subCriteria'] = DB::table('templates')
+                              ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+                              ->select('criteria_sub_name')->groupBy('template_number','round','criteria_main_id','criteria_sub_id')
+                              ->having('template_number','=',$i+1)->get();
+      }
+
+
+                          //
+                          // dd($data['subCriteria']);
+
+      return view('admin.manageTemplate',$data);
+    }
+
+    public function viewScoreSheet()
+    {
+      $data['type'] = Type::all();
+      return view('admin.manageScoreSheet',$data);
+    }
+
+
 }
