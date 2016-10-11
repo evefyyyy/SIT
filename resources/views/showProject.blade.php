@@ -10,7 +10,11 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+			@if($poster != null)
 			<img src="{{$poster}}" class="cover">
+			@else
+			<img src="/img/no-poster.png" class="cover">
+			@endif
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -54,7 +58,11 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
+			@if($groupPic != null)
 			<img src="{{$groupPic}}" class="group-member img-thumbnail">
+			@else
+			<img src="/img/no-image.png" class="group-member img-thumbnail">
+			@endif
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
