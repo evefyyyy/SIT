@@ -30,9 +30,8 @@ class projectController extends Controller
 
       $obj['groupProject'] = GroupProject::where('group_project_approve','=','1')->get();
 
-      $obj['detail'] = ProjectDetail::all();
+      $obj['poster'] = Picture::where('picture_type_id', 1)->get();
 
-      $obj['poster'] = Picture::all();
 
       return view('projects',$obj);
     }

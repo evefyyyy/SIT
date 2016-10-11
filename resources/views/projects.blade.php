@@ -19,6 +19,13 @@
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 
       @foreach($groupProject as $project)
+      <?php
+        $id = $project->id;
+        $poster = DB::table('pictures')
+                  ->where('project_pkid',$id)
+                  ->where('picture_type_id','=','1')
+                  ->value('picture_path_name');
+       ?>
 			<div class="col-xs-18 col-sm-6 col-md-3" data-tag='{{$project->category->category_name}}'>
 	          <div class="thumbnail">
 	          	<div class="pdf-thumb-box">
@@ -26,10 +33,10 @@
 			      	 <div class="pdf-thumb-box-overlay">
 			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i>
        				 </div>
-              @if(count($project->picture)===0)
+              @if(count($poster)===0)
               <img src="/img/no-poster.png">
               @else
-	          <img src="{{$project->picture[0]->picture_path_name}}" alt="">
+	          <img src="{{$poster}}" alt="">
               @endif
           		</a>
           		</div>
