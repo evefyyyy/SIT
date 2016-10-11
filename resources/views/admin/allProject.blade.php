@@ -88,7 +88,7 @@
 					@if($countProject===0)
 
 					<tr>
-					<td colspan="7" class="no-project">no project found</td>
+					<td colspan="8" class="no-project">no project found</td>
 					</tr>
 					@else
 					@foreach($group_project as $gp)
@@ -186,7 +186,7 @@
 @endif
 <script src="{!! URL::asset('js/search.js') !!}"></script>
 <script>
-	$('table').filterForTable();
+	$('#pjtable').filterForTable();
 	$('#searchInput').on( 'keyup', function () {
 		table.search( this.value ).draw();
 	} );

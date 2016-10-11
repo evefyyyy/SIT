@@ -770,7 +770,7 @@ option {
 #projectTB td, #projectTB th {
   font-size: 0.975em;
 }
-a.tblink, .approveall a {
+a.tblink, .approveall a, a.tblink span {
   color: black;
   text-decoration: none;
 }
