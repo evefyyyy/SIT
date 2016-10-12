@@ -34,7 +34,13 @@
         <ul class="nav navbar-nav">
           <li><a href="/home/projects">Home</a></li>
           @if(Auth::check())
-            <li><a href="/student/news/announcement">manage project</a></li>
+            @if(Auth::user()->user_type_id === 1)
+              <li><a href="/advisor/news/announcement">manage project</a></li>
+            @elseif(Auth::user()->user_type_id === 3)
+              <li><a href="/student/news/announcement">manage project</a></li>
+            @elseif(Auth::user()->user_type_id === 2)
+              <li><a href="/advisor/news/announcement">manage project</a></li>
+            @endif
           @endif
           <li>
           <form class="navbar-form" role="search" action="{{url('home/projects/search')}}" method="get">
