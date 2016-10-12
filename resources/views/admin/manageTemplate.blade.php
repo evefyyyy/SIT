@@ -8,8 +8,8 @@
         <label>select template</label>
           <div class="btn-group">
             <select class="selecttemp">
-            @foreach($template as $temp)
-             <option value="{{$temp->template_number}}">template {{$temp->template_number}}</option>
+              @foreach($template as $temp)
+             <option value="{{$temp->id}}">Template {{$temp->temp_num}}</option>
              @endforeach
            </select>
           </div>
@@ -18,17 +18,15 @@
         </div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
   </div>
-
-  @for($i=0 ; $i<$count;$i++)
-  <div class="{{$i}} box">
-
+  @foreach($tempData as $td)
+  <div class="{{$td->id}} box">
   <div class="row">
         <div class="col-xs-1 col-md-3 col-lg-3"></div>
         <div class="col-xs-10 col-md-6 col-lg-6 cri">
           <label class="titlee">main criteria</label>
             <ul class="list-group">
-              @foreach($mainCriteria as $main)
-              <li class="list-group-item">{{$main->criteria_main_name}}</li>
+              @foreach($td->main as $m)
+              <li class="list-group-item">{{$m->criteria_main_name}}</li>
               @endforeach
             </ul>
         </div>
@@ -39,15 +37,15 @@
         <div class="col-xs-10 col-md-6 col-lg-6 cri">
           <label class="titlee">sub criteria</label>
             <ul class="list-group">
-              @foreach($subCriteria as $sub)
-              <li class="list-group-item">{{$sub->criteria_sub_name}}</li>
+              @foreach($td->sub as $s)
+              <li class="list-group-item">{{$s->criteria_sub_name}}</li>
               @endforeach
             </ul>
         </div>
      <div class="col-xs-1 col-md-3 col-lg-3"></div>
   </div>
 </div>
-@endfor
+@endforeach
   <div id="center" style="margin-top:15px">
     <a><button class="action-button" onclick="back()">back</button></a>
   </div>

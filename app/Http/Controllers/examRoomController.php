@@ -40,7 +40,6 @@ class examRoomController extends Controller
       $selectAdv = $request['selectAdv'];
       $time = $request['startTime'];
       $endTime = $time;
-      dd(strtotime($endTime));
       $getMin = $request['minute'];
       $examdate = $request['examdate'];
       $replace = str_replace('/', '-', $examdate);
@@ -100,9 +99,8 @@ class examRoomController extends Controller
               $minFormat = '-'.$getMin.' minutes';
               $startTime = date("g:ia",strtotime($minFormat,$getStartTime));
               $obj['project'][$i]['starttime']= $startTime;
-
-              
           }
+          dd($obj['project']);
 
 
 // addroom

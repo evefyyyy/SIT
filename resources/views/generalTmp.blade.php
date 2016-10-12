@@ -41,9 +41,14 @@
           <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
             <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search">
             <div class="ddl-select input-group-btn">
+              <?php
+                $year = DB::table('years')->get();
+               ?>
               <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default" name="year">
-                <option>all years</option>
-                <option value="2016">2016</option>
+                <option value="0">all years</option>
+                @foreach($year as $y)
+                <option value="{{$y->id}}">{{$y->year}}</option>
+                @endforeach
               </select>
             </div>
             <span class="input-group-btn">
