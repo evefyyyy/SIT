@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemplateSubTable extends Migration
+class CreateTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateTemplateSubTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_templates', function (Blueprint $table) {
+        Schema::create('templates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('score');
+            $table->integer('temp_num');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateTemplateSubTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sub_templates');
+        Schema::drop('templates');
     }
 }

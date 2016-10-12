@@ -27,10 +27,10 @@ class User extends Authenticatable
     }
     public function user_advisor()
     {
-        return $this->hasMany('App\UserAdvisor');
+        return $this->hasOne('App\UserAdvisor');
     }
     public function user_staff()
     {
-        return $this->hasMany('App\UserStaff');
+        return $this->hasOne('App\UserStaff');
     }
 }
