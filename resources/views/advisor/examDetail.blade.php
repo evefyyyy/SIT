@@ -17,10 +17,10 @@
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	</div>
 </div>
-<div class="row" style="margin-top:15px">
+<div class="row" id="marksTB">
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	<div class="col-xs-12 col-md-10 col-lg-8">
-	<table id="marksTB" class="table table-bordered">
+	<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>Project ID</th>
@@ -52,7 +52,7 @@
 				</tbody>
 			</table>
 			<div id="center">
-			  <a><button class="action-button" onclick="back()">back</button></a>
+			  <a href="/exam/selectround"><button class="action-button">back</button></a>
 			  <button type="submit" class="action-button">submit</button>
 			</div>
 	</div>

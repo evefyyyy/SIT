@@ -13,7 +13,7 @@
 		<div class="col-xs-3 col-md-4 col-lg-4"></div>
 	</div>
 	<div id="center">
-	  <a><button class="action-button" onclick="back()">back</button></a>
+	  <a href="/exam/scoresheet"><button class="action-button">back</button></a>
 	</div>
 	</form>
 </div>

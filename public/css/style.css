@@ -1405,7 +1405,7 @@ input[type="range"].cropit-image-zoom-input {
 #scorecheet .table > tbody > tr > td > input[type=number] {
   margin: 0 auto;
 }
-#scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td {
+#scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td, #givemark .table > tfoot > tr > th {
   vertical-align: middle;
 }
 #scoresheet table {
@@ -1438,7 +1438,8 @@ input[type="range"].cropit-image-zoom-input {
   text-transform: uppercase;
   padding: 10px;
 }
-.box .table > tfoot > tr > th:nth-child(2n+2), #subtotal {
+.box .table > tfoot > tr > th:nth-child(2n+2), #subtotal,
+#givemark td:nth-child(3), #tsubtotal {
   padding-left: 24px;
 }
 #scoreyear .table > tbody > tr > td:nth-child(2n+1) {
@@ -1646,4 +1647,17 @@ a.delete:focus{
 }
 #givemark table {
   margin-top: 10px;
+}
+#givemark .table > tfoot > tr > th:nth-child(1) {
+  text-transform: uppercase;
+  text-align: right !important;
+}
+#givemark .btn-group {
+  width: 77px;
+}
+.required:after {
+  content:'*';
+  color:red;
+  display: inline;
+  font-size: 1.625em;
 }

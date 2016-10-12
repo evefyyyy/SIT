@@ -47,7 +47,7 @@
 </div>
 @endforeach
   <div id="center" style="margin-top:15px">
-    <a><button class="action-button" onclick="back()">back</button></a>
+    <a href="/exam/scoresheet"><button class="action-button">back</button></a>
   </div>
 </div>
 <script src="{!! URL::asset('js/jquery.multi-select.js') !!}"></script>

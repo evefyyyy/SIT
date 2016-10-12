@@ -151,7 +151,7 @@
 </div><!-- /.modal -->
 </div>
 <div id="center">
-  <a><button class="action-button" onclick="back()">back</button></a>
+  <a href="/exam/scoresheet"><button class="action-button">back</button></a>
   <a href="#"><button type="submit" class="action-button">save</button></a>
 </div>
 </div>
