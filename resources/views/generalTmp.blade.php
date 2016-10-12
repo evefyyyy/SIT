@@ -76,9 +76,6 @@
                    <div class="form-group">
                      <button type="submit" class="btn-login">Login</button>
                    </div>
-                   <div class="checkbox">
-                     <label><input type="checkbox"> keep me logged-in</label>
-                   </div>
                  </form>
                </div>
              </div>

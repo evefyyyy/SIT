@@ -1,7 +1,7 @@
 @extends('adminTmp')
 @section('content')
 <div id="allowtest">
-<h2><img height="45" src="/img/exam.png">allow test</h2>
+<h2><img height="45" src="/img/checklist.png">allow test</h2>
 	<div class="row">
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-md-10 col-lg-10" id="projectTB" style="margin-top:30px">

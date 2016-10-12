@@ -1,6 +1,6 @@
 @extends('adminTmp')
 @section('content')
-<h2><img height="45" src="/img/exam.png">score record</h2>
+<h2><img height="45" src="/img/score.png">score record</h2>
 <div class="row">
 	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-6 col-md-5 col-lg-5"></div>
