@@ -52,6 +52,7 @@ class editProjectController extends Controller {
 							->join('students','student_pkid','=','students.id')
 							->where('project_pkid',$getId)
 							->select('student_id','student_name','student_email')->get();
+		$data['student'] = count($student);
 
 		if(count($student)==3){
 			$data['stdId1'] = $student[0]->student_id;

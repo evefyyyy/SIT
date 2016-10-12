@@ -25,7 +25,8 @@ use App\Picture;
 use App\CriteriaMain;
 use App\CriteriaSub;
 use App\Template;
-use App\MainTemplate;
+use App\TemplateMain;
+use App\TemplateSub;
 use Auth;
 
 class ScoreSheetController extends Controller
@@ -128,22 +129,33 @@ class ScoreSheetController extends Controller
 
     public function storeTemplate(Request $request)
     {
-      $temp = DB::table('templates')->groupBy('template_number')->get();
+      $temp = DB::table('templates')->get();
       $countTemp = count($temp);
+      $obj = new Template();
+      $obj->temp_num = $countTemp+1;
+      $obj->save();
 
       $main = $request['mainCriteria'];
       $countMain = count($main);
+      $temp = DB::table('templates')->max('id');
+      for($i=0;$i<$countMain;$i++){
+        $obj = new TemplateMain();
+        $obj->round = $i+1;
+        $obj->criteria_main_id = $main[$i];
+        $obj->template_id = $temp;
+        $obj->save();
+      }
 
       $sub = $request['subCriteria'];
       $countSub = count($sub);
-
-      for($m=0;$m<$countMain;$m++){
-        for($s=0;$s<$countSub;$s++){
-          $obj = new Template();
-          $obj->template_number = $countTemp+1;
-          $obj->round = $m+1;
-          $obj->criteria_main_id = $main[$m];
-          $obj->criteria_sub_id = $sub[$s];
+      $rows = DB::table('templates_main')->orderBy('id','desc')->take($countMain)->select('id')->get();
+      $countRows = count($rows);
+      for($r=0;$r<$countRows;$r++){
+        $id[$r] = $rows[$r]->id;
+        for($i=0;$i<$countSub;$i++){
+          $obj = new TemplateSub();
+          $obj->template_main_id = $id[$r];
+          $obj->criteria_sub_id = $sub[$i];
           $obj->save();
         }
       }
@@ -159,25 +171,25 @@ class ScoreSheetController extends Controller
 
     public function manageTemplate()
     {
-      $data['template'] = DB::table('templates')->groupBy('template_number')->get();
+      $data['template'] = Template::all();
       $count = count($data['template']);
-      $data['count'] = $count;
+      $data['tempData'] = array_flatten($data['template']);
 
       for($i=0;$i<$count;$i++){
-        $data['mainCriteria'] = DB::table('templates')
-                            ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-                            ->select('criteria_main_name')->groupBy('template_number','criteria_main_id')
-                            ->having('template_number','=',$i+1)->get();
+        $temp[$i] = $data['template'][$i]->id;
 
-        $data['subCriteria'] = DB::table('templates')
-                              ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-                              ->select('criteria_sub_name')->groupBy('template_number','round','criteria_main_id','criteria_sub_id')
-                              ->having('template_number','=',$i+1)->get();
+        $main[$i] = DB::table('templates_main')
+                ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                ->where('template_id',$temp[$i])->get();
+        $data['tempData'][$i]['main'] = $main[$i];
+
+        $sub[$i] = DB::table('templates_sub')
+                ->join('templates_main','templates_main.id','=','template_main_id')
+                ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+                ->where('template_id',$temp[$i])
+                ->groupBy('criteria_sub_id')->get();
+        $data['tempData'][$i]['sub'] = $sub[$i];
       }
-
-
-                          //
-                          // dd($data['subCriteria']);
 
       return view('admin.manageTemplate',$data);
     }
