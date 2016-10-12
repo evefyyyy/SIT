@@ -49,6 +49,8 @@ Route::get('exam/manageroom/preview', function () {
     return view('admin.previewRoom');
 });
 
+Route::resource('exam/allowtest', 'AllowTestController');
+
 Route::get('exam/scoresheet','ScoreSheetController@index');
 
 Route::get('exam/managescore/year','ScoreSheetController@viewScoreSheet');
