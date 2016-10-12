@@ -61,7 +61,13 @@
       </li>
       </ul>
         @if(Auth::check())
-        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_student->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @if(Auth::user()->user_type_id === 1)
+              <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_advisor->advisor->advisor_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @elseif(Auth::user()->user_type_id === 3)
+              <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_student->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @elseif(Auth::user()->user_type_id === 2)
+              <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_staff->staff->name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @endif
         @else
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
