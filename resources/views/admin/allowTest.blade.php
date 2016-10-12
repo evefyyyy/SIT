@@ -89,9 +89,6 @@
 @endif
 </div>
 <script>
-	$('.firstname').each(function(index) {
-		document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
-	});
 	$(document).ready(function() {
 		$('#pjtable').DataTable( {
 		} );

@@ -189,9 +189,6 @@
 	<script src="{!! URL::asset('js/search.js') !!}"></script>
 	<script>
 	$('.results').filterForTable();
-	$('.firstname').each(function(index) {
-		document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
-	});
 	$(document).ready(function() {
     var table = $('#pjtable').DataTable( {
     	 "searching": false

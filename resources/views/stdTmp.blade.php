@@ -29,7 +29,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">
-                  <li class="dropdown">
+                  <li class="dropdown {{ strrpos(Request::path(),'student/news') === 0 ? 'active' : ''  }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">news</a>
                     <ul class="dropdown-menu">
                       <li><a href="/student/news/announcement">Announcement</a></li>

@@ -29,15 +29,15 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">
-                  <li class="dropdown">
+                  <li class="dropdown {{ strrpos(Request::path(),'advisor/news') === 0 ? 'active' : ''  }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">news</a>
                     <ul class="dropdown-menu">
-                      <li><a href="/news/announcement">Announcement</a></li>
-                      <li><a href="/news/document">documents</a></li>
+                      <li><a href="/advisor/news/announcement">Announcement</a></li>
+                      <li><a href="/advisor/news/document">documents</a></li>
                     </ul>
                   </li>
                   <li class="{{ strrpos(Request::path(),'advproject') === 0 ? 'active' : ''  }}"><a href="/advproject">My project</a></li>
-                  <li class="{{ strrpos(Request::path(),'exam/givemark') === 0 ? 'active' : ''  }}"><a href="/exam/givemarks">exam</a></li>
+                  <li class="{{ strrpos(Request::path(),'exam/givemark') === 0 ? 'active' : ''  }}"><a href="/exam/selectround">exam</a></li>
                   <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

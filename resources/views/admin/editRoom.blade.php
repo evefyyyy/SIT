@@ -114,9 +114,4 @@
 		</div>
 
 <script src="{!! URL::asset('js/room.js') !!}"></script>
-<script>
-$('.firstname').each(function(index) {
-	document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
-});
-</script>
 @stop

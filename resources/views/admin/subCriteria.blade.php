@@ -68,8 +68,5 @@ $(function()
 		return false;
 	});
 });
-function back() {
-		window.history.back()
-}
 </script>
 @stop

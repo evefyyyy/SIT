@@ -17,9 +17,4 @@
 	</div>
 	</form>
 </div>
-<script>
-function back() {
-		window.history.back()
-}
-</script>
 @stop

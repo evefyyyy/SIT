@@ -48,7 +48,15 @@ Route::get('exam/manageroom/create/preview','examRoomController@preview');
 Route::get('exam/manageroom/preview', function () {
     return view('admin.previewRoom');
 });
-
+Route::get('exam/round', function () {
+    return view('advisor.examDetail');
+});
+Route::get('exam/round/givemarks', function () {
+    return view('advisor.giveMarks');
+});
+Route::get('exam/selectround', function () {
+    return view('advisor.selectRound');
+});
 Route::resource('exam/allowtest', 'AllowTestController');
 
 Route::get('exam/scoresheet','ScoreSheetController@index');
@@ -82,14 +90,14 @@ Route::get('myscore', function () {
 });
 Route::resource('advproject','AdvisorProjectController');
 
-Route::get('exam/givemarks', function () {
-    return view('advisor.giveMark');
-});
 Route::resource('student/news/announcement', 'StudentAnnoucementController');
 // Route::post('news/announcement/edit', 'adminAnnouncementController@edit');
 
 Route::resource('student/news/document', 'StudentDocumentController');
 // Route::post('news/document/edit', 'adminDocumentController@edit');
+Route::resource('advisor/news/announcement', 'AdvisorAnnoucementController');
+Route::resource('advisor/news/document', 'AdvisorDocumentController');
+
 Route::get('home/projects','projectController@index');
 
 Route::get('home/projects/search','projectController@search');

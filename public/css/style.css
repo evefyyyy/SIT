@@ -1231,7 +1231,7 @@ input[type="range"].cropit-image-zoom-input {
   font-weight: 600;
   text-transform: uppercase;
 }
-#examroom .panel-body {
+#examroom .panel-body, .type {
   text-transform: capitalize;
 }
 #examroom .panel-body button {
@@ -1405,7 +1405,7 @@ input[type="range"].cropit-image-zoom-input {
 #scorecheet .table > tbody > tr > td > input[type=number] {
   margin: 0 auto;
 }
-#scoresheet .table > tbody > tr > td {
+#scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td {
   vertical-align: middle;
 }
 #scoresheet table {
@@ -1438,7 +1438,7 @@ input[type="range"].cropit-image-zoom-input {
   text-transform: uppercase;
   padding: 10px;
 }
-.box .table > tfoot > tr > th:nth-child(2n+2) {
+.box .table > tfoot > tr > th:nth-child(2n+2), #subtotal {
   padding-left: 24px;
 }
 #scoreyear .table > tbody > tr > td:nth-child(2n+1) {
@@ -1593,10 +1593,57 @@ a.delete:focus{
 }
 #allowtest input[type="checkbox"]{
   margin: 4px 10px;
-  transform: scale(1);
-  -webkit-transform: scale(1);
+  cursor: pointer;
 }
 #allowtest p {
   text-align: right;
   margin-bottom: 5px;
+}
+.round-btn a {
+  text-decoration: none;
+}
+.round-btn button {
+    color: #40c3a7;
+    width: 189px;
+    height: 50px;
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid #40c3a7;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.round-btn button:disabled {
+  color: #c2c2c2;
+  border: 2px solid #c2c2c2;
+  cursor: not-allowed;
+  font-weight: normal;
+}
+#marksTB i.glyphicon-ok {
+  color: #40c3a7;
+}
+#marksTB td:nth-child(3),
+#marksTB th:nth-child(3) {
+  text-align: center;
+}
+#editroom .head {
+  font-size: 1.125em;
+}
+#editroom strong {
+  padding-right: 15px;
+}
+#givemark p {
+  font-size: 1.1em;
+  display: inline;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+#givemark table {
+  margin-top: 10px;
 }

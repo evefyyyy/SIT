@@ -63,8 +63,5 @@ $('#main-order').multiSelect({ keepOrder: true });
       $('#sub-order').multiSelect('deselect_all');
       return false;
     });
-    function back() {
-    window.history.back()
-}
 </script>
 @stop
