@@ -49,6 +49,8 @@ Route::get('exam/manageroom/preview', function () {
     return view('admin.previewRoom');
 });
 
+Route::resource('exam/allowtest', 'AllowTestController');
+
 Route::get('exam/scoresheet','ScoreSheetController@index');
 
 Route::get('exam/managescore/year','ScoreSheetController@viewScoreSheet');
@@ -57,9 +59,7 @@ Route::get('exam/managescore/template/create','ScoreSheetController@createTempla
 
 Route::post('exam/managescore/template','ScoreSheetController@storeTemplate');
 
-Route::get('exam/managescore/template', function () {
-    return view('admin.manageTemplate');
-});
+Route::get('exam/managescore/template', 'ScoreSheetController@manageTemplate');
 
 Route::get('exam/managescore/template/edit','ScoreSheetController@editTemplate');
 
@@ -263,7 +263,7 @@ Route::post('student/myproject/create/{id}/stdId3',function(){
       }
     }else{
       return Response::json($data);
-    }  
+    }
   }else{
       return 0;
   }

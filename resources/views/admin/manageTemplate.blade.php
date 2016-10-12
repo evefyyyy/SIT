@@ -8,9 +8,9 @@
         <label>select template</label>
           <div class="btn-group">
             <select class="selecttemp">
-             <option value="1">template 1</option>
-             <option value="2">template 2</option>
-             <option value="3">template 3</option>
+              @foreach($template as $temp)
+             <option value="{{$temp->id}}">Template {{$temp->temp_num}}</option>
+             @endforeach
            </select>
           </div>
           <a href="/exam/managescore/template/edit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>edit</a>
@@ -18,15 +18,16 @@
         </div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
   </div>
-  <div class="1 box">
+  @foreach($tempData as $td)
+  <div class="{{$td->id}} box">
   <div class="row">
         <div class="col-xs-1 col-md-3 col-lg-3"></div>
         <div class="col-xs-10 col-md-6 col-lg-6 cri">
           <label class="titlee">main criteria</label>
             <ul class="list-group">
-              <li class="list-group-item">การศึกษาความเป็นไปได้</li>
-              <li class="list-group-item">การวิเคราะห์และออกแบบ</li>
-              <li class="list-group-item">การทำงานของโปรแกรม</li>
+              @foreach($td->main as $m)
+              <li class="list-group-item">{{$m->criteria_main_name}}</li>
+              @endforeach
             </ul>
         </div>
      <div class="col-xs-1 col-md-3 col-lg-3"></div>
@@ -36,15 +37,15 @@
         <div class="col-xs-10 col-md-6 col-lg-6 cri">
           <label class="titlee">sub criteria</label>
             <ul class="list-group">
-              <li class="list-group-item">ความสมบูรณ์ของงาน</li>
-              <li class="list-group-item">คุณภาพของงาน</li>
-              <li class="list-group-item">การตอบคำถาม</li>
-              <li class="list-group-item">การนำเสนองานและเอกสาร</li>
+              @foreach($td->sub as $s)
+              <li class="list-group-item">{{$s->criteria_sub_name}}</li>
+              @endforeach
             </ul>
         </div>
      <div class="col-xs-1 col-md-3 col-lg-3"></div>
   </div>
 </div>
+@endforeach
   <div id="center" style="margin-top:15px">
     <a><button class="action-button" onclick="back()">back</button></a>
   </div>

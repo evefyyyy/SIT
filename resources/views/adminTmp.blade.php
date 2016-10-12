@@ -45,6 +45,7 @@
                   <li class="dropdown {{ strrpos(Request::path(),'exam') === 0 ? 'active' : ''  }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">exam</a>
                     <ul class="dropdown-menu">
+                      <li><a href="/exam/allowtest">allow test</a></li>
                       <li><a href="/exam/manageroom">exam room</a></li>
                       <li><a href="/exam/scoresheet">score sheet</a></li>
                       <li><a href="/exam/scorerecord">score record</a></li>

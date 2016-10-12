@@ -88,7 +88,7 @@
 					@if($countProject===0)
 
 					<tr>
-					<td colspan="7" class="no-project">no project found</td>
+					<td colspan="8" class="no-project">no project found</td>
 					</tr>
 					@else
 					@foreach($group_project as $gp)
@@ -134,13 +134,13 @@
 				<table class="table table-bordered myscore">
 					<tbody>
 						<tr>
-							<td width="50%">exam round 1</td><td width="50%" class="good">good</td>
+							<td width="50%">exam round 1</td><td width="50%">D <span class="poor">(poor)</span></td>
 						</tr>
 						<tr>
-							<td>exam round 2</td><td class="fair">fair</td>
+							<td>exam round 2</td><td>C+ <span class="fair">(fair)</span></td>
 						</tr>
 						<tr>
-							<td>exam round 3</td><td class="verygood">very good</td>
+							<td>exam round 3</td><td>B <span class="good">(good)</span></td>
 						</tr>
 						<tr>
 							<td>exam round 4</td><td></td>
@@ -186,7 +186,7 @@
 @endif
 <script src="{!! URL::asset('js/search.js') !!}"></script>
 <script>
-	$('table').filterForTable();
+	$('#pjtable').filterForTable();
 	$('#searchInput').on( 'keyup', function () {
 		table.search( this.value ).draw();
 	} );

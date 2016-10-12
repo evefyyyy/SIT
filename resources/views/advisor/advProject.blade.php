@@ -116,13 +116,13 @@
 					<table class="table table-bordered myscore">
 						<tbody>
 							<tr>
-								<td width="50%">exam round 1</td><td>A</td>
+								<td width="50%">exam round 1</td><td>A <span class="verygood">(very good)</span></td>
 							</tr>
 							<tr>
-								<td>exam round 2</td><td>B+</td>
+								<td>exam round 2</td><td>B <span class="good">(good)</span></td>
 							</tr>
 							<tr>
-								<td>exam round 3</td><td>C</td>
+								<td>exam round 3</td><td>B+ <span class="verygood">(very good)</span></td>
 							</tr>
 							<tr>
 								<td>exam round 4</td><td></td>

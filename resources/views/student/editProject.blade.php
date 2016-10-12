@@ -7,7 +7,7 @@
 			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-				<img id="cover" src="{{$poster or ''}}" alt="your image"/>
+				<img class="img-responsive" id="cover" src="{{$poster or ''}}"/>
 				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse group">Select new image</label>
 				<label class="pic-size">poster 1280 x 768 px</label>
@@ -99,10 +99,13 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email2" value="{{$email2 or ''}}"></div>
+			@if($student == 3)
 			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName3 or ''}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3 or ''}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email3" value="{{$email3 or ''}}"></div>
+			@else
+			@endif
 			</div>
 		</div>
 		<div class="panel panel-info">

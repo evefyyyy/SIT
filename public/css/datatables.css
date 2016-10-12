@@ -25,6 +25,9 @@ table.dataTable th {
 table.dataTable td.dataTables_empty,
 table.dataTable th.dataTables_empty {
   text-align: center;
+  text-transform: none;
+  color: #B6B6B6;
+  line-height: 5em;
 }
 table.dataTable.nowrap th,
 table.dataTable.nowrap td {
