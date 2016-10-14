@@ -61,7 +61,7 @@ class LdapLoginController extends Controller
 				$studentid = DB::table('students')->where('student_id', $username)->first()->id;
 				if(DB::table('users')->where('name', $username)->first()===null){
 					DB::table('users')->insert(
-						['name' => $username, 'password' => bcrypt($request->password)]
+						['name' => $username, 'password' => bcrypt($request->password), 'user_type_id' => 3]
 						);
 					$user_id = DB::table('users')->where('name', $username)->first()->id;
 					DB::table('user_student')->insert(
@@ -81,17 +81,24 @@ class LdapLoginController extends Controller
 				$adv_profile = DB::table('advisors')->where('advisor_name', $info[0])->first();
 				$staff_profile = DB::table('staff')->where('name', $info[0])->first();
 				if(DB::table('users')->where('name', $username)->first()===null){
-					DB::table('users')->insert(
-						['name' => $username, 'password' => bcrypt($request->password)]
-						);
-					$user_id = DB::table('users')->where('name', $username)->first()->id;
-					$checkadv = DB::table('advisors')->where('advisor_name', $adv_profile->advisor_name)->first();
-					$check_staff = DB::table('staff')->where('name', $staff_profile->name)->first();
+					if($adv_profile != null){
+						$checkadv = DB::table('advisors')->where('advisor_name', $adv_profile->advisor_name)->first();
+					} else if($staff_profile != null){
+						$checkstaff = DB::table('staff')->where('name', $staff_profile->name)->first();
+					}
 					if($checkadv != null){
+						DB::table('users')->insert(
+							['name' => $username, 'password' => bcrypt($request->password), 'user_type_id' => 1]
+							);
+						$user_id = DB::table('users')->where('name', $username)->first()->id;
 						DB::table('user_advisor')->insert(
 							['advisor_id' => $adv_profile->id, 'user_id' => $user_id]
 							);
-					} else if($check_staff != null){
+					} else if($checkstaff != null){
+						DB::table('users')->insert(
+							['name' => $username, 'password' => bcrypt($request->password), 'user_type_id' => 2]
+							);
+						$user_id = DB::table('users')->where('name', $username)->first()->id;
 						DB::table('user_advisor')->insert(
 							['staff_id' => $staff_profile->id, 'user_id' => $user_id]
 							);
