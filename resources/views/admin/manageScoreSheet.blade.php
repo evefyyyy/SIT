@@ -16,10 +16,10 @@
     </div>
     <label>score sheet</label>
     <div class="btn-group">
-      <select class="selecttemp" title="select">
-       <option value="1">template 1</option>
-       <option value="2">template 2</option>
-       <option value="3">template 3</option>
+      <select class="selecttemp" title="select" name="selectTemp">
+        @foreach($template as $temp)
+       <option value="{{$temp->id}}">template {{$temp->temp_num}}</option>
+       @endforeach
      </select>
    </div>
  </div>

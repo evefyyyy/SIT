@@ -7,13 +7,13 @@
         <div class="col-xs-10 col-md-8 col-lg-8">
         <label>select template</label>
           <div class="btn-group">
-            <select class="selecttemp">
+            <select class="selecttemp" name="selectTemp" id="selectTemp" onchange="selectTemp()">
               @foreach($template as $temp)
              <option value="{{$temp->id}}">Template {{$temp->temp_num}}</option>
              @endforeach
            </select>
           </div>
-          <a href="/exam/managescore/template/edit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>edit</a>
+          <a href="/exam/managescore/template/edit" class="btn btn-default" id="tempEdit"><span class="glyphicon glyphicon-pencil"></span>edit</a>
           <span id="pendlink"><a href="template/create" class="btn"><span class="glyphicon glyphicon-plus"></span> new template</a></span>
         </div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
@@ -71,5 +71,10 @@ $('#main-order').multiSelect({ keepOrder: true });
       $('#sub-order').multiSelect('deselect_all');
       return false;
     });
+  function selectTemp(){
+    var e = document.getElementById("selectTemp").value
+    document.getElementById("tempEdit").href = "/exam/managescore/template/"+e+"/edit"
+  }
+
 </script>
 @stop

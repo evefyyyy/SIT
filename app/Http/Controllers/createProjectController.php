@@ -143,11 +143,6 @@ class createProjectController extends Controller {
 		return redirect(url('student/myproject/waitapprove'));
 	}
 
-	public function show($id)
-	{
-		$obj = GroupProject::find($id);
-	}
-
 	public function edit($id)
 	{
 		// $data['students'] = \App\Student::where('student_id','=','56130500078')->get();
