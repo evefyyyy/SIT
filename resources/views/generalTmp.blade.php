@@ -34,7 +34,13 @@
         <ul class="nav navbar-nav">
           <li><a href="/home/projects">Home</a></li>
           @if(Auth::check())
-            <li><a href="/student/news/announcement">manage project</a></li>
+            @if(Auth::user()->user_type_id === 1)
+              <li><a href="/advisor/news/announcement">manage project</a></li>
+            @elseif(Auth::user()->user_type_id === 3)
+              <li><a href="/student/news/announcement">manage project</a></li>
+            @elseif(Auth::user()->user_type_id === 2)
+              <li><a href="/advisor/news/announcement">manage project</a></li>
+            @endif
           @endif
           <li>
           <form class="navbar-form" role="search" action="{{url('home/projects/search')}}" method="get">
@@ -61,7 +67,13 @@
       </li>
       </ul>
         @if(Auth::check())
-        <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_student->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @if(Auth::user()->user_type_id === 1)
+              <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_advisor->advisor->advisor_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @elseif(Auth::user()->user_type_id === 3)
+              <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_student->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @elseif(Auth::user()->user_type_id === 2)
+              <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_staff->staff->name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
+            @endif
         @else
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -80,9 +92,6 @@
                    </div>
                    <div class="form-group">
                      <button type="submit" class="btn-login">Login</button>
-                   </div>
-                   <div class="checkbox">
-                     <label><input type="checkbox"> keep me logged-in</label>
                    </div>
                  </form>
                </div>

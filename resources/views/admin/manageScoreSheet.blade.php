@@ -40,7 +40,7 @@
         <tr><td>การตอบคำถาม</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
         <tr><td>การนำเสนองานและเอกสาร</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
       </tbody>
-      <tfoot><tr><th><strong>TOTAL</strong></th><th><font id="subtotal1"></font> %</th></tr></tfoot>
+      <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1"></th></tr></tfoot>
     </table>
     <div class="alert alert-danger" role="alert" id="alert1">
      <a class="close" data-dismiss="alert">×</a>
@@ -64,7 +64,7 @@
       <tr><td>การตอบคำถาม</td><td><input type="number" min="0" max="100" class="form-control score2"></td></tr>
       <tr><td>การนำเสนองานและเอกสาร</td><td><input type="number" min="0" max="100" class="form-control score2"></td></tr>
     </tbody>
-    <tfoot><tr><th><strong>TOTAL</strong></th><th><font id="subtotal2"></font> %</th></tr></tfoot>
+    <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal2"></th></tr></tfoot>
   </table>
   <div class="alert alert-danger" role="alert" id="alert2">
    <a class="close" data-dismiss="alert">×</a>
@@ -88,7 +88,7 @@
       <tr><td>การตอบคำถาม</td><td><input type="number" min="0" max="100" class="form-control score3"></td></tr>
       <tr><td>การนำเสนองานและเอกสาร</td><td><input type="number" min="0" max="100" class="form-control score3"></td></tr>
     </tbody>
-    <tfoot><tr><th><strong>TOTAL</strong></th><th><font id="subtotal3"></font> %</th></tr></tfoot>
+    <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal3"></th></tr></tfoot>
   </table>
   <div class="alert alert-danger" role="alert" id="alert3">
    <a class="close" data-dismiss="alert">×</a>
@@ -112,7 +112,7 @@
       <tr><td>การตอบคำถาม</td><td><input type="number" min="0" max="100" class="form-control score4"></td></tr>
       <tr><td>การนำเสนองานและเอกสาร</td><td><input type="number" min="0" max="100" class="form-control score4"></td></tr>
     </tbody>
-    <tfoot><tr><th><strong>TOTAL</strong></th><th><font id="subtotal4"></font> %</th></tr></tfoot>
+    <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal4"></th></tr></tfoot>
   </table>
   <div class="alert alert-danger" role="alert" id="alert4">
    <a class="close" data-dismiss="alert">×</a>
@@ -139,7 +139,7 @@
           <tr><td><strong>round3</strong></td><td>การตอบคำถาม</td><td><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
           <tr><td><strong>round4</strong></td><td>การนำเสนองานและเอกสาร</td><td><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
         </tbody>
-        <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal1"></font><span>%</span></th></tr></tfoot>
+        <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal1"></font> <span>%</span></th></tr></tfoot>
       </table>
     </div>
     <div class="modal-footer">
@@ -151,7 +151,7 @@
 </div><!-- /.modal -->
 </div>
 <div id="center">
-  <a><button class="action-button" onclick="back()">back</button></a>
+  <a href="/exam/scoresheet"><button class="action-button">back</button></a>
   <a href="#"><button type="submit" class="action-button">save</button></a>
 </div>
 </div>

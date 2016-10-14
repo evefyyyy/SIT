@@ -14,12 +14,13 @@ use App\Type;
 use App\User;
 use App\Http\Requests;
 use App\Proposal;
+use Auth;
 
 class AdvisorProjectController extends Controller
 {
   public function index()
   {
-    $login = 5;
+    $login = Auth::user()->user_advisor->advisor_id;
     $advProject = DB::table('project_advisors')->where('advisor_id',$login)->select('project_pkid')->get();
     $count = count($advProject);
     for($i=0;$i<$count;$i++){
@@ -29,7 +30,6 @@ class AdvisorProjectController extends Controller
     $obj['project'] = array_flatten($project);
     for($i=0;$i<$count;$i++){
       $id[$i] = $advProject[$i]->project_pkid;
-
 
 // advisor
       $adv[$i] = DB::table('project_advisors')

@@ -18,14 +18,13 @@ use App\Advisor;
 use App\ProjectAdvisor;
 use App\ProjectStudent;
 
-class StudentAnnoucementController extends Controller
+class AdvisorDocumentController extends Controller
 {
-	public function index()
+    public function index()
 	{
-		$news = \App\News::where('news_type_id','=','1')->where('start_date','<=',date('Y-m-d'))->where('end_date','>',date('Y-m-d'))->get();
+		$news = \App\News::where('news_type_id','=','2')->get();
 		$count = 0 ;
-
-		return view('student.stdAnnounce')->with('news',$news->reverse())->with('count',$count);
+		return view('advisor.advDoc')->with('news',$news->reverse())->with('count',$count);
 	}
 
 	

@@ -55,13 +55,4 @@
 	</div>
 	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 </div>
-
-<script>
-	function back() {
-		history.back()
-	}
-	$('.firstname').each(function(index) {
-	document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
-});
-</script>
 @stop

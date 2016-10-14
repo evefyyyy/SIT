@@ -64,9 +64,6 @@ function countTotal() {
     $('#editmain').modal('hide');
   }
 }
-function back() {
-		window.history.back()
-}
 $('.action-button').click(function(){
   $i = $('.counttable').length;
   $x = 1;
