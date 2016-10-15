@@ -11,12 +11,11 @@
 			</div>
 			<table class="table table-bordered table-hover">
 				<tbody>
+					@foreach($year as $y)
 					<tr>
-						<td width="35%">year 2016</td><td width="65%"><a href="managescore/year">view score sheet <i class="glyphicon glyphicon-list-alt gi-1x"></i></a></td>
+						<td width="35%">year {{$y->year}}</td><td width="65%"><a href="managescore/year/create">view score sheet <i class="glyphicon glyphicon-list-alt gi-1x"></i></a></td>
 					</tr>
-					<tr>
-						<td width="35%">year 2017</td><td width="65%"><a href="#">view score sheet <i class="glyphicon glyphicon-list-alt gi-1x"></i></a></td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>

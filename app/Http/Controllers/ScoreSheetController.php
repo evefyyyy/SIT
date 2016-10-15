@@ -27,13 +27,15 @@ use App\CriteriaSub;
 use App\Template;
 use App\TemplateMain;
 use App\TemplateSub;
+use App\Year;
 use Auth;
 
 class ScoreSheetController extends Controller
 {
     public function index()
     {
-      return view ('admin.scoreSheet');
+      $data['year'] = Year::all();
+      return view ('admin.scoreSheet',$data);
     }
 
     public function createMainCriteria()
@@ -124,6 +126,9 @@ class ScoreSheetController extends Controller
     {
       $data['mainCriteria'] = CriteriaMain::all();
       $data['subCriteria'] = CriteriaSub::all();
+      $temp = DB::table('templates')->get();
+      $data['countTemp'] = count($temp)+1;
+
       return view('admin.createTemplate',$data);
     }
 
@@ -162,13 +167,6 @@ class ScoreSheetController extends Controller
       return redirect(url('exam/managescore/template'));
     }
 
-    public function editTemplate()
-    {
-      $data['mainCriteria'] = CriteriaMain::all();
-      $data['subCriteria'] = CriteriaSub::all();
-      return view('admin.editTemplate',$data);
-    }
-
     public function manageTemplate()
     {
       $data['template'] = Template::all();
@@ -177,7 +175,7 @@ class ScoreSheetController extends Controller
 
       for($i=0;$i<$count;$i++){
         $temp[$i] = $data['template'][$i]->id;
-
+        $data['id'][$i] = $temp[$i];
         $main[$i] = DB::table('templates_main')
                 ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
                 ->where('template_id',$temp[$i])->get();
@@ -191,13 +189,188 @@ class ScoreSheetController extends Controller
         $data['tempData'][$i]['sub'] = $sub[$i];
       }
 
+
+
       return view('admin.manageTemplate',$data);
     }
 
-    public function viewScoreSheet()
+    public function editTemplate($id)
+    {
+      $data['url'] = url('exam/managescore/template/'.$id);
+      $data['method'] = "put";
+
+      $data['mainCriteria'] = CriteriaMain::all();
+      $data['subCriteria'] = CriteriaSub::all();
+      $data['tempNum'] = DB::table('templates')->where('id',$id)->value('temp_num');
+
+      $data['mainId'] = DB::table('templates_main')
+                        ->join('templates','templates.id','=','template_id')
+                        ->where('template_id',$id)
+                        ->select('criteria_main_id')->get();
+
+      $data['subId'] = DB::table('templates_sub')
+                      ->join('templates_main','templates_main.id','=','template_main_id')
+                      ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+                      ->where('template_id',$id)
+                      ->groupBy('criteria_sub_id')
+                      ->select('criteria_sub_id')->get();
+
+      return view('admin.editTemplate',$data);
+    }
+
+    public function updateTemplate(Request $request,$id)
+    {
+      $tempNum = DB::table('templates')->where('id',$id)->value('id');
+      $mainId = DB::table('templates_main')
+                ->join('templates','templates.id','=','template_id')
+                ->where('template_id',$id)
+                ->select('templates_main.id')->get();
+      $countMainId = count($mainId);
+      $main = $request['mainCriteria'];
+      $countMain = count($main);
+      if($countMain != null){
+        if($countMainId == $countMain){
+          for($i=0;$i<$countMainId;$i++){
+            $id = $mainId[$i]->id;
+            $obj = TemplateMain::find($id);
+            $obj->round = $i+1;
+            $obj->criteria_main_id = $main[$i];
+            $obj->save();
+          }
+        }else{
+          if($countMainId < $countMain){
+            for($j=0;$j<$countMainId;$j++){
+              $id = $mainId[$j]->id;
+              $obj = TemplateMain::find($id);
+              $obj->round = $j+1;
+              $obj->criteria_main_id = $main[$j];
+              $obj->save();
+            }
+            for($i=$countMainId;$i<$countMain;$i++){
+              $obj = new TemplateMain();
+              $obj->round = $i+1;
+              $obj->criteria_main_id = $main[$i];
+              $obj->template_id = $tempNum;
+              $obj->save();
+            }
+          }else if($countMainId > $countMain){
+            for($j=0;$j<$countMain;$j++){
+              $id = $mainId[$j]->id;
+              $obj = TemplateMain::find($id);
+              $obj->round = $j+1;
+              $obj->criteria_main_id = $main[$j];
+              $obj->save();
+            }
+            for($i=$countMain;$i<$countMainId;$i++){
+              $id = $mainId[$i]->id;
+              $obj = TemplateMain::find($id);
+              $obj->delete();
+            }
+          }
+        }
+      }
+
+      if($countMain != null){
+        $mainIdInput = DB::table('templates_main')->orderBy('id','asc')->take($countMain)->select('id')->get();
+        $countMainInput = count($mainIdInput);
+      }else{
+        $mainIdInput = DB::table('templates_main')
+                  ->join('templates','templates.id','=','template_id')
+                  ->where('template_id',$id)
+                  ->select('templates_main.id')->get();
+        $countMainInput = count($mainId);
+      }
+
+      $sub = $request['subCriteria'];
+      $countSub = count($sub);
+
+      if($countSub != null){
+        for ($i=0; $i < $countMainInput ; $i++) {
+          $getMainId = $mainIdInput[$i]->id;
+          $getSubId = DB::table('templates_sub')->where('template_main_id',$getMainId)->get();
+          $countSubId = count($getSubId);
+          if($countSub == $countSubId){
+            for($j=0; $j<$countSub; $j++){
+              for($k=0 ; $k<$countSubId; $k++){
+                $subId = $getSubId[$j]->id;
+                $obj = TemplateSub::find($subId);
+                $obj->criteria_sub_id = $sub[$j];
+                $obj->save();
+              }
+            }
+          }else{
+            if($countSub > $countSubId){
+              for($j=0; $j<$countSubId; $j++){
+                $subId = $getSubId[$j]->id;
+                $obj = TemplateSub::find($subId);
+                $obj->criteria_sub_id = $sub[$j];
+                $obj->save();
+              }
+              for($k=$countSubId; $k<$countSub; $k++){
+                $obj = new TemplateSub();
+                $obj->template_main_id = $getMainId;
+                $obj->criteria_sub_id = $sub[$k];
+                $obj->save();
+              }
+            }else if($countSub < $countSubId){
+              for($j=0; $j<$countSub; $j++){
+                $subId = $getSubId[$j]->id;
+                $obj = TemplateSub::find($subId);
+                $obj->criteria_sub_id = $sub[$j];
+                $obj->save();
+              }
+              for($k=$countSub; $k<$countSubId; $k++){
+                $subId = $getSubId[$k]->id;
+                $obj = TemplateSub::find($subId);
+                $obj->delete();
+              }
+            }
+          }
+        }
+      }
+
+      return redirect(url('exam/managescore/template'));
+    }
+    //
+    public function createManageScoreSheet()
     {
       $data['type'] = Type::all();
+      $data['template'] = Template::all();
+
+      $data['year'] = DB::table('years')->where('year',date('Y'))->value('year');
+
+      $countTemp = count($data['template']);
+      for($i=0; $i<$countTemp; $i++){
+        $id = $data['template'][$i]->id;
+        $main = DB::table('templates_main')
+                          ->join('templates','templates.id','=','template_id')
+                          ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                          ->where('template_id',$id)
+                          ->select('criteria_main_name','round')->get();
+        $data['template'][$i]['main'] = $main;
+        $sub = DB::table('templates_sub')
+              ->join('templates_main','templates_main.id','=','template_main_id')
+              ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+              ->where('template_id',$id)
+              ->groupBy('criteria_sub_id')
+              ->select('criteria_sub_name')->get();
+        $data['template'][$i]['sub'] = $sub;
+        $data['template'][$i]['count'] = $i;
+      }
+
       return view('admin.manageScoreSheet',$data);
+    }
+
+    public function storeManageScoreSheet(Request $request)
+    {
+      $id = $request['temp'];
+      $type = $request['selectType'];
+
+
+
+
+
+      return redirect(url('exam/managescore/year/create'));
     }
 
 

@@ -61,15 +61,19 @@ Route::resource('exam/allowtest', 'AllowTestController');
 
 Route::get('exam/scoresheet','ScoreSheetController@index');
 
-Route::get('exam/managescore/year','ScoreSheetController@viewScoreSheet');
-
 Route::get('exam/managescore/template/create','ScoreSheetController@createTemplate');
 
 Route::post('exam/managescore/template','ScoreSheetController@storeTemplate');
 
 Route::get('exam/managescore/template', 'ScoreSheetController@manageTemplate');
 
-Route::get('exam/managescore/template/edit','ScoreSheetController@editTemplate');
+Route::get('exam/managescore/template/{template}/edit','ScoreSheetController@editTemplate');
+
+Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTemplate');
+
+Route::get('exam/managescore/year/create','ScoreSheetController@createManageScoreSheet');
+
+Route::post('exam/managescore/year','ScoreSheetController@storeManageScoreSheet');
 
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
