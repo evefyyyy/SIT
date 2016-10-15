@@ -36,7 +36,7 @@
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
  	</div>
  	<div id="center" style="margin-top:15px">
-  <a href="/template"><button class="action-button">back</button></a>
+  <a href="{{url('/exam/managescore/template')}}"><button type="button" class="action-button" >back</button></a>
   <button type="submit" class="action-button">save</button>
 </div>
 <!-- <input type="hidden" name="mainCriteria" id="mainCriteria">

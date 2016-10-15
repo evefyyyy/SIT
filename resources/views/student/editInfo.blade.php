@@ -184,10 +184,6 @@
 						document.getElementById("selectCat").value = x;
 					}
 
-					function selectAdv1(x){
-						document.getElementById("selectAdv1").value = x;
-					}
-
 			    function check_name2(){
 		         $.ajax({
 		                type:"post",

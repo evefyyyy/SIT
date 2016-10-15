@@ -18,7 +18,11 @@
           <label>choose main criteria</label><a href='#' id='deselect-all'>deselect all</a><i class="lol">/</i><a href='#' id='select-all'>select all</a>
           <select id='main-order' multiple='multiple' name="mainCriteria[]">/</span>
         @foreach($mainCriteria as $main)
-			  <option value="{{$main->id}}">{{$main->criteria_main_name}}</option>
+          @if(1===$main->id)
+  			  <option value="{{$main->id}}" selected>{{$main->criteria_main_name}}</option>
+          @else
+          <option value="{{$main->id}}">{{$main->criteria_main_name}}</option>
+          @endif
         @endforeach
 		  </select>
 		</div>
@@ -37,7 +41,7 @@
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
  	</div>
  	<div id="center" style="margin-top:15px">
-  <a href="/template"><button class="action-button" onclick="back()">back</button></a>
+  <a href="{{url('/exam/managescore/template')}}"><button type="button" class="action-button">back</button></a>
   <button type="submit" class="action-button">save</button>
 </div>
 </form>
