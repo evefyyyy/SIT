@@ -69,7 +69,9 @@ Route::post('exam/managescore/template','ScoreSheetController@storeTemplate');
 
 Route::get('exam/managescore/template', 'ScoreSheetController@manageTemplate');
 
-Route::get('exam/managescore/template/edit','ScoreSheetController@editTemplate');
+Route::get('exam/managescore/template/{template}/edit','ScoreSheetController@editTemplate');
+
+Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTemplate');
 
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');

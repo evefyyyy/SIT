@@ -18,7 +18,7 @@ use App\Advisor;
 use App\ProjectAdvisor;
 use App\ProjectStudent;
 
-class StudentDocumentController extends Controller
+class AdvisorDocumentController extends Controller
 {
     public function index()
 	{

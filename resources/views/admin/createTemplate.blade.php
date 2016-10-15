@@ -5,7 +5,7 @@
      <div class="row">
         <div class="col-xs-1 col-md-3 col-lg-3"></div>
         <div class="col-xs-10 col-md-6 col-lg-6 titlee" id="center">
-			Template 1
+			Template {{$countTemp}}
      	</div>
      <div class="col-xs-1 col-md-3 col-lg-3"></div>
  	</div>

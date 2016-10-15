@@ -5,11 +5,12 @@
      <div class="row">
         <div class="col-xs-1 col-md-3 col-lg-3"></div>
         <div class="col-xs-10 col-md-6 col-lg-6 titlee" id="center">
-			Template 1
+			Template {{$tempNum}}
      	</div>
      <div class="col-xs-1 col-md-3 col-lg-3"></div>
  	</div>
-  <form action="{{url('exam/managescore/template')}}" method="post">
+  <form action="{{$url}}" method="post">
+    {{method_field($method)}}
     	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
  	<div class="row">
         <div class="col-xs-1 col-md-2 col-lg-2"></div>
@@ -39,8 +40,6 @@
   <a href="/template"><button class="action-button" onclick="back()">back</button></a>
   <button type="submit" class="action-button">save</button>
 </div>
-<!-- <input type="hidden" name="mainCriteria" id="mainCriteria">
-<input type="hidden" name="subCriteria" id="subCriteria"> -->
 </form>
  </div>
 <script src="{!! URL::asset('js/jquery.multi-select.js') !!}"></script>

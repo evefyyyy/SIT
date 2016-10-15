@@ -24,7 +24,6 @@ class waitApproveController extends Controller
     public function index()
     {
         $objs =  Auth::user()->user_student->student->student_id;
-
         $checkStd = DB::table('students')->where('student_id',$objs)->value('id');
         $checkProject = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
         $obj['std'] = DB::table('project_students')
