@@ -19,6 +19,7 @@ class CreateGroupProjectTable extends Migration
             $table->string('group_project_th_name');
             $table->integer('group_project_recommand');
             $table->integer('group_project_approve');
+            $table->integer('project_num');
             $table->timestamps();
         });
     }
