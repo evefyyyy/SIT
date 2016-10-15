@@ -102,6 +102,10 @@ Route::resource('student/news/document', 'StudentDocumentController');
 Route::resource('advisor/news/announcement', 'AdvisorAnnoucementController');
 Route::resource('advisor/news/document', 'AdvisorDocumentController');
 
+// Route::group(['middleware' => 'studentCheck'], function () {
+//     Route::get('home/projects','projectController@index');
+// });
+
 Route::get('home/projects','projectController@index');
 
 Route::get('home/projects/search','projectController@search');

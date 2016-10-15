@@ -34,7 +34,8 @@
                            <button id="delpj" class="rejectbt" data-toggle="confirmation" value="{{$pj->groupProject->id}}">reject</button>
                            <button id="btn" class="approvebt" value="{{$pj->groupProject->id}}">approve</button>
                            <?php
-                               $countProjectApp++;
+                               $pj_number = ++$project_number;
+                               $current_year = $pj->groupProject->year->year_create;
                                if($pj->groupProject->type_id===1){
                                     $typeAbb = 'BU';
                                } else if($pj->groupProject->type_id===2){
@@ -43,10 +44,10 @@
                                     $typeAbb = 'RE';
                                }
                            ?>
-                           @if($countProjectApp<10)
-                           <label id="groupid" >IT56-{{$typeAbb}}0{{$countProjectApp}}</label>
+                           @if($pj_number<10)
+                           <label id="groupid" >IT{{$current_year}}-{{$typeAbb}}0{{$pj_number}}</label>
                            @else
-                           <label id="groupid" >IT56-{{$typeAbb.$countProjectApp}}
+                           <label id="groupid" >IT{{$current_year}}-{{$typeAbb.$pj_number}}
                            @endif
                        </td>
                    </tr>

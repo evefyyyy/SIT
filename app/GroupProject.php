@@ -54,4 +54,8 @@ class GroupProject extends Model
     {
       return $this->hasMany('App\ScoreTest','project_pkid');
     }
+    public function year()
+    {
+      return $this->belongsTo('App\Year');
+    }
 }

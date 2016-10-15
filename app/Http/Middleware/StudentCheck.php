@@ -18,9 +18,9 @@ class StudentCheck
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            return $next($request);
+            dd('sucess');
+        } else {
+            return redirect('home');
         }
-
-        return $next($request);
     }
 }
