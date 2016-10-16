@@ -209,7 +209,6 @@ class ScoreSheetController extends Controller
                         ->join('templates','templates.id','=','template_id')
                         ->where('template_id',$id)
                         ->select('criteria_main_id')->get();
-
       $data['subId'] = DB::table('templates_sub')
                       ->join('templates_main','templates_main.id','=','template_main_id')
                       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
@@ -225,16 +224,18 @@ class ScoreSheetController extends Controller
       $tempNum = DB::table('templates')->where('id',$id)->value('id');
       $mainId = DB::table('templates_main')
                 ->join('templates','templates.id','=','template_id')
-                ->where('template_id',$id)
+                ->where('template_id',$tempNum)
                 ->select('templates_main.id')->get();
       $countMainId = count($mainId);
+
       $main = $request['mainCriteria'];
       $countMain = count($main);
+
       if($countMain != null){
         if($countMainId == $countMain){
           for($i=0;$i<$countMainId;$i++){
-            $id = $mainId[$i]->id;
-            $obj = TemplateMain::find($id);
+            $getid = $mainId[$i]->id;
+            $obj = TemplateMain::find($getid);
             $obj->round = $i+1;
             $obj->criteria_main_id = $main[$i];
             $obj->save();
@@ -242,8 +243,8 @@ class ScoreSheetController extends Controller
         }else{
           if($countMainId < $countMain){
             for($j=0;$j<$countMainId;$j++){
-              $id = $mainId[$j]->id;
-              $obj = TemplateMain::find($id);
+              $getid = $mainId[$j]->id;
+              $obj = TemplateMain::find($getid);
               $obj->round = $j+1;
               $obj->criteria_main_id = $main[$j];
               $obj->save();
@@ -257,15 +258,24 @@ class ScoreSheetController extends Controller
             }
           }else if($countMainId > $countMain){
             for($j=0;$j<$countMain;$j++){
-              $id = $mainId[$j]->id;
-              $obj = TemplateMain::find($id);
+              $getid = $mainId[$j]->id;
+              $obj = TemplateMain::find($getid);
               $obj->round = $j+1;
               $obj->criteria_main_id = $main[$j];
               $obj->save();
             }
             for($i=$countMain;$i<$countMainId;$i++){
-              $id = $mainId[$i]->id;
-              $obj = TemplateMain::find($id);
+              $getid = $mainId[$i]->id;
+              $delSub = DB::table('templates_sub')
+                        ->where('template_main_id',$getid)
+                        ->get();
+              $countDelSub = count($delSub);
+              for($j=0; $j<$countDelSub; $j++){
+                $delSubId = $delSub[$j]->id;
+                $obj = TemplateSub::find($delSubId);
+                $obj->delete();
+              }
+              $obj = TemplateMain::find($getid);
               $obj->delete();
             }
           }
@@ -273,7 +283,7 @@ class ScoreSheetController extends Controller
       }
 
       if($countMain != null){
-        $mainIdInput = DB::table('templates_main')->orderBy('id','asc')->take($countMain)->select('id')->get();
+        $mainIdInput = DB::table('templates_main')->where('template_id',$tempNum)->orderBy('id','asc')->take($countMain)->select('id')->get();
         $countMainInput = count($mainIdInput);
       }else{
         $mainIdInput = DB::table('templates_main')

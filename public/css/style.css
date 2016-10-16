@@ -968,8 +968,8 @@ h6 img {
 }
 #detail img#group-member {
   margin-bottom: 10px;
-  width: 500px;
-  height: 333px;
+  width: 100%;
+  height: auto;
   background:url(/img/no-image.png) no-repeat;
 }
 #detail .group {
@@ -1004,14 +1004,14 @@ h6 img {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/*img#cover {
+img#cover {
   width: 100%;
   margin-bottom: 10px;
   background:url(/img/no-poster.png) no-repeat;
   background-size: 100% 100%;
-}*/
+}
 
-@media (min-width : 480px) {
+/*@media (min-width : 480px) {
   img#cover {
     width: 480px;
     height: 288px;
@@ -1043,55 +1043,15 @@ h6 img {
     background:url(/img/no-poster.png) no-repeat center;
   }
 }
-
-.group-pic {width:490px; height: 280px; margin-top: 0;}
-.pic-size {margin: 0 20px; color:#999; vertical-align:top;}
-.cropit-preview-image-container {cursor: move;}
-
-.cropit-preview-background {
-  opacity: .2;
-  cursor: auto;
+@media (min-width : 1920px) {
+  img#cover {
+    width:  1920px;
+    height: 1080px;
+    margin-bottom: 10px;
+    background:url(/img/no-poster.png) no-repeat center;
+  }
 }
-.image-size-label {
-  margin-top: 10px;
-}
-input.export {
-  /* Use relative position to prevent from being covered by image background */
-  position: relative;
-  z-index: 10;
-  display: block;
-}
-  /* Translucent background image */
-.cropit-preview-background {
-  opacity: .2;
-}
- /* If the slider or anything else is covered by the background image,
- * use relative or absolute position on it */
-input.cropit-image-zoom-input {
-  position: relative;
-}
-/* Limit the background image by adding overflow: hidden */
-#image-cropper {
-  overflow: hidden;
-}
-input[type="range"].cropit-image-zoom-input {
-  display: inline;
-  width: 150px;
-  vertical-align: middle;
-  margin: 0 10px;
-}
-.cropit-image-zoom-input {
-  background: #eee;
-  border: none;
-}
-.cropit-image-input {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
+*/
 .image-btn {
   font-size: 1.25em;
   font-weight: 700;
@@ -1410,7 +1370,6 @@ input[type="range"].cropit-image-zoom-input {
 #scoresheet table {
   margin-top: 10px;
   width: 80%;
-  margin-bottom: 25px;
 }
 #scoresheet a#deselect-all, #scoresheet a#select-all,
 #scoresheet a#deselect-all1, #scoresheet a#select-all1 {
