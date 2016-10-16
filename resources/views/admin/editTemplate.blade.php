@@ -17,8 +17,8 @@
         <div class="col-xs-10 col-md-8 col-lg-8 cri">
           <label>choose main criteria</label><a href='#' id='deselect-all'>deselect all</a><i class="lol">/</i><a href='#' id='select-all'>select all</a>
           <select id='main-order' multiple='multiple' name="mainCriteria[]">/</span>
-        @foreach($mainCriteria as $main)
-          @if(1===$main->id)
+        @foreach($mainCriteria as $key => $main)
+          @if(isset($mainId[$key]))
   			  <option value="{{$main->id}}" selected>{{$main->criteria_main_name}}</option>
           @else
           <option value="{{$main->id}}">{{$main->criteria_main_name}}</option>
@@ -33,8 +33,12 @@
         <div class="col-xs-10 col-md-8 col-lg-8 cri">
           <label>choose sub criteria</label><a href='#' id='deselect-all1'>deselect all</a><i class="lol">/</i><a href='#' id='select-all1'>select all</a>
           <select id='sub-order' multiple='multiple' name="subCriteria[]">
-        @foreach($subCriteria as $sub)
-			  <option value="{{$sub->id}}">{{$sub->criteria_sub_name}}</option>
+        @foreach($subCriteria as $key => $sub)
+        @if(isset($subId[$key]))
+			  <option selected value="{{$sub->id}}">{{$sub->criteria_sub_name}}</option>
+        @else
+        <option value="{{$sub->id}}">{{$sub->criteria_sub_name}}</option>
+        @endif
         @endforeach
 		  </select>
 		</div>

@@ -207,7 +207,6 @@ class ScoreSheetController extends Controller
                         ->join('templates','templates.id','=','template_id')
                         ->where('template_id',$id)
                         ->select('criteria_main_id')->get();
-
       $data['subId'] = DB::table('templates_sub')
                       ->join('templates_main','templates_main.id','=','template_main_id')
                       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
