@@ -82,6 +82,8 @@ class CreateFkey extends Migration
             $table->foreign('project_pkid')->references('id')->on('group_projects');
             $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms');
+            $table->integer('sequence_exam_id')->unsigned();
+            $table->foreign('sequence_exam_id')->references('id')->on('sequence_exam');
         });
 
         Schema::table('news', function ($table) {
@@ -171,6 +173,7 @@ class CreateFkey extends Migration
             $table->integer('criteria_sub_id')->unsigned();
             $table->foreign('criteria_sub_id')->references('id')->on('criteria_subs');
         });
+
 
 
     }
