@@ -61,11 +61,11 @@ function countTotal() {
     $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
   } else {
     $('#warning').html( "" );
-    $('#editmain').modal('hide');
+    window.location.href = 'create/subcriteria';
   }
 }
-$('.action-button').click(function(){
-  $i = $('.counttable').length;
+$('.checkvalue').click(function(){
+  $i = $('.checkvalue').length;
   $x = 1;
   for($x=1;$x<=$i;$x++){
   if($("#subtotal"+$x).html() != 100){
