@@ -26,19 +26,23 @@
 		$checkStd = DB::table('students')->where('student_id',$objs)->value('id');
 		$projectId = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
 		?>
+			@if($projectId == $checkProject)
 		<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
-
 			
-			@if($projectId == $checkProject)
 			<form action="{{url('student/myproject/edit/'.$checkProject.'/edit')}}" method="get">
 				<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
 			</form>
 		</div>
-		@endif
+			@else
+		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+			<h3>{{$projectNameEN}}</h3>
+			<h4>{{$projectNameTH}}</h4>
+		</div>
+			@endif
 		@else
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 			<h3>{{$projectNameEN}}</h3>
