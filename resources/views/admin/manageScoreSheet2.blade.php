@@ -45,12 +45,21 @@
      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
      Total score must be 100
    </div>
+   <script>
+    $(document).on("change", ".score1", function() {
+    var sum = 0;
+    $(".score1").each(function(){
+        sum += +$(this).val();
+    });
+     $("#subtotal1").html(sum);
+    });
+   </script>
  </div>
  <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
 </div>
 <div id="center">
-  <a href="/exam/scoresheet"><button type="button" class="action-button">back</button></a>
+  <a href="/exam/managescore/year/create"><button type="button" class="action-button">back</button></a>
   <button class="action-button checkvalue">save</button>
 </div>
 </div>

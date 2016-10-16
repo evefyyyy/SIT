@@ -5067,15 +5067,15 @@ a.badge:focus {
        -o-transition: border .2s ease-in-out;
           transition: border .2s ease-in-out;
 }
-/*@media (min-width: 1200px) {
-  .thumbnail {height: 236px}
-}*/
-/*@media (min-width: 992px) {
-  .thumbnail {height: 260px}
-}*/
-/*@media (min-width: 750px) {
-  .thumbnail {height: 319px}
-}*/
+@media (min-width: 1200px) {
+  .thumbnail {height: 230px}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .thumbnail {height: 255px}
+}
+@media (min-width: 765px) and (max-width: 991px) {
+  .thumbnail {height: 295px}
+}
 img,
 .thumbnail a > img {
   margin-right: auto;
