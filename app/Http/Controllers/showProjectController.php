@@ -92,7 +92,7 @@ class showProjectController extends Controller
                           ->where('picture_type_id','=','3')
                           ->select('picture_path_name')->get();
     }
-    return view('showProject',$obj);
+    return view('showProject', $obj);
   }
 
   public function show($id){
