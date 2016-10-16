@@ -35,7 +35,7 @@
     <div class="col-xs-10 col-md-6 col-lg-6">
       <a data-toggle="modal" data-target="#editmain{{$temp->count}}">
         @foreach($temp->main as $main)
-        <p><strong>round {{$main->round}}</strong> {{$main->criteria_main_name}}(15%)</p>
+        <p><strong>round {{$main->round}}</strong> {{$main->criteria_main_name}}</p>
       </a>
       <table class="counttable table table-bordered">
         <thead>
@@ -43,7 +43,7 @@
        </thead>
        <tbody>
          @foreach($temp->sub as $sub)
-        <tr><td>{{$sub->criteria_sub_name}}</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
+        <tr><td>{{$sub->criteria_sub_name}}</td><td><input type="number" min="0" max="100" class="form-control score1" name="subScore"></td></tr>
         @endforeach
       </tbody>
       <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1"></th></tr></tfoot>

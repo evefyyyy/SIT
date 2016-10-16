@@ -28,6 +28,8 @@ use App\Template;
 use App\TemplateMain;
 use App\TemplateSub;
 use App\Year;
+use App\MainScore;
+use App\SubScore;
 use Auth;
 
 class ScoreSheetController extends Controller
@@ -365,7 +367,25 @@ class ScoreSheetController extends Controller
     {
       $id = $request['temp'];
       $type = $request['selectType'];
+      $score = $request['subScore'];
+      dd($score);
 
+      $main = DB::table('templates_main')
+              ->join('templates','templates.id','=','template_id')
+              ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+              ->where('template_id',$id)
+              ->get();
+
+      $sub = DB::table('templates_sub')
+            ->join('templates_main','templates_main.id','=','template_main_id')
+            ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+            ->where('template_id',$id)
+            ->get();
+      $countSub = count($sub);
+      // for($i=0;$i<$countSub;$i++){
+      //   $obj = new SubScore();
+      //   $obj->score = $request['']
+      // }
 
 
 
