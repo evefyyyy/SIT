@@ -31,6 +31,8 @@ Route::post('exam/manageroom/create/editroom','examRoomController@genGroup');
 
 Route::get('exam/manageroom/create/preview','examRoomController@preview');
 
+Route::get('exam/manageroom/create/editroom/{exam_room_name}/{starttime}/{endtime}/{group_project_id}/{room_exam}', 'examRoomController@submitRoom');
+
 // Route::get('exam/manageroom',function(){
 //   return view('admin.manageRoom');
 // });
