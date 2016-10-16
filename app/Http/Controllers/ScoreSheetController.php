@@ -367,25 +367,51 @@ class ScoreSheetController extends Controller
     {
       $id = $request['temp'];
       $type = $request['selectType'];
-      $score = $request['subScore'];
-      dd($score);
+      $subScore = $request['subScore'];
+      $mainScore = $request['mainScore'];
 
       $main = DB::table('templates_main')
               ->join('templates','templates.id','=','template_id')
               ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
               ->where('template_id',$id)
+              ->select('templates_main.id','criteria_main_id','template_id')
               ->get();
+      $countMain = count($main);
 
       $sub = DB::table('templates_sub')
             ->join('templates_main','templates_main.id','=','template_main_id')
             ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
             ->where('template_id',$id)
+            ->select('templates_sub.id','criteria_sub_id','template_main_id')
             ->get();
       $countSub = count($sub);
-      // for($i=0;$i<$countSub;$i++){
-      //   $obj = new SubScore();
-      //   $obj->score = $request['']
-      // }
+
+      $year = DB::table('years')->where('year',date('Y'))->value('id');
+
+      for($i=0; $i<$countMain; $i++){
+        $mainId = $main[$i]->id;
+        $mainType = DB::table('main_templates_score')
+                          ->where('type_id',$type)
+                          ->get();
+
+        if($mainScoreData == null){
+          $obj = new MainScore();
+          $obj->score = $mainScore[$i];
+          $obj->template_main_id = $mainId;
+          $obj->year_id = $year;
+          $obj->type_id = $type;
+          $obj->save();
+        }else{
+          $mainScoreId = $mainScoreData[0]->id;
+          $obj = MainScore::find($mainScoreId);
+          $obj->score = $mainScore[$i];
+          $obj->save();
+        }
+
+
+
+
+      }
 
 
 

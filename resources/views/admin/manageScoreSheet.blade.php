@@ -33,7 +33,6 @@
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
     <div class="col-xs-10 col-md-6 col-lg-6">
-      <a data-toggle="modal" data-target="#editmain{{$temp->count}}">
         @foreach($temp->main as $main)
         <p><strong>round {{$main->round}}</strong> {{$main->criteria_main_name}}</p>
       </a>
@@ -43,7 +42,7 @@
        </thead>
        <tbody>
          @foreach($temp->sub as $sub)
-        <tr><td>{{$sub->criteria_sub_name}}</td><td><input type="number" min="0" max="100" class="form-control score1" name="subScore"></td></tr>
+        <tr><td>{{$sub->criteria_sub_name}}</td><td><input type="number" min="0" max="100" class="form-control score1" name="subScore[]"></td></tr>
         @endforeach
       </tbody>
       <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1"></th></tr></tfoot>
@@ -58,31 +57,7 @@
  <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
 
-<!-- edit main criteria -->
-<div class="modal fade editmaincri" id="editmain{{$temp->count}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-        <h4 class="modal-title">main criteria</h4>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered">
-         <tbody>
-           @foreach($temp->main as $main)
-          <tr><td width="10%"><strong>round{{$main->round}}</strong></td><td> {{$main->criteria_main_name}}</td><td width="20%"><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
-          @endforeach
-        </tbody>
-        <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal1"></font> <span>%</span></th></tr></tfoot>
-      </table>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
-      <button type="submit" class="btn btn-primary" onclick="countTotal()">save</button>
-    </div>
-  </div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+
 </div>
 @endforeach
 <div id="center">
