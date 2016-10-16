@@ -32,7 +32,7 @@
 <div class="{{$temp->id}} box">
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
-    <div class="col-xs-10 col-md-6 col-lg-6">
+    <!-- <div class="col-xs-10 col-md-6 col-lg-6">
       <a data-toggle="modal" data-target="#editmain{{$temp->count}}">
         @foreach($temp->main as $main)
         <p><strong>round {{$main->round}}</strong> {{$main->criteria_main_name}}(15%)</p>
@@ -54,19 +54,11 @@
      Total score must be 100
    </div>
    @endforeach
- </div>
- <div class="col-xs-1 col-md-3 col-lg-3"></div>
-</div>
+ </div> -->
+
 
 <!-- edit main criteria -->
-<div class="modal fade editmaincri" id="editmain{{$temp->count}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-        <h4 class="modal-title">main criteria</h4>
-      </div>
-      <div class="modal-body">
+      <div class="editmaincri">
         <table class="table table-bordered">
          <tbody>
            @foreach($temp->main as $main)
@@ -83,6 +75,8 @@
   </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+ <div class="col-xs-1 col-md-3 col-lg-3"></div>
+</div>
 </div>
 @endforeach
 <div id="center">
