@@ -1,7 +1,6 @@
 @extends('generalTmp')
 @section('content')
-<link href="{!! URL::asset('css/ninja-slider.css') !!}" rel="stylesheet">
-
+<link href="{!! URL::asset('css/eagle.gallery.min.css') !!}" rel="stylesheet">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href="{!! URL::asset('css/contact-buttons.css') !!}" rel="stylesheet">
 <?php $link = url()->current(); ?>
@@ -81,27 +80,11 @@
 				</div>
 			</div>
 			@if($video != null)
-			<div id='ninja-slider'>
-				<div>
-					<div class="slider-inner">
-						<ul>
-							@foreach($screenshot as $img)
-							<li><a class="ns-img" href="{{$img->picture_path_name}}"></a></li>
-							@endforeach
-						</ul>
-						<div class="fs-icon" title="Expand/Close"></div>
-					</div>
-					<div id="thumbnail-slider">
-						<div class="inner">
-							<ul>
-								@foreach($screenshot as $img)
-								<li>
-									<a class="thumb" href="{{$img->picture_path_name}}"></a>
-								</li>
-								@endforeach
-							</ul>
-						</div>
-					</div>
+			<div id="img-gallery" class="eagle-gallery img300">
+				<div class="owl-carousel">
+					@foreach($screenshot as $img)
+					<img src="{{$img->picture_path_name}}" data-medium-img="{{$img->picture_path_name}}" data-big-img="{{$img->picture_path_name}}">
+					@endforeach
 				</div>
 			</div>
 			@endif
@@ -146,38 +129,18 @@
 	</div>
 	@else
 	<!-- in case no video -->
-	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<div id='ninja-slider'>
-				<div>
-					<div class="slider-inner">
-						<ul>
-							@foreach($screenshot as $img)
-							<li><a class="ns-img" href="{{$img->picture_path_name}}"></a></li>
-							@endforeach
-						</ul>
-						<div class="fs-icon" title="Expand/Close"></div>
-					</div>
-					<div id="thumbnail-slider">
-						<div class="inner">
-							<ul>
-								@foreach($screenshot as $img)
-								<li>
-									<a class="thumb" href="{{$img->picture_path_name}}"></a>
-								</li>
-								@endforeach
-							</ul>
-						</div>
-					</div>
+			<div id="img-gallery" class="eagle-gallery img300">
+				<div class="owl-carousel">
+					@foreach($screenshot as $img)
+					<img src="{{$img->picture_path_name}}" data-medium-img="{{$img->picture_path_name}}" data-big-img="{{$img->picture_path_name}}">
+					@endforeach
 				</div>
 			</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-	</div>
 	@endif
 </div>
-<script src="{!! URL::asset('js/ninja-slider.js') !!}"></script>
+<script src="{!! URL::asset('js/eagle.gallery.min.js') !!}"></script>
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <script>
 	$(document).ready(function() {
@@ -210,6 +173,12 @@ $.contactButtons({
 		'pinterest':  { class: 'pinterest', use: true, },
 		'email':      { class: 'email',    use: true, link: 'test@web.com' }
 	}
+});
+$('#img-gallery').eagleGallery({
+    miniSliderArrowStyle: 2,
+    theme: 'light',
+    autoPlayMediumImg: 3000,
+    maxZoom: 2
 });
 </script>
 @stop
