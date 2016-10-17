@@ -14,7 +14,8 @@ class CreateRoomExamTable extends Migration
     {
         Schema::create('rooms_exam', function (Blueprint $table) {
             $table->increments('id');
-            $table->datetime('exam_datetime');
+            $table->string('room_exam_name');
+            $table->string('exam_datetime');
             $table->datetime('exam_starttime');
             $table->datetime('exam_endtime');
             $table->timestamps();

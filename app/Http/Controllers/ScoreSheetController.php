@@ -343,7 +343,7 @@ class ScoreSheetController extends Controller
 
       return redirect(url('exam/managescore/template'));
     }
-    //
+
     public function createManageScoreSheet1()
     {
       $data['type'] = Type::all();
@@ -363,8 +363,8 @@ class ScoreSheetController extends Controller
         $mainScore = DB::table('templates_main')
                       ->join('main_templates_score','template_main_id','=','templates_main.id')
                       ->where('template_id',$id)
-                      ->select('score')->get();
-          $data['template'][$i]['score'] = $mainScore;
+                      ->get();
+        $data['template'][$i]['score'] = $mainScore;
 
         // $sub = DB::table('templates_sub')
         //       ->join('templates_main','templates_main.id','=','template_main_id')
@@ -375,7 +375,8 @@ class ScoreSheetController extends Controller
         // $data['template'][$i]['sub'] = $sub;
         $data['template'][$i]['count'] = $i;
       }
-      dd($data['template']);
+
+      // dd($data['template']);
 
       return view('admin.manageScoreSheet',$data);
     }
@@ -386,6 +387,13 @@ class ScoreSheetController extends Controller
       $type = $request['selectType'];
       // $subScore = $request['subScore'];
       $mainScore = $request['mainScore'];
+      $filter = array_filter($mainScore,function($a){
+        return $a != null;
+      });
+      $score = [];
+      foreach ($filter as $key) {
+        array_push($score,$key);
+      }
 
       $main = DB::table('templates_main')
               ->join('templates','templates.id','=','template_id')
@@ -414,7 +422,7 @@ class ScoreSheetController extends Controller
                           ->get();
         if($mainTemp == null){
           $obj = new MainScore();
-          $obj->score = $mainScore[$i];
+          $obj->score = $score[$i];
           $obj->template_main_id = $mainId;
           $obj->year_id = $year;
           $obj->type_id = $type;
@@ -426,12 +434,28 @@ class ScoreSheetController extends Controller
           $obj->save();
         }
       }
+      $checkTemp = DB::table('main_templates_score')
+                  ->join('templates_main','templates_main.id','=','template_main_id')
+                  ->where('type_id',$type)
+                  ->where('template_id','!=',$id)
+                  ->select('main_templates_score.id')
+                  ->get();
+        $count = count($checkTemp);
+        for($j=0; $j<$count; $j++){
+          $checkTempId = $checkTemp[$j]->id;
+          $obj = MainScore::find($checkTempId);
+          $obj->delete();
+        }
+
       return redirect(url('exam/managescore/year/subscore/create'));
     }
 
     public function createManageScoreSheet2()
     {
-      return view('admin.manageScoreSheet2');
+      $data['type'] = Type::all();
+      $data['template'] = Template::all();
+
+      return view('admin.manageScoreSheet2',$data);
     }
 
     public function storeManageScoreSheet2()

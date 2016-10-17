@@ -99,9 +99,8 @@ class examRoomController extends Controller
               $minFormat = '-'.$getMin.' minutes';
               $startTime = date("g:ia",strtotime($minFormat,$getStartTime));
               $obj['project'][$i]['starttime']= $startTime;
+              $obj['project'][$i]['roomexam'] = $selectRoom;
           }
-          dd($obj['project']);
-
 
 // addroom
           $roomexam = DB::table('rooms_exam')->select('project_pkid')->get();
@@ -120,8 +119,27 @@ class examRoomController extends Controller
               $addProject[$i] = GroupProject::where('id',$newresult[$i])->get();
             }
             $obj['addProject'] = array_flatten($addProject);
+            $countAdd = count($obj['addProject']);
+            for($i=0;$i<$countAdd;$i++){
+              $addProject_pkid[$i] = $obj['addProject'][$i]->id;
+              $student[$i] = DB::table('project_students')
+                            ->join('students','student_pkid','=','students.id')
+                            ->where('project_pkid',$addProject_pkid[$i])
+                            ->get();
+              $obj['addProject'][$i]['student'] = $student[$i];
+              $advisor[$i] = DB::table('project_advisors')
+                            ->join('advisors','advisor_id','=','advisors.id')
+                            ->where('project_pkid',$addProject_pkid[$i])
+                            ->select('advisor_name')->get();
+              $obj['addProject'][$i]['advisor'] = $advisor[$i];
+            }
+            dd($obj['addProject']);
           }
         }
+
+
+      $obj['room_names'] = Room::where('id', $selectRoom)->first();
+
 
       return view('admin.editRoom',$obj);
     }
@@ -131,7 +149,21 @@ class examRoomController extends Controller
       return view('admin.confirmRoom');
     }
     public function submitRoom(Request $request){
+      $exam_room_name = $request->exam_room_name;
+      $starttime = $request->starttime;
+      $endtime = $request->endtime;
+      $group_project_id = $request->group_project_id;
+      $room_exam = $request->room_exam;
 
+      RoomExam::insert([
+        'room_exam_name' => $exam_room_name,
+        'exam_starttime' => $starttime,
+        'exam_endtime' => $endtime,
+        'project_pkid' => $group_project_id,
+        'room_id' => $room_exam
+        ]);
+
+      return view('admin.confirmRoom');
     }
 
 }

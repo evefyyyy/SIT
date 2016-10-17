@@ -10,9 +10,9 @@
      <div class="btn-group" style="margin-right:30px">
        <form action="{{url('exam/managescore/year/mainscore')}}" method="post">
          <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-      <select class="selecttype" name="selectType">
+      <select class="selecttype" name="selectType" title="select" id="selectType">
         @foreach($type as $ty)
-        <option value="{{$ty->id}}">{{$ty->type_name}}</option>
+        <option value="{{$ty->id}}" >{{$ty->type_name}}</option>
         @endforeach
       </select>
     </div>
@@ -20,9 +20,7 @@
     <div class="btn-group">
       <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
         @foreach($template as $temp)
-
-       <option value="{{$temp->id}}">template {{$temp->temp_num}}</option>
-
+       <option class='selectTe' value="{{$temp->id}}">template {{$temp->temp_num}}</option>
        @endforeach
      </select>
      <input type="hidden" name="temp" id="temp">
@@ -39,13 +37,21 @@
         <table class="table table-bordered">
          <tbody>
            @foreach($temp->main as $main)
-          <tr><td width="10%"><strong>round{{$main->round}}</strong></td><td> {{$main->criteria_main_name}}</td><td width="20%"><input type="number" min="0" max="100" class="form-control main{{$temp->count}}" name="mainScore[]" ><span>%</spam></td></tr>
+          <tr><td width="10%"><strong>round{{$main->round}}</strong></td><td> {{$main->criteria_main_name}}</td><td width="20%">
+            <input type="number" min="0" max="100" class="form-control main{{$temp->count}}" name="mainScore[]"><span>%</spam>
+            </td></tr>
           @endforeach
         </tbody>
         <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal{{$temp->count}}"></font> <span>%</span></th></tr></tfoot>
       </table>
       <script>
-
+          $(document).ready(function() {
+              var sum = 0;
+              $(".main{{$temp->count}}").each(function(){
+                  sum += +$(this).val();
+              });
+               $("#maintotal{{$temp->count}}").html(sum);
+          });
           $(document).on("change", ".main{{$temp->count}}", function() {
               var sum = 0;
               $(".main{{$temp->count}}").each(function(){
@@ -81,5 +87,14 @@ $('.alert').hide();
     var temp = document.getElementById("selectTemp").value
     document.getElementById("temp").value = temp
   }
+  $('#selectType').on('change',function () {
+    $.ajax({
+           type:"get",
+           url :"test/"+$(this).val(),
+           success:function(data){
+             console.log($("#selectTemp"));
+           }
+        });
+  })
 </script>
 @stop
