@@ -62,7 +62,7 @@
 </div>
 	<div id="center">
 			<a href="/exam/manageroom/create"><button class="action-button">back</button></a>
-			<a href="/exam/manageroom/create/preview"><button class="action-button">next</button></a>
+			<a href="/exam/manageroom/create/preview"><button class="action-button" onclick="saveroom">next</button></a>
 		</div>
 
 
@@ -98,6 +98,10 @@
 											<td>{{$pj->group_project_th_name}}</td>
 											<td class="pjtype">{{$pj->type->type_name}}</td>
 										</tr>
+										<div name="countProject" value=""></div>
+										<script type="text/javascript">
+											 
+										</script>
 										@endforeach
 										@endif
 									</tdoby>

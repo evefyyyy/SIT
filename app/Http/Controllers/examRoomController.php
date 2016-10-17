@@ -100,7 +100,7 @@ class examRoomController extends Controller
               $startTime = date("g:ia",strtotime($minFormat,$getStartTime));
               $obj['project'][$i]['starttime']= $startTime;
           }
-          dd($obj['project']);
+         
 
 
 // addroom
@@ -131,7 +131,7 @@ class examRoomController extends Controller
       return view('admin.confirmRoom');
     }
     public function submitRoom(Request $request){
-
+       dd($obj['project']);
     }
 
 }
