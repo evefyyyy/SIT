@@ -59,7 +59,7 @@
 </div>
 </div>
 <div id="center">
-  <a href="/exam/managescore/year/create"><button type="button" class="action-button">back</button></a>
+  <a href="/exam/managescore/year/mainscore/create"><button type="button" class="action-button">back</button></a>
   <button class="action-button checkvalue">save</button>
 </div>
 </div>
