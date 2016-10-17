@@ -8,14 +8,19 @@
      <h6>Year 2016</h6>
      <label>project type</label>
      <div class="btn-group" style="margin-right:30px">
-      <select class="selecttype" name="selectType">
-              <option value="business">Business</option>
+      <select class="selecttype" title="select" name="selectType">
+        @foreach($type as $t)
+              <option value="{{$t->id}}">{{$t->type_name}}</option>
+        @endforeach
       </select>
+
     </div>
     <label>score sheet</label>
     <div class="btn-group">
       <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
-       <option value="temp1">template 1</option>
+        @foreach($template as $temp)
+       <option value="{{$temp->id}}">{{$temp->temp_num}}</option>
+       @endforeach
      </select>
      <input type="hidden" name="temp" id="temp">
    </div>
@@ -59,7 +64,7 @@
 </div>
 </div>
 <div id="center">
-  <a href="/exam/managescore/year/create"><button type="button" class="action-button">back</button></a>
+  <a href="/exam/managescore/year/mainscore/create"><button type="button" class="action-button">back</button></a>
   <button class="action-button checkvalue">save</button>
 </div>
 </div>

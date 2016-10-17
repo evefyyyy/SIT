@@ -37,7 +37,6 @@ span.lol, i.lol {
     clear: both;
     position: auto;
 }
-
 #footer table {
     margin: auto;
     font-family: 'Titillium Web', sans-serif;
@@ -158,7 +157,7 @@ option {
 }
 /*headings*/
 .fs-title {
-    font-size: 15px;
+    font-size: 1.3em;
     text-transform: uppercase;
     color: black;
     font-weight: 700;
@@ -167,7 +166,7 @@ option {
 
 }
 .fs-subtitle {
-    font-size: 13px;
+    font-size: 1em;
     color: #666;
     margin-top: 0;
     margin-bottom: 25px;
@@ -175,7 +174,6 @@ option {
 
 /*content*/
 .category, .main {
-    font-size: 13px;
     color: black;
     margin-top: 10px;
     text-transform: uppercase;
@@ -183,33 +181,24 @@ option {
     float: right;
 }
 .stdname {
-    font-size: 14px;
     color: black;
     margin-top: 7px;
     margin-bottom: 0;
     text-align: left;
 }
 .proname {
-    font-size: 16px;
-    color: black;
-    margin-top: 0;
+    font-size: 1.2em;
+    margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 600;
     text-align: center;
     display: block;
 }
 .title {
-    color: #666;
     margin-top: 15px;
     text-transform: uppercase;
     font-weight: normal;
     display: inline;
-    font-size: 13px;
-}
-#uploaded {
-  padding-left: 10px;
-  padding-top: 10px;
-  margin-left: 20%;
 }
 .info {
     color: black;
@@ -218,7 +207,6 @@ option {
     padding-left: 15px;
     display: inline;
     font-weight: normal;
-    font-size: 13px;
 }
 .infoType {
     padding-right: 40px;
@@ -226,9 +214,6 @@ option {
 #head {
     display: block;
     text-align: left;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
     text-decoration: underline;
 }
 /*progressbar*/
@@ -436,14 +421,9 @@ option {
   margin-left: 10px;
   cursor: pointer;
 }
-.teammem {
-    text-align: center;
-    width: 50%;
-    margin: 10px 25% 0 25%;
-}
-.teammem table {
-    margin-top: 30px;
-    font-size: 0.875em;
+table.teammem {
+  width: 80%;
+  margin: 0 auto
 }
 .teammem td {
     padding: 5px;
@@ -457,12 +437,12 @@ option {
     text-align: center;
     vertical-align: middle;
 }
-#waitApp {
-    width: 70%;
-    margin: 55px 15% 55px 15%;
-}
 #waitApp img {
     vertical-align: middle;
+    float: right;
+}
+#waitApp table > tbody > tr > td > strong {
+  margin-right: 20px;
 }
 #waitApp a {
   line-height: 3em;
@@ -972,6 +952,9 @@ h6 img {
   height: auto;
   background:url(/img/no-image.png) no-repeat;
 }
+#detail #img-gallery {
+  margin-bottom: 20px;
+}
 #detail .group {
   margin-bottom: 20px;
 }
@@ -1364,7 +1347,8 @@ img#cover {
 #scorecheet .table > tbody > tr > td > input[type=number] {
   margin: 0 auto;
 }
-#scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td, #givemark .table > tfoot > tr > th {
+#scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td, #givemark .table > tfoot > tr > th,
+#viewmark .table > tbody > tr > td, #viewmark .table > tbody > tr > th {
   vertical-align: middle;
 }
 #scoresheet table {
@@ -1511,19 +1495,19 @@ table.myprop > tbody > tr > td:nth-child(2n+1) {
 }
 .poor {
   font-weight: 900;
-  color: #EF1010;
+  color: #EF1010 !important;
 }
 .fair {
   font-weight: 900;
-  color: #FFC026;
+  color: #FFC026 !important;
 }
 .verygood {
   font-weight: 900;
-  color: #1CC68D;
+  color: #1CC68D !important;
 }
 .good {
   font-weight: 900;
-  color: #0BC7D3;
+  color: #0BC7D3 !important;
 }
 .table-bar {
   text-align: right;
@@ -1599,16 +1583,19 @@ a.delete:focus{
 #editroom strong {
   padding-right: 15px;
 }
-#givemark p {
+#givemark p{
   font-size: 1.1em;
   display: inline;
   text-transform: uppercase;
   font-weight: 900;
 }
-#givemark table {
+#givemark strong, #viewmark strong {
+  text-transform: uppercase;
+}
+#givemark table, #viewmark table {
   margin-top: 10px;
 }
-#givemark .table > tfoot > tr > th:nth-child(1) {
+#givemark .table > tfoot > tr > th:nth-child(1){
   text-transform: uppercase;
   text-align: right !important;
 }
@@ -1620,4 +1607,26 @@ a.delete:focus{
   color:red;
   display: inline;
   font-size: 1.625em;
+}
+#viewmark p {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+#viewmark strong:after{
+  content: ":";
+  float: right;
+}
+#viewmark .table > tbody > tr > td:last-child,
+#viewmark .table > tfoot > tr > td:last-child {
+  color: #999;
+}
+#viewmark .table > tfoot > tr > th {
+  color: #40c3a7;
+  text-transform: uppercase;
+}
+#viewmark .titlee {
+  margin-right: 8px;
+}
+#viewmark .firstname {
+  text-transform: capitalize;
 }

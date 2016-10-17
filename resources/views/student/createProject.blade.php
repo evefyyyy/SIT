@@ -101,6 +101,9 @@
 		    	<div class="proname" id="projectNameTH1"></div>
 		    	<div class="title">Project type :</div><div id="type1" class="info infoType"></div>
 		    	<div class="title">Category :</div><div id="category1" class="info"></div>
+		    	<div class="row">
+					<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
+					<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
 				<div class="title" id="head">Team members</div>
 					<table class="teammem">
 					  <tr>
@@ -131,7 +134,9 @@
 				    <p>Upload your first draft proposal</p>
 				    <input type="file" id="file" name="myfiles"/>
 				    </div>
-
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
+				</div>
 				<input type="hidden" value="" id="selectType" name="selectType"/>
 				<input type="hidden" value="" id="selectCat" name="selectCat"/>
 				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>

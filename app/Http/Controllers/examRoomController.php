@@ -119,8 +119,25 @@ class examRoomController extends Controller
               $addProject[$i] = GroupProject::where('id',$newresult[$i])->get();
             }
             $obj['addProject'] = array_flatten($addProject);
+            $countAdd = count($obj['addProject']);
+            for($i=0;$i<$countAdd;$i++){
+              $addProject_pkid[$i] = $obj['addProject'][$i]->id;
+              $student[$i] = DB::table('project_students')
+                            ->join('students','student_pkid','=','students.id')
+                            ->where('project_pkid',$addProject_pkid[$i])
+                            ->get();
+              $obj['addProject'][$i]['student'] = $student[$i];
+              $advisor[$i] = DB::table('project_advisors')
+                            ->join('advisors','advisor_id','=','advisors.id')
+                            ->where('project_pkid',$addProject_pkid[$i])
+                            ->select('advisor_name')->get();
+              $obj['addProject'][$i]['advisor'] = $advisor[$i];
+            }
+            dd($obj['addProject']);
           }
         }
+
+
       $obj['room_names'] = Room::where('id', $selectRoom)->first();
       $request->session()->put('obj', $obj);
 
