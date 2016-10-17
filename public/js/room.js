@@ -99,6 +99,7 @@ function parseTime(timeString)
 	return d;
 } // parseTime()
 
+
 function highlight(e) {
 	if (selectpj[0]) selectpj[0].className = '';
 	e.target.parentNode.className = 'selectpj';
@@ -108,7 +109,7 @@ selectpj = table.getElementsByClassName('selectpj');
 table.onclick = highlight;
 // add project
 function pjselect(){
-	var addpj = $("tr.selectpj td:first").html();
+	//window.location.href = "/exam/manageroom/addmore/"+$('.selectpj input').val();
 }
 
 function back() {
