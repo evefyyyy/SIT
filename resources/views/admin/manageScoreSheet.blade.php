@@ -37,10 +37,10 @@
         <table class="table table-bordered">
          <tbody>
            @foreach($temp->main as $main)
-          <tr><td width="10%"><strong>round{{$main->round}}</strong></td><td> {{$main->criteria_main_name}}</td><td width="20%"><input type="number" min="0" max="100" class="form-control main1"><span>%</spam></td></tr>
+          <tr><td width="10%"><strong>round{{$main->round}}</strong></td><td> {{$main->criteria_main_name}}</td><td width="20%"><input type="number" min="0" max="100" class="form-control main1 subClear"><span>%</spam></td></tr>
           @endforeach
         </tbody>
-        <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal1"></font> <span>%</span></th></tr></tfoot>
+        <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font class="totalClear" id="maintotal1"></font> <span>%</span></th></tr></tfoot>
       </table>
       <script>
           $(document).on("change", ".main1", function() {

@@ -81,6 +81,9 @@ Route::get('exam/managescore/criteria',function(){
 Route::get('exam/managescore/year/create/subcriteria',function(){
   return view('admin.manageScoreSheet2');
 });
+Route::get('exam/scorerecord/viewscore',function(){
+  return view('admin.viewScore');
+});
 
 Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createMainCriteria');
 

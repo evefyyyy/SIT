@@ -1364,7 +1364,8 @@ img#cover {
 #scorecheet .table > tbody > tr > td > input[type=number] {
   margin: 0 auto;
 }
-#scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td, #givemark .table > tfoot > tr > th {
+#scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td, #givemark .table > tfoot > tr > th,
+#viewmark .table > tbody > tr > td, #viewmark .table > tbody > tr > th {
   vertical-align: middle;
 }
 #scoresheet table {
@@ -1599,13 +1600,16 @@ a.delete:focus{
 #editroom strong {
   padding-right: 15px;
 }
-#givemark p {
+#givemark p{
   font-size: 1.1em;
   display: inline;
   text-transform: uppercase;
   font-weight: 900;
 }
-#givemark table {
+#givemark strong, #viewmark strong {
+  text-transform: uppercase;
+}
+#givemark table, #viewmark table {
   margin-top: 10px;
 }
 #givemark .table > tfoot > tr > th:nth-child(1) {
@@ -1620,4 +1624,19 @@ a.delete:focus{
   color:red;
   display: inline;
   font-size: 1.625em;
+}
+#viewmark p {
+  margin-bottom: 5px;
+}
+#viewmark .titlee {
+  color: #999;
+}
+#viewmark .titlee:after{
+  content: ":";
+  float: right;
+}
+#viewmark span {
+  color: #40c3a7;
+  margin-right: 5px;
+  text-transform: uppercase;
 }
