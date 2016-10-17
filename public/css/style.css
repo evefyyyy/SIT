@@ -1640,3 +1640,10 @@ a.delete:focus{
   margin-right: 5px;
   text-transform: uppercase;
 }
+#viewmark .table > tbody > tr > td:last-child,
+#viewmark .table > tfoot > tr > td:last-child {
+  color: #999;
+}
+#viewmark .table > tfoot > tr > th {
+  color: #40c3a7;
+}

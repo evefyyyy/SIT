@@ -27,7 +27,7 @@
 <div class="row" id="viewmark">
   <div class="col-xs-1 col-md-1 col-lg-2"></div>
   <div class="col-xs-10 col-md-10 col-lg-8">
-    <p><strong>round 1</strong> การศึกษาความเป็นไปได้ (25%)</p>
+    <p class="titlee"><strong>round 1</strong> การศึกษาความเป็นไปได้ (25%)</p>
    <div class="col-xs-3 col-md-2 col-lg-3 titlee">date</div>
    <div class="col-xs-9 col-md-10 col-lg-9">9 June 2016</div>
    <div class="col-xs-3 col-md-2 col-lg-3 titlee">exam commitee</div>
@@ -51,7 +51,7 @@
         <tr><td>การนำเสนองานและเอกสาร</td><td>10</td><td>9</td><td>7</td><td>7</td><td>6</td><td>10</td></tr>
       </tbody>
       <tfoot>
-      	<tr><th>total score</th><th>78</th><th>78</th><th>85</th><th>80</th><th>74</th><th>100</th></tr>
+      	<tr><th>total score</th><td>78</td><td>78</td><td>85</td><td>80</td><td>74</td><td>100</td></tr>
       	<tr><th>grade</th><th>B</th><th>B</th><th>B+</th><th>B+</th><th>C+</th></tr>
       </tfoot>
  	</table>
