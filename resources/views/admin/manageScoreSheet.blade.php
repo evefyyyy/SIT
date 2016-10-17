@@ -8,7 +8,7 @@
      <h6>Year 2016</h6>
      <label>project type</label>
      <div class="btn-group" style="margin-right:30px">
-       <!-- <form action="{{url('exam/managescore/year')}}" method="post"> -->
+       <form action="{{url('exam/managescore/year/score')}}" method="post">
          <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
       <select class="selecttype" name="selectType">
         @foreach($type as $ty)
@@ -69,7 +69,7 @@
   <a href="/exam/scoresheet"><button type="button" class="action-button">back</button></a>
   <button class="action-button" onclick="countTotal()">next</button>
 </div>
-<!-- </form> -->
+</form>
 </div>
 <script src="{!! URL::asset('js/score.js') !!}"></script>
 <script>
