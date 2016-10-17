@@ -31,6 +31,8 @@ Route::post('exam/manageroom/create/editroom','examRoomController@genGroup');
 
 Route::get('exam/manageroom/create/preview','examRoomController@preview');
 
+Route::get('exam/manageroom/create/editroom/{exam_room_name}/{starttime}/{endtime}/{group_project_id}/{room_exam}', 'examRoomController@submitRoom');
+
 // Route::get('exam/manageroom',function(){
 //   return view('admin.manageRoom');
 // });
@@ -77,6 +79,9 @@ Route::post('exam/managescore/year','ScoreSheetController@storeManageScoreSheet'
 
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
+});
+Route::get('exam/managescore/year/create/subcriteria',function(){
+  return view('admin.manageScoreSheet2');
 });
 
 Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createMainCriteria');

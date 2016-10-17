@@ -99,8 +99,8 @@ class examRoomController extends Controller
               $minFormat = '-'.$getMin.' minutes';
               $startTime = date("g:ia",strtotime($minFormat,$getStartTime));
               $obj['project'][$i]['starttime']= $startTime;
+              $obj['project'][$i]['roomexam'] = $selectRoom;
           }
-         
 
 
 // addroom
@@ -122,6 +122,8 @@ class examRoomController extends Controller
             $obj['addProject'] = array_flatten($addProject);
           }
         }
+      $obj['room_names'] = Room::where('id', $selectRoom)->first();
+
 
       return view('admin.editRoom',$obj);
     }
@@ -131,7 +133,21 @@ class examRoomController extends Controller
       return view('admin.confirmRoom');
     }
     public function submitRoom(Request $request){
-       dd($obj['project']);
+      $exam_room_name = $request->exam_room_name;
+      $starttime = $request->starttime;
+      $endtime = $request->endtime;
+      $group_project_id = $request->group_project_id;
+      $room_exam = $request->room_exam;
+
+      RoomExam::insert([
+        'room_exam_name' => $exam_room_name,
+        'exam_starttime' => $starttime,
+        'exam_endtime' => $endtime,
+        'project_pkid' => $group_project_id,
+        'room_id' => $room_exam
+        ]);
+
+      return view('admin.confirmRoom');
     }
 
 }
