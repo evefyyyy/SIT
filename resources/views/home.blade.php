@@ -14,11 +14,11 @@
 		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 			<p class="fancy"><span>recommend projects</span></p>
 			<div id="recommend" class="owl-carousel">
-		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster2.jpg"></a></div>
-		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster3.jpg"></a></div>
-		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster4.jpg"></a></div>
-		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster5.jpg"></a></div>
-		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster7.jpg"></a></div>
+		                <div class="item"><img src="/projectPoster/poster2.jpg"></div>
+		                <div class="item"><img src="/projectPoster/poster3.jpg"></div>
+		                <div class="item"><img src="/projectPoster/poster4.jpg"></div>
+		                <div class="item"><img src="/projectPoster/poster5.jpg"></div>
+		                <div class="item"><img src="/projectPoster/poster7.jpg"></div>
 		    </div>
 		    <a href="home/"><p class="fancyy"><span>Click here to see more</span></p></a>
 		 </div>
