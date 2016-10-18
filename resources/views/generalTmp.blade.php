@@ -43,17 +43,29 @@
             @endif
           @endif
           <li>
-          <form class="navbar-form" role="search" action="{{url('home/projects/search')}}" method="get">
+            <form class="navbar-form" role="search" action="{{url('home/projects/search')}}" method="get">
           <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
-            <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search">
+            <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search" value="{{$search or ''}}">
             <div class="ddl-select input-group-btn">
               <?php
                 $year = DB::table('years')->get();
+                if(isset($_GET['year'])){
+                  $years = $_GET['year'];
+                }
                ?>
               <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default" name="year">
+
                 <option value="0">all years</option>
                 @foreach($year as $y)
-                <option value="{{$y->id}}">{{$y->year}}</option>
+                @if(isset($years))
+                  @if($years == $y->id)
+                  <option value="{{$y->id}}" selected>{{$y->year}}</option>
+                  @else
+                  <option value="{{$y->id}}" >{{$y->year}}</option>
+                  @endif
+                @else
+                <option value="{{$y->id}}" >{{$y->year}}</option>
+                @endif
                 @endforeach
               </select>
             </div>

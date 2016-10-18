@@ -133,10 +133,8 @@ class examRoomController extends Controller
                             ->select('advisor_name')->get();
               $obj['addProject'][$i]['advisor'] = $advisor[$i];
             }
-        
           }
         }
-
 
       $obj['room_names'] = Room::where('id', $selectRoom)->first();
       $request->session()->put('obj', $obj);
@@ -174,8 +172,8 @@ class examRoomController extends Controller
       $group_project_id = $request->group_project_id;
       $roomexamid = $request->roomid;
       $countrow = $request->countrow;
-      $countrowmax = $request->countrowmax;      
-      for ($i=1; $i <=$countrowmax ; $i++) { 
+      $countrowmax = $request->countrowmax;
+      for ($i=1; $i <=$countrowmax ; $i++) {
         $yumdata[$i] = $request->yumdata[$i];
       }
         RoomExam::insert([
@@ -184,7 +182,7 @@ class examRoomController extends Controller
         'project_pkid' => $group_project_id,
         'room_id' => $roomexamid
         ]);
-      
+
       return view('admin.confirmRoom');
     }
 

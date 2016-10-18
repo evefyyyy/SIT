@@ -402,14 +402,6 @@ class ScoreSheetController extends Controller
               ->select('templates_main.id','criteria_main_id','template_id')
               ->get();
       $countMain = count($main);
-      //
-      // $sub = DB::table('templates_sub')
-      //       ->join('templates_main','templates_main.id','=','template_main_id')
-      //       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-      //       ->where('template_id',$id)
-      //       ->select('templates_sub.id','criteria_sub_id','template_main_id')
-      //       ->get();
-      // $countSub = count($sub);
 
       $year = DB::table('years')->where('year',date('Y'))->value('id');
 
@@ -454,6 +446,31 @@ class ScoreSheetController extends Controller
     {
       $data['type'] = Type::all();
       $data['template'] = Template::all();
+      $countTemp = count($data['template']);
+      for($i=0; $i<$countTemp; $i++){
+        $id = $data['template'][$i]->id;
+        $main = DB::table('templates_main')
+                ->join('templates','templates.id','=','template_id')
+                ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                ->where('template_id',$id)
+                ->select('criteria_main_name','round','templates_main.id')->get();
+
+        $countMain = count($main);
+        for($j=0; $j<$countMain; $j++){
+          $tempId = $main[$j]->id;
+          $sub = DB::table('templates_sub')
+                ->join('templates_main','templates_main.id','=','template_main_id')
+                ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+                ->where('template_main_id',$tempId)
+                ->select('templates_sub.id','criteria_sub_name','template_main_id')
+                ->get();
+          // $data['main'][$j]['sub'] = $sub;
+          dd($sub);
+        }
+      }
+
+      $countSub = count($sub);
+
 
       return view('admin.manageScoreSheet2',$data);
     }
