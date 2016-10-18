@@ -4330,7 +4330,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
 }
 .navbar-brand > img {
-  display: block;
+  display: inline;
 }
 @media (min-width: 1199px) {
   .navbar > .container .navbar-brand,

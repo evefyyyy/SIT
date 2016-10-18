@@ -1630,3 +1630,6 @@ a.delete:focus{
 #viewmark .firstname {
   text-transform: capitalize;
 }
+#addproject .modal-lg {
+    width: 95%;
+  }

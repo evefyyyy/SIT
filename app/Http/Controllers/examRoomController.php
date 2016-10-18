@@ -133,7 +133,7 @@ class examRoomController extends Controller
                             ->select('advisor_name')->get();
               $obj['addProject'][$i]['advisor'] = $advisor[$i];
             }
-            dd($obj['addProject']);
+        
           }
         }
 

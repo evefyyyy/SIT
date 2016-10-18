@@ -98,18 +98,36 @@
 							<table class="table table-bordered">
 								<thead>
 									<th>project id</th>
+									<th>student id</th>
+									<th>student name</th>
 									<th>project name</th>
 									<th>type</th>
+									<th>main advisor</th>
+									<th>co-advisor</th>
 								</thead>
 								<tbody>
 									@if($project == 0)
 									@foreach($addProject as $pj)
+
 									<tr>
 										<td>{{$pj->group_project_id}}
 										<input name="pjid" value="{{$pj->id}}" hidden>
 										</td>
+										<td>
+										@foreach($pj->student as $std)
+											{{$std->student_id}}<br>
+										@endforeach
+										</td>
+										<td>
+										@foreach($pj->student as $std)
+												{{$std->student_name}}<br>
+										@endforeach
+										</td>
 										<td>{{$pj->group_project_th_name}}</td>
 										<td class="pjtype">{{$pj->type->type_name}}</td>
+										@foreach($pj->advisor as $adv)
+										<td><span class="firstname">{{$adv->advisor_name}}</span></td>
+										@endforeach
 									</tr>
 									@endforeach
 									@else
@@ -118,8 +136,21 @@
 										<td>{{$pj->group_project_id}}
 										<input name="pjid" value="{{$pj->id}}" hidden>
 										</td>
+										<td>
+										@foreach($pj->student as $std)
+											{{$std->student_id}}<br>
+										@endforeach
+										</td>
+										<td>
+										@foreach($pj->student as $std)
+												{{$std->student_name}}<br>
+										@endforeach
+										</td>
 										<td>{{$pj->group_project_th_name}}</td>
 										<td class="pjtype">{{$pj->type->type_name}}</td>
+										@foreach($pj->advisor as $adv)
+										<td><span class="firstname">{{$adv->advisor_name}}</span></td>
+										@endforeach
 									</tr>
 									@endforeach
 									@endif
