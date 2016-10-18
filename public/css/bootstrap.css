@@ -4330,7 +4330,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
 }
 .navbar-brand > img {
-  display: block;
+  display: inline;
 }
 @media (min-width: 1199px) {
   .navbar > .container .navbar-brand,
@@ -5067,7 +5067,7 @@ a.badge:focus {
        -o-transition: border .2s ease-in-out;
           transition: border .2s ease-in-out;
 }
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
   .thumbnail {height: 230px}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -5075,7 +5075,7 @@ a.badge:focus {
 }
 @media (min-width: 765px) and (max-width: 991px) {
   .thumbnail {height: 295px}
-}
+}*/
 img,
 .thumbnail a > img {
   margin-right: auto;
