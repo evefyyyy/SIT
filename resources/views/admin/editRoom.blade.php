@@ -1,5 +1,10 @@
 @extends('adminTmp')
 @section('content')
+<style>
+	.disfix{
+		display: none;
+	}
+</style>
 <div class="row" id="editroom">
 	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 	<div class="col-xs-10 col-md-10 col-lg-10">
@@ -10,7 +15,6 @@
 	</div>
 	<div class="col-xs-1 col-md-1 col-lg-1"></div>
 </div>
-<form action="/exam/manageroom/create/editroom/confirmroom" method="post">
 <div class="row">
 	<div id="roomTB">
 		<table id="tableroom" class="table table-bordered table-hover">
@@ -84,7 +88,6 @@
 	<button type="submit" class="action-button">next</button>
 	
 </div>
-</form>
 		<!-- add project -->
 		<div class="modal fade" id="addproject" role="dialog" aria-labelledby="exampleModalLabel">
 			<div class="modal-dialog modal-lg">
@@ -97,22 +100,31 @@
 						<div id="addroomTB">
 							<table class="table table-bordered">
 								<thead>
+								<tr>
+									<td style="width:2%" class="move-btn disfix"></td>
 									<th>project id</th>
+									<th>exam time</th>
 									<th>student id</th>
 									<th>student name</th>
 									<th>project name</th>
 									<th>type</th>
 									<th>main advisor</th>
 									<th>co-advisor</th>
+									<td style="width:2%" class="del-btn"></td>
+								</tr>
 								</thead>
 								<tbody>
 									@if($project == 0)
 									@foreach($addProject as $pj)
 
 									<tr>
+										<td class="move-btn disfix"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
+											<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+										</td>
 										<td>{{$pj->group_project_id}}
 										<input name="pjid" value="{{$pj->id}}" hidden>
 										</td>
+										<td>{{$data->starttime}} - {{$data->endtime}}</td>
 										<td>
 										@foreach($pj->student as $std)
 											{{$std->student_id}}<br>
@@ -128,14 +140,19 @@
 										@foreach($pj->advisor as $adv)
 										<td><span class="firstname">{{$adv->advisor_name}}</span></td>
 										@endforeach
+										<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
 									</tr>
 									@endforeach
 									@else
 									@foreach($addProject as $pj)
 									<tr>
+										<td class="move-btn disfix"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
+											<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+										</td>
 										<td>{{$pj->group_project_id}}
 										<input name="pjid" value="{{$pj->id}}" hidden>
 										</td>
+										<td>{{$data->starttime}} - {{$data->endtime}}</td>
 										<td>
 										@foreach($pj->student as $std)
 											{{$std->student_id}}<br>
@@ -151,6 +168,7 @@
 										@foreach($pj->advisor as $adv)
 										<td><span class="firstname">{{$adv->advisor_name}}</span></td>
 										@endforeach
+										<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
 									</tr>
 									@endforeach
 									@endif
