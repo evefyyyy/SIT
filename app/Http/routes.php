@@ -31,7 +31,7 @@ Route::post('exam/manageroom/create/editroom','examRoomController@genGroup');
 
 Route::get('exam/manageroom/create/preview','examRoomController@preview');
 
-Route::get('exam/manageroom/create/editroom/{exam_room_name}/{starttime}/{endtime}/{group_project_id}/{room_exam}', 'examRoomController@submitRoom');
+Route::post('exam/manageroom/create/editroom/confirmroom', 'examRoomController@submitRoom');
 
 // Route::get('exam/manageroom',function(){
 //   return view('admin.manageRoom');
@@ -73,9 +73,13 @@ Route::get('exam/managescore/template/{template}/edit','ScoreSheetController@edi
 
 Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTemplate');
 
-Route::get('exam/managescore/year/create','ScoreSheetController@createManageScoreSheet');
+Route::get('exam/managescore/year/mainscore/create','ScoreSheetController@createManageScoreSheet1');
 
-Route::post('exam/managescore/year','ScoreSheetController@storeManageScoreSheet');
+Route::post('exam/managescore/year/mainscore','ScoreSheetController@storeManageScoreSheet1');
+
+Route::get('exam/managescore/year/subscore/create','ScoreSheetController@createManageScoreSheet2');
+
+Route::post('exam/managescore/year/subscore','ScoreSheetController@storeManageScoreSheet2');
 
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
@@ -290,5 +294,21 @@ Route::post('student/myproject/create/{id}/stdId3',function(){
     }
   }else{
       return 0;
+  }
+});
+
+Route::get('exam/managescore/year/mainscore/test/{type}',function($type){
+  $data   = DB::table('main_templates_score')
+          ->join('templates_main','templates_main.id','=','template_main_id')
+          ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+          ->where('type_id',$type)
+          ->select('criteria_main_name','score','template_id')
+          ->get();
+  if($data!=null){
+  $result['tempId'] =  $data[0]->template_id;
+  $result['data'] = $data;
+    return Response::json($result);
+  }else{
+    return 0;
   }
 });
