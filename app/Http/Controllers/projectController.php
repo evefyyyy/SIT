@@ -44,16 +44,44 @@ class projectController extends Controller
 
       $year = $request['year'];
 
+      $obj['search'] = $search;
+
       if($search === " "){
         $obj['groupProject'] = GroupProject::where('group_project_approve','=','1')->get();
       }else{
-        // if($year === 0){
+        if($year == 0){
           $result = DB::table('group_projects')
                     ->join('project_detail','group_projects.id','=','project_pkid')
                     ->where('group_project_approve','=','1')
                     ->where('group_project_eng_name','like','%'.$search.'%')
-                    ->orwhere('group_project_detail','like','%'.$search.'%')
+                    ->orWhere('group_project_detail','like','%'.$search.'%')
                     ->select('project_pkid')->get();
+        }else{
+          if($year != 0 && $search != null){
+            $result = DB::table('group_projects')
+                      ->join('project_detail','group_projects.id','=','project_pkid')
+                      ->where('group_project_approve','=','1')
+                      ->where('group_project_eng_name','like','%'.$search.'%')
+                      ->where('year_id',$year)
+                      ->select('project_pkid')->get();
+            if($result == null){
+              $result = DB::table('group_projects')
+                        ->join('project_detail','group_projects.id','=','project_pkid')
+                        ->where('group_project_approve','=','1')
+                        ->where('group_project_detail','like','%'.$search.'%')
+                        ->where('year_id',$year)
+                        ->select('project_pkid')->get();
+            }
+          }else{
+            if($year != 0 && $search == null){
+              $result = DB::table('group_projects')
+                        ->join('project_detail','group_projects.id','=','project_pkid')
+                        ->where('group_project_approve','=','1')
+                        ->where('year_id',$year)
+                        ->select('project_pkid')->get();
+            }
+          }
+        }
           $obj['groupProject']  = [];
           if(count($result) != null){
             $countObj = count($result);
@@ -65,10 +93,8 @@ class projectController extends Controller
               array_push($obj['groupProject'],GroupProject::where('id',$i)->get()[0]);
             }
           }
-        // }else{
-        //
-        // }
       }
+
 
       return view(('searchResult'),$obj);
     }

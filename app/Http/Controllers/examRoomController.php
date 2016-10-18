@@ -133,10 +133,8 @@ class examRoomController extends Controller
                             ->select('advisor_name')->get();
               $obj['addProject'][$i]['advisor'] = $advisor[$i];
             }
-            dd($obj['addProject']);
           }
         }
-
 
       $obj['room_names'] = Room::where('id', $selectRoom)->first();
 
