@@ -28,11 +28,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-          <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"><img height="40" src="/img/blackribbon.png"></a>
+          <a class="navbar-brand" href="/"><img height="40" src="/img/logo.jpg"><img height="40" src="/img/blackribbon.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/home/projects">Home</a></li>
+          <li><a href="/home/">Home</a></li>
           @if(Auth::check())
             @if(Auth::user()->user_type_id === 1)
               <li><a href="/advisor/news/announcement">manage project</a></li>

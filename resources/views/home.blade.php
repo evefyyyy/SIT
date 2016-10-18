@@ -19,7 +19,7 @@
 		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster4.jpg"></a></div>
 		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster5.jpg"></a></div>
 		    </div>
-		    <a href="home/projects"><p class="fancyy"><span>Click here to see more</span></p></a>
+		    <a href="home/"><p class="fancyy"><span>Click here to see more</span></p></a>
 		 </div>
 		<div class="hidden-xs col-sm-2 col-md-2 col-lg-2"></div>
 	</div>
