@@ -18,6 +18,7 @@
 		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster3.jpg"></a></div>
 		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster4.jpg"></a></div>
 		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster5.jpg"></a></div>
+		                <div class="item"><a href="/showproject"><img src="/projectPoster/poster7.jpg"></a></div>
 		    </div>
 		    <a href="home/projects"><p class="fancyy"><span>Click here to see more</span></p></a>
 		 </div>
