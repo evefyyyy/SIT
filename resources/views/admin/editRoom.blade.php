@@ -13,7 +13,7 @@
 <form action="/exam/manageroom/create/editroom/confirmroom" method="post">
 <div class="row">
 	<div id="roomTB">
-		<table class="table table-bordered table-hover">
+		<table id="tableroom" class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<td style="width:2%" class="move-btn"></td>

@@ -109,6 +109,10 @@ selectpj = table.getElementsByClassName('selectpj');
 table.onclick = highlight;
 // add project
 function pjselect(){
+	$tmp = $(".selectpj");
+	$tmp.removeClass('selectpj');
+	$(".selectpj").empty();
+	$("#tableroom tbody").append($tmp);
 	//window.location.href = "/exam/manageroom/addmore/"+$('.selectpj input').val();
 }
 
