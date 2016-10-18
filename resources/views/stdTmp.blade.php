@@ -67,7 +67,7 @@
         <div id="footer">
           <table>
             <tr>
-            <th class="SITpic" rowspan="2"><img src="/img/logo-SIT.gif" height="30"></th>
+            <th class="SITpic" rowspan="2"><img src="/img/logo-sit.gif" height="30"></th>
             <td class="school">School of information technology</td>
           </tr>
           <tr>
