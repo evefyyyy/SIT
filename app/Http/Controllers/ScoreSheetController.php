@@ -215,7 +215,7 @@ class ScoreSheetController extends Controller
                       ->where('template_id',$id)
                       ->groupBy('criteria_sub_id')
                       ->select('criteria_sub_id')->get();
-
+                      dd($data);
       return view('admin.editTemplate',$data);
     }
 
