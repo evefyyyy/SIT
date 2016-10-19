@@ -160,6 +160,7 @@ Route::get('ldap',function(){
 Route::auth();
 
 Route::post('login','LdapLoginController@Login');
+Route::get('relogin', 'LdapLoginController@getIndex');
 Route::get('logout','LdapLoginController@getLogout');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');

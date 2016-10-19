@@ -10,8 +10,8 @@ var password = $("input[type=password]");
                     $("#output").removeClass(' alert alert-success');
                     $("#output").addClass("alert alert-danger animated fadeInUp").html("enter password ");
                 } else {
-                    $("#output").removeClass(' alert alert-success');
-                    $("#output").addClass("alert alert-danger animated fadeInUp").html("invalid username or password ");
+                    // $("#output").removeClass(' alert alert-success');
+                    // $("#output").addClass("alert alert-danger animated fadeInUp").html("invalid username or password ");
                 }
             });
 });

@@ -18,9 +18,10 @@
         <div id="output"></div>
         <img src="/img/logo.png">
         <div class="form-box">
-            <form action="" method="">
-                <input type="text" placeholder="username">
-                <input type="password" placeholder="password">
+            <form action="/login" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="text" placeholder="username" name="name">
+                <input type="password" placeholder="password" name="password">
                 <button class="btn-login" type="submit">Login</button>
             </form>
         </div>
