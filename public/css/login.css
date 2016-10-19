@@ -85,10 +85,11 @@ html,body{
 }
 
 .form-box button.btn-login {
-    margin-top:15px;
+    margin-top:20px;
     padding: 10px 20px;
     font-weight: 900;
     cursor: pointer;
+    font-size: 1em;
 }
 
 .animated {
