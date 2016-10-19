@@ -973,6 +973,9 @@ h6 img {
 #detail .upload-btn {
   float: right;
 }
+#detail .image-view ul {
+  list-style-type: none;
+}
 .btn-save {
   text-align: right;
   margin-top: 10px;
@@ -1043,7 +1046,7 @@ img#cover {
   display: inline-block;
   text-transform: uppercase;
 }
-.gallery {padding:10px; overflow:hidden; height:135px; align-items:center; display:flex;}
+.gallery {height:135px; align-items:center; display:flex;}
 .gallery img{width:100%;}
 .gallery img:hover{opacity:0.7; cursor:pointer;}
 .image-view .active{box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);}
@@ -1157,6 +1160,7 @@ img#cover {
   color: #fff;
   width: 100%;
   height: 100%;
+  cursor: pointer;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
 }
 .pdf-thumb-box-overlay i{

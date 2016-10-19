@@ -31,10 +31,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                    <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"><img height="40" src="/img/blackribbon.png"></a>
+                    <a class="navbar-brand" href="#"><img height="40" src="/img/logo.png"><img style="margin-left:5px" height="25" src="/img/blackribbon.png"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">
+                  <li><a href="/home">home</a></li>
                   <li class="dropdown {{ strrpos(Request::path(),'news') === 0 ? 'active' : ''  }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">news</a>
                     <ul class="dropdown-menu">
@@ -52,7 +53,6 @@
                     </ul>
                   </li>
                   <li class="{{ strrpos(Request::path(),'project') === 0 ? 'active' : ''  }}"><a href="/project">Student projects</a></li>
-                  <li><a href="/index">Back to homepage</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  

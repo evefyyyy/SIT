@@ -13,8 +13,8 @@ function readURL(input) {
         } else if(input.id === 'img-cover') {
           $('#cover').attr('src', e.target.result);
         } else if (input.id == 'uploader') {
-        if ( count == 9 ) {
-          alert('Cannot upload more than 9 pictures');
+        if ( count == 10 ) {
+          alert('Cannot upload more than 10 pictures');
         } else {
           $.each(input.files, function(key, file) {
             multipleURL(file);
@@ -101,3 +101,8 @@ $('.embed').on('click', function() {
     var x = $("#embedcode").val(); 
     document.getElementById("vdo").innerHTML = x ;
 });
+
+$( function() {
+    $( ".image-view" ).sortable();
+    $( ".image-view" ).disableSelection();
+  } );
