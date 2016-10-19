@@ -28,11 +28,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-          <a class="navbar-brand" href="#"><img height="40" src="/img/logo.jpg"><img height="40" src="/img/blackribbon.png"></a>
+          <a class="navbar-brand" href="/"><img height="40" src="/img/logo.png"><img style="margin-left:5px" height="25" src="/img/blackribbon.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/home/projects">Home</a></li>
+          <li><a href="/home/">Home</a></li>
           @if(Auth::check())
             @if(Auth::user()->user_type_id === 1)
               <li><a href="/advisor/news/announcement">manage project</a></li>
@@ -122,7 +122,7 @@
 <div id="footer">
   <table>
     <tr>
-      <th class="SITpic" rowspan="2"><img src="/img/logo-SIT.gif" height="30"></th>
+      <th class="SITpic" rowspan="2"><img src="/img/logo-sit.gif" height="30"></th>
       <td class="school">School of information technology</td>
     </tr>
     <tr>

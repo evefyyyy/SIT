@@ -41,7 +41,7 @@ $('[data-toggle=confirmation]').confirmation({
 	}
 });
 
-$('table').on('click', '.move-up', function () {
+$('#tableroom').on('click', '.move-up', function () {
 
 	var thisRow = $(this).closest('tr');
 	var thisColumn = thisRow.children('td')[2];
@@ -65,7 +65,7 @@ $('table').on('click', '.move-up', function () {
 
 });
 
-$('table').on('click', '.move-down', function () {
+$('#tableroom').on('click', '.move-down', function () {
 	var thisRow = $(this).closest('tr');
 	var thisColumn = thisRow.children('td')[2];
 	var thisDateColumn = thisColumn.innerHTML;
@@ -109,6 +109,11 @@ selectpj = table.getElementsByClassName('selectpj');
 table.onclick = highlight;
 // add project
 function pjselect(){
+	$tmp = $(".selectpj");
+	$("#tableroom tbody").append($tmp);
+	$("#tableroom tbody tr,td").removeClass('disfix selectpj');
+	$(".selectpj").empty();
+	
 	//window.location.href = "/exam/manageroom/addmore/"+$('.selectpj input').val();
 }
 

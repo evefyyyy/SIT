@@ -100,16 +100,20 @@ class examRoomController extends Controller
               $startTime = date("g:ia",strtotime($minFormat,$getStartTime));
               $obj['project'][$i]['starttime']= $startTime;
               $obj['project'][$i]['roomexamid'] = $selectRoom;
+
           }
 
 // addroom
           $roomexam = DB::table('rooms_exam')->select('project_pkid')->get();
+
           $getData3 = [];
           foreach($roomexam as $re){
             array_push($getData3,$re->project_pkid);
-          }
+
+          } 
           $result = array_diff($getData1,$getData2,$getData3);
           if(count($result) != null){
+
             $newresult = [];
             foreach($result as $s){
               array_push($newresult,$s);
@@ -120,7 +124,9 @@ class examRoomController extends Controller
             }
             $obj['addProject'] = array_flatten($addProject);
             $countAdd = count($obj['addProject']);
+
             for($i=0;$i<$countAdd;$i++){
+
               $addProject_pkid[$i] = $obj['addProject'][$i]->id;
               $student[$i] = DB::table('project_students')
                             ->join('students','student_pkid','=','students.id')
@@ -138,7 +144,6 @@ class examRoomController extends Controller
 
       $obj['room_names'] = Room::where('id', $selectRoom)->first();
       $request->session()->put('obj', $obj);
-
       return view('admin.editRoom',$obj);
     }
     public function addmoreGroup(Request $request){

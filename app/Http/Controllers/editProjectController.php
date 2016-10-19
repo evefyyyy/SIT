@@ -101,9 +101,10 @@ class editProjectController extends Controller {
 										  ->value('picture_path_name');
 
 		$data['screenshot'] = DB::table('pictures')
-													->where('project_pkid',$getId)
-													->where('picture_type_id','=','3')
-													->select('id','picture_path_name')->get();
+							->where('project_pkid',$getId)
+							->where('picture_type_id','=','3')
+							->select('id','picture_path_name')->get();
+							
 
 		return view('student.editProject',$data);
 
@@ -238,9 +239,9 @@ class editProjectController extends Controller {
 		}
 
 		$countPic = DB::table('pictures')
-								->where('project_pkid',$getId)
-								->where('picture_type_id','=','3')
-								->select('project_pkid')->get();
+					->where('project_pkid',$getId)
+					->where('picture_type_id','=','3')
+					->select('project_pkid')->get();
 
 								if(count($countPic)<10){
 										$x = $request->file('screenshot') ;
@@ -260,6 +261,7 @@ class editProjectController extends Controller {
 											}
 										}
 								}
+
 
 
 			return redirect('/showproject');

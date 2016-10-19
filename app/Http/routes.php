@@ -12,11 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('generalTmp');
-});
-
-Route::get('home',function(){
-  return view('home');
+    return view('home');
 });
 
 Route::get('index', function () {
@@ -118,7 +114,7 @@ Route::resource('advisor/news/document', 'AdvisorDocumentController');
 //     Route::get('home/projects','projectController@index');
 // });
 
-Route::get('home/projects','projectController@index');
+Route::get('home/','projectController@index');
 
 Route::get('home/projects/search','projectController@search');
 
@@ -164,6 +160,7 @@ Route::get('ldap',function(){
 Route::auth();
 
 Route::post('login','LdapLoginController@Login');
+Route::get('relogin', 'LdapLoginController@getIndex');
 Route::get('logout','LdapLoginController@getLogout');
 
 Route::post('project/pending', 'approveProjectController@updateApproveProject');

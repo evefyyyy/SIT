@@ -1,5 +1,7 @@
 @extends('stdTmp')
 @section('content')
+
+<script src="{!! URL::asset('js/jquery-ui.min.js') !!}"></script>
 <div id="detail">
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -66,19 +68,21 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
             <div class="panel panel-default" style="margin-top:10px">
 		        <div class="panel-body">
 		            <div class="dataTable_wrapper">
-		                <div class="row image-view">
+		                <ul class="row image-view">
 		                <?php
 		                	$count = 0 ;
 		                ?>
 											@if($screenshot)
+											
 									 			@foreach($screenshot as $img)
-										 			<div class="col-xs-4 gallery" id="pic{{$count}}">
-												 		<img src="{{asset($img->picture_path_name)}}"/>
-												 		<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
-										 			</div>
+										 			<li class="col-xs-4 gallery ui-state-default" id="pic{{$count}}">
+												 			<img src="{{asset($img->picture_path_name)}}"/>
+												 			<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
+												 		</li>
 									 			@endforeach
+									 		
 							 				@endif
-		                </div>
+		                </ul>
 		            </div>
 		        </div>
 		    </div>
