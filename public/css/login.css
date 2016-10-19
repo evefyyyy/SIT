@@ -1,4 +1,4 @@
-body{background: #eee url(http://subtlepatterns.com/patterns/sativa.png) !important;}
+body{background: #eee !important;}
 html,body{
     position: relative;
     height: 100%;
@@ -6,9 +6,9 @@ html,body{
 
 .login-container{
     position: relative;
-    width: 300px;
+    width: 450px;
     margin: 80px auto;
-    padding: 20px 40px 40px;
+    padding: 50px 60px;
     text-align: center;
     background: #fff;
     border: 1px solid #ccc;
@@ -56,7 +56,7 @@ html,body{
 
 .login-container img {
     height: 40px;
-    margin: 10px auto 30px;
+    margin: 0px auto 30px;
 }
 
 .form-box input{
