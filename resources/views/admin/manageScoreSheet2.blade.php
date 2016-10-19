@@ -19,7 +19,7 @@
     <div class="btn-group">
       <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
         @foreach($template as $temp)
-       <option value="{{$temp->id}}">{{$temp->temp_num}}</option>
+       <option value="{{$temp->id}}">template {{$temp->temp_num}}</option>
        @endforeach
      </select>
      <input type="hidden" name="temp" id="temp">
@@ -27,21 +27,22 @@
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
-<div class="temp1 box">
+  @foreach($tempMain as $main)
+<div class="{{$main->template_id}} box">
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
+
     <div class="col-xs-10 col-md-6 col-lg-6">
-        <p><strong>round 1</strong> การศึกษาความเป็นไปได้</p>
+        <p><strong>round {{$main->round}}</strong> {{$main->criteria_main_name}}</p>
       </a>
       <table class="counttable table table-bordered">
         <thead>
          <tr><th>criteria</th><th width="15%">score</th></tr>
        </thead>
        <tbody>
-        <tr><td>ความสมบูรณ์ของงาน</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
-        <tr><td>คุณภาพของงาน</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
-        <tr><td>การตอบคำถาม</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
-        <tr><td>การนำเสนองานและเอกสาร</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
+         @foreach($main->tempSub as $sub)
+        <tr><td>{{$sub->criteria_sub_name}}</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
+        @endforeach
       </tbody>
       <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1"></th></tr></tfoot>
     </table>
@@ -60,9 +61,11 @@
     });
    </script>
  </div>
+
  <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
 </div>
+@endforeach
 <div id="center">
   <a href="/exam/managescore/year/mainscore/create"><button type="button" class="action-button">back</button></a>
   <button class="action-button checkvalue">save</button>

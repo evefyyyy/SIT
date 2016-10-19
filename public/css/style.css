@@ -22,6 +22,10 @@ span.lol, i.lol {
     padding: 25px;
 }
 
+.display-none{
+  display: none;
+}
+
 #content {
     position: relative;
     margin-top: 30px;
@@ -1488,8 +1492,8 @@ table.myscore > tbody > tr >td, table.myprop > tbody > tr >td {
   text-transform: uppercase;
   line-height: 2em;
   vertical-align: middle;
-} 
-table.myprop > tbody > tr > td:nth-child(2n+1) {  
+}
+table.myprop > tbody > tr > td:nth-child(2n+1) {
   text-align: left;
   padding-left: 6%;
 }
@@ -1524,7 +1528,7 @@ a.delete:focus{
   padding: 6px 12px;
 }
   @media print
-{    
+{
     .no-print, .no-print *
     {
         display: none !important;
