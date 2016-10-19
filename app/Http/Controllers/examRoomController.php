@@ -144,7 +144,6 @@ class examRoomController extends Controller
 
       $obj['room_names'] = Room::where('id', $selectRoom)->first();
       $request->session()->put('obj', $obj);
-      dd($obj);
       return view('admin.editRoom',$obj);
     }
     public function addmoreGroup(Request $request){

@@ -19,7 +19,7 @@ class LdapLoginController extends Controller
 		if(Auth::check()){
 			return redirect('/showproject');
 		}else{
-			return view('/');
+			return view('auth.login');
 		}
 	}
 
@@ -69,7 +69,7 @@ class LdapLoginController extends Controller
 						);
 				}
 				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
-					return redirect()->intended('/home/projects');
+					return redirect()->intended('/home');
 				} else {
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 				}
@@ -112,7 +112,7 @@ class LdapLoginController extends Controller
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 				}
 			} else {
-				return redirect('/login')->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
+				return redirect('/relogin')->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 			}
 			ldap_close($ds);
 				//if(auth()->guard('admins')->attempt(['admin_username' => $username, 'admin_password' => $ldappass]))
@@ -146,6 +146,6 @@ class LdapLoginController extends Controller
 	}
 	public function getLogout(){
 		Auth::logout();
-		return redirect('/index');
+		return redirect('/');
 	}
 }
