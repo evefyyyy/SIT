@@ -88,12 +88,14 @@ $('.alert').hide();
     document.getElementById("temp").value = temp
   }
   $('#selectType').on('change',function () {
-    $.ajax({
-           type:"get",
-           url :"test/"+$(this).val(),
-           success:function(data){
-             console.log($("#selectTemp"));
-           }
+        $.ajax({
+          type:"get",
+          dataType: "",
+          url :"/hello",
+          data: {type: $(this).val()},
+          success:function(data){
+            console.log(data);
+          }
         });
   })
 </script>

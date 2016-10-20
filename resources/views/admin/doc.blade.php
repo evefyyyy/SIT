@@ -53,13 +53,14 @@
 	<?php
 	$count = 0 ;
 	?>
+
 	@foreach ($news as $n)
 	<!-- edit document for admin -->
 	<div class="modal fade" id="doc{{$count}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form method="post" action="/news/document/edit" enctype="multipart/form-data">
 					<div class="modal-header">
+					  <form method="post" action="/news/document/edit" enctype="multipart/form-data">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<input type="text" class="form-control" id="title{{$count}}" name="title" value="{{$n->title}}" onkeyup="copy({{$count}})" required>
 					</div>
@@ -80,8 +81,8 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<button type="submit" class="btn btn-primary">save</button>
+					</div>
 					</form>
-				</div>
 			</div>
 		</div>
 	</div>
