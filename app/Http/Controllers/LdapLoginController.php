@@ -11,6 +11,7 @@ use App\User;
 use App\Student;
 use App\UserStudent;
 use DB;
+use App\Http\Requests\LoginRequest;
 
 
 class LdapLoginController extends Controller
@@ -23,7 +24,7 @@ class LdapLoginController extends Controller
 		}
 	}
 
-	public function Login(Request $request){
+	public function Login(LoginRequest $request){
 
 		// DB::table('users')
 		// ->where('name', $request->name)
