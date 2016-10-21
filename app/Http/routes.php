@@ -309,3 +309,13 @@ Route::get('exam/managescore/year/mainscore/test/{type}',function($type){
     return 0;
   }
 });
+
+Route::get('/hello',function(){
+    $type = Request::Input('type');
+    $data = DB::table('main_templates_score')
+            ->join('templates_main','templates_main.id','=','template_main_id')
+            ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+            ->where('type_id',$type)
+            ->get();
+    return $data ;
+});

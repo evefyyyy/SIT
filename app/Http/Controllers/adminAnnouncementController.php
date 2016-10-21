@@ -24,8 +24,11 @@ class adminAnnouncementController extends Controller {
 
 	public function index()
 	{
-		$news = \App\News::where('news_type_id','=','1')->where('end_date','>',date('Y-m-d'))->get();
-		$expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->get();
+
+		$news = \App\News::where('news_type_id','=','1')->where('end_date','=','0000-00-00')->orWhere('end_date','>=',date('Y-m-d'))->get();
+
+		$expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->where('end_date','!=','0000-00-00')->get();
+
 		$count = 0 ;
 
 		return view('admin.announce')->with('news',$news->reverse())->with('expired',$expired->reverse())->with('count',$count);
@@ -84,7 +87,7 @@ class adminAnnouncementController extends Controller {
 	public function edit(Request $request){
 		$file = $request->file('myfiles');
 		$title = $request['cTitle'] ;
-		$description = $request['description'] ;	
+		$description = $request['description'] ;
 		$id = $request['hId'];
 
 		if(isset($file)){
@@ -113,10 +116,13 @@ class adminAnnouncementController extends Controller {
 			DB::table('news')->where('id',$id)->update(['end_date' => $enddate]) ;
 		}
 
-		$news = \App\News::where('news_type_id','=','1')->where('end_date','>',date('Y-m-d'))->get();
-		$expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->get();
-		$count = 0 ;
+		// $news = \App\News::where('news_type_id','=','1')->where('end_date','>',date('Y-m-d'))->get();
+		// $expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->get();
+		// $count = 0 ;
 
+		$news = \App\News::where('news_type_id','=','1')->where('end_date','=','0000-00-00')->orWhere('end_date','>=',date('Y-m-d'))->get();
+		$expired = \App\News::where('news_type_id','=','1')->where('end_date','<=',date('Y-m-d'))->where('end_date','!=','0000-00-00')->get();
+		$count = 0 ;
 
 
 		return redirect(url('news/announcement'))->with('news',$news->reverse())->with('expired',$expired->reverse())->with('count',$count);
