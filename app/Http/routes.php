@@ -116,7 +116,7 @@ Route::resource('advisor/news/document', 'AdvisorDocumentController');
 
 Route::get('home/','projectController@index');
 
-Route::get('home/projects/search','projectController@search');
+Route::get('home/search','projectController@search');
 
 Route::resource('showproject','showProjectController');
 

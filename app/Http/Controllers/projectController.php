@@ -49,7 +49,7 @@ class projectController extends Controller
       if($search === " "){
         $obj['groupProject'] = GroupProject::where('group_project_approve','=','1')->get();
       }else{
-        if($year == 0){
+        if($year == 0 && $search == null){
           $result = DB::table('group_projects')
                     ->join('project_detail','group_projects.id','=','project_pkid')
                     ->where('group_project_approve','=','1')

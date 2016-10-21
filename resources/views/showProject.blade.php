@@ -102,8 +102,6 @@
 					<div class="col-xs-6 col-md-6 col-lg-6"></div>
 					<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> {{$st->student_email}}</div>
 					@endforeach
-				
-
 				</div>
 			</div>
 			<div class="panel panel-info">

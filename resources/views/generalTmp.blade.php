@@ -43,7 +43,7 @@
             @endif
           @endif
           <li>
-            <form class="navbar-form" role="search" action="{{url('home/projects/search')}}" method="get">
+            <form class="navbar-form" role="search" action="{{url('home/search')}}" method="get">
           <div class="input-group search {{ strrpos(Request::path(),'index') === 0 ? 'hidden' : ''  }}">
             <input type="text" class="form-control" placeholder="What you looking for?" aria-describedby="ddlsearch" name="search" value="{{$search or ''}}">
             <div class="ddl-select input-group-btn">

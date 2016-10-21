@@ -38,28 +38,6 @@ class showProjectController extends Controller
                   ->where('project_pkid',$checkProject)
                   ->select('student_id','student_name','student_email')->get();
       $obj['student'] = $student;
-      if(count($student)==3){
-        $obj['stdId1'] = $student[0]->student_id;
-        $obj['stdId2'] = $student[1]->student_id;
-        $obj['stdId3'] = $student[2]->student_id;
-        $obj['stdName1'] = $student[0]->student_name;
-        $obj['stdName2'] = $student[1]->student_name;
-        $obj['stdName3'] = $student[2]->student_name;
-        $obj['email1'] = $student[0]->student_email;
-        $obj['email2'] = $student[1]->student_email;
-        $obj['email3'] = $student[2]->student_email;
-      }else if(count($student)==2){
-        $obj['stdId1'] = $student[0]->student_id;
-        $obj['stdId2'] = $student[1]->student_id;
-        $obj['stdName1'] = $student[0]->student_name;
-        $obj['stdName2'] = $student[1]->student_name;
-        $obj['email1'] = $student[0]->student_email;
-        $obj['email2'] = $student[1]->student_email;
-      }else if(count($student)==1){
-        $obj['stdId1'] = $student[0]->student_id;
-        $obj['stdName1'] = $student[0]->student_name;
-        $obj['email1'] = $student[0]->student_email;
-      }
 
       $obj['advisors'] = DB::table('project_advisors')
                           ->join('advisors','advisor_id','=','advisors.id')
@@ -108,29 +86,6 @@ class showProjectController extends Controller
                 ->where('project_pkid',$id)
                 ->select('student_id','student_name','student_email')->get();
     $obj['student'] = $student;
-
-    if(count($student)==3){
-      $obj['stdId1'] = $student[0]->student_id;
-      $obj['stdId2'] = $student[1]->student_id;
-      $obj['stdId3'] = $student[2]->student_id;
-      $obj['stdName1'] = $student[0]->student_name;
-      $obj['stdName2'] = $student[1]->student_name;
-      $obj['stdName3'] = $student[2]->student_name;
-      $obj['email1'] = $student[0]->student_email;
-      $obj['email2'] = $student[1]->student_email;
-      $obj['email3'] = $student[2]->student_email;
-    }else if(count($student)==2){
-      $obj['stdId1'] = $student[0]->student_id;
-      $obj['stdId2'] = $student[1]->student_id;
-      $obj['stdName1'] = $student[0]->student_name;
-      $obj['stdName2'] = $student[1]->student_name;
-      $obj['email1'] = $student[0]->student_email;
-      $obj['email2'] = $student[1]->student_email;
-    }else if(count($student)==1){
-      $obj['stdId1'] = $student[0]->student_id;
-      $obj['stdName1'] = $student[0]->student_name;
-      $obj['email1'] = $student[0]->student_email;
-    }
 
     $obj['advisors'] = DB::table('project_advisors')
                         ->join('advisors','advisor_id','=','advisors.id')
