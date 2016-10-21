@@ -189,6 +189,7 @@ option {
     margin-top: 7px;
     margin-bottom: 0;
     text-align: left;
+    text-transform: none;
 }
 .proname {
     font-size: 1.2em;
@@ -1139,7 +1140,7 @@ img#cover {
   font-weight: 600;
   border-color: none;
   outline: none;
-  padding: 5px 20px;
+  padding: 5px 15px;
   color: #40c3a7;
   background-color: #ffffff;
 }
@@ -1610,7 +1611,7 @@ a.delete:focus{
 #givemark .btn-group {
   width: 77px;
 }
-.required:after {
+#givemark .required:after, #type .required:after{
   content:'*';
   color:red;
   display: inline;

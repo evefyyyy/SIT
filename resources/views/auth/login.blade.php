@@ -9,19 +9,23 @@
   <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
   <script src="{!! URL::asset('js/login.js') !!}"></script>
   <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
   <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
   <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div class="container">
-	<div class="login-container">
+	<div class="col-md-offset-4 col-md-4 login-container">
         <div id="output"></div>
         <img src="/img/logo.png">
         <div class="form-box">
-            <form action="/login" method="post">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form  id="login" method="post" role="form" action="/login">
+            	<input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="text" placeholder="username" name="name">
                 <input type="password" placeholder="password" name="password">
+                @if($errors != "")
+                  <div class="alert-danger animated fadeInUp">{{$errors->first()}}</div>
+                @endif
                 <button class="btn-login" type="submit">Login</button>
             </form>
         </div>

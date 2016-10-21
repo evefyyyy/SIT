@@ -11,6 +11,7 @@ use App\User;
 use App\Student;
 use App\UserStudent;
 use DB;
+use App\Http\Requests\LoginRequest;
 
 
 class LdapLoginController extends Controller
@@ -23,7 +24,7 @@ class LdapLoginController extends Controller
 		}
 	}
 
-	public function Login(Request $request){
+	public function Login(LoginRequest $request){
 
 		// DB::table('users')
 		// ->where('name', $request->name)
@@ -103,7 +104,7 @@ class LdapLoginController extends Controller
 							['staff_id' => $staff_profile->id, 'user_id' => $user_id]
 							);
 					} else {
-						dd('fail');
+
 					}
 				}
 				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
@@ -112,7 +113,7 @@ class LdapLoginController extends Controller
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
 				}
 			} else {
-				return redirect('/relogin')->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
+				return redirect('/relogin')->withErrors("Username or Password is incorrect.");
 			}
 			ldap_close($ds);
 				//if(auth()->guard('admins')->attempt(['admin_username' => $username, 'admin_password' => $ldappass]))
