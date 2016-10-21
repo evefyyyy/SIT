@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-	<div class="login-container">
+	<div class="col-md-offset-4 col-md-4 login-container">
         <div id="output"></div>
         <img src="/img/logo.png">
         <div class="form-box">

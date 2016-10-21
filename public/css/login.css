@@ -1,4 +1,4 @@
-body{background: #eee !important;}
+body{background: #fff !important;}
 html,body{
     position: relative;
     height: 100%;
@@ -6,7 +6,6 @@ html,body{
 
 .login-container{
     position: relative;
-    width: 450px;
     margin: 80px auto;
     padding: 50px 60px;
     text-align: center;
@@ -16,7 +15,7 @@ html,body{
 
 #output{
     position: absolute;
-    width: 450px;
+    width: 100%;
     top: -75px;
     left: 0;
     color: #fff;

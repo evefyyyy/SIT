@@ -16,8 +16,8 @@
 			<fieldset>
 				<h2 class="fs-title">Create project</h2>
 		    	<h3 class="fs-subtitle">Enter project name and select category</h3>
-		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="projectNameEN" value="{{$projectNameEN or ''}}" requried/>
-				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="projectNameTH" value="{{$projectNameTH or ''}}" requried/>
+		    	<input class="projectName form-control" type="text" id="projectNameEN" placeholder="Project name (EN)" name="projectNameEN" value="{{$projectNameEN or ''}}" />
+				<input class="projectName form-control" type="text" id="projectNameTH" placeholder="Project name (TH)" name="projectNameTH" value="{{$projectNameTH or ''}}" />
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><label class="category">Project Type</label></div>
 							<div class="col-xs-6 col-md-6">
@@ -42,7 +42,7 @@
 								</div>
 							</div>
 				</div>
-				<input type="button" name="next" class="next action-button" value="Next" />
+				<input type="button" name="next" id="check1" class="next action-button" value="Next" />
 			</fieldset>
 			<fieldset id="stdno">
 				<h2 class="fs-title">Team members</h2>
@@ -55,18 +55,18 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
-						<input type="type" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" value="{{$stdId2 or ''}}" onchange="check_name2()">
+						<input type="type" class="form-control" placeholder="Student ID" id="stdId2" name="idStudent2" value="{{$stdId2 or ''}}" onkeyup="check_name2()">
 					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="fname2">{{$stdName2 or ''}}</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
-						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" value="{{$stdId3 or ''}}" onchange="check_name3()">
+						<input type="text" class="form-control" placeholder="Student ID" id="stdId3" name="idStudent3" value="{{$stdId3 or ''}}" onkeyup="check_name3()">
 					</div>
 					<div class="col-xs-6 col-md-6 stdname" id="fname3">{{$stdName3 or ''}}</div>
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="button" name="next" class="next action-button" value="Next" />
+				<input type="button" name="next" id="check2" class="next action-button" value="Next" />
 			</fieldset>
 			<fieldset>
 				<h2 class="fs-title">Advisors</h2>
@@ -92,7 +92,7 @@
 					</div>
 				</div>
 		    	<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="button" name="next" class="next action-button" value="Next" id="myBtn" onclick="getValue()" />
+				<input type="button" name="next" id="check3" class="next action-button" value="Next" id="myBtn" onclick="getValue()" />
 		    </fieldset>
 			<fieldset>
 				<h2 class="fs-title">Submit your project</h2>
@@ -132,7 +132,7 @@
 					</table>
 					<div class="custom-file-upload">
 				    <p>Upload your first draft proposal</p>
-				    <input type="file" id="file" name="myfiles"/>
+				    <input type="file" id="file" name="myfiles" required/>
 				    </div>
 				</div>
 				<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
@@ -152,87 +152,4 @@
 		</style>
     	<script src="{!! URL::asset('js/create.js') !!}"></script>
     	<script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
-    	<script>
-    	function selectType(x){
-						document.getElementById("selectType").value = x;
-					}
-
-					function selectCat(x){
-						document.getElementById("selectCat").value = x;
-					}
-
-					function selectAdv1(x){
-						document.getElementById("selectAdv1").value = x;
-					}
-
-			    function check_name2(){
-		         $.ajax({
-		                type:"post",
-		                dataType: "",
-		                url :"stdId2",
-		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
-		                    success:function(data){
-		                      if(data=='0'){
-														var _msg = null;
-														var result = null;
-														if(document.getElementById('stdId2').value === ''){
-															result =''
-														}else{
-															_msg = "Data not found";
-															result = _msg.fontcolor("red");
-														}
-		                        $('#fname2').html(result);
-		                      }else if(data=='1'){
-															var _msg = null;
-															var result = null;
-															if(document.getElementById('stdId2').value === ''){
-																result =''
-															}else{
-																_msg = "This student already has group";
-																result = _msg.fontcolor("red");
-															}
-			                        $('#fname2').html(result);
-														}else{
-															var _data = data.student_name
-															$('#fname2').html(_data);
-		                      	}
-		                }
-		             });
-		    }
-
-				function check_name3(){
-					 $.ajax({
-									type:"post",
-									dataType: "",
-									url :"stdId3",
-									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
-											success:function(data){
-												if(data=='0'){
-													var _msg = null;
-													var result = null;
-													if(document.getElementById('stdId3').value === ''){
-														result =''
-													}else{
-														_msg = "Data not found";
-														result = _msg.fontcolor("red");
-													}
-													$('#fname3').html(result);
-												}else if(data=='1'){
-														var _msg = null;
-														var result = null;
-														if(document.getElementById('stdId3').value === ''){
-															result =''
-														}else{
-															_msg = "This student already has group";
-															result = _msg.fontcolor("red");
-														}
-														$('#fname3').html(result);
-													}else{
-														var _data = data.student_name
-														$('#fname3').html(_data);
-													}
-									}
-							 });
-			}
-    	</script>
 @stop

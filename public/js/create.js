@@ -3,12 +3,93 @@ var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
-$(".next").click(function(){
+$(document).ready(function() {
+	$(window).keydown(function(event){
+		if(event.keyCode == 13) {
+			event.preventDefault();
+			return false;
+		}
+	});
+});
+
+$(function(){
+	$('#check1').on("click", function(e) {
+		if($('#projectNameEN').val() == ""){
+			$('#projectNameEN').addClass( "required" );
+		}else{
+			$('#projectNameEN').removeClass( "required" );
+		}
+		if($('#projectNameTH').val() == ""){
+			$('#projectNameTH').addClass( "required" );
+		}else{
+			$('#projectNameTH').removeClass( "required" );
+		}
+		if($('#type span').html() == "Select"){
+			$('#type').addClass( "required" );
+		}else{
+			$('#type').removeClass( "required" );
+		}
+		if($('#category span').html() == "Select"){
+			$('#category').addClass( "required" );
+		}else{
+			$('#category').removeClass( "required" );
+		}
+		if($('#projectNameEN').val() != "" &&  $('#projectNameTH').val() != "" && $('#type span').html() != "Select" && $('#category span').html() != "Select"){
+			$('#check1').click(gonext($(this)));
+		}
+
+	});
+});
+
+$(function(){
+	$('#check2').on("click", function(e) {
+		if ($("#fname2 font").html() == "Data not found" || $("#fname2 font").html() == "This student already has group"){
+			$('#stdId2').addClass( "required" );
+		}else{
+			$('#stdId2').removeClass( "required" );
+		}
+		if ($("#fname3 font").html() == "Data not found" || $("#fname3 font").html() == "This student already has group"){
+			$('#stdId3').addClass( "required" );
+		}else{
+			$('#stdId3').removeClass( "required" );
+		}
+		if ($("#fname2 font").html() != "Data not found" && $("#fname2 font").html() != "This student already has group" && $("#fname3 font").html() != "Data not found" && $("#fname3 font").html() != "This student already has group"){
+			$('#check2').click(gonext($(this)));
+		}
+	});
+});
+
+$(function(){
+	$('#check3').on("click", function(e) {
+		if ($("#mainAdvisor option:selected").val() == null){
+			$('#mainAdvisor').parent().addClass( "required" );
+		}else{
+			$('#mainAdvisor').parent().removeClass( "required" );
+			$('#check3').click(gonext($(this)));
+		}
+	});
+});
+$(function(){
+	var propfile = $("input[type=file]");
+	$('button[type="submit"]').click(function() {
+		if (propfile.val() == "") {
+			$('.file-upload-input').addClass( "required" );
+  				event.preventDefault();
+        		return false;
+  		} else {
+  			console.log('fail');
+			$('.file-upload-input').removeClass( "required" );
+            $('#msform').submit();
+        }
+    });
+});
+
+function gonext(_this){
 	if(animating) return false;
 	animating = true;
 
-	current_fs = $(this).parent();
-	next_fs = $(this).parent().next();
+	current_fs = _this.parent();
+	next_fs = _this.parent().next();
 
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -39,7 +120,7 @@ $(".next").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
-});
+}
 
 $(".previous").click(function(){
 	if(animating) return false;
@@ -148,10 +229,6 @@ function getValue() {
 	$("#mainAdvisor1").html($("#mainAdvisor").val());
 	$("#coAdvisor1").html($("#coAdvisor").val());
 }
-
-$(".submit").click(function(){
-	return window.location.href='waitApprove';
-})
 
 $(function () {
 	$('.selectpicker').selectpicker({
@@ -306,27 +383,84 @@ $(document).ready(function() {
 
 $('input[type=file]').customFile();
 
-//datepicker in announcement
-$(function () {
-	$('.datetimepicker1').datetimepicker({
-		format: 'DD/MM/YYYY',
-	});
-	$('.datetimepicker2').datetimepicker({
-		format: 'DD/MM/YYYY',
-		useCurrent: false //Important! See issue #1025
-	});
-	$('#datetimepicker6').datetimepicker({
-		format: 'DD/MM/YYYY',
-		defaultDate: new Date()
-	});
-	$('#datetimepicker7').datetimepicker({
-		format: 'DD/MM/YYYY',
-		useCurrent: false //Important! See issue #1075
-	});
-	$("#datetimepicker6").on("dp.change", function (e) {
-		$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-	});
-	$("#datetimepicker7").on("dp.change", function (e) {
-		$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-	});
-});
+function selectType(x){
+						document.getElementById("selectType").value = x;
+					}
+
+					function selectCat(x){
+						document.getElementById("selectCat").value = x;
+					}
+
+					function selectAdv1(x){
+						document.getElementById("selectAdv1").value = x;
+					}
+
+			    function check_name2(){
+		         $.ajax({
+		                type:"post",
+		                dataType: "",
+		                url :"stdId2",
+		                data: {stdId2: $("#stdId2").val() , _token:$("#_token").val() },
+		                    success:function(data){
+		                      if(data=='0'){
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId2').value === ''){
+															result =''
+														}else{
+															_msg = "Data not found";
+															result = _msg.fontcolor("red");
+														}
+		                        $('#fname2').html(result);
+		                      }else if(data=='1'){
+															var _msg = null;
+															var result = null;
+															if(document.getElementById('stdId2').value === ''){
+																result =''
+															}else{
+																_msg = "This student already has group";
+																result = _msg.fontcolor("red");
+															}
+			                        $('#fname2').html(result);
+														}else{
+															var _data = data.student_name
+															$('#fname2').html(_data);
+		                      	}
+		                }
+		             });
+		    }
+
+				function check_name3(){
+					 $.ajax({
+									type:"post",
+									dataType: "",
+									url :"stdId3",
+									data: {stdId3: $("#stdId3").val() , _token:$("#_token").val() },
+											success:function(data){
+												if(data=='0'){
+													var _msg = null;
+													var result = null;
+													if(document.getElementById('stdId3').value === ''){
+														result =''
+													}else{
+														_msg = "Data not found";
+														result = _msg.fontcolor("red");
+													}
+													$('#fname3').html(result);
+												}else if(data=='1'){
+														var _msg = null;
+														var result = null;
+														if(document.getElementById('stdId3').value === ''){
+															result =''
+														}else{
+															_msg = "This student already has group";
+															result = _msg.fontcolor("red");
+														}
+														$('#fname3').html(result);
+													}else{
+														var _data = data.student_name
+														$('#fname3').html(_data);
+													}
+									}
+							 });
+			}
