@@ -73,15 +73,15 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		                	$count = 0 ;
 		                ?>
 											@if($screenshot)
-											
 									 			@foreach($screenshot as $img)
 										 			<li class="col-xs-4 gallery ui-state-default" id="pic{{$count}}">
 												 			<img src="{{asset($img->picture_path_name)}}"/>
 												 			<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
 												 		</li>
 									 			@endforeach
-									 		
+
 							 				@endif
+
 		                </ul>
 		            </div>
 		        </div>
@@ -99,17 +99,19 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email1" value="{{$email1 or ''}}"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName2}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
+
+			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName2 or ''}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2 or ''}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email2" value="{{$email2 or ''}}"></div>
+
 			@if($student == 3)
 			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName3 or ''}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3 or ''}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email3" value="{{$email3 or ''}}"></div>
-			@else
 			@endif
+		
 			</div>
 		</div>
 		<div class="panel panel-info">

@@ -373,14 +373,6 @@ class ScoreSheetController extends Controller
                       ->where('template_id',$id)
                       ->get();
         $data['template'][$i]['score'] = $mainScore;
-
-        // $sub = DB::table('templates_sub')
-        //       ->join('templates_main','templates_main.id','=','template_main_id')
-        //       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-        //       ->where('template_id',$id)
-        //       ->groupBy('criteria_sub_id')
-        //       ->select('criteria_sub_name')->get();
-        // $data['template'][$i]['sub'] = $sub;
         $data['template'][$i]['count'] = $i;
       }
       // dd($data['template']);
@@ -392,7 +384,6 @@ class ScoreSheetController extends Controller
     {
       $id = $request['temp'];
       $type = $request['selectType'];
-      // $subScore = $request['subScore'];
       $mainScore = $request['mainScore'];
       $filter = array_filter($mainScore,function($a){
         return $a != null;
@@ -453,27 +444,64 @@ class ScoreSheetController extends Controller
     {
       $data['type'] = Type::all();
       $data['template'] = Template::all();
+      $countType = count($data['type']);
       $countTemp = count($data['template']);
-      for($i=0;$i<$countTemp;$i++){
-        $id = $data['template'][$i]->id;
-        $main = DB::table('templates_main')
-                ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-                ->where('template_id',$id)
-                ->select('round','criteria_main_name','template_id')->get();
-      $data['template'][$i]['main'] = $main;
-        $sub = DB::table('templates_sub')
-              ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-              ->join('templates_main','templates_main.id','=','template_main_id')
-              ->where('template_id',$id)
-              ->select('criteria_sub_name','template_id')->get();
-      }
-dd($sub);
 
+      for($i=0;$i<$countType;$i++){
+        $typeId[$i] = $data['type'][$i]->id;
+        for($j=0;$j<$countTemp;$j++){
+          $id = $data['template'][$j]->id;
+          $main = DB::table('templates_main')
+                  ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                  ->where('template_id',$id)
+                  ->select('round','criteria_main_name','template_id','templates_main.id')->get();
+          $data['template'][$j]['main'] = $main;
+          for($k=0; $k<count($main); $k++){
+            $mainId = $main[$k]->id;
+            $mainScore[$k] = DB::table('templates_main')
+                          ->join('main_templates_score','template_main_id','=','templates_main.id')
+                          ->where('template_main_id',$mainId)
+                          ->where('type_id',$typeId[$i])
+                          ->select('score')->get();
+          }
+          $data['template'][$j]['score'] = $mainScore;
+          $sub = DB::table('templates_sub')
+                ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+                ->join('templates_main','templates_main.id','=','template_main_id')
+                ->where('template_id',$id)
+                ->groupBy('criteria_sub_id')
+                ->select('criteria_sub_name','template_id')->get();
+          $data['template'][$j]['sub'] = $sub;
+          $data['template'][$j]['count'] = $j;
+        }
+        //   dd($typeId);
+        // dd($data['template']);
+      }
       return view('admin.manageScoreSheet2',$data);
     }
 
-    public function storeManageScoreSheet2()
+    public function storeManageScoreSheet2(Request $request)
     {
+      $temp = $request['selectTemp'];
+      $type = $request['selectType'];
+      $subScore = $request['subScore'];
+      $filter = array_filter($subScore,function($a){
+        return $a != null;
+      });
+      $score = [];
+      foreach ($filter as $key) {
+        array_push($score,$key);
+      }
+
+      $countScore = count($score);
+      for($i=0; $i<$countScore; $i++){
+        $main = DB::table('templates_main')
+                ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                ->where('template_id',$temp)
+                ->get();
+      }
+
+
       return redirect(url('exam/scoresheet'));
     }
 }

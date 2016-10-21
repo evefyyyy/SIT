@@ -110,14 +110,18 @@
 					    <td>Student no. <label id="Student1No1"></label></td>
 					    <td id="std1Name1"></td>
 					  </tr>
+						@if($stdId2 != null)
 					  <tr>
 					    <td>Student no. <label id="Student2No1"></label></td>
 					    <td id="std2Name1"></td>
 					  </tr>
+						@endif
+						@if($stdId3 != null)
 					  <tr>
 					    <td>Student no. <label id="Student3No1"></label></td>
 					    <td id="std3Name1"></td>
 					  </tr>
+						@endif
 					</table>
 				<div class="title" id="head">Advisor</div>
 					<table class="teammem">

@@ -71,6 +71,10 @@ class editProjectController extends Controller {
 			$data['stdName2'] = $student[1]->student_name;
 			$data['email1'] = $student[0]->student_email;
 			$data['email2'] = $student[1]->student_email;
+		}else if(count($student)==1){
+			$data['stdId1'] = $student[0]->student_id;
+			$data['stdName1'] = $student[0]->student_name;
+			$data['email1'] = $student[0]->student_email;
 		}
 
 		$data['advisors'] = DB::table('project_advisors')
@@ -104,7 +108,7 @@ class editProjectController extends Controller {
 							->where('project_pkid',$getId)
 							->where('picture_type_id','=','3')
 							->select('id','picture_path_name')->get();
-							
+
 
 		return view('student.editProject',$data);
 
@@ -128,6 +132,8 @@ class editProjectController extends Controller {
 		}else if(count($student)==2){
 			$std1 = $student[0]->id;
 			$std2 = $student[1]->id;
+		}else if(count($student)==1){
+			$std1 = $student[0]->id;
 		}
 
 		if(count($student)==3){
@@ -149,6 +155,10 @@ class editProjectController extends Controller {
 
 			$obj = Student::find($std2);
 			$obj->student_email = $request['email2'];
+			$obj->save();
+		}else if(count($student)==1){
+			$obj = Student::find($std1);
+			$obj->student_email = $request['email1'];
 			$obj->save();
 		}
 
@@ -261,8 +271,6 @@ class editProjectController extends Controller {
 											}
 										}
 								}
-
-
 
 			return redirect('/showproject');
 	}

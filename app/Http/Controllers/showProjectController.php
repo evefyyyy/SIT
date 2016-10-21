@@ -55,6 +55,10 @@ class showProjectController extends Controller
         $obj['stdName2'] = $student[1]->student_name;
         $obj['email1'] = $student[0]->student_email;
         $obj['email2'] = $student[1]->student_email;
+      }else if(count($student)==1){
+        $obj['stdId1'] = $student[0]->student_id;
+        $obj['stdName1'] = $student[0]->student_name;
+        $obj['email1'] = $student[0]->student_email;
       }
 
       $obj['advisors'] = DB::table('project_advisors')
@@ -122,6 +126,10 @@ class showProjectController extends Controller
       $obj['stdName2'] = $student[1]->student_name;
       $obj['email1'] = $student[0]->student_email;
       $obj['email2'] = $student[1]->student_email;
+    }else if(count($student)==1){
+      $obj['stdId1'] = $student[0]->student_id;
+      $obj['stdName1'] = $student[0]->student_name;
+      $obj['email1'] = $student[0]->student_email;
     }
 
     $obj['advisors'] = DB::table('project_advisors')

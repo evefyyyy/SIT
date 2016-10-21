@@ -80,9 +80,9 @@ Route::post('exam/managescore/year/subscore','ScoreSheetController@storeManageSc
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
-Route::get('exam/managescore/year/create/subcriteria',function(){
-  return view('admin.manageScoreSheet2');
-});
+// Route::get('exam/managescore/year/create/subcriteria',function(){
+//   return view('admin.manageScoreSheet2');
+// });
 Route::get('exam/scorerecord/viewscore',function(){
   return view('admin.viewScore');
 });
