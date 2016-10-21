@@ -25,10 +25,15 @@
 	<div class="title" id="head">Advisor</div>
 		<table class="teammem">
 			<tbody>
-			
+				<?php
+					$count = count($advisors);
+				 ?>
+			@if($count == 1)
 			<tr><td><strong>Main advisor</strong>{{$advisors[0]->advisor_name}}</td></tr>
-			<tr><td><strong>Co-advisor</strong>{{$advisors[1] != null ? $advisors[1]->advisor_name : ''}}</td></tr>
-			
+			@else
+			<tr><td><strong>Main advisor</strong>{{$advisors[0]->advisor_name}}</td></tr>
+			<tr><td><strong>Co-advisor</strong>{{$advisors[1]->advisor_name}}</td></tr>
+			@endif
 			</tbody>
 		</table>
 	</div>

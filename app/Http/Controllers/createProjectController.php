@@ -108,8 +108,6 @@ class createProjectController extends Controller {
 			$std->student_pkid = $data;
 			$std->save();
 		}
-
-
 		$advisor = $request['mainAdv'];
 		$checkAdv = DB::table('advisors')
 								->where('advisor_name','=',$advisor)
