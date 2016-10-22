@@ -1647,9 +1647,9 @@ a.btn3 {
   border: none;
   width: 100%;
   font-family: inherit;
-  font-size: 1.2em;
+  font-size: 1.375em;
   color: #fff;
-  background: #40c3a7;
+  background: #333;
   cursor: pointer;
   display: inline-block;
   text-transform: uppercase;
@@ -1673,17 +1673,16 @@ a.btn3 {
   transition: all 0.3s;
 }
 .btn-3:hover {
-  background: #00AF87;
+  background: #000;
 }
 
 .btn-3:active {
-  background: #ff7f7f;
   top: 3px;
 }
 
 /* Button 3e */
 .btn-3e {
-  padding: 15px;
+  padding: 12px;
   overflow: hidden;
 }
 
@@ -1695,7 +1694,7 @@ a.btn3 {
 
 .btn-3e:after {
   width: 20%;
-  height: 250%;
+  height: 300%;
   background: rgba(255,255,255,0.1);
   z-index: 1;
   right: 0;
@@ -1713,8 +1712,4 @@ a.btn3 {
 
 .btn-3e:hover:after {
   width: 40%;
-}
-#detail .glyphicon-star {
-  float: right;
-  padding-right: 5%;
 }
