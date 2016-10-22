@@ -1,93 +1,65 @@
+@import url(http://fonts.googleapis.com/css?family=EB+Garamond|Cardo:400italic);
+
+
 body {
-    background-color: white;
+    margin: 0;
+    background-color: #5774b8;
+
 }
 
-#loginbox {
-    margin-top: 30px;
-}
-#entergencode {
-    text-align: center;
-    padding: 20px 10px;
-    font-size: 1.5em;
-    margin-top: 20px;
-    color: black;
-    width: 100%;
-}
-#loginbox > div:first-child {        
-    padding-bottom: 10px;    
-}
-.btn-dday {
-    padding: 10px 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: #fff;
-    font-size: 1.125em;
-    background-color: #000;
-    text-transform: uppercase;
-    width: 100%;
-    font-weight: 500;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-}
-.btn-default:hover {
-    color: #fff;
-    font-size: 1.125em;
-    background-color: #000;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
-    
-}
-.iconmelon {
-    display: block;
-    margin: auto;
+
+.sandbox-correct-pronounciation {
+  padding: 10em 0 10em 0;
 }
 
-#form > div {
-    margin-bottom: 25px;
-}
+.heading-correct-pronounciation {
 
-#form > div:last-child {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.panel {    
-    background-color: transparent;
-}
-
-.panel-body {
-    padding-top: 30px;
-    background-color: rgba(2555,255,255,.3);
-}
-
-#particles {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    top: 0;                        
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    z-index: -2;
-}
-
-.iconmelon,
-.im {
+  margin: auto;
+  text-align: center;
   position: relative;
-  width: 150px;
-  height: 150px;
-  display: block;
-  fill: #525151;
 }
 
-.iconmelon:after,
-.im:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+
+h1 {
+  color: #000;
+  font-family: 'Cardo', serif;
+  font-size: 1.5em;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  line-height: 2.2em;
 }
+
+em {
+  font-family: 'EB Garamond', serif;
+  font-size: 3.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  font-style:normal;
+  padding-top: 0.1em;
+  text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, 0.1);
+  
+  &::before, &::after {
+  content: "§";
+  display: inline-block;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  opacity: 0.2;
+  margin: 0 0.6em;
+  font-size: 0.5em;
+}
+
+}
+
+
+.bottom {
+  font-size: 1.5em;
+  letter-spacing: 0.07em;
+  font-size: 1em;
+  display: block;
+}
+
