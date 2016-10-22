@@ -31,7 +31,6 @@
 			<h4>{{$projectNameTH}}</h4>
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
-			
 			<form action="{{url('student/myproject/edit/'.$checkProject.'/edit')}}" method="get">
 				<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
 			</form>
@@ -43,11 +42,16 @@
 		</div>
 			@endif
 		@else
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<div class="col-xs-10 col-sm-7 col-md-8 col-lg-8">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
-
+		<div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+		<div class="col-xs-12 hidden-sm hidden-md hidden-lg"></div>
+		<div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+		<div class="col-xs-10 col-sm-3 col-md-2 col-lg-2">
+			<a href="/dday" class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
+		</div>
 		@endif
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
