@@ -110,14 +110,17 @@
 					    <td>Student no. <label id="Student1No1"></label></td>
 					    <td id="std1Name1"></td>
 					  </tr>
+
 					  <tr>
 					    <td>Student no. <label id="Student2No1"></label></td>
 					    <td id="std2Name1"></td>
 					  </tr>
+
 					  <tr>
 					    <td>Student no. <label id="Student3No1"></label></td>
 					    <td id="std3Name1"></td>
 					  </tr>
+						
 					</table>
 				<div class="title" id="head">Advisor</div>
 					<table class="teammem">

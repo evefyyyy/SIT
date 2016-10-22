@@ -28,7 +28,7 @@ function readURL(input) {
 
 function multipleURL(file) {
   var reader = new FileReader();
-  reader.onload = function (e) {  
+  reader.onload = function (e) {
     count++;
     $('.image-view').append('<div class="col-xs-4 gallery"></div>');
     $('.gallery').last().append("<img id=image-" + count  + " />");
@@ -50,13 +50,13 @@ $('.del').on('click', function(e) {
   e.preventDefault();
   var count = $("#cpic").val();
   var cn ;
-  var x ; 
+  var x ;
   var y ;
   for(var i=0; i<count ; i++){
     x = document.getElementById('pic'+i) ;
     cn = x.className ;
     if(cn.indexOf("active") != -1){
-      y = x.getElementsByTagName('img')[0]; 
+      y = x.getElementsByTagName('img')[0];
       $.ajax({
           type:"post",
           dataType: "",
@@ -93,12 +93,12 @@ $('#upload').on('click', function() {
 });
 
 $("#embedcode").ready(function() {
-   var x = $("#embedcode").val(); 
+   var x = $("#embedcode").val();
   document.getElementById("vdo").innerHTML = x ;
 });
 
 $('.embed').on('click', function() {
-    var x = $("#embedcode").val(); 
+    var x = $("#embedcode").val();
     document.getElementById("vdo").innerHTML = x ;
 });
 

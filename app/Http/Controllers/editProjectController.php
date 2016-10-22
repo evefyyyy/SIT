@@ -52,26 +52,7 @@ class editProjectController extends Controller {
 							->join('students','student_pkid','=','students.id')
 							->where('project_pkid',$getId)
 							->select('student_id','student_name','student_email')->get();
-		$data['student'] = count($student);
-
-		if(count($student)==3){
-			$data['stdId1'] = $student[0]->student_id;
-			$data['stdId2'] = $student[1]->student_id;
-			$data['stdId3'] = $student[2]->student_id;
-			$data['stdName1'] = $student[0]->student_name;
-			$data['stdName2'] = $student[1]->student_name;
-			$data['stdName3'] = $student[2]->student_name;
-			$data['email1'] = $student[0]->student_email;
-			$data['email2'] = $student[1]->student_email;
-			$data['email3'] = $student[2]->student_email;
-		}else if(count($student)==2){
-			$data['stdId1'] = $student[0]->student_id;
-			$data['stdId2'] = $student[1]->student_id;
-			$data['stdName1'] = $student[0]->student_name;
-			$data['stdName2'] = $student[1]->student_name;
-			$data['email1'] = $student[0]->student_email;
-			$data['email2'] = $student[1]->student_email;
-		}
+		$data['student'] = $student;
 
 		$data['advisors'] = DB::table('project_advisors')
 												->join('advisors','advisor_id','=','advisors.id')
@@ -104,7 +85,7 @@ class editProjectController extends Controller {
 							->where('project_pkid',$getId)
 							->where('picture_type_id','=','3')
 							->select('id','picture_path_name')->get();
-							
+
 
 		return view('student.editProject',$data);
 
@@ -116,39 +97,16 @@ class editProjectController extends Controller {
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;
 
+		$email = $request['email'];
 		$student = DB::table('project_students')
 							->join('students','student_pkid','=','students.id')
 							->where('project_pkid',$getId)
 							->select('students.id')->get();
-
-		if(count($student)==3){
-			$std1 = $student[0]->id;
-			$std2 = $student[1]->id;
-			$std3 = $student[2]->id;
-		}else if(count($student)==2){
-			$std1 = $student[0]->id;
-			$std2 = $student[1]->id;
-		}
-
-		if(count($student)==3){
-			$obj = Student::find($std1);
-			$obj->student_email = $request['email1'];
-			$obj->save();
-
-			$obj = Student::find($std2);
-			$obj->student_email = $request['email2'];
-			$obj->save();
-
-			$obj = Student::find($std3);
-			$obj->student_email = $request['email3'];
-			$obj->save();
-		}else if(count($student)==2){
-			$obj = Student::find($std1);
-			$obj->student_email = $request['email1'];
-			$obj->save();
-
-			$obj = Student::find($std2);
-			$obj->student_email = $request['email2'];
+		$countStd = count($student);
+		for($i=0; $i<$countStd; $i++){
+			$stdId = $student[$i]->id;
+			$obj = Student::find($stdId);
+			$obj->student_email = $email[$i];
 			$obj->save();
 		}
 
@@ -261,8 +219,6 @@ class editProjectController extends Controller {
 											}
 										}
 								}
-
-
 
 			return redirect('/showproject');
 	}

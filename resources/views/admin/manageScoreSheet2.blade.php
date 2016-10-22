@@ -8,31 +8,32 @@
      <h6>Year 2016</h6>
      <label>project type</label>
      <div class="btn-group" style="margin-right:30px">
+       <form action="{{url('exam/managescore/year/subscore')}}" method="post">
+         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
       <select class="selecttype" title="select" name="selectType">
         @foreach($type as $t)
               <option value="{{$t->id}}">{{$t->type_name}}</option>
         @endforeach
       </select>
-
     </div>
     <label>score sheet</label>
     <div class="btn-group">
-      <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
+      <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()" >
         @foreach($template as $temp)
        <option value="{{$temp->id}}">template {{$temp->temp_num}}</option>
        @endforeach
      </select>
-     <input type="hidden" name="temp" id="temp">
+     <input type="hidden" id="temp" name="selectTemp">
    </div>
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
-  @foreach($tempMain as $main)
-<div class="{{$main->template_id}} box">
+  @foreach($template as $temp)
+<div class="{{$temp->id}} box">
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
-
     <div class="col-xs-10 col-md-6 col-lg-6">
+      @foreach($temp->main as $main)
         <p><strong>round {{$main->round}}</strong> {{$main->criteria_main_name}}</p>
       </a>
       <table class="counttable table table-bordered">
@@ -40,27 +41,30 @@
          <tr><th>criteria</th><th width="15%">score</th></tr>
        </thead>
        <tbody>
-         @foreach($main->tempSub as $sub)
-        <tr><td>{{$sub->criteria_sub_name}}</td><td><input type="number" min="0" max="100" class="form-control score1"></td></tr>
+         @foreach($temp->sub as $sub)
+        <tr><td>{{$sub->criteria_sub_name}}</td><td><input type="number" min="0" max="100" class="form-control score{{$temp->count}}" name="subScore[]"></td></tr>
         @endforeach
       </tbody>
-      <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1"></th></tr></tfoot>
+      <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal{{$temp->count}}"></th></tr></tfoot>
     </table>
     <div class="alert alert-danger" role="alert" id="alert1">
      <a class="close" data-dismiss="alert">×</a>
      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
      Total score must be 100
    </div>
+
    <script>
-    $(document).on("change", ".score1", function() {
+    $(document).on("change", ".score{{$temp->count}}", function() {
     var sum = 0;
-    $(".score1").each(function(){
+    $(".score{{$temp->count}}").each(function(){
         sum += +$(this).val();
     });
-     $("#subtotal1").html(sum);
+     $("#subtotal{{$temp->count}}").html(sum);
     });
    </script>
+   @endforeach
  </div>
+
 
  <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
@@ -68,7 +72,8 @@
 @endforeach
 <div id="center">
   <a href="/exam/managescore/year/mainscore/create"><button type="button" class="action-button">back</button></a>
-  <button class="action-button checkvalue">save</button>
+  <button type="submit" class="action-button checkvalue">save</button>
+  </form>
 </div>
 </div>
 <script src="{!! URL::asset('js/score.js') !!}"></script>
