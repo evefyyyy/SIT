@@ -54,7 +54,7 @@
 		<div class="col-xs-12 hidden-sm hidden-md hidden-lg"></div>
 		<div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
 		<div class="col-xs-10 col-sm-3 col-md-2 col-lg-2">
-			<a href="/dday" class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
+			<a class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
 		</div>
 		@endif
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -141,46 +141,20 @@
 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 @endif
 @endif
+<div class="cd-popup" role="alert">
+    <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+    <div class="cd-popup-container">
+       <p>Enter your gen code to vote this project</p>
+       <input class="form-control"/>
+       <ul class="cd-buttons">
+          <li><a class="cd-vote">Vote</a></li>
+      </ul>
+      <a class="cd-popup-close cd-close img-replace"></a>
+  	</div> <!-- cd-popup-container -->
+  </div>
+</div> <!-- cd-popup -->
 </div>
 <script src="{!! URL::asset('js/eagle.gallery.min.js') !!}"></script>
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
-<script>
-	$(document).ready(function() {
-		var str = $("div.tools").html();
-		$("div.tools").html(str.replace(/\n/g, "<br />"));
-
-	}
-	);
-	WebFontConfig = {
-		google: { families: [ 'Lato:400,700,300:latin' ] }
-	};
-	(function() {
-		var wf = document.createElement('script');
-		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-		'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-		wf.type = 'text/javascript';
-		wf.async = 'true';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(wf, s);
-	})();
-
-// Initialize Share-Buttons
-$.contactButtons({
-	effect  : 'slide-on-scroll',
-	buttons : {
-		'facebook':   { class: 'facebook', use: true, extras: 'target="_blank"' },
-		'twitter':    { class: 'twitter',   use: true, },
-		'linkedin':   { class: 'linkedin', use: true, },
-		'google':     { class: 'gplus',    use: true, },
-		'pinterest':  { class: 'pinterest', use: true, },
-		'email':      { class: 'email',    use: true, link: 'test@web.com' }
-	}
-});
-$('#img-gallery').eagleGallery({
-	miniSliderArrowStyle: 2,
-	theme: 'light',
-	autoPlayMediumImg: 3000,
-	maxZoom: 2
-});
-</script>
+<script src="{!! URL::asset('js/dday.js') !!}"></script>
 @stop
