@@ -197,28 +197,43 @@ class editProjectController extends Controller {
 		}
 
 		$countPic = DB::table('pictures')
-					->where('project_pkid',$getId)
-					->where('picture_type_id','=','3')
-					->select('project_pkid')->get();
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','3')
+								->select('project_pkid')->get();
 
-								if(count($countPic)<10){
-										$x = $request->file('screenshot') ;
-										if($x[0] != null){
-											if(count($x)){
-												foreach ($x as $xs) {
-													$path = base_path('public/screenshot');
-													$filename = $xs->getClientOriginalName();
-													$move = $xs->move($path,$filename);
-													$savePic = '/screenshot'."/".$filename;
-													$obj = new Picture();
-													$obj->picture_path_name = $savePic;
-													$obj->picture_type_id = '3';
-	 												$obj->project_pkid = $getId;
-													$obj->save();
+								if(count($countPic)<10) {
+										$screenshot = $request->file('screenshot');
+										$unuseScreenshot = $request['uploadIndex'];
+										if($unuseScreenshot != null){
+											$explodeUnuse = explode(",",$unuseScreenshot);
+											$getScreenshot = array_diff_key($screenshot,$explodeUnuse);
+													foreach ($getScreenshot as $screen) {
+															$path = base_path('public/screenshot');
+															$filename = $screen->getClientOriginalName();
+															$move = $screen->move($path,$filename);
+															$savePic = '/screenshot'."/".$filename;
+															$obj = new Picture();
+															$obj->picture_path_name = $savePic;
+															$obj->picture_type_id = '3';
+			 												$obj->project_pkid = $getId;
+															$obj->save();
+													}
+										}else{
+											if($screenshot[0] != null){
+													foreach ($screenshot as $screen) {
+															$path = base_path('public/screenshot');
+															$filename = $screen->getClientOriginalName();
+															$move = $screen->move($path,$filename);
+															$savePic = '/screenshot'."/".$filename;
+															$obj = new Picture();
+															$obj->picture_path_name = $savePic;
+															$obj->picture_type_id = '3';
+			 												$obj->project_pkid = $getId;
+															$obj->save();
+													}
 												}
-											}
 										}
-								}
+							}
 
 			return redirect('/showproject');
 	}

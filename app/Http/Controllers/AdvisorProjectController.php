@@ -37,8 +37,8 @@ class AdvisorProjectController extends Controller
                     ->join('advisors','advisor_id','=','advisors.id')
                     ->where('project_pkid',$id[$i])
                     ->select('advisor_name')->get();
+        $obj['project'][$i]['countAdv'] = count($adv[$i]);
         $obj['project'][$i]['advisor'] = $adv[$i];
-
   // proposal file
         $firstDraftProposal[$i] = DB::table('proposals')
                                   ->where('project_pkid',$id[$i])
@@ -70,8 +70,8 @@ class AdvisorProjectController extends Controller
     }else{
         $obj['project'] = 0;
     }
-  
     return view('advisor.advProject',$obj);
+
   }
 
   public function show($id){
@@ -83,25 +83,6 @@ class AdvisorProjectController extends Controller
                 ->where('project_pkid',$id)
                 ->select('student_id','student_name','student_email')->get();
     $obj['student'] = $student;
-
-    if(count($student)==3){
-      $obj['stdId1'] = $student[0]->student_id;
-      $obj['stdId2'] = $student[1]->student_id;
-      $obj['stdId3'] = $student[2]->student_id;
-      $obj['stdName1'] = $student[0]->student_name;
-      $obj['stdName2'] = $student[1]->student_name;
-      $obj['stdName3'] = $student[2]->student_name;
-      $obj['email1'] = $student[0]->student_email;
-      $obj['email2'] = $student[1]->student_email;
-      $obj['email3'] = $student[2]->student_email;
-    }else if(count($student)==2){
-      $obj['stdId1'] = $student[0]->student_id;
-      $obj['stdId2'] = $student[1]->student_id;
-      $obj['stdName1'] = $student[0]->student_name;
-      $obj['stdName2'] = $student[1]->student_name;
-      $obj['email1'] = $student[0]->student_email;
-      $obj['email2'] = $student[1]->student_email;
-    }
 
     $obj['advisors'] = DB::table('project_advisors')
                         ->join('advisors','advisor_id','=','advisors.id')

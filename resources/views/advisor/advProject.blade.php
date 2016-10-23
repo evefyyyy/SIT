@@ -86,12 +86,19 @@
 					<tr>
 						<td>{{$pj->group_project_id}}</td>
 						<td id="name">
-							<a class="tblink" href="/showproject/{{$pj->id}}">{{$pj->group_project_eng_name}}<br>{{$pj->group_project_th_name}}</a>
+							<a class="tblink" href="/showproject/{{$pj->id}}" target="_blank">{{$pj->group_project_eng_name}}<br>{{$pj->group_project_th_name}}</a>
 						</td>
 						<td>{{$pj->type->type_name}}</td>
-						@foreach($pj->advisor as $adv)
-						<td class="firstname">{{$adv->advisor_name}}</td>
-						@endforeach
+						@if($pj->countAdv == 2)
+							@foreach($pj->advisor as $adv)
+							<td class="firstname">{{$adv->advisor_name}}</td>
+							@endforeach
+						@else
+							@foreach($pj->advisor as $adv)
+							<td class="firstname">{{$adv->advisor_name}}</td>
+							@endforeach
+							<td class="firstname"></td>
+						@endif
 						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal{{$proCount++}}"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
 						<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal{{$scoreCount++}}"><span class="glyphicon glyphicon-list-alt gi-3x"></span></a></td>
 					</tr>
