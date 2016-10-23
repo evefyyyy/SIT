@@ -61,6 +61,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			</div>
 			<!-- gallery pic -->
 			<input type="file" name="screenshot[]" id="uploader" multiple/>
+			<input type='hidden' name="uploadIndex" id='uploaderIndex' />
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
             <a class="btn btn-danger del" name="btn-delete" title="Delete Multiple image" >Delete</a>

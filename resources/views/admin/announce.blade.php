@@ -30,7 +30,7 @@
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
-				<tr class="news {{$n->end_date <= date('Y-m-d') && $n->end_date != '0000-00-00' ? "expired" : ""}}">
+				<tr >
 					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a>
 							@if($n->start_date > date('Y-m-d'))
 									<span class="pending"> - pending</span>

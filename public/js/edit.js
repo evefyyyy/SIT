@@ -1,4 +1,6 @@
 var count = $('.gallery').length;
+var fileIndex = 0;
+var arrayUnuseIndex = [];
 
 function goBack() {
   window.history.back()
@@ -17,7 +19,8 @@ function readURL(input) {
           alert('Cannot upload more than 10 pictures');
         } else {
           $.each(input.files, function(key, file) {
-            multipleURL(file);
+            multipleURL(file, fileIndex);
+            fileIndex++;
           });
         }
       }
@@ -26,37 +29,36 @@ function readURL(input) {
   }
 }
 
-function multipleURL(file) {
+function multipleURL(file, fileIndex) {
   var reader = new FileReader();
   reader.onload = function (e) {
     count++;
-    $('.image-view').append('<div class="col-xs-4 gallery"></div>');
+    $('.image-view').append("<div class='col-xs-4 gallery' id='new-image-" + fileIndex + "'></div>");
     $('.gallery').last().append("<img id=image-" + count  + " />");
     $('#image-' + count).attr('src', e.target.result);
   }
   reader.readAsDataURL(file);
 }
 
-$('.gallery').on('click', function() {
+$('.image-view').on('click', '.gallery', function() {
   if ($(this).hasClass('active')) {
     $(this).removeClass('active');
   } else {
     $(this).addClass('active');
   }
-
 });
 
 $('.del').on('click', function(e) {
   e.preventDefault();
   var count = $("#cpic").val();
-  var cn ;
-  var x ;
-  var y ;
+  var cn;
+  var picture;
+  var y;
   for(var i=0; i<count ; i++){
-    x = document.getElementById('pic'+i) ;
-    cn = x.className ;
+    picture = document.getElementById('pic'+i) ;
+    cn = picture.className;
     if(cn.indexOf("active") != -1){
-      y = x.getElementsByTagName('img')[0];
+      y = picture.getElementsByTagName('img')[0];
       $.ajax({
           type:"post",
           dataType: "",
@@ -65,7 +67,15 @@ $('.del').on('click', function(e) {
       });
     }
   }
-  $('.gallery.active').remove();
+  $('.gallery.active').each(function() {
+    var galleryId = $(this).attr('id');
+    if (galleryId.substring(0, galleryId.length-1) == "new-image-") {
+      arrayUnuseIndex.push(galleryId.substr(-1));
+    }
+    $(this).remove();
+  });
+  $('#uploaderIndex').val(arrayUnuseIndex);
+  count--;
 
 });
 
