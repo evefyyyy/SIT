@@ -20,35 +20,42 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		@if(Auth::check())
-			@if(Auth::user()->user_student != null)
-			<?php
-			$objs = Auth::user()->user_student->student->student_id;
-			$checkStd = DB::table('students')->where('student_id',$objs)->value('id');
-			$projectId = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
-			?>
-				@if($projectId == $checkProject)
-			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-				<h3>{{$projectNameEN}}</h3>
-				<h4>{{$projectNameTH}}</h4>
-			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
+		@if(Auth::user()->user_student != null)
+		<?php
+		$objs = Auth::user()->user_student->student->student_id;
+		$checkStd = DB::table('students')->where('student_id',$objs)->value('id');
+		$projectId = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
+		?>
+		@if($projectId == $checkProject)
+		<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+			<h3>{{$projectNameEN}}</h3>
+			<h4>{{$projectNameTH}}</h4>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
 
-				<form action="{{url('student/myproject/edit/'.$checkProject.'/edit')}}" method="get">
-					<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
-				</form>
-			</div>
-				@else
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-				<h3>{{$projectNameEN}}</h3>
-				<h4>{{$projectNameTH}}</h4>
-			</div>
-				@endif
-			@else
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-				<h3>{{$projectNameEN}}</h3>
-				<h4>{{$projectNameTH}}</h4>
-			</div>
-			@endif
+			<form action="{{url('student/myproject/edit/'.$checkProject.'/edit')}}" method="get">
+				<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
+			</form>
+		</div>
+		@else
+		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+			<h3>{{$projectNameEN}}</h3>
+			<h4>{{$projectNameTH}}</h4>
+		</div>
+		@endif
+		
+		@endif
+		@else
+		<div class="col-xs-10 col-sm-7 col-md-8 col-lg-8">
+			<h3>{{$projectNameEN}}</h3>
+			<h4>{{$projectNameTH}}</h4>
+		</div>
+		<div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+		<div class="col-xs-12 hidden-sm hidden-md hidden-lg"></div>
+		<div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+		<div class="col-xs-10 col-sm-3 col-md-2 col-lg-2">
+			<a href="/dday" class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
+		</div>
 		@endif
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -123,17 +130,17 @@
 	@else
 	<!-- in case no video -->
 	@if($screenshot != null)
-			<div id="img-gallery" class="eagle-gallery img300">
-				<div class="owl-carousel">
-					@foreach($screenshot as $img)
-					<img src="{{$img->picture_path_name}}" data-medium-img="{{$img->picture_path_name}}" data-big-img="{{$img->picture_path_name}}">
-					@endforeach
-				</div>
-			</div>
+	<div id="img-gallery" class="eagle-gallery img300">
+		<div class="owl-carousel">
+			@foreach($screenshot as $img)
+			<img src="{{$img->picture_path_name}}" data-medium-img="{{$img->picture_path_name}}" data-big-img="{{$img->picture_path_name}}">
+			@endforeach
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-	@endif
-	@endif
+	</div>
+</div>
+<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+@endif
+@endif
 </div>
 <script src="{!! URL::asset('js/eagle.gallery.min.js') !!}"></script>
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
@@ -170,10 +177,10 @@ $.contactButtons({
 	}
 });
 $('#img-gallery').eagleGallery({
-    miniSliderArrowStyle: 2,
-    theme: 'light',
-    autoPlayMediumImg: 3000,
-    maxZoom: 2
+	miniSliderArrowStyle: 2,
+	theme: 'light',
+	autoPlayMediumImg: 3000,
+	maxZoom: 2
 });
 </script>
 @stop

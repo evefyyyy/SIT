@@ -112,7 +112,7 @@ $('.embed').on('click', function() {
     document.getElementById("vdo").innerHTML = x ;
 });
 
-$( function() {
-    $( ".image-view" ).sortable();
-    $( ".image-view" ).disableSelection();
-  } );
+// $( function() {
+//     $( ".image-view" ).sortable();
+//     $( ".image-view" ).disableSelection();
+//   } );
