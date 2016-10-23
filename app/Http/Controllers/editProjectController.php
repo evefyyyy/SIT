@@ -203,24 +203,38 @@ class editProjectController extends Controller {
 
 								if(count($countPic)<10) {
 										$screenshot = $request->file('screenshot');
-										$unuse = $request['uploadIndex'];
-										$explodeUnuse = explode(",",$unuse);
-										$getScreenshot = array_diff_key($screenshot,$explodeUnuse);
-										if($screenshot[0] != null){
-												foreach ($getScreenshot as $screen) {
-														$path = base_path('public/screenshot');
-														$filename = $screen->getClientOriginalName();
-														$move = $screen->move($path,$filename);
-														$savePic = '/screenshot'."/".$filename;
-														$obj = new Picture();
-														$obj->picture_path_name = $savePic;
-														$obj->picture_type_id = '3';
-		 												$obj->project_pkid = $getId;
-														$obj->save();
+										$unuseScreenshot = $request['uploadIndex'];
+										if($unuseScreenshot != null){
+											$explodeUnuse = explode(",",$unuseScreenshot);
+											$getScreenshot = array_diff_key($screenshot,$explodeUnuse);
+													foreach ($getScreenshot as $screen) {
+															$path = base_path('public/screenshot');
+															$filename = $screen->getClientOriginalName();
+															$move = $screen->move($path,$filename);
+															$savePic = '/screenshot'."/".$filename;
+															$obj = new Picture();
+															$obj->picture_path_name = $savePic;
+															$obj->picture_type_id = '3';
+			 												$obj->project_pkid = $getId;
+															$obj->save();
+													}
+										}else{
+											if($screenshot[0] != null){
+													foreach ($screenshot as $screen) {
+															$path = base_path('public/screenshot');
+															$filename = $screen->getClientOriginalName();
+															$move = $screen->move($path,$filename);
+															$savePic = '/screenshot'."/".$filename;
+															$obj = new Picture();
+															$obj->picture_path_name = $savePic;
+															$obj->picture_type_id = '3';
+			 												$obj->project_pkid = $getId;
+															$obj->save();
+													}
 												}
-											}
 										}
-										
+							}
+
 			return redirect('/showproject');
 	}
 }
