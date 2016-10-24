@@ -1399,6 +1399,11 @@ img#cover {
   border: 1px solid;
   border-radius: 5px;
 }
+#scoresheet label > strong {
+  margin-left: 10px;
+  margin-right: 30px;
+  display: inline;
+}
 #scoresheet h2 {
   margin: 20px auto;
 }
@@ -1445,6 +1450,12 @@ img#cover {
 .box .table > tfoot > tr > th:nth-child(2n+2), #subtotal,
 #givemark td:nth-child(3), #tsubtotal {
   padding-left: 24px;
+}
+#scoresheet .box .viewsheet > tbody > tr > td:nth-child(2n+2) {
+  text-align: center;  
+}
+#scoresheet .box .viewsheet {
+  margin-bottom: 25px;
 }
 #scoreyear .table > tbody > tr > td:nth-child(2n+1) {
   font-weight: 900;
