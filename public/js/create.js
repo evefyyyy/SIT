@@ -76,7 +76,7 @@ $(function(){
 });
 $(function(){
 	var propfile = $("input[type=file]");
-	$('button[type="submit"]').click(function() {
+	$('#check4').click(function() {
 		if (propfile.val() == "") {
 			$('.file-upload-input').addClass( "required" );
   				event.preventDefault();

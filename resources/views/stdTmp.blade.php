@@ -82,7 +82,7 @@
       $('.firstname')[index].innerHTML = $(this).text().split(' ')[0].toLowerCase();
     });
     $('.fullname').each(function(index) {
-      $('.fullname')[index].innerHTML = $(this).text().toLowerCase();
+      $('.fullname')[index].innerHTML = $(this).html().toLowerCase();
     });
     </script>
 </html>

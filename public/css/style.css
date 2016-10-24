@@ -839,9 +839,8 @@ h6 img {
 }
 .custom-file-upload p {
     color: #666;
-    font-size: 0.875em;
-    text-transform: uppercase;
-    margin: 20px auto 0 auto;
+    text-transform: lowercase;
+    margin: 20px auto 5px auto;
 }
 .file-upload-wrapper {
     position: relative;

@@ -70,7 +70,7 @@
                        {{$team->student->student_id}}<br>
                        @endforeach
                    </td>
-                   <td rowspan="3" colspan="2">
+                   <td rowspan="3" colspan="2" class="fullname">
                        @foreach($teams as $team)
                        {{ $team->student->student_name}}<br>
                        @endforeach

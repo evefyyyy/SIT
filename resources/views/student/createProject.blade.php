@@ -144,7 +144,7 @@
 				<input type="hidden" value="" id="selectCat" name="selectCat"/>
 				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<button type="submit" name="submit" class="submit action-button" value="submit" /> SUBMIT </button>
+				<button type="submit" id="check4" name="submit" class="submit action-button" value="submit" /> SUBMIT </button>
 			</fieldset>
 		</form>
 	</div>
