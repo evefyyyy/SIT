@@ -75,7 +75,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		                ?>
 											@if($screenshot)
 									 			@foreach($screenshot as $img)
-										 			<li class="col-xs-4 gallery ui-state-default" id="pic{{$count}}">
+										 			<li class="col-xs-4 gallery" id="pic{{$count}}">
 												 			<img src="{{asset($img->picture_path_name)}}"/>
 												 			<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
 												 		</li>

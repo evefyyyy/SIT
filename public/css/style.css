@@ -557,6 +557,11 @@ table.teammem {
   -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   transition: opacity 0.3s 0s, visibility 0s 0.3s;
 }
+#detail .cd-popup {
+  -webkit-transition: opacity 0.5s 0s, visibility 0s 0.5s;
+  -moz-transition: opacity 0.5s 0s, visibility 0s 0.5s;
+  transition: opacity 0.5s 0s, visibility 0s 0.5s;
+}
 .cd-popup.is-visible {
   opacity: 1;
   visibility: visible;
@@ -564,7 +569,13 @@ table.teammem {
   -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
   transition: opacity 0.3s 0s, visibility 0s 0s;
 }
-
+#detail .cd-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.5s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.5s 0s, visibility 0s 0s;
+  transition: opacity 0.5s 0s, visibility 0s 0s;
+}
 .cd-popup-container {
   margin: 10em auto;
   position: relative;
@@ -589,8 +600,16 @@ table.teammem {
   -moz-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
+#detail .cd-popup-container {
+   width: 100%;
+   max-width: none;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+} 
 .cd-popup-container p {
-  padding: 3em 1em;
+  font-size: 1.4em;
+  padding: 3em 1em 1em;
 }
 .cd-popup-container .cd-buttons:after {
   content: "";
@@ -602,6 +621,9 @@ table.teammem {
   width: 50%;
   display: inline-block;
 }
+#detail .cd-popup-container .cd-buttons li {
+  width: 100%;
+}
 .cd-popup-container .cd-buttons a {
   display: block;
   height: 60px;
@@ -610,11 +632,23 @@ table.teammem {
   color: #FFF;
   text-decoration: none;
   font-size: 1.2em;
-  transition: background-color 0.2s;
+  transition: background-color 0.5s;
+}
+#detail .cd-popup-container .cd-buttons a {
+  line-height: 2.5em;
+  transition: background-color 0.5s;
 }
 .cd-popup-container .cd-buttons li:first-child a {
   background: #FF5A5A;
   border-radius: 0 0 0 .25em;
+}
+#detail .cd-popup-container .cd-buttons li a {
+  background: #40c3a7;
+  border-radius: 0 0 0 .25em;
+  font-size: 1.8em;
+  vertical-align: middle;
+  letter-spacing: 3px;
+  border-radius: 0 0 .25em .25em;
 }
 .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
   background-color: #fc8982;
@@ -631,15 +665,15 @@ table.teammem {
   cursor: pointer;
   top: 8px;
   right: 8px;
-  width: 30px;
+  width: 34px;
   height: 30px;
 }
 .cd-popup-container .cd-popup-close::before, .cd-popup-container .cd-popup-close::after {
   content: '';
   position: absolute;
   top: 12px;
-  width: 14px;
-  height: 3px;
+  width: 18px;
+  height: 4px;
   background-color: #B6B6B6;
 }
 .cd-popup-container .cd-popup-close::before {
@@ -664,6 +698,21 @@ table.teammem {
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
   transform: translateY(0);
+}
+#detail .cd-popup .form-control {
+  color: #40c3a7;
+  width: 80%;
+  font-size: 2em;
+  height: 2.5em;
+  text-align: center;
+  margin-bottom: 2em;
+  border: 2px solid #dcdcdc;
+}
+#detail .cd-popup .form-control:focus {
+  border-color: #dcdcdc;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 #login-dp{
     min-width: 200px;
@@ -1051,7 +1100,7 @@ img#cover {
   display: inline-block;
   text-transform: uppercase;
 }
-.gallery {height:135px; align-items:center; display:flex;}
+.gallery {height:135px; align-items:center; display:flex; overflow: hidden; margin: 5px auto;}
 .gallery img{width:100%;}
 .gallery img:hover{opacity:0.7; cursor:pointer;}
 .image-view .active{box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);}
