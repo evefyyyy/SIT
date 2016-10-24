@@ -11,7 +11,7 @@
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				<img class="img-responsive" id="cover" src="{{$poster or ''}}"/>
 				<input type="file" id="img-cover" name="poster"/>
-				<label for="img-cover" class="btn btn-browse group">Select new image</label>
+				<label for="img-cover" class="btn btn-browse">Select new image</label>
 				<label class="pic-size">poster 1920 x 1080 px</label>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -48,7 +48,7 @@
 				<img id="group-member" src="{{$groupPic or ''}}" alt="your image" />
 				<input type="file" id="imgInp" name="groupPicture"/>
 				<label for="imgInp" class="btn btn-browse group">Select new image</label>
-				<label class="pic-size">group member picture (4:3)</label>
+				<label class="pic-size">group member photo (4:3)</label>
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
