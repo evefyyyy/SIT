@@ -43,17 +43,18 @@ $(function(){
 
 $(function(){
 	$('#check2').on("click", function(e) {
-		if ($("#fname2 font").html() == "Data not found" || $("#fname2 font").html() == "This student already has group"){
+		if ($("#fname2 font").html() == "Data not found" || $("#fname2 font").html() == "This student already has group" || $("#std1Name").html() == $("#fname2").html()){
 			$('#stdId2').addClass( "required" );
 		}else{
 			$('#stdId2').removeClass( "required" );
 		}
-		if ($("#fname3 font").html() == "Data not found" || $("#fname3 font").html() == "This student already has group"){
+		if ($("#fname3 font").html() == "Data not found" || $("#fname3 font").html() == "This student already has group" || $("#std1Name").html() == $("#fname3").html()){
 			$('#stdId3').addClass( "required" );
 		}else{
 			$('#stdId3').removeClass( "required" );
 		}
-		if ($("#fname2 font").html() != "Data not found" && $("#fname2 font").html() != "This student already has group" && $("#fname3 font").html() != "Data not found" && $("#fname3 font").html() != "This student already has group"){
+		if ($("#fname2 font").html() != "Data not found" && $("#fname2 font").html() != "This student already has group" && $("#fname3 font").html() != "Data not found" && $("#fname3 font").html() != "This student already has group"
+			&& $("#std1Name").html() != $("#fname2").html() && $("#std1Name").html() != $("#fname3").html()){
 			$('#check2').click(gonext($(this)));
 		}
 	});
@@ -70,12 +71,6 @@ $(function(){
 			$('#mainAdvisor').parent().removeClass( "required" );
 			$('#coAdvisor').parent().removeClass( "required" );
 			$('#check3').click(gonext($(this)));
-		}
-		if ($('#Student2No1').val() == "") {
-		$('#Student2No1').parent().remove();
-		}
-		if ($('#Student3No1').val() == "") {
-		$('#Student3No1').parent().remove();
 		}
 	});
 });

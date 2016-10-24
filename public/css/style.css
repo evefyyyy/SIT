@@ -442,9 +442,6 @@ table.teammem {
     text-align: center;
     vertical-align: middle;
 }
-#waitApp {
-  text-transform: uppercase;
-}
 #waitApp img {
     vertical-align: middle;
     float: right;
@@ -1769,6 +1766,6 @@ a.btn3 {
 .btn-3e:hover:after {
   width: 40%;
 }
-.firstname {
+.firstname, .fullname {
   text-transform: capitalize;
 }

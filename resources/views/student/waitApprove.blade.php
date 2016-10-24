@@ -18,7 +18,7 @@
 		@foreach($std as $s)
 		<tr>
 			<td>Student no. {{$s->student_id}}</td>
-			<td>{{$s->student_name}}</td>
+			<td class="fullname">{{$s->student_name}}</td>
 		</tr>
 		@endforeach
 	</table>

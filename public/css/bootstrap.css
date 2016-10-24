@@ -3621,7 +3621,7 @@ tbody.collapse.in {
 .dropdown-menu > .active > a:focus {
   color: #fff;
   text-decoration: none;
-  background-color: #337ab7;
+  background-color: #40c3a7;
   outline: 0;
 }
 .dropdown-menu > .disabled > a,

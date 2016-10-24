@@ -64,7 +64,10 @@
     </body>
     <script>
     $('.firstname').each(function(index) {
-      $('.firstname')[index].innerHTML = $(this).text().split(' ')[0]
+      $('.firstname')[index].innerHTML = $(this).text().split(' ')[0].toLowerCase();
+    });
+    $('.fullname').each(function(index) {
+      $('.fullname')[index].innerHTML = $(this).text().toLowerCase();
     });
     </script>
 </html>

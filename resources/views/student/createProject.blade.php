@@ -134,7 +134,7 @@
 					  </tr>
 					</table>
 					<div class="custom-file-upload">
-				    <p>Upload your first draft proposal</p>
+				    <p>Upload your first draft proposal (.doc .docx .pdf)</p>
 				    <input type="file" id="file" name="myfiles" required/>
 				    </div>
 				</div>
