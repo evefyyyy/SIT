@@ -24,7 +24,7 @@
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
 				<a class="btn btn-default" onclick="goBack()">back</a>
-				<button class="btn btn-primary">save & show my project</button>
+				<button type="submit" class="btn btn-primary">save & show my project</button>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>

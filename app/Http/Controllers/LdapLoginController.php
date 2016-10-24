@@ -49,6 +49,7 @@ class LdapLoginController extends Controller
 
 			$ldapbindstudent = @ldap_bind($ds, $ldaprdn, $ldappass);
 			$ldapbindstaff = @ldap_bind($ds, $ldapsta, $ldappass);
+			$fake_password = '123456789';
 			if($ldapbindstudent){
 				// $justthese = array("uid", "cn", "gecos", "mail");
 				// $srstu=ldap_search($ds, "ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th", "uid=".$username."",$justthese);
@@ -62,14 +63,14 @@ class LdapLoginController extends Controller
 				$studentid = DB::table('students')->where('student_id', $username)->first()->id;
 				if(DB::table('users')->where('name', $username)->first()===null){
 					DB::table('users')->insert(
-						['name' => $username, 'password' => bcrypt($request->password), 'user_type_id' => 3]
+						['name' => $username, 'password' => bcrypt($fake_password), 'user_type_id' => 3]
 						);
 					$user_id = DB::table('users')->where('name', $username)->first()->id;
 					DB::table('user_student')->insert(
 						['student_pkid' => $studentid, 'user_id' => $user_id]
 						);
 				}
-				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
+				if(Auth::attempt(['name' => $username, 'password' => $fake_password])){
 					return redirect()->intended('/home');
 				} else {
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
@@ -89,7 +90,7 @@ class LdapLoginController extends Controller
 					}
 					if($checkadv != null){
 						DB::table('users')->insert(
-							['name' => $username, 'password' => bcrypt($request->password), 'user_type_id' => 1]
+							['name' => $username, 'password' => bcrypt($fake_password), 'user_type_id' => 1]
 							);
 						$user_id = DB::table('users')->where('name', $username)->first()->id;
 						DB::table('user_advisor')->insert(
@@ -97,7 +98,7 @@ class LdapLoginController extends Controller
 							);
 					} else if($checkstaff != null){
 						DB::table('users')->insert(
-							['name' => $username, 'password' => bcrypt($request->password), 'user_type_id' => 2]
+							['name' => $username, 'password' => bcrypt($fake_password), 'user_type_id' => 2]
 							);
 						$user_id = DB::table('users')->where('name', $username)->first()->id;
 						DB::table('user_advisor')->insert(
@@ -107,7 +108,7 @@ class LdapLoginController extends Controller
 
 					}
 				}
-				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
+				if(Auth::attempt(['name' => $username, 'password' => $fake_password])){
 					return redirect()->intended('/home');
 				} else {
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");

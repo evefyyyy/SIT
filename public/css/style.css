@@ -189,7 +189,7 @@ option {
     margin-top: 7px;
     margin-bottom: 0;
     text-align: left;
-    text-transform: none;
+    text-transform: capitalize;
 }
 .proname {
     font-size: 1.2em;
@@ -427,8 +427,8 @@ option {
   cursor: pointer;
 }
 table.teammem {
-  width: 80%;
-  margin: 0 auto
+  width: 90%;
+  margin: 0 auto;
 }
 .teammem td {
     padding: 5px;
@@ -441,6 +441,9 @@ table.teammem {
 #center {
     text-align: center;
     vertical-align: middle;
+}
+#waitApp {
+  text-transform: uppercase;
 }
 #waitApp img {
     vertical-align: middle;
@@ -1765,4 +1768,7 @@ a.btn3 {
 
 .btn-3e:hover:after {
   width: 40%;
+}
+.firstname {
+  text-transform: capitalize;
 }

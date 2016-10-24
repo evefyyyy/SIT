@@ -147,7 +147,7 @@
 				<div class="title" id="head">Advisor</div>
 					<table class="teammem">
 					  <tr>
-					  	<td>Main advisor</td>
+					  	<td width="25%">Main advisor</td>
 					    <td id="mainAdvisor1"></td>
 					  </tr>
 					  <tr>

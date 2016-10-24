@@ -133,7 +133,7 @@
 </body>
 <script>
 $('.firstname').each(function(index) {
-  document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
+  $('.firstname')[index].innerHTML = $(this).text().split(' ')[0].toLowerCase();
 });
 </script>
 </html>

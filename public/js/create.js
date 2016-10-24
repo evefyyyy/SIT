@@ -63,9 +63,19 @@ $(function(){
 	$('#check3').on("click", function(e) {
 		if ($("#mainAdvisor option:selected").val() == null){
 			$('#mainAdvisor').parent().addClass( "required" );
-		}else{
+		} else if ($("#mainAdvisor option:selected").val() == $("#coAdvisor option:selected").val()){
+			$('#mainAdvisor').parent().addClass( "required" );
+			$('#coAdvisor').parent().addClass( "required" );
+		} else {
 			$('#mainAdvisor').parent().removeClass( "required" );
+			$('#coAdvisor').parent().removeClass( "required" );
 			$('#check3').click(gonext($(this)));
+		}
+		if ($('#Student2No1').val() == "") {
+		$('#Student2No1').parent().remove();
+		}
+		if ($('#Student3No1').val() == "") {
+		$('#Student3No1').parent().remove();
 		}
 	});
 });
@@ -229,7 +239,6 @@ function getValue() {
 	$("#mainAdvisor1").html($("#mainAdvisor").val());
 	$("#coAdvisor1").html($("#coAdvisor").val());
 }
-
 $(function () {
 	$('.selectpicker').selectpicker({
 		liveSearch: true,

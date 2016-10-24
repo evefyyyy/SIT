@@ -7,7 +7,6 @@
   <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
   <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
   <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
-  <script src="{!! URL::asset('js/login.js') !!}"></script>
   <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
   <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">

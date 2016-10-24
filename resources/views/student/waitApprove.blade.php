@@ -29,9 +29,9 @@
 					$count = count($advisors);
 				 ?>
 			@if($count == 1)
-			<tr><td><strong>Main advisor</strong>{{$advisors[0]->advisor_name}}</td></tr>
+			<tr><td width="25%"><strong>Main advisor</strong>{{$advisors[0]->advisor_name}}</td></tr>
 			@else
-			<tr><td><strong>Main advisor</strong>{{$advisors[0]->advisor_name}}</td></tr>
+			<tr><td width="25%"><strong>Main advisor</strong>{{$advisors[0]->advisor_name}}</td></tr>
 			<tr><td><strong>Co-advisor</strong>{{$advisors[1]->advisor_name}}</td></tr>
 			@endif
 			</tbody>

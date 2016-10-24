@@ -3572,7 +3572,7 @@ tbody.collapse.in {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 1500;
   display: none;
   float: left;
   padding: 5px 0;
