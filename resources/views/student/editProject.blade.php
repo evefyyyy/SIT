@@ -9,7 +9,7 @@
 			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-				<img class="img-responsive" id="cover" src="{{$poster or ''}}"/>
+				<img class="img-responsive" id="cover" src="{{$poster or '/img/no-poster.png'}}"/>
 				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse">Select new image</label>
 				<label class="pic-size">poster 1920 x 1080 px</label>
@@ -45,7 +45,7 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
-				<img id="group-member" src="{{$groupPic or ''}}" alt="your image" />
+				<img id="group-member" src="{{$groupPic or '/img/no-image.png'}}" alt="your image" />
 				<input type="file" id="imgInp" name="groupPicture"/>
 				<label for="imgInp" class="btn btn-browse group">Select new image</label>
 				<label class="pic-size">group member photo (4:3)</label>

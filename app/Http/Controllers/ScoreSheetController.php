@@ -492,15 +492,28 @@ class ScoreSheetController extends Controller
       foreach ($filter as $key) {
         array_push($score,$key);
       }
-
       $countScore = count($score);
-      for($i=0; $i<$countScore; $i++){
-        $main = DB::table('templates_main')
-                ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-                ->where('template_id',$temp)
-                ->get();
-      }
 
+      $main = DB::table('templates_main')
+              ->join('main_templates_score','template_main_id','=','templates_main.id')
+              ->where('template_id',$temp)
+              ->select('main_templates_score.id','score','template_id','criteria_main_id')->get();
+      for($i=0; $i<count($main); $i++){
+        $mainScoreId[$i] = $main[$i]->id;
+        $sub[$i] = DB::table('templates_sub')
+                    ->join('main_templates_score','main_templates_score.template_main_id','=','templates_sub.template_main_id')
+                    ->where('main_templates_score.id',$mainScoreId[$i])
+                    ->select('templates_sub.id','main_templates_score.id AS main_score_id')
+                    ->get();
+      }
+      $flatten = array_flatten($sub);
+      for($i=0; $i<count($flatten); $i++){
+        $obj = new SubScore();
+        $obj->score = $subScore[$i];
+        $obj->main_template_score_id = $flatten[$i]->main_score_id;
+        $obj->template_sub_id = $flatten[$i]->id;
+        $obj->save();
+      }
 
       return redirect(url('exam/scoresheet'));
     }
