@@ -53,8 +53,11 @@ $(function(){
 		}else{
 			$('#stdId3').removeClass( "required" );
 		}
-		if ($("#fname2 font").html() != "Data not found" && $("#fname2 font").html() != "This student already has group" && $("#fname3 font").html() != "Data not found" && $("#fname3 font").html() != "This student already has group"
+		if ($("#fname2").html() == "" && $("#fname3").html() != "") {
+			$('#stdId3').addClass( "required" );
+		} else if ($("#fname2 font").html() != "Data not found" && $("#fname2 font").html() != "This student already has group" && $("#fname3 font").html() != "Data not found" && $("#fname3 font").html() != "This student already has group"
 			&& $("#std1Name").html() != $("#fname2").html() && $("#std1Name").html() != $("#fname3").html()){
+			$('#stdId3').removeClass( "required" );
 			$('#check2').click(gonext($(this)));
 		}
 	});
