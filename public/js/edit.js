@@ -14,6 +14,15 @@ function readURL(input) {
           $('#group-member').attr('src', e.target.result);
         } else if(input.id === 'img-cover') {
           $('#cover').attr('src', e.target.result);
+          var coverWidth = $("#cover").get(0).naturalWidth;
+          var coverHeight = $("#cover").get(0).naturalHeight; 
+          if(coverWidth != 1920 || coverHeight != 1080){
+            alert('Your poster must be 1920*1080 px');
+            $('#editpj').submit(function(){
+              alert('Your poster must be 1920*1080 px');
+                return false;
+            });
+          }
         } else if (input.id == 'uploader') {
         if ( count == 10 ) {
           alert('Cannot upload more than 10 pictures');

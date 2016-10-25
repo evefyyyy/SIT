@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
+			<form id="editpj" class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				<img class="img-responsive" id="cover" src="{{$poster or '/img/no-poster.png'}}"/>
