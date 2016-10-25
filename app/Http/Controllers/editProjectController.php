@@ -119,16 +119,17 @@ class editProjectController extends Controller {
 			$obj = ProjectDetail::find($detail);
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
-			$obj->video = $request['video'];
+			$obj->video = str_replace('watch?v=','embed/',$request['video']);
 			$obj->save();
 		}else if($detail == null){
 			$obj = new ProjectDetail();
 			$obj->project_pkid = $getId;
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
-			$obj->video = $request['video'];
+			$obj->video = str_replace('watch?v=','embed/',$request['video']);
 			$obj->save();
 		}
+
 
 		$poster = DB::table('pictures')
 								->join('group_projects','project_pkid','=','group_projects.id')
@@ -138,7 +139,7 @@ class editProjectController extends Controller {
 
 		if($poster != null){
 				if($request->file('poster')){
-					$path = base_path('public/projectPoster');
+					$path = base_path('public_html/projectPoster');
 					$file = $request->file('poster');
 					$filename = $file->getClientOriginalName();
 					$move = $file->move($path,$filename);
@@ -150,7 +151,7 @@ class editProjectController extends Controller {
 				}
 		}else if($poster == null){
 			if($request->file('poster')){
-				$path = base_path('public/projectPoster');
+				$path = base_path('public_html/projectPoster');
 				$file = $request->file('poster');
 				$filename = $file->getClientOriginalName();
 				$move = $file->move($path,$filename);
@@ -171,7 +172,7 @@ class editProjectController extends Controller {
 
 		if($groupPic != null){
 				if($request->file('groupPicture')){
-					$path = base_path('public/groupPicture');
+					$path = base_path('public_html/groupPicture');
 					$file = $request->file('groupPicture');
 					$filename = $file->getClientOriginalName();
 					$move = $file->move($path,$filename);
@@ -183,7 +184,7 @@ class editProjectController extends Controller {
 				}
 		}else if($groupPic == null){
 			if($request->file('groupPicture')){
-				$path = base_path('public/groupPicture');
+				$path = base_path('public_html/groupPicture');
 				$file = $request->file('groupPicture');
 				$filename = $file->getClientOriginalName();
 				$move = $file->move($path,$filename);
@@ -208,7 +209,7 @@ class editProjectController extends Controller {
 											$explodeUnuse = explode(",",$unuseScreenshot);
 											$getScreenshot = array_diff_key($screenshot,$explodeUnuse);
 													foreach ($getScreenshot as $screen) {
-															$path = base_path('public/screenshot');
+															$path = base_path('public_html/screenshot');
 															$filename = $screen->getClientOriginalName();
 															$move = $screen->move($path,$filename);
 															$savePic = '/screenshot'."/".$filename;
@@ -221,7 +222,7 @@ class editProjectController extends Controller {
 										}else{
 											if($screenshot[0] != null){
 													foreach ($screenshot as $screen) {
-															$path = base_path('public/screenshot');
+															$path = base_path('public_html/screenshot');
 															$filename = $screen->getClientOriginalName();
 															$move = $screen->move($path,$filename);
 															$savePic = '/screenshot'."/".$filename;

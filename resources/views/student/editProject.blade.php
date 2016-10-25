@@ -112,9 +112,11 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			@endforeach
 			</div>
 		</div>
-		<div class="embed-responsive embed-responsive-16by9" id="vdo"></div>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe id="vdo" width="1280" height="720" src="https://www.youtube.com/embed/XqJU9HWBUsE" frameborder="0" allowfullscreen></iframe>
+		</div>
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Paste a youtube embed code" id="embedcode" name="video" value="{{$video or ''}}">
+				<input type="text" class="form-control" placeholder="Paste a youtube link" id="embedcode" name="video" value="{{$video or ''}}">
 				<span class="input-group-btn">
 					<button class="btn btn-primary embed" type="button">Embed</button>
 				</span>

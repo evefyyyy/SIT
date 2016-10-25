@@ -1,3 +1,13 @@
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
+
 var count = $('.gallery').length;
 var fileIndex = 0;
 var arrayUnuseIndex = [];
@@ -17,11 +27,8 @@ function readURL(input) {
           var coverWidth = $("#cover").get(0).naturalWidth;
           var coverHeight = $("#cover").get(0).naturalHeight; 
           if(coverWidth != 1920 || coverHeight != 1080){
-            alert('Your poster must be 1920*1080 px');
-            $('#editpj').submit(function(){
-              alert('Your poster must be 1920*1080 px');
-                return false;
-            });
+            alert('Your poster must be 1920*1080 px1');
+            return false;
           }
         } else if (input.id == 'uploader') {
         if ( count == 10 ) {
@@ -113,12 +120,19 @@ $('#upload').on('click', function() {
 
 $("#embedcode").ready(function() {
    var x = $("#embedcode").val();
-  document.getElementById("vdo").innerHTML = x ;
+  document.getElementById("vdo").src = x ;
 });
 
 $('.embed').on('click', function() {
     var x = $("#embedcode").val();
-    document.getElementById("vdo").innerHTML = x ;
+    if (x.indexOf("watch?v=")!=-1) {
+    var link = "https://www.youtube.com/embed/"+x.substr(x.indexOf("watch?v=")+8, x.length-1);
+    document.getElementById("vdo").src = link ;
+  }else{
+    alert("Your link is incorrect");
+    $("#embedcode").val("");
+  }
+    
 });
 
 // $( function() {
