@@ -5,11 +5,11 @@
   <div class="row">
     <div class="col-xs-2 col-md-2 col-lg-2"></div>
     <div class="col-xs-8 col-md-8 col-lg-8" id="center">
+      <form action="{{url('exam/managescore/year/subscore')}}" method="post">
+        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
      <h6>Year 2016</h6>
      <label>project type</label>
      <div class="btn-group" style="margin-right:30px">
-       <form action="{{url('exam/managescore/year/subscore')}}" method="post">
-         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
       <select class="selecttype" title="select" name="selectType">
         @foreach($type as $t)
               <option value="{{$t->id}}">{{$t->type_name}}</option>
