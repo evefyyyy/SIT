@@ -27,7 +27,7 @@ function readURL(input) {
           var coverWidth = $("#cover").get(0).naturalWidth;
           var coverHeight = $("#cover").get(0).naturalHeight; 
           if(coverWidth != 1920 || coverHeight != 1080){
-            alert('Your poster must be 1920*1080 px1');
+            alert('Your poster must be 1920*1080 px');
             return false;
           }
         } else if (input.id == 'uploader') {
