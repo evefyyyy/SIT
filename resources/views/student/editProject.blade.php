@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
+			<form id="editpj" class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				<img class="img-responsive" id="cover" src="{{$poster or '/img/no-poster.png'}}"/>
@@ -112,9 +112,11 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			@endforeach
 			</div>
 		</div>
-		<div class="embed-responsive embed-responsive-16by9" id="vdo"></div>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe id="vdo" width="1280" height="720" src="https://www.youtube.com/embed/XqJU9HWBUsE" frameborder="0" allowfullscreen></iframe>
+		</div>
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Paste a youtube embed code" id="embedcode" name="video" value="{{$video or ''}}">
+				<input type="text" class="form-control" placeholder="Paste a youtube link" id="embedcode" name="video" value="{{$video or ''}}">
 				<span class="input-group-btn">
 					<button class="btn btn-primary embed" type="button">Embed</button>
 				</span>

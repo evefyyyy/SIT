@@ -122,12 +122,12 @@
 			</div>
 			@if($video != null)
 			<div class="embed-responsive embed-responsive-16by9">
-				{!! $video !!}
+				<iframe width="1280" height="720" src="{!! $video !!}" frameborder="0" allowfullscreen></iframe>
 			</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
-	@else
+	@endif
 	<!-- in case no video -->
 	@if($screenshot != null)
 	<div id="img-gallery" class="eagle-gallery img300">
@@ -140,7 +140,7 @@
 </div>
 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 @endif
-@endif
+
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
