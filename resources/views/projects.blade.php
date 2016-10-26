@@ -59,7 +59,7 @@
 		    {
 		        ellipsis : '...',
 		        wrap: "word",
-		        height: 70,
+		        height: 60,
 		    });
 		});
 	</script>

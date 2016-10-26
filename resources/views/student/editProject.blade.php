@@ -11,7 +11,7 @@
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 				<img class="img-responsive" id="cover" src="{{$poster or '/img/no-poster.png'}}"/>
 				<input type="file" id="img-cover" name="poster"/>
-				<label for="img-cover" class="btn btn-browse group">Select new image</label>
+				<label for="img-cover" class="btn btn-browse">Select new image</label>
 				<label class="pic-size">poster 1920 x 1080 px</label>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -24,7 +24,7 @@
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
 				<a class="btn btn-default" onclick="goBack()">back</a>
-				<button class="btn btn-primary" type="submit">save & show my project</button>
+				<button type="submit" class="btn btn-primary">save & show my project</button>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -48,7 +48,7 @@
 				<img id="group-member" src="{{$groupPic or '/img/no-image.png'}}" alt="your image" />
 				<input type="file" id="imgInp" name="groupPicture"/>
 				<label for="imgInp" class="btn btn-browse group">Select new image</label>
-				<label class="pic-size">group member picture (4:3)</label>
+				<label class="pic-size">group member photo (4:3)</label>
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
@@ -97,7 +97,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
 				@foreach($student as $st)
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$st->student_name}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text fullname">{{$st->student_name}}</div>
 			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$st->student_id}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
 			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email[]" value="{{$st->student_email or ''}}"></div>

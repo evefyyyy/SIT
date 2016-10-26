@@ -105,7 +105,7 @@
 				<div class="panel-heading">author</div>
 				<div class="panel-body">
 					@foreach($student as $st)
-					<div class="col-xs-6 col-md-6 col-lg-6 text">{{$st->student_name}}</div>
+					<div class="col-xs-6 col-md-6 col-lg-6 text fullname">{{$st->student_name}}</div>
 					<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$st->student_id}}</div>
 					<div class="col-xs-6 col-md-6 col-lg-6"></div>
 					<div class="col-xs-6 col-md-6 col-lg-6 mail"><img height="11" src="/img/email.png"> {{$st->student_email}}</div>

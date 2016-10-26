@@ -43,17 +43,18 @@ $(function(){
 
 $(function(){
 	$('#check2').on("click", function(e) {
-		if ($("#fname2 font").html() == "Data not found" || $("#fname2 font").html() == "This student already has group"){
+		if ($("#fname2 font").html() == "Data not found" || $("#fname2 font").html() == "This student already has group" || $("#std1Name").html() == $("#fname2").html()){
 			$('#stdId2').addClass( "required" );
 		}else{
 			$('#stdId2').removeClass( "required" );
 		}
-		if ($("#fname3 font").html() == "Data not found" || $("#fname3 font").html() == "This student already has group"){
+		if ($("#fname3 font").html() == "Data not found" || $("#fname3 font").html() == "This student already has group" || $("#std1Name").html() == $("#fname3").html()){
 			$('#stdId3').addClass( "required" );
 		}else{
 			$('#stdId3').removeClass( "required" );
 		}
-		if ($("#fname2 font").html() != "Data not found" && $("#fname2 font").html() != "This student already has group" && $("#fname3 font").html() != "Data not found" && $("#fname3 font").html() != "This student already has group"){
+		if ($("#fname2 font").html() != "Data not found" && $("#fname2 font").html() != "This student already has group" && $("#fname3 font").html() != "Data not found" && $("#fname3 font").html() != "This student already has group"
+			&& $("#std1Name").html() != $("#fname2").html() && $("#std1Name").html() != $("#fname3").html()){
 			$('#check2').click(gonext($(this)));
 		}
 	});
@@ -63,15 +64,19 @@ $(function(){
 	$('#check3').on("click", function(e) {
 		if ($("#mainAdvisor option:selected").val() == null){
 			$('#mainAdvisor').parent().addClass( "required" );
-		}else{
+		} else if ($("#mainAdvisor option:selected").val() == $("#coAdvisor option:selected").val()){
+			$('#mainAdvisor').parent().addClass( "required" );
+			$('#coAdvisor').parent().addClass( "required" );
+		} else {
 			$('#mainAdvisor').parent().removeClass( "required" );
+			$('#coAdvisor').parent().removeClass( "required" );
 			$('#check3').click(gonext($(this)));
 		}
 	});
 });
 $(function(){
 	var propfile = $("input[type=file]");
-	$('button[type="submit"]').click(function() {
+	$('#check4').click(function() {
 		if (propfile.val() == "") {
 			$('.file-upload-input').addClass( "required" );
   				event.preventDefault();
@@ -229,7 +234,6 @@ function getValue() {
 	$("#mainAdvisor1").html($("#mainAdvisor").val());
 	$("#coAdvisor1").html($("#coAdvisor").val());
 }
-
 $(function () {
 	$('.selectpicker').selectpicker({
 		liveSearch: true,

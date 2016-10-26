@@ -6,7 +6,30 @@ $(function () {
 	});
 });
 $(document).ready(function(){
-    $(".box").hide();   
+    $(".box").hide();
+    $("select.selecttype").change(function(){
+        $(this).find("option:selected").each(function(){
+            var x = $(this).attr("value");
+            // console.log($(this).attr("value"))
+            if($(this).attr("value")==x){
+                $(".box").not("."+x).hide();
+                $("."+x).show();
+                $(".subClear").each(function(){
+                  $(this).val('');
+                })
+                $(".totalClear").each(function(){
+                  $(this).html('');
+                })
+            }
+            else{
+              console.log('else')
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
+$(document).ready(function(){
+    $(".box").hide();
     $("select.selecttemp").change(function(){
         $(this).find("option:selected").each(function(){
             var x = $(this).attr("value");

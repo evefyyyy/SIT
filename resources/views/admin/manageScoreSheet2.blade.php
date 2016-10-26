@@ -1,6 +1,7 @@
 @extends('adminTmp')
 @section('content')
 <div id="scoresheet">
+  <form action="{{url('exam/managescore/year/subscore')}}" method="post">
   <h2><img height="45" src="/img/exam.png">manage score sheet</h2>
   <div class="row">
     <div class="col-xs-2 col-md-2 col-lg-2"></div>
@@ -8,6 +9,7 @@
       <form action="{{url('exam/managescore/year/subscore')}}" method="post">
         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
      <h6>Year 2016</h6>
+<<<<<<< HEAD
      <label>project type</label>
      <div class="btn-group" style="margin-right:30px">
       <select class="selecttype" title="select" name="selectType">
@@ -16,6 +18,9 @@
         @endforeach
       </select>
     </div>
+=======
+     <label>project type <strong>business</strong></label>
+>>>>>>> 46ab697896cf446163380bab819cec841b4da6fe
     <label>score sheet</label>
     <div class="btn-group">
       <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()" >

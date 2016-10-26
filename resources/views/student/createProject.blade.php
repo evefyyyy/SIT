@@ -125,7 +125,7 @@
 				<div class="title" id="head">Advisor</div>
 					<table class="teammem">
 					  <tr>
-					  	<td>Main advisor</td>
+					  	<td width="25%">Main advisor</td>
 					    <td id="mainAdvisor1"></td>
 					  </tr>
 					  <tr>
@@ -134,7 +134,7 @@
 					  </tr>
 					</table>
 					<div class="custom-file-upload">
-				    <p>Upload your first draft proposal</p>
+				    <p>Upload your first draft proposal (.doc .docx .pdf)</p>
 				    <input type="file" id="file" name="myfiles" required/>
 				    </div>
 				</div>
@@ -144,7 +144,7 @@
 				<input type="hidden" value="" id="selectCat" name="selectCat"/>
 				<input type="hidden" value="" id="selectAdv1" name="selectAdv1"/>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<button type="submit" name="submit" class="submit action-button" value="submit" /> SUBMIT </button>
+				<button type="submit" id="check4" name="submit" class="submit action-button" value="submit" /> SUBMIT </button>
 			</fieldset>
 		</form>
 	</div>

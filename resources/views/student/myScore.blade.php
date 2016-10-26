@@ -7,16 +7,16 @@
 		<table class="table table-bordered myscore">
 			<tbody>
 				<tr>
-					<td>exam round 1</td><td class="poor">poor</td>
+					<td>exam round 1</td><td></td>
 				</tr>
 				<tr>
-					<td>exam round 2</td><td class="fair">fair</td>
+					<td>exam round 2</td><td></td>
 				</tr>
 				<tr>
-					<td>exam round 3</td><td class="verygood">very good</td>
+					<td>exam round 3</td><td></td>
 				</tr>
 				<tr>
-					<td>exam round 4</td><td class="good">good</td>
+					<td>exam round 4</td><td></td>
 				</tr>
 			</tbody>
 		</table>

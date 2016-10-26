@@ -36,7 +36,7 @@ class ScoreSheetController extends Controller
 {
     public function index()
     {
-      $data['year'] = Year::all();
+      $data['year'] = DB::table('years')->orderBy('year','desc')->get();
       return view ('admin.scoreSheet',$data);
     }
 
@@ -352,169 +352,205 @@ class ScoreSheetController extends Controller
       return redirect(url('exam/managescore/template'));
     }
 
-    public function createManageScoreSheet1()
-    {
-      $data['type'] = Type::all();
-      $data['template'] = Template::all();
+    public function viewScoreSheet($id){
+      $data['type'] = DB::table('types')->get();
+      $year = DB::table('years')->where('year',$id)->value('id');
 
-      $data['year'] = DB::table('years')->where('year',date('Y'))->value('year');
-
-      $countTemp = count($data['template']);
-      for($i=0; $i<$countTemp; $i++){
-        $id = $data['template'][$i]->id;
-        $main = DB::table('templates_main')
-                ->join('templates','templates.id','=','template_id')
-                ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-                ->where('template_id',$id)
-                ->select('criteria_main_name','round','templates_main.id')->get();
-        $data['template'][$i]['main'] = $main;
-        $mainScore = DB::table('templates_main')
-                      ->join('main_templates_score','template_main_id','=','templates_main.id')
-                      ->where('template_id',$id)
-                      ->get();
-        $data['template'][$i]['score'] = $mainScore;
-        $data['template'][$i]['count'] = $i;
-      }
-      // dd($data['template']);
-
-      return view('admin.manageScoreSheet',$data);
-    }
-
-    public function storeManageScoreSheet1(Request $request)
-    {
-      $id = $request['temp'];
-      $type = $request['selectType'];
-      $mainScore = $request['mainScore'];
-      $filter = array_filter($mainScore,function($a){
-        return $a != null;
-      });
-      $score = [];
-      foreach ($filter as $key) {
-        array_push($score,$key);
-      }
-
-      $main = DB::table('templates_main')
-              ->join('templates','templates.id','=','template_id')
-              ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-              ->where('template_id',$id)
-              ->select('templates_main.id','criteria_main_id','template_id')
-              ->get();
-      $countMain = count($main);
-
-      $year = DB::table('years')->where('year',date('Y'))->value('id');
-
-      for($i=0; $i<$countMain; $i++){
-        $mainId = $main[$i]->id;
-        $tempId = $main[$i]->template_id;
-        $mainTemp = DB::table('main_templates_score')
-                          ->where('type_id',$type)
-                          ->where('template_main_id',$mainId)
-                          ->get();
-        if($mainTemp == null){
-          $obj = new MainScore();
-          $obj->score = $score[$i];
-          $obj->template_main_id = $mainId;
-          $obj->year_id = $year;
-          $obj->type_id = $type;
-          $obj->save();
-        }else{
-          $mainScoreId = $mainTemp[0]->id;
-          $obj = MainScore::find($mainScoreId);
-          $obj->score = $mainScore[$i];
-          $obj->save();
+      for($i=0; $i<count($data['type']); $i++){
+        $typeId = $data['type'][$i]->id;
+        $data['type'][$i] = DB::table('main_templates_score')
+                            ->join('templates_main','templates_main.id','=','template_main_id')
+                            ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                            ->where('type_id',$typeId)
+                            ->where('year_id',$year)
+                            ->select('main_templates_score.id','round','criteria_main_name','template_main_id')
+                            ->get();
+        for ($j=0; $j <count($data['type'][$i]) ; $j++) {
+          $mainScoreId = $data['type'][$i][$j]->id;
+          $test = DB::table('sub_templates_score')
+                                            ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
+                                            ->join('templates_sub','templates_sub.id','=','template_sub_id')
+                                            ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+                                            ->where('main_template_score_id',$mainScoreId)
+                                            ->get();
+          // $arr = array();
+          // foreach ($test as $key => $value) {
+          //   array_push($arr,$value);
+          // }
+          $data['type'][$i][$j]->template_main_id =  $test;
         }
       }
-      $checkTemp = DB::table('main_templates_score')
-                  ->join('templates_main','templates_main.id','=','template_main_id')
-                  ->where('type_id',$type)
-                  ->where('template_id','!=',$id)
-                  ->select('main_templates_score.id')
-                  ->get();
-        $count = count($checkTemp);
-        for($j=0; $j<$count; $j++){
-          $checkTempId = $checkTemp[$j]->id;
-          $obj = MainScore::find($checkTempId);
-          $obj->delete();
-        }
 
-      return redirect(url('exam/managescore/year/subscore/create'));
+      dd($data['type']);
+
+
+
+
+      return view('admin.viewScoreSheet',$data);
     }
-
-    public function createManageScoreSheet2()
-    {
-      $data['type'] = Type::all();
-      $data['template'] = Template::all();
-      $countType = count($data['type']);
-      $countTemp = count($data['template']);
-
-      for($i=0;$i<$countType;$i++){
-        $typeId[$i] = $data['type'][$i]->id;
-        for($j=0;$j<$countTemp;$j++){
-          $id = $data['template'][$j]->id;
-          $main = DB::table('templates_main')
-                  ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-                  ->where('template_id',$id)
-                  ->select('round','criteria_main_name','template_id','templates_main.id')->get();
-          $data['template'][$j]['main'] = $main;
-          for($k=0; $k<count($main); $k++){
-            $mainId = $main[$k]->id;
-            $mainScore[$k] = DB::table('templates_main')
-                          ->join('main_templates_score','template_main_id','=','templates_main.id')
-                          ->where('template_main_id',$mainId)
-                          ->where('type_id',$typeId[$i])
-                          ->select('score')->get();
-          }
-          $data['template'][$j]['score'] = $mainScore;
-          $sub = DB::table('templates_sub')
-                ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-                ->join('templates_main','templates_main.id','=','template_main_id')
-                ->where('template_id',$id)
-                ->groupBy('criteria_sub_id')
-                ->select('criteria_sub_name','template_id')->get();
-          $data['template'][$j]['sub'] = $sub;
-          $data['template'][$j]['count'] = $j;
-        }
-        //   dd($typeId);
-        // dd($data['template']);
-      }
-      return view('admin.manageScoreSheet2',$data);
-    }
-
-    public function storeManageScoreSheet2(Request $request)
-    {
-      $temp = $request['selectTemp'];
-      $type = $request['selectType'];
-      $subScore = $request['subScore'];
-      $filter = array_filter($subScore,function($a){
-        return $a != null;
-      });
-      $score = [];
-      foreach ($filter as $key) {
-        array_push($score,$key);
-      }
-      $countScore = count($score);
-
-      $main = DB::table('templates_main')
-              ->join('main_templates_score','template_main_id','=','templates_main.id')
-              ->where('template_id',$temp)
-              ->select('main_templates_score.id','score','template_id','criteria_main_id')->get();
-      for($i=0; $i<count($main); $i++){
-        $mainScoreId[$i] = $main[$i]->id;
-        $sub[$i] = DB::table('templates_sub')
-                    ->join('main_templates_score','main_templates_score.template_main_id','=','templates_sub.template_main_id')
-                    ->where('main_templates_score.id',$mainScoreId[$i])
-                    ->select('templates_sub.id','main_templates_score.id AS main_score_id')
-                    ->get();
-      }
-      $flatten = array_flatten($sub);
-      for($i=0; $i<count($flatten); $i++){
-        $obj = new SubScore();
-        $obj->score = $subScore[$i];
-        $obj->main_template_score_id = $flatten[$i]->main_score_id;
-        $obj->template_sub_id = $flatten[$i]->id;
-        $obj->save();
-      }
-
-      return redirect(url('exam/scoresheet'));
-    }
+    // public function createManageScoreSheet1()
+    // {
+    //   $data['type'] = Type::all();
+    //   $data['template'] = Template::all();
+    //
+    //   $data['year'] = DB::table('years')->where('year',date('Y'))->value('year');
+    //
+    //   $countTemp = count($data['template']);
+    //   for($i=0; $i<$countTemp; $i++){
+    //     $id = $data['template'][$i]->id;
+    //     $main = DB::table('templates_main')
+    //             ->join('templates','templates.id','=','template_id')
+    //             ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+    //             ->where('template_id',$id)
+    //             ->select('criteria_main_name','round','templates_main.id')->get();
+    //     $data['template'][$i]['main'] = $main;
+    //     $mainScore = DB::table('templates_main')
+    //                   ->join('main_templates_score','template_main_id','=','templates_main.id')
+    //                   ->where('template_id',$id)
+    //                   ->get();
+    //     $data['template'][$i]['score'] = $mainScore;
+    //     $data['template'][$i]['count'] = $i;
+    //   }
+    //   // dd($data['template']);
+    //
+    //   return view('admin.manageScoreSheet',$data);
+    // }
+    //
+    // public function storeManageScoreSheet1(Request $request)
+    // {
+    //   $id = $request['temp'];
+    //   $type = $request['selectType'];
+    //   $mainScore = $request['mainScore'];
+    //   $filter = array_filter($mainScore,function($a){
+    //     return $a != null;
+    //   });
+    //   $score = [];
+    //   foreach ($filter as $key) {
+    //     array_push($score,$key);
+    //   }
+    //
+    //   $main = DB::table('templates_main')
+    //           ->join('templates','templates.id','=','template_id')
+    //           ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+    //           ->where('template_id',$id)
+    //           ->select('templates_main.id','criteria_main_id','template_id')
+    //           ->get();
+    //   $countMain = count($main);
+    //
+    //   $year = DB::table('years')->where('year',date('Y'))->value('id');
+    //
+    //   for($i=0; $i<$countMain; $i++){
+    //     $mainId = $main[$i]->id;
+    //     $tempId = $main[$i]->template_id;
+    //     $mainTemp = DB::table('main_templates_score')
+    //                       ->where('type_id',$type)
+    //                       ->where('template_main_id',$mainId)
+    //                       ->get();
+    //     if($mainTemp == null){
+    //       $obj = new MainScore();
+    //       $obj->score = $score[$i];
+    //       $obj->template_main_id = $mainId;
+    //       $obj->year_id = $year;
+    //       $obj->type_id = $type;
+    //       $obj->save();
+    //     }else{
+    //       $mainScoreId = $mainTemp[0]->id;
+    //       $obj = MainScore::find($mainScoreId);
+    //       $obj->score = $mainScore[$i];
+    //       $obj->save();
+    //     }
+    //   }
+    //   $checkTemp = DB::table('main_templates_score')
+    //               ->join('templates_main','templates_main.id','=','template_main_id')
+    //               ->where('type_id',$type)
+    //               ->where('template_id','!=',$id)
+    //               ->select('main_templates_score.id')
+    //               ->get();
+    //     $count = count($checkTemp);
+    //     for($j=0; $j<$count; $j++){
+    //       $checkTempId = $checkTemp[$j]->id;
+    //       $obj = MainScore::find($checkTempId);
+    //       $obj->delete();
+    //     }
+    //
+    //   return redirect(url('exam/managescore/year/subscore/create'));
+    // }
+    //
+    // public function createManageScoreSheet2()
+    // {
+    //   $data['type'] = Type::all();
+    //   $data['template'] = Template::all();
+    //   $countType = count($data['type']);
+    //   $countTemp = count($data['template']);
+    //
+    //   for($i=0;$i<$countType;$i++){
+    //     $typeId[$i] = $data['type'][$i]->id;
+    //     for($j=0;$j<$countTemp;$j++){
+    //       $id = $data['template'][$j]->id;
+    //       $main = DB::table('templates_main')
+    //               ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+    //               ->where('template_id',$id)
+    //               ->select('round','criteria_main_name','template_id','templates_main.id')->get();
+    //       $data['template'][$j]['main'] = $main;
+    //       for($k=0; $k<count($main); $k++){
+    //         $mainId = $main[$k]->id;
+    //         $mainScore[$k] = DB::table('templates_main')
+    //                       ->join('main_templates_score','template_main_id','=','templates_main.id')
+    //                       ->where('template_main_id',$mainId)
+    //                       ->where('type_id',$typeId[$i])
+    //                       ->select('score')->get();
+    //       }
+    //       $data['template'][$j]['score'] = $mainScore;
+    //       $sub = DB::table('templates_sub')
+    //             ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+    //             ->join('templates_main','templates_main.id','=','template_main_id')
+    //             ->where('template_id',$id)
+    //             ->groupBy('criteria_sub_id')
+    //             ->select('criteria_sub_name','template_id')->get();
+    //       $data['template'][$j]['sub'] = $sub;
+    //       $data['template'][$j]['count'] = $j;
+    //     }
+    //     //   dd($typeId);
+    //     // dd($data['template']);
+    //   }
+    //   return view('admin.manageScoreSheet2',$data);
+    // }
+    //
+    // public function storeManageScoreSheet2(Request $request)
+    // {
+    //   $temp = $request['selectTemp'];
+    //   $type = $request['selectType'];
+    //   $subScore = $request['subScore'];
+    //   $filter = array_filter($subScore,function($a){
+    //     return $a != null;
+    //   });
+    //   $score = [];
+    //   foreach ($filter as $key) {
+    //     array_push($score,$key);
+    //   }
+    //   $countScore = count($score);
+    //
+    //   $main = DB::table('templates_main')
+    //           ->join('main_templates_score','template_main_id','=','templates_main.id')
+    //           ->where('template_id',$temp)
+    //           ->select('main_templates_score.id','score','template_id','criteria_main_id')->get();
+    //   for($i=0; $i<count($main); $i++){
+    //     $mainScoreId[$i] = $main[$i]->id;
+    //     $sub[$i] = DB::table('templates_sub')
+    //                 ->join('main_templates_score','main_templates_score.template_main_id','=','templates_sub.template_main_id')
+    //                 ->where('main_templates_score.id',$mainScoreId[$i])
+    //                 ->select('templates_sub.id','main_templates_score.id AS main_score_id')
+    //                 ->get();
+    //   }
+    //   $flatten = array_flatten($sub);
+    //   for($i=0; $i<count($flatten); $i++){
+    //     $obj = new SubScore();
+    //     $obj->score = $subScore[$i];
+    //     $obj->main_template_score_id = $flatten[$i]->main_score_id;
+    //     $obj->template_sub_id = $flatten[$i]->id;
+    //     $obj->save();
+    //   }
+    //
+    //   return redirect(url('exam/scoresheet'));
+    // }
 }

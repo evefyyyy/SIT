@@ -116,3 +116,19 @@ $('.embed').on('click', function() {
 //     $( ".image-view" ).sortable();
 //     $( ".image-view" ).disableSelection();
 //   } );
+<<<<<<< HEAD
+=======
+
+// $("form").submit( function(event) {
+//     var coverpic = $('#img-cover')
+//         if( coverpic.width == 1920 && coverpic.height == 1080 ) {
+//           form.submit();
+//         }
+//         else {
+//           alert("Poster image must be 1920*1080 px");
+//           event.preventDefault();
+//           return false;
+//         }
+
+// });
+>>>>>>> 46ab697896cf446163380bab819cec841b4da6fe

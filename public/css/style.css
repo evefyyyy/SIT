@@ -189,7 +189,7 @@ option {
     margin-top: 7px;
     margin-bottom: 0;
     text-align: left;
-    text-transform: none;
+    text-transform: capitalize;
 }
 .proname {
     font-size: 1.2em;
@@ -427,8 +427,8 @@ option {
   cursor: pointer;
 }
 table.teammem {
-  width: 80%;
-  margin: 0 auto
+  width: 90%;
+  margin: 0 auto;
 }
 .teammem td {
     padding: 5px;
@@ -839,9 +839,8 @@ h6 img {
 }
 .custom-file-upload p {
     color: #666;
-    font-size: 0.875em;
-    text-transform: uppercase;
-    margin: 20px auto 0 auto;
+    text-transform: lowercase;
+    margin: 20px auto 5px auto;
 }
 .file-upload-wrapper {
     position: relative;
@@ -983,6 +982,10 @@ h6 img {
   margin-bottom: 10px;
   font-size: 0.895em;
 }
+#detail label.pic-size {
+  vertical-align: top;
+  padding-left: 20px;
+}
 #detail .glyphicon-picture {
   color: #737577;
   vertical-align: middle;
@@ -1048,7 +1051,7 @@ img#cover {
   width: 100%;
   margin-bottom: 10px;
   background:url(/img/no-poster.png) no-repeat;
-  background-size: 100% 100%;
+  background-size: 100%;
 }
 
 /*@media (min-width : 480px) {
@@ -1396,6 +1399,11 @@ img#cover {
   border: 1px solid;
   border-radius: 5px;
 }
+#scoresheet label > strong {
+  margin-left: 10px;
+  margin-right: 30px;
+  display: inline;
+}
 #scoresheet h2 {
   margin: 20px auto;
 }
@@ -1442,6 +1450,12 @@ img#cover {
 .box .table > tfoot > tr > th:nth-child(2n+2), #subtotal,
 #givemark td:nth-child(3), #tsubtotal {
   padding-left: 24px;
+}
+#scoresheet .box .viewsheet > tbody > tr > td:nth-child(2n+2) {
+  text-align: center;  
+}
+#scoresheet .box .viewsheet {
+  margin-bottom: 25px;
 }
 #scoreyear .table > tbody > tr > td:nth-child(2n+1) {
   font-weight: 900;
@@ -1761,4 +1775,7 @@ a.btn3 {
 
 .btn-3e:hover:after {
   width: 40%;
+}
+.firstname, .fullname {
+  text-transform: capitalize;
 }

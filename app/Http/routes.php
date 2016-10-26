@@ -69,20 +69,19 @@ Route::get('exam/managescore/template/{template}/edit','ScoreSheetController@edi
 
 Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTemplate');
 
-Route::get('exam/managescore/year/mainscore/create','ScoreSheetController@createManageScoreSheet1');
-
-Route::post('exam/managescore/year/mainscore','ScoreSheetController@storeManageScoreSheet1');
-
-Route::get('exam/managescore/year/subscore/create','ScoreSheetController@createManageScoreSheet2');
-
-Route::post('exam/managescore/year/subscore','ScoreSheetController@storeManageScoreSheet2');
+// Route::get('exam/managescore/year/mainscore/create','ScoreSheetController@createManageScoreSheet1');
+//
+// Route::post('exam/managescore/year/mainscore','ScoreSheetController@storeManageScoreSheet1');
+//
+// Route::get('exam/managescore/year/subscore/create','ScoreSheetController@createManageScoreSheet2');
+//
+// Route::post('exam/managescore/year/subscore','ScoreSheetController@storeManageScoreSheet2');
 
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
-// Route::get('exam/managescore/year/create/subcriteria',function(){
-//   return view('admin.manageScoreSheet2');
-// });
+Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
+
 Route::get('exam/scorerecord/viewscore',function(){
   return view('admin.viewScore');
 });
