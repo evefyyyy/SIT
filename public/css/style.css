@@ -609,7 +609,14 @@ table.teammem {
 } 
 .cd-popup-container p {
   font-size: 1.4em;
-  padding: 3em 1em 1em;
+  padding-bottom: 1em;
+}
+.cd-popup-container p.d-title {
+  padding-top: 1em;
+  padding-bottom: 0;
+  font-weight: 900;
+  font-size: 4em;
+  font-family: 'Titillium Web', sans-serif
 }
 .cd-popup-container .cd-buttons:after {
   content: "";
@@ -1709,7 +1716,7 @@ a.btn3 {
   font-family: inherit;
   font-size: 1.375em;
   color: #fff;
-  background: #333;
+  background: #ff6767;
   cursor: pointer;
   display: inline-block;
   text-transform: uppercase;
@@ -1733,7 +1740,7 @@ a.btn3 {
   transition: all 0.3s;
 }
 .btn-3:hover {
-  background: #000;
+  background: #e65252;
 }
 
 .btn-3:active {
@@ -1775,4 +1782,21 @@ a.btn3 {
 }
 .firstname, .fullname {
   text-transform: capitalize;
+}
+hr.star-primary {
+    margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    border-top: solid 5px;
+    text-align: center;
+}
+hr.star-primary:after {
+    content: "\f005";
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    padding: 0 .25em;
+    font-family: FontAwesome;
+    font-size: 2em;
 }
