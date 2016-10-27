@@ -612,12 +612,11 @@ table.teammem {
   padding: 50px 20px;
 }
 #detail .cd-popup-container p {
-  font-size: 1.7em;
   padding: 0 20px 1em 20px;
 }
 .cd-popup-container img {
   padding: 4em 3em 2em 3em;
-  height: 15em;
+  width: 100%;
 }
 .cd-popup-container .cd-buttons:after {
   content: "";

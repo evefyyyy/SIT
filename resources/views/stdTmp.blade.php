@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>SIT Portfolio</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
@@ -52,7 +55,7 @@
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject">My project</a></li>
                       @endif
                     @endif
-                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
+                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="#">My score</a></li>
                       <li><a href="#">documents</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
