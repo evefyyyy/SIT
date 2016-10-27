@@ -33,7 +33,7 @@
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
 
-			<form action="{{url('student/myproject/edit/'.$checkProject.'/edit')}}" method="get">
+			<form action="{{url('student/myproject/edit')}}" method="get">
 				<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
 			</form>
 		</div>
@@ -43,7 +43,7 @@
 			<h4>{{$projectNameTH}}</h4>
 		</div>
 		@endif
-		
+
 		@endif
 		@else
 		<div class="col-xs-10 col-sm-7 col-md-8 col-lg-8">
@@ -87,7 +87,7 @@
 					<div class="col-lg-12 tools">{!!$tools!!}</div>
 				</div>
 			</div>
-			@if($video != null)
+			@if($video != null && $screenshot != null)
 			<div id="img-gallery" class="eagle-gallery img300">
 				<div class="owl-carousel">
 					@foreach($screenshot as $img)
@@ -129,7 +129,7 @@
 	</div>
 	@endif
 	<!-- in case no video -->
-	@if($screenshot != null)
+	@if($screenshot != null && $video == null)
 	<div id="img-gallery" class="eagle-gallery img300">
 		<div class="owl-carousel">
 			@foreach($screenshot as $img)

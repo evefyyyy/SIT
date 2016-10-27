@@ -25,7 +25,7 @@ function readURL(input) {
         } else if(input.id === 'img-cover') {
           $('#cover').attr('src', e.target.result);
           var coverWidth = $("#cover").get(0).naturalWidth;
-          var coverHeight = $("#cover").get(0).naturalHeight; 
+          var coverHeight = $("#cover").get(0).naturalHeight;
           if(coverWidth != 1920 || coverHeight != 1080){
             alert('Your poster must be 1920*1080 px');
             return false;
@@ -71,16 +71,18 @@ $('.del').on('click', function(e) {
   var picture;
   var y;
   for(var i=0; i<count ; i++){
-    picture = document.getElementById('pic'+i) ;
-    cn = picture.className;
-    if(cn.indexOf("active") != -1){
-      y = picture.getElementsByTagName('img')[0];
-      $.ajax({
-          type:"post",
-          dataType: "",
-          url : "/edit/pic/delete",
-          data: {id: $("#ssid"+i).val() , _token:$("#_token").val() },
-      });
+    picture = document.getElementById('pic'+i);
+    if (picture !== null ) {
+      cn = picture.className;
+      if(cn.indexOf("active") != -1){
+        y = picture.getElementsByTagName('img')[0];
+        $.ajax({
+            type:"post",
+            dataType: "",
+            url : "/edit/pic/delete",
+            data: {id: $("#ssid"+i).val() , _token:$("#_token").val() },
+        });
+      }
     }
   }
   $('.gallery.active').each(function() {
@@ -132,15 +134,13 @@ $('.embed').on('click', function() {
     alert("Your link is incorrect");
     $("#embedcode").val("");
   }
-    
+
 });
 
 // $( function() {
 //     $( ".image-view" ).sortable();
 //     $( ".image-view" ).disableSelection();
 //   } );
-<<<<<<< HEAD
-=======
 
 // $("form").submit( function(event) {
 //     var coverpic = $('#img-cover')
@@ -154,4 +154,3 @@ $('.embed').on('click', function() {
 //         }
 
 // });
->>>>>>> 46ab697896cf446163380bab819cec841b4da6fe

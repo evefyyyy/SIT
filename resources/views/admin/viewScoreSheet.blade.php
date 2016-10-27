@@ -9,34 +9,43 @@
      <label>project type</label>
      <div class="btn-group">
       <select class="selecttype" title="select" name="selectType">
-
-          <option value="business">123</option>
-
+          @foreach($typeName as $type)
+          <option value="{{$type->id}}">{{$type->type_name}}</option>
+          @endforeach
       </select>
     </div>
   <a href="/exam/managescore/year/mainscore/create" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>edit</a>
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
-<div class="business box">
+
+@foreach($types as $key => $ty)
+<div class="{{$ty[0]->type_id}} box">
+  @foreach($ty as $key1 => $round)
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
     <div class="col-xs-10 col-md-6 col-lg-6">
-        <p><strong>round 1</strong> การศึกษาความเป็นไปได้</p>
+        <p><strong>round {{$round->round}}</strong> {{$round->criteria_main_name}} ({{$round->score}}%)</p>
       </a>
       <table class="viewsheet table table-bordered">
         <thead>
          <tr><th>criteria</th><th width="15%">score</th></tr>
        </thead>
        <tbody>
-        <tr><td>ความสมบูรณ์ของงาน</td><td class="sub1">40</td></tr>
-        <tr><td>คุณภาพของงาน</td><td class="sub1">40</td></tr>
-        <tr><td>การตอบคำถาม</td><td class="sub1">10</td></tr>
-        <tr><td>การนำเสนองานและเอกสาร</td><td class="sub1">10</td></tr>
+         @foreach($round->subScore as $sub)
+        <tr><td>{{$sub->criteria_sub_name}}</td><td class="sub1">{{$sub->score}}</td></tr>
+        @endforeach
       </tbody>
-      <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1"></th></tr></tfoot>
+<?php
+  $_score = array_map(function($s){
+  return $s->score;
+  },$round->subScore);
+  $sumscore = array_sum($_score);
+ ?>
+      <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1">{{$sumscore}}</th></tr></tfoot>
     </table>
-    <script>
+
+    <!-- <script>
           $(document).ready(function() {
               var sum = 0;
               $(".sub1").each(function(){
@@ -44,11 +53,13 @@
               });
                $("#subtotal1").html(sum);
           });
-    </script>
+    </script> -->
     </div>
  <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
+@endforeach
 </div>
+@endforeach
 <div id="center">
   <a href="/exam/scoresheet"><button type="button" class="action-button">back</button></a>
   </form>

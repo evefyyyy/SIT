@@ -353,39 +353,37 @@ class ScoreSheetController extends Controller
     }
 
     public function viewScoreSheet($id){
-      $data['type'] = DB::table('types')->get();
+      $data['typeName'] = DB::table('types')->where('type_name','!=','others')->get();
+
+      $data['types'] = DB::table('types')->where('type_name','!=','others')->get();
       $year = DB::table('years')->where('year',$id)->value('id');
 
-      for($i=0; $i<count($data['type']); $i++){
-        $typeId = $data['type'][$i]->id;
-        $data['type'][$i] = DB::table('main_templates_score')
+      for($i=0; $i<count($data['types']); $i++){
+        $typeId = $data['types'][$i]->id;
+        $data['types'][$i] = DB::table('main_templates_score')
                             ->join('templates_main','templates_main.id','=','template_main_id')
                             ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
                             ->where('type_id',$typeId)
                             ->where('year_id',$year)
-                            ->select('main_templates_score.id','round','criteria_main_name','template_main_id')
+                            ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
                             ->get();
-        for ($j=0; $j <count($data['type'][$i]) ; $j++) {
-          $mainScoreId = $data['type'][$i][$j]->id;
-          $test = DB::table('sub_templates_score')
-                                            ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
-                                            ->join('templates_sub','templates_sub.id','=','template_sub_id')
-                                            ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-                                            ->where('main_template_score_id',$mainScoreId)
-                                            ->get();
+        for ($j=0; $j <count($data['types'][$i]) ; $j++) {
+          $mainScoreId = $data['types'][$i][$j]->id;
+          $subScore = DB::table('sub_templates_score')
+                      ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
+                      ->join('templates_sub','templates_sub.id','=','template_sub_id')
+                      ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
+                      ->where('main_template_score_id',$mainScoreId)
+                      ->select('criteria_sub_name','sub_templates_score.score')
+                      ->get();
           // $arr = array();
           // foreach ($test as $key => $value) {
           //   array_push($arr,$value);
           // }
-          $data['type'][$i][$j]->template_main_id =  $test;
+          $data['types'][$i][$j]->subScore =  $subScore;
         }
       }
-
-      dd($data['type']);
-
-
-
-
+      // dd($data['types']);
       return view('admin.viewScoreSheet',$data);
     }
     // public function createManageScoreSheet1()
