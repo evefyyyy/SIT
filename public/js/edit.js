@@ -1,11 +1,13 @@
 $(document).ready(function() {
-  $(window).keydown(function(event){
+$('#editpj').keydown(function(event){
     if(event.keyCode == 13) {
       event.preventDefault();
       return false;
     }
   });
 });
+var coverWidth = $("#cover").get(0).naturalWidth;
+var coverHeight = $("#cover").get(0).naturalHeight;
 
 
 var count = $('.gallery').length;
@@ -15,7 +17,12 @@ var arrayUnuseIndex = [];
 function goBack() {
   window.history.back()
 }
-
+$('#editpj').submit(function (){
+          if(coverWidth != 1920 || coverHeight != 1080){
+            alert('Your poster must be 1920*1080 px');
+            return false;
+          }
+});
 function readURL(input) {
   if (input.files && input.files[0]) {
       var reader = new FileReader();
@@ -24,8 +31,10 @@ function readURL(input) {
           $('#group-member').attr('src', e.target.result);
         } else if(input.id === 'img-cover') {
           $('#cover').attr('src', e.target.result);
-          var coverWidth = $("#cover").get(0).naturalWidth;
-          var coverHeight = $("#cover").get(0).naturalHeight;
+
+          coverWidth = $("#cover").get(0).naturalWidth;
+          coverHeight = $("#cover").get(0).naturalHeight;
+
           if(coverWidth != 1920 || coverHeight != 1080){
             alert('Your poster must be 1920*1080 px');
             return false;

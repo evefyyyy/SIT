@@ -49,6 +49,7 @@ jQuery(document).ready(function($){
 			event.preventDefault();
 			$(this).removeClass('is-visible');
 		}
+		
 	});
 	//close popup when clicking the esc keyboard button
 	$(document).keyup(function(event){
@@ -56,4 +57,5 @@ jQuery(document).ready(function($){
     		$('.cd-popup').removeClass('is-visible');
 	    }
     });
+
 });

@@ -2,6 +2,9 @@
 <html>
 <head>
   <title>SIT Portfolio</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
   <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
   <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
@@ -28,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-          <a class="navbar-brand" href="/"><img height="40" src="/img/logo.png"><img style="margin-left:5px" height="25" src="/img/blackribbon.png"></a>
+          <a class="navbar-brand" href="/"><img height="53" src="/img/logo.png"><img style="margin-left:5px" height="25" src="/img/blackribbon.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">

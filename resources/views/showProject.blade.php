@@ -7,18 +7,18 @@
 <input type="hidden" id="linkurl" value="{{$link}}"></div>
 <div id="detail">
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 			@if($poster != null)
 			<img src="{{$poster}}" class="cover">
 			@else
 			<img src="/img/no-poster.png" class="cover">
 			@endif
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 		@if(Auth::check())
 		@if(Auth::user()->user_student != null)
 		<?php
@@ -27,18 +27,18 @@
 		$projectId = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
 		?>
 		@if($projectId == $checkProject)
-		<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 btn-save">
 
 			<form action="{{url('student/myproject/edit')}}" method="get">
 				<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
 			</form>
 		</div>
 		@else
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
@@ -46,22 +46,19 @@
 
 		@endif
 		@else
-		<div class="col-xs-10 col-sm-7 col-md-8 col-lg-8">
+		<div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
-		</div>
-		<div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-		<div class="col-xs-12 hidden-sm hidden-md hidden-lg"></div>
-		<div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-		<div class="col-xs-10 col-sm-3 col-md-2 col-lg-2">
+		</div>>
+		<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
 			<a class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
 		</div>
 		@endif
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 			<div class="panel panel-info">
 				<div class="panel-heading">details</div>
 				<div class="panel-body">
@@ -71,11 +68,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-12 col-sm-10 col-md-5 col-lg-5">
 			@if($groupPic != null)
 			<img src="{{$groupPic}}" class="group-member img-thumbnail">
 			@else
@@ -97,10 +94,10 @@
 			</div>
 			@endif
 		</div>
-		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
-		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>
-		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
-		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
+		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
+		<div class="col-hidden-xs col-sm-12 hidden-md hidden-lg"></div>
+		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
+		<div class="col-xs-12 col-sm-10 col-md-5 col-lg-5">
 			<div class="panel panel-info">
 				<div class="panel-heading">author</div>
 				<div class="panel-body">
@@ -125,8 +122,7 @@
 				<iframe width="1280" height="720" src="{!! $video !!}" frameborder="0" allowfullscreen></iframe>
 			</div>
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-	</div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	@endif
 	<!-- in case no video -->
 	@if($screenshot != null && $video == null)
@@ -138,13 +134,15 @@
 		</div>
 	</div>
 </div>
-<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 @endif
 
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
-       <p>Enter your gen code to vote this project</p>
+       <img src="/img/dday.png">
+       <p>Enter your gen code to vote</p>
+       	<p><strong>" {{$projectNameEN}} "</strong></p>
        <input class="form-control"/>
        <ul class="cd-buttons">
           <li><a class="cd-vote">Vote</a></li>

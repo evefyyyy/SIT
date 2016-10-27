@@ -577,12 +577,12 @@ table.teammem {
   transition: opacity 0.5s 0s, visibility 0s 0s;
 }
 .cd-popup-container {
-  margin: 10em auto;
+  margin: 5em auto;
   position: relative;
   width: 90%;
   max-width: 400px;
   background: #FFF;
-  border-radius: .25em .25em .4em .4em;
+  border-radius: .5em;
   text-align: center;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
   box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
@@ -608,8 +608,15 @@ table.teammem {
   transition-duration: 0.5s;
 } 
 .cd-popup-container p {
-  font-size: 1.4em;
-  padding: 3em 1em 1em;
+  font-size: 1.175em;
+  padding: 50px 20px;
+}
+#detail .cd-popup-container p {
+  padding: 0 20px 1em 20px;
+}
+.cd-popup-container img {
+  padding: 4em 3em 2em 3em;
+  width: 100%;
 }
 .cd-popup-container .cd-buttons:after {
   content: "";
@@ -635,20 +642,12 @@ table.teammem {
   transition: background-color 0.5s;
 }
 #detail .cd-popup-container .cd-buttons a {
-  line-height: 2.5em;
+  vertical-align: middle;
   transition: background-color 0.5s;
 }
 .cd-popup-container .cd-buttons li:first-child a {
   background: #FF5A5A;
   border-radius: 0 0 0 .25em;
-}
-#detail .cd-popup-container .cd-buttons li a {
-  background: #40c3a7;
-  border-radius: 0 0 0 .25em;
-  font-size: 1.8em;
-  vertical-align: middle;
-  letter-spacing: 3px;
-  border-radius: 0 0 .25em .25em;
 }
 .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
   background-color: #fc8982;
@@ -659,6 +658,13 @@ table.teammem {
 }
 .no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
   background-color: #c5ccd8;
+}
+#detail .cd-popup-container .cd-buttons li a {
+  background: #40c3a7;
+  font-size: 3em;
+  vertical-align: middle;
+  letter-spacing: 3px;
+  border-radius: 0 0 .15em .15em;
 }
 .cd-popup-container .cd-popup-close {
   position: absolute;
@@ -701,7 +707,7 @@ table.teammem {
 }
 #detail .cd-popup .form-control {
   color: #40c3a7;
-  width: 80%;
+  width: 70%;
   font-size: 2em;
   height: 2.5em;
   text-align: center;
@@ -1709,7 +1715,7 @@ a.btn3 {
   font-family: inherit;
   font-size: 1.375em;
   color: #fff;
-  background: #333;
+  background: #ff6767;
   cursor: pointer;
   display: inline-block;
   text-transform: uppercase;
@@ -1733,7 +1739,7 @@ a.btn3 {
   transition: all 0.3s;
 }
 .btn-3:hover {
-  background: #000;
+  background: #e65252;
 }
 
 .btn-3:active {
@@ -1775,4 +1781,8 @@ a.btn3 {
 }
 .firstname, .fullname {
   text-transform: capitalize;
+}
+#warningtype {
+  margin-top: 10px;
+  color: red;
 }
