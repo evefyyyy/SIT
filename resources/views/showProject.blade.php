@@ -144,9 +144,9 @@
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
-        <p class="d-title">DDAY
-        <hr class="star-primary"></p>
-       <p>Enter your gen code to vote this project</p>
+       <img src="/img/dday.png">
+       <p>Enter your gen code to vote</p>
+       	<p><strong>" {{$projectNameEN}} "</strong></p>
        <input class="form-control"/>
        <ul class="cd-buttons">
           <li><a class="cd-vote">Vote</a></li>

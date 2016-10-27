@@ -577,7 +577,7 @@ table.teammem {
   transition: opacity 0.5s 0s, visibility 0s 0s;
 }
 .cd-popup-container {
-  margin: 10em auto;
+  margin: 5em auto;
   position: relative;
   width: 90%;
   max-width: 400px;
@@ -609,14 +609,12 @@ table.teammem {
 } 
 .cd-popup-container p {
   font-size: 1.4em;
-  padding-bottom: 1em;
+  padding: 0 20px 1em 20px;
 }
-.cd-popup-container p.d-title {
-  padding-top: 1em;
-  padding-bottom: 0;
-  font-weight: 900;
-  font-size: 4em;
-  font-family: 'Titillium Web', sans-serif
+.cd-popup-container img {
+  padding-top: 3em;
+  padding-bottom: 2em;
+  height: 12em;
 }
 .cd-popup-container .cd-buttons:after {
   content: "";
