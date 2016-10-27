@@ -18,8 +18,6 @@
   <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
   <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
 </head>
-
-
 <body>
   <div id="wrapper">
     <div id="header">
