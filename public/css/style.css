@@ -582,7 +582,7 @@ table.teammem {
   width: 90%;
   max-width: 400px;
   background: #FFF;
-  border-radius: .25em .25em .4em .4em;
+  border-radius: .5em;
   text-align: center;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
   box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
@@ -608,13 +608,16 @@ table.teammem {
   transition-duration: 0.5s;
 } 
 .cd-popup-container p {
-  font-size: 1.4em;
+  font-size: 1.175em;
+  padding: 50px 20px;
+}
+#detail .cd-popup-container p {
+  font-size: 1.7em;
   padding: 0 20px 1em 20px;
 }
 .cd-popup-container img {
-  padding-top: 3em;
-  padding-bottom: 2em;
-  height: 12em;
+  padding: 4em 3em 2em 3em;
+  height: 15em;
 }
 .cd-popup-container .cd-buttons:after {
   content: "";
@@ -640,20 +643,12 @@ table.teammem {
   transition: background-color 0.5s;
 }
 #detail .cd-popup-container .cd-buttons a {
-  line-height: 2.5em;
+  vertical-align: middle;
   transition: background-color 0.5s;
 }
 .cd-popup-container .cd-buttons li:first-child a {
   background: #FF5A5A;
   border-radius: 0 0 0 .25em;
-}
-#detail .cd-popup-container .cd-buttons li a {
-  background: #40c3a7;
-  border-radius: 0 0 0 .25em;
-  font-size: 1.8em;
-  vertical-align: middle;
-  letter-spacing: 3px;
-  border-radius: 0 0 .25em .25em;
 }
 .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
   background-color: #fc8982;
@@ -664,6 +659,13 @@ table.teammem {
 }
 .no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
   background-color: #c5ccd8;
+}
+#detail .cd-popup-container .cd-buttons li a {
+  background: #40c3a7;
+  font-size: 3em;
+  vertical-align: middle;
+  letter-spacing: 3px;
+  border-radius: 0 0 .15em .15em;
 }
 .cd-popup-container .cd-popup-close {
   position: absolute;
@@ -706,7 +708,7 @@ table.teammem {
 }
 #detail .cd-popup .form-control {
   color: #40c3a7;
-  width: 80%;
+  width: 70%;
   font-size: 2em;
   height: 2.5em;
   text-align: center;
@@ -1781,20 +1783,7 @@ a.btn3 {
 .firstname, .fullname {
   text-transform: capitalize;
 }
-hr.star-primary {
-    margin: 25px auto 30px;
-    padding: 0;
-    max-width: 250px;
-    border: 0;
-    border-top: solid 5px;
-    text-align: center;
-}
-hr.star-primary:after {
-    content: "\f005";
-    display: inline-block;
-    position: relative;
-    top: -.8em;
-    padding: 0 .25em;
-    font-family: FontAwesome;
-    font-size: 2em;
+#warningtype {
+  margin-top: 10px;
+  color: red;
 }

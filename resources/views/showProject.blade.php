@@ -126,7 +126,6 @@
 			</div>
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-	</div>
 	@endif
 	<!-- in case no video -->
 	@if($screenshot != null)
