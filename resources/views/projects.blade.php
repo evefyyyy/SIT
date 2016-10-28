@@ -33,7 +33,7 @@
 			<div class="col-xs-18 col-sm-6 col-md-4 col-lg-3" data-tag='{{$category}}'>
 	          <div class="thumbnail">
 	          	<div class="pdf-thumb-box">
-			      <a href="/showproject/{{$project->id}}">
+			      <a href="/showproject/{{$project->group_project_id}}">
 			      	 <div class="pdf-thumb-box-overlay">
 			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i>
        				 </div>

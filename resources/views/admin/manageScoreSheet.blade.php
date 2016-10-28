@@ -1,13 +1,15 @@
 @extends('adminTmp')
 @section('content')
 <div id="scoresheet">
-  <form action="{{url('exam/managescore/year/mainscore')}}" method="post">
-  <h2><img height="45" src="/img/exam.png">manage score sheet</h2>
+  <form action="{{$url}}" method="post">
+    {{method_field($method)}}
+    <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+  <h2><img height="45" src="/img/exam.png">edit score sheet</h2>
   <div class="row">
     <div class="col-xs-2 col-md-2 col-lg-2"></div>
     <div class="col-xs-8 col-md-8 col-lg-8" id="center">
-     <h6>Year 2016</h6>
-     <label>project type <strong>business</strong></label>
+     <h6>Year {{$year}}</h6>
+     <label>project type <strong>{{$type}}</strong></label>
     <label>score sheet</label>
     <div class="btn-group">
       <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
@@ -67,7 +69,7 @@
 </div>
 @endforeach
 <div id="center">
-  <a href="/exam/managescore/year"><button type="button" class="action-button">back</button></a>
+  <a href="/exam/managescore/{{$year}}"><button type="button" class="action-button">back</button></a>
   <button class="action-button" onclick="countTotal()">next</button>
 </div>
 </form>

@@ -8,13 +8,13 @@
      <h6>Year 2016</h6>
      <label>project type</label>
      <div class="btn-group">
-      <select class="selecttype" title="select" name="selectType">
+      <select class="selecttype" title="select" name="selectType" id="selectType" onchange="selectType()">
           @foreach($typeName as $type)
           <option value="{{$type->id}}">{{$type->type_name}}</option>
           @endforeach
       </select>
     </div>
-  <a href="/exam/managescore/year/mainscore/create" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>edit</a>
+  <a href="#" class="btn btn-default" id="typeEdit"><span class="glyphicon glyphicon-pencil"></span>edit</a>
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
@@ -66,4 +66,12 @@
 </div>
 </div>
 <script src="{!! URL::asset('js/score.js') !!}"></script>
+<script type="text/javascript">
+function selectType(){
+  var e = document.getElementById("selectType").value;
+
+  document.getElementById("typeEdit").href = "/exam/managescore/{{$year}}/mainscore/"+e
+}
+
+</script>
 @stop
