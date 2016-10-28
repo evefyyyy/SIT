@@ -385,7 +385,7 @@ class ScoreSheetController extends Controller
           $data['types'][$i][$j]->subScore =  $subScore;
         }
       }
-      // dd($data['types']);
+      dd($data['types']);
       return view('admin.viewScoreSheet',$data);
     }
     public function editMainScore($year,$id)
@@ -444,6 +444,7 @@ class ScoreSheetController extends Controller
                           ->where('type_id',$type)
                           ->where('template_main_id',$mainId)
                           ->get();
+                          dd($mainTemp);
         if($mainTemp == null){
           $obj = new MainScore();
           $obj->score = $score[$i];
