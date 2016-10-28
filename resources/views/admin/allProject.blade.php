@@ -179,12 +179,7 @@
 					</li>
 				</ul>
 			</div>
-<script src="{!! URL::asset('js/search.js') !!}"></script>
 <script>
-	$('#pjtable').filterForTable();
-	$('#searchInput').on( 'keyup', function () {
-		table.search( this.value ).draw();
-	} );
 	$('.firstname').each(function(index) {
 		document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
 	});

@@ -612,11 +612,12 @@ table.teammem {
   padding: 50px 20px;
 }
 #detail .cd-popup-container p {
+  font-size: 1.2em;
   padding: 0 20px 1em 20px;
 }
 .cd-popup-container img {
-  padding: 4em 3em 2em 3em;
-  width: 100%;
+  padding: 4em 4em 2em 4em;
+  width: 90%;
 }
 .cd-popup-container .cd-buttons:after {
   content: "";
@@ -661,7 +662,7 @@ table.teammem {
 }
 #detail .cd-popup-container .cd-buttons li a {
   background: #40c3a7;
-  font-size: 3em;
+  font-size: 2em;
   vertical-align: middle;
   letter-spacing: 3px;
   border-radius: 0 0 .15em .15em;

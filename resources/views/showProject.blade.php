@@ -49,7 +49,7 @@
 		<div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
-		</div>>
+		</div>
 		<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
 			<a class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
 		</div>
