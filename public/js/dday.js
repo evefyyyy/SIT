@@ -1,3 +1,5 @@
+$('.cd-load').hide();
+
 $(document).ready(function() {
 		var str = $("div.tools").html();
 		$("div.tools").html(str.replace(/\n/g, "<br />"));
@@ -57,5 +59,17 @@ jQuery(document).ready(function($){
     		$('.cd-popup').removeClass('is-visible');
 	    }
     });
+
+});
+
+$('#dd-vote').click(function (){
+	$('.cd-content').hide();
+	$('.cd-load').show();
+	$('.loader').show();
+	$.ajax({
+    ....
+   success:function(result){
+       $('.loader').hide();
+   });
 
 });

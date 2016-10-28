@@ -140,14 +140,17 @@
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
-       <img src="/img/dday.png">
-       <p>Enter your gen code to vote</p>
-       	<p><strong>" {{$projectNameEN}} "</strong></p>
-       <input class="form-control"/>
-       <ul class="cd-buttons">
-          <li><a class="cd-vote">Vote</a></li>
-      </ul>
-      <a class="cd-popup-close cd-close img-replace"></a>
+	    <div class="cd-content">
+	       <img src="/img/dday.png">
+	       <p>Enter your gen code to vote</p>
+	       	<p><strong>" {{$projectNameEN}} "</strong></p>
+	       <input class="form-control"/>
+	       <ul class="cd-buttons">
+	          <li><a id="dd-vote">Vote</a></li>
+	      </ul>
+	      <a class="cd-popup-close cd-close img-replace"></a>
+	    </div>
+		 <div class="cd-load"><div class="loader"></div></div>
   	</div> <!-- cd-popup-container -->
   </div>
 </div> <!-- cd-popup -->
