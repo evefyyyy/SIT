@@ -33,11 +33,11 @@ class projectController extends Controller
                               ->select('group_project_eng_name','group_project_detail','picture_path_name','category_id','group_projects.id')
                               ->where('group_project_approve','=','1')
                               ->where('picture_type_id',1)
+                              ->whereNotNull('group_project_detail')
                               ->groupBy('group_projects.id')
                               ->get();
 
       $obj['poster'] = Picture::where('picture_type_id', 1)->get();
-
 
       return view('projects',$obj);
     }
@@ -66,6 +66,7 @@ class projectController extends Controller
                     ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
                     ->join('pictures','pictures.project_pkid','=','group_projects.id')
                     ->where('group_project_approve','=','1')
+                    ->where('picture_type_id',1)
                     ->where('group_project_eng_name','like','%'.$search.'%')
                     ->orWhere('group_project_detail','like','%'.$search.'%')
                     ->groupBy('project_detail.project_pkid')
@@ -76,6 +77,7 @@ class projectController extends Controller
                       ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
                       ->join('pictures','pictures.project_pkid','=','group_projects.id')
                       ->where('group_project_approve','=','1')
+                      ->where('picture_type_id',1)
                       ->where('group_project_eng_name','like','%'.$search.'%')
                       ->where('year_id',$year)
                       ->groupBy('project_detail.project_pkid')
@@ -85,6 +87,7 @@ class projectController extends Controller
                         ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
                         ->join('pictures','pictures.project_pkid','=','group_projects.id')
                         ->where('group_project_approve','=','1')
+                        ->where('picture_type_id',1)
                         ->where('group_project_detail','like','%'.$search.'%')
                         ->where('year_id',$year)
                         ->groupBy('project_detail.project_pkid')
@@ -96,6 +99,7 @@ class projectController extends Controller
                         ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
                         ->join('pictures','pictures.project_pkid','=','group_projects.id')
                         ->where('group_project_approve','=','1')
+                        ->where('picture_type_id',1)
                         ->where('year_id',$year)
                         ->groupBy('project_detail.project_pkid')
                         ->select('project_detail.project_pkid')->get();

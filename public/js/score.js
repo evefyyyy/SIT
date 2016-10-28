@@ -6,7 +6,7 @@ $(function () {
 	});
 });
 $(document).ready(function(){
-    $(".box").hide();   
+    $(".box").hide();
     $("select.selecttype").change(function(){
         $(this).find("option:selected").each(function(){
             var x = $(this).attr("value");
@@ -29,7 +29,7 @@ $(document).ready(function(){
     }).change();
 });
 $(document).ready(function(){
-    $(".box").hide();   
+    $(".box").hide();
     $("select.selecttemp").change(function(){
         $(this).find("option:selected").each(function(){
             var x = $(this).attr("value");

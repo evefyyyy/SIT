@@ -21,6 +21,7 @@ use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
 use App\Picture;
+use Auth;
 
 
 
@@ -28,10 +29,13 @@ class editProjectController extends Controller {
 
 
 
-	public function edit($id)
+	public function index()
 	{
-		$data['url'] = url('student/myproject/edit/'.$id);
+		$data['url'] = url('student/myproject/edit');
 		$data['method'] = "put";
+
+		$stdId = Auth::user()->user_student->student_pkid;
+		$id = DB::table('project_students')->where('student_pkid',$stdId)->value('project_pkid');
 
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;
@@ -91,9 +95,12 @@ class editProjectController extends Controller {
 
 	}
 
-	public function update(Request $request,$id)
+	public function update(Request $request)
 	{
 
+		$stdId = Auth::user()->user_student->student_pkid;
+		$id = DB::table('project_students')->where('student_pkid',$stdId)->value('project_pkid');
+		
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;
 

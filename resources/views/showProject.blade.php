@@ -84,7 +84,7 @@
 					<div class="col-lg-12 tools">{!!$tools!!}</div>
 				</div>
 			</div>
-			@if($video != null)
+			@if($video != null && $screenshot != null)
 			<div id="img-gallery" class="eagle-gallery img300">
 				<div class="owl-carousel">
 					@foreach($screenshot as $img)
@@ -125,7 +125,7 @@
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	@endif
 	<!-- in case no video -->
-	@if($screenshot != null)
+	@if($screenshot != null && $video == null)
 	<div id="img-gallery" class="eagle-gallery img300">
 		<div class="owl-carousel">
 			@foreach($screenshot as $img)

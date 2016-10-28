@@ -21,7 +21,7 @@ $('#editpj').submit(function (){
           if(coverWidth != 1920 || coverHeight != 1080){
             alert('Your poster must be 1920*1080 px');
             return false;
-          }  
+          }
 });
 function readURL(input) {
   if (input.files && input.files[0]) {
@@ -31,8 +31,10 @@ function readURL(input) {
           $('#group-member').attr('src', e.target.result);
         } else if(input.id === 'img-cover') {
           $('#cover').attr('src', e.target.result);
+
           coverWidth = $("#cover").get(0).naturalWidth;
-          coverHeight = $("#cover").get(0).naturalHeight; 
+          coverHeight = $("#cover").get(0).naturalHeight;
+
           if(coverWidth != 1920 || coverHeight != 1080){
             alert('Your poster must be 1920*1080 px');
             return false;
@@ -78,16 +80,18 @@ $('.del').on('click', function(e) {
   var picture;
   var y;
   for(var i=0; i<count ; i++){
-    picture = document.getElementById('pic'+i) ;
-    cn = picture.className;
-    if(cn.indexOf("active") != -1){
-      y = picture.getElementsByTagName('img')[0];
-      $.ajax({
-          type:"post",
-          dataType: "",
-          url : "/edit/pic/delete",
-          data: {id: $("#ssid"+i).val() , _token:$("#_token").val() },
-      });
+    picture = document.getElementById('pic'+i);
+    if (picture !== null ) {
+      cn = picture.className;
+      if(cn.indexOf("active") != -1){
+        y = picture.getElementsByTagName('img')[0];
+        $.ajax({
+            type:"post",
+            dataType: "",
+            url : "/edit/pic/delete",
+            data: {id: $("#ssid"+i).val() , _token:$("#_token").val() },
+        });
+      }
     }
   }
   $('.gallery.active').each(function() {
@@ -139,7 +143,7 @@ $('.embed').on('click', function() {
     alert("Your link is incorrect");
     $("#embedcode").val("");
   }
-    
+
 });
 
 // $( function() {
