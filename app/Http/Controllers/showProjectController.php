@@ -78,6 +78,7 @@ class showProjectController extends Controller
   // }
 
   public function show($groupId){
+    $obj['groupId'] = $groupId;
     $id = DB::table('group_projects')->where('group_project_id',$groupId)->value('id');
     $obj['checkProject'] = $id;
     $obj['projectNameEN'] = DB::table('group_projects')->where('id',$id)->value('group_project_ENG_name');
