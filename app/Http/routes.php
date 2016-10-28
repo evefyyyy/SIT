@@ -24,7 +24,8 @@ Route::get('relogin', 'LdapLoginController@getIndex');
 Route::get('logout','LdapLoginController@getLogout');
 Route::get('home/','projectController@index');
 Route::get('home/search','projectController@search');
-Route::resource('showproject','showProjectController');
+// Route::get('showproject/{groupId}','showProjectController@index');
+Route::get('showproject/{groupId}','showProjectController@show');
 
 
 //admin
@@ -48,19 +49,19 @@ Route::get('exam/managescore/template/{template}/edit','ScoreSheetController@edi
 
 Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTemplate');
 
-// Route::get('exam/managescore/year/mainscore/create','ScoreSheetController@createManageScoreSheet1');
-//
-// Route::post('exam/managescore/year/mainscore','ScoreSheetController@storeManageScoreSheet1');
-//
-// Route::get('exam/managescore/year/subscore/create','ScoreSheetController@createManageScoreSheet2');
-//
-// Route::post('exam/managescore/year/subscore','ScoreSheetController@storeManageScoreSheet2');
-
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
 
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
+
+Route::get('exam/managescore/{year}/mainscore/{id}','ScoreSheetController@editMainScore');
+
+Route::put('exam/managescore/{year}/mainscore/{id}','ScoreSheetController@updateMainScore');
+
+Route::get('exam/managescore/{year}/subscore/{id}','ScoreSheetController@editSubScore');
+
+Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateSubScore');
 
 Route::get('exam/scorerecord/viewscore',function(){
   return view('admin.viewScore');

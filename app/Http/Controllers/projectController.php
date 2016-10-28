@@ -30,7 +30,7 @@ class projectController extends Controller
 
       $obj['groupProject'] = GroupProject::join('project_detail','group_projects.id','=','project_detail.project_pkid')
                               ->join('pictures','pictures.project_pkid','=','group_projects.id')
-                              ->select('group_project_eng_name','group_project_detail','picture_path_name','category_id','group_projects.id')
+                              ->select('group_project_eng_name','group_project_detail','picture_path_name','category_id','group_projects.id','group_project_id')
                               ->where('group_project_approve','=','1')
                               ->where('picture_type_id',1)
                               ->whereNotNull('group_project_detail')

@@ -52,7 +52,7 @@
                       @if($approve_project->group_project_approve==0)
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/student/myproject/waitapprove">My project</a></li>
                       @else
-                      <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject">My project</a></li>
+                      <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject/">My project</a></li>
                       @endif
                     @endif
                       <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="#">My score</a></li>
