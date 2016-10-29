@@ -19,6 +19,7 @@
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 
       @foreach($groupProject as $project)
+      @if($project->group_project_detail != "")
       <?php
         $id = $project->id;
         $poster = DB::table('pictures')
@@ -50,6 +51,7 @@
 	            </div>
 	       	  </div>
 	       	</div>
+          @endif
           @endforeach
 	<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 </div>
