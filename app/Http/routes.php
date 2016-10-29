@@ -119,8 +119,9 @@ Route::group(['middleware' => 'studentnoproject'], function() {
   Route::get('student/myproject/noproject', function () {
     return view('student.noProject');
   });
-});
   Route::resource('student/myproject/create','createProjectController');
+});
+  
 Route::group(['middleware' => 'studentwaitapprove'], function(){
   Route::resource('student/myproject/waitapprove','waitApproveController');
 });
