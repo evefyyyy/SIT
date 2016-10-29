@@ -73,6 +73,13 @@
                     </ul>
                   </li>
                   <li class="{{ strrpos(Request::path(),'project') === 0 ? 'active' : ''  }}"><a href="/project">Student projects</a></li>
+                  <li class="dropdown {{ strrpos(Request::path(),'dday') === 0 ? 'active' : ''  }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">dday</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">gen code</a></li>
+                      <li><a href="#">score record</a></li>
+                    </ul>
+                  </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  
