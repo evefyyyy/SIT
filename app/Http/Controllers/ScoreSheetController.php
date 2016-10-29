@@ -354,10 +354,9 @@ class ScoreSheetController extends Controller
 
     public function viewScoreSheet($id){
       $data['typeName'] = DB::table('types')->where('type_name','!=','others')->get();
-
       $data['types'] = DB::table('types')->where('type_name','!=','others')->get();
+      $types = $data['types'];
       $year = DB::table('years')->where('year',$id)->value('id');
-
       $data['year'] = $id;
 
       for($i=0; $i<count($data['types']); $i++){
@@ -378,14 +377,23 @@ class ScoreSheetController extends Controller
                       ->where('main_template_score_id',$mainScoreId)
                       ->select('criteria_sub_name','sub_templates_score.score')
                       ->get();
-          // $arr = array();
-          // foreach ($test as $key => $value) {
-          //   array_push($arr,$value);
-          // }
           $data['types'][$i][$j]->subScore =  $subScore;
         }
       }
-      dd($data['types']);
+// check button create or edit
+      $useTypes = DB::table('main_templates_score')->select('type_id')->groupBy('type_id')->get();
+      foreach($useTypes as $use){
+        $useType[] = $use->type_id;
+      }
+      $allTypes = DB::table('types')->where('type_name','!=','others')->get();
+      foreach($allTypes as $all){
+        $allType[] = $all->id;
+      }
+      $buttons = array_diff($allType,$useType);
+      foreach($buttons as $but){
+        $data['button'][] = $but;
+      }
+      
       return view('admin.viewScoreSheet',$data);
     }
     public function editMainScore($year,$id)

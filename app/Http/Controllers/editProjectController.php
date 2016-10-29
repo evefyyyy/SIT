@@ -148,8 +148,10 @@ class editProjectController extends Controller {
 		if($poster != null){
 				if($request->file('poster')){
 					$path = base_path('public_html/projectPoster');
+					File::Delete($path.$poster);
 					$file = $request->file('poster');
-					$filename = $file->getClientOriginalName();
+					$extension = $file->getClientOriginalExtension();
+					$filename = "poster".$groupId.".".$extension;
 					$move = $file->move($path,$filename);
 					$obj = Picture::find($poster);
 					$savePic = '/projectPoster'."/".$filename ;
@@ -161,7 +163,8 @@ class editProjectController extends Controller {
 			if($request->file('poster')){
 				$path = base_path('public_html/projectPoster');
 				$file = $request->file('poster');
-				$filename = $file->getClientOriginalName();
+				$extension = $file->getClientOriginalExtension();
+				$filename = "poster".$groupId.".".$extension;
 				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
@@ -181,8 +184,10 @@ class editProjectController extends Controller {
 		if($groupPic != null){
 				if($request->file('groupPicture')){
 					$path = base_path('public_html/groupPicture');
+					File::Delete($path.$groupPic);
 					$file = $request->file('groupPicture');
-					$filename = $file->getClientOriginalName();
+					$extension = $file->getClientOriginalExtension();
+					$filename = "groupPic".$groupId.".".$extension;
 					$move = $file->move($path,$filename);
 					$obj = Picture::find($groupPic);
 					$savePic = '/groupPicture'."/".$filename ;
@@ -194,7 +199,8 @@ class editProjectController extends Controller {
 			if($request->file('groupPicture')){
 				$path = base_path('public_html/groupPicture');
 				$file = $request->file('groupPicture');
-				$filename = $file->getClientOriginalName();
+				$extension = $file->getClientOriginalExtension();
+				$filename = "groupPic".$groupId.".".$extension;
 				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/groupPicture'."/".$filename ;
@@ -209,6 +215,7 @@ class editProjectController extends Controller {
 								->where('project_pkid',$getId)
 								->where('picture_type_id','=','3')
 								->select('project_pkid')->get();
+		$count = count($countPic);
 
 								if(count($countPic)<10) {
 										$screenshot = $request->file('screenshot');
@@ -216,9 +223,11 @@ class editProjectController extends Controller {
 										if($unuseScreenshot != null){
 											$explodeUnuse = explode(",",$unuseScreenshot);
 											$getScreenshot = array_diff_key($screenshot,$explodeUnuse);
-													foreach ($getScreenshot as $screen) {
+													foreach ($getScreenshot as $key => $screen) {
+															$numPic = $count+$key+1;
 															$path = base_path('public_html/screenshot');
-															$filename = $screen->getClientOriginalName();
+															$extension = $file->getClientOriginalExtension();
+															$filename = "screenshot".$numPic.".".$groupId.".".$extension;
 															$move = $screen->move($path,$filename);
 															$savePic = '/screenshot'."/".$filename;
 															$obj = new Picture();
@@ -229,16 +238,18 @@ class editProjectController extends Controller {
 													}
 										}else{
 											if($screenshot[0] != null){
-													foreach ($screenshot as $screen) {
-															$path = base_path('public_html/screenshot');
-															$filename = $screen->getClientOriginalName();
-															$move = $screen->move($path,$filename);
-															$savePic = '/screenshot'."/".$filename;
-															$obj = new Picture();
-															$obj->picture_path_name = $savePic;
-															$obj->picture_type_id = '3';
-			 												$obj->project_pkid = $getId;
-															$obj->save();
+													foreach ($screenshot as $key => $screen) {
+														$numPic = $count+$key+1;
+														$path = base_path('public_html/screenshot');
+														$extension = $file->getClientOriginalExtension();
+														$filename = "screenshot".$numPic.".".$groupId.".".$extension;
+														$move = $screen->move($path,$filename);
+														$savePic = '/screenshot'."/".$filename;
+														$obj = new Picture();
+														$obj->picture_path_name = $savePic;
+														$obj->picture_type_id = '3';
+		 												$obj->project_pkid = $getId;
+														$obj->save();
 													}
 												}
 										}
