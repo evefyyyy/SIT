@@ -152,10 +152,11 @@ Route::get('project/pending/{option}/{project_id}', 'approveProjectController@up
 Route::get('project/pending','approveProjectController@index');
 Route::get('project/pending/approveallproject', 'approveProjectController@updateApproveProject');
 
+Route::group(['middleware' => 'studenthaveproject'], function(){
+  Route::get('student/myproject/edit','editProjectController@index');
+  Route::put('student/myproject/edit','editProjectController@update');
+});
 
-
-Route::get('student/myproject/edit','editProjectController@index');
-Route::put('student/myproject/edit','editProjectController@update');
 
 Route::post('edit/pic/delete', function(){
 	$id = Request::Input('id');
