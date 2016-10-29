@@ -58,7 +58,8 @@
 		    $("div.caption").dotdotdot(
 		    {
 		        ellipsis : '...',
-		        wrap: "word",
+		        wrap: 'word',
+            fallbackToLetter: true,
 		        height: 60,
 		    });
 		});
