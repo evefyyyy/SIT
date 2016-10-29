@@ -60,7 +60,7 @@
         $("div.caption").dotdotdot(
         {
             ellipsis : '...',
-            wrap: "word",
+            wrap: "letter",
             height: 60,
             watch : true
         });
