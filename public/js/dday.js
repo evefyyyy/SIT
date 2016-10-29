@@ -1,4 +1,6 @@
 $('.cd-load').hide();
+$('.cd-success').hide();
+$('.alert').hide();
 
 $(document).ready(function() {
 		var str = $("div.tools").html();
@@ -65,11 +67,18 @@ jQuery(document).ready(function($){
 $('#dd-vote').click(function (){
 	$('.cd-content').hide();
 	$('.cd-load').show();
-	$('.loader').show();
 	$.ajax({
-    ....
-   success:function(result){
-       $('.loader').hide();
-   });
 
+   success:function(result){
+       $('.cd-load').hide();
+       $('.cd-success').show();
+   },
+   error: function (jqXHR, status) {
+       $('.loader').hide();
+       $('.cd-content').show();
+       $('.cd-load').hide();
+       $('.alert').show();
+       $('.alert front').html(status);
+    },
+	});
 });

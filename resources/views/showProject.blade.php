@@ -145,12 +145,17 @@
 	       <p>Enter your gen code to vote</p>
 	       	<p><strong>" {{$projectNameEN}} "</strong></p>
 	       <input class="form-control"/>
+	       <div class="alert alert-danger" role="alert" id="alert1">
+		     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		     <front></front>
+		   </div>
 	       <ul class="cd-buttons">
 	          <li><a id="dd-vote">Vote</a></li>
 	      </ul>
 	      <a class="cd-popup-close cd-close img-replace"></a>
 	    </div>
 		 <div class="cd-load"><div class="loader"></div></div>
+		 <div class="cd-success"><h2>Thanks for vote</h2></div>
   	</div> <!-- cd-popup-container -->
   </div>
 </div> <!-- cd-popup -->
