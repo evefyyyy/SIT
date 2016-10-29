@@ -128,7 +128,7 @@ class createProjectController extends Controller {
 			$adv->advisor_position_id = '2';
 			$adv->save();
 		}
-		$path = base_path('public/proposalFile');
+		$path = base_path('public_html/proposalFile');
 		$file = $request->file('myfiles');
 		$filename = $file->getClientOriginalName();
 		$move = $file->move($path,$filename);
@@ -332,10 +332,10 @@ class createProjectController extends Controller {
 			$proposal = DB::table('proposals')
 										->where('project_pkid',$id)
 										->value('proposal_path_name');
-			$path = base_path('public/proposalFile/');
+			$path = base_path('public_html/proposalFile/');
 			File::delete($path.$proposal);
 // add new file
-			$path = base_path('public/proposalFile');
+			$path = base_path('public_html/proposalFile');
   		$file = $request->file('myfiles');
   		$filename = $file->getClientOriginalName();
   		$move = $file->move($path,$filename);
