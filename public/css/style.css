@@ -662,6 +662,7 @@ table.teammem {
 }
 #detail .cd-popup-container .cd-buttons li a {
   background: #40c3a7;
+  margin-top: 2em;
   font-size: 2em;
   vertical-align: middle;
   letter-spacing: 3px;
@@ -682,6 +683,10 @@ table.teammem {
   width: 18px;
   height: 4px;
   background-color: #B6B6B6;
+}
+#detail .cd-popup .alert {
+  text-transform: uppercase;
+  font-size: 1.2em;
 }
 .cd-popup-container .cd-popup-close::before {
   -webkit-transform: rotate(45deg);
@@ -712,7 +717,6 @@ table.teammem {
   font-size: 2em;
   height: 2.5em;
   text-align: center;
-  margin-bottom: 2em;
   border: 2px solid #dcdcdc;
 }
 #detail .cd-popup .form-control:focus {
@@ -1786,4 +1790,27 @@ a.btn3 {
 #warningtype {
   margin-top: 10px;
   color: red;
+}
+.cd-load, .cd-success {
+  padding: 5em;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #40c3a7;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
