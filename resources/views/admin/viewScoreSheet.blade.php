@@ -14,14 +14,14 @@
           @endforeach
       </select>
     </div>
-  <a href="#" class="btn btn-default" id="typeEdit"><span class="glyphicon glyphicon-pencil"></span>edit</a>
+  <a href="#" class="display-none" id="typeEdit"></a>
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
-
-@foreach($types as $key => $ty)
+@foreach($types as $ty)
+@if($ty != null)
 <div class="{{$ty[0]->type_id}} box">
-  @foreach($ty as $key1 => $round)
+  @foreach($ty as $round)
   <div class="row">
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
     <div class="col-xs-10 col-md-6 col-lg-6">
@@ -59,6 +59,7 @@
 </div>
 @endforeach
 </div>
+@endif
 @endforeach
 <div id="center">
   <a href="/exam/scoresheet"><button type="button" class="action-button">back</button></a>
@@ -68,9 +69,18 @@
 <script src="{!! URL::asset('js/score.js') !!}"></script>
 <script type="text/javascript">
 function selectType(){
+  document.getElementById("typeEdit").className = 'btn btn-default'
   var e = document.getElementById("selectType").value;
-
   document.getElementById("typeEdit").href = "/exam/managescore/{{$year}}/mainscore/"+e
+  var typeDatas = {!! json_encode($button) !!};
+
+  typeDatas.forEach(function (type) {
+    if(type == e){
+      document.getElementById("typeEdit").innerHTML = '<span class="glyphicon glyphicon-plus" id="typeSpan"></span> create'
+    }else{
+      document.getElementById("typeEdit").innerHTML = '<span class="glyphicon glyphicon-pencil" id="typeSpan"></span> edit'
+    }
+  })
 }
 
 </script>
