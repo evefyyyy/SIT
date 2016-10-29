@@ -113,14 +113,21 @@ Route::group(['middleware' => 'studentcheck'], function () {
   });
   Route::resource('student/news/announcement', 'StudentAnnoucementController');
   Route::resource('student/news/document', 'StudentDocumentController');
+});
+Route::group(['middleware' => 'studentnoproject'], function() {
   Route::get('student/myproject/noproject', function () {
     return view('student.noProject');
   });
-  Route::get('testldap', function(){
-   return view('auth-ldap');
- });
 });
+  Route::resource('student/myproject/create','createProjectController');
+Route::group(['middleware' => 'studentwaitapprove'], function(){
+  Route::resource('student/myproject/waitapprove','waitApproveController');
+});
+ 
 
+Route::get('testldap', function(){
+   return view('auth-ldap');
+});
 
 
 Route::get('project', 'AllProjectController@index');
@@ -144,12 +151,9 @@ Route::get('project/pending/{option}/{project_id}', 'approveProjectController@up
 Route::get('project/pending','approveProjectController@index');
 Route::get('project/pending/approveallproject', 'approveProjectController@updateApproveProject');
 
-Route::resource('student/myproject/create','createProjectController');
 
-Route::resource('student/myproject/waitapprove','waitApproveController');
 
 Route::get('student/myproject/edit','editProjectController@index');
-
 Route::put('student/myproject/edit','editProjectController@update');
 
 Route::post('edit/pic/delete', function(){
@@ -286,14 +290,4 @@ Route::get('exam/managescore/year/mainscore/test/{type}',function($type){
   }else{
     return 0;
   }
-});
-
-Route::get('/hello',function(){
-  $type = Request::Input('type');
-  $data = DB::table('main_templates_score')
-  ->join('templates_main','templates_main.id','=','template_main_id')
-  ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-  ->where('type_id',$type)
-  ->get();
-  return $data ;
 });
