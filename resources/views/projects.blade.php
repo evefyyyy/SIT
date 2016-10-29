@@ -62,6 +62,7 @@
             ellipsis : '...',
             wrap: "word",
             height: 60,
+            watch : true
         });
     });
   </script>
