@@ -136,7 +136,6 @@
 </div>
 <div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 @endif
-
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
@@ -144,18 +143,19 @@
 	       <img src="/img/dday.png">
 	       <p>Enter your gen code to vote</p>
 	       	<p><strong>" {{$projectNameEN}} "</strong></p>
-	       <input class="form-control"/>
+	       <input type="text" class="form-control" id="gencode"/>
+	       <input type="hidden" id="pjid" value="{{$checkProject}}">
 	       <div class="alert alert-danger" role="alert" id="alert1">
 		     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 		     <front></front>
 		   </div>
 	       <ul class="cd-buttons">
-	          <li><a id="dd-vote">Vote</a></li>
+	          <li><a href="#" id="dd-vote">Vote</a></li>
 	      </ul>
 	      <a class="cd-popup-close cd-close img-replace"></a>
 	    </div>
 		 <div class="cd-load"><div class="loader"></div></div>
-		 <div class="cd-success"><h2>Thanks for vote</h2></div>
+		 <div class="cd-success"><h2 id="result"></h2></div>
   	</div> <!-- cd-popup-container -->
   </div>
 </div> <!-- cd-popup -->
@@ -163,4 +163,25 @@
 <script src="{!! URL::asset('js/eagle.gallery.min.js') !!}"></script>
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <script src="{!! URL::asset('js/dday.js') !!}"></script>
+<script>
+	$('#dd-vote').click(function (){
+	$('.cd-content').hide();
+	$('.cd-load').show();
+	$.ajax({
+		type: 'POST',
+		url:'/votedday',
+		data: {
+			gencode: $("#gencode").val(),
+			pjid: $("#pjid").val(),
+			_token: "{{csrf_token()}}"
+		},
+   		success:function(result){
+       		$('.cd-load').hide();
+      		$('.cd-success').show();
+      		$("#result").append(result);
+   },
+	});
+});
+
+</script>
 @stop

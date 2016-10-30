@@ -136,6 +136,7 @@ Route::get('project', 'AllProjectController@index');
 
 Route::get('dday', 'DdayController@index');
 Route::get('dday/voteproject/{gencode}', 'DdayController@checkGenCode');
+Route::post('votedday', 'DdayController@voteDday');
 
 Route::get('admin/setting', 'AdminSettingController@index');
 Route::get('admin/setting/{numbergencode}', 'AdminSettingController@enterGenCode');
