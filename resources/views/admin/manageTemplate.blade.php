@@ -75,6 +75,7 @@ $('#main-order').multiSelect({ keepOrder: true });
     var e = document.getElementById("selectTemp").value;
     var tmpDatas = {!! json_encode($tempData) !!};
     tmpDatas.forEach(function (tmp) {
+      console.log(tmp);
       if(tmp.id == e){
         if(tmp.button){
           document.getElementById('tempEdit').className = 'display-none'

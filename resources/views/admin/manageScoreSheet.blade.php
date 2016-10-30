@@ -12,12 +12,12 @@
      <label>project type <strong>{{$type}}</strong></label>
     <label>score sheet</label>
     <div class="btn-group">
-      <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
+      <select class="selecttemp" id="selectTemp" title="select" name="selectTemp">
         @foreach($template as $temp)
-       <option class='selectTe' value="{{$temp->id}}">template {{$temp->temp_num}}</option>
+       <option value="{{$temp->id}}">template {{$temp->temp_num}}</option>
        @endforeach
      </select>
-     <input type="hidden" name="temp" id="temp">
+     <!-- <input type="hidden" name="temp" id="temp"> -->
    </div>
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
@@ -77,20 +77,10 @@
 <script src="{!! URL::asset('js/score.js') !!}"></script>
 <script>
 $('.alert').hide();
-  function selectTemp(){
-    var temp = document.getElementById("selectTemp").value
-    document.getElementById("temp").value = temp
-  }
-  $('#selectType').on('change',function () {
-        $.ajax({
-          type:"get",
-          dataType: "",
-          url :"/hello",
-          data: {type: $(this).val()},
-          success:function(data){
-            console.log(data);
-          }
-        });
-  })
+  // function selectTemp(){
+  //   var temp = document.getElementById("selectTemp").value
+  //   document.getElementById("temp").value = temp
+  //   console.log(document.getElementsById("selectTemp"));
+  // }
 </script>
 @stop
