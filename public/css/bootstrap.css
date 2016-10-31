@@ -1290,7 +1290,7 @@ h4,
 }
 h5,
 .h5 {
-  font-size: 1em;
+  font-size: 1.1em;
   color: grey;
   margin-bottom: 30px;
   text-align: center;
@@ -2594,7 +2594,7 @@ output {
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 .required {
-  border-color: #ea7272;
+  border-color: #ea7272 !important;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #ff7f7f;
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #ff7f7f;

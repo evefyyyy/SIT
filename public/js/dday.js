@@ -64,3 +64,11 @@ jQuery(document).ready(function($){
 
 });
 
+$('#gencode').click(function (){
+	if ($('#gencode').val() != "") {
+		$('#gencode').val("");
+	} else {}
+	if ($('#gencode').hasClass("required")){
+		$('#gencode').removeClass("required");
+	}
+});
