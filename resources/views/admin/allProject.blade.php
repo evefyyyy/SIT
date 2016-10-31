@@ -56,10 +56,16 @@
 						<td>{{$gp->category->category_name}}</td>
 						<?php $advisors = App\ProjectAdvisor::where('project_pkid', $gp->id)->get();
 						$advisorsNo1 = $advisors[0]->advisor->advisor_name;
-						$advisorsNo2 = $advisors[1]->advisor->advisor_name;
+						if(isset($advisors[1])){
+							$advisorsNo2 = $advisors[1]->advisor->advisor_name;
+						}
 						?>
 						<td class="firstname">{{ $advisorsNo1 }}</td>
-						<td class="firstname">{{ $advisorsNo2 }}</td>
+						@if(isset($advisors[1]))
+						<td class="firstname">{{$advisorsNo2}}</td>
+						@else
+						<td class="firstname"></td>
+						@endif
 						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
 						<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal"><span class="glyphicon glyphicon-list-alt gi-3x"></span></a></td>
 					</tr>
