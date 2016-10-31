@@ -11,13 +11,8 @@
 |
 */
 //guess
-Route::get('/', function () {
-  return view('home');
-});
-
-Route::get('index', function () {
-  return view('home');
-});
+Route::get('/', 'HomeController@ShowProject');
+Route::get('index', 'HomeController@ShowProject');
 Route::auth();
 Route::post('login','LdapLoginController@Login');
 Route::get('relogin', 'LdapLoginController@getIndex');
