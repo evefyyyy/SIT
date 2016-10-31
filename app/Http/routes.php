@@ -95,9 +95,7 @@ Route::post('news/delete', function(){
 Route::get('exam/round', function () {
   return view('advisor.examDetail');
 });
-Route::get('exam/round/givemarks', function () {
-  return view('advisor.giveMarks');
-});
+Route::get('exam/round/givemarks','GiveMarksController@giveMarksData');
 Route::get('exam/selectround', function () {
   return view('advisor.selectRound');
 });
@@ -121,11 +119,11 @@ Route::group(['middleware' => 'studentnoproject'], function() {
   });
   Route::resource('student/myproject/create','createProjectController');
 });
-  
+
 Route::group(['middleware' => 'studentwaitapprove'], function(){
   Route::resource('student/myproject/waitapprove','waitApproveController');
 });
- 
+
 
 Route::get('testldap', function(){
    return view('auth-ldap');

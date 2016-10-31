@@ -48,13 +48,13 @@
       		<th>grade</th>
       		<th colspan="2">
       			<select class="selectgrade" title="-">
-				  <option>A</option>
-				  <option>B+</option>
-				  <option>B</option>
-				  <option>C+</option>
-				  <option>C</option>
-				  <option>D+</option>
-				  <option>D</option>
+				  <option value="A">A</option>
+				  <option value="B+">B+</option>
+				  <option value="B">B</option>
+				  <option value="C+">C+</option>
+				  <option value="C">C</option>
+				  <option value="D+">D+</option>
+				  <option value="D">D</option>
 				</select>
 			<label class="required"></label>
 			</th>
