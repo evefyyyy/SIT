@@ -36,4 +36,22 @@ class DdayController extends Controller
 			return redirect('/project');
 		}
 	}
+	public function voteDday(Request $request){
+		$gencode = $request->gencode;
+		$pjid = $request->pjid;
+		$ddayid = Dday::where('dday_gencode', $gencode)->first();
+		if($ddayid == null){
+			return "Invalid Code";
+		} else if ($ddayid != null){
+			$checkgencode = DdayProject::where('dday_id','=', $ddayid->id)->first();
+			if($checkgencode != null){
+				return "Code is used already";
+			} else if($checkgencode == null){
+				DdayProject::insert(
+					['project_pkid' => $pjid, 'dday_id' => $ddayid->id]
+					);
+				return "Thank you for vote";
+			}
+		}
+	}
 }

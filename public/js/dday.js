@@ -64,21 +64,3 @@ jQuery(document).ready(function($){
 
 });
 
-$('#dd-vote').click(function (){
-	$('.cd-content').hide();
-	$('.cd-load').show();
-	$.ajax({
-
-   success:function(result){
-       $('.cd-load').hide();
-       $('.cd-success').show();
-   },
-   error: function (jqXHR, status) {
-       $('.loader').hide();
-       $('.cd-content').show();
-       $('.cd-load').hide();
-       $('.alert').show();
-       $('.alert front').html(status);
-    },
-	});
-});
