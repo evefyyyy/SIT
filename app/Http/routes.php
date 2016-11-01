@@ -11,13 +11,8 @@
 |
 */
 //guess
-Route::get('/', function () {
-  return view('home');
-});
-
-Route::get('index', function () {
-  return view('home');
-});
+Route::get('/', 'HomeController@ShowProject');
+Route::get('index', 'HomeController@ShowProject');
 Route::auth();
 Route::post('login','LdapLoginController@Login');
 Route::get('relogin', 'LdapLoginController@getIndex');
@@ -54,6 +49,8 @@ Route::get('exam/managescore/criteria',function(){
 });
 
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
+
+Route::post('exam/managescore/{year}','ScoreSheetController@setDefault');
 
 Route::get('exam/managescore/{year}/mainscore/{id}','ScoreSheetController@editMainScore');
 
@@ -95,7 +92,9 @@ Route::post('news/delete', function(){
 Route::get('exam/round', function () {
   return view('advisor.examDetail');
 });
-Route::get('exam/round/givemarks','GiveMarksController@giveMarksData');
+Route::get('exam/round/givemarks', function () {
+  return view('advisor.giveMarks');
+});
 Route::get('exam/selectround', function () {
   return view('advisor.selectRound');
 });
@@ -157,6 +156,7 @@ Route::group(['middleware' => 'studenthaveproject'], function(){
   Route::put('student/myproject/edit','editProjectController@update');
 });
 
+Route::post('edit/pic/upload', 'editProjectController@upload');
 
 Route::post('edit/pic/delete', function(){
 	$id = Request::Input('id');

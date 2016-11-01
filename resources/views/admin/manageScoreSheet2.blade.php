@@ -9,7 +9,7 @@
     <div class="col-xs-8 col-md-8 col-lg-8" id="center">
       <form action="{{url('exam/managescore/$year/subscore/$type')}}" method="post">
         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-     <h6>Year 2016</h6>
+     <h6>Year {{$year}}</h6>
      <label>project type <strong>business</strong></label>
     <label>score sheet</label><strong>Template {{$tempNum}}</strong>
  </div>

@@ -226,7 +226,7 @@ class editProjectController extends Controller {
 													foreach ($getScreenshot as $key => $screen) {
 															$numPic = $count+$key+1;
 															$path = base_path('public_html/screenshot');
-															$extension = $file->getClientOriginalExtension();
+															$extension = $screen->getClientOriginalExtension();
 															$filename = "screenshot".$numPic.".".$groupId.".".$extension;
 															$move = $screen->move($path,$filename);
 															$savePic = '/screenshot'."/".$filename;
@@ -241,7 +241,7 @@ class editProjectController extends Controller {
 													foreach ($screenshot as $key => $screen) {
 														$numPic = $count+$key+1;
 														$path = base_path('public_html/screenshot');
-														$extension = $file->getClientOriginalExtension();
+														$extension = $screen->getClientOriginalExtension();
 														$filename = "screenshot".$numPic.".".$groupId.".".$extension;
 														$move = $screen->move($path,$filename);
 														$savePic = '/screenshot'."/".$filename;
@@ -256,5 +256,16 @@ class editProjectController extends Controller {
 							}
 
 			return redirect('/showproject'.'/'.$groupId);
+	}
+
+	public function upload(Request $requst)
+	{
+		dd($request);
+		$stdId = Auth::user()->user_student->student_pkid;
+		$id = DB::table('project_students')->where('student_pkid',$stdId)->value('project_pkid');
+		$groupId = DB::table('group_projects')->where('id',$id)->value('group_project_id');
+
+		$obj = GroupProject::find($id);
+		$getId = $obj->id;
 	}
 }

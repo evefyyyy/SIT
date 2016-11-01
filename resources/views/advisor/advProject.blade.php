@@ -86,7 +86,7 @@
 					<tr>
 						<td>{{$pj->group_project_id}}</td>
 						<td id="name">
-							<a class="tblink" href="/showproject/{{$pj->id}}" target="_blank">{{$pj->group_project_eng_name}}<br>{{$pj->group_project_th_name}}</a>
+							<a class="tblink" href="/showproject/{{$pj->group_project_id}}" target="_blank">{{$pj->group_project_eng_name}}<br>{{$pj->group_project_th_name}}</a>
 						</td>
 						<td>{{$pj->type->type_name}}</td>
 						@if($pj->countAdv == 2)

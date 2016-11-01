@@ -31,7 +31,7 @@
 				<tbody>
 					<tr>
 						<td>IT56-RE02</td>
-						<td id="name"><a class="tblink" href="round/givemarks">เว็บไซต์หลักสูตรเรียนฟรี จากมหาวิทยาลัยชั้นนำประเทศอังกฤษ</a></td>
+						<td id="name"><a class="tblink" href="/exam/selectround/IT56-31">เว็บไซต์หลักสูตรเรียนฟรี จากมหาวิทยาลัยชั้นนำประเทศอังกฤษ</a></td>
 						<td><i class="glyphicon glyphicon-ok"></i></td>
 					</tr>
 					<tr>
