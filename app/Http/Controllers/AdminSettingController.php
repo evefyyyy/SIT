@@ -23,10 +23,8 @@ class AdminSettingController extends Controller
     
 	public function index(){
 		$current_year = AllSetting::where('id', 1)->first()->current_year;
-		$test = Dday::All();
-		$test = $test->first()->dday_gencode;
-		$test = substr($test, 0,2);
-		return view('admin.adminsetting');
+		$dday_gencode = Dday::where('year', $current_year)->get();
+		return view('admin.adminsetting', compact('dday_gencode'));
 	}
 
     public function enterGenCode(Request $request)
