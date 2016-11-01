@@ -15,6 +15,7 @@ use App\ProjectStudent;
 use App\ProjectJoinStudents;
 use App\ProjectProposal;
 use App\AllSetting;
+use App\DdayProject;
 use DB;
 
 class AdminSettingController extends Controller
@@ -22,6 +23,9 @@ class AdminSettingController extends Controller
     
 	public function index(){
 		$current_year = AllSetting::where('id', 1)->first()->current_year;
+		$test = Dday::All();
+		$test = $test->first()->dday_gencode;
+		$test = substr($test, 0,2);
 		return view('admin.adminsetting');
 	}
 
