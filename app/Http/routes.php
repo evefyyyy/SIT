@@ -137,7 +137,7 @@ Route::get('dday/voteproject/{gencode}', 'DdayController@checkGenCode');
 Route::post('votedday', 'DdayController@voteDday');
 
 Route::get('admin/setting', 'AdminSettingController@index');
-Route::get('admin/setting/{numbergencode}', 'AdminSettingController@enterGenCode');
+Route::get('admin/setting/{numbergencode}/{department}', 'AdminSettingController@enterGenCode');
 
 Route::get('search',function(){
   return view('student.createProject');
