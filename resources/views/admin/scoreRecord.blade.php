@@ -59,28 +59,32 @@
 </div>
 <!-- manage score level -->
 	<div class="modal fade" id="scorelv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-					<h4 class="modal-title">Score level</h4>
-				</div>
-				<div class="modal-body">
-						<div class="form-group">
-							<label for="recipient-name" class="control-label">Title</label>
-							<input type="text" class="form-control" id="title" name="title" required/>
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="control-label">File</label>
-							<input type="file" id="file" name="myfiles" required/>
-						</div>
-				</div>
-				<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">save</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content" id="center">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Score Level</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered myscore">
+					<tbody>
+						<tr>
+							<td width="50%">exam round 1</td><td width="50%">D <span class="poor">(poor)</span></td>
+						</tr>
+						<tr>
+							<td>exam round 2</td><td>C+ <span class="fair">(fair)</span></td>
+						</tr>
+						<tr>
+							<td>exam round 3</td><td>B <span class="good">(good)</span></td>
+						</tr>
+						<tr>
+							<td>exam round 4</td><td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 	</div><!-- /.modal -->
 <script>
 $(document).ready(function() {
