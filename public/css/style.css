@@ -1819,6 +1819,7 @@ a.btn3 {
 button#more.btn.btn-default {
   margin: 0 auto;
  color: #ff7f7f !important;
+ width: 40%
 }
 button#more.btn.btn-default:hover {
   background-color: #fff;
