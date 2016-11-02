@@ -1,7 +1,6 @@
 @extends('adminTmp')
 @section('content')
 <h2><img height="45" src="/img/score.png">score record</h2>
-<div class="row">
 <div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-12 col-md-10 col-lg-10" id="scoreTB">
 		<table id="pjtable" class="table table-bordered" style="width:100%">
@@ -30,7 +29,7 @@
     	</table>
 	</div>
 <div class="hidden-xs col-md-1 col-lg-1"></div>
-	<div id="dt-filter">
+<div id="dt-filter">
         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
 			<ul class="dropdown-menu dropdown-menu-right">
 				  <li>
@@ -54,39 +53,9 @@
 				     </a>
 				  </li>
 			</ul>
-			<button class="btn btn-default" data-toggle="modal" data-target="#scorelv">score level</button>
-	</div>
-</div>
-<!-- manage score level -->
-	<div class="modal fade" id="scorelv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content" id="center">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Score Level</h4>
-			</div>
-			<div class="modal-body">
-				<table class="table table-bordered myscore">
-					<tbody>
-						<tr>
-							<td width="50%">exam round 1</td><td width="50%">D <span class="poor">(poor)</span></td>
-						</tr>
-						<tr>
-							<td>exam round 2</td><td>C+ <span class="fair">(fair)</span></td>
-						</tr>
-						<tr>
-							<td>exam round 3</td><td>B <span class="good">(good)</span></td>
-						</tr>
-						<tr>
-							<td>exam round 4</td><td></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
 		</div>
-	</div>
-	</div><!-- /.modal -->
 <script>
+
 $(document).ready(function() {
     var table = $('#pjtable').DataTable( {
 		} );

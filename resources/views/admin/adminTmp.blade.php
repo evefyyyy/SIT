@@ -111,5 +111,11 @@
     $('.fullname').each(function(index) {
       $('.fullname')[index].innerHTML = $(this).html().toLowerCase();
     });
+    $(document).ready(function() {
+        var str = $(".modal-body").html();
+        var regex = /<br\s*[\/]?>/gi;
+        $(".modal-body").html(str.replace(regex, "<br />"));
+
+    });
     </script>
 </html>

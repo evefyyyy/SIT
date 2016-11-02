@@ -13,7 +13,7 @@
                 @endforeach
             </div>
         </div>
-</div>
+    </div>
 <div class="row">
   <div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
     <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
@@ -30,7 +30,7 @@
                     ->where('id',$catId)
                     ->value('category_name');
        ?>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" data-tag='{{$category}}'>
+      <div class="col-xs-18 col-sm-6 col-md-4 col-lg-3" data-tag='{{$category}}'>
             <div class="thumbnail">
               <div class="pdf-thumb-box">
             <a href="/showproject/{{$project->group_project_id}}">
@@ -52,15 +52,9 @@
 	       	</div>
           @endif
           @endforeach
-      </div>
-    <div id="center">
-  <button class="btn btn-default" id="more">show more</button>
-  </div>
-<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+  <div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 </div>
-  <div class="loader" id="home"></div>
   <script>
-  $('.loader').hide();
     $(document).ready(function() {
         $("div.caption").dotdotdot(
         {
@@ -69,10 +63,6 @@
             height: 60,
             watch : true
         });
-    });
-    $('#more').click(function() {
-      $('#more').hide();
-      $('.loader').fadeIn(1000);
     });
   </script>
 @stop
