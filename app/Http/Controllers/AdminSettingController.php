@@ -14,24 +14,40 @@ use App\GroupProject;
 use App\ProjectStudent;
 use App\ProjectJoinStudents;
 use App\ProjectProposal;
+use App\AllSetting;
+use App\DdayProject;
 use DB;
 
 class AdminSettingController extends Controller
 {
     
 	public function index(){
-		return view('admin.adminsetting');
+		$current_year = AllSetting::where('id', 1)->first()->current_year;
+		$dday_gencode = Dday::where('year', $current_year)->get();
+		return view('admin.adminsetting', compact('dday_gencode'));
 	}
 
     public function enterGenCode(Request $request)
 	{
 		$gencode = $request->numbergencode;
-		for($i=0; $i<$gencode; $i++){
-			$code = str_random(7);
+		$department = $request->department;
+		$current_year = AllSetting::where('id', 1)->first()->current_year;
+		if($department == "IT"){
+			for($i=0; $i<$gencode; $i++){
+			$code = $department."-".str_random(7);
 			DB::table('dday')->insert(
-				['dday_gencode'=> $code, 'dday_type'=>2]
+				['dday_gencode'=> $code, 'year'=> $current_year]
 				);
+			}
+		} else if($department == "CS"){
+			for($i=0; $i<$gencode; $i++){
+				$code = $department."-".str_random(7);
+				DB::table('dday')->insert(
+					['dday_gencode' => $code, 'year' => $current_year]
+					);
+			}
 		}
+		
 
 		return redirect('admin/setting');
 	}
