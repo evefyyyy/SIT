@@ -1,6 +1,7 @@
 @extends('adminTmp')
 @section('content')
 <h2><img height="45" src="/img/score.png">score record</h2>
+<div class="row">
 <div class="hidden-xs col-md-1 col-lg-1"></div>
 	<div class="col-xs-12 col-md-10 col-lg-10" id="scoreTB">
 		<table id="pjtable" class="table table-bordered" style="width:100%">
@@ -29,7 +30,7 @@
     	</table>
 	</div>
 <div class="hidden-xs col-md-1 col-lg-1"></div>
-<div id="dt-filter">
+	<div id="dt-filter">
         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
 			<ul class="dropdown-menu dropdown-menu-right">
 				  <li>
@@ -53,9 +54,35 @@
 				     </a>
 				  </li>
 			</ul>
-		</div>
+			<button class="btn btn-default" data-toggle="modal" data-target="#scorelv">score level</button>
+	</div>
+</div>
+<!-- manage score level -->
+	<div class="modal fade" id="scorelv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+					<h4 class="modal-title">Score level</h4>
+				</div>
+				<div class="modal-body">
+						<div class="form-group">
+							<label for="recipient-name" class="control-label">Title</label>
+							<input type="text" class="form-control" id="title" name="title" required/>
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="control-label">File</label>
+							<input type="file" id="file" name="myfiles" required/>
+						</div>
+				</div>
+				<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">save</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 <script>
-
 $(document).ready(function() {
     var table = $('#pjtable').DataTable( {
 		} );

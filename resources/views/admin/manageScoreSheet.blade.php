@@ -32,11 +32,11 @@
          <tbody>
            @foreach($temp->main as $main)
           <tr><td width="10%"><strong>round{{$main->round}}</strong></td><td> {{$main->criteria_main_name}}</td><td width="20%">
-            <input type="number" min="0" max="100" class="form-control main{{$temp->count}}" name="mainScore[]"><span>%</spam>
+            <input type="number" min="0" max="100" class="subClear form-control main{{$temp->count}}" name="mainScore[]"><span>%</spam>
             </td></tr>
           @endforeach
         </tbody>
-        <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal{{$temp->count}}"></font> <span>%</span></th></tr></tfoot>
+        <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="totalClear maintotal{{$temp->count}}"></font> <span>%</span></th></tr></tfoot>
       </table>
       <script>
           $(document).ready(function() {
@@ -53,14 +53,16 @@
               });
                $("#maintotal{{$temp->count}}").html(sum);
           });
-          function countTotal() {
-            if($("#maintotal{{$temp->count}}").html() != 100){
-              $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
-            } else {
-              $('#warning').html( "" );
-              window.location.href = 'create/subcriteria';
-            }
-          }
+          // $(document).ready(function() {
+          // $('#counttotal').click(function() {
+          //   if($("#maintotal{{$temp->count}}").html() != 100){
+          //     $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
+          //     return false;
+          //   } else {
+          //     $('#warning').html("");
+          //   }
+          // });
+          // });
       </script>
     </div>
   </div>
@@ -70,7 +72,7 @@
 @endforeach
 <div id="center">
   <a href="/exam/managescore/{{$year}}"><button type="button" class="action-button">back</button></a>
-  <button class="action-button" onclick="countTotal()">next</button>
+  <button type="submit" class="action-button" id="counttotal">next</button>
 </div>
 </form>
 </div>

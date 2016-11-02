@@ -1856,4 +1856,7 @@ button#more.btn.btn-default:hover {
   background-color: #40c3a7;
   color: white !important;
   border-color: #40c3a7;
-} 
+}
+#dt-filter > #pendlink a {
+  margin-left: 20px;
+}
