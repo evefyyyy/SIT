@@ -6,8 +6,7 @@ $(document).ready(function() {
 		var str = $("div.tools").html();
 		$("div.tools").html(str.replace(/\n/g, "<br />"));
 
-	}
-	);
+});
 	WebFontConfig = {
 		google: { families: [ 'Lato:400,700,300:latin' ] }
 	};

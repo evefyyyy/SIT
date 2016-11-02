@@ -16,6 +16,7 @@ use App\ProjectJoinStudents;
 use App\ProjectProposal;
 use App\DdayProject;
 use DB;
+use App\Proposal;
 
 class DdayController extends Controller
 {
@@ -53,5 +54,32 @@ class DdayController extends Controller
 				return "success";
 			}
 		}
+	}
+	public function allowDday(Request $request){
+		$student = Student::all();
+		$objs['students'] = $student;
+
+		$category = Category::all();
+		$objs['category'] = $category;
+
+		$type = Type::all();
+		$objs['type'] = $type;
+
+		$advisor = Advisor::all();
+		$objs['advisors'] = $advisor;
+
+    	$objs['proposal'] = Proposal::all();
+
+		$objs['countProject'] = GroupProject::where('group_project_approve','=',1)->count();
+
+
+		$projects = \App\ProjectStudent::all();
+		$unique = $projects->unique('project_pkid');
+		$objs['project'] = $projects;
+
+		$groupProject = GroupProject::all();
+    	$objs['group_project'] = $groupProject;
+
+      	return view('admin.allowdday',$objs);
 	}
 }

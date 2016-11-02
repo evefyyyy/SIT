@@ -933,7 +933,7 @@ h6 img {
   vertical-align: middle;
   padding: 10px 10px;
   font-size: 1em;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .news td span {
   font-size: 0.9em;
@@ -1811,7 +1811,19 @@ a.btn3 {
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
 }
-
+.loader #home {
+  margin: 5em auto;
+  width: 150px;
+  height: 150px;
+}
+button#more.btn.btn-default {
+  margin: 0 auto;
+ color: #ff7f7f !important;
+}
+button#more.btn.btn-default:hover {
+  background-color: #fff;
+  border-color: #ff7f7f;
+}
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -1821,3 +1833,26 @@ a.btn3 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.notification-counter {   
+    position: absolute;
+    top: -8px;
+    font-weight: 900;
+    background-color: #ff7f7f;
+    border-radius: 40%;
+    padding: 2px 8px;
+    font-size: 0.8em;
+    color: #fff;
+}
+#ddayscore .row, #department {
+  margin-bottom: 30px;
+}
+#department .btn {
+  font-weight: 900;
+  width: 200px;
+  letter-spacing: 0.1em;
+}
+#department > .btn-default.active { 
+  background-color: #40c3a7;
+  color: white !important;
+  border-color: #40c3a7;
+} 

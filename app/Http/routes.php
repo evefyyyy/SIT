@@ -21,7 +21,7 @@ Route::get('home/','projectController@index');
 Route::get('home/search','projectController@search');
 // Route::get('showproject/{groupId}','showProjectController@index');
 Route::get('showproject/{groupId}','showProjectController@show');
-
+Route::get('dday/allowdday', 'DdayController@allowDday');
 
 //admin
 Route::get('exam/manageroom','examRoomController@index');
