@@ -29,7 +29,8 @@
     	</table>
 	</div>
 <div class="hidden-xs col-md-1 col-lg-1"></div>
-<div id="dt-filter">
+	<div id="dt-filter">
+		<button class="btn btn-default" data-toggle="modal" data-target="#scorelv">score level</button>
         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
 			<ul class="dropdown-menu dropdown-menu-right">
 				  <li>
@@ -53,9 +54,39 @@
 				     </a>
 				  </li>
 			</ul>
+	</div>
+<div class="modal fade" id="scorelv" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">score level</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td width="50%">more than<input type="number" class="form-control" min="0" max="100"></td><td><input class="form-control verygood"></td>
+						</tr>
+						<tr>
+							<td>more than<input type="number" class="form-control" min="0" max="100"></td><td><input class="form-control good"></td>
+						</tr>
+						<tr>
+							<td>more than<input id="pscore" type="number" class="form-control" min="0" max="100"></td><td><input class="form-control fair"></td>
+						</tr>
+						<tr>
+							<td>less than<span></span></td><td><input class="form-control poor"></td>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+					<button type="submit" class="btn btn-primary">save</button>
+			</div>
 		</div>
+	</div>
+</div>
 <script>
-
 $(document).ready(function() {
     var table = $('#pjtable').DataTable( {
 		} );
@@ -75,5 +106,9 @@ $("#pjtable_filter").append($tmp );
         column.visible( ! column.visible() );
     } );
 } );
+$('#pscore').keyup(function () {
+	var p = $('#pscore').val();
+	$('#scorelv .table > tbody > tr > td > span').html(p);     
+});
 </script>
 @stop
