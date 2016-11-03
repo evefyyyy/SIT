@@ -15,7 +15,7 @@ class CreateDdayTable extends Migration
         Schema::create('dday', function (Blueprint $table) {
             $table->increments('id');
             $table->string('dday_gencode');
-            $table->string('dday_type');
+            $table->integer('year');
             $table->timestamps();
         });
     }

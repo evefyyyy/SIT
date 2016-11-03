@@ -135,7 +135,7 @@
 					<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
 					<button type="submit" class="btn btn-primary">save</button>
 				</form>
 			</div>

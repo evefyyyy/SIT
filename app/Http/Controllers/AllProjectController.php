@@ -35,6 +35,8 @@ class AllProjectController extends Controller
 
 		$objs['countProject'] = GroupProject::where('group_project_approve','=',1)->count();
 
+		$objs['projectNoApprove'] = GroupProject::where('group_project_approve', 0)->count();
+
 
 		$projects = \App\ProjectStudent::all();
 		$unique = $projects->unique('project_pkid');

@@ -12,6 +12,7 @@ use App\Student;
 use App\UserStudent;
 use DB;
 use App\Http\Requests\LoginRequest;
+use App\UserStaff;
 
 
 class LdapLoginController extends Controller
@@ -112,6 +113,10 @@ class LdapLoginController extends Controller
 					return redirect()->intended('/home');
 				} else {
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
+				}
+			} else if($username == 'admin'){
+				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
+					return redirect()->intended('/home');
 				}
 			} else {
 				return redirect('/relogin')->withErrors("Username or Password is incorrect.");

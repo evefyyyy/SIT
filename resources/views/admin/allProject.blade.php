@@ -13,7 +13,11 @@
 				</ul>
 			</div>
 			<span id="pendlink">
+				@if($projectNoApprove != 0)
+				<a class="btn" href="/project/pending">Pending Projects<span class="notification-counter">{{$projectNoApprove}}</span></a>
+				@else
 				<a class="btn" href="/project/pending">Pending Projects</a>
+				@endif
 			</span>
 		</div>
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
