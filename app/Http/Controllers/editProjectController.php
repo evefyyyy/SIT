@@ -123,18 +123,24 @@ class editProjectController extends Controller {
 							->where('project_pkid',$getId)
 							->value('project_detail.id');
 
+		$checkUrl = strrpos($request['video'],'www.youtube.com/watch?v=');
+
 		if($detail != null){
 			$obj = ProjectDetail::find($detail);
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
-			$obj->video = str_replace('watch?v=','embed/',$request['video']);
+			if($checkUrl || $request['video'] == null){
+				$obj->video = str_replace('watch?v=','embed/',$request['video']);
+			}
 			$obj->save();
 		}else if($detail == null){
 			$obj = new ProjectDetail();
 			$obj->project_pkid = $getId;
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
-			$obj->video = str_replace('watch?v=','embed/',$request['video']);
+			if($checkUrl || $request['video'] == null){
+				$obj->video = str_replace('watch?v=','embed/',$request['video']);
+			}
 			$obj->save();
 		}
 

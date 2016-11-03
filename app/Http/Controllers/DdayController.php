@@ -41,16 +41,16 @@ class DdayController extends Controller
 		$pjid = $request->pjid;
 		$ddayid = Dday::where('dday_gencode', $gencode)->first();
 		if($ddayid == null){
-			return "Invalid Code";
+			return "invalid";
 		} else if ($ddayid != null){
 			$checkgencode = DdayProject::where('dday_id','=', $ddayid->id)->first();
 			if($checkgencode != null){
-				return "Code is used already";
+				return "used";
 			} else if($checkgencode == null){
 				DdayProject::insert(
 					['project_pkid' => $pjid, 'dday_id' => $ddayid->id]
 					);
-				return "Thank you for vote";
+				return "success";
 			}
 		}
 	}

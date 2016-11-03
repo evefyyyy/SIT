@@ -63,6 +63,9 @@ Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateS
 Route::get('exam/scorerecord/viewscore',function(){
   return view('admin.viewScore');
 });
+Route::get('dday/scorerecord', function () {
+  return view('admin.ddayscore');
+});
 
 Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createMainCriteria');
 
@@ -89,15 +92,11 @@ Route::post('news/delete', function(){
 });
 
 //advisor
-Route::get('exam/round', function () {
-  return view('advisor.examDetail');
-});
-Route::get('exam/round/givemarks', function () {
-  return view('advisor.giveMarks');
-});
-Route::get('exam/selectround', function () {
-  return view('advisor.selectRound');
-});
+Route::get('exam/round','GiveMarksController@selectRound');
+Route::get('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarksData');
+Route::put('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarks'); 
+Route::get('exam/round/{round}','GiveMarksController@examDetail');
+
 Route::resource('exam/allowtest', 'AllowTestController');
 Route::resource('advproject','AdvisorProjectController');
 Route::resource('advisor/news/announcement', 'AdvisorAnnoucementController');

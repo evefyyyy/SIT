@@ -1121,7 +1121,7 @@ img#cover {
 .fancy {
   line-height: 0.5;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.4em;
   text-transform: uppercase;
   margin-bottom: 15px;
   font-weight: 600;
@@ -1150,7 +1150,7 @@ img#cover {
 .fancyy {
   line-height: 0.5;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.2em;
   margin-top: 30px;
   color: #40c3a7;
   text-decoration: none;
@@ -1792,7 +1792,14 @@ a.btn3 {
   color: red;
 }
 .cd-load, .cd-success {
-  padding: 5em;
+  padding: 3em;
+}
+.cd-success h2 {
+  font-size: 2em;
+}
+.cd-success img {
+  width: 6em;
+  padding: 0;
 }
 .loader {
   border: 16px solid #f3f3f3;

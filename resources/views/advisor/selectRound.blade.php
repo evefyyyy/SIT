@@ -3,7 +3,7 @@
 <div class="row round-btn">
 <h2><img height="45" src="/img/givemarks.png">give marks</h2>
 			@foreach($round as $r)
-			<a href="/exam/{{$r}}/givemarks/IT56-31"><button id="round2">exam round {{$r}}</button></a>
+			<a href="/exam/round/{{$r}}"><button id="round2">exam round {{$r}}</button></a>
 			@endforeach
 	</div>
 </div>

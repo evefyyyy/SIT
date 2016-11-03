@@ -77,7 +77,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">dday</a>
                     <ul class="dropdown-menu">
                       <li><a href="#">gen code</a></li>
-                      <li><a href="#">score record</a></li>
+                      <li><a href="/dday/scorerecord">score record</a></li>
                     </ul>
                   </li>
                 </ul>

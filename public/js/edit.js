@@ -160,21 +160,3 @@ $('.embed').on('click', function() {
   }
 
 });
-
-// $( function() {
-//     $( ".image-view" ).sortable();
-//     $( ".image-view" ).disableSelection();
-//   } );
-
-// $("form").submit( function(event) {
-//     var coverpic = $('#img-cover')
-//         if( coverpic.width == 1920 && coverpic.height == 1080 ) {
-//           form.submit();
-//         }
-//         else {
-//           alert("Poster image must be 1920*1080 px");
-//           event.preventDefault();
-//           return false;
-//         }
-
-// });
