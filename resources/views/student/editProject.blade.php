@@ -35,7 +35,7 @@
 			  <div class="panel-heading">details</div>
 			  <div class="panel-body">
 			  	<div class="col-lg-12">
-			    	<textarea class="form-control" rows="3" placeholder="Enter a short description of your project" name="detail">{{$detail or ''}}</textarea>
+			    	<textarea class="form-control" rows="3" placeholder="Enter your project description" name="detail">{{$detail or ''}}</textarea>
 				</div>
 			  </div>
 			</div>
