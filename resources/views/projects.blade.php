@@ -15,52 +15,54 @@
         </div>
     </div>
 <div class="row">
-	<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-
-      @foreach($groupProject as $project)
+  <div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+      @foreach($groupProject->shuffle() as $project)
+      @if($project->group_project_detail != "")
       <?php
         $id = $project->id;
         $poster = DB::table('pictures')
                   ->where('project_pkid',$id)
                   ->where('picture_type_id','=','1')
                   ->value('picture_path_name');
+        $catId = $project->category_id;
+        $category = DB::table('categories')
+                    ->where('id',$catId)
+                    ->value('category_name');
        ?>
-			<div class="col-xs-18 col-sm-6 col-md-4 col-lg-3" data-tag='{{$project->category->category_name}}'>
-	          <div class="thumbnail">
-	          	<div class="pdf-thumb-box">
-			      <a href="/showproject/{{$project->id}}">
-			      	 <div class="pdf-thumb-box-overlay">
-			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i>
-       				 </div>
+      <div class="col-xs-18 col-sm-6 col-md-4 col-lg-3" data-tag='{{$category}}'>
+            <div class="thumbnail">
+              <div class="pdf-thumb-box">
+            <a href="/showproject/{{$project->group_project_id}}">
+               <div class="pdf-thumb-box-overlay">
+                <div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i>
+               </div>
               @if(count($poster)===0)
               <img src="/img/no-poster.png">
               @else
-	          <img src="{{$poster}}" alt="">
+            <img src="{{$poster}}" alt="">
               @endif
           		</a>
           		</div>
 	              <div class="caption">
 	                <h6>{{$project->group_project_eng_name}}</h6>
-                  @if(count($project->ProjectDetail) === 0)
-                    <p></p>
-                  @else
-	                   <p>{{$project->projectDetail[0]->group_project_detail}}</p>
-                  @endif
+	                   <p>{{$project->group_project_detail}}</p>
 	            </div>
 	       	  </div>
 	       	</div>
+          @endif
           @endforeach
-	<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+  <div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 </div>
-	<script>
-		$(document).ready(function() {
-		    $("div.caption").dotdotdot(
-		    {
-		        ellipsis : '...',
-		        wrap: "word",
-		        height: 70,
-		    });
-		});
-	</script>
+  <script>
+    $(document).ready(function() {
+        $("div.caption").dotdotdot(
+        {
+            ellipsis : '...',
+            wrap: "letter",
+            height: 60,
+            watch : true
+        });
+    });
+  </script>
 @stop

@@ -18,9 +18,14 @@ class StudentCheck
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            dd('sucess');
+            if(Auth::user()->user_type_id === 3){
+                return $next($request);
+            } else {
+                return redirect('logout');
+            }
+            return $next($request);
         } else {
-            return redirect('home');
+            return redirect('/relogin');
         }
     }
 }

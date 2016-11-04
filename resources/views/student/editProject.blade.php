@@ -4,33 +4,33 @@
 <script src="{!! URL::asset('js/jquery-ui.min.js') !!}"></script>
 <div id="detail">
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<form class="" action="{{$url}}" method="post" enctype="multipart/form-data">
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+			<form id="editpj" class="" action="{{$url}}" method="post" enctype="multipart/form-data">
 				{{method_field($method)}}
 				<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-				<img class="img-responsive" id="cover" src="{{$poster or ''}}"/>
+				<img class="img-responsive" id="cover" src="{{$poster or '/img/no-poster.png'}}"/>
 				<input type="file" id="img-cover" name="poster"/>
-				<label for="img-cover" class="btn btn-browse group">Select new image</label>
-				<label class="pic-size">poster 1280 x 768 px</label>
+				<label for="img-cover" class="btn btn-browse">Select new image</label>
+				<label class="pic-size">poster 1920 x 1080 px</label>
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btn-save">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 btn-save">
 				<a class="btn btn-default" onclick="goBack()">back</a>
-				<button class="btn btn-primary">save & show my project</button>
+				<button type="submit" class="btn btn-primary">save & show my project</button>
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 			<div class="panel panel-info">
 			  <div class="panel-heading">details</div>
 			  <div class="panel-body">
@@ -40,15 +40,15 @@
 			  </div>
 			</div>
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
-				<img id="group-member" src="{{$groupPic or ''}}" alt="your image" />
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-xs-12 col-sm-10 col-md-5 col-lg-5">
+				<img id="group-member" src="{{$groupPic or '/img/no-image.png'}}" alt="your image" />
 				<input type="file" id="imgInp" name="groupPicture"/>
 				<label for="imgInp" class="btn btn-browse group">Select new image</label>
-				<label class="pic-size">group member picture (4:3)</label>
+				<label class="pic-size">group member photo (4:3)</label>
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
@@ -61,6 +61,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			</div>
 			<!-- gallery pic -->
 			<input type="file" name="screenshot[]" id="uploader" multiple/>
+			<input type='hidden' name="uploadIndex" id='uploaderIndex' />
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
             <a class="btn btn-danger del" name="btn-delete" title="Delete Multiple image" >Delete</a>
@@ -73,43 +74,34 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		                	$count = 0 ;
 		                ?>
 											@if($screenshot)
-											
 									 			@foreach($screenshot as $img)
-										 			<li class="col-xs-4 gallery ui-state-default" id="pic{{$count}}">
+										 			<li class="col-xs-4 gallery" id="pic{{$count}}">
 												 			<img src="{{asset($img->picture_path_name)}}"/>
 												 			<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
 												 		</li>
 									 			@endforeach
-									 		
+
 							 				@endif
+
 		                </ul>
 		            </div>
 		        </div>
 		    </div>
 		    <input type="hidden" id="cpic" value="{{$count}}">
 		</div>
-		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
-		<div class="col-xs-12 col-sm-12 hidden-md hidden-lg"></div>
-		<div class="col-xs-1 col-sm-1 hidden-md hidden-lg"></div>
-		<div class="col-xs-10 col-sm-10 col-md-5 col-lg-5">
+		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
+		<div class="col-hidden-xs col-sm-12 hidden-md hidden-lg"></div>
+		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
+		<div class="col-xs-12 col-sm-10 col-md-5 col-lg-5">
 		<div class="panel panel-info">
 			<div class="panel-heading">author</div>
 			<div class="panel-body">
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName1}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId1}}</div>
+				@foreach($student as $st)
+			<div class="col-xs-6 col-md-6 col-lg-6 text fullname">{{$st->student_name}}</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$st->student_id}}</div>
 			<div class="col-xs-3 col-md-3 col-lg-3"></div>
-			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email1" value="{{$email1 or ''}}"></div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName2}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId2}}</div>
-			<div class="col-xs-3 col-md-3 col-lg-3"></div>
-			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email2" value="{{$email2 or ''}}"></div>
-			@if($student == 3)
-			<div class="col-xs-6 col-md-6 col-lg-6 text">{{$stdName3 or ''}}</div>
-			<div class="col-xs-6 col-md-6 col-lg-6 text">รหัสนักศึกษา {{$stdId3 or ''}}</div>
-			<div class="col-xs-3 col-md-3 col-lg-3"></div>
-			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email3" value="{{$email3 or ''}}"></div>
-			@else
-			@endif
+			<div class="col-xs-9 col-md-9 col-lg-9 mail"><input type="text" class="form-control" placeholder="email" name="email[]" value="{{$st->student_email or ''}}"></div>
+			@endforeach
 			</div>
 		</div>
 		<div class="panel panel-info">
@@ -120,15 +112,17 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			@endforeach
 			</div>
 		</div>
-		<div class="embed-responsive embed-responsive-16by9" id="vdo"></div>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe id="vdo" width="1280" height="720" src="https://www.youtube.com/embed/XqJU9HWBUsE" frameborder="0" allowfullscreen></iframe>
+		</div>
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Paste a youtube embed code" id="embedcode" name="video" value="{{$video or ''}}">
+				<input type="text" class="form-control" placeholder="Paste a youtube link" id="embedcode" name="video" value="{{$video or ''}}">
 				<span class="input-group-btn">
 					<button class="btn btn-primary embed" type="button">Embed</button>
 				</span>
 			</div>
 		</div>
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 		</form>
 </div>

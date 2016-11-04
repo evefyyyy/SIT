@@ -58,7 +58,7 @@
 								</div>
 							</div>
 				</div>
-				<input type="button" name="next" class="next action-button" value="Next" />
+				<input type="button" id="check1" name="next" class="next action-button" value="Next" />
 			</fieldset>
 			<fieldset id="stdno">
 				<h2 class="fs-title">Team members</h2>
@@ -82,7 +82,7 @@
 					<div class="col-xs-6 col-md-6 stdname" id="fname3">{{$stdName3 or ''}}</div>
 				</div>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="button" name="next" class="next action-button" value="Next" />
+				<input type="button" id="check2" name="next" class="next action-button" value="Next" />
 			</fieldset>
 			<fieldset>
 				<h2 class="fs-title">Advisors</h2>
@@ -117,7 +117,7 @@
 					</div>
 				</div>
 		    	<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="button" name="next" class="next action-button" value="Next" id="myBtn" onclick="getValue()" />
+				<input type="button" id="check3" name="next" class="next action-button" value="Next" id="myBtn" onclick="getValue()" />
 		    </fieldset>
 			<fieldset>
 				<h2 class="fs-title">Submit your project</h2>
@@ -147,7 +147,7 @@
 				<div class="title" id="head">Advisor</div>
 					<table class="teammem">
 					  <tr>
-					  	<td>Main advisor</td>
+					  	<td width="25%">Main advisor</td>
 					    <td id="mainAdvisor1"></td>
 					  </tr>
 					  <tr>

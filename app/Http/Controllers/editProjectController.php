@@ -21,6 +21,8 @@ use App\ProjectProposal;
 use App\Proposal;
 use App\ProjectDetail;
 use App\Picture;
+use Auth;
+use Image;
 
 
 
@@ -28,10 +30,13 @@ class editProjectController extends Controller {
 
 
 
-	public function edit($id)
+	public function index()
 	{
-		$data['url'] = url('student/myproject/edit/'.$id);
+		$data['url'] = url('student/myproject/edit');
 		$data['method'] = "put";
+
+		$stdId = Auth::user()->user_student->student_pkid;
+		$id = DB::table('project_students')->where('student_pkid',$stdId)->value('project_pkid');
 
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;
@@ -52,26 +57,7 @@ class editProjectController extends Controller {
 							->join('students','student_pkid','=','students.id')
 							->where('project_pkid',$getId)
 							->select('student_id','student_name','student_email')->get();
-		$data['student'] = count($student);
-
-		if(count($student)==3){
-			$data['stdId1'] = $student[0]->student_id;
-			$data['stdId2'] = $student[1]->student_id;
-			$data['stdId3'] = $student[2]->student_id;
-			$data['stdName1'] = $student[0]->student_name;
-			$data['stdName2'] = $student[1]->student_name;
-			$data['stdName3'] = $student[2]->student_name;
-			$data['email1'] = $student[0]->student_email;
-			$data['email2'] = $student[1]->student_email;
-			$data['email3'] = $student[2]->student_email;
-		}else if(count($student)==2){
-			$data['stdId1'] = $student[0]->student_id;
-			$data['stdId2'] = $student[1]->student_id;
-			$data['stdName1'] = $student[0]->student_name;
-			$data['stdName2'] = $student[1]->student_name;
-			$data['email1'] = $student[0]->student_email;
-			$data['email2'] = $student[1]->student_email;
-		}
+		$data['student'] = $student;
 
 		$data['advisors'] = DB::table('project_advisors')
 												->join('advisors','advisor_id','=','advisors.id')
@@ -104,51 +90,32 @@ class editProjectController extends Controller {
 							->where('project_pkid',$getId)
 							->where('picture_type_id','=','3')
 							->select('id','picture_path_name')->get();
-							
+
 
 		return view('student.editProject',$data);
 
 	}
 
-	public function update(Request $request,$id)
+	public function update(Request $request)
 	{
+
+		$stdId = Auth::user()->user_student->student_pkid;
+		$id = DB::table('project_students')->where('student_pkid',$stdId)->value('project_pkid');
+		$groupId = DB::table('group_projects')->where('id',$id)->value('group_project_id');
 
 		$obj = GroupProject::find($id);
 		$getId = $obj->id;
 
+		$email = $request['email'];
 		$student = DB::table('project_students')
 							->join('students','student_pkid','=','students.id')
 							->where('project_pkid',$getId)
 							->select('students.id')->get();
-
-		if(count($student)==3){
-			$std1 = $student[0]->id;
-			$std2 = $student[1]->id;
-			$std3 = $student[2]->id;
-		}else if(count($student)==2){
-			$std1 = $student[0]->id;
-			$std2 = $student[1]->id;
-		}
-
-		if(count($student)==3){
-			$obj = Student::find($std1);
-			$obj->student_email = $request['email1'];
-			$obj->save();
-
-			$obj = Student::find($std2);
-			$obj->student_email = $request['email2'];
-			$obj->save();
-
-			$obj = Student::find($std3);
-			$obj->student_email = $request['email3'];
-			$obj->save();
-		}else if(count($student)==2){
-			$obj = Student::find($std1);
-			$obj->student_email = $request['email1'];
-			$obj->save();
-
-			$obj = Student::find($std2);
-			$obj->student_email = $request['email2'];
+		$countStd = count($student);
+		for($i=0; $i<$countStd; $i++){
+			$stdId = $student[$i]->id;
+			$obj = Student::find($stdId);
+			$obj->student_email = $email[$i];
 			$obj->save();
 		}
 
@@ -157,51 +124,76 @@ class editProjectController extends Controller {
 							->where('project_pkid',$getId)
 							->value('project_detail.id');
 
+		$checkUrl = strrpos($request['video'],'www.youtube.com/watch?v=');
 		if($detail != null){
 			$obj = ProjectDetail::find($detail);
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
-			$obj->video = $request['video'];
+			if($checkUrl || $request['video'] == null){
+				$obj->video = str_replace('watch?v=','embed/',$request['video']);
+			}
 			$obj->save();
 		}else if($detail == null){
 			$obj = new ProjectDetail();
 			$obj->project_pkid = $getId;
 			$obj->group_project_detail = $request['detail'];
 			$obj->tools_detail = $request['tools'];
-			$obj->video = $request['video'];
+			if($checkUrl || $request['video'] == null){
+				$obj->video = str_replace('watch?v=','embed/',$request['video']);
+			}
 			$obj->save();
 		}
+
 
 		$poster = DB::table('pictures')
 								->join('group_projects','project_pkid','=','group_projects.id')
 								->where('project_pkid',$getId)
 								->where('picture_type_id','=','1')
 								->value('pictures.id');
+		$picPath = DB::table('pictures')
+								->join('group_projects','project_pkid','=','group_projects.id')
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','1')
+								->value('picture_path_name');
+
+
 
 		if($poster != null){
 				if($request->file('poster')){
-					$path = base_path('public/projectPoster');
+					$delPath = base_path('public_html');
+					File::Delete($delPath.$picPath);
+					DB::table('pictures')->where('id',$poster)->delete();
+					$path = base_path('public_html/projectPoster');
 					$file = $request->file('poster');
-					$filename = $file->getClientOriginalName();
+					$extension = $file->getClientOriginalExtension();
+					$filename = "poster".$groupId.".".$extension;
 					$move = $file->move($path,$filename);
-					$obj = Picture::find($poster);
-					$savePic = '/projectPoster'."/".$filename ;
-					$obj->picture_path_name = $savePic;
-					$obj->picture_type_id = '1';
-					$obj->save();
+
+					$filename1 = "resize".$groupId.".".$extension;
+
+    $image = ImageManager::make($path . DIRECTORY_SEPARATOR . $fileName);
+		dd($image);
+
+					// $obj = new Picture();
+					// $savePic = '/projectPoster'."/".$filename ;
+					// $obj->picture_path_name = $savePic;
+					// $obj->picture_type_id = '1';
+					// $obj->project_pkid = $getId;
+					// $obj->save();
 				}
 		}else if($poster == null){
 			if($request->file('poster')){
-				$path = base_path('public/projectPoster');
+				$path = base_path('public_html/projectPoster');
 				$file = $request->file('poster');
-				$filename = $file->getClientOriginalName();
+				$extension = $file->getClientOriginalExtension();
+				$filename = "poster".$groupId.".".$extension;
 				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
-				$obj->picture_path_name = $savePic;
-				$obj->picture_type_id = '1';
-				$obj->project_pkid = $getId;
-				$obj->save();
+				// $obj->picture_path_name = $savePic;
+				// $obj->picture_type_id = '1';
+				// $obj->project_pkid = $getId;
+				// $obj->save();
 			}
 		}
 
@@ -211,23 +203,35 @@ class editProjectController extends Controller {
 								->where('picture_type_id','=','2')
 								->value('pictures.id');
 
+		$groupPicPath = DB::table('pictures')
+										->join('group_projects','project_pkid','=','group_projects.id')
+										->where('project_pkid',$getId)
+										->where('picture_type_id','=','2')
+										->value('picture_path_name');
+
 		if($groupPic != null){
 				if($request->file('groupPicture')){
-					$path = base_path('public/groupPicture');
+					$delPath = base_path('public_html');
+					File::Delete($delPath.$groupPicPath);
+					DB::table('pictures')->where('id',$groupPic)->delete();
+					$path = base_path('public_html/groupPicture');
 					$file = $request->file('groupPicture');
-					$filename = $file->getClientOriginalName();
+					$extension = $file->getClientOriginalExtension();
+					$filename = "groupPic".$groupId.".".$extension;
 					$move = $file->move($path,$filename);
-					$obj = Picture::find($groupPic);
+					$obj = new Picture();
 					$savePic = '/groupPicture'."/".$filename ;
 					$obj->picture_path_name = $savePic;
 					$obj->picture_type_id = '2';
+					$obj->project_pkid = $getId;
 					$obj->save();
 				}
 		}else if($groupPic == null){
 			if($request->file('groupPicture')){
-				$path = base_path('public/groupPicture');
+				$path = base_path('public_html/groupPicture');
 				$file = $request->file('groupPicture');
-				$filename = $file->getClientOriginalName();
+				$extension = $file->getClientOriginalExtension();
+				$filename = "groupPic".$groupId.".".$extension;
 				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/groupPicture'."/".$filename ;
@@ -239,31 +243,60 @@ class editProjectController extends Controller {
 		}
 
 		$countPic = DB::table('pictures')
-					->where('project_pkid',$getId)
-					->where('picture_type_id','=','3')
-					->select('project_pkid')->get();
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','3')
+								->select('project_pkid')->get();
+		$count = count($countPic);
 
-								if(count($countPic)<10){
-										$x = $request->file('screenshot') ;
-										if($x[0] != null){
-											if(count($x)){
-												foreach ($x as $xs) {
-													$path = base_path('public/screenshot');
-													$filename = $xs->getClientOriginalName();
-													$move = $xs->move($path,$filename);
-													$savePic = '/screenshot'."/".$filename;
-													$obj = new Picture();
-													$obj->picture_path_name = $savePic;
-													$obj->picture_type_id = '3';
-	 												$obj->project_pkid = $getId;
-													$obj->save();
+								if(count($countPic)<10) {
+										$screenshot = $request->file('screenshot');
+										$unuseScreenshot = $request['uploadIndex'];
+										if($unuseScreenshot != null){
+											$explodeUnuse = explode(",",$unuseScreenshot);
+											$getScreenshot = array_diff_key($screenshot,$explodeUnuse);
+													foreach ($getScreenshot as $key => $screen) {
+															$numPic = $count+$key+1;
+															$path = base_path('public_html/screenshot');
+															$extension = $screen->getClientOriginalExtension();
+															$filename = "screenshot".$numPic.".".$groupId.".".$extension;
+															$move = $screen->move($path,$filename);
+															$savePic = '/screenshot'."/".$filename;
+															$obj = new Picture();
+															$obj->picture_path_name = $savePic;
+															$obj->picture_type_id = '3';
+			 												$obj->project_pkid = $getId;
+															$obj->save();
+													}
+										}else{
+											if($screenshot[0] != null){
+													foreach ($screenshot as $key => $screen) {
+														$numPic = $count+$key+1;
+														$path = base_path('public_html/screenshot');
+														$extension = $screen->getClientOriginalExtension();
+														$filename = "screenshot".$numPic.".".$groupId.".".$extension;
+														$move = $screen->move($path,$filename);
+														$savePic = '/screenshot'."/".$filename;
+														$obj = new Picture();
+														$obj->picture_path_name = $savePic;
+														$obj->picture_type_id = '3';
+		 												$obj->project_pkid = $getId;
+														$obj->save();
+													}
 												}
-											}
 										}
-								}
+							}
 
+			return redirect('/showproject'.'/'.$groupId);
+	}
 
+	public function upload(Request $requst)
+	{
+		dd($request);
+		$stdId = Auth::user()->user_student->student_pkid;
+		$id = DB::table('project_students')->where('student_pkid',$stdId)->value('project_pkid');
+		$groupId = DB::table('group_projects')->where('id',$id)->value('group_project_id');
 
-			return redirect('/showproject');
+		$obj = GroupProject::find($id);
+		$getId = $obj->id;
 	}
 }

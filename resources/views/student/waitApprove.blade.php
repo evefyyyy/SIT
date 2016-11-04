@@ -18,17 +18,22 @@
 		@foreach($std as $s)
 		<tr>
 			<td>Student no. {{$s->student_id}}</td>
-			<td>{{$s->student_name}}</td>
+			<td class="fullname">{{$s->student_name}}</td>
 		</tr>
 		@endforeach
 	</table>
 	<div class="title" id="head">Advisor</div>
 		<table class="teammem">
 			<tbody>
-			
-			<tr><td><strong>Main advisor</strong>{{$advisors[0]->advisor_name}}</td></tr>
-			<tr><td><strong>Co-advisor</strong>{{$advisors[1] != null ? $advisors[1]->advisor_name : ''}}</td></tr>
-			
+				<?php
+					$count = count($advisors);
+				 ?>
+			@if($count == 1)
+			<tr><td width="25%"><strong>Main advisor</strong></td><td>{{$advisors[0]->advisor_name}}</td></tr>
+			@else
+			<tr><td width="25%"><strong>Main advisor</strong></td><td>{{$advisors[0]->advisor_name}}</td></tr>
+			<tr><td><strong>Co-advisor</strong></td><td>{{$advisors[1]->advisor_name}}</td></tr>
+			@endif
 			</tbody>
 		</table>
 	</div>

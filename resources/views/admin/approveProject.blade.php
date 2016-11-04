@@ -70,14 +70,18 @@
                        {{$team->student->student_id}}<br>
                        @endforeach
                    </td>
-                   <td rowspan="3" colspan="2">
+                   <td rowspan="3" colspan="2" class="fullname">
                        @foreach($teams as $team)
                        {{ $team->student->student_name}}<br>
                        @endforeach
                    </td>
                    <?php $advisors = App\ProjectAdvisor::where('project_pkid', $pj->project_pkid)->get();
+                      if(count($advisors)==2){
                         $advisorsNo1 = $advisors[0]->advisor->advisor_name;
                         $advisorsNo2 = $advisors[1]->advisor->advisor_name;
+                      }else{
+                        $advisorsNo1 = $advisors[0]->advisor->advisor_name;
+                      }
                    ?>
                    <th style="border:0; width:15%;">main advisor<span>:</span></th>
                    <td style="border:0; width:25%;">
@@ -86,7 +90,7 @@
                </tr>
                <tr rowspan="2"><th>co-advisor<span>:<span></th>
                 <td>
-                        {{ $advisorsNo2}}
+                        {{count($advisors)==2 ? $advisorsNo2 : ''}}
                </td>
            </tr>
        </table>

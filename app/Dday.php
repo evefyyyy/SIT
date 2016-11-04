@@ -10,6 +10,6 @@ class Dday extends Model
     protected $table = 'dday';
     public function ddayProject()
     {
-      return $this->hasMany('App\DdayProject' , 'dday_id');
+      return $this->hasOne('App\DdayProject' , 'dday_id');
   }
 }

@@ -30,7 +30,7 @@
 				@else
 				<!-- show announcement -->
 				@foreach($news as $n)
-				<tr class="news {{$n->end_date <= date('Y-m-d') && $n->end_date != '0000-00-00' ? "expired" : ""}}">
+				<tr >
 					<td><a data-toggle="modal" data-target="#announce{{$count}}">{{$n->title}}</a>
 							@if($n->start_date > date('Y-m-d'))
 									<span class="pending"> - pending</span>
@@ -135,7 +135,7 @@
 					<input type="hidden" name="cTitle" id="copy{{$count++}}" value="{{$n->title}}">
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
 					<button type="submit" class="btn btn-primary">save</button>
 				</form>
 			</div>
@@ -251,5 +251,28 @@
 			function setNum(x){
 				document.getElementById('num').value = x;
 			}
+			$(function () {
+				$('.datetimepicker1').datetimepicker({
+					format: 'DD/MM/YYYY',
+				});
+				$('.datetimepicker2').datetimepicker({
+					format: 'DD/MM/YYYY',
+					useCurrent: false //Important! See issue #1025
+				});
+				$('#datetimepicker6').datetimepicker({
+					format: 'DD/MM/YYYY',
+					defaultDate: new Date()
+				});
+				$('#datetimepicker7').datetimepicker({
+					format: 'DD/MM/YYYY',
+					useCurrent: false //Important! See issue #1075
+				});
+				$("#datetimepicker6").on("dp.change", function (e) {
+					$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+				});
+				$("#datetimepicker7").on("dp.change", function (e) {
+					$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+				});
+			});
 			</script>
 			@stop

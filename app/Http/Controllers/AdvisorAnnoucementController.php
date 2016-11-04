@@ -22,12 +22,15 @@ class AdvisorAnnoucementController extends Controller
 {
     public function index()
 	{
-		$news = \App\News::where('news_type_id','=','1')->where('start_date','<=',date('Y-m-d'))->where('end_date','>',date('Y-m-d'))->get();
-		$count = 0 ;
+    $news = \App\News::where('news_type_id','=','1')->where('end_date','=','0000-00-00')->orWhere('end_date','>=',date('Y-m-d'))->get();
+
+    $expired = \App\News::where('news_type_id','=','1')->where('end_date','<',date('Y-m-d'))->where('end_date','!=','0000-00-00')->get();
+
+    $count = 0 ;
 
 		return view('advisor.advAnnounce')->with('news',$news->reverse())->with('count',$count);
 	}
 
-	
+
 
 }

@@ -202,6 +202,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 81779ca59e09ab645948791d097eef135bdcd564
         'Image' => Intervention\Image\Facades\Image::class,
 
     ],

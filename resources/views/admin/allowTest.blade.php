@@ -32,16 +32,20 @@
 						<td><input type="checkbox"></td>
 						<td>{{$gp->group_project_id}}</td>
 						<td id="name">
-							<a class="tblink" href="showproject/{{$gp->id}}" target="_blank">{{$gp->group_project_eng_name}}<br>
+							<a class="tblink" href="/showproject/{{$gp->id}}" target="_blank">{{$gp->group_project_eng_name}}<br>
 								{{$gp->group_project_th_name}}
 							</a>
 						</td>
 						<?php $advisors = App\ProjectAdvisor::where('project_pkid', $gp->id)->get();
-						$advisorsNo1 = $advisors[0]->advisor->advisor_name;
-						$advisorsNo2 = $advisors[1]->advisor->advisor_name;
+						if(count($advisors) == 2){
+							$advisorsNo1 = $advisors[0]->advisor->advisor_name;
+							$advisorsNo2 = $advisors[1]->advisor->advisor_name;
+						}else{
+								$advisorsNo1 = $advisors[0]->advisor->advisor_name;
+						}
 						?>
 						<td class="firstname">{{ $advisorsNo1 }}</td>
-						<td class="firstname">{{ $advisorsNo2 }}</td>
+						<td class="firstname">{{count($advisors) == 2 ? $advisorsNo2 : ''}}</td>
 						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
 					</tr>
 
@@ -94,10 +98,10 @@
 		} );
 	} );
 	 $("#check").click(function () {
-     $('input:checkbox').prop("checked", true); 
+     $('input:checkbox').prop("checked", true);
  	});
 	 $("#uncheck").click(function () {
-     $('input:checkbox').prop("checked", false); 
+     $('input:checkbox').prop("checked", false);
  	});
 </script>
 @stop

@@ -21,30 +21,41 @@
       <h4 class="text-center noProject">no project found</h4>
       @else
       @foreach($groupProject as $project)
-			<div class="col-xs-18 col-sm-6 col-md-3" data-tag='{{$project->category->category_name}}'>
+      @if($project->ProjectDetail[0]->group_project_detail != "")
+      <?php
+        $id = $project->id;
+        $poster = DB::table('pictures')
+                  ->where('project_pkid',$id)
+                  ->where('picture_type_id','=','1')
+                  ->value('picture_path_name');
+        $catId = $project->category_id;
+        $category = DB::table('categories')
+                    ->where('id',$catId)
+                    ->value('category_name');
+       ?>
+       @if($poster != null)
+			<div class="col-xs-18 col-sm-6 col-md-3" data-tag='{{$category}}'>
 	          <div class="thumbnail">
 	          	<div class="pdf-thumb-box">
-			      <a href="/showproject/{{$project->id}}">
+			      <a href="/showproject/{{$project->group_project_id}}">
 			      	 <div class="pdf-thumb-box-overlay">
 			        	<div class="center-box"></div><i class="glyphicon glyphicon-eye-open gi-2x"></i>
        				 </div>
               @if(count($project->picture)===0)
               <img src="img/no-poster.png">
               @else
-	          <img src="{{$project->picture[0]->picture_path_name}}" alt="">
+	          <img src="{{$poster}}" alt="">
               @endif
           		</a>
           		</div>
 	              <div class="caption">
 	                <h6>{{$project->group_project_eng_name}}</h6>
-                  @if(count($project->ProjectDetail) === 0)
-                    <p></p>
-                  @else
-	                   <p>{{$project->projectDetail[0]->group_project_detail}}</p>
-                  @endif
+	                   <p>{{$project->ProjectDetail[0]->group_project_detail}}</p>
 	            </div>
 	       	  </div>
 	       	</div>
+          @endif
+          @endif
           @endforeach
           @endif
     </div>

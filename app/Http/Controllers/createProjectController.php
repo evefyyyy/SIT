@@ -41,16 +41,13 @@ class createProjectController extends Controller {
 		$objs['advisor'] = $advisor;
 
 		return view('student.createProject',$objs);
-	//
 	}
 
 	public function create()
 	{
 		$data['method'] = 'post';
 		$data['url'] = url('student/myproject/create');
-
-		// $data['students'] = \App\Student::where('student_id','=','56130500078')->get();
-
+		
 		$category = Category::all();
 		$data['category'] = $category;
 
@@ -93,11 +90,13 @@ class createProjectController extends Controller {
 		$std->save();
 
 		$stdId = $request->input('idStudent2');
-		$data = DB::table('students')->where('student_id',$stdId)->value('id');
-		$std = new ProjectStudent();
-		$std->project_pkid = $projectId;
-		$std->student_pkid = $data;
-		$std->save();
+		if($stdId != null){
+			$data = DB::table('students')->where('student_id',$stdId)->value('id');
+			$std = new ProjectStudent();
+			$std->project_pkid = $projectId;
+			$std->student_pkid = $data;
+			$std->save();
+		}
 
 		$stdId = $request->input('idStudent3');
 		if($stdId != null){
@@ -107,8 +106,6 @@ class createProjectController extends Controller {
 			$std->student_pkid = $data;
 			$std->save();
 		}
-
-
 		$advisor = $request['mainAdv'];
 		$checkAdv = DB::table('advisors')
 								->where('advisor_name','=',$advisor)
@@ -129,7 +126,7 @@ class createProjectController extends Controller {
 			$adv->advisor_position_id = '2';
 			$adv->save();
 		}
-		$path = base_path('public/proposalFile');
+		$path = base_path('public_html/proposalFile');
 		$file = $request->file('myfiles');
 		$filename = $file->getClientOriginalName();
 		$move = $file->move($path,$filename);
@@ -186,17 +183,19 @@ class createProjectController extends Controller {
 			array_push($newresult,$s);
 		}
 
-		if(count($newresult) == 2){
-			$getStd2 = DB::table('students')->where('student_id',$newresult[0])->select('student_id','student_name')->get();
-			$getStd3 = DB::table('students')->where('student_id',$newresult[1])->select('student_id','student_name')->get();
-			$data['stdId2'] = $getStd2[0]->student_id;
-			$data['stdName2'] = $getStd2[0]->student_name;
-			$data['stdId3'] = $getStd3[0]->student_id;
-			$data['stdName3'] = $getStd3[0]->student_name;
-		}else if(count($newresult)== 1){
-			$getStd2 = DB::table('students')->where('student_id',$newresult[0])->select('student_id','student_name')->get();
-			$data['stdId2'] = $getStd2[0]->student_id;
-			$data['stdName2'] = $getStd2[0]->student_name;
+		if(count($newresult) != 0){
+			if(count($newresult) == 2){
+				$getStd2 = DB::table('students')->where('student_id',$newresult[0])->select('student_id','student_name')->get();
+				$getStd3 = DB::table('students')->where('student_id',$newresult[1])->select('student_id','student_name')->get();
+				$data['stdId2'] = $getStd2[0]->student_id;
+				$data['stdName2'] = $getStd2[0]->student_name;
+				$data['stdId3'] = $getStd3[0]->student_id;
+				$data['stdName3'] = $getStd3[0]->student_name;
+			}else if(count($newresult)== 1){
+				$getStd2 = DB::table('students')->where('student_id',$newresult[0])->select('student_id','student_name')->get();
+				$data['stdId2'] = $getStd2[0]->student_id;
+				$data['stdName2'] = $getStd2[0]->student_name;
+			}
 		}
 
 		$getAdv = DB::table('project_advisors')
@@ -331,10 +330,10 @@ class createProjectController extends Controller {
 			$proposal = DB::table('proposals')
 										->where('project_pkid',$id)
 										->value('proposal_path_name');
-			$path = base_path('public/proposalFile/');
+			$path = base_path('public_html/proposalFile/');
 			File::delete($path.$proposal);
 // add new file
-			$path = base_path('public/proposalFile');
+			$path = base_path('public_html/proposalFile');
   		$file = $request->file('myfiles');
   		$filename = $file->getClientOriginalName();
   		$move = $file->move($path,$filename);
@@ -346,10 +345,4 @@ class createProjectController extends Controller {
 
 		return redirect(url('student/myproject/waitapprove'));
 	}
-
-
-
-
-
-
 }

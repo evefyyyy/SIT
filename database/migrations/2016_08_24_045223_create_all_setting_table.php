@@ -16,6 +16,7 @@ class CreateAllSettingTable extends Migration
             $table->increments('id');
             $table->string('setting_show_all_project');
             $table->string('setting_ent_time_create_project');
+            $table->integer('current_year');
             $table->timestamps();
         });
     }
