@@ -21,7 +21,6 @@ Route::get('home/','projectController@index');
 Route::get('home/search','projectController@search');
 // Route::get('showproject/{groupId}','showProjectController@index');
 Route::get('showproject/{groupId}','showProjectController@show');
-Route::get('dday/allowdday', 'DdayController@allowDday');
 
 //admin
 Route::get('exam/manageroom','examRoomController@index');
@@ -63,9 +62,7 @@ Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateS
 Route::get('exam/scorerecord/viewscore',function(){
   return view('admin.viewScore');
 });
-Route::get('dday/scorerecord', function () {
-  return view('admin.ddayscore');
-});
+Route::get('dday/scorerecord', 'DdayScoreRecord@ShowScore');
 
 Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createMainCriteria');
 

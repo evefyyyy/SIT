@@ -128,7 +128,7 @@ $(document).ready(function(){
 $('[data-toggle=confirmation]').confirmation({
         rootSelector: '[data-toggle=confirmation]',
         onConfirm: function() {
-          var pjid = document.getElementById("delpj").value;
+          var pjid = $(".rejectbt").attr("value");
           window.location="/project/pending/delete/"+pjid;
         }
       });
