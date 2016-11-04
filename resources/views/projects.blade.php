@@ -60,7 +60,7 @@
 </div>
 <!-- <div class="loader" id="home"></div> -->
 <script>
-  
+
   $(document).ready(function() {
     $("div.caption").dotdotdot(
     {
@@ -71,7 +71,7 @@
     });
   });
   // $(document).ready(function() {
-  //   $('.loader').fadeIn(1000);  
+  //   $('.loader').fadeIn(1000);
   //   $('#preload').hide();
   //   $.ajax({
   //     type: 'GET',

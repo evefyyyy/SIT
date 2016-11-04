@@ -77,6 +77,7 @@
 <script src="{!! URL::asset('js/score.js') !!}"></script>
 <script>
 $('.alert').hide();
+
   // function selectTemp(){
   //   var temp = document.getElementById("selectTemp").value
   //   document.getElementById("temp").value = temp
