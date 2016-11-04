@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-xs-2 col-md-2 col-lg-2"></div>
     <div class="col-xs-8 col-md-8 col-lg-8" id="center">
-     <h6>Year 2016</h6>
+     <h6>Year {{$year}}</h6>
      <label>project type</label>
      <div class="btn-group">
       <select class="selecttype" title="select" name="selectType" id="selectType" onchange="selectType()">
@@ -14,7 +14,10 @@
           @endforeach
       </select>
     </div>
-  <a href="#" class="display-none" id="typeEdit"></a>
+  <a href="#" class="display-none" id="typeEdit">
+    <span class="glyphicon glyphicon-plus" id="typeSpan"></span>
+    <span id="spanName">create</span>
+  </a>
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
@@ -71,17 +74,16 @@
 function selectType(){
   document.getElementById("typeEdit").className = 'btn btn-default'
   var e = document.getElementById("selectType").value;
+  var selectType = parseInt(e);
   document.getElementById("typeEdit").href = "/exam/managescore/{{$year}}/mainscore/"+e
-  var typeDatas = {!! json_encode($button) !!};
-
-  typeDatas.forEach(function (type) {
-    if(type == e){
-      document.getElementById("typeEdit").innerHTML = '<span class="glyphicon glyphicon-plus" id="typeSpan"></span> create'
+  var typeDatas = {!! json_encode($button) !!}
+    if(typeDatas.indexOf(selectType) !=  -1){
+      document.getElementById("typeSpan").className = 'glyphicon glyphicon-plus'
+      document.getElementById("spanName").innerHTML = 'create'
     }else{
-      document.getElementById("typeEdit").innerHTML = '<span class="glyphicon glyphicon-pencil" id="typeSpan"></span> edit'
+      document.getElementById("typeSpan").className = 'glyphicon glyphicon-pencil'
+      document.getElementById("spanName").innerHTML = 'edit'
     }
-  })
 }
-
 </script>
 @stop

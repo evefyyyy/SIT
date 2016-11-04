@@ -22,7 +22,6 @@ use App\Proposal;
 use App\ProjectDetail;
 use App\Picture;
 use Auth;
-use Image;
 
 
 
@@ -157,22 +156,23 @@ class editProjectController extends Controller {
 								->value('picture_path_name');
 
 
+										$file = $request->file('myfiles');
+										$img = \Image::make($file)->resize('400','225')->save('C:\xampp\htdocs\SIT\public\test\itangx.jpg');
+										$file->move('C:\xampp\htdocs\SIT\public\test','itang.jpg');
+
+
+
 
 		if($poster != null){
 				if($request->file('poster')){
-					$delPath = base_path('public_html');
-					File::Delete($delPath.$picPath);
-					DB::table('pictures')->where('id',$poster)->delete();
-					$path = base_path('public_html/projectPoster');
-					$file = $request->file('poster');
-					$extension = $file->getClientOriginalExtension();
-					$filename = "poster".$groupId.".".$extension;
-					$move = $file->move($path,$filename);
-
-					$filename1 = "resize".$groupId.".".$extension;
-
-    $image = ImageManager::make($path . DIRECTORY_SEPARATOR . $fileName);
-		dd($image);
+					// $delPath = base_path('public_html');
+					// File::Delete($delPath.$picPath);
+					// DB::table('pictures')->where('id',$poster)->delete();
+					// $path = base_path('public_html/projectPoster');
+					// $file = $request->file('poster');
+					// $extension = $file->getClientOriginalExtension();
+					// $filename = "poster".$groupId.".".$extension;
+					// $move = $file->move($path,$filename);
 
 					// $obj = new Picture();
 					// $savePic = '/projectPoster'."/".$filename ;
