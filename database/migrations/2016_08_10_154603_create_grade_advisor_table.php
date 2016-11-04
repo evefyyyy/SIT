@@ -15,6 +15,7 @@ class CreateGradeAdvisorTable extends Migration
         Schema::create('grade_advisor', function (Blueprint $table) {
             $table->increments('id');
             $table->string('grade');
+            $table->integer('submit');
             $table->timestamps();
         });
     }

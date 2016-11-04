@@ -15,6 +15,7 @@ class CreateAdvisorScoresheetTable extends Migration
         Schema::create('advisor_scoresheet', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('score');
+            $table->integer('submit');
             $table->timestamps();
         });
     }
