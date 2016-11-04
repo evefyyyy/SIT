@@ -23,32 +23,34 @@ class ScoreRecordController extends Controller
 {
   public function index()
   {
-    $project = GroupProject::where('group_project_approve','=','1')->get();
+    $project = GroupProject::where('group_project_approve','=','1')->where('group_project_id','like','IT%')->get();
     $obj['project'] = array_flatten($project);
     $count = count($obj['project']);
 
-    for($i=0;$i<$count;$i++){
-      $get[$i] = $obj['project'][$i]->id;
-      $score1[$i] = DB::table('score_tests')
-                ->where('score_test_round','=','1')
-                ->where('project_pkid',$get[$i])->get();
-      $obj['project'][$i]['score1'] = $score1[$i];
+    
 
-      $score2[$i] = DB::table('score_tests')
-                ->where('score_test_round','=','2')
-                ->where('project_pkid',$get[$i])->get();
-      $obj['project'][$i]['score2'] = $score2[$i];
-
-      $score3[$i] = DB::table('score_tests')
-                ->where('score_test_round','=','3')
-                ->where('project_pkid',$get[$i])->get();
-      $obj['project'][$i]['score3'] = $score3[$i];
-
-      $score4[$i] = DB::table('score_tests')
-                ->where('score_test_round','=','4')
-                ->where('project_pkid',$get[$i])->get();
-      $obj['project'][$i]['score4'] = $score4[$i];
-    }
+    // for($i=0;$i<$count;$i++){
+    //   $get[$i] = $obj['project'][$i]->id;
+    //   $score1[$i] = DB::table('score_tests')
+    //             ->where('score_test_round','=','1')
+    //             ->where('project_pkid',$get[$i])->get();
+    //   $obj['project'][$i]['score1'] = $score1[$i];
+    //
+    //   $score2[$i] = DB::table('score_tests')
+    //             ->where('score_test_round','=','2')
+    //             ->where('project_pkid',$get[$i])->get();
+    //   $obj['project'][$i]['score2'] = $score2[$i];
+    //
+    //   $score3[$i] = DB::table('score_tests')
+    //             ->where('score_test_round','=','3')
+    //             ->where('project_pkid',$get[$i])->get();
+    //   $obj['project'][$i]['score3'] = $score3[$i];
+    //
+    //   $score4[$i] = DB::table('score_tests')
+    //             ->where('score_test_round','=','4')
+    //             ->where('project_pkid',$get[$i])->get();
+    //   $obj['project'][$i]['score4'] = $score4[$i];
+    // }
 
     return view('admin.scoreRecord',$obj);
   }

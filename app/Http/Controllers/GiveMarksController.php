@@ -176,6 +176,7 @@ class GiveMarksController extends Controller
           $obj->sub_template_id = $subTemp[$i]->id;
           $obj->advisor_id = $adv;
           $obj->project_pkid = $projectId;
+          $obj->submit = 0;
           $obj->save();
         }
       }else{
@@ -195,6 +196,7 @@ class GiveMarksController extends Controller
       if($gradeExist == null){
         $obj = new GradeAdvisor();
         $obj->grade = $grade;
+        $obj->submit = 0;
         $obj->advisor_id = $adv;
         $obj->main_template_id = $mainTemp[0]->template_main_id;
         $obj->project_pkid = $projectId;

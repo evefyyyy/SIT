@@ -22,6 +22,7 @@ use App\Proposal;
 use App\ProjectDetail;
 use App\Picture;
 use Auth;
+use Image;
 
 
 
@@ -124,7 +125,6 @@ class editProjectController extends Controller {
 							->value('project_detail.id');
 
 		$checkUrl = strrpos($request['video'],'www.youtube.com/watch?v=');
-
 		if($detail != null){
 			$obj = ProjectDetail::find($detail);
 			$obj->group_project_detail = $request['detail'];
@@ -150,20 +150,36 @@ class editProjectController extends Controller {
 								->where('project_pkid',$getId)
 								->where('picture_type_id','=','1')
 								->value('pictures.id');
+		$picPath = DB::table('pictures')
+								->join('group_projects','project_pkid','=','group_projects.id')
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','1')
+								->value('picture_path_name');
+
+
 
 		if($poster != null){
 				if($request->file('poster')){
+					$delPath = base_path('public_html');
+					File::Delete($delPath.$picPath);
+					DB::table('pictures')->where('id',$poster)->delete();
 					$path = base_path('public_html/projectPoster');
-					File::Delete($path.$poster);
 					$file = $request->file('poster');
 					$extension = $file->getClientOriginalExtension();
 					$filename = "poster".$groupId.".".$extension;
 					$move = $file->move($path,$filename);
-					$obj = Picture::find($poster);
-					$savePic = '/projectPoster'."/".$filename ;
-					$obj->picture_path_name = $savePic;
-					$obj->picture_type_id = '1';
-					$obj->save();
+
+					$filename1 = "resize".$groupId.".".$extension;
+
+    $image = ImageManager::make($path . DIRECTORY_SEPARATOR . $fileName);
+		dd($image);
+
+					// $obj = new Picture();
+					// $savePic = '/projectPoster'."/".$filename ;
+					// $obj->picture_path_name = $savePic;
+					// $obj->picture_type_id = '1';
+					// $obj->project_pkid = $getId;
+					// $obj->save();
 				}
 		}else if($poster == null){
 			if($request->file('poster')){
@@ -174,10 +190,10 @@ class editProjectController extends Controller {
 				$move = $file->move($path,$filename);
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
-				$obj->picture_path_name = $savePic;
-				$obj->picture_type_id = '1';
-				$obj->project_pkid = $getId;
-				$obj->save();
+				// $obj->picture_path_name = $savePic;
+				// $obj->picture_type_id = '1';
+				// $obj->project_pkid = $getId;
+				// $obj->save();
 			}
 		}
 
@@ -187,18 +203,27 @@ class editProjectController extends Controller {
 								->where('picture_type_id','=','2')
 								->value('pictures.id');
 
+		$groupPicPath = DB::table('pictures')
+										->join('group_projects','project_pkid','=','group_projects.id')
+										->where('project_pkid',$getId)
+										->where('picture_type_id','=','2')
+										->value('picture_path_name');
+
 		if($groupPic != null){
 				if($request->file('groupPicture')){
+					$delPath = base_path('public_html');
+					File::Delete($delPath.$groupPicPath);
+					DB::table('pictures')->where('id',$groupPic)->delete();
 					$path = base_path('public_html/groupPicture');
-					File::Delete($path.$groupPic);
 					$file = $request->file('groupPicture');
 					$extension = $file->getClientOriginalExtension();
 					$filename = "groupPic".$groupId.".".$extension;
 					$move = $file->move($path,$filename);
-					$obj = Picture::find($groupPic);
+					$obj = new Picture();
 					$savePic = '/groupPicture'."/".$filename ;
 					$obj->picture_path_name = $savePic;
 					$obj->picture_type_id = '2';
+					$obj->project_pkid = $getId;
 					$obj->save();
 				}
 		}else if($groupPic == null){

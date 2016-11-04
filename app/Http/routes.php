@@ -94,7 +94,7 @@ Route::post('news/delete', function(){
 //advisor
 Route::get('exam/round','GiveMarksController@selectRound');
 Route::get('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarksData');
-Route::put('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarks'); 
+Route::put('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarks');
 Route::get('exam/round/{round}','GiveMarksController@examDetail');
 
 Route::resource('exam/allowtest', 'AllowTestController');
@@ -159,7 +159,7 @@ Route::post('edit/pic/upload', 'editProjectController@upload');
 Route::post('edit/pic/delete', function(){
 	$id = Request::Input('id');
 	$data = DB::table('pictures')->where('id',$id)->first();
-	$path = base_path('public_html') ;
+	$path = base_path('public_html');
 	File::Delete($path.$data->picture_path_name);
 	DB::table('pictures')->where('id',$id)->delete();
 });
