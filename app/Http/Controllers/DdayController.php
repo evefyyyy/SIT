@@ -37,7 +37,7 @@ class DdayController extends Controller
 			if($checkgencode != null){
 				return "used";
 			} else if($checkgencode == null){
-				if(Dday::where('dday_gencode', $gencode)->first() != null){
+				if($ddayid->dday_gencode == $gencode){
 					if(substr($gencode, 0,2)=='IT' && substr($group_project_id, 0,2) == 'IT'){
 						DdayProject::insert(
 							['project_pkid' => $pjid, 'dday_id' => $ddayid->id]
