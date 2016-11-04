@@ -141,7 +141,7 @@
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
        <img src="/img/dday.png">
-       <p>Enter your gen code to vote</p>
+       <p>Enter your code to vote</p>
        	<p><strong>" {{$projectNameEN}} "</strong></p>
        <input class="form-control"/>
        <ul class="cd-buttons">
