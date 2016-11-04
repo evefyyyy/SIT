@@ -1613,6 +1613,12 @@ a.delete:focus{
 .expired, .expired a[data-toggle="modal"]{
   color: #c1c1c1 !important;
 }
+#allowtest button.action-button {
+  margin-top: 0;
+}
+#allowtest div.dataTables_wrapper div.dataTables_paginate {
+  margin-bottom: 0;
+}
 #allowtest h2 {
   margin-bottom: 0;
 }
