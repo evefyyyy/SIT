@@ -52,7 +52,7 @@ class projectController extends Controller
 
       $obj['search'] = $search;
 
-      if($search == "" || $search == " " && $year==0){
+      if($year==0 && $search == null){
         $result = DB::table('group_projects')
                   ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
                   ->join('pictures','pictures.project_pkid','=','group_projects.id')
@@ -72,6 +72,7 @@ class projectController extends Controller
             array_push($obj['groupProject'],GroupProject::where('id',$i)->get()[0]);
           }
         }
+        // dd($obj['groupProject']);
       }else{
         if($year == 0){
           $result = DB::table('group_projects')
@@ -134,6 +135,7 @@ class projectController extends Controller
             }
           }
       }
+      // dd($obj['groupProject']);
 
 
       return view(('searchResult'),$obj);

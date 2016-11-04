@@ -12,14 +12,14 @@
          <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
       <select class="selecttype" name="selectType" title="select" id="selectType">
         @foreach($type as $ty)
-        <option value="{{$ty->id}}" >{{$ty->type_name}}</option>
+        <option value="{{$ty->id}}">{{$ty->type_name}}</option>
         @endforeach
       </select>
     </div>
     <label>score sheet</label>
     <div class="btn-group">
       <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
-        @foreach($template as $temp)
+       @foreach($template as $temp)
        <option class='selectTe' value="{{$temp->id}}">template {{$temp->temp_num}}</option>
        @endforeach
      </select>
@@ -91,12 +91,25 @@ $('.alert').hide();
         $.ajax({
           type:"get",
           dataType: "",
-          url :"/hello",
-          data: {type: $(this).val()},
+          url : "test/"+$(this).val(),
           success:function(data){
-            console.log(data);
-          }
-        });
-  })
+            if(data==0){
+              
+            }else{
+              
+
+       /*       $.each(data.data, function(k, v) {
+                  $("input[name^='mainScore'").eq(k).val(v.score);
+                  console.log(v.score);
+                  sum += v.score ;
+              });*/
+
+            }  
+
+                
+        }
+
+  });
+})
 </script>
 @stop

@@ -136,18 +136,26 @@
 </div>
 <div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 @endif
-
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
-       <img src="/img/dday.png">
-       <p>Enter your code to vote</p>
-       	<p><strong>" {{$projectNameEN}} "</strong></p>
-       <input class="form-control"/>
-       <ul class="cd-buttons">
-          <li><a class="cd-vote">Vote</a></li>
-      </ul>
-      <a class="cd-popup-close cd-close img-replace"></a>
+	    <div class="cd-content">
+	       <img src="/img/dday.png">
+	       <p>Enter your code to vote</p>
+	       	<p><strong>" {{$projectNameEN}} "</strong></p>
+	       <input type="text" class="form-control" id="gencode"/>
+	       <input type="hidden" id="pjid" value="{{$checkProject}}">
+	       <div class="alert alert-danger" role="alert" id="alert1">
+		     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		     <front></front>
+		   </div>
+	       <ul class="cd-buttons">
+	          <li><a href="#" id="dd-vote">Vote</a></li>
+	      </ul>
+	      <a class="cd-popup-close cd-close img-replace"></a>
+	    </div>
+		 <div class="cd-load"><div class="loader"></div></div>
+		 <div class="cd-success"><h2 id="result">Thanks for voting</h2><img src="/img/heart.png"><a class="cd-popup-close cd-close img-replace"></a></div>
   	</div> <!-- cd-popup-container -->
   </div>
 </div> <!-- cd-popup -->
@@ -155,4 +163,42 @@
 <script src="{!! URL::asset('js/eagle.gallery.min.js') !!}"></script>
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <script src="{!! URL::asset('js/dday.js') !!}"></script>
+<script>
+$('#dd-vote').click(function (){
+	if ($('#gencode').val() == "") {
+		$('#gencode').addClass( "required" );
+	} else {
+	$('.alert front').html("");
+	$('.cd-content').hide();
+	$('.cd-load').show();
+		$.ajax({
+			type: 'POST',
+			url:'/votedday',
+			data: {
+				gencode: $("#gencode").val(),
+				pjid: $("#pjid").val(),
+				_token: "{{csrf_token()}}"
+			},
+		   	success:function(result){
+		   			if (result=="success") {
+		       		$('.cd-load').hide();
+		      		$('.cd-success').show();
+		      	} else if (result=="used") {
+		      		$('.cd-load').hide();
+		      		$('.cd-content').show();
+		      		$('.alert').show();
+		      		$('.alert front').append("This code has already used");
+		      		$('#gencode').val("");
+		      	} else if (result=="invalid") {
+		      		$('.cd-load').hide();
+		      		$('.cd-content').show();
+		      		$('.alert').show();
+		      		$('.alert front').append("invalid code");
+		      		$('#gencode').val("");
+			   }
+		    }
+		});
+	}
+});
+</script>
 @stop

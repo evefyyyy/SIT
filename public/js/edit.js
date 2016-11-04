@@ -55,14 +55,29 @@ function readURL(input) {
 }
 
 function multipleURL(file, fileIndex) {
-  var reader = new FileReader();
-  reader.onload = function (e) {
-    count++;
-    $('.image-view').append("<div class='col-xs-4 gallery' id='new-image-" + fileIndex + "'></div>");
-    $('.gallery').last().append("<img id=image-" + count  + " />");
-    $('#image-' + count).attr('src', e.target.result);
-  }
-  reader.readAsDataURL(file);
+  $.ajax({
+    type:"post",
+    dataType: 'json',
+    url : "/edit/pic/upload",
+    data: {
+      file: file,
+      _token:$("#_token").val()
+    },
+    processData: false,
+    success: function(data) {
+      console.log(data)
+    },
+    error: function(err) {
+      console.log(err)
+    }
+  });
+  // var reader = new FileReader();
+  // reader.onload = function (e) {
+  //   // $('.image-view').append("<div class='col-xs-4 gallery' id='new-image-" + fileIndex + "'></div>");
+  //   // $('.gallery').last().append("<img id=image-" + count  + " />");
+  //   // $('#image-' + count).attr('src', e.target.result);
+  // }
+  // reader.readAsDataURL(file);
 }
 
 $('.image-view').on('click', '.gallery', function() {
@@ -115,7 +130,7 @@ $("#img-cover").change(function(){
 });
 
 $("input#uploader").change(function() {
-    readURL(this);
+  readURL(this);
 });
 
 $('#upload').on('click', function() {
