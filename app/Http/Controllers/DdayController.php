@@ -21,7 +21,7 @@ use App\Proposal;
 class DdayController extends Controller
 {
     //
-    public function index()
+	public function index()
 	{
 		return view('ddayhome');
 	}
@@ -37,18 +37,22 @@ class DdayController extends Controller
 			if($checkgencode != null){
 				return "used";
 			} else if($checkgencode == null){
-				if(substr($gencode, 0,2)=='IT' && substr($group_project_id, 0,2) == 'IT'){
-					DdayProject::insert(
-						['project_pkid' => $pjid, 'dday_id' => $ddayid->id]
-						);
-					return "success";
-				} else if(substr($gencode, 0,2)=='CS' && substr($group_project_id, 0,2) == 'CS'){
-					DdayProject::insert(
-						['project_pkid' => $pjid, 'dday_id' => $ddayid->id]
-						);
-					return "success";
+				if(Dday::where('dday_gencode', $gencode) != null){
+					if(substr($gencode, 0,2)=='IT' && substr($group_project_id, 0,2) == 'IT'){
+						DdayProject::insert(
+							['project_pkid' => $pjid, 'dday_id' => $ddayid->id]
+							);
+						return "success";
+					} else if(substr($gencode, 0,2)=='CS' && substr($group_project_id, 0,2) == 'CS'){
+						DdayProject::insert(
+							['project_pkid' => $pjid, 'dday_id' => $ddayid->id]
+							);
+						return "success";
+					} else {
+						return "invalid";
+					}
 				} else {
-					return "invalid";
+					return 'invalid';
 				}
 			}
 		}
@@ -66,7 +70,7 @@ class DdayController extends Controller
 		$advisor = Advisor::all();
 		$objs['advisors'] = $advisor;
 
-    	$objs['proposal'] = Proposal::all();
+		$objs['proposal'] = Proposal::all();
 
 		$objs['countProject'] = GroupProject::where('group_project_approve','=',1)->count();
 
@@ -76,8 +80,8 @@ class DdayController extends Controller
 		$objs['project'] = $projects;
 
 		$groupProject = GroupProject::all();
-    	$objs['group_project'] = $groupProject;
+		$objs['group_project'] = $groupProject;
 
-      	return view('admin.allowdday',$objs);
+		return view('admin.allowdday',$objs);
 	}
 }

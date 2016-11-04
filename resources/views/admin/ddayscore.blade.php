@@ -19,16 +19,18 @@
 				</tr>
 			</thead>
 			<tbody>
+			@foreach($group_project as $gp)
+			<?php  
+				$group_project_check_it = $gp->group_project_id;
+			?>
+			@if(substr($group_project_check_it, 0,2) == "IT")
 				<tr>
-					<td>IT56-SO34</td>
-					<td>"เพ็ทเทนชัน" แอปพลิเคชันและอุปกรณ์ติดตามสัตว์เลี้ยง บนระบบปฏิบัติการแอนดรอยด์</td>
+					<td>{{$gp->group_project_id}}</td>
+					<td>{{group_project_th_name}}</td>
 					<td>60</td>
 				</tr>
-				<tr>
-					<td>IT56-SO18</td>
-					<td>เกมแอปพลิเคชันเพื่อพัฒนาทักษะการพูดภาษาอังกฤษ</td>
-					<td>52</td>
-				</tr>
+			@endif
+			@endforeach
 			</tbody>
     	</table>
     	<table id="CSproject" class="table table-bordered" style="width:100%">
@@ -44,11 +46,6 @@
 					<td>CS56-01</td>
 					<td>แอพพลิเคชั่นการแลกเปลี่ยนข้อมูลจากสมาร์ททีวีสู่สมาร์ทโฟนเพื่อผู้สูงอายุ</td>
 					<td>52</td>
-				</tr>
-				<tr>
-					<td>CS56-06</td>
-					<td>แพลตฟอร์มสำหรับการตรวจจับใบหน้า</td>
-					<td>42</td>
 				</tr>
 			</tbody>
     	</table>
