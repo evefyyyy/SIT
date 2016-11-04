@@ -11,9 +11,7 @@
        <form action="{{url('exam/managescore/year/mainscore')}}" method="post">
          <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
       <select class="selecttype" name="selectType" title="select" id="selectType">
-        @foreach($type as $ty)
-        <option value="{{$ty->id}}">{{$ty->type_name}}</option>
-        @endforeach
+        <option value="">{{$type}}</option>
       </select>
     </div>
     <label>score sheet</label>
@@ -94,9 +92,9 @@ $('.alert').hide();
           url : "test/"+$(this).val(),
           success:function(data){
             if(data==0){
-              
+
             }else{
-              
+
 
        /*       $.each(data.data, function(k, v) {
                   $("input[name^='mainScore'").eq(k).val(v.score);
@@ -104,9 +102,9 @@ $('.alert').hide();
                   sum += v.score ;
               });*/
 
-            }  
+            }
 
-                
+
         }
 
   });
