@@ -5,13 +5,6 @@
   <div class="row">
     <div class="col-xs-2 col-md-2 col-lg-2"></div>
     <div class="col-xs-8 col-md-8 col-lg-8" id="center">
-<<<<<<< HEAD
-      <form action="{{url('exam/managescore/$year/subscore/$type')}}" method="post">
-        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-     <h6>Year {{$year}}</h6>
-     <label>project type <strong>business</strong></label>
-    <label>score sheet</label><strong>Template {{$tempNum}}</strong>
-=======
      <h6>Year 2016</h6>
      <label>project type</label>
      <div class="btn-group" style="margin-right:30px">
@@ -32,7 +25,6 @@
      </select>
      <input type="hidden" id="temp" name="selectTemp">
    </div>
->>>>>>> 4bd1fdfa9162c4833205eb4721f6457e10122cc0
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
 </div>
