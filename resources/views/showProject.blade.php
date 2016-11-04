@@ -138,8 +138,8 @@
 @endif
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
-    <div class="cd-popup-container">
-	    <div id="tmpcontent" class="cd-content">
+    <div id="tmpcontent" class="cd-popup-container">
+	    <div class="cd-content">
 	       <img src="/img/dday.png">
 	       <p>Enter your code to vote</p>
 	       	<p><strong>" {{$projectNameEN}} "</strong></p>
