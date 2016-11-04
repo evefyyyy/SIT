@@ -1,35 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	Enter number you want to gencode
-	<input type="number" name="entergencode" id="entergencode">
-	<select id="department">
-		<option value="IT">IT</option>
-		<option value="CS">CS</option>
-	</select>
-	<button onclick="genCode()">enter</button><br>
+@extends('adminTmp')
+@section('content')
+Enter number you want to gencode
+<input type="number" name="entergencode" id="entergencode">
+<select id="department">
+	<option value="IT">IT</option>
+	<option value="CS">CS</option>
+</select>
+<button onclick="genCode()">enter</button><br>
+	
+	<table class="table table-bordered">
+			
+			
+			@foreach($dday_gencode as $dg)
+			<tr>
 
-	@foreach($dday_gencode as $dg)
-		<?php  
-			$status_gencode = App\DdayProject::where('dday_id', $dg->id)->first();
-		?>
-		{{$dg->dday_gencode}}    @if($status_gencode==null)
-									active <br>
-								@else
-									unactive <br>
-								@endif
+				@for ($col = 0; $col < 1; $col ++) 
+				<td>{{$dg->dday_gencode}}</td>
+				@endfor
 
-	@endforeach
+			</tr>
+			@endforeach
+			
+			
+		</table>
 
-	<script type="text/javascript">
-		function genCode(){
-			var numgencode = document.getElementById("entergencode").value; 
-			var department = document.getElementById("department").value;
-			window.location="/admin/setting/"+numgencode+"/"+department;
-		}
-	</script>
-</body>
-</html>
+
+		<script type="text/javascript">
+			function genCode(){
+				var numgencode = document.getElementById("entergencode").value; 
+				var department = document.getElementById("department").value;
+				window.location="/admin/setting/"+numgencode+"/"+department;
+			}
+		</script>
+		@stop
