@@ -1,29 +1,23 @@
 @extends('adminTmp')
 @section('content')
 <div id="scoresheet">
-  <h2><img height="45" src="/img/exam.png">manage score sheet</h2>
+  <form action="{{$url}}" method="post">
+    {{method_field($method)}}
+    <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+  <h2><img height="45" src="/img/exam.png">edit score sheet</h2>
   <div class="row">
     <div class="col-xs-2 col-md-2 col-lg-2"></div>
     <div class="col-xs-8 col-md-8 col-lg-8" id="center">
-     <h6>Year 2016</h6>
-     <label>project type</label>
-     <div class="btn-group" style="margin-right:30px">
-       <form action="{{url('exam/managescore/year/mainscore')}}" method="post">
-         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-      <select class="selecttype" name="selectType" title="select" id="selectType">
-        @foreach($type as $ty)
-        <option value="{{$ty->id}}">{{$ty->type_name}}</option>
-        @endforeach
-      </select>
-    </div>
+     <h6>Year {{$year}}</h6>
+     <label>project type <strong>{{$type}}</strong></label>
     <label>score sheet</label>
     <div class="btn-group">
-      <select class="selecttemp" id="selectTemp" title="select" onchange="selectTemp()">
-       @foreach($template as $temp)
-       <option class='selectTe' value="{{$temp->id}}">template {{$temp->temp_num}}</option>
+      <select class="selecttemp" id="selectTemp" title="select" name="selectTemp">
+        @foreach($template as $temp)
+       <option value="{{$temp->id}}">template {{$temp->temp_num}}</option>
        @endforeach
      </select>
-     <input type="hidden" name="temp" id="temp">
+     <!-- <input type="hidden" name="temp" id="temp"> -->
    </div>
  </div>
  <div class="col-xs-2 col-md-2 col-lg-2"></div>
@@ -75,7 +69,7 @@
 </div>
 @endforeach
 <div id="center">
-  <a href="/exam/scoresheet"><button type="button" class="action-button">back</button></a>
+  <a href="/exam/managescore/{{$year}}"><button type="button" class="action-button">back</button></a>
   <button class="action-button" onclick="countTotal()">next</button>
 </div>
 </form>
@@ -83,33 +77,10 @@
 <script src="{!! URL::asset('js/score.js') !!}"></script>
 <script>
 $('.alert').hide();
-  function selectTemp(){
-    var temp = document.getElementById("selectTemp").value
-    document.getElementById("temp").value = temp
-  }
-  $('#selectType').on('change',function () {
-        $.ajax({
-          type:"get",
-          dataType: "",
-          url : "test/"+$(this).val(),
-          success:function(data){
-            if(data==0){
-              
-            }else{
-              
-
-       /*       $.each(data.data, function(k, v) {
-                  $("input[name^='mainScore'").eq(k).val(v.score);
-                  console.log(v.score);
-                  sum += v.score ;
-              });*/
-
-            }  
-
-                
-        }
-
-  });
-})
+  // function selectTemp(){
+  //   var temp = document.getElementById("selectTemp").value
+  //   document.getElementById("temp").value = temp
+  //   console.log(document.getElementsById("selectTemp"));
+  // }
 </script>
 @stop

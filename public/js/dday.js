@@ -41,9 +41,12 @@ $('#img-gallery').eagleGallery({
 
 jQuery(document).ready(function($){
 	//open popup
-	$('.btn-3e').on('click', function(event){
-		event.preventDefault();
+	$original = $(".cd-content").html();
+	$('.btn-3e').on('click', function(event){	
+		$('#tmpcontent').html($original);	
 		$('.cd-popup').addClass('is-visible');
+		;
+		//event.preventDefault();
 	});
 
 	//close popup

@@ -51,7 +51,7 @@
 			<h4>{{$projectNameTH}}</h4>
 		</div>
 		<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
-			<a class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
+			<a href="#" class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
 		</div>
 		@endif
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
@@ -139,7 +139,7 @@
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div class="cd-popup-container">
-	    <div class="cd-content">
+	    <div id="tmpcontent" class="cd-content">
 	       <img src="/img/dday.png">
 	       <p>Enter your code to vote</p>
 	       	<p><strong>" {{$projectNameEN}} "</strong></p>
@@ -150,7 +150,7 @@
 		     <front></front>
 		   </div>
 	       <ul class="cd-buttons">
-	          <li><a href="#" id="dd-vote">Vote</a></li>
+	          <li><a href="javascript:vote();" id="dd-vote">Vote</a></li>
 	      </ul>
 	      <a class="cd-popup-close cd-close img-replace"></a>
 	    </div>
@@ -164,7 +164,9 @@
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <script src="{!! URL::asset('js/dday.js') !!}"></script>
 <script>
-$('#dd-vote').click(function (){
+	
+
+function vote(){
 	if ($('#gencode').val() == "") {
 		$('#gencode').addClass( "required" );
 	} else {
@@ -199,6 +201,6 @@ $('#dd-vote').click(function (){
 		    }
 		});
 	}
-});
+}
 </script>
 @stop
