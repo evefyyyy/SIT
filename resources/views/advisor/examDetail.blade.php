@@ -3,16 +3,25 @@
 <div class="row" id="editroom">
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	<div class="col-xs-12 col-md-10 col-lg-8">
-	<h2>exam room 3</h2>
+	<h2>exam room</h2>
+	@if($roomExam == null)
+		<h4 class="text-center noProject">no project</h4>
+	@else
 	<div class="row">
 		<div class="col-xs-2 col-md-3 col-lg-3 titlee">room</div>
-		<div class="col-xs-3 col-md-3 col-lg-3">Training room 3</div>
+		<div class="col-xs-3 col-md-3 col-lg-3">{{$roomExam[0]->room_name}}</div>
 		<div class="col-xs-2 col-md-2 col-lg-2 titlee">date</div>
-		<div class="col-xs-5 col-md-4 col-lg-4">19 September 2016 (9.30am-5.30pm)</div>
+		<div class="col-xs-5 col-md-4 col-lg-4">
+			{{date('d F Y',strtotime($roomExam[0]->exam_datetime))}} ({{date('g:ia',strtotime($roomExam[0]->exam_starttime))}} - {{date('g:ia',strtotime(end($roomExam)->exam_endtime))}} )
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-3 col-md-3 col-lg-3 titlee">exam commitee</div>
-		<div class="col-xs-9 col-md-8 col-lg-8">Sumet, Olarn, Ekapong, Patcharaporn</div>
+		<div class="col-xs-9 col-md-8 col-lg-8">
+			@foreach($advName as $adv)
+				{{$adv}} ,
+			@endforeach
+		</div>
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	</div>
@@ -29,33 +38,21 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($project as $pj)
 					<tr>
-						<td>IT56-RE02</td>
-						<td id="name"><a class="tblink" href="round/givemarks">เว็บไซต์หลักสูตรเรียนฟรี จากมหาวิทยาลัยชั้นนำประเทศอังกฤษ</a></td>
+						<td>{{$pj[0]->group_project_id}}</td>
+						<td id="name"><a class="tblink" href="/exam/round/{{$round}}/givemarks/{{$pj[0]->group_project_id}}">{{$pj[0]->group_project_th_name}}</a></td>
 						<td><i class="glyphicon glyphicon-ok"></i></td>
 					</tr>
-					<tr>
-						<td>IT56-SO01</td>
-						<td id="name"><a class="tblink" href="#">แอพพลิเคชั่นสำหรับการออกกำลังกาย</a></td>
-						<td><i class="glyphicon glyphicon-ok"></i></td>
-					</tr>
-					<tr>
-						<td>IT56-BU05</td>
-						<td id="name"><a class="tblink" href="#">ระบบบริหารจัดการอุปกรณ์แบบฝังตัว เพื่อการเฝ้าระวังหรือควบคุมผ่านเครือข่ายอินเทอร์เน็ต</a></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>IT56-SO03</td>
-						<td id="name"><a class="tblink" href="#">สื่อการเรียนรู้ภาษาเวียดนาม</a></td>
-						<td><i class="glyphicon glyphicon-ok"></i></td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
 			<div id="center">
-			  <a href="/exam/selectround"><button class="action-button">back</button></a>
+			  <a href="/exam/round"><button class="action-button">back</button></a>
 			  <button type="submit" class="action-button">submit</button>
 			</div>
 	</div>
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 </div>
+@endif
 @stop

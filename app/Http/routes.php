@@ -50,6 +50,8 @@ Route::get('exam/managescore/criteria',function(){
 
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
 
+Route::post('exam/managescore/{year}','ScoreSheetController@setDefault');
+
 Route::get('exam/managescore/{year}/mainscore/{id}','ScoreSheetController@editMainScore');
 
 Route::put('exam/managescore/{year}/mainscore/{id}','ScoreSheetController@updateMainScore');
@@ -90,15 +92,11 @@ Route::post('news/delete', function(){
 });
 
 //advisor
-Route::get('exam/round', function () {
-  return view('advisor.examDetail');
-});
-Route::get('exam/round/givemarks', function () {
-  return view('advisor.giveMarks');
-});
-Route::get('exam/selectround', function () {
-  return view('advisor.selectRound');
-});
+Route::get('exam/round','GiveMarksController@selectRound');
+Route::get('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarksData');
+Route::put('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarks');
+Route::get('exam/round/{round}','GiveMarksController@examDetail');
+
 Route::resource('exam/allowtest', 'AllowTestController');
 Route::resource('advproject','AdvisorProjectController');
 Route::resource('advisor/news/announcement', 'AdvisorAnnoucementController');
@@ -119,11 +117,11 @@ Route::group(['middleware' => 'studentnoproject'], function() {
   });
   Route::resource('student/myproject/create','createProjectController');
 });
-  
+
 Route::group(['middleware' => 'studentwaitapprove'], function(){
   Route::resource('student/myproject/waitapprove','waitApproveController');
 });
- 
+
 
 Route::get('testldap', function(){
    return view('auth-ldap');
@@ -156,11 +154,12 @@ Route::group(['middleware' => 'studenthaveproject'], function(){
   Route::put('student/myproject/edit','editProjectController@update');
 });
 
+Route::post('edit/pic/upload', 'editProjectController@upload');
 
 Route::post('edit/pic/delete', function(){
 	$id = Request::Input('id');
 	$data = DB::table('pictures')->where('id',$id)->first();
-	$path = base_path('public_html') ;
+	$path = base_path('public_html');
 	File::Delete($path.$data->picture_path_name);
 	DB::table('pictures')->where('id',$id)->delete();
 });

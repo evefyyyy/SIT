@@ -47,9 +47,7 @@ class createProjectController extends Controller {
 	{
 		$data['method'] = 'post';
 		$data['url'] = url('student/myproject/create');
-
-		// $data['students'] = \App\Student::where('student_id','=','56130500078')->get();
-
+		
 		$category = Category::all();
 		$data['category'] = $category;
 

@@ -13,7 +13,7 @@
 				<tbody>
 					@foreach($year as $y)
 					<tr>
-						<td width="35%">year {{$y->year}}</td><td width="65%"><a href="/exam/managescore/{{$y->year}}">view score sheet <i class="glyphicon glyphicon-list-alt gi-1x"></i></a></td>
+						<td width="35%">year {{$y->year}}</td><td width="65%"><a href="/exam/managescore/year/mainscore/create">view score sheet <i class="glyphicon glyphicon-list-alt gi-1x"></i></a></td>
 					</tr>
 					@endforeach
 				</tbody>

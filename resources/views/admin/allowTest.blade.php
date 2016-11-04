@@ -57,7 +57,9 @@
 		</div>
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
-</div>
+<div id="center">
+    <button type="submit" class="action-button">save</button>
+  </div>
 @if($countProject>0)
 <div class="modal fade" id="propModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
 	<div class="modal-dialog" role="document">

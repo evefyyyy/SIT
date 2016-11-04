@@ -1613,6 +1613,12 @@ a.delete:focus{
 .expired, .expired a[data-toggle="modal"]{
   color: #c1c1c1 !important;
 }
+#allowtest button.action-button {
+  margin-top: 0;
+}
+#allowtest div.dataTables_wrapper div.dataTables_paginate {
+  margin-bottom: 0;
+}
 #allowtest h2 {
   margin-bottom: 0;
 }
@@ -1859,4 +1865,16 @@ button#more.btn.btn-default:hover {
 }
 #dt-filter > #pendlink a {
   margin-left: 20px;
+}
+#scorelv table {
+  width: 80%;
+  margin: 0 auto;
+}
+#scorelv .table > tbody > tr > td {
+  vertical-align: middle;
+  line-height: 2.5em;
+}
+#scorelv .modal-body input[type=number], #scorelv .table > tbody > tr > td > span {
+    width: 35%;
+    margin-left: 8%;
 }

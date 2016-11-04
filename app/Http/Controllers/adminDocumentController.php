@@ -36,7 +36,8 @@ class adminDocumentController extends Controller {
 
 	public function store(Request $request)
 	{
-		$nId = (DB::table('news')->max('id'))+1 ;
+
+	/*	$nId = (DB::table('news')->max('id'))+1 ;
 		$news = new News();
 		$news->title = $request['title'];
 		$path = base_path('public/adminNewsFiles/') ;
@@ -50,7 +51,13 @@ class adminDocumentController extends Controller {
 
 		$news = \App\News::where('news_type_id','=','2')->get();
 		$count = 0 ;
-		return redirect('news/document/');
+		return redirect('news/document/');*/
+
+		$file = $request->file('myfiles');
+		$img = \Image::make($file)->resize('400','225')->save('C:\xampp\htdocs\SIT\public\test\itangx.jpg');
+		$file->move('C:\xampp\htdocs\SIT\public\test','itang.jpg');
+	
+		
 	}
 
 	public function show($id)

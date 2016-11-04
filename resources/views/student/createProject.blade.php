@@ -23,7 +23,7 @@
 							<div class="col-xs-6 col-md-6">
 								<div id="type" class="wrapper-dropdown-3" tabindex="1">
 									<span>Select</span>
-									<ul class="dropdown" id="myid">
+								<ul class="dropdown" id="myid">
 										@foreach($type as $ty)
 										<li onclick="selectType({{$ty->id}})">{{$ty->type_name}}</li>
 										@endforeach
