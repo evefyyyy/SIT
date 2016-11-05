@@ -85,12 +85,8 @@
 				</div>
 			</div>
 			@if($video != null && $screenshot != null)
-			<div id="img-gallery" class="eagle-gallery img300">
-				<div class="owl-carousel">
-					@foreach($screenshot as $img)
-					<img src="{{$img->picture_path_name}}" data-medium-img="{{$img->picture_path_name}}" data-big-img="{{$img->picture_path_name}}">
-					@endforeach
-				</div>
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe width="1280" height="720" src="{!! $video !!}" frameborder="0" allowfullscreen></iframe>
 			</div>
 			@endif
 		</div>
@@ -117,13 +113,20 @@
 					@endforeach
 				</div>
 			</div>
-			@if($video != null)
+			@if($video != null && $screenshot != null)
+			<div id="img-gallery" class="eagle-gallery img300">
+				<div class="owl-carousel">
+					@foreach($screenshot as $img)
+					<img src="{{$img->picture_path_name}}" data-medium-img="{{$img->picture_path_name}}" data-big-img="{{$img->picture_path_name}}">
+					@endforeach
+				</div>
+			</div>
+			@endif
+			@if($video != null && $screenshot == null)
 			<div class="embed-responsive embed-responsive-16by9">
 				<iframe width="1280" height="720" src="{!! $video !!}" frameborder="0" allowfullscreen></iframe>
 			</div>
-		</div>
-		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-	@endif
+			@endif
 	<!-- in case no video -->
 	@if($screenshot != null && $video == null)
 	<div id="img-gallery" class="eagle-gallery img300">
@@ -133,9 +136,10 @@
 			@endforeach
 		</div>
 	</div>
+	@endif
 </div>
 <div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-@endif
+
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div id="tmpcontent" class="cd-popup-container">
