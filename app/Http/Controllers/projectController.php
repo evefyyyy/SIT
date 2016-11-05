@@ -27,7 +27,7 @@ class projectController extends Controller
 {
   public function index()
   {
-    $category = Category::all();
+    $category = Category::orderBy('category_name', 'asc')->get();
 
     $groupProject = GroupProject::join('project_detail','group_projects.id','=','project_detail.project_pkid')
     ->join('pictures','pictures.project_pkid','=','group_projects.id')

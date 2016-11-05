@@ -7,10 +7,15 @@
                 All
               </button>
               @foreach($category as $cat)
+              @if($cat->category_name != 'others')
               <button class="btn btn-sm" data-toggle="portfilter" data-target="{{$cat->category_name}}">
                 {{$cat->category_name}}
               </button>
+              @endif
               @endforeach
+              <button class="btn btn-sm" data-toggle="portfilter" data-target="others">
+                others
+              </button>
             </div>
           </div>
         </div>
