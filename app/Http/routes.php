@@ -72,7 +72,8 @@ Route::get('exam/managescore/criteria/sub/create','ScoreSheetController@createSu
 
 Route::post('exam/managescore/criteria/sub','ScoreSheetController@storeSubCriteria');
 
-Route::resource('exam/scorerecord','ScoreRecordController');
+Route::get('exam/scorerecord','ScoreRecordController@index');
+Route::post('exam/scorerecord/level','ScoreRecordController@ScoreLevel');
 
 Route::resource('news/announcement', 'adminAnnouncementController');
 Route::post('news/announcement/edit', 'adminAnnouncementController@edit');

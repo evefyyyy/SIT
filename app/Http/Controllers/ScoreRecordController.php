@@ -18,6 +18,7 @@ use App\Advisor;
 use App\ProjectStudent;
 use App\Student;
 use App\ScoreTest;
+use App\ScoreLevel;
 
 class ScoreRecordController extends Controller
 {
@@ -50,8 +51,46 @@ class ScoreRecordController extends Controller
                 ->where('score_test_round','=','4')
                 ->where('project_pkid',$get[$i])->get();
       $obj['project'][$i]['score4'] = $score4[$i];
+
+      $obj['score_level_verygood'] = ScoreLevel::where('id',1)->first();
+      $obj['score_level_good'] = ScoreLevel::where('id',2)->first();
+      $obj['score_level_fair'] = ScoreLevel::where('id',3)->first();
+      $obj['score_level_poor'] = ScoreLevel::where('id',4)->first();
     }
 
     return view('admin.scoreRecord',$obj);
+  }
+  public function ScoreLevel(Request $request){
+    $score_verygood = $request->score_verygood;
+    $level_verygood = $request->level_verygood;
+    $score_good = $request->score_good;
+    $level_good = $request->level_good;
+    $score_fair = $request->score_fair;
+    $level_fair = $request->level_fair;
+    $score_poor = $request->score_poor;
+    $level_poor = $request->level_poor;
+
+    $very_good = ScoreLevel::find(1);
+    $very_good->score_level_name = $level_verygood;
+    $very_good->score = $score_verygood;
+    $very_good->save();
+
+    $good = ScoreLevel::find(2);
+    $good->score_level_name = $level_good;
+    $good->score = $score_good;
+    $good->save();
+
+    $fair = ScoreLevel::find(3);
+    $fair->score_level_name = $level_fair;
+    $fair->score = $score_fair;
+    $fair->save();
+
+    $poor = ScoreLevel::find(4);
+    $poor->score_level_name = $level_poor;
+    $poor->score = $score_poor;
+    $poor->save();
+
+    
+    return redirect()->back();
   }
 }
