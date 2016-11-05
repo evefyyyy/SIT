@@ -1867,14 +1867,15 @@ button#more.btn.btn-default:hover {
   margin-left: 20px;
 }
 #scorelv table {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 #scorelv .table > tbody > tr > td {
   vertical-align: middle;
   line-height: 2.5em;
+  text-transform: none;
 }
 #scorelv .modal-body input[type=number], #scorelv .table > tbody > tr > td > span {
-    width: 35%;
+    width: 30%;
     margin-left: 8%;
 }

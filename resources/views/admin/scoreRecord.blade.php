@@ -60,7 +60,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">score level</h4>
+				<h4 class="modal-title">Score Level</h4>
 			</div>
 			<form class="form" action="/exam/scorerecord/level" method="post">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -68,16 +68,16 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<td width="50%">more than<input type="number" step="0.01" class="form-control" name="score_verygood" min="0" max="4" value="{{$score_level_verygood->score}}"></td><td><input class="form-control verygood" name="level_verygood" value="{{$score_level_verygood->score_level_name}}"></td>
+							<td width="60%">Greater than or equal<input type="number" step="0.01" class="form-control" name="score_verygood" min="0" max="4" value="{{$score_level_verygood->score}}"></td><td><input class="form-control verygood" name="level_verygood" value="{{$score_level_verygood->score_level_name}}"></td>
 						</tr>
 						<tr>
-							<td>more than<input type="number" step="0.01" class="form-control" name="score_good" min="0" max="4" value="{{$score_level_good->score}}"></td><td><input class="form-control good" name="level_good" value="{{$score_level_good->score_level_name}}"></td>
+							<td>Greater than or equal<input type="number" step="0.01" class="form-control" name="score_good" min="0" max="4" value="{{$score_level_good->score}}"></td><td><input class="form-control good" name="level_good" value="{{$score_level_good->score_level_name}}"></td>
 						</tr>
 						<tr>
-							<td>more than<input id="pscore" type="number" step="0.01" class="form-control" name="score_fair" min="0" max="4" value="{{$score_level_fair->score}}"></td><td><input class="form-control fair" name="level_fair" value="{{$score_level_fair->score_level_name}}"></td>
+							<td>Greater than or equal<input id="pscore" type="number" step="0.01" class="form-control" name="score_fair" min="0" max="4" value="{{$score_level_fair->score}}"></td><td><input class="form-control fair" name="level_fair" value="{{$score_level_fair->score_level_name}}"></td>
 						</tr>
 						<tr>
-							<td>less than<span></span><input type="hidden" step="0.01" id="score_poor" name="score_poor"></td><td><input class="form-control poor" name="level_poor" value="{{$score_level_poor->score_level_name}}"></td>
+							<td>Less than<span></span><input type="hidden" step="0.01" id="score_poor" name="score_poor"></td><td><input class="form-control poor" name="level_poor" value="{{$score_level_poor->score_level_name}}"></td>
 					</tbody>
 				</table>
 			</div>
