@@ -40,7 +40,7 @@ class projectController extends Controller
 
     $poster = Picture::where('picture_type_id', 1)->get();
 
-    
+
 
     return view('projects', compact('category', 'groupProject', 'poster'));
   }

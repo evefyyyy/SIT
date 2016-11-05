@@ -15,7 +15,7 @@ class CreateScoreLevelTable extends Migration
         Schema::create('score_level', function (Blueprint $table) {
             $table->increments('id');
             $table->string('score_level_name');
-            $table->integer('score');
+            $table->decimal('score');
             $table->timestamps();
         });
     }
