@@ -1,4 +1,12 @@
-$(document).on("change", ".score", function() {
+$(".score").ready( function() {
+    var sum = 0;
+    $(".score").each(function(){
+        sum += +$(this).val();
+    });
+     $("#subtotal").html(sum);
+});
+
+$(".score").keyup( function() {
     var sum = 0;
     $(".score").each(function(){
         sum += +$(this).val();

@@ -1688,7 +1688,7 @@ a.delete:focus{
 #givemark .btn-group {
   width: 77px;
 }
-#givemark .required:after, #type .required:after{
+#givemark .required-sign:after, #type .required-sign:after{
   content:'*';
   color:red;
   display: inline;
