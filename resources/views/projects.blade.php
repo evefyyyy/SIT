@@ -23,8 +23,14 @@
             $id = $project->id;
             $poster = DB::table("pictures")
             ->where("project_pkid",$id)
-            ->where("picture_type_id","1")
+            ->where("picture_type_id","4")
             ->value("picture_path_name");
+            if($poster == null){
+              $poster = DB::table("pictures")
+              ->where("project_pkid",$id)
+              ->where("picture_type_id","1")
+              ->value("picture_path_name");
+            }
             $catId = $project->category_id;
             $category = DB::table("categories")
             ->where("id",$catId)

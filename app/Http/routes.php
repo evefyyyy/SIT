@@ -60,9 +60,6 @@ Route::get('exam/managescore/{year}/subscore/{id}','ScoreSheetController@editSub
 
 Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateSubScore');
 
-Route::get('exam/scorerecord/viewscore',function(){
-  return view('admin.viewScore');
-});
 Route::get('dday/scorerecord', function () {
   return view('admin.ddayscore');
 });
@@ -75,7 +72,10 @@ Route::get('exam/managescore/criteria/sub/create','ScoreSheetController@createSu
 
 Route::post('exam/managescore/criteria/sub','ScoreSheetController@storeSubCriteria');
 
-Route::resource('exam/scorerecord','ScoreRecordController');
+Route::get('exam/scorerecord','ScoreRecordController@index');
+
+Route::get('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@viewScore');
+
 
 Route::resource('news/announcement', 'adminAnnouncementController');
 Route::post('news/announcement/edit', 'adminAnnouncementController@edit');

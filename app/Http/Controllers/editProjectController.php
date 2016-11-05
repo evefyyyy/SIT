@@ -155,45 +155,70 @@ class editProjectController extends Controller {
 								->where('picture_type_id','=','1')
 								->value('picture_path_name');
 
+		$thumbnail = DB::table('pictures')
+								->join('group_projects','project_pkid','=','group_projects.id')
+								->where('project_pkid',$getId)
+								->where('picture_type_id','=','4')
+								->value('pictures.id');
 
-										$file = $request->file('myfiles');
-										$img = \Image::make($file)->resize('400','225')->save('C:\xampp\htdocs\SIT\public\test\itangx.jpg');
-										$file->move('C:\xampp\htdocs\SIT\public\test','itang.jpg');
-
-
-
+		$thumbnailPath = DB::table('pictures')
+											->join('group_projects','project_pkid','=','group_projects.id')
+											->where('project_pkid',$getId)
+											->where('picture_type_id','=','4')
+											->value('picture_path_name');
 
 		if($poster != null){
-				if($request->file('poster')){
-					// $delPath = base_path('public_html');
-					// File::Delete($delPath.$picPath);
-					// DB::table('pictures')->where('id',$poster)->delete();
-					// $path = base_path('public_html/projectPoster');
-					// $file = $request->file('poster');
-					// $extension = $file->getClientOriginalExtension();
-					// $filename = "poster".$groupId.".".$extension;
-					// $move = $file->move($path,$filename);
-
-					// $obj = new Picture();
-					// $savePic = '/projectPoster'."/".$filename ;
-					// $obj->picture_path_name = $savePic;
-					// $obj->picture_type_id = '1';
-					// $obj->project_pkid = $getId;
-					// $obj->save();
-				}
-		}else if($poster == null){
 			if($request->file('poster')){
+// delete old file
+				$delPath = base_path('public_html');
+				File::Delete($delPath.$picPath);
+				DB::table('pictures')->where('id',$poster)->delete();
+				File::Delete($delPath.$thumbnailPath);
+				DB::table('pictures')->where('id',$thumbnail)->delete();
+
 				$path = base_path('public_html/projectPoster');
+				$paththumb = base_path('public_html/thumbnail');
 				$file = $request->file('poster');
 				$extension = $file->getClientOriginalExtension();
 				$filename = "poster".$groupId.".".$extension;
+				$filethumb = "thumbnail".$groupId.".".$extension;
+				$img = \Image::make($file)->resize('400','225')->save($paththumb.'/'.$filethumb);
 				$move = $file->move($path,$filename);
+				$save = '/thumbnail'.'/'.$filethumb;
+				$obj = new Picture();
+				$obj->picture_path_name = $save;
+				$obj->picture_type_id = '4';
+				$obj->project_pkid = $getId;
+				$obj->save();
 				$obj = new Picture();
 				$savePic = '/projectPoster'."/".$filename ;
-				// $obj->picture_path_name = $savePic;
-				// $obj->picture_type_id = '1';
-				// $obj->project_pkid = $getId;
-				// $obj->save();
+				$obj->picture_path_name = $savePic;
+				$obj->picture_type_id = '1';
+				$obj->project_pkid = $getId;
+				$obj->save();
+			}
+		}else if($poster == null){
+			if($request->file('poster')){
+				$path = base_path('public_html/projectPoster');
+				$paththumb = base_path('public_html/thumbnail');
+				$file = $request->file('poster');
+				$extension = $file->getClientOriginalExtension();
+				$filename = "poster".$groupId.".".$extension;
+				$filethumb = "thumbnail".$groupId.".".$extension;
+				$img = \Image::make($file)->resize('400','225')->save($paththumb.'/'.$filethumb);
+				$move = $file->move($path,$filename);
+				$save = '/thumbnail'.'/'.$filethumb;
+				$obj = new Picture();
+				$obj->picture_path_name = $save;
+				$obj->picture_type_id = '4';
+				$obj->project_pkid = $getId;
+				$obj->save();
+				$obj = new Picture();
+				$savePic = '/projectPoster'."/".$filename ;
+				$obj->picture_path_name = $savePic;
+				$obj->picture_type_id = '1';
+				$obj->project_pkid = $getId;
+				$obj->save();
 			}
 		}
 
