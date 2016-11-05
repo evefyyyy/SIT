@@ -81,7 +81,10 @@ class ScoreRecordController extends Controller
 
   public function viewScore($id)
   {
-    return view('admin.viewscore');
+    $data['project'] = GroupProject::where('group_project_id',$id)->get();
+
+
+    return view('admin.viewscore',$data);
   }
 
   public function ScoreLevel(Request $request){

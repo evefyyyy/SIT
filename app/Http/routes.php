@@ -103,6 +103,7 @@ Route::get('exam/round','GiveMarksController@selectRound');
 Route::get('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarksData');
 Route::put('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarks');
 Route::get('exam/round/{round}','GiveMarksController@examDetail');
+Route::post('exam/round/{round}','GiveMarksController@submit');
 
 Route::resource('exam/allowtest', 'AllowTestController');
 Route::resource('advproject','AdvisorProjectController');

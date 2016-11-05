@@ -59,17 +59,23 @@ class GiveMarksController extends Controller
       for($i=0; $i<count($data['roomExam']); $i++){
         $projectId = $data['roomExam'][$i]->project_pkid;
         $data['project'][$i] = DB::table('group_projects')->where('id',$projectId)->get();
+        $grade = DB::table('grade_advisor')
+                          ->join('templates_main','templates_main.id','=','main_template_id')
+                          ->where('project_pkid',$projectId)
+                          ->where('round',$round)
+                          ->value('grade_advisor.id');
+        $data['project'][$i]['grade'] = $grade;
       }
       $getRoom = $data['roomExam'][0]->id;
 
       $getAdv =  DB::table('rooms_advisor')
-                        ->join('rooms_exam','rooms_exam.id','=','room_exam_id')
-                        ->join('rooms','rooms.id','=','room_id')
-                        ->join('advisors','advisors.id','=','advisor_id')
-                        ->where('room_id',$getRoom)
-                        ->groupBy('advisor_id')
-                        ->select('advisor_name')
-                        ->get();
+                  ->join('rooms_exam','rooms_exam.id','=','room_exam_id')
+                  ->join('rooms','rooms.id','=','room_id')
+                  ->join('advisors','advisors.id','=','advisor_id')
+                  ->where('room_id',$getRoom)
+                  ->groupBy('advisor_id')
+                  ->select('advisor_name')
+                  ->get();
 
       foreach($getAdv as $adv){
         $explode[] = explode(' ',$adv->advisor_name);
@@ -78,9 +84,47 @@ class GiveMarksController extends Controller
         $data['advName'][] = $ex[0];
       }
     }
-
-
       return view('advisor.examDetail',$data);
+    }
+
+    public function submit($round)
+    {
+      $adv = Auth::user()->user_advisor->advisor->id;
+
+      $project = DB::table('rooms_advisor')
+                  ->join('rooms_exam','rooms_exam.id','=','room_exam_id')
+                  ->join('advisors','advisors.id','=','advisor_id')
+                  ->where('advisor_id',$adv)
+                  ->select('project_pkid')
+                  ->get();
+      for($i=0; $i<count($project); $i++){
+        $projectId = $project[$i]->project_pkid;
+        $submitScore = DB::table('advisor_scoresheet')
+                      ->join('templates_sub','templates_sub.id','=','sub_template_id')
+                      ->join('templates_main','templates_main.id','=','template_main_id')
+                      ->where('project_pkid',$projectId)
+                      ->where('round',$round)
+                      ->select('advisor_scoresheet.id')
+                      ->get();
+        if($submitScore != null){
+          for($j=0; $j<count($submitScore); $j++){
+            $advScoreId = $submitScore[$j]->id;
+            $obj = AdvisorScoreSheet::find($advScoreId);
+            $obj->submit = 1;
+            $obj->save();
+          }
+          $grade = DB::table('grade_advisor')
+                    ->join('templates_main','templates_main.id','=','main_template_id')
+                    ->where('project_pkid',$projectId)
+                    ->where('round',$round)
+                    ->value('grade_advisor.id');
+          $obj = GradeAdvisor::find($grade);
+          $obj->submit = 1;
+          $obj->save();
+        }
+      }
+
+      return redirect(url('/exam/round'));
     }
 
     public function giveMarksData($round,$id)

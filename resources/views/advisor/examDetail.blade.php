@@ -1,6 +1,8 @@
 @extends('advTmp')
 @section('content')
 <div class="row" id="editroom">
+	<form action="/exam/round/{{$round}}" method="post">
+	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	<div class="col-xs-12 col-md-10 col-lg-8">
 	<h2>exam room</h2>
@@ -42,7 +44,11 @@
 					<tr>
 						<td>{{$pj[0]->group_project_id}}</td>
 						<td id="name"><a class="tblink" href="/exam/round/{{$round}}/givemarks/{{$pj[0]->group_project_id}}">{{$pj[0]->group_project_th_name}}</a></td>
-						<td><i class="glyphicon glyphicon-ok"></i></td>
+						@if($pj['grade'] != null)
+						<td><i class="glyphicon glyphicon-ok" id="check"></i></td>
+						@else
+						<td><i id="check"></i></td>
+						@endif
 					</tr>
 					@endforeach
 				</tbody>
@@ -52,6 +58,7 @@
 			  <button type="submit" class="action-button">submit</button>
 			</div>
 	</div>
+		</form>
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 </div>
 @endif
