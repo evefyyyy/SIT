@@ -150,6 +150,5 @@
 	function setNum(x){
 		document.getElementById('num').value = x;
 	}
-
 	</script>
 	@stop
