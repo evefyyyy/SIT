@@ -66,6 +66,7 @@
 	$(document).ready( function () {
 		$('.table').dataTable( {
 			"bPaginate": false,
+			"order": [[ 2, "desc" ]]
 		} );
 		$('.dataTables_info').hide();
 		$('#IT').addClass('active');
