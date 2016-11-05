@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-			<h5>ผลงานนักศึกษาคณะเทคโนโลยีสารสนเทศ สาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</h5>
+			<h5>ผลงานนักศึกษาคณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</h5>
 		</div>
 		<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>

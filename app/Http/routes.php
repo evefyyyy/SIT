@@ -21,7 +21,6 @@ Route::get('home/','projectController@index');
 Route::get('home/search','projectController@search');
 // Route::get('showproject/{groupId}','showProjectController@index');
 Route::get('showproject/{groupId}','showProjectController@show');
-Route::get('dday/allowdday', 'DdayController@allowDday');
 
 //admin
 Route::get('exam/manageroom','examRoomController@index');
@@ -60,9 +59,16 @@ Route::get('exam/managescore/{year}/subscore/{id}','ScoreSheetController@editSub
 
 Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateSubScore');
 
+
 Route::get('dday/scorerecord', function () {
   return view('admin.ddayscore');
 });
+
+Route::get('exam/scorerecord/viewscore',function(){
+  return view('admin.viewScore');
+});
+Route::get('dday/scorerecord', 'DdayScoreRecord@ShowScore');
+
 
 Route::get('exam/managescore/criteria/main/create','ScoreSheetController@createMainCriteria');
 
@@ -76,6 +82,7 @@ Route::get('exam/scorerecord','ScoreRecordController@index');
 
 Route::get('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@viewScore');
 
+Route::post('exam/scorerecord/level','ScoreRecordController@ScoreLevel');
 
 Route::resource('news/announcement', 'adminAnnouncementController');
 Route::post('news/announcement/edit', 'adminAnnouncementController@edit');

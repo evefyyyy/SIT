@@ -53,14 +53,14 @@
               });
                $("#maintotal{{$temp->count}}").html(sum);
           });
-          // function countTotal() {
-          //   if($("#maintotal{{$temp->count}}").html() != 100){
-          //     $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
-          //   } else {
-          //     $('#warning').html( "" );
-          //     window.location.href = 'create/subcriteria';
-          //   }
-          // }
+          function countTotal() {
+            if($("#maintotal{{$temp->count}}").html() != 100){
+              $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
+            } else {
+              $('#warning').html( "" );
+              window.location.href = 'create/subcriteria';
+            }
+          }
       </script>
     </div>
   </div>

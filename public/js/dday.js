@@ -41,7 +41,7 @@ $('#img-gallery').eagleGallery({
 
 jQuery(document).ready(function($){
 	//open popup
-	$original = $(".cd-content").html();
+	$original = $(".cd-popup-container").html();
 	$('.btn-3e').on('click', function(event){	
 		$('#tmpcontent').html($original);	
 		$('.cd-popup').addClass('is-visible');

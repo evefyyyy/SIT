@@ -82,7 +82,6 @@
                   <li class="dropdown {{ strrpos(Request::path(),'dday') === 0 ? 'active' : ''  }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">dday</a>
                     <ul class="dropdown-menu">
-                      <li><a href="/dday/allowdday">allow dday</a></li>
                       <li><a href="/dday/gencode">gen code</a></li>
                       <li><a href="/dday/scorerecord">score record</a></li>
                     </ul>
