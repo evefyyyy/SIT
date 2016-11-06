@@ -52,9 +52,9 @@
       		<th>grade</th>
       		<th colspan="2">
 						<?php
-							$gradeData = ['A','B+','B','C+','C','D+','D','F'];
+							$gradeData = ['A','B+','B','C+','C','D+','D'];
 						 ?>
-      			<select class="selectgrade" title="-" id="selectGrade" onchange="selectGrade()">
+      			<select class="selectgrade" title="-" id="selectGrade" onchange="selectGrade()" name="selectGrade">
 					@foreach($gradeData as $gd)
 						@if($grade == $gd)
 					  <option value={{$gd}} selected>{{$gd}}</option>
@@ -83,6 +83,7 @@
 	function selectGrade(){
 		var grade = document.getElementById("selectGrade").value
 		document.getElementById("grade").value = grade;
+		console.log(grade);
 	}
 </script>
 @stop
