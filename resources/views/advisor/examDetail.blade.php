@@ -1,7 +1,7 @@
 @extends('advTmp')
 @section('content')
 <div class="row" id="editroom">
-	<form action="/exam/round/{{$round}}" method="post">
+	<form id="sendmarks" action="/exam/round/{{$round}}" method="post">
 	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	<div class="col-xs-12 col-md-10 col-lg-8">
@@ -11,9 +11,9 @@
 	@else
 	<div class="row">
 		<div class="col-xs-2 col-md-3 col-lg-3 titlee">room</div>
-		<div class="col-xs-3 col-md-3 col-lg-3">{{$roomExam[0]->room_name}}</div>
+		<div class="col-xs-2 col-md-2 col-lg-2">{{$roomExam[0]->room_name}}</div>
 		<div class="col-xs-2 col-md-2 col-lg-2 titlee">date</div>
-		<div class="col-xs-5 col-md-4 col-lg-4">
+		<div class="col-xs-6 col-md-5 col-lg-5">
 			{{date('d F Y',strtotime($roomExam[0]->exam_datetime))}} ({{date('g:ia',strtotime($roomExam[0]->exam_starttime))}} - {{date('g:ia',strtotime(end($roomExam)->exam_endtime))}} )
 		</div>
 	</div>
@@ -55,7 +55,7 @@
 			</table>
 			<div id="center">
 			  <a href="/exam/round"><button type="button" class="action-button">back</button></a>
-			  <button id="sendmarks" type="submit" class="action-button">submit</button>
+			  <button type="submit" class="action-button">submit</button>
 			</div>
 	</div>
 		</form>
@@ -63,9 +63,10 @@
 </div>
 @endif
 <script>
-$('sendmarks').click( function() {
+$('#sendmarks').submit( function(e) {
 	$('#marksTB table td:nth-child(3)').each(function( index ) {
 	  if ($('this').html() == null){
+	  		e.preventDefault();
 	  		return false;
 		} else {
 		}

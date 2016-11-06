@@ -2,7 +2,7 @@
 @section('content')
 <div class="row" id="editroom">
 	<div class="col-xs-1 col-md-1 col-lg-2"></div>
-	<form action="{{$url}}" method="post">
+	<form id="sendscore" action="{{$url}}" method="post">
     {{method_field($method)}}
 		<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	<div class="col-xs-10 col-md-10 col-lg-8">
@@ -74,7 +74,7 @@
 </div>
 	<div id="center">
 			<a href="/exam/round/{{$round}}"><button class="no-print action-button" type="button">back</button></a>
-			<button class="action-button">save</button>
+			<button type="submit" class="action-button">save</button>
 	</div>
 	</form>
 <script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>

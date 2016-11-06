@@ -27,3 +27,13 @@ $(function () {
 	$('.selectgrade').selectpicker({
 	});
 });
+
+$('#sendscore').submit( function(e) {
+      if ($('.selectgrade span').html() == "-"){
+            $('.selectgrade span').parent().addClass("required");
+            e.preventDefault();
+            return false;
+        } else {
+            $('.selectgrade span').parent().removeClass("required");
+        }
+});
