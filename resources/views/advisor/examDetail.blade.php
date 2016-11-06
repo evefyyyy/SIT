@@ -54,7 +54,7 @@
 				</tbody>
 			</table>
 			<div id="center">
-			  <a href="/exam/round"><button class="action-button">back</button></a>
+			  <a href="/exam/round"><button class="action-button" type="button">back</button></a>
 			  <button type="submit" class="action-button">submit</button>
 			</div>
 	</div>

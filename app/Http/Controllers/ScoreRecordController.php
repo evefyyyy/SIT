@@ -81,6 +81,7 @@ class ScoreRecordController extends Controller
 
   public function viewScore($id)
   {
+    $data['id'] = $id;
     $data['project'] = GroupProject::where('group_project_id',$id)->get();
     $groupId = $data['project'][0]->id;
     $adv = DB::table('project_advisors')
@@ -246,6 +247,8 @@ class ScoreRecordController extends Controller
       $mainGrade1 = (1.5*40)/100;
     }elseif($mainAdvScore1 == 'D'){
       $mainGrade1 = (1*40)/100;
+    }elseif($mainAdvScore1 == null){
+      $mainGrade1 = 0;
     }
     $comScore1 = DB::table('grade_advisor')
                     ->where('main_template_id',$data['mainRound1'][0]->template_main_id)
@@ -305,6 +308,8 @@ class ScoreRecordController extends Controller
       $mainGrade2 = (1.5*40)/100;
     }elseif($mainAdvScore2 == 'D'){
       $mainGrade2 = (1*40)/100;
+    }elseif($mainAdvScore2 == null){
+      $mainGrade2 = 0;
     }
     $comScore2 = DB::table('grade_advisor')
                     ->where('main_template_id',$data['mainRound2'][0]->template_main_id)
@@ -364,6 +369,8 @@ class ScoreRecordController extends Controller
       $mainGrade3 = (1.5*40)/100;
     }elseif($mainAdvScore3 == 'D'){
       $mainGrade3 = (1*40)/100;
+    }elseif($mainAdvScore3 == null){
+      $mainGrade3 = 0;
     }
     $comScore3 = DB::table('grade_advisor')
                     ->where('main_template_id',$data['mainRound3'][0]->template_main_id)
@@ -423,6 +430,8 @@ class ScoreRecordController extends Controller
       $mainGrade4 = (1.5*40)/100;
     }elseif($mainAdvScore4 == 'D'){
       $mainGrade4 = (1*40)/100;
+    }elseif($mainAdvScore4 == null){
+      $mainGrade4 = 0;
     }
     $comScore4 = DB::table('grade_advisor')
                     ->where('main_template_id',$data['mainRound4'][0]->template_main_id)
@@ -462,8 +471,13 @@ class ScoreRecordController extends Controller
         $data['level4'] = 'Poor';
       }
     }
-    
+
     return view('admin.viewscore',$data);
+  }
+
+  public function storeScoreLevel()
+  {
+    return redirect(url('exam/scorerecord'));
   }
 
   public function ScoreLevel(Request $request){

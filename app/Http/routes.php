@@ -82,6 +82,8 @@ Route::get('exam/scorerecord','ScoreRecordController@index');
 
 Route::get('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@viewScore');
 
+Route::post('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@storeScoreLevel');
+
 Route::post('exam/scorerecord/level','ScoreRecordController@ScoreLevel');
 
 Route::resource('news/announcement', 'adminAnnouncementController');
