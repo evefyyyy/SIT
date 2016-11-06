@@ -63,6 +63,7 @@ class GiveMarksController extends Controller
                           ->join('templates_main','templates_main.id','=','main_template_id')
                           ->where('project_pkid',$projectId)
                           ->where('round',$round)
+                          ->where('advisor_id',$adv)
                           ->value('grade_advisor.id');
         $data['project'][$i]['grade'] = $grade;
       }
@@ -133,6 +134,7 @@ class GiveMarksController extends Controller
       $data['method'] = 'put';
       $data['round'] = $round;
       $data['groupId'] = $id;
+      $adv = Auth::user()->user_advisor->advisor->id;
 
       $data['project'] = GroupProject::where('group_project_id',$id)->get();
       $projectId = $data['project'][0]->id;
@@ -160,6 +162,7 @@ class GiveMarksController extends Controller
                   ->where('main_template_score_id',$mainId)
                   ->select('criteria_sub_name','sub_templates_score.score','template_sub_id')
                   ->get();
+                  // dd($data['sub']);
       for($i=0; $i<count($data['sub']); $i++){
         $subTempId = $data['sub'][$i]->template_sub_id;
         $getScore = DB::table('advisor_scoresheet')
@@ -167,6 +170,7 @@ class GiveMarksController extends Controller
                       ->join('templates_main','templates_main.id','=','template_main_id')
                       ->where('sub_template_id',$subTempId)
                       ->where('project_pkid',$projectId)
+                      ->where('advisor_id',$adv)
                       ->where('round',$round)
                       ->value('score');
         $data['sub'][$i]->getScore = $getScore;
@@ -175,6 +179,7 @@ class GiveMarksController extends Controller
                         ->join('templates_main','templates_main.id','=','main_template_id')
                         ->where('project_pkid',$projectId)
                         ->where('round',$round)
+                        ->where('advisor_id',$adv)
                         ->value('grade');
                             // dd($data);
 
@@ -204,6 +209,7 @@ class GiveMarksController extends Controller
                     ->join('templates_main','templates_main.id','=','template_main_id')
                     ->where('project_pkid',$projectId)
                     ->where('round',$round)
+                    ->where('advisor_id',$adv)
                     ->select('advisor_scoresheet.id')
                     ->get();
       if($scoreExist == null){
@@ -236,6 +242,7 @@ class GiveMarksController extends Controller
                     ->join('templates_main','templates_main.id','=','main_template_id')
                     ->where('project_pkid',$projectId)
                     ->where('round',$round)
+                    ->where('advisor_id',$adv)
                     ->value('grade_advisor.id');
       if($gradeExist == null){
         $obj = new GradeAdvisor();

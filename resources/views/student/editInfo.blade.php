@@ -97,7 +97,6 @@
 							    @else
 							    <option value="{{$ad->advisor_name}}">{{$ad->advisor_name}}</option>
 							    @endif
-
 								@endforeach
 						  </select>
 					</div>
