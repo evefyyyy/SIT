@@ -5,9 +5,9 @@
 	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	<div class="col-xs-12 col-md-10 col-lg-8">
-	<h2>exam room</h2>
+	<h2>exam round</h2>
 	@if($roomExam == null)
-		<h4 class="text-center noProject">no project</h4>
+		<h4 class="text-center noProject">You did not have permission in this exam.</h4>
 	@else
 	<div class="row">
 		<div class="col-xs-2 col-md-3 col-lg-3 titlee">room</div>
@@ -54,12 +54,22 @@
 				</tbody>
 			</table>
 			<div id="center">
-			  <a href="/exam/round"><button class="action-button">back</button></a>
-			  <button type="submit" class="action-button">submit</button>
+			  <a href="/exam/round"><button type="button" class="action-button">back</button></a>
+			  <button id="sendmarks" type="submit" class="action-button">submit</button>
 			</div>
 	</div>
 		</form>
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 </div>
 @endif
+<script>
+$('sendmarks').click( function() {
+	$('#marksTB table td:nth-child(3)').each(function( index ) {
+	  if ($('this').html() == null){
+	  		return false;
+		} else {
+		}
+	});
+});
+</script>
 @stop
