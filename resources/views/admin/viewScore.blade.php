@@ -46,11 +46,11 @@
       <thead>
        <tr>
        		<th>criteria</th>
-       		<th width="10%">c1 (40%)</th>
-       		<th width="10%">c2 (10%)</th>
-       		<th width="10%">c3 (10%)</th>
-       		<th width="10%">c4 (10%)</th>
-       		<th width="10%">c5 (10%)</th>
+       		<th width="10%">c1</th>
+       		<th width="10%">c2</th>
+       		<th width="10%">c3</th>
+       		<th width="10%">c4</th>
+       		<th width="10%">c5</th>
        		<th width="15%">full marks</th>
        </tr>
      </thead>
@@ -70,7 +70,6 @@
 </div>
 	<div id="center">
 		<a href="/exam/scorerecord"><button class="no-print action-button">back</button></a>
-		<button class="action-button">save</button>
 	</div>
 <script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
 <script src="{!! URL::asset('js/marks.js') !!}"></script>

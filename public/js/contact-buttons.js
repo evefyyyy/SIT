@@ -19,11 +19,11 @@
     var defaults = { 
       effect  : '', // slide-on-scroll
       buttons : {
-        'facebook':   { class: 'facebook',  use: false, icon: 'facebook',    link: 'https://www.facebook.com/sharer/sharer.php?u='+linkurl, title: 'Follow on Facebook', popup: { width: 685, height: 500 } },
-        'google':     { class: 'gplus',     use: false, icon: 'google-plus', link: 'https://plus.google.com/share?url='+linkurl , title: 'Visit on Google Plus' },
-        'linkedin':   { class: 'linkedin',  use: false, icon: 'linkedin',    link: 'https://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source='+linkurl, title: 'Visit on LinkedIn' },
-        'twitter':    { class: 'twitter',   use: false, icon: 'twitter',     link: 'https://twitter.com/home?status='+linkurl, title: 'Follow on Twitter' },
-        'pinterest':  { class: 'pinterest', use: false, icon: 'pinterest',   link: 'https://pinterest.com/pin/create/button/?url=&media=&description='+linkurl, title: 'Follow on Pinterest' },
+        'facebook':   { class: 'facebook',  use: false, icon: 'facebook',    link: 'https://www.facebook.com/sharer/sharer.php?u='+linkurl },
+        'google':     { class: 'gplus',     use: false, icon: 'google-plus', link: 'https://plus.google.com/share?url='+linkurl },
+        'linkedin':   { class: 'linkedin',  use: false, icon: 'linkedin',    link: 'https://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source='+linkurl },
+        'twitter':    { class: 'twitter',   use: false, icon: 'twitter',     link: 'https://twitter.com/home?status='+linkurl },
+        'pinterest':  { class: 'pinterest', use: false, icon: 'pinterest',   link: 'https://pinterest.com/pin/create/button/?url=&media=&description='+linkurl },
         'phone':      { class: 'phone',     use: false, icon: 'phone',       link: '', title: 'Call us', type: 'phone' },
         'email':      { class: 'email',     use: false, icon: 'envelope',    link: '', title: 'Send us an email', type: 'email' }
       }

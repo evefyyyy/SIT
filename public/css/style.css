@@ -1462,8 +1462,9 @@ img#cover {
 #givemark td:nth-child(3), #tsubtotal {
   padding-left: 24px;
 }
-#scoresheet .box .viewsheet > tbody > tr > td:nth-child(2n+2) {
+#scoresheet .box .viewsheet > tbody > tr > td:nth-child(2n+2), #scoresheet .box .viewsheet > tfoot > tr > th:nth-child(2n+2) {
   text-align: center;  
+  padding-left: 0;
 }
 #scoresheet .box .viewsheet {
   margin-bottom: 25px;
