@@ -122,21 +122,53 @@
 			<div class="modal-body">
 				<table class="table table-bordered myprop">
 					<tbody>
+					<?php  
+						$first_draft_proposal = App\Proposal::where([
+												['project_pkid', $gp->id],
+												['proposal_type_id', 1]
+												])->first();
+						$first_proposal = App\Proposal::where([
+												['project_pkid', $gp->id],
+												['proposal_type_id', 2]
+												])->first();
+						$second_proposal = App\Proposal::where([
+												['project_pkid', $gp->id],
+												['proposal_type_id', 3]
+												])->first();
+						$third_proposal = App\Proposal::where([
+												['project_pkid', $gp->id],
+												['proposal_type_id', 4]
+												])->first();
+						$final_proposal = App\Proposal::where([
+												['project_pkid', $gp->id],
+												['proposal_type_id', 5]
+												])->first();
+					?>
+						@if($first_draft_proposal != null)
 						<tr>
-							<td width="60%">first draft proposal</td><td width="40%"><a class="tblink" href="/proposalFile/{{$gp->proposal[0]->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							<td width="60%">first draft proposal</td><td width="40%"><a class="tblink" href="/proposalFile/{{$first_draft_proposal->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
 						</tr>
+						@endif
+						@if($first_proposal != null)
 						<tr>
-							<td>first proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							<td>first proposal</td><td><a class="tblink" href="/proposalFile/{{$second_draft_proposal->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
 						</tr>
+						@endif
+						@if($second_proposal != null)
 						<tr>
-							<td>second proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							<td>second proposal</td><td><a class="tblink" href="/proposalFile/{{$third_draft_proposal->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
 						</tr>
+						@endif
+						@if($third_proposal != null)
 						<tr>
-							<td>third proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
+							<td>third proposal</td><td><a class="tblink" href="/proposalFile/{{$final_draft_proposal->proposal_path_name}}" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
 						</tr>
+						@endif
+						@if($final_proposal != null)
 						<tr>
 							<td>final proposal</td><td><a class="tblink" href="#" download><span class="flaticon-pdf-file-format-symbol"></span></a></td>
 						</tr>
+						@endif
 					</tbody>
 				</table>
 			</div>
@@ -190,9 +222,6 @@
 				</ul>
 			</div>
 <script>
-	$('.firstname').each(function(index) {
-		document.getElementsByClassName('firstname')[index].innerHTML = $(this).text().split(' ')[0]
-	});
 	$(document).ready(function() {
 		var table = $('#pjtable').DataTable( {
 		} );

@@ -1,6 +1,5 @@
 @extends('generalTmp')
 @section('content')
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 <link href="{!! URL::asset('css/eagle.gallery.min.css') !!}" rel="stylesheet">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href="{!! URL::asset('css/contact-buttons.css') !!}" rel="stylesheet">
@@ -155,7 +154,7 @@
 		     <front></front>
 		   </div>
 	       <ul class="cd-buttons">
-	          <li><a href="javascript:vote();" class="test" id="dd-vote">Vote</a></li>
+	          <li><a href="javascript:vote();" id="dd-vote">Vote</a></li>
 	      </ul>
 	      <a class="cd-popup-close cd-close img-replace"></a>
 	    </div>
@@ -169,12 +168,7 @@
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <script src="{!! URL::asset('js/dday.js') !!}"></script>
 <script>
-
-$(document).keypress(function(e) {
-    if (e.which == 13) {
-        vote();    
-    }
-});
+	
 
 function vote(){
 	if ($('#gencode').val() == "") {

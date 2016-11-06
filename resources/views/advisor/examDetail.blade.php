@@ -45,7 +45,7 @@
 						<td>{{$pj[0]->group_project_id}}</td>
 						<td id="name"><a class="tblink" href="/exam/round/{{$round}}/givemarks/{{$pj[0]->group_project_id}}">{{$pj[0]->group_project_th_name}}</a></td>
 						@if($pj['grade'] != null)
-						<td><i class="glyphicon glyphicon-ok" id="check"></i></td>
+						<td class="finish"><i class="glyphicon glyphicon-ok" id="check"></i></td>
 						@else
 						<td><i id="check"></i></td>
 						@endif

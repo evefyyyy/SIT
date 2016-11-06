@@ -64,7 +64,7 @@
 					@endforeach
 				</select>
 				<input type="hidden" name="grade" id="grade">
-			<label class="required"></label>
+			<label class="required-sign"></label>
 			</th>
 		</tr>
       </tfoot>

@@ -577,7 +577,7 @@ table.teammem {
   transition: opacity 0.5s 0s, visibility 0s 0s;
 }
 .cd-popup-container {
-  margin: 5em auto;
+  margin: 8em auto;
   position: relative;
   width: 90%;
   max-width: 400px;
@@ -601,12 +601,23 @@ table.teammem {
   transition-duration: 0.3s;
 }
 #detail .cd-popup-container {
+   margin: 5em auto;
    width: 100%;
    max-width: none;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
   transition-duration: 0.5s;
 } 
+@media(max-width:768px){
+  #detail .cd-popup-container {
+    margin: 0 auto;
+  }
+}
+#scoresheet .cd-popup-container p {
+  line-height: 7em;
+  padding: auto;
+  text-transform: none;
+}
 .cd-popup-container p {
   font-size: 1.175em;
   padding: 50px 20px;
@@ -628,6 +639,9 @@ table.teammem {
   float: left;
   width: 50%;
   display: inline-block;
+}
+#scoresheet .cd-popup-container .cd-buttons li {
+  width: 100%;
 }
 #detail .cd-popup-container .cd-buttons li {
   width: 100%;
@@ -717,7 +731,9 @@ table.teammem {
   font-size: 2em;
   height: 2.5em;
   text-align: center;
+  letter-spacing: 2px;
   border: 2px solid #dcdcdc;
+ font-family: 'Noto Sans', sans-serif;
 }
 #detail .cd-popup .form-control:focus {
   border-color: #dcdcdc;
@@ -1462,8 +1478,9 @@ img#cover {
 #givemark td:nth-child(3), #tsubtotal {
   padding-left: 24px;
 }
-#scoresheet .box .viewsheet > tbody > tr > td:nth-child(2n+2) {
+#scoresheet .box .viewsheet > tbody > tr > td:nth-child(2n+2), #scoresheet .box .viewsheet > tfoot > tr > th:nth-child(2n+2) {
   text-align: center;  
+  padding-left: 0;
 }
 #scoresheet .box .viewsheet {
   margin-bottom: 25px;
@@ -1498,8 +1515,8 @@ img#cover {
     text-transform: uppercase;
 }
 #managecri a{
-  font-size: 0.975em;
-  border-color: #ccc;
+  font-size: 1.125em;
+  border: 2px solid #ccc;
   margin-bottom: 20px;
   display: block;
   padding: 15px 20px;
@@ -1688,7 +1705,7 @@ a.delete:focus{
 #givemark .btn-group {
   width: 77px;
 }
-#givemark .required:after, #type .required:after{
+#givemark .required-sign:after, #type .required-sign:after{
   content:'*';
   color:red;
   display: inline;
@@ -1867,14 +1884,15 @@ button#more.btn.btn-default:hover {
   margin-left: 20px;
 }
 #scorelv table {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 #scorelv .table > tbody > tr > td {
   vertical-align: middle;
   line-height: 2.5em;
+  text-transform: none;
 }
 #scorelv .modal-body input[type=number], #scorelv .table > tbody > tr > td > span {
-    width: 35%;
+    width: 30%;
     margin-left: 8%;
 }

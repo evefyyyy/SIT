@@ -39,28 +39,28 @@
         <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal{{$temp->count}}"></font> <span>%</span></th></tr></tfoot>
       </table>
       <script>
-          $(document).ready(function() {
+       $(document).on("load", ".main{{$temp->count}}", function() {
               var sum = 0;
               $(".main{{$temp->count}}").each(function(){
                   sum += +$(this).val();
               });
                $("#maintotal{{$temp->count}}").html(sum);
           });
-          $(document).on("change", ".main{{$temp->count}}", function() {
+          $(document).on("keyup", ".main{{$temp->count}}", function() {
               var sum = 0;
               $(".main{{$temp->count}}").each(function(){
                   sum += +$(this).val();
               });
                $("#maintotal{{$temp->count}}").html(sum);
           });
-          function countTotal() {
-            if($("#maintotal{{$temp->count}}").html() != 100){
-              $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
-            } else {
-              $('#warning').html( "" );
-              window.location.href = 'create/subcriteria';
-            }
-          }
+          // function countTotal() {
+          //   if($("#maintotal{{$temp->count}}").html() != 100){
+          //     $('#warning').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> total must be 100%');
+          //   } else {
+          //     $('#warning').html( "" );
+          //     window.location.href = 'create/subcriteria';
+          //   }
+          // }
       </script>
     </div>
   </div>

@@ -411,7 +411,6 @@
 </div>
 	<div id="center">
 		<a href="/exam/scorerecord"><button class="no-print action-button">back</button></a>
-		<button class="action-button">save</button>
 	</div>
 <script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
 <script src="{!! URL::asset('js/marks.js') !!}"></script>

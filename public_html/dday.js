@@ -1,12 +1,9 @@
-$('.cd-load').hide();
-$('.cd-success').hide();
-$('.alert').hide();
-
 $(document).ready(function() {
 		var str = $("div.tools").html();
 		$("div.tools").html(str.replace(/\n/g, "<br />"));
 
-});
+	}
+	);
 	WebFontConfig = {
 		google: { families: [ 'Lato:400,700,300:latin' ] }
 	};
@@ -24,7 +21,7 @@ $(document).ready(function() {
 $.contactButtons({
 	effect  : 'slide-on-scroll',
 	buttons : {
-		'facebook':   { class: 'facebook', use: true, extras: 'target="popup"' },
+		'facebook':   { class: 'facebook', use: true, extras: 'target="_blank"' },
 		'twitter':    { class: 'twitter',   use: true, },
 		'linkedin':   { class: 'linkedin', use: true, },
 		'google':     { class: 'gplus',    use: true, },
@@ -41,12 +38,9 @@ $('#img-gallery').eagleGallery({
 
 jQuery(document).ready(function($){
 	//open popup
-	$original = $(".cd-popup-container").html();
-	$('.btn-3e').on('click', function(event){	
-		$('#tmpcontent').html($original);	
+	$('.btn-3e').on('click', function(event){
+		event.preventDefault();
 		$('.cd-popup').addClass('is-visible');
-		;
-		//event.preventDefault();
 	});
 
 	//close popup
@@ -55,7 +49,6 @@ jQuery(document).ready(function($){
 			event.preventDefault();
 			$(this).removeClass('is-visible');
 		}
-		
 	});
 	//close popup when clicking the esc keyboard button
 	$(document).keyup(function(event){
@@ -63,14 +56,4 @@ jQuery(document).ready(function($){
     		$('.cd-popup').removeClass('is-visible');
 	    }
     });
-
-});
-
-$('#gencode').click(function (){
-	if ($('#gencode').val() != "") {
-		$('#gencode').val("");
-	} else {}
-	if ($('#gencode').hasClass("required")){
-		$('#gencode').removeClass("required");
-	}
 });

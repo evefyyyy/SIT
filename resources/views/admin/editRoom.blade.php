@@ -130,7 +130,7 @@
 											{{$std->student_id}}<br>
 										@endforeach
 										</td>
-										<td>
+										<td class="fullname">
 										@foreach($pj->student as $std)
 												{{$std->student_name}}<br>
 										@endforeach
