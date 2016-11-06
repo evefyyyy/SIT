@@ -39,7 +39,7 @@
 		<div class="col-xs-1 col-md-3 col-lg-3"></div>
 	</div>
 	<div id="center">
-	  <a href="/exam/managescore/criteria"><button class="action-button">back</button></a>
+	  <a href="/exam/managescore/criteria"><button class="action-button" type="button">back</button></a>
 	  <button type="submit" class="action-button">save</button>
 	</div>
 	</form>
@@ -59,7 +59,7 @@
 			event.preventDefault();
 			$(this).removeClass('is-visible');
 		}
-		
+
 	});
 	//close popup when clicking the esc keyboard button
 	$(document).keyup(function(event){

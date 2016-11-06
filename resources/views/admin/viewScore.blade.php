@@ -213,7 +213,8 @@
 						<th></th>
 						@endforeach
 					@endif
-					<th class="good">{{$level2 or ''}}</th></tr>
+					<th class="good" id="level2">{{$level2 or ''}}</th></tr>
+					<input type="hidden" name="level2" id="getLevel2">
       </tfoot>
  	</table>
   </div>
@@ -308,7 +309,8 @@
 						<th></th>
 						@endforeach
 					@endif
-					<th class="good">{{$level3 or ''}}</th></tr>
+					<th class="good" id="level3">{{$level3 or ''}}</th></tr>
+					<input type="hidden" name="level3" id="getLevel3">
       </tfoot>
  	</table>
   </div>
@@ -403,7 +405,8 @@
 						<th></th>
 						@endforeach
 					@endif
-					<th class="good">{{$level4 or ''}}</th></tr>
+					<th class="good" id="level4">{{$level4 or ''}}</th></tr>
+					<input type="hidden" name="level4" id="getLevel4">
       </tfoot>
  	</table>
   </div>
@@ -460,5 +463,6 @@
 	document.getElementById("getLevel3").value = level3;
 	var level4 = document.getElementById("level4").innerHTML;
 	document.getElementById("getLevel4").value = level4;
+	console.log(level1);
 </script>
 @stop
