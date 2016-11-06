@@ -577,7 +577,7 @@ table.teammem {
   transition: opacity 0.5s 0s, visibility 0s 0s;
 }
 .cd-popup-container {
-  margin: 5em auto;
+  margin: 8em auto;
   position: relative;
   width: 90%;
   max-width: 400px;
@@ -601,12 +601,23 @@ table.teammem {
   transition-duration: 0.3s;
 }
 #detail .cd-popup-container {
+   margin: 5em auto;
    width: 100%;
    max-width: none;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
   transition-duration: 0.5s;
 } 
+@media(max-width:768px){
+  #detail .cd-popup-container {
+    margin: 0 auto;
+  }
+}
+#scoresheet .cd-popup-container p {
+  line-height: 7em;
+  padding: auto;
+  text-transform: none;
+}
 .cd-popup-container p {
   font-size: 1.175em;
   padding: 50px 20px;
@@ -628,6 +639,9 @@ table.teammem {
   float: left;
   width: 50%;
   display: inline-block;
+}
+#scoresheet .cd-popup-container .cd-buttons li {
+  width: 100%;
 }
 #detail .cd-popup-container .cd-buttons li {
   width: 100%;
@@ -717,7 +731,9 @@ table.teammem {
   font-size: 2em;
   height: 2.5em;
   text-align: center;
+  letter-spacing: 2px;
   border: 2px solid #dcdcdc;
+ font-family: 'Noto Sans', sans-serif;
 }
 #detail .cd-popup .form-control:focus {
   border-color: #dcdcdc;
@@ -1499,8 +1515,8 @@ img#cover {
     text-transform: uppercase;
 }
 #managecri a{
-  font-size: 0.975em;
-  border-color: #ccc;
+  font-size: 1.125em;
+  border: 2px solid #ccc;
   margin-bottom: 20px;
   display: block;
   padding: 15px 20px;
