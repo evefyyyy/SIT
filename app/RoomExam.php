@@ -8,17 +8,11 @@ class RoomExam extends Model
 {
     protected $table = 'rooms_exam';
 
-    protected $fillable =
-    [
-      'exam_datetime',
-      'exam_starttime',
-      'exam_endtime',
-      'project_pkid',
-      'room_id'
-    ];
+    public function sitrooms(){
+      return $this->belongsTo('App\Room', 'room_id');
+    }
 
-    public function roomAdvisor()
-    {
-      return $this->hasMany('App\RoomExam','room_exam_id');
+    public function projectExam(){
+      return $this->belongsTo('App\ProjectStudent', 'project_pkid');
     }
 }

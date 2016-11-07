@@ -28,19 +28,13 @@ Route::get('exam/manageroom/create','examRoomController@create');
 Route::post('exam/manageroom/create/editroom','examRoomController@genGroup');
 Route::get('exam/manageroom/create/preview','examRoomController@preview');
 Route::post('exam/manageroom/create/editroom/confirmroom', 'examRoomController@submitRoom');
-Route::get('exam/manageroom/preview', function () {
-  return view('admin.previewRoom');
-});
+Route::get('exam/manageroom/preview/{roomid}', 'examRoomController@PreviewExamRoom');
+
 Route::get('exam/scoresheet','ScoreSheetController@index');
-
 Route::get('exam/managescore/template/create','ScoreSheetController@createTemplate');
-
 Route::post('exam/managescore/template','ScoreSheetController@storeTemplate');
-
 Route::get('exam/managescore/template', 'ScoreSheetController@manageTemplate');
-
 Route::get('exam/managescore/template/{template}/edit','ScoreSheetController@editTemplate');
-
 Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTemplate');
 
 Route::get('exam/managescore/criteria',function(){
