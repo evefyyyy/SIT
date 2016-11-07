@@ -201,7 +201,7 @@
 						<tbody>
 							<tr>
 							@if(isset($result_grade_round1))
-								<td width="50%">exam round 1</td><td width="50%">{{$result_grade_round1}} <span class="poor">{{$result_score_level_round1}}</span></td>
+								<td width="50%">exam round 1</td><td width="50%">{{$result_grade_round1}} <span class="$score_level1">{{$result_score_level_round1}}</span></td>
 							@else
 							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level1"></span></td>
 							@endif
@@ -213,7 +213,7 @@
 							@if(isset($result_grade_round1) && isset($result_grade_round3))
 								<td>exam round 3</td><td>{{$result_grade_round3}} <span class="$score_level3">{{$result_score_level_round3}}</span></td>
 								@else
-							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level4"></span></td>
+							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level3"></span></td>
 							@endif
 							</tr>
 							<tr>

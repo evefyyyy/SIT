@@ -109,9 +109,7 @@ Route::resource('advisor/news/document', 'AdvisorDocumentController');
 //student
 Route::group(['middleware' => 'studentcheck'], function () {
 
-  Route::get('myscore', function () {
-    return view('student.myScore');
-  });
+  Route::get('myscore', 'MyScore@ShowMyScore');
   Route::resource('student/news/announcement', 'StudentAnnoucementController');
   Route::resource('student/news/document', 'StudentDocumentController');
 });

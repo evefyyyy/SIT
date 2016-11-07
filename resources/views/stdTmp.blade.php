@@ -72,7 +72,7 @@
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject/{{Auth::user()->user_student->student->projectStudent->groupProject->group_project_id}}">My project</a></li>
                       @endif
                     @endif
-                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="#">My score</a></li>
+                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
                       <li><a href="#">documents</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
