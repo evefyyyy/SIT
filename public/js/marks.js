@@ -24,8 +24,8 @@ $("table").ready(function(){
 });
 
 $(function () {
-	$('.selectgrade').selectpicker({
-	});
+    $('.selectgrade').selectpicker({
+    });
 });
 
 $('#sendscore').submit( function(e) {

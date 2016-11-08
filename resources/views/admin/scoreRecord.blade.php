@@ -19,10 +19,10 @@
 				<tr>
 					<td>{{$pj->group_project_id}}</td>
 					<td><a class="tblink" href="scorerecord/viewscore/{{$pj->group_project_id}}" target="_blank">{{$pj->group_project_th_name}}</a></td>
-					<td>{{$pj->grade1 !== [] ? $pj->grade1 : ''}} <span>({{$pj->level1 or ''}})</span></td>
-					<td>{{$pj->grade2 !== [] ? $pj->grade2 : ''}} <span>({{$pj->level2 or ''}})</span></td>
-					<td>{{$pj->grade3 !== [] ? $pj->grade3 : ''}} <span>({{$pj->level3 or ''}})</span></td>
-					<td>{{$pj->grade4 !== [] ? $pj->grade4 : ''}} <span>{{$pj->level4 or ''}}</span></td>
+					<td>{{$pj->grade1 !== [] ? $pj->grade1 : ''}} <span class="{{$pj->class1}}">({{$pj->level1 or ''}})</span></td>
+					<td>{{$pj->grade2 !== [] ? $pj->grade2 : ''}} <span class="{{$pj->class2}}">({{$pj->level2 or ''}})</span></td>
+					<td>{{$pj->grade3 !== [] ? $pj->grade3 : ''}} <span class="{{$pj->class3}}">({{$pj->level3 or ''}})</span></td>
+					<td>{{$pj->grade4 !== [] ? $pj->grade4 : ''}} <span class="{{$pj->class4}}">{{$pj->level4 or ''}}</span></td>
 				</tr>
 				@endforeach
 			</tbody>

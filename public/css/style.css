@@ -1440,7 +1440,7 @@ img#cover {
   margin: 0 auto;
 }
 #scoresheet .table > tbody > tr > td, #givemark .table > tbody > tr > td, #givemark .table > tfoot > tr > th,
-#viewmark .table > tbody > tr > td, #viewmark .table > tbody > tr > th {
+#viewmark .table > tbody > tr > td, #viewmark .table > tbody > tr > th, #recTB .table > tbody > tr > td {
   vertical-align: middle;
 }
 #scoresheet table {
@@ -1894,4 +1894,13 @@ button#more.btn.btn-default:hover {
 #scorelv .modal-body input[type=number], #scorelv .table > tbody > tr > td > span {
     width: 30%;
     margin-left: 8%;
+}
+#recTB .form-control {
+    width: 150px; 
+    float: right;
+    margin-bottom: 10px;
+}
+#recTB .btn-primary {
+  float: right;
+  margin-left: 5px;
 }

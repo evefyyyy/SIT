@@ -54,15 +54,19 @@ class ScoreRecordController extends Controller
         if($s1->score_test_sum == 4){
           $obj['project'][$i]['grade1'] = 'A';
           $obj['project'][$i]['level1'] = 'Very Good';
+          $obj['project'][$i]['class1'] = 'verygood';
         }elseif($s1->score_test_sum == 3){
           $obj['project'][$i]['grade1'] = 'B';
           $obj['project'][$i]['level1'] = 'Good';
+          $obj['project'][$i]['class1'] = 'good';
         }elseif($s1->score_test_sum == 2.5){
           $obj['project'][$i]['grade1'] = 'C+';
           $obj['project'][$i]['level1'] = 'Fair';
+          $obj['project'][$i]['class1'] = 'fair';
         }elseif ($s1->score_test_sum == 1) {
           $obj['project'][$i]['grade1'] = 'D+';
           $obj['project'][$i]['level1'] = 'Poor';
+          $obj['project'][$i]['class1'] = 'poor';
         }elseif($s1->score_test_sum == null){
           $obj['project'][$i]['grade1'] = null;
         }
@@ -77,15 +81,19 @@ class ScoreRecordController extends Controller
         if($s2->score_test_sum == 4){
           $obj['project'][$i]['grade2'] = 'A';
           $obj['project'][$i]['level2'] = 'Very Good';
+          $obj['project'][$i]['class2'] = 'verygood';
         }elseif($s2->score_test_sum == 3){
           $obj['project'][$i]['grade2'] = 'B';
           $obj['project'][$i]['level2'] = 'Good';
+          $obj['project'][$i]['class2'] = 'good';
         }elseif($s2->score_test_sum == 2.5){
           $obj['project'][$i]['grade2'] = 'C+';
           $obj['project'][$i]['level2'] = 'Fair';
+          $obj['project'][$i]['class2'] = 'fair';
         }elseif ($s2->score_test_sum == 1) {
           $obj['project'][$i]['grade2'] = 'D+';
           $obj['project'][$i]['level2'] = 'Poor';
+          $obj['project'][$i]['class2'] = 'poor';
         }elseif($s2->score_test_sum == null){
           $obj['project'][$i]['grade2'] = null;
         }
@@ -99,15 +107,19 @@ class ScoreRecordController extends Controller
         if($s3->score_test_sum == 4){
           $obj['project'][$i]['grade3'] = 'A';
           $obj['project'][$i]['level3'] = 'Very Good';
+          $obj['project'][$i]['class3'] = 'verygood';
         }elseif($s3->score_test_sum == 3){
           $obj['project'][$i]['grade3'] = 'B';
           $obj['project'][$i]['level3'] = 'Good';
+          $obj['project'][$i]['class3'] = 'good';
         }elseif($s3->score_test_sum == 2.5){
           $obj['project'][$i]['grade3'] = 'C+';
           $obj['project'][$i]['level3'] = 'Fair';
+          $obj['project'][$i]['class3'] = 'fair';
         }elseif ($s3->score_test_sum == 1) {
           $obj['project'][$i]['grade3'] = 'D+';
           $obj['project'][$i]['level3'] = 'Poor';
+          $obj['project'][$i]['class3'] = 'poor';
         }elseif($s3->score_test_sum == null){
           $obj['project'][$i]['grade3'] = null;
         }
@@ -121,15 +133,19 @@ class ScoreRecordController extends Controller
         if($s4->score_test_sum == 4){
           $obj['project'][$i]['grade4'] = 'A';
           $obj['project'][$i]['level4'] = 'Very Good';
+          $obj['project'][$i]['class4'] = 'verygood';
         }elseif($s4->score_test_sum == 3){
           $obj['project'][$i]['grade4'] = 'B';
           $obj['project'][$i]['level4'] = 'Good';
+          $obj['project'][$i]['class4'] = 'good';
         }elseif($s4->score_test_sum == 2.5){
           $obj['project'][$i]['grade4'] = 'C+';
           $obj['project'][$i]['level4'] = 'Fair';
+          $obj['project'][$i]['class4'] = 'fair';
         }elseif ($s4->score_test_sum == 1) {
           $obj['project'][$i]['grade4'] = 'D+';
           $obj['project'][$i]['level4'] = 'Poor';
+          $obj['project'][$i]['class4'] = 'poor';
         }elseif($s4->score_test_sum == null){
           $obj['project'][$i]['grade4'] = null;
         }
@@ -540,7 +556,7 @@ class ScoreRecordController extends Controller
       }
     }
 
-    return view('admin.viewscore',$data);
+    return view('admin.viewScore',$data);
   }
 
   public function storeScoreLevel()

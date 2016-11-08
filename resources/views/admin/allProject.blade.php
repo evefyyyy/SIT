@@ -19,8 +19,8 @@
 				<a class="btn" href="/project/pending">Pending Projects</a>
 				@endif
 			</span>
-		</div>
-		<div class="hidden-xs col-md-1 col-lg-1"></div>
+	</div>
+	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
@@ -201,17 +201,17 @@
 						<tbody>
 							<tr>
 							@if(isset($result_grade_round1))
-								<td width="50%">exam round 1</td><td width="50%">{{$result_grade_round1}} <span class="$score_level1">{{$result_score_level_round1}}</span></td>
+								<td width="50%">exam round 1</td><td width="50%">{{$result_grade_round1}} <span class="{{$score_level1}}">({{$result_score_level_round1}})</span></td>
 							@else
-							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level1"></span></td>
+							<td width="50%">exam round 1</td><td width="50%"> <span class="{{$score_level1}}"></span></td>
 							@endif
 							</tr>
 							<tr>
-								<td>exam round 2</td><td>{{$result_grade_round2}} <span class="$score_level2">{{$result_score_level_round2}}</span></td>
+								<td>exam round 2</td><td>{{$result_grade_round2}} <span class="{{$score_level2}}">({{$result_score_level_round2}})</span></td>
 							</tr>
 							<tr>
 							@if(isset($result_grade_round1) && isset($result_grade_round3))
-								<td>exam round 3</td><td>{{$result_grade_round3}} <span class="$score_level3">{{$result_score_level_round3}}</span></td>
+								<td>exam round 3</td><td>{{$result_grade_round3}} <span class="{{$score_level3}}">({{$result_score_level_round3}})</span></td>
 								@else
 							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level3"></span></td>
 							@endif
