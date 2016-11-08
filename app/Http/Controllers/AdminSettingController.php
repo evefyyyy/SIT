@@ -66,7 +66,8 @@ class AdminSettingController extends Controller
 	}
 
 	public function DeleteRecommend(Request $request){
-		$projectid = $request->pjid;
+		$deleterecommend = $request->pjid;
+		$addprojectid = GroupProject::where('group_project_id', strtoupper($deleterecommend))->first();
 		$group_project = GroupProject::find($addprojectid->id);
       	$group_project->group_project_recommend = 0;
       	$group_project->save();

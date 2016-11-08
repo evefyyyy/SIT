@@ -15,8 +15,7 @@
 		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 			<p class="fancy"><span>recommend projects</span></p>
 			<div id="recommend" class="owl-carousel">
-				@foreach($group_project->shuffle() as $pj)
-					@if($pj->group_project_detail!="")
+				@foreach($recommend_project->shuffle() as $pj)
 						<?php  
 							$project_picture = App\Picture::all()->where('project_pkid', $pj->id)
     						->where('picture_type_id', 1)
@@ -27,7 +26,6 @@
 		                @if($count_show_project==5)
 		                	<?php break; ?>
 		                @endif
-		            @endif
 		        @endforeach
 		    </div>
 		    <a href="home/"><p class="fancyy"><span>Click here to see more</span></p></a>
