@@ -214,3 +214,7 @@ function vote(){
 }
 </script>
 @stop
+
+@section('facebook')
+<meta name="facebook" value="Hello">
+@endsection

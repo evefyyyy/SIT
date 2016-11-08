@@ -72,8 +72,8 @@
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject/{{Auth::user()->user_student->student->projectStudent->groupProject->group_project_id}}">My project</a></li>
                       @endif
                     @endif
-                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="#">My score</a></li>
-                      <li><a href="#">documents</a></li>
+                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
+                      
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_student->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>
