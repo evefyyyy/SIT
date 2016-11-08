@@ -39,17 +39,18 @@
 <script>
 $('.del-btn').click(function (){
 	$(this).parents('tr:first').remove();
+	console.log($(this).parents('tr:first').find('td:nth-child(1)').text());
 		var x = $("count").val();
-		$.ajax({
-            type:"post",
-            url : "/setting/recommend/deleterecommend",
-            data: {
-				pjid: $(x).val(),
-				_token: "{{csrf_token()}}"
-			},
+		// $.ajax({
+  //           type:"post",
+  //           url : "/setting/recommend/deleterecommend",
+  //           data: {
+		// 		pjid: $(x).val(),
+		// 		_token: "{{csrf_token()}}"
+		// 	},
             
             
-        });
+  //       });
 });
 
 </script>
