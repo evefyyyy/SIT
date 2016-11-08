@@ -4,7 +4,10 @@
 <div class="row" id="recTB">
 	<div class="col-xs-1 col-md-2 col-lg-2"></div>
 	<div class="col-xs-10 col-md-8 col-lg-8">
-		<button class="btn btn-primary">add</button><input class="form-control" placeholder="Project ID">
+		<form class="form" role="form" method="post" action="/setting/recommend/addrecommend">
+		<button class="btn btn-primary " id="addproject">add</button><input class="form-control" placeholder="Project ID" name="recommend">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		</form>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -17,16 +20,17 @@
 				<!-- <tr>
 					<td colspan="8" class="no-project">no project found</td>
 				</tr> -->
+				<?php $count=0; ?>
+				@foreach($recommendproject as $rcp)
 				<tr>
-					<td>IT56-38</td>
-					<td>ระบบแสดงผลงานนักศึกษาและจัดการโครงงานเทคโนโลยีสารสนเทศ คณะเทคโนโลยีสารสนเทศ</td>
-					<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
+				<?php $count++ ?>
+					<td>{{$rcp->group_project_id}}</td>
+					<td>{{$rcp->group_project_th_name}}</td>
+					<input type="hidden" name="count" value="{{$count}}" id="count">
+					<input type="hidden" name="projectid" value="{{$rcp->id}}" id="{{$count}}">
+					<td class="del-btn" ><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true" value="{{$rcp->id}}"><i class="glyphicon glyphicon-remove"></i></button></td>
 				</tr>
-				<tr>
-					<td>IT56-21</td>
-					<td>ระบบจัดการศูนย์ข้อมูล</td>
-					<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
@@ -35,12 +39,18 @@
 <script>
 $('.del-btn').click(function (){
 	$(this).parents('tr:first').remove();
-		// $.ajax({
-  //           type:"post",
-  //           dataType: "",
-  //           url : "/edit/pic/delete",
-  //           data: {id: $("#ssid"+i).val() , _token:$("#_token").val() },
-  //       });
+		var x = $("count").val();
+		$.ajax({
+            type:"post",
+            url : "/setting/recommend/deleterecommend",
+            data: {
+				pjid: $(x).val(),
+				_token: "{{csrf_token()}}"
+			},
+            
+            
+        });
 });
+
 </script>
 @stop
