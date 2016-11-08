@@ -17,13 +17,18 @@ use App\GroupProject;
 use App\Advisor;
 use App\ProjectStudent;
 use App\Student;
+use App\UserStudent;
+use App\ScoreTest;
 
 class examRoomController extends Controller
 {
     public function index()
     {
-
-      return view('admin.manageRoom');
+      $roomexam = RoomExam::get();
+      $room = Room::all();
+      $room_advisor = RoomAdvisor::all();
+      $test = ScoreTest::all();
+      return view('admin.manageRoom', compact('roomexam', 'room', 'room_advisor', 'test'));
     }
 
     public function create()
@@ -189,6 +194,12 @@ class examRoomController extends Controller
         ]);
 
       return view('admin.confirmRoom');
+    }
+
+    public function PreviewExamRoom(Request $request){
+      $roomid = $request->roomid;
+      $room = Room::where('id', $roomid)->first();
+      return view('admin.previewRoom', compact('room'));
     }
 
 }

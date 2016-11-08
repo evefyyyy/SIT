@@ -11,7 +11,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
         <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
@@ -64,7 +63,7 @@
                     </ul>
                   </li>
                   <li class="{{ strrpos(Request::path(),'advproject') === 0 ? 'active' : ''  }}"><a href="/advproject">My project</a></li>
-                  <li class="{{ strrpos(Request::path(),'exam/givemark') === 0 ? 'active' : ''  }}"><a href="/exam/round">exam</a></li>
+                  <li class="{{ strrpos(Request::path(),'exam') === 0 ? 'active' : ''  }}"><a href="/exam/round">exam</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_advisor->advisor->advisor_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>

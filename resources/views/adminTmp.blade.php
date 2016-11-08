@@ -11,7 +11,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
         <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
@@ -86,6 +85,7 @@
                       <li><a href="/dday/scorerecord">score record</a></li>
                     </ul>
                   </li>
+                  <li><a href="/setting/recommend">setting</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  

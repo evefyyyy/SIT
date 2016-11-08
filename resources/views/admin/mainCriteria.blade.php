@@ -38,12 +38,35 @@
 		<div class="col-xs-1 col-md-3 col-lg-3"></div>
 	</div>
 	<div id="center">
-	  <a><button class="action-button" onclick="back()">back</button></a>
+	  <a href="/exam/managescore/criteria"><button class="action-button" type="button">back</button></a>
 	  <button type="submit" class="action-button">save</button>
 	</div>
 	</form>
+	<div class="cd-popup" role="alert">
+	    <div class="cd-popup-container">
+	       <p>This criteria cannot be deleted.</p>
+	      <a class="cd-popup-close cd-close img-replace"></a>
+	      <ul class="cd-buttons">
+	          <li><a class="cd-close">OK</a></li>
+     	 </ul>
+	  </div> <!-- cd-popup-container -->
+	</div> <!-- cd-popup -->
 </div>
 <script>
+	$('.cd-popup').on('click', function(event){
+		if( $(event.target).is('.cd-close') || $(event.target).is('.cd-popup') ) {
+			event.preventDefault();
+			$(this).removeClass('is-visible');
+		}
+
+	});
+	//close popup when clicking the esc keyboard button
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		$('.cd-popup').removeClass('is-visible');
+	    }
+    });
+
 $(function()
 {
 	$(document).on('click', '.btn-add', function(e)
@@ -61,14 +84,12 @@ $(function()
 		.html('<span class="glyphicon glyphicon-minus"></span>');
 	}).on('click', '.btn-remove', function(e)
 	{
-		$(this).parents('.entry:first').remove();
-
-		e.preventDefault();
-		return false;
+		// if () {
+			$(this).parents('.entry:first').remove();
+		// } else {
+		// 	$('.cd-popup').addClass('is-visible');
+		// }
 	});
 });
-function back() {
-		window.history.back()
-}
 </script>
 @stop

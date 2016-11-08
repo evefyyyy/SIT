@@ -11,7 +11,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('/css/style.css') !!}" rel="stylesheet" type="text/css">
         <link href="{!! URL::asset('css/bootstrap.css') !!}" rel="stylesheet">
         <link href="{!! URL::asset('css/flaticon.css') !!}" rel="stylesheet">
@@ -73,8 +72,8 @@
                       <li class="{{ strrpos(Request::path(),'student/myproject/') === 0 ? 'active' : ''  }}"><a href="/showproject/{{Auth::user()->user_student->student->projectStudent->groupProject->group_project_id}}">My project</a></li>
                       @endif
                     @endif
-                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="#">My score</a></li>
-                      <li><a href="#">documents</a></li>
+                      <li class="{{ strrpos(Request::path(),'myscore') === 0 ? 'active' : ''  }}"><a href="/myscore">My score</a></li>
+                      
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">{{Auth::user()->user_student->student->student_name}}</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>

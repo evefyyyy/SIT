@@ -47,16 +47,6 @@
  ?>
       <tfoot><tr><th><strong>TOTAL</strong></th><th id="subtotal1">{{$sumscore}}</th></tr></tfoot>
     </table>
-
-    <!-- <script>
-          $(document).ready(function() {
-              var sum = 0;
-              $(".sub1").each(function(){
-                  sum += +$(this).html();
-              });
-               $("#subtotal1").html(sum);
-          });
-    </script> -->
     </div>
  <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>

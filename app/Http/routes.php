@@ -28,19 +28,13 @@ Route::get('exam/manageroom/create','examRoomController@create');
 Route::post('exam/manageroom/create/editroom','examRoomController@genGroup');
 Route::get('exam/manageroom/create/preview','examRoomController@preview');
 Route::post('exam/manageroom/create/editroom/confirmroom', 'examRoomController@submitRoom');
-Route::get('exam/manageroom/preview', function () {
-  return view('admin.previewRoom');
-});
+Route::get('exam/manageroom/preview/{roomid}', 'examRoomController@PreviewExamRoom');
+
 Route::get('exam/scoresheet','ScoreSheetController@index');
-
 Route::get('exam/managescore/template/create','ScoreSheetController@createTemplate');
-
 Route::post('exam/managescore/template','ScoreSheetController@storeTemplate');
-
 Route::get('exam/managescore/template', 'ScoreSheetController@manageTemplate');
-
 Route::get('exam/managescore/template/{template}/edit','ScoreSheetController@editTemplate');
-
 Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTemplate');
 
 Route::get('exam/managescore/criteria',function(){
@@ -59,9 +53,11 @@ Route::get('exam/managescore/{year}/subscore/{id}','ScoreSheetController@editSub
 
 Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateSubScore');
 
-
 Route::get('dday/scorerecord', function () {
   return view('admin.ddayscore');
+});
+Route::get('setting/recommend', function () {
+  return view('admin.recommend');
 });
 
 Route::get('exam/scorerecord/viewscore',function(){
@@ -81,6 +77,8 @@ Route::post('exam/managescore/criteria/sub','ScoreSheetController@storeSubCriter
 Route::get('exam/scorerecord','ScoreRecordController@index');
 
 Route::get('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@viewScore');
+
+Route::post('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@storeScoreLevel');
 
 Route::post('exam/scorerecord/level','ScoreRecordController@ScoreLevel');
 
@@ -113,9 +111,7 @@ Route::resource('advisor/news/document', 'AdvisorDocumentController');
 //student
 Route::group(['middleware' => 'studentcheck'], function () {
 
-  Route::get('myscore', function () {
-    return view('student.myScore');
-  });
+  Route::get('myscore', 'MyScore@ShowMyScore');
   Route::resource('student/news/announcement', 'StudentAnnoucementController');
   Route::resource('student/news/document', 'StudentDocumentController');
 });

@@ -39,8 +39,14 @@
         <tfoot><tr><th></th><th><font id="warning"></font><strong>TOTAL</strong></th><th><font id="maintotal{{$temp->count}}"></font> <span>%</span></th></tr></tfoot>
       </table>
       <script>
-          t
-          $(document).on("change", ".main{{$temp->count}}", function() {
+       $(document).on("load", ".main{{$temp->count}}", function() {
+              var sum = 0;
+              $(".main{{$temp->count}}").each(function(){
+                  sum += +$(this).val();
+              });
+               $("#maintotal{{$temp->count}}").html(sum);
+          });
+          $(document).on("keyup", ".main{{$temp->count}}", function() {
               var sum = 0;
               $(".main{{$temp->count}}").each(function(){
                   sum += +$(this).val();

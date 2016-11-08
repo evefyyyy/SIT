@@ -19,10 +19,10 @@
 				<tr>
 					<td>{{$pj->group_project_id}}</td>
 					<td><a class="tblink" href="scorerecord/viewscore/{{$pj->group_project_id}}" target="_blank">{{$pj->group_project_th_name}}</a></td>
-					<td>{{$pj->score1 !== [] ? $pj->score1[0]->score_test_sum : ''}} <span class="good">(good)</span></td>
-					<td>{{$pj->score2 !== [] ? $pj->score2[0]->score_test_sum : ''}} <span class="fair">(fair)</span></td>
-					<td>{{$pj->score3 !== [] ? $pj->score3[0]->score_test_sum : ''}}</td>
-					<td>{{$pj->score4 !== [] ? $pj->score4[0]->score_test_sum : ''}}</td>
+					<td>{{$pj->grade1 !== [] ? $pj->grade1 : ''}} <span class="{{$pj->class1}}">({{$pj->level1 or ''}})</span></td>
+					<td>{{$pj->grade2 !== [] ? $pj->grade2 : ''}} <span class="{{$pj->class2}}">({{$pj->level2 or ''}})</span></td>
+					<td>{{$pj->grade3 !== [] ? $pj->grade3 : ''}} <span class="{{$pj->class3}}">({{$pj->level3 or ''}})</span></td>
+					<td>{{$pj->grade4 !== [] ? $pj->grade4 : ''}} <span class="{{$pj->class4}}">{{$pj->level4 or ''}}</span></td>
 				</tr>
 				@endforeach
 			</tbody>
