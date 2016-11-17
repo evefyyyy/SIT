@@ -540,7 +540,7 @@ class ScoreRecordController extends Controller
       }
     }
 
-    return view('admin.viewscore',$data);
+    return view('admin.viewScore',$data);
   }
 
   public function storeScoreLevel()
