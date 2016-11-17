@@ -53,10 +53,12 @@ Route::get('exam/managescore/{year}/subscore/{id}','ScoreSheetController@editSub
 
 Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateSubScore');
 
-
 Route::get('dday/scorerecord', function () {
   return view('admin.ddayscore');
 });
+Route::get('setting/recommend', 'AdminSettingController@RecommendProject');
+Route::post('setting/recommend/addrecommend', 'AdminSettingController@AddRecommend');
+Route::post('/setting/recommend/deleterecommend', 'AdminSettingController@DeleteRecommend');
 
 Route::get('exam/scorerecord/viewscore',function(){
   return view('admin.viewScore');

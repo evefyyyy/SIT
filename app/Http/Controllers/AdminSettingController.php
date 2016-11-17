@@ -47,8 +47,30 @@ class AdminSettingController extends Controller
 					);
 			}
 		}
-		
-
 		return redirect('admin/setting');
+	}
+
+	public function RecommendProject(){
+		$recommendproject = GroupProject::where('group_project_recommend', 1)->get();
+		return view('admin.recommend', compact('recommendproject'));
+	}
+
+	public function AddRecommend(Request $request){
+		$addrecommend = $request->recommend;
+		$addprojectid = GroupProject::where('group_project_id', strtoupper($addrecommend))->first();
+		$group_project = GroupProject::find($addprojectid->id);
+      	$group_project->group_project_recommend = 1;
+      	$group_project->save();
+
+		return redirect()->back();
+	}
+
+	public function DeleteRecommend(Request $request){
+		$deleterecommend = $request->pjid;
+		$addprojectid = GroupProject::where('group_project_id', strtoupper($deleterecommend))->first();
+		$group_project = GroupProject::find($addprojectid->id);
+      	$group_project->group_project_recommend = 0;
+      	$group_project->save();
+
 	}
 }

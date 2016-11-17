@@ -19,7 +19,9 @@ class HomeController extends Controller
                               ->whereNotNull('group_project_detail')
                               ->groupBy('group_projects.id')
                               ->get();
+
+      $recommend_project = GroupProject::where('group_project_recommend', 1)->get();
     	$count_show_project = 0;
-    	return view('home', compact('group_project', 'count_show_project'));
+    	return view('home', compact('group_project', 'count_show_project', 'recommend_project'));
     }
 }

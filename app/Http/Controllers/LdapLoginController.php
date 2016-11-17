@@ -44,8 +44,13 @@ class LdapLoginController extends Controller
 		//dd($test);
 		//dd($username);
 
-
-		if ($ds) {
+		if($username == 'admin'){
+			if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
+				return redirect()->intended('/home');
+			} else {
+				return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
+			}
+		} else if ($ds) {
 			if (@ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)==0) echo "Failed to set protocol version to 3";
 
 			$ldapbindstudent = @ldap_bind($ds, $ldaprdn, $ldappass);
@@ -113,10 +118,6 @@ class LdapLoginController extends Controller
 					return redirect()->intended('/home');
 				} else {
 					return redirect()->back()->with('message',"Error!! Username or Password Incorrect. \nPlease try again.");
-				}
-			} else if($username == 'admin'){
-				if(Auth::attempt(['name' => $username, 'password' => $ldappass])){
-					return redirect()->intended('/home');
 				}
 			} else {
 				return redirect('/relogin')->withErrors("Username or Password is incorrect.");
