@@ -76,17 +76,5 @@
       watch : true
     });
   });
-  // $(document).ready(function() {
-  //   $('.loader').fadeIn(1000);
-  //   $('#preload').hide();
-  //   $.ajax({
-  //     type: 'GET',
-  //     url:'/home',
-  //       success:function(response){
-  //         $('.loader').fadeOut(1000);
-  //         $("#preload").append(response);
-  //       }
-  //   });
-  // });
 </script>
 @stop

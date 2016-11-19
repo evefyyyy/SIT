@@ -1210,6 +1210,25 @@ img#cover {
   font-size: 0.775em;
   text-decoration: none;
 }
+.filter-room {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.filter-room .btn {
+  margin: 0 5px;
+  font-weight: 600;
+  border-color: none;
+  outline: none;
+  padding: 5px 15px;
+  color: #40c3a7;
+  background-color: #ffffff;
+  border: 1px solid #40c3a7;
+}
+.filter-room .btn:hover, .filter-room .btn:focus {
+  color: #fff !important;
+  background-color: #40c3a7 ;
+  border: 1px solid #40c3a7;
+}
 .filter-head {
   margin: 30px auto;
 }
@@ -1222,7 +1241,7 @@ img#cover {
   color: #40c3a7;
   background-color: #ffffff;
 }
-.filter-head .btn:hover, .btn:focus {
+.filter-head .btn:hover, .filter-head .btn:focus {
   color: #40c3a7;
   border: 1px solid #40c3a7;
 }
@@ -1267,9 +1286,6 @@ img#cover {
 #examroom .panel-body button {
   float: right;
 }
-#examroom {
-  margin-top: 20px;
-}
 #examroom .row {
   margin-bottom: 5px;
 }
@@ -1277,6 +1293,16 @@ img#cover {
   color: #40c3a7;
   font-weight: 600;
   text-transform: uppercase;
+}
+a.add-examroom {
+  float: right;
+  color: #40c3a7;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+}
+a.add-examroom:hover {
+  color: #ff7f7f;
 }
 #addroom .titlee {
   text-align: right;
@@ -1312,7 +1338,7 @@ img#cover {
 #roomTB tbody > tr > td {
   text-transform: none;
 }
-.pjtype {
+.pjtype, .fullname, .firstname {
   text-transform: capitalize !important;
 }
 #roomTB .btn-danger {
@@ -1805,9 +1831,6 @@ a.btn3 {
 
 .btn-3e:hover:after {
   width: 40%;
-}
-.firstname, .fullname {
-  text-transform: capitalize;
 }
 #warningtype {
   margin-top: 10px;

@@ -17,7 +17,6 @@
   <script src="{!! URL::asset('js/jquery-2.2.4.js') !!}"></script>
   <script src="{!! URL::asset('js/bootstrap.js') !!}"></script>
   <script src="{!! URL::asset('js/bootstrap-confirmation.js') !!}"></script>
-  <script src="{!! URL::asset('js/jquery.dotdotdot.min.js') !!}"></script>
   <script src="{!! URL::asset('js/bootstrap-select.min.js') !!}"></script>
   <script src="{!! URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}"></script>
   <link href="//fonts.googleapis.com/css?family=Prompt:300" rel="stylesheet">
