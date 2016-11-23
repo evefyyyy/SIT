@@ -41,19 +41,15 @@ class examRoomController extends Controller
     }
     public function genGroup(Request $request){
 
-      $selectRoom = $request->selectRoom; //ห้องที่เลือก
+      $selectRoom = $request->selectroom; //ห้องที่เลือก
       $selectAdv=$request->selectAdv;//อาจารย์ที่ปรึกษ่า
       $starttime=$request->startTime; 
       $examdate=$request->examdate;
-      $minute=$request->minute;
-      explode(",", $selectAdv);
-
-      foreach(explode(",", $selectAdv) as $selectadvs){
-        $project = ProjectAdvisor::where([
-            ['advisor_id', $selectadvs],
-            ['advisor_position_id', 1],
-          ])->get();
-      }
+      $minute=$request->minute; 
+      $project = ProjectAdvisor::join('group_projects','group_projects.id','=','project_advisors.project_pkid')->where('advisor_position_id','=',1)->whereRaw('advisor_id in ('.$selectAdv.')')->get();    
+      $room_names = Room::where('id', $selectRoom)->first();
+      $student = Student::all();
+      return view('admin.editRoom',compact('room_names','project','student'));
     }
     public function genGroupOld(Request $request)
     {

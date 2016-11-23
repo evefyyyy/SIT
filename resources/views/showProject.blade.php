@@ -47,13 +47,13 @@
 
 		@endif
 		@else
-		<div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
-		<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+		<!-- <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
 			<a href="#" class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
-		</div>
+		</div> -->
 		@endif
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -90,6 +90,14 @@
 				<iframe width="1280" height="720" src="{!! $video !!}" frameborder="0" allowfullscreen></iframe>
 			</div>
 			@endif
+		<div class="panel panel-info">
+				<div class="panel-heading">documents</div>
+				<div class="panel-body" id="center">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<a class="tblink" href=""><span class="flaticon-pdf-file-format-symbol"></span></a><br>Full Text</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Source Code</div>
+				</div>
+			</div>
 		</div>
 		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-hidden-xs col-sm-12 hidden-md hidden-lg"></div>
@@ -140,7 +148,7 @@
 	@endif
 </div>
 <div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-
+</div>
 <div class="cd-popup" role="alert">
     <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
     <div id="tmpcontent" class="cd-popup-container">
@@ -164,7 +172,7 @@
   	</div> <!-- cd-popup-container -->
   </div>
 </div> <!-- cd-popup -->
-</div>
+
 <script src="{!! URL::asset('js/eagle.gallery.min.js') !!}"></script>
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>
 <script src="{!! URL::asset('js/dday.js') !!}"></script>
