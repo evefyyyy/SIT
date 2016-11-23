@@ -73,7 +73,7 @@
 						@else
 						<td class="firstname"></td>
 						@endif
-						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal{{$proCount++}}"><img height="35" src="/img/nodocuments.png"></a></a></td>
+						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal{{$proCount++}}"><img height="35" src="/img/documents.png"></a></a></td>
 					</tr>
 
 					@endif
