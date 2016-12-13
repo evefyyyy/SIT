@@ -41,6 +41,11 @@ Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
 
+Route::get('setting',function(){
+  return view('admin.setting');
+});
+
+
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
 
 Route::post('exam/managescore/{year}','ScoreSheetController@setDefault');

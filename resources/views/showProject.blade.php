@@ -90,12 +90,15 @@
 				<iframe width="1280" height="720" src="{!! $video !!}" frameborder="0" allowfullscreen></iframe>
 			</div>
 			@endif
-		<div class="panel panel-info">
+		<div class="panel panel-info" style="margin-top:20px">
 				<div class="panel-heading">documents</div>
 				<div class="panel-body" id="center">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<a class="tblink" href=""><span class="flaticon-pdf-file-format-symbol"></span></a><br>Full Text</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Source Code</div>
+						<a class="tblink" data-toggle="modal" data-target="#loginModal"><span class="flaticon-pdf-file-format-symbol"></span><br><font>Full Text</font></a>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<a class="tblink" data-toggle="modal" data-target="#loginModal"><span class="flaticon-zip-compressed-files-extension"></span><br><font>Source Code</font></a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -172,6 +175,19 @@
   	</div> <!-- cd-popup-container -->
   </div>
 </div> <!-- cd-popup -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" id="center">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<p>Current SIT students and staffs login</p>
+					<input type="text" class="form-control" placeholder="username"/>
+					<input type="password" class="form-control" placeholder="password"/>
+					<button type="submit" class="btn btn-login">submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <script src="{!! URL::asset('js/eagle.gallery.min.js') !!}"></script>
 <script src="{!! URL::asset('js/contact-buttons.js') !!}"></script>

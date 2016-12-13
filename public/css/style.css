@@ -540,6 +540,9 @@ table.teammem {
   -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   transition: opacity 0.3s 0s, visibility 0s 0.3s;
 }
+#detail [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after{
+  font-size: 40px;
+}
 #detail .cd-popup {
   -webkit-transition: opacity 0.5s 0s, visibility 0s 0.5s;
   -moz-transition: opacity 0.5s 0s, visibility 0s 0.5s;
@@ -760,6 +763,7 @@ table.teammem {
 }
 .btn-login:hover {
     background-color: #ff7f7f;
+    color: #fff;
     @media(max-width:768px){
         #login-dp{
             background-color: inherit;
@@ -816,6 +820,9 @@ a.tblink, .approveall a, a.tblink span {
 }
 a.tblink:hover {
   color: #40c3a7;
+}
+#detail a.tblink:hover {
+  color: #000;
 }
 #projectTB .approveall {
   float: right;
@@ -1816,4 +1823,24 @@ button#more.btn.btn-default:hover {
 #recTB .btn-primary {
   float: right;
   margin-left: 5px;
+}
+#loginModal p {
+  font-size: 1.2em;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+#loginModal .modal-body {
+  padding: 50px;
+}
+#loginModal .form-control {
+  margin-top: 10px;
+  width: 70%;
+  text-align: center;
+}
+#loginModal .btn {
+  width: 70%;
+  margin-top: 10px;
+}
+#loginModal .btn:hover {
+  color: #fff;
 }
