@@ -93,8 +93,8 @@
 	<div class="cd-popup-container">
 		<p>Are you sure you want to delete this room?</p>
 		<ul class="cd-buttons">
-			<li><a class="cd-delete">Yes</a></li>
 			<li><a class="cd-close">No</a></li>
+			<li><a class="cd-delete">Yes</a></li>
 		</ul>
 		<a class="cd-popup-close cd-close img-replace"></a>
 	</div> <!-- cd-popup-container -->

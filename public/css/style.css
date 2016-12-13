@@ -582,9 +582,9 @@ table.teammem {
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
   transition-property: transform;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 #detail .cd-popup-container {
    margin: 5em auto;
@@ -651,6 +651,10 @@ table.teammem {
 }
 .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
   background-color: #fc8982;
+}
+#marksTB .cd-popup-container .cd-buttons li:last-child a {
+  background: #40c3a7;
+  border-radius: 0 0 .25em 0;
 }
 .cd-popup-container .cd-buttons li:last-child a {
   background: #C1C1C1;
