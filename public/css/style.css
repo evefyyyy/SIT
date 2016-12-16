@@ -9,6 +9,11 @@ a {
   -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     cursor: pointer;
+    text-decoration: none;
+}
+a:hover
+ {
+    text-decoration: none;
 }
 .logout:hover {
   color: #FF5C5C !important;
@@ -19,7 +24,7 @@ span.lol, i.lol {
     font-weight: normal;
 }
 #header {
-    padding: 25px;
+    padding: 15px;
 }
 
 .display-none{
@@ -82,7 +87,6 @@ span.lol, i.lol {
 .noProject a {
     font-weight: 700;
     color: #40c3a7;
-    text-decoration: none;
     border-style: solid;
     border-width: 2px;
     padding: 5px 10px 5px 10px;
@@ -90,7 +94,6 @@ span.lol, i.lol {
 
 .noProject a:hover {
     color: #ff7f7f;
-    text-decoration: none;
 }
 option {
     font-family: "Prompt", Helvetica, Arial, sans-serif;
@@ -441,11 +444,9 @@ table.teammem {
 #waitApp a {
   line-height: 3em;
   font-weight: 600;
-  text-decoration: none;
   color: #ff7f7f;
 }
 #waitApp a:hover {
-  text-decoration: none;
   color: #eb3652;
 }
 #waitApp p {
@@ -485,7 +486,6 @@ table.teammem {
     font-weight: bold;
 }
 .pending a {
-    text-decoration: none;
     color: black;
 }
 .pending a:hover {
@@ -637,7 +637,6 @@ table.teammem {
   height: 60px;
   line-height: 60px;
   color: #FFF;
-  text-decoration: none;
   font-size: 1.2em;
   transition: background-color 0.5s;
 }
@@ -786,7 +785,6 @@ table.teammem {
     border-color: #ccc;
     margin-bottom: 30px;
     float: right;
-    text-decoration: none;
 }
 #createlink a:hover {
     border-color: #40c3a7;
@@ -798,7 +796,6 @@ table.teammem {
     border-color: #ccc;
     float: right;
     margin: 0;
-    text-decoration: none;
 }
 #pendlink a:hover {
     border-color: #ff7f7f;
@@ -820,7 +817,6 @@ table.teammem {
 }
 a.tblink, .approveall a, a.tblink span {
   color: black;
-  text-decoration: none;
 }
 a.tblink:hover {
   color: #40c3a7;
@@ -947,7 +943,6 @@ h6 img {
 }
 #newTB a {
   color: black;
-  text-decoration: none;
 }
 #newTB h3 {
   font-weight: normal;
@@ -973,7 +968,6 @@ h6 img {
   padding-top: 10px;
   vertical-align: bottom;
   color: #40c3a7;
-  text-decoration: none;
 }
 .modal-header input {
   width: 90%;
@@ -1225,7 +1219,6 @@ img#cover {
 a.add-examroom {
   float: right;
   color: #40c3a7;
-  text-decoration: none;
   font-weight: bold;
 }
 a.add-examroom:hover {
@@ -1397,7 +1390,6 @@ a.add-examroom:hover {
 #scoresheet a#deselect-all1, #scoresheet a#select-all1 {
   margin-right: 0;
   float: right;
-  text-decoration: none;
   text-transform: none;
   color: black;
 }
@@ -1443,7 +1435,6 @@ a.add-examroom:hover {
   text-transform: capitalize;
 }
 #scoreyear .table a {
-  text-decoration: none;
   color: black;
   text-transform: none;
   display: block;
@@ -1452,7 +1443,6 @@ a.add-examroom:hover {
     font-size: 0.975em;
     border-color: #ccc;
     margin: 0 20px 0 20px;
-    text-decoration: none;
 }
 #managecri a{
   font-size: 1.125em;
@@ -1460,7 +1450,6 @@ a.add-examroom:hover {
   margin-bottom: 20px;
   display: block;
   padding: 15px 20px;
-  text-decoration: none;
 }
 .editmaincri table {
   width: 100% !important;
@@ -1578,9 +1567,6 @@ a.delete:focus{
   text-align: right;
   margin-bottom: 5px;
 }
-.round-btn a {
-  text-decoration: none;
-}
 .round-btn button {
     color: #40c3a7;
     width: 189px;
@@ -1674,7 +1660,6 @@ a.btn3 {
   background: #ff6767;
   cursor: pointer;
   display: inline-block;
-  text-decoration: none;
   letter-spacing: 0.5em;
   font-weight: 700;
   outline: none;
@@ -1847,4 +1832,150 @@ button#more.btn.btn-default:hover {
 }
 #loginModal .btn:hover {
   color: #fff;
+}
+.sidebar.container {
+    overflow:hidden;
+    display:inline-block;
+    width: 100%;
+}
+.side-bar
+{
+    background:#fff;
+    position: absolute;    
+    height:100%;
+    width:200px;
+    color:#000;
+    transition: margin-left 0.5s;
+    text-transform: uppercase;
+    -webkit-box-shadow: 5px 0 5px -2px #ccc;
+    box-shadow: 5px 0 5px -2px #ccc;
+}
+
+.side-bar ul
+{
+    list-style:none;
+    padding:0px;
+    
+}
+
+.side-bar ul li.menu-head
+{
+    font-weight: 700;
+    padding:20px;
+}
+
+
+.side-bar ul li.menu-head a
+{
+    color:#000;
+    text-decoration:none;
+    height:50px;
+}
+
+
+.side-bar ul .menu-head  a
+{
+    color:#000;
+    text-decoration:none;
+    height:50px;
+}
+
+.side-bar ul .menu li  a 
+{
+    color:#000;
+    text-decoration:none;
+    display:inline-table;
+    width:100%;
+    padding-left:30px;
+    padding-right:28px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-left:5px solid #ddd;
+    margin-left: 8px
+}
+
+.side-bar ul .menu li  a:hover
+{
+    border-left:5px solid #40c3a7;    
+    padding-left:20px;
+    color: #000;
+    margin-left: 8px
+}
+
+.side-bar ul .menu li  a.active
+{
+    padding-left:20px;
+    color: #40c3a7;
+    border-left:5px solid #40c3a7;
+    font-weight: bold;
+    margin-left: 8px
+}
+.page-content
+{
+    padding-left: 200px;
+    transition: padding-left 0.5s;
+    padding-top: 30px;
+}
+
+.active > .side-bar
+{
+    margin-left:-150px;   
+    transition: margin-left 0.5s;
+}
+
+.active > .page-content
+{
+    padding-left: 50px;
+    transition: padding-left 0.5s;
+    padding-top: 30px;
+}
+.btn-apply {
+  width: 70px;
+  height: 30px;
+  background-color: #40c3a7;
+  text-align: center;
+  color: #fff;
+  border-color: #ccc;
+}
+.btn-apply .glyphicon-ok{
+  display: inline;
+}
+.btn-apply .glyphicon-remove{
+  display: none;
+}
+.btn-apply:hover{
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-apply:hover .glyphicon-ok{
+  display: none;
+}
+.btn-apply:hover .glyphicon-remove{
+  color: #555;
+  display: inline;
+}
+.btn-remove {
+  width: 70px;
+  height: 30px;
+  background-color: #fff;
+  text-align: center;
+  color: #555;
+  border-color: #ccc !important;
+}
+.btn-remove .glyphicon-ok{
+  display: none;
+}
+.btn-remove .glyphicon-remove{
+  display: inline;
+}
+.btn-remove:hover{
+  background-color: #40c3a7;
+  border-color: #ccc;
+}
+.btn-remove:hover .glyphicon-ok{
+  color: #fff;
+  display: inline;
+}
+.btn-remove:hover .glyphicon-remove{
+  display: none;
 }

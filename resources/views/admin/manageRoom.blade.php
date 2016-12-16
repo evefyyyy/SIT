@@ -15,7 +15,7 @@
     </div>
     <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>
-<div class="row" id="d">
+<div class="row">
 	<div class="col-xs-1 col-md-3 col-lg-3"></div>
 	<div class="col-xs-10 col-md-6 col-lg-6">
 		@foreach($room as $rooms)
@@ -24,7 +24,7 @@
 			?>
 			@if($checkexamroom != null)
 				<div class="panel panel-primary" data-tag="round1">
-					<div class="panel-heading">{{$rooms->room_name}}
+					<div class="panel-heading"><a style="color:#fff" href="manageroom/preview/{{$rooms->id}}">{{$rooms->room_name}}</a>
 						<div class="btn-group pull-right">
 							<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
 							<div class="dropdown-menu">

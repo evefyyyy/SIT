@@ -1,4 +1,4 @@
-<?php
+1<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,10 @@ Route::get('exam/managescore/criteria',function(){
 });
 
 Route::get('setting',function(){
-  return view('admin.setting');
+  return view('setting');
+});
+Route::get('setting/admin',function(){
+  return view('admin.setadmin');
 });
 
 
