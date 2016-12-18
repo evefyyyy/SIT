@@ -27,7 +27,7 @@
 					<td>Ekapong Jungcharoensukying</td>
 					<td>lecturer</td>
 					<td>
-						<buton class="btn btn-remove">
+						<buton class="btn btn-unapply">
 							<i class="glyphicon glyphicon-remove"></i>
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
@@ -37,7 +37,7 @@
 					<td>Umaporn Supasitthimethee</td>
 					<td>lecturer</td>
 					<td>
-						<buton class="btn btn-remove">
+						<buton class="btn btn-unapply">
 							<i class="glyphicon glyphicon-remove"></i>
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
