@@ -149,10 +149,9 @@ $(function () {
 
 $(".btn-success").click(function () {
       $(".control-group").append('<div class="controls"><div class="col-xs-6 col-md-6 col-lg-6 textt fullname"></div><div class="input-group col-lg-6"><input class="form-control" type="text" placeholder="student no." /><span class="input-group-btn"><button class="btn btn-danger remove" type="button" onclick=><span class="glyphicon glyphicon-minus"></span></button></span></div></div>');
-});
-
-$(".remove").click(function () {
-      $(this).closest('.controls').remove();
+	$(".remove").click(function () {
+	    $(this).closest('.controls').remove();
+   	});
 });
 </script>
 @stop
