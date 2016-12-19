@@ -86,8 +86,8 @@ Graphic : Adobe Photoshop, Illustrator" name="tools"></textarea>
 			<div class="panel-body">
 				<div class="control-group">
 		            <div class="controls"> 
-		                	<div class="col-xs-6 col-md-6 col-lg-6 textt fullname">Ms.Artima Chanthasangsawang</div>
-		                    <div class="input-group col-lg-6">
+		                	<div class="col-xs-7 col-md-7 col-lg-7 textt fullname">Ms.Artima Chanthasangsawang</div>
+		                    <div class="input-group col-lg-5">
 		                        <input class="form-control" type="text" placeholder="student no." />
 		                    	<span class="input-group-btn">
 		                            <button class="btn btn-success" type="button">
@@ -148,7 +148,7 @@ $(function () {
 });
 
 $(".btn-success").click(function () {
-      $(".control-group").append('<div class="controls"><div class="col-xs-6 col-md-6 col-lg-6 textt fullname"></div><div class="input-group col-lg-6"><input class="form-control" type="text" placeholder="student no." /><span class="input-group-btn"><button class="btn btn-danger remove" type="button" onclick=><span class="glyphicon glyphicon-minus"></span></button></span></div></div>');
+      $(".control-group").append('<div class="controls"><div class="col-xs-7 col-md-7 col-lg-7 textt fullname"></div><div class="input-group col-lg-5"><input class="form-control" type="text" placeholder="student no." /><span class="input-group-btn"><button class="btn btn-danger remove" type="button" onclick=><span class="glyphicon glyphicon-minus"></span></button></span></div></div>');
 	$(".remove").click(function () {
 	    $(this).closest('.controls').remove();
    	});
