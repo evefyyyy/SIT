@@ -19,6 +19,7 @@ use App\ProjectStudent;
 use App\Student;
 use App\UserStudent;
 use App\ScoreTest;
+use App\ProjectAdvisor;
 
 class examRoomController extends Controller
 {
@@ -38,8 +39,19 @@ class examRoomController extends Controller
 
       return view('admin.addRoom',$obj);
     }
+    public function genGroup(Request $request){
 
-    public function genGroup(Request $request)
+      $selectRoom = $request->selectroom; //ห้องที่เลือก
+      $selectAdv=$request->selectAdv;//อาจารย์ที่ปรึกษ่า
+      $starttime=$request->startTime; 
+      $examdate=$request->examdate;
+      $minute=$request->minute; 
+      $project = ProjectAdvisor::join('group_projects','group_projects.id','=','project_advisors.project_pkid')->where('advisor_position_id','=',1)->whereRaw('advisor_id in ('.$selectAdv.')')->get();    
+      $room_names = Room::where('id', $selectRoom)->first();
+      $student = Student::all();
+      return view('admin.editRoom',compact('room_names','project','student'));
+    }
+    public function genGroupOld(Request $request)
     {
       $selectRoom = $request['selectroom'];
       $selectAdv = $request['selectAdv'];

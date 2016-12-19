@@ -1,4 +1,4 @@
-<?php
+1<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +41,17 @@ Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
 
+Route::get('setting',function(){
+  return view('setting');
+});
+Route::get('setting/admin',function(){
+  return view('admin.setadmin');
+});
+Route::get('project/edit',function(){
+  return view('admin.editStdProject');
+});
+
+
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
 
 Route::post('exam/managescore/{year}','ScoreSheetController@setDefault');
@@ -53,10 +64,12 @@ Route::get('exam/managescore/{year}/subscore/{id}','ScoreSheetController@editSub
 
 Route::put('exam/managescore/{year}/subscore/{id}','ScoreSheetController@updateSubScore');
 
-
 Route::get('dday/scorerecord', function () {
   return view('admin.ddayscore');
 });
+Route::get('setting/recommend', 'AdminSettingController@RecommendProject');
+Route::post('setting/recommend/addrecommend', 'AdminSettingController@AddRecommend');
+Route::post('/setting/recommend/deleterecommend', 'AdminSettingController@DeleteRecommend');
 
 Route::get('exam/scorerecord/viewscore',function(){
   return view('admin.viewScore');

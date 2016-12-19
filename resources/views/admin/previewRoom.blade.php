@@ -78,7 +78,7 @@
 						</span>
 						@endforeach
 					</td>
-					<td>
+					<td class="fullname">
 						@foreach($get_projectstudent as $key => $pstd)
 						<?php  
 							$student = App\Student::where('id', $pstd->student_pkid)->first();

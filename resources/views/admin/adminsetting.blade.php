@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('adminTmp')
 @section('content')
 Enter number you want to gencode

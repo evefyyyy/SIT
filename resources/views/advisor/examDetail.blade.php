@@ -55,22 +55,34 @@
 			</table>
 			<div id="center">
 			  <a href="/exam/round"><button class="action-button" type="button">back</button></a>
-			  <button type="submit" class="action-button">submit</button>
+			  <button class="action-button cd-popup-trigger">submit</button>
 			</div>
 	</div>
 		</form>
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<p>You cannot give or edit marks after submitted. Please ensure your marks before submit.</p>
+		<ul class="cd-buttons">
+			<li><a class="cd-close">cancel</a></li>
+			<li><a class="cd-submit">submit</a></li>
+		</ul>
+		<a class="cd-popup-close cd-close img-replace"></a>
+	</div> <!-- cd-popup-container -->
+</div> <!-- cd-popup -->
 </div>
 @endif
+<script src="{!! URL::asset('js/approve.js') !!}"></script>
 <script>
-$('#sendmarks').submit( function(e) {
-	$('#marksTB table td:nth-child(3)').each(function( index ) {
-	  if ($('this').html() == null){
-	  		e.preventDefault();
-	  		return false;
-		} else {
-		}
+$(document).ready(function($){
+	  //close popup and delete panel
+	  	$('.cd-popup').on('click', function(event){
+	  	 if( $(event.target).is('.cd-submit') ) {
+	  		event.preventDefault();
+	  		$(this).fadeOut(400);
+	  		$('#sendmarks').submit();
+	  		}
+	 	 });
 	});
-});
 </script>
 @stop

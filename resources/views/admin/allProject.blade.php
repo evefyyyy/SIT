@@ -19,8 +19,8 @@
 				<a class="btn" href="/project/pending">Pending Projects</a>
 				@endif
 			</span>
-		</div>
-		<div class="hidden-xs col-md-1 col-lg-1"></div>
+	</div>
+	<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
@@ -35,7 +35,6 @@
 						<th>main advisor</th>
 						<th>co-advisor</th>
 						<th>Proposal</th>
-						<th>score</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -74,8 +73,7 @@
 						@else
 						<td class="firstname"></td>
 						@endif
-						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal{{$proCount++}}"><span class="glyphicon glyphicon-folder-open gi-2x"></span></a></td>
-						<td id="center"><a class="tblink" data-toggle="modal" data-target="#scoreModal{{$scoreCount++}}"><span class="glyphicon glyphicon-list-alt gi-3x"></span></a></td>
+						<td id="center"><a class="tblink" data-toggle="modal" data-target="#propModal{{$proCount++}}"><img height="35" src="/img/documents.png"></a></a></td>
 					</tr>
 
 					@endif
@@ -86,146 +84,6 @@
 		</div>
 		<div class="hidden-xs col-md-1 col-lg-1"></div>
 	</div>
-	<?php
-	$proCount = 0;
-	$scoreCount = 0;
-	?>
-	@foreach($group_project as $gp)
-	<?php  
-	$get_score_round1 = App\ScoreTest::where([
-		['project_pkid', $gp->projectStudents->first()->project_pkid],['score_test_round', 1]
-		])->first();
-	$get_score_round2 = App\ScoreTest::where([
-		['project_pkid', $gp->projectStudents->first()->project_pkid],['score_test_round', 2]
-		])->first();
-	$get_score_round3 = App\ScoreTest::where([
-		['project_pkid', $gp->projectStudents->first()->project_pkid],['score_test_round', 3]
-		])->first();
-	$get_score_round4 = App\ScoreTest::where([
-		['project_pkid', $gp->projectStudents->first()->project_pkid],['score_test_round', 4]
-		])->first();
-	$get_score_level1 = App\ScoreLevel::where('id', 1)->first();
-	$get_score_level2 = App\ScoreLevel::where('id', 2)->first();
-	$get_score_level3 = App\ScoreLevel::where('id', 3)->first();
-	$get_score_level4 = App\ScoreLevel::where('id', 4)->first();
-
-	if(isset($get_score_round1)){
-		if($get_score_round1->score_test_sum >= $get_score_level1->score){
-			$score_level1 = 'verygood';
-			$result_grade_round1 = 'A';
-			$result_score_level_round1 = $get_score_level1->score_level_name;
-		} else if($get_score_round1->score_test_sum >= $get_score_level2->score){
-			$score_level1 = 'good';
-			$result_grade_round1 = 'B';
-			$result_score_level_round1 = $get_score_level2->score_level_name;
-		} else if($get_score_round1->score_test_sum >= $get_score_level3->score){
-			$score_level1 = 'fair';
-			$result_grade_round1 = 'C';
-			$result_score_level_round1 = $get_score_level3->score_level_name;
-		} else if($get_score_round1->score_test_sum < $get_score_level4->score){
-			$score_level1 = 'poor';
-			$result_grade_round1 = 'D';
-			$result_score_level_round1 = $get_score_level4->score_level_name;
-		}
-	}
-
-	if(isset($get_score_round2)){
-		if($get_score_round2->score_test_sum >= $get_score_level1->score){
-			$score_level2 = 'verygood';
-			$result_grade_round2 = 'A';
-			$result_score_level_round2 = $get_score_level1->score_level_name;
-		} else if($get_score_round2->score_test_sum >= $get_score_level2->score){
-			$score_level2 = 'good';
-			$result_grade_round2 = 'B';
-			$result_score_level_round2 = $get_score_level2->score_level_name;
-		} else if($get_score_round2->score_test_sum >= $get_score_level3->score){
-			$score_level2 = 'fair';
-			$result_grade_round2 = 'C';
-			$result_score_level_round2 = $get_score_level3->score_level_name;
-		} else if($get_score_round2->score_test_sum < $get_score_level4->score){
-			$score_level2 = 'poor';
-			$result_grade_round2 = 'D';
-			$result_score_level_round2 = $get_score_level4->score_level_name;
-		}
-	}
-
-	if(isset($get_score_round3)){
-		if($get_score_round3->score_test_sum >= $get_score_level1->score){
-			$score_level3 = 'verygood';
-			$result_grade_round3 = 'A';
-			$result_score_level_round3 = $get_score_level1->score_level_name;
-		} else if($get_score_round3->score_test_sum >= $get_score_level2->score){
-			$score_level3 = 'good';
-			$result_grade_round3 = 'B';
-			$result_score_level_round3 = $get_score_level2->score_level_name;
-		} else if($get_score_round3->score_test_sum >= $get_score_level3->score){
-			$score_level3 = 'fair';
-			$result_grade_round3 = 'C';
-			$result_score_level_round3 = $get_score_level3->score_level_name;
-		} else if($get_score_round3->score_test_sum < $get_score_level4->score){
-			$score_level3 = 'poor';
-			$result_grade_round3 = 'D';
-			$result_score_level_round3 = $get_score_level4->score_level_name;
-		}
-	}
-
-	if(isset($get_score_round4)){
-		if($get_score_round4->score_test_sum >= $get_score_level1->score){
-			$score_level4 = 'verygood';
-			$result_grade_round4 = 'A';
-			$result_score_level_round4 = $get_score_level1->score_level_name;
-		} else if($get_score_round4->score_test_sum >= $get_score_level2->score){
-			$score_level4 = 'good';
-			$result_grade_round4 = 'B';
-			$result_score_level_round4 = $get_score_level2->score_level_name;
-		} else if($get_score_round4->score_test_sum >= $get_score_level3->score){
-			$score_level4 = 'fair';
-			$result_grade_round4 = 'C';
-			$result_score_level_round4 = $get_score_level3->score_level_name;
-		} else if($get_score_round4->score_test_sum < $get_score_level4->score){
-			$score_level4 = 'poor';
-			$result_grade_round4 = 'D';
-			$result_score_level_round4 = $get_score_level4->score_level_name;
-		}
-	}
-	?>
-	<div class="modal fade" id="scoreModal{{$scoreCount++}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content" id="center">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">{{$gp->group_project_id}}</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered myscore">
-						<tbody>
-							<tr>
-							@if(isset($result_grade_round1))
-								<td width="50%">exam round 1</td><td width="50%">{{$result_grade_round1}} <span class="$score_level1">{{$result_score_level_round1}}</span></td>
-							@else
-							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level1"></span></td>
-							@endif
-							</tr>
-							<tr>
-								<td>exam round 2</td><td>{{$result_grade_round2}} <span class="$score_level2">{{$result_score_level_round2}}</span></td>
-							</tr>
-							<tr>
-							@if(isset($result_grade_round1) && isset($result_grade_round3))
-								<td>exam round 3</td><td>{{$result_grade_round3}} <span class="$score_level3">{{$result_score_level_round3}}</span></td>
-								@else
-							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level3"></span></td>
-							@endif
-							</tr>
-							<tr>
-								<td>exam round 4</td><td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	@endforeach
 	
 	@if($countProject>0)
 	<?php
@@ -334,11 +192,6 @@
 			<li>
 				<a class="small toggle-vis" data-value="option7" tabIndex="-1" data-column="6">
 					<input type="checkbox" class="incheck" checked/>&nbsp;Proposal
-				</a>
-			</li>
-			<li>
-				<a class="small toggle-vis" data-value="option8" tabIndex="-1" data-column="7">
-					<input type="checkbox" class="incheck" checked/>&nbsp;score
 				</a>
 			</li>
 		</ul>

@@ -93,28 +93,7 @@
                 </div>  
           </nav>
         </div>
-       <div id="content">
-        @yield('content')
-        </div>
-        <div id="footer">
-          <table>
-            <tr>
-            <th class="SITpic" rowspan="2"><img src="/img/logo-sit.gif" height="30"></th>
-            <td class="school">School of information technology</td>
-          </tr>
-          <tr>
-            <td class="kmutt">King Mongkut's University of Technology Thonburi</td>
-          </tr>
-          </table>
-        </div> 
+        @yield('sidebar')
       </div>
     </body>
-    <script>
-    $('.firstname').each(function(index) {
-      $('.firstname')[index].innerHTML = $(this).text().split(' ')[0].toLowerCase();
-    });
-    $('.fullname').each(function(index) {
-      $('.fullname')[index].innerHTML = $(this).html().toLowerCase();
-    });
-    </script>
 </html>

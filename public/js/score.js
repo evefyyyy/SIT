@@ -1,9 +1,9 @@
 //select type
 $(function () {
-	$('.selecttype').selectpicker({
-	});
-	$('.selecttemp').selectpicker({
-	});
+  $('.selecttype').selectpicker({
+  });
+  $('.selecttemp').selectpicker({
+  });
 });
 $(document).ready(function(){
     $(".box").hide();
@@ -51,12 +51,13 @@ $(document).ready(function(){
         });
     }).change();
 });
-$('.checkvalue').click(function(){
-  $i = $('.checkvalue').length;
+$('#checkscore').submit(function(){
+  $i = $('.counttable').length;
   $x = 1;
   for($x=1;$x<=$i;$x++){
   if($("#subtotal"+$x).html() != 100){
     $('#alert'+$x).show();
+    return false;
   } else {
     if ($('#alert'+$x).show()) {
       $('#alert'+$x).hide();

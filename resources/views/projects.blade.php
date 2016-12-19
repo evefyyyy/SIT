@@ -1,5 +1,6 @@
 @extends('generalTmp')
 @section('content')
+<script src="{!! URL::asset('js/jquery.dotdotdot.min.js') !!}"></script>
 <div class="row filter-head">
           <div class="col-lg-12">
             <div class="text-center">
@@ -66,27 +67,13 @@
 </div>
 <!-- <div class="loader" id="home"></div> -->
 <script>
-
   $(document).ready(function() {
-    $("div.caption").dotdotdot(
-    {
+    $(".caption").dotdotdot({
       ellipsis : '...',
       wrap: "letter",
       height: 60,
       watch : true
     });
   });
-  // $(document).ready(function() {
-  //   $('.loader').fadeIn(1000);
-  //   $('#preload').hide();
-  //   $.ajax({
-  //     type: 'GET',
-  //     url:'/home',
-  //       success:function(response){
-  //         $('.loader').fadeOut(1000);
-  //         $("#preload").append(response);
-  //       }
-  //   });
-  // });
 </script>
 @stop
