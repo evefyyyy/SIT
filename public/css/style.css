@@ -963,7 +963,7 @@ h6 img {
   width: 100%;
   font-size: 1em;
 }
-.modal-body textarea {
+.modal-body textarea, #givemark textarea {
   width: 100%;
 }
 .modal-body a {
@@ -1577,6 +1577,20 @@ a.delete:focus{
   margin-bottom: 5px;
 }
 .round-btn button {
+    color: #000000;
+    width: 189px;
+    height: 50px;
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    font-size: 1.3em;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid #000000;
+}
+.round-btn button:hover {
     color: #40c3a7;
     width: 189px;
     height: 50px;
@@ -1589,15 +1603,8 @@ a.delete:focus{
     cursor: pointer;
     background-color: #fff;
     border: 2px solid #40c3a7;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
 }
-.round-btn button:disabled {
-  color: #c2c2c2;
-  border: 2px solid #c2c2c2;
-  cursor: not-allowed;
-  font-weight: normal;
-}
+
 #marksTB i.glyphicon-ok {
   color: #40c3a7;
 }
@@ -1616,7 +1623,11 @@ a.delete:focus{
   display: inline;
   font-weight: 900;
 }
-#givemark p, .round-btn button, a.btn3, #givemark strong, #viewmark strong, #viewmark b, #viewmark .table > tfoot > tr > th, #givemark .table > tfoot > tr > th:nth-child(1), .school, #pendlink a, .file-upload-button, .news-head label, .fancy,
+#givemark textarea {
+  margin-top: 15px;
+  height: 7em;
+}
+.round-btn button, a.btn3, #givemark strong, #viewmark strong, #viewmark b, #viewmark .table > tfoot > tr > th, #givemark .table > tfoot > tr > th:nth-child(1), .school, #pendlink a, .file-upload-button, .news-head label, .fancy,
 .category, .main, .action-button, .fs-title, .title, .info, #progressbar li, #proid label, .btn-login, #pendlink a, .approvebt, .rejectbt, .cd-popup-container .cd-buttons a, #detail .cd-popup .alert, .image-btn, #warning,
 #scoresheet .btn-default, .panel-body .titlee, a.add-examroom, .titlee, #editroom .titlee, #editroom a, #scoresheet .btn-default, #scoresheet label, #scoresheet .row, #scoresheet p, #scoreyear .table > tbody > tr > td,
 #scoreyear a, table.myscore > tbody > tr >td, table.myprop > tbody > tr >td, #scoreTB table > thead > tr > th,
