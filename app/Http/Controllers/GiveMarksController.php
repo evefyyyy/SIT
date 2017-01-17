@@ -38,9 +38,20 @@ class GiveMarksController extends Controller
 {
     public function selectRound()
     {
+      $adv = Auth::user()->user_advisor->advisor->id;
       for($i=0; $i<4; $i++){
-        $data['round'][$i] = $i+1;
+        $round = $i+1;
+        $data['round'][$i] = $round;
+        $data['submitted'][$i] = DB::table('grade_advisor')
+                      ->join('templates_main','templates_main.id','=','main_template_id')
+                      ->where('advisor_id','=',$adv)
+                      ->where('round','=',$round)
+                      ->where('submit','=',1)
+                      ->value('round');
       }
+      // dd($data['round']);
+        //  dd($data['submitted'][0]);
+
       return view('advisor.selectRound',$data);
     }
 
@@ -191,6 +202,7 @@ class GiveMarksController extends Controller
       $adv = Auth::user()->user_advisor->advisor->id;
       $giveScore = $request['giveScore'];
       $grade = $request['grade'];
+      // dd($grade);
 
       $projectId = DB::table('group_projects')->where('group_project_id',$id)->value('id');
       $typeId = DB::table('group_projects')->where('group_project_id',$id)->value('type_id');
@@ -256,6 +268,7 @@ class GiveMarksController extends Controller
         $obj = GradeAdvisor::find($gradeExist);
         $obj->grade = $grade;
         $obj->save();
+
       }
 
       return redirect('exam/round/'.$round);

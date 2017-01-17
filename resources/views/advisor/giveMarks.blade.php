@@ -63,7 +63,7 @@
 						@endif
 					@endforeach
 				</select>
-				<input type="hidden" name="grade" id="grade">
+				<input type="hidden" name="grade" id="grade" value="{{$grade or ''}}">
 			<label class="required-sign"></label>
 			</th>
 		</tr>

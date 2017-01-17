@@ -88,9 +88,9 @@
                   <li class="{{ strrpos(Request::path(),'setting') === 0 ? 'active' : ''  }}"><a href="/setting">setting</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  
-                </ul> 
-                </div>  
+                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>
+                </ul>
+                </div>
           </nav>
         </div>
        <div id="content">
@@ -106,7 +106,7 @@
             <td class="kmutt">King Mongkut's University of Technology Thonburi</td>
           </tr>
           </table>
-        </div> 
+        </div>
       </div>
     </body>
     <script>

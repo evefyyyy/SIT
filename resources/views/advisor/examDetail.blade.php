@@ -5,7 +5,7 @@
 	<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 	<div class="hidden-xs col-md-1 col-lg-2"></div>
 	<div class="col-xs-12 col-md-10 col-lg-8">
-	<h2>exam round</h2>
+	<h2>exam round {{$round}}</h2>
 	@if($roomExam == null)
 		<h4 class="text-center noProject">You did not have permission in this exam.</h4>
 	@else
