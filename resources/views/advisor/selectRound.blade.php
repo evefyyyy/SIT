@@ -13,9 +13,5 @@
 					</button>
 			</a>
 			@endforeach
-	</div>
 </div>
-<script>
-
-</script>
 @stop
