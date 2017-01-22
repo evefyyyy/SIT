@@ -40,12 +40,11 @@ Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTe
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
-
-Route::get('setting',function(){
-  return view('setting');
-});
 Route::get('setting/admin',function(){
-  return view('admin.setadmin');
+  return view('admin.setAdmin');
+});
+Route::get('setting/student',function(){
+  return view('admin.setStudent');
 });
 Route::get('project/edit',function(){
   return view('admin.editStdProject');

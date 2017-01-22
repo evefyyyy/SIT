@@ -13,7 +13,7 @@
 							<a class="{{ strrpos(Request::path(),'setting/admin') === 0 ? 'active' : ''  }}" href="/setting/admin">admin<span class="glyphicon glyphicon-user pull-right"></span></a>
 						</li>
 						<li>
-							<a href="#">students</a>
+							<a class="{{ strrpos(Request::path(),'setting/student') === 0 ? 'active' : ''  }}" href="/setting/student">students</a>
 						</li>
 						<li>
 							<a href="#">test room</a>
