@@ -40,17 +40,25 @@ Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTe
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
-
-Route::get('setting',function(){
-  return view('setting');
-});
-Route::get('setting/admin',function(){
-  return view('admin.setadmin');
+Route::get('setting/admin', 'SetAdminController@index');
+Route::get('setting/student',function(){
+  return view('admin.setStudent');
 });
 Route::get('project/edit',function(){
   return view('admin.editStdProject');
 });
-
+Route::get('setting/year',function(){
+  return view('admin.manageYear');
+});
+Route::get('setting/type',function(){
+  return view('admin.manageType');
+});
+Route::get('setting/category',function(){
+  return view('admin.manageCategory');
+});
+Route::get('setting/room',function(){
+  return view('admin.testroom');
+});
 
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
 

@@ -161,6 +161,16 @@ option {
 .action-button:focus {
     background: #ff7f7f;
 }
+.action-button.cancel {
+  background: #eee;
+  color: #777;
+}
+.action-button.cancel:hover {
+  background: #ddd;
+}
+.action-button.save:hover {
+  background: #00af87;
+}
 /*headings*/
 .fs-title {
     font-size: 1.3em;
@@ -629,7 +639,7 @@ table.teammem {
   width: 50%;
   display: inline-block;
 }
-#scoresheet .cd-popup-container .cd-buttons li {
+#scoresheet .cd-popup-container .cd-buttons li, #set .cd-popup-container .cd-buttons li {
   width: 100%;
 }
 #detail .cd-popup-container .cd-buttons li {
@@ -657,6 +667,9 @@ table.teammem {
 #marksTB .cd-popup-container .cd-buttons li:last-child a {
   background: #40c3a7;
   border-radius: 0 0 .25em 0;
+}
+#scoresheet .cd-popup-container .cd-buttons li:last-child a, #set .cd-popup-container .cd-buttons li:last-child a {
+  background: #40c3a7;
 }
 .cd-popup-container .cd-buttons li:last-child a {
   background: #C1C1C1;
@@ -958,6 +971,22 @@ h6 img {
 }
 #newTB .btn-danger {
   padding: 6px 10px;
+}
+#addStd .modal-body {
+  text-align: center;
+}
+#addStd .modal-body .form-group, #addStd .modal-body p {
+  margin-top: 15px;
+}
+#addStd .modal-body input {
+  width: 180px;
+}
+#addStd .modal-body label {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#addStd .modal-body p {
+  font-size: 1.175em;
 }
 .modal-body input {
   width: 100%;
@@ -1319,10 +1348,10 @@ a.add-examroom:hover {
 #scoresheet .btn-default {
   text-decoration: none;
 }
-#scoresheet .input-group-btn > .btn-remove, #detail .input-group-btn > .btn-danger {
+#scoresheet .input-group-btn > .btn-remove, #detail .input-group-btn > .btn-danger, #set .input-group-btn > .btn-danger {
   padding: 9px 11px;
 }
-#scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success {
+#scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success, #set .input-group-btn > .btn-success {
   padding: 10px 12px;
 }
 #scoresheet .input-group > .form-control {
@@ -1333,7 +1362,7 @@ a.add-examroom:hover {
   color: #40c3a7;
   text-align: left;
 }
-#scoresheet .glyphicon-plus:before, #detail .glyphicon-plus:before {
+#scoresheet .glyphicon-plus:before, #detail .glyphicon-plus:before, #set .glyphicon-plus:before {
   padding-right: 0;
 }
 #scoresheet .row {
@@ -1342,12 +1371,12 @@ a.add-examroom:hover {
 #scoresheet .titlee {
   font-size: 1.175em;
 }
-#scoresheet .entry:not(:first-of-type), .calgrade, #givemark table, #viewmark table, #warningtype, #footer table,
+.calgrade, #givemark table, #viewmark table, #warningtype, #footer table,
 .form-group .input_fields_wrap, .category, .main, .proname, #roomTB table, .filter-room, #scoresheet table, .btn-save  {
     margin-top: 10px;
 }
 #scoresheet small {
-  color: #999;
+  color: grey;
 }
 #scoresheet label {
   font-weight: normal;
@@ -1858,8 +1887,7 @@ button#more.btn.btn-default:hover {
     display:inline-block;
     width: 100%;
 }
-.side-bar
-{
+.side-bar {
     background:#fff;
     position: absolute;    
     height:100%;
@@ -1871,37 +1899,32 @@ button#more.btn.btn-default:hover {
     box-shadow: 5px 0 5px -2px #ccc;
 }
 
-.side-bar ul
-{
+.side-bar ul {
     list-style:none;
     padding:0px;
     
 }
 
-.side-bar ul li.menu-head
-{
+.side-bar ul li.menu-head {
     font-weight: 700;
     padding:20px;
 }
 
 
-.side-bar ul li.menu-head a
-{
+.side-bar ul li.menu-head a {
     color:#000;
     text-decoration:none;
     height:50px;
 }
 
 
-.side-bar ul .menu-head  a
-{
+.side-bar ul .menu-head  a {
     color:#000;
     text-decoration:none;
     height:50px;
 }
 
-.side-bar ul .menu li  a 
-{
+.side-bar ul .menu li  a {
     color:#000;
     text-decoration:none;
     display:inline-table;
@@ -1911,40 +1934,38 @@ button#more.btn.btn-default:hover {
     padding-top:10px;
     padding-bottom:10px;
     border-left:5px solid #ddd;
-    margin-left: 8px
+    margin-left: 8px;
+    webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
 }
 
-.side-bar ul .menu li  a:hover
-{
-    border-left:5px solid #40c3a7;    
-    padding-left:20px;
+.side-bar ul .menu li  a:hover {
+    border-left: 5px solid #40c3a7;    
+    padding-left: 25px;
     color: #000;
     margin-left: 8px
+    webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
 }
 
-.side-bar ul .menu li  a.active
-{
-    padding-left:20px;
+.side-bar ul .menu li  a.active {
     color: #40c3a7;
     border-left:5px solid #40c3a7;
     font-weight: bold;
     margin-left: 8px
 }
-.page-content
-{
+.page-content {
     padding-left: 200px;
     transition: padding-left 0.5s;
     padding-top: 30px;
 }
 
-.active > .side-bar
-{
+.active > .side-bar {
     margin-left:-150px;   
     transition: margin-left 0.5s;
 }
 
-.active > .page-content
-{
+.active > .page-content {
     padding-left: 50px;
     transition: padding-left 0.5s;
     padding-top: 30px;
@@ -1998,4 +2019,17 @@ button#more.btn.btn-default:hover {
 }
 .btn-unapply:hover .glyphicon-remove{
   display: none;
+}
+#set .input-group, #scoresheet .input-group {
+  margin-bottom: 10px;
+}
+/*#set .input-group-btn > .btn.btn-add{
+  padding: 10px 12px;
+}
+#set .input-group-btn > .btn.btn-remove{
+  padding: 10px 12px;
+}*/
+#set small {
+  color: grey;
+  text-transform: uppercase;
 }

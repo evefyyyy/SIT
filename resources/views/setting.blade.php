@@ -13,22 +13,22 @@
 							<a class="{{ strrpos(Request::path(),'setting/admin') === 0 ? 'active' : ''  }}" href="/setting/admin">admin<span class="glyphicon glyphicon-user pull-right"></span></a>
 						</li>
 						<li>
-							<a href="#">students</a>
-						</li>
-						<li>
-							<a href="#">test room</a>
+							<a class="{{ strrpos(Request::path(),'setting/student') === 0 ? 'active' : ''  }}" href="/setting/student">students</a>
 						</li>
 						<li>
 							<a class="{{ strrpos(Request::path(),'setting/recommend') === 0 ? 'active' : ''  }}" href="/setting/recommend">recommend</a>
 						</li>
 						<li>
-							<a href="#">year</a>
+							<a class="{{ strrpos(Request::path(),'setting/year') === 0 ? 'active' : ''  }}" href="/setting/year">year</a>
 						</li>
 						<li>
-							<a href="#">type</a>
+							<a class="{{ strrpos(Request::path(),'setting/type') === 0 ? 'active' : ''  }}" href="/setting/type">type</a>
 						</li>
 						<li>
-							<a href="#">category</a>
+							<a class="{{ strrpos(Request::path(),'setting/category') === 0 ? 'active' : ''  }}" href="/setting/category">category</a>
+						</li>
+						<li>
+							<a class="{{ strrpos(Request::path(),'setting/room') === 0 ? 'active' : ''  }}" href="/setting/room">test room</a>
 						</li>
 					</div>
 

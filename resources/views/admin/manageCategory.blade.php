@@ -1,53 +1,38 @@
-@extends('adminTmp')
+@extends('setting')
 @section('content')
-<div id="scoresheet">
-	<h2><img height="45" src="/img/exam.png">manage criteria</h2>
-	<div class="row">
-		<div class="col-xs-1 col-md-3 col-lg-3"></div>
-		<div class="col-xs-10 col-md-6 col-lg-6">
+<div id="set">
+<h2><img height="45" src="/img/setting.png">category</h2>
+<div class="row">
+		<div class="col-xs-1 col-md-3 col-lg-4"></div>
+		<div class="col-xs-10 col-md-6 col-lg-4">
 					<div class="control-group" id="fields">
-						<h5>main criteria</h5>
 						<div class="controls">
-							<form role="form" autocomplete="off" action="{{$url}}" method="post">
-									<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-								@if($count != 0)
-								@foreach($mainCriteria as $main)
+								<form role="form" autocomplete="off" method="post">
 								<div class="entry input-group">
-									<input class="form-control" name="mainfields[]" type="text" placeholder="Type something" value="{{$main}}"/>
+									<input class="form-control" type="text" placeholder="Type something"/>
 									<span class="input-group-btn">
 										<button class="btn btn-success btn-add" type="button">
 											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</span>
 								</div>
-								@endforeach
-								@else
-								<div class="entry input-group">
-									<input class="form-control" name="mainfields[]" type="text" placeholder="Type something"/>
-									<span class="input-group-btn">
-										<button class="btn btn-success btn-add" type="button">
-											<span class="glyphicon glyphicon-plus"></span>
-										</button>
-									</span>
-								</div>
-								@endif
-							<small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another criteria</small>
 						</div>
 					</div>
-		</div>
-		<div class="col-xs-1 col-md-3 col-lg-3"></div>
-	</div>
+						<small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another category</small>
+					</div>
+		<div class="col-xs-1 col-md-43 col-lg-4"></div>
+</div>
 	<div id="center">
-	  <a href="/exam/managescore/criteria"><button class="action-button" type="button">back</button></a>
-	  <button type="submit" class="action-button">save</button>
+	  <button class="action-button cancel">cancel</button>
+	  <button type="submit" class="action-button save">save</button>
 	</div>
 	</form>
 	<div class="cd-popup" role="alert">
 	    <div class="cd-popup-container">
-	       <p>This criteria cannot be deleted.</p>
+	       <p>This category cannot be deleted.</p>
 	      <a class="cd-popup-close cd-close img-replace"></a>
 	      <ul class="cd-buttons">
-	          <li><a class="cd-close">OK</a></li>
+	         <li><a class="cd-close">OK</a></li>
      	 </ul>
 	  </div> <!-- cd-popup-container -->
 	</div> <!-- cd-popup -->
@@ -85,9 +70,9 @@ $(function()
 	}).on('click', '.btn-remove', function(e)
 	{
 		// if () {
-			// $(this).parents('.entry:first').remove();
+			$(this).parents('.entry:first').remove();
 		// } else {
-			$('.cd-popup').addClass('is-visible');
+			// $('.cd-popup').addClass('is-visible');
 		// }
 	});
 });
