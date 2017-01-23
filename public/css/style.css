@@ -161,6 +161,16 @@ option {
 .action-button:focus {
     background: #ff7f7f;
 }
+.action-button.cancel {
+  background: #eee;
+  color: #777;
+}
+.action-button.cancel:hover {
+  background: #ddd;
+}
+.action-button.save:hover {
+  background: #00af87;
+}
 /*headings*/
 .fs-title {
     font-size: 1.3em;
@@ -629,7 +639,7 @@ table.teammem {
   width: 50%;
   display: inline-block;
 }
-#scoresheet .cd-popup-container .cd-buttons li {
+#scoresheet .cd-popup-container .cd-buttons li, #set .cd-popup-container .cd-buttons li {
   width: 100%;
 }
 #detail .cd-popup-container .cd-buttons li {
@@ -657,6 +667,9 @@ table.teammem {
 #marksTB .cd-popup-container .cd-buttons li:last-child a {
   background: #40c3a7;
   border-radius: 0 0 .25em 0;
+}
+#scoresheet .cd-popup-container .cd-buttons li:last-child a, #set .cd-popup-container .cd-buttons li:last-child a {
+  background: #40c3a7;
 }
 .cd-popup-container .cd-buttons li:last-child a {
   background: #C1C1C1;
@@ -1335,10 +1348,10 @@ a.add-examroom:hover {
 #scoresheet .btn-default {
   text-decoration: none;
 }
-#scoresheet .input-group-btn > .btn-remove, #detail .input-group-btn > .btn-danger {
+#scoresheet .input-group-btn > .btn-remove, #detail .input-group-btn > .btn-danger, #set .input-group-btn > .btn-danger {
   padding: 9px 11px;
 }
-#scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success {
+#scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success, #set .input-group-btn > .btn-success {
   padding: 10px 12px;
 }
 #scoresheet .input-group > .form-control {
@@ -1349,7 +1362,7 @@ a.add-examroom:hover {
   color: #40c3a7;
   text-align: left;
 }
-#scoresheet .glyphicon-plus:before, #detail .glyphicon-plus:before {
+#scoresheet .glyphicon-plus:before, #detail .glyphicon-plus:before, #set .glyphicon-plus:before {
   padding-right: 0;
 }
 #scoresheet .row {
@@ -1358,12 +1371,12 @@ a.add-examroom:hover {
 #scoresheet .titlee {
   font-size: 1.175em;
 }
-#scoresheet .entry:not(:first-of-type), .calgrade, #givemark table, #viewmark table, #warningtype, #footer table,
+.calgrade, #givemark table, #viewmark table, #warningtype, #footer table,
 .form-group .input_fields_wrap, .category, .main, .proname, #roomTB table, .filter-room, #scoresheet table, .btn-save  {
     margin-top: 10px;
 }
 #scoresheet small {
-  color: #999;
+  color: grey;
 }
 #scoresheet label {
   font-weight: normal;
@@ -2006,4 +2019,17 @@ button#more.btn.btn-default:hover {
 }
 .btn-unapply:hover .glyphicon-remove{
   display: none;
+}
+#set .input-group, #scoresheet .input-group {
+  margin-bottom: 10px;
+}
+/*#set .input-group-btn > .btn.btn-add{
+  padding: 10px 12px;
+}
+#set .input-group-btn > .btn.btn-remove{
+  padding: 10px 12px;
+}*/
+#set small {
+  color: grey;
+  text-transform: uppercase;
 }
