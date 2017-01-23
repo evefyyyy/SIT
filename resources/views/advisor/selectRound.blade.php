@@ -5,9 +5,5 @@
 			@foreach($round as $r)
 			<a href="/exam/round/{{$r}}"><button>exam round {{$r}}</button></a>
 			@endforeach
-	</div>
 </div>
-<script>
-	$('#round1').prop('disabled', true);
-</script>
 @stop

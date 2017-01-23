@@ -1,9 +1,9 @@
-@extends('adminTmp')
+@extends('setting')
 @section('content')
 <h2><img height="45" src="/img/recommend.png">recommend projects</h2>
 <div class="row" id="recTB">
-	<div class="col-xs-1 col-md-2 col-lg-2"></div>
-	<div class="col-xs-10 col-md-8 col-lg-8">
+	<div class="hidden-col-xs col-sm-1 col-md-1 col-lg-1"></div>
+	<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 		<form class="form" role="form" method="post" action="/setting/recommend/addrecommend">
 		<button class="btn btn-primary " id="addproject">add</button><input class="form-control" placeholder="Project ID" name="recommend">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -34,7 +34,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="col-xs-1 col-md-2 col-lg-2"></div>
+	<div class="hidden-col-xs col-sm-1 col-md-1 col-lg-1"></div>
 </div>
 <script>
 $('.del-btn').click(function (){

@@ -9,6 +9,11 @@ a {
   -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     cursor: pointer;
+    text-decoration: none;
+}
+a:hover
+ {
+    text-decoration: none;
 }
 .logout:hover {
   color: #FF5C5C !important;
@@ -19,7 +24,7 @@ span.lol, i.lol {
     font-weight: normal;
 }
 #header {
-    padding: 25px;
+    padding: 15px;
 }
 
 .display-none{
@@ -45,7 +50,6 @@ span.lol, i.lol {
     margin: auto;
     font-family: 'Titillium Web', sans-serif;
     color: #a09e9f;
-    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -55,7 +59,6 @@ span.lol, i.lol {
 
 .school {
     font-size: 0.95em;
-    text-transform: uppercase;
     font-weight: 700;
     text-align: left;
 }
@@ -75,8 +78,11 @@ span.lol, i.lol {
     font-size: 1.2em;
     height: 100%;
     margin: 15% auto 15% auto;
+    color: #999;
 }
-
+#detail .noProject {
+  height: auto;
+}
 .noProject p {
     margin-bottom: 20px;
 }
@@ -84,7 +90,6 @@ span.lol, i.lol {
 .noProject a {
     font-weight: 700;
     color: #40c3a7;
-    text-decoration: none;
     border-style: solid;
     border-width: 2px;
     padding: 5px 10px 5px 10px;
@@ -92,7 +97,6 @@ span.lol, i.lol {
 
 .noProject a:hover {
     color: #ff7f7f;
-    text-decoration: none;
 }
 option {
     font-family: "Prompt", Helvetica, Arial, sans-serif;
@@ -150,7 +154,6 @@ option {
     padding: 10px 5px;
     border-style: none;
     margin-top: 20px;
-    text-transform: uppercase;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
@@ -161,7 +164,6 @@ option {
 /*headings*/
 .fs-title {
     font-size: 1.3em;
-    text-transform: uppercase;
     color: black;
     font-weight: 700;
     margin-top: 30px;
@@ -178,8 +180,6 @@ option {
 /*content*/
 .category, .main {
     color: black;
-    margin-top: 10px;
-    text-transform: uppercase;
     text-align: right;
     float: right;
 }
@@ -192,7 +192,6 @@ option {
 }
 .proname {
     font-size: 1.2em;
-    margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 600;
     text-align: center;
@@ -200,14 +199,12 @@ option {
 }
 .title {
     margin-top: 15px;
-    text-transform: uppercase;
     font-weight: normal;
     display: inline;
 }
 .info {
     color: black;
     margin-top: 30px;
-    text-transform: uppercase;
     padding-left: 15px;
     display: inline;
     font-weight: normal;
@@ -230,7 +227,6 @@ option {
 #progressbar li {
     list-style-type: none;
     color: black;
-    text-transform: uppercase;
     font-size: 10px;
     width: 25%;
     float: left;
@@ -451,11 +447,9 @@ table.teammem {
 #waitApp a {
   line-height: 3em;
   font-weight: 600;
-  text-decoration: none;
   color: #ff7f7f;
 }
 #waitApp a:hover {
-  text-decoration: none;
   color: #eb3652;
 }
 #waitApp p {
@@ -472,9 +466,6 @@ table.teammem {
 .pending tr > td {
     text-transform: capitalize;
 }
-.pending span {
-    float: right;
-}
 #name {
     text-transform: none;
 }
@@ -486,7 +477,6 @@ table.teammem {
 #proid label {
     float: right;
     font-size: 1.1em;
-    text-transform: uppercase;
     width: 100px;
     color: #555;
     display: inline;
@@ -499,7 +489,6 @@ table.teammem {
     font-weight: bold;
 }
 .pending a {
-    text-decoration: none;
     color: black;
 }
 .pending a:hover {
@@ -516,7 +505,6 @@ table.teammem {
     cursor: pointer;
     padding: 3.5px;
     border-style: none;
-    text-transform: uppercase;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
@@ -530,7 +518,6 @@ table.teammem {
     cursor: pointer;
     padding: 3.5px;
     border-style: none;
-    text-transform: uppercase;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
@@ -555,6 +542,9 @@ table.teammem {
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+#detail [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after{
+  font-size: 40px;
 }
 #detail .cd-popup {
   -webkit-transition: opacity 0.5s 0s, visibility 0s 0.5s;
@@ -595,9 +585,9 @@ table.teammem {
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
   transition-property: transform;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 #detail .cd-popup-container {
    margin: 5em auto;
@@ -649,9 +639,7 @@ table.teammem {
   display: block;
   height: 60px;
   line-height: 60px;
-  text-transform: uppercase;
   color: #FFF;
-  text-decoration: none;
   font-size: 1.2em;
   transition: background-color 0.5s;
 }
@@ -665,6 +653,10 @@ table.teammem {
 }
 .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
   background-color: #fc8982;
+}
+#marksTB .cd-popup-container .cd-buttons li:last-child a {
+  background: #40c3a7;
+  border-radius: 0 0 .25em 0;
 }
 .cd-popup-container .cd-buttons li:last-child a {
   background: #C1C1C1;
@@ -698,7 +690,6 @@ table.teammem {
   background-color: #B6B6B6;
 }
 #detail .cd-popup .alert {
-  text-transform: uppercase;
   font-size: 1.2em;
 }
 .cd-popup-container .cd-popup-close::before {
@@ -775,10 +766,10 @@ table.teammem {
     font-size: 0.875em;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
-    text-transform: uppercase;
 }
 .btn-login:hover {
     background-color: #ff7f7f;
+    color: #fff;
     @media(max-width:768px){
         #login-dp{
             background-color: inherit;
@@ -797,7 +788,6 @@ table.teammem {
     border-color: #ccc;
     margin-bottom: 30px;
     float: right;
-    text-decoration: none;
 }
 #createlink a:hover {
     border-color: #40c3a7;
@@ -809,8 +799,6 @@ table.teammem {
     border-color: #ccc;
     float: right;
     margin: 0;
-    text-decoration: none;
-    text-transform: uppercase;
 }
 #pendlink a:hover {
     border-color: #ff7f7f;
@@ -832,10 +820,12 @@ table.teammem {
 }
 a.tblink, .approveall a, a.tblink span {
   color: black;
-  text-decoration: none;
 }
 a.tblink:hover {
   color: #40c3a7;
+}
+#detail a.tblink:hover {
+  color: #000;
 }
 #projectTB .approveall {
   float: right;
@@ -901,7 +891,6 @@ h6 img {
     display: inline-block;
     color: #fff;
     font-size: 0.875em;
-    text-transform: uppercase;
     padding: 7px 15px;
     border: none;
     border-radius: 4px;
@@ -927,7 +916,6 @@ h6 img {
 }
 .news-head label {
   vertical-align: -webkit-baseline-middle;
-  text-transform: uppercase;
   font-size: 1.325em;
   padding-left: 20px;
   font-weight: bold;
@@ -937,9 +925,6 @@ h6 img {
 }
 .form-group .file-upload-wrapper > input.file-upload-input {
   margin-bottom: 0;
-}
-.form-group .input_fields_wrap {
-  margin-top: 10px;
 }
 #newTB .table {
   margin-top: 20px;
@@ -961,7 +946,6 @@ h6 img {
 }
 #newTB a {
   color: black;
-  text-decoration: none;
 }
 #newTB h3 {
   font-weight: normal;
@@ -975,11 +959,27 @@ h6 img {
 #newTB .btn-danger {
   padding: 6px 10px;
 }
+#addStd .modal-body {
+  text-align: center;
+}
+#addStd .modal-body .form-group, #addStd .modal-body p {
+  margin-top: 15px;
+}
+#addStd .modal-body input {
+  width: 180px;
+}
+#addStd .modal-body label {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#addStd .modal-body p {
+  font-size: 1.175em;
+}
 .modal-body input {
   width: 100%;
   font-size: 1em;
 }
-.modal-body textarea {
+.modal-body textarea, #givemark textarea {
   width: 100%;
 }
 .modal-body a {
@@ -987,7 +987,6 @@ h6 img {
   padding-top: 10px;
   vertical-align: bottom;
   color: #40c3a7;
-  text-decoration: none;
 }
 .modal-header input {
   width: 90%;
@@ -1053,25 +1052,12 @@ h6 img {
   z-index: -1;
   display: block;
 }
-#detail .upload-btn {
-  float: right;
-}
 #detail .image-view ul {
   list-style-type: none;
 }
 .btn-save {
   text-align: right;
-  margin-top: 10px;
   margin-right: 0;
-}
-/* cover pic */
-.cropit-preview {
-  background-color: #f8f8f8;
-  background-size: cover;
-  border: 5px solid #ccc;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 img#cover {
   width: 100%;
@@ -1079,55 +1065,12 @@ img#cover {
   background:url(/img/no-poster.png) no-repeat;
   background-size: 100%;
 }
-
-/*@media (min-width : 480px) {
-  img#cover {
-    width: 480px;
-    height: 288px;
-    margin-bottom: 10px;
-    background:url(/img/no-poster.png) no-repeat center;
-  }
-}
-@media (min-width : 768px) {
-  img#cover {
-    width: 768px;
-    height: 461px;
-    margin-bottom: 10px;
-    background:url(/img/no-poster.png) no-repeat center;
-  }
-}
-@media (min-width : 1024px) {
-  img#cover {
-    width: 1024px;
-    height: 614px;
-    margin-bottom: 10px;
-    background:url(/img/no-poster.png) no-repeat center;
-  }
-}
-@media (min-width : 1280px) {
-  img#cover {
-    width:  1280px;
-    height: 768px;
-    margin-bottom: 10px;
-    background:url(/img/no-poster.png) no-repeat center;
-  }
-}
-@media (min-width : 1920px) {
-  img#cover {
-    width:  1920px;
-    height: 1080px;
-    margin-bottom: 10px;
-    background:url(/img/no-poster.png) no-repeat center;
-  }
-}
-*/
 .image-btn {
   font-size: 1.25em;
   font-weight: 700;
   color: white;margin-bottom:10px;
   background-color: black;
   display: inline-block;
-  text-transform: uppercase;
 }
 .gallery {height:135px; align-items:center; display:flex; overflow: hidden; margin: 5px auto;}
 .gallery img{width:100%;}
@@ -1137,7 +1080,6 @@ img#cover {
   line-height: 0.5;
   text-align: center;
   font-size: 1.4em;
-  text-transform: uppercase;
   margin-bottom: 15px;
   font-weight: 600;
 }
@@ -1210,6 +1152,24 @@ img#cover {
   font-size: 0.775em;
   text-decoration: none;
 }
+.filter-room {
+  margin-bottom: 20px;
+}
+.filter-room .btn {
+  margin: 0 5px;
+  font-weight: 600;
+  border-color: none;
+  outline: none;
+  padding: 5px 15px;
+  color: #40c3a7;
+  background-color: #ffffff;
+  border: 1px solid #40c3a7;
+}
+.filter-room .btn:hover, .filter-room .btn:focus {
+  color: #fff !important;
+  background-color: #40c3a7 ;
+  border: 1px solid #40c3a7;
+}
 .filter-head {
   margin: 30px auto;
 }
@@ -1222,7 +1182,7 @@ img#cover {
   color: #40c3a7;
   background-color: #ffffff;
 }
-.filter-head .btn:hover, .btn:focus {
+.filter-head .btn:hover, .filter-head .btn:focus {
   color: #40c3a7;
   border: 1px solid #40c3a7;
 }
@@ -1259,16 +1219,14 @@ img#cover {
 .panel-body .titlee {
   color: #40c3a7;
   font-weight: 600;
-  text-transform: uppercase;
 }
 #examroom .panel-body, .type {
   text-transform: capitalize;
 }
-#examroom .panel-body button {
+#examroom .panel-body button, .pending span, .calgrade, #scoresheet i, #detail .upload-btn,
+.editmaincri .table > tfoot > tr > th > span,
+.editmaincri .table > tfoot > tr > th:nth-child(2) > strong {
   float: right;
-}
-#examroom {
-  margin-top: 20px;
 }
 #examroom .row {
   margin-bottom: 5px;
@@ -1276,7 +1234,14 @@ img#cover {
 .titlee {
   color: #40c3a7;
   font-weight: 600;
-  text-transform: uppercase;
+}
+a.add-examroom {
+  float: right;
+  color: #40c3a7;
+  font-weight: bold;
+}
+a.add-examroom:hover {
+  color: #ff7f7f;
 }
 #addroom .titlee {
   text-align: right;
@@ -1304,7 +1269,6 @@ img#cover {
 }
 #roomTB table {
   width: 98%;
-  margin-top: 10px;
 }
 #addproject .modal-body {
   padding: 15px 30px;
@@ -1312,7 +1276,7 @@ img#cover {
 #roomTB tbody > tr > td {
   text-transform: none;
 }
-.pjtype {
+.pjtype, .fullname, .firstname {
   text-transform: capitalize !important;
 }
 #roomTB .btn-danger {
@@ -1322,14 +1286,12 @@ img#cover {
 #editroom .titlee {
   color: #40c3a7;
   font-weight: 600;
-  text-transform: uppercase;
   text-align: right;
 }
 #editroom .row {
   margin-bottom: 5px;
 }
 #editroom a {
-  text-transform: uppercase;
   font-weight: 600;
   float: right;
   color: #40c3a7;
@@ -1372,13 +1334,12 @@ img#cover {
 }
 #scoresheet .btn-default {
   text-decoration: none;
-  text-transform: uppercase;
 }
-#scoresheet .input-group-btn > .btn-remove {
-  padding: 6px 12px;
+#scoresheet .input-group-btn > .btn-remove, #detail .input-group-btn > .btn-danger {
+  padding: 9px 11px;
 }
-#scoresheet .input-group-btn > .btn-success {
-  padding: 7px 13px;
+#scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success {
+  padding: 10px 12px;
 }
 #scoresheet .input-group > .form-control {
   width: 100%;
@@ -1388,24 +1349,23 @@ img#cover {
   color: #40c3a7;
   text-align: left;
 }
-#scoresheet .glyphicon-plus:before {
+#scoresheet .glyphicon-plus:before, #detail .glyphicon-plus:before {
   padding-right: 0;
 }
 #scoresheet .row {
   margin-top: 30px;
-  text-transform: uppercase;
 }
 #scoresheet .titlee {
   font-size: 1.175em;
 }
-#scoresheet .entry:not(:first-of-type){
+#scoresheet .entry:not(:first-of-type), .calgrade, #givemark table, #viewmark table, #warningtype, #footer table,
+.form-group .input_fields_wrap, .category, .main, .proname, #roomTB table, .filter-room, #scoresheet table, .btn-save  {
     margin-top: 10px;
 }
 #scoresheet small {
   color: #999;
 }
 #scoresheet label {
-  text-transform: uppercase;
   font-weight: normal;
   display: inline;
   margin: 6px 10px 0 0;
@@ -1414,7 +1374,6 @@ img#cover {
   color: black;
   font-size: 1.1em;
   display: inline;
-  text-transform: uppercase;
 }
 #scoresheet h6 {
   display: inline;
@@ -1444,23 +1403,18 @@ img#cover {
   vertical-align: middle;
 }
 #scoresheet table {
-  margin-top: 10px;
   width: 80%;
 }
 #scoresheet a#deselect-all, #scoresheet a#select-all,
 #scoresheet a#deselect-all1, #scoresheet a#select-all1 {
   margin-right: 0;
   float: right;
-  text-decoration: none;
   text-transform: none;
   color: black;
 }
 #scoresheet a#deselect-all:hover, #scoresheet a#select-all:hover,
 #scoresheet a#deselect-all1:hover, #scoresheet a#select-all1:hover {
   color: #40c3a7;
-}
-#scoresheet i {
-  float: right;
 }
 #scoresheet .cri .titlee {
   font-size: 1.125em;
@@ -1470,7 +1424,6 @@ img#cover {
 }
 #scoreyear .table > tbody > tr > td {
   text-align: center;
-  text-transform: uppercase;
   padding: 10px;
 }
 .box .table > tfoot > tr > th:nth-child(2n+2), #subtotal,
@@ -1501,7 +1454,6 @@ img#cover {
   text-transform: capitalize;
 }
 #scoreyear .table a {
-  text-decoration: none;
   color: black;
   text-transform: none;
   display: block;
@@ -1510,8 +1462,6 @@ img#cover {
     font-size: 0.975em;
     border-color: #ccc;
     margin: 0 20px 0 20px;
-    text-decoration: none;
-    text-transform: uppercase;
 }
 #managecri a{
   font-size: 1.125em;
@@ -1519,8 +1469,6 @@ img#cover {
   margin-bottom: 20px;
   display: block;
   padding: 15px 20px;
-  text-decoration: none;
-  text-transform: uppercase;
 }
 .editmaincri table {
   width: 100% !important;
@@ -1534,10 +1482,6 @@ img#cover {
 .editmaincri .table > tfoot > tr > th:nth-child(2n+1) {
   text-align: right;
 }
-.editmaincri .table > tfoot > tr > th > span,
-.editmaincri .table > tfoot > tr > th:nth-child(2) > strong {
-  float: right;
-}
 .editmaincri .table > tbody > tr > td > span {
   float: right;
   margin-top: 5px;
@@ -1547,13 +1491,11 @@ img#cover {
   margin-right: 3px;
 }
 .editmaincri strong {
-  text-transform: uppercase;
   float: left;
 }
 #warning {
   color: red;
   font-weight: normal;
-  text-transform: uppercase;
 }
 a#temp-btn {
   color: #ff7f7f;
@@ -1577,11 +1519,9 @@ h2 > img {
 }
 #scoreTB table > thead > tr > th,
 a.toggle-vis {
-  text-transform: uppercase;
   cursor: pointer;
 }
 table.myscore > tbody > tr >td, table.myprop > tbody > tr >td {
-  text-transform: uppercase;
   line-height: 2em;
   vertical-align: middle;
 }
@@ -1616,6 +1556,12 @@ table.myprop > tbody > tr > td:nth-child(2n+1) {
 a.delete:focus{
   background-color: #FF5C5C !important;
 }
+#detail .textt {
+  padding-top: 6px;
+} 
+#detail .controls {
+  margin-bottom: 5px;
+}
 #detail .input-group-btn > button.embed {
   padding: 6px 12px;
 }
@@ -1646,10 +1592,21 @@ a.delete:focus{
   text-align: right;
   margin-bottom: 5px;
 }
-.round-btn a {
-  text-decoration: none;
-}
 .round-btn button {
+    color: #000000;
+    width: 189px;
+    height: 50px;
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    font-size: 1.3em;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid #000000;
+}
+.round-btn button:hover {
     color: #40c3a7;
     width: 189px;
     height: 50px;
@@ -1659,19 +1616,11 @@ a.delete:focus{
     display: block;
     font-weight: 600;
     font-size: 1.3em;
-    text-transform: uppercase;
     cursor: pointer;
     background-color: #fff;
     border: 2px solid #40c3a7;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
 }
-.round-btn button:disabled {
-  color: #c2c2c2;
-  border: 2px solid #c2c2c2;
-  cursor: not-allowed;
-  font-weight: normal;
-}
+
 #marksTB i.glyphicon-ok {
   color: #40c3a7;
 }
@@ -1688,17 +1637,20 @@ a.delete:focus{
 #givemark p{
   font-size: 1.1em;
   display: inline;
-  text-transform: uppercase;
   font-weight: 900;
 }
-#givemark strong, #viewmark strong {
-  text-transform: uppercase;
+#givemark textarea {
+  margin-top: 15px;
+  height: 7em;
 }
-#givemark table, #viewmark table {
-  margin-top: 10px;
+.round-btn button, a.btn3, #givemark strong, #viewmark strong, #viewmark b, #viewmark .table > tfoot > tr > th, #givemark .table > tfoot > tr > th:nth-child(1), .school, #pendlink a, .file-upload-button, .news-head label, .fancy,
+.category, .main, .action-button, .fs-title, .title, .info, #progressbar li, #proid label, .btn-login, #pendlink a, .approvebt, .rejectbt, .cd-popup-container .cd-buttons a, #detail .cd-popup .alert, .image-btn, #warning,
+#scoresheet .btn-default, .panel-body .titlee, a.add-examroom, .titlee, #editroom .titlee, #editroom a, #scoresheet .btn-default, #scoresheet label, #scoresheet .row, #scoresheet p, #scoreyear .table > tbody > tr > td,
+#scoreyear a, table.myscore > tbody > tr >td, table.myprop > tbody > tr >td, #scoreTB table > thead > tr > th,
+a.toggle-vis, .editmaincri strong, #managecri a  {
+  text-transform: uppercase;
 }
 #givemark .table > tfoot > tr > th:nth-child(1){
-  text-transform: uppercase;
   text-align: right !important;
 }
 #givemark .btn-group {
@@ -1724,7 +1676,6 @@ a.delete:focus{
 }
 #viewmark .table > tfoot > tr > th {
   color: #40c3a7;
-  text-transform: uppercase;
 }
 #viewmark .titlee {
   margin-right: 8px;
@@ -1745,8 +1696,6 @@ a.btn3 {
   background: #ff6767;
   cursor: pointer;
   display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
   letter-spacing: 0.5em;
   font-weight: 700;
   outline: none;
@@ -1806,11 +1755,7 @@ a.btn3 {
 .btn-3e:hover:after {
   width: 40%;
 }
-.firstname, .fullname {
-  text-transform: capitalize;
-}
 #warningtype {
-  margin-top: 10px;
   color: red;
 }
 .cd-load, .cd-success {
@@ -1903,4 +1848,162 @@ button#more.btn.btn-default:hover {
 #recTB .btn-primary {
   float: right;
   margin-left: 5px;
+}
+#loginModal p {
+  font-size: 1.2em;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+#loginModal .modal-body {
+  padding: 50px;
+}
+#loginModal .form-control {
+  margin-top: 10px;
+  width: 70%;
+  text-align: center;
+}
+#loginModal .btn {
+  width: 70%;
+  margin-top: 10px;
+}
+#loginModal .btn:hover {
+  color: #fff;
+}
+.sidebar.container {
+    overflow:hidden;
+    display:inline-block;
+    width: 100%;
+}
+.side-bar {
+    background:#fff;
+    position: absolute;    
+    height:100%;
+    width:200px;
+    color:#000;
+    transition: margin-left 0.5s;
+    text-transform: uppercase;
+    -webkit-box-shadow: 5px 0 5px -2px #ccc;
+    box-shadow: 5px 0 5px -2px #ccc;
+}
+
+.side-bar ul {
+    list-style:none;
+    padding:0px;
+    
+}
+
+.side-bar ul li.menu-head {
+    font-weight: 700;
+    padding:20px;
+}
+
+
+.side-bar ul li.menu-head a {
+    color:#000;
+    text-decoration:none;
+    height:50px;
+}
+
+
+.side-bar ul .menu-head  a {
+    color:#000;
+    text-decoration:none;
+    height:50px;
+}
+
+.side-bar ul .menu li  a {
+    color:#000;
+    text-decoration:none;
+    display:inline-table;
+    width:100%;
+    padding-left:30px;
+    padding-right:28px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-left:5px solid #ddd;
+    margin-left: 8px;
+    webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+}
+
+.side-bar ul .menu li  a:hover {
+    border-left: 5px solid #40c3a7;    
+    padding-left: 25px;
+    color: #000;
+    margin-left: 8px
+    webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+
+.side-bar ul .menu li  a.active {
+    color: #40c3a7;
+    border-left:5px solid #40c3a7;
+    font-weight: bold;
+    margin-left: 8px
+}
+.page-content {
+    padding-left: 200px;
+    transition: padding-left 0.5s;
+    padding-top: 30px;
+}
+
+.active > .side-bar {
+    margin-left:-150px;   
+    transition: margin-left 0.5s;
+}
+
+.active > .page-content {
+    padding-left: 50px;
+    transition: padding-left 0.5s;
+    padding-top: 30px;
+}
+.btn-apply {
+  width: 70px;
+  height: 30px;
+  background-color: #40c3a7;
+  text-align: center;
+  color: #fff;
+  border-color: #ccc;
+}
+.btn-apply .glyphicon-ok{
+  display: inline;
+}
+.btn-apply .glyphicon-remove{
+  display: none;
+}
+.btn-apply:hover{
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-apply:hover .glyphicon-ok{
+  display: none;
+}
+.btn-apply:hover .glyphicon-remove{
+  color: #555;
+  display: inline;
+}
+.btn-unapply {
+  width: 70px;
+  height: 30px;
+  background-color: #fff;
+  text-align: center;
+  color: #555;
+  border-color: #ccc !important;
+}
+.btn-unapply .glyphicon-ok{
+  display: none;
+}
+.btn-unapply .glyphicon-remove{
+  display: inline;
+}
+.btn-unapply:hover{
+  background-color: #40c3a7;
+  border-color: #ccc;
+}
+.btn-unapply:hover .glyphicon-ok{
+  color: #fff;
+  display: inline;
+}
+.btn-unapply:hover .glyphicon-remove{
+  display: none;
 }

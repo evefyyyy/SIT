@@ -1,4 +1,4 @@
-<?php
+1<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,14 @@ Route::put('exam/managescore/template/{template}','ScoreSheetController@updateTe
 Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
+Route::get('setting/admin', 'SetAdminController@index');
+Route::get('setting/student',function(){
+  return view('admin.setStudent');
+});
+Route::get('project/edit',function(){
+  return view('admin.editStdProject');
+});
+
 
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
 

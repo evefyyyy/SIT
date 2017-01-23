@@ -33,7 +33,7 @@
 	  <div class="col-xs-1 col-md-1 col-lg-2"></div>
 	  <div class="col-xs-10 col-md-10 col-lg-8">
 		@foreach($mainRound1 as $main1)
-	    <p><strong>round {{$main1->round}}</strong> {{$main1->criteria_main_name}} ({{$main1->score}}%)</p>
+	    <p><b>round {{$main1->round}}</b> {{$main1->criteria_main_name}} ({{$main1->score}}%)</p>
 		@endforeach
 		<!-- <div class="row">
 		   <div class="col-xs-3 col-md-2 col-lg-3"><strong>date</strong></div>
@@ -121,6 +121,7 @@
 						<input type="hidden" name="level1" id="getLevel1">
 	      </tfoot>
 	 	</table>
+	 	<button class="btn btn-primary calgrade">calculate</button>
 	  </div>
 	  <div class="col-xs-1 col-md-1 col-lg-2"></div>
 	</div>
@@ -129,7 +130,7 @@
   <div class="col-xs-1 col-md-1 col-lg-2"></div>
   <div class="col-xs-10 col-md-10 col-lg-8">
 	@foreach($mainRound2 as $main2)
-    <p><strong>round {{$main2->round}}</strong> {{$main2->criteria_main_name}} ({{$main2->score}}%)</p>
+    <p><b>round {{$main2->round}}</b> {{$main2->criteria_main_name}} ({{$main2->score}}%)</p>
 	@endforeach
 	<!-- <div class="row">
 	   <div class="col-xs-3 col-md-2 col-lg-3"><strong>date</strong></div>
@@ -217,6 +218,7 @@
 					<input type="hidden" name="level2" id="getLevel2">
       </tfoot>
  	</table>
+ 	<button class="btn btn-primary calgrade">calculate</button>
   </div>
   <div class="col-xs-1 col-md-1 col-lg-2"></div>
 </div>
@@ -225,7 +227,7 @@
   <div class="col-xs-1 col-md-1 col-lg-2"></div>
   <div class="col-xs-10 col-md-10 col-lg-8">
 	@foreach($mainRound3 as $main3)
-    <p><strong>round {{$main3->round}}</strong> {{$main3->criteria_main_name}} ({{$main3->score}}%)</p>
+    <p><b>round {{$main3->round}}</b> {{$main3->criteria_main_name}} ({{$main3->score}}%)</p>
 	@endforeach
 	<!-- <div class="row">
 	   <div class="col-xs-3 col-md-2 col-lg-3"><strong>date</strong></div>
@@ -313,6 +315,7 @@
 					<input type="hidden" name="level3" id="getLevel3">
       </tfoot>
  	</table>
+ 	<button class="btn btn-primary calgrade">calculate</button>
   </div>
   <div class="col-xs-1 col-md-1 col-lg-2"></div>
 </div>
@@ -321,7 +324,7 @@
   <div class="col-xs-1 col-md-1 col-lg-2"></div>
   <div class="col-xs-10 col-md-10 col-lg-8">
 	@foreach($mainRound4 as $main4)
-    <p><strong>round {{$main4->round}}</strong> {{$main4->criteria_main_name}} ({{$main4->score}}%)</p>
+    <p><b>round {{$main4->round}}</b> {{$main4->criteria_main_name}} ({{$main4->score}}%)</p>
 	@endforeach
 	<!-- <div class="row">
 	   <div class="col-xs-3 col-md-2 col-lg-3"><strong>date</strong></div>
@@ -409,6 +412,7 @@
 					<input type="hidden" name="level4" id="getLevel4">
       </tfoot>
  	</table>
+ 	<button class="btn btn-primary calgrade">calculate</button>
   </div>
   <div class="col-xs-1 col-md-1 col-lg-2"></div>
 </div>

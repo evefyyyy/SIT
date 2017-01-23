@@ -34,18 +34,8 @@
 			</thead>
 			<tbody>
 				<?php $countrow = 0; ?>
-					@if($project == 0)
-					@else
+					@if(isset($project))
 					@foreach($project as $data)
-					
-					<input type="hidden" name="starttime" value="{{$data->starttime}}"> 
-					<input type="hidden" name="endtime" value="{{$data->endtime}}">
-					<input type="hidden" name="group_project_id" value="{{$data->id}}">
-					<input type="hidden" name="roomid" value="{{$data-> roomexamid}}">
-					<input type="hidden" name="countrow" value="{{$countrow++}}">
-					<?php 
-						$yumdata[$countrow] = [$data->starttime, $data->endtime, $data->id, $data->roomexamid, $countrow];
-					 ?>
 					<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 					<tr>
 						<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
@@ -54,12 +44,12 @@
 						<td>{{$data->group_project_id}}</td>
 						<td>{{$data->starttime}} - {{$data->endtime}}</td>
 						<td>
-							@foreach($data->student as $std)
+							@foreach($student as $std)
 							{{$std->student_id}}<br>
 							@endforeach
 						</td>
 						<td>
-							@foreach($data->student as $std)
+							@foreach($student as $std)
 							{{$std->student_name}}<br>
 							@endforeach
 						</td>
@@ -114,64 +104,7 @@
 								</tr>
 								</thead>
 								<tbody>
-									@if($project == 0)
-									@foreach($addProject as $pj)
-
-									<tr>
-										<td class="move-btn disfix"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
-											<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
-										</td>
-										<td>{{$pj->group_project_id}}
-										<input name="pjid" value="{{$pj->id}}" hidden>
-										</td>
-										<td>{{$data->starttime}} - {{$data->endtime}}</td>
-										<td>
-										@foreach($pj->student as $std)
-											{{$std->student_id}}<br>
-										@endforeach
-										</td>
-										<td class="fullname">
-										@foreach($pj->student as $std)
-												{{$std->student_name}}<br>
-										@endforeach
-										</td>
-										<td>{{$pj->group_project_th_name}}</td>
-										<td class="pjtype">{{$pj->type->type_name}}</td>
-										@foreach($pj->advisor as $adv)
-										<td><span class="firstname">{{$adv->advisor_name}}</span></td>
-										@endforeach
-										<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
-									</tr>
-									@endforeach
-									@else
-									@foreach($addProject as $pj)
-									<tr>
-										<td class="move-btn disfix"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
-											<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
-										</td>
-										<td>{{$pj->group_project_id}}
-										<input name="pjid" value="{{$pj->id}}" hidden>
-										</td>
-										<td>{{$data->starttime}} - {{$data->endtime}}</td>
-										<td>
-										@foreach($pj->student as $std)
-											{{$std->student_id}}<br>
-										@endforeach
-										</td>
-										<td>
-										@foreach($pj->student as $std)
-												{{$std->student_name}}<br>
-										@endforeach
-										</td>
-										<td>{{$pj->group_project_th_name}}</td>
-										<td class="pjtype">{{$pj->type->type_name}}</td>
-										@foreach($pj->advisor as $adv)
-										<td><span class="firstname">{{$adv->advisor_name}}</span></td>
-										@endforeach
-										<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
-									</tr>
-									@endforeach
-									@endif
+	
 								</tdoby>
 							</table>
 						</div>
