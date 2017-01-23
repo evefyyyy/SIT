@@ -197,140 +197,140 @@ class ScoreRecordController extends Controller
 
     $data['subRound1'] = DB::table('templates_sub')
                         ->join('criteria_subs','criteria_sub_id','=','criteria_subs.id')
-                        ->where('template_main_id','=',$data['mainRound1'][0]->template_main_id)
+                        ->join('sub_templates_score','template_sub_id','=','templates_sub.id')
+                        ->where('main_template_score_id','=',$data['mainRound1'][0]->id)
+                        ->select('templates_sub.id','score','criteria_sub_name')
                         ->get();
 
-    // for($i=0;$i<$data['quantity'];$i++){
-    //   $adv[$i] = $data['commitee'][$i]->advisor_id;
-    //   // for($j=0;$j<$data['subRound1'];$j++){
-    //   //   $scoreC[$j] = DB::table('advisor_scoresheet')
-    //   //                 ->where('advisor_id','=',$adv[$i])
-    //   //                 ->get();
-    //   // }
-    // }
-    // dd($adv);
+    for($i=0;$i<$data['quantity'];$i++){
+      $commitee[$i] = $data['commitee'][$i]->advisor_id;
+      $gradeRound1[$i] = DB::table('grade_advisor')
+                        ->where('project_pkid','=',$groupId)
+                        ->where('main_template_id','=',$data['mainRound1'][0]->template_main_id)
+                        ->where('advisor_id','=',$commitee[$i])
+                        ->where('submit','=',1)
+                        ->get();
+      for($j=0;$j<count($data['subRound1']);$j++){
+        $scoreRound1[$j][$i] = DB::table('advisor_scoresheet')
+                          ->where('advisor_id','=',$commitee[$i])
+                          ->where('sub_template_id','=',$data['subRound1'][$j]->id)
+                          ->where('project_pkid','=',$groupId)
+                          ->where('submit','=',1)
+                          ->get();
+      }
+    }
+    $data['scoreRound1'] = $scoreRound1;
+    $data['gradeRound1'] = $gradeRound1;
+
+    $data['mainRound2'] = DB::table('main_templates_score')
+                        ->join('templates_main','templates_main.id','=','template_main_id')
+                        ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                        ->where('type_id',$typeId)
+                        ->where('year_id',$yearId)
+                        ->where('round',2)
+                        ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
+                        ->get();
+
+    $data['subRound2'] = DB::table('templates_sub')
+                        ->join('criteria_subs','criteria_sub_id','=','criteria_subs.id')
+                        ->join('sub_templates_score','template_sub_id','=','templates_sub.id')
+                        ->where('main_template_score_id','=',$data['mainRound2'][0]->id)
+                        ->select('templates_sub.id','score','criteria_sub_name')
+                        ->get();
+
+    for($i=0;$i<$data['quantity'];$i++){
+      $commitee[$i] = $data['commitee'][$i]->advisor_id;
+      $gradeRound2[$i] = DB::table('grade_advisor')
+                        ->where('project_pkid','=',$groupId)
+                        ->where('main_template_id','=',$data['mainRound2'][0]->template_main_id)
+                        ->where('advisor_id','=',$commitee[$i])
+                        ->where('submit','=',1)
+                        ->get();
+      for($j=0;$j<count($data['subRound2']);$j++){
+        $scoreRound2[$j][$i] = DB::table('advisor_scoresheet')
+                          ->where('advisor_id','=',$commitee[$i])
+                          ->where('sub_template_id','=',$data['subRound2'][$j]->id)
+                          ->where('project_pkid','=',$groupId)
+                          ->where('submit','=',1)
+                          ->get();
+      }
+    }
+    $data['scoreRound2'] = $scoreRound2;
+    $data['gradeRound2'] = $gradeRound2;
+
+    $data['mainRound3'] = DB::table('main_templates_score')
+                        ->join('templates_main','templates_main.id','=','template_main_id')
+                        ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                        ->where('type_id',$typeId)
+                        ->where('year_id',$yearId)
+                        ->where('round',3)
+                        ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
+                        ->get();
+
+    $data['subRound3'] = DB::table('templates_sub')
+                        ->join('criteria_subs','criteria_sub_id','=','criteria_subs.id')
+                        ->join('sub_templates_score','template_sub_id','=','templates_sub.id')
+                        ->where('main_template_score_id','=',$data['mainRound3'][0]->id)
+                        ->select('templates_sub.id','score','criteria_sub_name')
+                        ->get();
+
+    for($i=0;$i<$data['quantity'];$i++){
+      $commitee[$i] = $data['commitee'][$i]->advisor_id;
+      $gradeRound3[$i] = DB::table('grade_advisor')
+                        ->where('project_pkid','=',$groupId)
+                        ->where('main_template_id','=',$data['mainRound3'][0]->template_main_id)
+                        ->where('advisor_id','=',$commitee[$i])
+                        ->where('submit','=',1)
+                        ->get();
+      for($j=0;$j<count($data['subRound3']);$j++){
+        $scoreRound3[$j][$i] = DB::table('advisor_scoresheet')
+                          ->where('advisor_id','=',$commitee[$i])
+                          ->where('sub_template_id','=',$data['subRound3'][$j]->id)
+                          ->where('project_pkid','=',$groupId)
+                          ->where('submit','=',1)
+                          ->get();
+      }
+    }
+    $data['scoreRound3'] = $scoreRound3;
+    $data['gradeRound3'] = $gradeRound3;
+
+    $data['mainRound4'] = DB::table('main_templates_score')
+                        ->join('templates_main','templates_main.id','=','template_main_id')
+                        ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                        ->where('type_id',$typeId)
+                        ->where('year_id',$yearId)
+                        ->where('round',4)
+                        ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
+                        ->get();
+
+    $data['subRound4'] = DB::table('templates_sub')
+                        ->join('criteria_subs','criteria_sub_id','=','criteria_subs.id')
+                        ->join('sub_templates_score','template_sub_id','=','templates_sub.id')
+                        ->where('main_template_score_id','=',$data['mainRound4'][0]->id)
+                        ->select('templates_sub.id','score','criteria_sub_name')
+                        ->get();
+
+    for($i=0;$i<$data['quantity'];$i++){
+      $commitee[$i] = $data['commitee'][$i]->advisor_id;
+      $gradeRound4[$i] = DB::table('grade_advisor')
+                        ->where('project_pkid','=',$groupId)
+                        ->where('main_template_id','=',$data['mainRound4'][0]->template_main_id)
+                        ->where('advisor_id','=',$commitee[$i])
+                        ->where('submit','=',1)
+                        ->get();
+      for($j=0;$j<count($data['subRound1']);$j++){
+        $scoreRound4[$j][$i] = DB::table('advisor_scoresheet')
+                          ->where('advisor_id','=',$commitee[$i])
+                          ->where('sub_template_id','=',$data['subRound4'][$j]->id)
+                          ->where('project_pkid','=',$groupId)
+                          ->where('submit','=',1)
+                          ->get();
+      }
+    }
+    $data['scoreRound4'] = $scoreRound4;
+    $data['gradeRound4'] = $gradeRound4;
 
 
-
-
-    // $data['mainRound2'] = DB::table('main_templates_score')
-    //                     ->join('templates_main','templates_main.id','=','template_main_id')
-    //                     ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-    //                     ->where('type_id',$typeId)
-    //                     ->where('year_id',$yearId)
-    //                     ->where('round',2)
-    //                     ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
-    //                     ->get();
-    // $data['mainRound3'] = DB::table('main_templates_score')
-    //                     ->join('templates_main','templates_main.id','=','template_main_id')
-    //                     ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-    //                     ->where('type_id',$typeId)
-    //                     ->where('year_id',$yearId)
-    //                     ->where('round',3)
-    //                     ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
-    //                     ->get();
-    // $data['mainRound4'] = DB::table('main_templates_score')
-    //                     ->join('templates_main','templates_main.id','=','template_main_id')
-    //                     ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-    //                     ->where('type_id',$typeId)
-    //                     ->where('year_id',$yearId)
-    //                     ->where('round',4)
-    //                     ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
-    //                     ->get();
-    //
-    // $mainScoreId1 = $data['mainRound1'][0]->id;
-    // $data['subRound1'] = DB::table('sub_templates_score')
-    //                       ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
-    //                       ->join('templates_sub','templates_sub.id','=','template_sub_id')
-    //                       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-    //                       ->where('main_template_score_id',$mainScoreId1)
-    //                       ->select('criteria_sub_name','sub_templates_score.score','templates_sub.id')
-    //                       ->get();
-    //   for($k=0; $k<count($data['subRound1']); $k++){
-    //     $subId = $data['subRound1'][$k]->id;
-    //     $getScore[$k] = DB::table('advisor_scoresheet')
-    //                     ->where('sub_template_id',$subId)
-    //                     ->where('project_pkid',$groupId)
-    //                     ->where('submit',1)
-    //                     ->select('advisor_id','score')
-    //                     ->get();
-    //     $data['subRound1'][$k]->scoreRound1 = $getScore[$k];
-    // }
-    //
-    // $mainScoreId2 = $data['mainRound2'][0]->id;
-    // $data['subRound2'] = DB::table('sub_templates_score')
-    //                       ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
-    //                       ->join('templates_sub','templates_sub.id','=','template_sub_id')
-    //                       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-    //                       ->where('main_template_score_id',$mainScoreId2)
-    //                       ->select('criteria_sub_name','sub_templates_score.score','templates_sub.id')
-    //                       ->get();
-    //   for($k=0; $k<count($data['subRound2']); $k++){
-    //     $subId = $data['subRound2'][$k]->id;
-    //     $getScore[$k] = DB::table('advisor_scoresheet')
-    //                     ->where('sub_template_id',$subId)
-    //                     ->where('project_pkid',$groupId)
-    //                     ->where('submit',2)
-    //                     ->select('advisor_id','score')
-    //                     ->get();
-    //     $data['subRound2'][$k]->scoreRound2 = $getScore[$k];
-    // }
-    //
-    // $mainScoreId3 = $data['mainRound3'][0]->id;
-    // $data['subRound3'] = DB::table('sub_templates_score')
-    //                       ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
-    //                       ->join('templates_sub','templates_sub.id','=','template_sub_id')
-    //                       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-    //                       ->where('main_template_score_id',$mainScoreId3)
-    //                       ->select('criteria_sub_name','sub_templates_score.score','templates_sub.id')
-    //                       ->get();
-    //   for($k=0; $k<count($data['subRound3']); $k++){
-    //     $subId = $data['subRound3'][$k]->id;
-    //     $getScore[$k] = DB::table('advisor_scoresheet')
-    //                     ->where('sub_template_id',$subId)
-    //                     ->where('project_pkid',$groupId)
-    //                     ->where('submit',3)
-    //                     ->select('advisor_id','score')
-    //                     ->get();
-    //     $data['subRound3'][$k]->scoreRound3 = $getScore[$k];
-    // }
-    //
-    // $mainScoreId4 = $data['mainRound4'][0]->id;
-    // $data['subRound4'] = DB::table('sub_templates_score')
-    //                       ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
-    //                       ->join('templates_sub','templates_sub.id','=','template_sub_id')
-    //                       ->join('criteria_subs','criteria_subs.id','=','criteria_sub_id')
-    //                       ->where('main_template_score_id',$mainScoreId4)
-    //                       ->select('criteria_sub_name','sub_templates_score.score','templates_sub.id')
-    //                       ->get();
-    //   for($k=0; $k<count($data['subRound4']); $k++){
-    //     $subId = $data['subRound4'][$k]->id;
-    //     $getScore[$k] = DB::table('advisor_scoresheet')
-    //                     ->where('sub_template_id',$subId)
-    //                     ->where('project_pkid',$groupId)
-    //                     ->where('submit',4)
-    //                     ->select('advisor_id','score')
-    //                     ->get();
-    //     $data['subRound4'][$k]->scoreRound4 = $getScore[$k];
-    // }
-    //
-    // $data['gradeRound1'] = DB::table('grade_advisor')
-    //                       ->where('main_template_id',$data['mainRound1'][0]->template_main_id)
-    //                       ->where('project_pkid',$groupId)
-    //                       ->get();
-    // $data['gradeRound2'] = DB::table('grade_advisor')
-    //                       ->where('main_template_id',$data['mainRound2'][0]->template_main_id)
-    //                       ->where('project_pkid',$groupId)
-    //                       ->get();
-    // $data['gradeRound3'] = DB::table('grade_advisor')
-    //                       ->where('main_template_id',$data['mainRound3'][0]->template_main_id)
-    //                       ->where('project_pkid',$groupId)
-    //                       ->get();
-    // $data['gradeRound4'] = DB::table('grade_advisor')
-    //                       ->where('main_template_id',$data['mainRound4'][0]->template_main_id)
-    //                       ->where('project_pkid',$groupId)
-    //                       ->get();
-    //
     // $advId = $adv[0]->id;
     // $mainAdvScore1 = DB::table('grade_advisor')
     //                 ->where('main_template_id',$data['mainRound1'][0]->template_main_id)

@@ -69,7 +69,7 @@
 		</tr>
       </tfoot>
  	</table>
- 	<textarea class="form-control" rows="3" placeholder="Note..."></textarea>
+ 	<textarea class="form-control" rows="3" placeholder="{{$comment or 'Note...'}}" name="comment"></textarea>
   </div>
   <div class="col-xs-1 col-md-3 col-lg-3"></div>
 </div>

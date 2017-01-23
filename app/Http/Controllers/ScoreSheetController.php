@@ -140,10 +140,10 @@ class ScoreSheetController extends Controller
       $countTemp = count($temp);
       $obj = new Template();
       $obj->temp_num = $countTemp+1;
-      // $obj->save();
+      $obj->save();
 
       $main = $request['mainCriteria'];
-      dd($main);
+      // dd($main);
       $countMain = count($main);
       $temp = DB::table('templates')->max('id');
       for($i=0;$i<$countMain;$i++){

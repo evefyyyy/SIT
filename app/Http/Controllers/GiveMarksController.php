@@ -33,6 +33,7 @@ use App\SubScore;
 use App\AdvisorScoreSheet;
 use App\GradeAdvisor;
 use Auth;
+use App\Comment;
 
 class GiveMarksController extends Controller
 {
@@ -49,8 +50,6 @@ class GiveMarksController extends Controller
                       ->where('submit','=',1)
                       ->value('round');
       }
-      // dd($data['round']);
-        //  dd($data['submitted'][0]);
 
       return view('advisor.selectRound',$data);
     }
@@ -116,6 +115,7 @@ class GiveMarksController extends Controller
                       ->join('templates_main','templates_main.id','=','template_main_id')
                       ->where('project_pkid',$projectId)
                       ->where('round',$round)
+                      ->where('advisor_id','=',$adv)
                       ->select('advisor_scoresheet.id')
                       ->get();
         if($submitScore != null){
@@ -129,6 +129,7 @@ class GiveMarksController extends Controller
                     ->join('templates_main','templates_main.id','=','main_template_id')
                     ->where('project_pkid',$projectId)
                     ->where('round',$round)
+                    ->where('advisor_id','=',$adv)
                     ->value('grade_advisor.id');
           $obj = GradeAdvisor::find($grade);
           $obj->submit = 1;
@@ -163,8 +164,9 @@ class GiveMarksController extends Controller
                       ->where('type_id',$typeId)
                       ->where('round',$round)
                       ->where('year_id',$yearId)
-                      ->select('main_templates_score.id','score','round','criteria_main_name')
+                      ->select('main_templates_score.id','score','round','criteria_main_name','template_main_id')
                       ->get();
+
       $mainId = $data['main'][0]->id;
       $data['sub'] = DB::table('sub_templates_score')
                   ->join('main_templates_score','main_templates_score.id','=','main_template_score_id')
@@ -173,7 +175,6 @@ class GiveMarksController extends Controller
                   ->where('main_template_score_id',$mainId)
                   ->select('criteria_sub_name','sub_templates_score.score','template_sub_id')
                   ->get();
-                  // dd($data['sub']);
       for($i=0; $i<count($data['sub']); $i++){
         $subTempId = $data['sub'][$i]->template_sub_id;
         $getScore = DB::table('advisor_scoresheet')
@@ -192,7 +193,12 @@ class GiveMarksController extends Controller
                         ->where('round',$round)
                         ->where('advisor_id',$adv)
                         ->value('grade');
-                            // dd($data);
+
+      // $data['comment'] = DB::table('advisor_comment')
+      //                     ->where('advisor_id',$adv)
+      //                     ->where('project_pkid',$projectId)
+      //                     ->where('template_main_id',$data['main'][0]->template_main_id)
+      //                     ->value('comment');
 
       return view('advisor.giveMarks',$data);
     }
@@ -202,7 +208,7 @@ class GiveMarksController extends Controller
       $adv = Auth::user()->user_advisor->advisor->id;
       $giveScore = $request['giveScore'];
       $grade = $request['grade'];
-      // dd($grade);
+      $comment = $request['comment'];
 
       $projectId = DB::table('group_projects')->where('group_project_id',$id)->value('id');
       $typeId = DB::table('group_projects')->where('group_project_id',$id)->value('type_id');
@@ -268,8 +274,27 @@ class GiveMarksController extends Controller
         $obj = GradeAdvisor::find($gradeExist);
         $obj->grade = $grade;
         $obj->save();
-
       }
+
+      // $commentData = DB::table('advisor_comment')
+      //                 ->where('advisor_id',$adv)
+      //                 ->where('project_pkid',$projectId)
+      //                 ->where('template_main_id',$mainTemp[0]->template_main_id)
+      //                 ->value('id');
+      //
+      // if($commentData == null){
+      //   $obj = new Comment();
+      //   $obj->comment = $comment;
+      //   $obj->project_pkid = $projectId;
+      //   $obj->advisor_id = $adv;
+      //   $obj->template_main_id = $mainTemp[0]->template_main_id;
+      //   $obj->save();
+      // }else{
+      //   $obj = Comment::find($commentData);
+      //   $obj->comment = $comment;
+      //   $obj->save();
+      // }
+
 
       return redirect('exam/round/'.$round);
     }
