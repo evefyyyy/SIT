@@ -47,7 +47,18 @@ Route::get('setting/student',function(){
 Route::get('project/edit',function(){
   return view('admin.editStdProject');
 });
-
+Route::get('setting/year',function(){
+  return view('admin.manageYear');
+});
+Route::get('setting/type',function(){
+  return view('admin.manageType');
+});
+Route::get('setting/category',function(){
+  return view('admin.manageCategory');
+});
+Route::get('setting/room',function(){
+  return view('admin.testroom');
+});
 
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
 
