@@ -85,7 +85,13 @@
                       <li><a href="/dday/scorerecord">score record</a></li>
                     </ul>
                   </li>
-                  <li class="{{ strrpos(Request::path(),'setting') === 0 ? 'active' : ''  }}"><a href="/setting/admin">setting</a></li>
+                  <li class="{{ strrpos(Request::path(),'setting') === 0 ? 'active' : ''  }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">setting</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/setting/admin">global setting</a></li>
+                      <li><a href="/setting/current">current year</a></li>
+                    </ul>
+                  </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  
