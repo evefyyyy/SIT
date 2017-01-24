@@ -119,6 +119,7 @@
 	$('button[data-toggle="portfilter"]').click(function(){
 		$('button').removeClass('selected');
   		$(this).addClass('selected');
+  		$('#examLink').attr('href',"/exam/manageroom/create"+this.id);
   	});
 </script>
 @stop

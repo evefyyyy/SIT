@@ -20,9 +20,6 @@
 							<a class="{{ strrpos(Request::path(),'setting/recommend') === 0 ? 'active' : ''  }}" href="/setting/recommend">recommend</a>
 						</li>
 						<li>
-							<a class="{{ strrpos(Request::path(),'setting/year') === 0 ? 'active' : ''  }}" href="/setting/year">year</a>
-						</li>
-						<li>
 							<a class="{{ strrpos(Request::path(),'setting/type') === 0 ? 'active' : ''  }}" href="/setting/type">type</a>
 						</li>
 						<li>

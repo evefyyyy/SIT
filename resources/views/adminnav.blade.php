@@ -94,7 +94,13 @@
                   </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  
+                  <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  
+                  <p class="navbar-text year">
+                    <select class="selectpicker" data-width="80px">
+                        <option>2016</option>
+                        <option>2017</option>
+                    </select>
+                  </p>
                 </ul> 
                 </div>  
           </nav>
