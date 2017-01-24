@@ -20,6 +20,7 @@
 			  <option value="{{$main->id}}">{{$main->criteria_main_name}}</option>
         @endforeach
 		  </select>
+    <input type="hidden" name="mn[]" id="mainC">
 		</div>
      <div class="col-xs-1 col-md-2 col-lg-2"></div>
  	</div>
@@ -63,5 +64,8 @@ $('#main-order').multiSelect({ keepOrder: true });
       $('#sub-order').multiSelect('deselect_all');
       return false;
     });
+
+
+
 </script>
 @stop

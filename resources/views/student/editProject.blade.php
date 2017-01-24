@@ -60,7 +60,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 				</div>
 			</div>
 			<!-- gallery pic -->
-			<input type="file" name="screenshot[]" id="uploader" multiple/>
+			<!-- <input type="file" name="screenshot[]" id="uploader" multiple/>
 			<input type='hidden' name="uploadIndex" id='uploaderIndex' />
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
@@ -87,7 +87,10 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		            </div>
 		        </div>
 		    </div>
-		    <input type="hidden" id="cpic" value="{{$count}}">
+		    <input type="hidden" id="cpic" value="{{$count}}"> -->
+				<div id="upload-pic">
+
+				</div>
 		</div>
 		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-hidden-xs col-sm-12 hidden-md hidden-lg"></div>
@@ -127,4 +130,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		</form>
 </div>
 <script src="{!! URL::asset('js/edit.js') !!}"></script>
+<script src="{!! URL::asset('js/bundle.js') !!}">
+
+</script>
 @stop
