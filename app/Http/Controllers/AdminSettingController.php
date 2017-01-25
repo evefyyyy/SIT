@@ -27,6 +27,14 @@ class AdminSettingController extends Controller
 		return view('admin.adminsetting', compact('dday_gencode'));
 	}
 
+	public function managetype(){
+		$alltype = Type::all();
+		return view('admin.manageType', compact('alltype'));
+	}
+	public function managecategory(){
+		$allcategory = Category::all();
+		 return view('admin.manageCategory', compact('allcategory'));
+	}
     public function enterGenCode(Request $request)
 	{
 		$gencode = $request->numbergencode;
@@ -71,6 +79,5 @@ class AdminSettingController extends Controller
 		$group_project = GroupProject::find($addprojectid->id);
       	$group_project->group_project_recommend = 0;
       	$group_project->save();
-
 	}
 }

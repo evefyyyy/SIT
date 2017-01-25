@@ -50,12 +50,7 @@ Route::get('project/edit',function(){
 Route::get('setting/year',function(){
   return view('admin.manageYear');
 });
-Route::get('setting/type',function(){
-  return view('admin.manageType');
-});
-Route::get('setting/category',function(){
-  return view('admin.manageCategory');
-});
+Route::get('setting/category', 'AdminSettingController@managecategory');
 Route::get('setting/room',function(){
   return view('admin.testroom');
 });
@@ -157,6 +152,7 @@ Route::get('dday', 'DdayController@index');
 Route::post('votedday', 'DdayController@voteDday');
 
 Route::get('admin/setting', 'AdminSettingController@index');
+Route::get('setting/type', 'AdminSettingController@managetype');
 Route::get('admin/setting/{numbergencode}/{department}', 'AdminSettingController@enterGenCode');
 
 Route::get('search',function(){
