@@ -2012,7 +2012,7 @@ button#more.btn.btn-default:hover {
 .btn-unapply:hover{
   background-color: #40c3a7;
   border-color: #ccc;
-}
+} 
 .btn-unapply:hover .glyphicon-ok{
   color: #fff;
   display: inline;
@@ -2023,13 +2023,11 @@ button#more.btn.btn-default:hover {
 #set .input-group, #scoresheet .input-group {
   margin-bottom: 10px;
 }
-/*#set .input-group-btn > .btn.btn-add{
-  padding: 10px 12px;
-}
-#set .input-group-btn > .btn.btn-remove{
-  padding: 10px 12px;
-}*/
 #set small {
   color: grey;
   text-transform: uppercase;
+}
+.navbar-text.year {
+  margin-top: 0.6em;
+  margin-bottom: 0;
 }

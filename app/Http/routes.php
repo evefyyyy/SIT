@@ -25,6 +25,7 @@ Route::get('showproject/{groupId}','showProjectController@show');
 //admin
 Route::get('exam/manageroom','examRoomController@index');
 Route::get('exam/manageroom/create','examRoomController@create');
+Route::get('exam/manageroom/addDatas/{id}','examRoomController@addDatas');
 Route::post('exam/manageroom/create/editroom','examRoomController@genGroup');
 Route::get('exam/manageroom/create/preview','examRoomController@preview');
 Route::post('exam/manageroom/create/editroom/confirmroom', 'examRoomController@submitRoom');
