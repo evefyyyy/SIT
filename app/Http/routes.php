@@ -190,8 +190,8 @@ Route::post('edit/pic/delete', function(){
 Route::post('student/myproject/create/stdId2',function(){
 	$stdId = Request::Input('stdId2');
   $data = DB::table('students')
-  ->where('student_id',$stdId)
-  ->select('student_name')->first();
+          ->where('student_id',$stdId)
+          ->select('student_name')->first();
   if(isset($data)){
     $projectStd = DB::table('project_students')->select('student_pkid')->get();
     if($projectStd != null){
@@ -199,9 +199,9 @@ Route::post('student/myproject/create/stdId2',function(){
         $id[] = $ps->student_pkid;
       }
       $data = DB::table('students')
-      ->where('student_id',$stdId)
-      ->whereNotIn('id',$id)
-      ->select('student_name')->first();
+              ->where('student_id',$stdId)
+              ->whereNotIn('id',$id)
+              ->select('student_name')->first();
       if(isset($data)){
         return Response::json($data);
       }else{
@@ -218,8 +218,8 @@ Route::post('student/myproject/create/stdId2',function(){
 Route::post('student/myproject/create/stdId3',function(){
   $stdId = Request::Input('stdId3');
   $data = DB::table('students')
-  ->where('student_id',$stdId)
-  ->select('student_name')->first();
+          ->where('student_id',$stdId)
+          ->select('student_name')->first();
   if(isset($data)){
     $projectStd = DB::table('project_students')->select('student_pkid')->get();
     if($projectStd != null){
@@ -227,9 +227,9 @@ Route::post('student/myproject/create/stdId3',function(){
         $id[] = $ps->student_pkid;
       }
       $data = DB::table('students')
-      ->where('student_id',$stdId)
-      ->whereNotIn('students.id',$id)
-      ->select('student_name')->first();
+              ->where('student_id',$stdId)
+              ->whereNotIn('students.id',$id)
+              ->select('student_name')->first();
       if(isset($data)){
         return Response::json($data);
       }else{
@@ -299,18 +299,26 @@ Route::post('student/myproject/create/{id}/stdId3',function(){
 }
 });
 
-Route::get('exam/managescore/year/mainscore/test/{type}',function($type){
-  $data   = DB::table('main_templates_score')
-  ->join('templates_main','templates_main.id','=','template_main_id')
-  ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-  ->where('type_id',$type)
-  ->select('criteria_main_name','score','template_id')
-  ->get();
-  if($data!=null){
-    $result['tempId'] =  $data[0]->template_id;
-    $result['data'] = $data;
-    return Response::json($result);
-  }else{
-    return 0;
-  }
-});
+// Route::get('exam/managescore/year/mainscore/test/{type}',function($type){
+//   $data   = DB::table('main_templates_score')
+//             ->join('templates_main','templates_main.id','=','template_main_id')
+//             ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+//             ->where('type_id',$type)
+//             ->select('criteria_main_name','score','template_id')
+//             ->get();
+//   if($data!=null){
+//     $result['tempId'] =  $data[0]->template_id;
+//     $result['data'] = $data;
+//     return Response::json($result);
+//   }else{
+//     return 0;
+//   }
+// });
+
+// Route::get('exam/scorerecord/viewscore/{projectId}/cal1',function(){
+//
+//     return 'getRequest complte';
+//
+// });
+
+Route::get('exam/scorerecord/viewscore/{projectId}/cal1','ScoreRecordController@storeScoreLevel');
