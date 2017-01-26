@@ -20,7 +20,6 @@
 		<table id="tableroom" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<td style="width:2%" class="move-btn"></td>
 					<th style="width:8%">project id</th>
 					<th style="width:8%">exam time</th>
 					<th style="width:10%">student id</th>
@@ -33,42 +32,76 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php $countrow = 0; ?>
+<?php $countrow = 0; ?>
 					@if(isset($project))
-					@foreach($project as $data)
+					@foreach($project as $key=>$data)
+					@for($i=0;$i<sizeOf($arrayproject);$i++)
+					@if(in_array($data->id, $arrayproject))
 					<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 					<tr>
-						<td class="move-btn"><button class="btn btn-info btn-xs move-up"><i class="glyphicon glyphicon-triangle-top"></i></button>
-							<button class="btn btn-info btn-xs move-down"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
-						</td>
 						<td>{{$data->group_project_id}}</td>
-						<td>{{$data->starttime}} - {{$data->endtime}}</td>
+						<td>{{session()->get('starttime')."-".session()->get('starttime')+session()->get('minute') }}</td>
 						<td>
+							@foreach($projectstudent as $projs)
+							@if($projs->project_pkid == $data->id)
 							@foreach($student as $std)
+							@if($projs->student_pkid==$std->id)
 							{{$std->student_id}}<br>
+							@endif
 							@endforeach
+							@endif
+						@endforeach
 						</td>
 						<td>
+						@foreach($projectstudent as $projs)
+							@if($projs->project_pkid == $data->id)
 							@foreach($student as $std)
+							@if($projs->student_pkid==$std->id)
 							{{$std->student_name}}<br>
+							@endif
 							@endforeach
+							@endif
+						@endforeach
 						</td>
 						<td>{{$data->group_project_th_name}}</td>
-						<td class="pjtype">{{$data->type->type_name}}</td>
-						@foreach($data->advisor as $adv)
-						<td><span class="firstname">{{$adv->advisor_name}}</span></td>
-						@endforeach
+						<td>
+							@foreach($types as $type)
+								@if($type->id == $data->type_id)
+								{{$type->type_name}}
+								@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($projectadv as $pjadv)
+								@if($pjadv->project_pkid==$data->id)
+									@foreach($advisors as $advisor)
+										@if($advisor->id==$pjadv->advisor_id && $pjadv->advisor_position_id==1)
+										{{$advisor->advisor_name}}
+										@endif
+									@endforeach
+								@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($projectadv as $pjadv)
+								@if($pjadv->project_pkid==$data->id)
+									@foreach($advisors as $advisor)
+										@if($advisor->id==$pjadv->advisor_id && $pjadv->advisor_position_id==2)
+										{{$advisor->advisor_name}}
+										@endif
+									@endforeach
+								@endif
+							@endforeach
+						</td>
+						
+						
 						<td class="del-btn"><button class="btn btn-danger btn-circle btn-sm" data-toggle="confirmation" data-singleton="true"><i class="glyphicon glyphicon-remove"></i></button></td>
 					</tr>
-					
-				@endforeach
-				@endif
-				
-				<input type="hidden" name="countrowmax" value="{{$countrow-1}}">
-				@for ($i =1; $i< $countrow-1; $i++)
-					<input type="hidden" name="yumdata[$i]" value="{{$yumdata[$i]}}">
-				@endfor
-
+					@break
+					@endif
+					@endfor
+					@endforeach
+					@endif
 		</tbody>
 	</table>
 </div>
@@ -93,7 +126,6 @@
 								<tr>
 									<td style="width:2%" class="move-btn disfix"></td>
 									<th>project id</th>
-									<th>exam time</th>
 									<th>student id</th>
 									<th>student name</th>
 									<th>project name</th>
@@ -104,7 +136,143 @@
 								</tr>
 								</thead>
 								<tbody>
-	
+					<?php $countrow = 0; ?>
+					@if(isset($project))
+					@if(sizeOf($arrayproject)!=0)
+					@foreach($project as $data)
+					@if(!in_array($data->id, $arrayproject))
+					<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+					<tr>
+						<td>{{$data->group_project_id}}</td>
+						<td>
+							@foreach($projectstudent as $projs)
+							@if($projs->project_pkid == $data->id)
+							@foreach($student as $std)
+							@if($projs->student_pkid==$std->id)
+							{{$std->student_id}}<br>
+							@endif
+							@endforeach
+							@endif
+						@endforeach
+						</td>
+						<td>
+						@foreach($projectstudent as $projs)
+							@if($projs->project_pkid == $data->id)
+							@foreach($student as $std)
+							@if($projs->student_pkid==$std->id)
+							{{$std->student_name}}<br>
+							@endif
+							@endforeach
+							@endif
+						@endforeach
+						</td>
+						<td>{{$data->group_project_th_name}}</td>
+						<td>
+							@foreach($types as $type)
+								@if($type->id == $data->type_id)
+								{{$type->type_name}}
+								@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($projectadv as $pjadv)
+								@if($pjadv->project_pkid==$data->id)
+									@foreach($advisors as $advisor)
+										@if($advisor->id==$pjadv->advisor_id && $pjadv->advisor_position_id==1)
+										{{$advisor->advisor_name}}
+										@endif
+									@endforeach
+								@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($projectadv as $pjadv)
+								@if($pjadv->project_pkid==$data->id)
+									@foreach($advisors as $advisor)
+										@if($advisor->id==$pjadv->advisor_id && $pjadv->advisor_position_id==2)
+										{{$advisor->advisor_name}}
+										@endif
+									@endforeach
+								@endif
+							@endforeach
+						</td>
+						
+						
+						<td class="del-btn"><a href="/exam/manageroom/addDatas/{{$data->id}}" class="btn btn-danger btn-circle btn-sm"><i class="glyphicon glyphicon-remove"></i></a></td>
+					</tr>
+
+					@endif
+					@endforeach
+					@else
+					@foreach($project as $data)
+											<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+					<tr>
+						<td>{{$data->group_project_id}}</td>
+						<td>
+							@foreach($projectstudent as $projs)
+							@if($projs->project_pkid == $data->id)
+							@foreach($student as $std)
+							@if($projs->student_pkid==$std->id)
+							{{$std->student_id}}<br>
+							@endif
+							@endforeach
+							@endif
+						@endforeach
+						</td>
+						<td>
+						@foreach($projectstudent as $projs)
+							@if($projs->project_pkid == $data->id)
+							@foreach($student as $std)
+							@if($projs->student_pkid==$std->id)
+							{{$std->student_name}}<br>
+							@endif
+							@endforeach
+							@endif
+						@endforeach
+						</td>
+						<td>{{$data->group_project_th_name}}</td>
+						<td>
+							@foreach($types as $type)
+								@if($type->id == $data->type_id)
+								{{$type->type_name}}
+								@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($projectadv as $pjadv)
+								@if($pjadv->project_pkid==$data->id)
+									@foreach($advisors as $advisor)
+										@if($advisor->id==$pjadv->advisor_id && $pjadv->advisor_position_id==1)
+										{{$advisor->advisor_name}}
+										@endif
+									@endforeach
+								@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($projectadv as $pjadv)
+								@if($pjadv->project_pkid==$data->id)
+									@foreach($advisors as $advisor)
+										@if($advisor->id==$pjadv->advisor_id && $pjadv->advisor_position_id==2)
+										{{$advisor->advisor_name}}
+										@endif
+									@endforeach
+								@endif
+							@endforeach
+						</td>
+						
+						
+						<td class="del-btn"><a href="/exam/manageroom/addDatas/{{$data->id}}" class="btn btn-danger btn-circle btn-sm"><i class="glyphicon glyphicon-remove"></i></a></td>
+					</tr>
+					
+				@endforeach
+				@endif
+				@endif
+				<input type="hidden" name="countrowmax" value="{{$countrow-1}}">
+				@for ($i =1; $i< $countrow-1; $i++)
+					<input type="hidden" name="yumdata[$i]" value="{{$yumdata[$i]}}">
+				@endfor
+
 								</tdoby>
 							</table>
 						</div>

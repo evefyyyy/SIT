@@ -97,7 +97,6 @@
 	  </div>
 	  <div class="col-xs-1 col-md-1 col-lg-2"></div>
 	</div>
-
 	<div class="row" id="viewmark">
 		<div class="col-xs-1 col-md-1 col-lg-2"></div>
 		<div class="col-xs-10 col-md-10 col-lg-8">
@@ -231,6 +230,7 @@
 					<th class="good" id="level3">{{$level3 or ''}}</th>
 				</tr>
 					<input type="hidden" name="level3" id="getLevel3">
+
 			</tfoot>
 	</table>
 	<button class="btn btn-primary calgrade">calculate</button>

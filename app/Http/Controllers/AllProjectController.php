@@ -42,7 +42,7 @@ class AllProjectController extends Controller
 		$unique = $projects->unique('project_pkid');
 		$objs['project'] = $projects;
 
-		$groupProject = GroupProject::where('group_project_id','like','IT%')->get();
+		$groupProject = GroupProject::all();
     $objs['group_project'] = $groupProject;
 
       	return view('admin.allProject',$objs);

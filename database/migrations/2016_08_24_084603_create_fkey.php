@@ -13,6 +13,14 @@ class CreateFkey extends Migration
     public function up()
     {
         //
+
+        Schema::table('advisor_comment', function($table){
+            $table->integer('project_pkid')->unsigned();
+            $table->foreign('project_pkid')->references('id')->on('group_projects');
+            $table->integer('template_main_id')->unsigned();
+            $table->foreign('template_main_id')->references('id')->on('templates_main');
+        });
+
         Schema::table('students', function ($table) {
             $table->integer('user_type_id')->unsigned();
             $table->foreign('user_type_id')->references('id')->on('user_types');
@@ -173,6 +181,7 @@ class CreateFkey extends Migration
             $table->integer('criteria_sub_id')->unsigned();
             $table->foreign('criteria_sub_id')->references('id')->on('criteria_subs');
         });
+
 
 
 

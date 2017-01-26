@@ -17,15 +17,16 @@ use App\GroupProject;
 use App\Advisor;
 use App\ProjectStudent;
 use App\Student;
+      $roomexam = RoomExam::get();
 use App\UserStudent;
 use App\ScoreTest;
 use App\ProjectAdvisor;
+use App\Type;
 
 class examRoomController extends Controller
 {
     public function index()
     {
-      $roomexam = RoomExam::get();
       $room = Room::all();
       $room_advisor = RoomAdvisor::all();
       $test = ScoreTest::all();
@@ -39,19 +40,59 @@ class examRoomController extends Controller
 
       return view('admin.addRoom',$obj);
     }
+    public function addDatas(Request $request){
+      $pjid = $request->id;
+      if ($request->session()->has('timeproject')) {
+        $arrayproject = $request->session()->get('timeproject');
+        array_push($arrayproject, $pjid);
+        $request->session()->put('timeproject', array_values(array_unique($arrayproject)));
+      }else{
+        $arrayproject = array();
+        $request->session()->put('timeproject', $arrayproject);
+      }
+      $arrayproject = $request->session()->get('timeproject');
+      $selectRoom = $request->session()->get('selectRoom');
+      $selectAdv=$request->session()->get('selectAdv');
+      $starttime=$request->session()->get('starttime');
+      $examdate=$request->session()->get('examdate');
+      $minute=$request->session()->get('minute');
+      $types = Type::all();
+      $project = ProjectAdvisor::join('group_projects','group_projects.id','=','project_advisors.project_pkid')->where('advisor_position_id','=',1)->whereRaw('advisor_id in ('.$selectAdv.')')->get();    
+        $room_names = Room::where('id', $selectRoom)->first();
+      $student = Student::all();
+      $advisors = Advisor::all();
+      $projectstudent = ProjectStudent::all();
+      $projectadv = ProjectAdvisor::all();
+      return view('admin.editRoom',compact('arrayproject','room_names','project','student','projectstudent','types','projectadv','advisors'));
+
+    }
     public function genGroup(Request $request){
+      $request->session()->put('roundid',$request->roundid);
+         $arrayproject = array();
+        $request->session()->put('timeproject', $arrayproject);
+      $arrayproject = $request->session()->get('timeproject');
 
       $selectRoom = $request->selectroom; //ห้องที่เลือก
+      $request->session()->put('selectRoom', $selectRoom);
       $selectAdv=$request->selectAdv;//อาจารย์ที่ปรึกษ่า
+      $request->session()->put('selectAdv', $selectAdv);
       $starttime=$request->startTime; 
+      $request->session()->put('starttime', $starttime);
       $examdate=$request->examdate;
+       $request->session()->put('examdate', $examdate);
       $minute=$request->minute; 
+       $request->session()->put('minute', $minute);
+      $types = Type::all();
       $project = ProjectAdvisor::join('group_projects','group_projects.id','=','project_advisors.project_pkid')->where('advisor_position_id','=',1)->whereRaw('advisor_id in ('.$selectAdv.')')->get();    
-      $room_names = Room::where('id', $selectRoom)->first();
+        $room_names = Room::where('id', $selectRoom)->first();
       $student = Student::all();
-      return view('admin.editRoom',compact('room_names','project','student'));
+      $advisors = Advisor::all();
+      $projectstudent = ProjectStudent::all();
+      $projectadv = ProjectAdvisor::all();
+      return view('admin.editRoom',compact('arrayproject','room_names','project','student','projectstudent','types','projectadv','advisors'));
+
     }
-    public function genGroupOld(Request $request)
+    public function backup(Request $request)
     {
       $selectRoom = $request['selectroom'];
       $selectAdv = $request['selectAdv'];
@@ -213,5 +254,6 @@ class examRoomController extends Controller
       $room = Room::where('id', $roomid)->first();
       return view('admin.previewRoom', compact('room'));
     }
+    
 
 }
