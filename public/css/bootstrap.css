@@ -7217,9 +7217,9 @@ select.selectpicker {
 .ms-container .ms-selection li.ms-elem-selection{
   border-bottom: 1px #eee solid;
   padding: 7px 10px;
-  color: #40c3a7;
+  color: #fff;
   font-size: 14px;
-  background-color: #fff;
+  background-color: #999;
 }
 
 .ms-container .ms-selectable li.ms-hover,
