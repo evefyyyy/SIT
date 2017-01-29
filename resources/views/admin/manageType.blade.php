@@ -8,14 +8,16 @@
 					<div class="control-group" id="fields">
 						<div class="controls">
 								<form role="form" autocomplete="off" method="post">
+								@foreach($alltype as $type)
 								<div class="entry input-group">
-									<input class="form-control" type="text" placeholder="Type something"/>
+									<input class="form-control" type="text" placeholder="Type something" value="{{$type->type_name}}" />
 									<span class="input-group-btn">
 										<button class="btn btn-success btn-add" type="button">
 											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</span>
 								</div>
+								@endforeach
 						</div>
 					</div>
 					<small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another type</small>

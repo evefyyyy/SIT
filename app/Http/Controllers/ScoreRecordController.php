@@ -581,9 +581,109 @@ class ScoreRecordController extends Controller
     return view('admin.viewScore',$data);
   }
 
-  public function storeScoreLevel()
+  public function storeScoreLevel($id)
   {
-    return redirect(url('exam/scorerecord'));
+    $id = $id;
+    $project = GroupProject::where('group_project_id',$id)->get();
+    $groupId = $project[0]->id;
+    $adv = DB::table('project_advisors')
+            ->join('advisors','advisors.id','=','advisor_id')
+            ->where('project_pkid',$groupId)
+            ->where('advisor_position_id','=',1)
+            ->select('advisor_name','advisors.id')->get();
+    $typeId = $project[0]->type_id;
+    $yearId = $project[0]->year_id;
+
+    $commitee = DB::table('rooms_exam')
+                        ->join('rooms_advisor','room_exam_id','=','rooms_exam.id')
+                        ->join('advisors','advisors.id','=','advisor_id')
+                        ->where('project_pkid',$groupId)
+                        ->select('advisor_id','advisor_name')
+                        ->get();
+    $quantity = count($commitee);
+
+    $mainRound1 = DB::table('main_templates_score')
+                  ->join('templates_main','templates_main.id','=','template_main_id')
+                  ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
+                  ->where('type_id',$typeId)
+                  ->where('year_id',$yearId)
+                  ->where('round',1)
+                  ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
+                  ->get();
+    // for($i=0;$i<$quantity;$i++){
+    //   $commitee[$i] = $commitee[$i]->advisor_id;
+    //   $gradeRound1[$i] = DB::table('grade_advisor')
+    //                     ->where('project_pkid','=',$groupId)
+    //                     ->where('main_template_id','=',$mainRound1[0]->template_main_id)
+    //                     ->where('advisor_id','=',$commitee[$i])
+    //                     ->where('submit','=',1)
+    //                     ->get();
+    // }
+
+    $advId = $adv[0]->id;
+    $mainAdvScore1 = DB::table('grade_advisor')
+                    ->where('main_template_id',$mainRound1[0]->template_main_id)
+                    ->where('project_pkid',$groupId)
+                    ->where('advisor_id',$advId)
+                    ->value('grade');
+    if($mainAdvScore1 == 'A'){
+      $mainGrade1 = (4*40)/100;
+    }elseif($mainAdvScore1 == 'B+'){
+      $mainGrade1 = (3.5*40)/100;
+    }elseif($mainAdvScore1 == 'B'){
+      $mainGrade1 = (3*40)/100;
+    }elseif($mainAdvScore1 == 'C+'){
+      $mainGrade1 = (2.5*40)/100;
+    }elseif($mainAdvScore1 == 'C'){
+      $mainGrade1 = (2*40)/100;
+    }elseif($mainAdvScore1 == 'D+'){
+      $mainGrade1 = (1.5*40)/100;
+    }elseif($mainAdvScore1 == 'D'){
+      $mainGrade1 = (1*40)/100;
+    }elseif($mainAdvScore1 == null){
+      $mainGrade1 = 0;
+    }
+    $comScore1 = DB::table('grade_advisor')
+                    ->where('main_template_id',$mainRound1[0]->template_main_id)
+                    ->where('project_pkid',$groupId)
+                    ->where('advisor_id','!=',$advId)
+                    ->get();
+    $sum = 0;
+    foreach($comScore1 as $com1){
+      $commitee = $com1->grade;
+      if($commitee == 'A'){
+        $calGrade1 = 4;
+      }elseif($commitee == 'B+'){
+        $calGrade1 = 3.5;
+      }elseif($commitee == 'B'){
+        $calGrade1 = 3;
+      }elseif($commitee == 'C+'){
+        $calGrade1 = 2.5;
+      }elseif($commitee == 'C'){
+        $calGrade1 = 2;
+      }elseif($commitee == 'D+'){
+        $calGrade1 = 1.5;
+      }elseif($commitee == 'D'){
+        $calGrade1 = 1;
+      }
+      $sum += $calGrade1;
+    }
+
+    if($sum != 0){
+      $calSum1 = ($sum/count($comScore1))*60/100;
+      $total1 = $mainGrade1+$calSum1;
+      if($total1>=3.5){
+        $data = 'Very Good';
+      }elseif($total1>=3){
+        $data = 'Good';
+      }elseif($total1>=2.5){
+        $data = 'Fair';
+      }elseif($total1<2.5){
+        $data = 'Poor';
+      }
+    }
+
+    return $data;
   }
 
   public function ScoreLevel(Request $request){
