@@ -194,11 +194,11 @@ class GiveMarksController extends Controller
                         ->where('advisor_id',$adv)
                         ->value('grade');
 
-      // $data['comment'] = DB::table('advisor_comment')
-      //                     ->where('advisor_id',$adv)
-      //                     ->where('project_pkid',$projectId)
-      //                     ->where('template_main_id',$data['main'][0]->template_main_id)
-      //                     ->value('comment');
+      $data['comment'] = DB::table('advisor_comment')
+                          ->where('advisor_id',$adv)
+                          ->where('project_pkid',$projectId)
+                          ->where('template_main_id',$data['main'][0]->template_main_id)
+                          ->value('comment');
 
       return view('advisor.giveMarks',$data);
     }
@@ -276,24 +276,24 @@ class GiveMarksController extends Controller
         $obj->save();
       }
 
-      // $commentData = DB::table('advisor_comment')
-      //                 ->where('advisor_id',$adv)
-      //                 ->where('project_pkid',$projectId)
-      //                 ->where('template_main_id',$mainTemp[0]->template_main_id)
-      //                 ->value('id');
-      //
-      // if($commentData == null){
-      //   $obj = new Comment();
-      //   $obj->comment = $comment;
-      //   $obj->project_pkid = $projectId;
-      //   $obj->advisor_id = $adv;
-      //   $obj->template_main_id = $mainTemp[0]->template_main_id;
-      //   $obj->save();
-      // }else{
-      //   $obj = Comment::find($commentData);
-      //   $obj->comment = $comment;
-      //   $obj->save();
-      // }
+      $commentData = DB::table('advisor_comment')
+                      ->where('advisor_id',$adv)
+                      ->where('project_pkid',$projectId)
+                      ->where('template_main_id',$mainTemp[0]->template_main_id)
+                      ->value('id');
+
+      if($commentData == null){
+        $obj = new Comment();
+        $obj->comment = $comment;
+        $obj->project_pkid = $projectId;
+        $obj->advisor_id = $adv;
+        $obj->template_main_id = $mainTemp[0]->template_main_id;
+        $obj->save();
+      }else{
+        $obj = Comment::find($commentData);
+        $obj->comment = $comment;
+        $obj->save();
+      }
 
 
       return redirect('exam/round/'.$round);

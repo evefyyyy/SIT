@@ -91,10 +91,9 @@
 							@endforeach
 						<th class="good" id="level1">{{$level1 or ''}}</th>
 					</tr>
-						<input type="hidden" name="level1" id="getLevel1">
 	      </tfoot>
 	 	</table>
-	 	<button class="btn btn-primary calgrade">calculate</button>
+	 	<button class="btn btn-primary calgrade" id="cal1">calculate</button>
 	  </div>
 	  <div class="col-xs-1 col-md-1 col-lg-2"></div>
 	</div>
@@ -352,15 +351,14 @@
 		    });
 </script>
 @endforeach
+
 <script type="text/javascript">
-	var level1 = document.getElementById("level1").innerHTML;
-	document.getElementById("getLevel1").value = level1;
-	var level2 = document.getElementById("level2").innerHTML;
-	document.getElementById("getLevel2").value = level2;
-	var level3 = document.getElementById("level3").innerHTML;
-	document.getElementById("getLevel3").value = level3;
-	var level4 = document.getElementById("level4").innerHTML;
-	document.getElementById("getLevel4").value = level4;
-	console.log(level1);
+	$(document).ready(function(){
+		$('#cal1').click(function(){
+			$.get('/exam/scorerecord/viewscore/{{$id}}/cal1',function(data){
+				$('#level1').html(data);
+			});
+		});
+	});
 </script>
 @stop

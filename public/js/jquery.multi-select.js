@@ -73,10 +73,33 @@
         var action = that.options.dblClick ? 'dblclick' : 'click';
 
         that.$selectableUl.on(action, '.ms-elem-selectable', function(){
+          // select from left side
+          var parentId = this.parentNode.parentNode.parentNode.parentNode.id;
+          var _oldVal = parentId === '_main' ? $('#_selected_main').val() : $('#_selected_sub').val()
           that.select($(this).data('ms-value'));
+          var _new = [];
+          var _selectedVal = $(this).data('ms-value');
+          var tmp = _oldVal.split(',');
+          tmp[0] === "" ? _new.push(_selectedVal) : _new = tmp.concat(_selectedVal)
+          if( parentId === '_main' ){
+            $('#_selected_main').val(_new)
+          }else if ( parentId = '_sub' ) {
+            $('#_selected_sub').val(_new)
+          }
         });
         that.$selectionUl.on(action, '.ms-elem-selection', function(){
+          var parentId = this.parentNode.parentNode.parentNode.parentNode.id;
+          var _oldVal = parentId === parentId ? $('#_selected_main').val() : $('#_selected_sub').val()
           that.deselect($(this).data('ms-value'));
+          var _new = _oldVal.split(',')
+          var _selectedVal = $(this).data('ms-value');
+          var index = _new.indexOf(_selectedVal);
+          _new.splice(index,1);
+          if( parentId === '_main' ){
+            $('#_selected_main').val(_new)
+          }else if ( parentId = '_sub' ) {
+            $('#_selected_sub').val(_new)
+          }
         });
 
         that.activeMouse(that.$selectionUl);
@@ -176,7 +199,7 @@
 
       if (options.value !== undefined && options.value !== null){
         options = [options];
-      } 
+      }
       $.each(options, function(index, option){
         if (option.value !== undefined && option.value !== null &&
             that.$element.find("option[value='"+option.value+"']").length === 0){
@@ -289,7 +312,7 @@
       }
       if ($nextElem.length > 0){
         $nextElem.addClass('ms-hover');
-        var scrollTo = $list.scrollTop() + $nextElem.position().top - 
+        var scrollTo = $list.scrollTop() + $nextElem.position().top -
                        containerHeight / 2 + elemHeight / 2;
 
         $list.scrollTop(scrollTo);
