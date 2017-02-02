@@ -74,7 +74,7 @@
 	 @if($project === 0)
 	 @else
 	 @foreach($project as $pj)
-	 <?php  
+	 <?php
 	$get_score_round1 = App\ScoreTest::where([
 		['project_pkid', $pj->id],['score_test_round', 1]
 		])->first();
@@ -190,17 +190,24 @@
 							@endif
 							</tr>
 							<tr>
-								<td>exam round 2</td><td>{{$result_grade_round2}} <span class="$score_level2">{{$result_score_level_round2}}</span></td>
-							</tr>
+							@if(isset($result_grade_round2))
+								<td width="50%">exam round 2</td><td width="50%">{{$result_grade_round2}} <span class="$score_level2">{{$result_score_level_round2}}</span></td>
+							@else
+							<td width="50%">exam round 2</td><td width="50%"> <span class="$score_level2"></span></td>
+							@endif
 							<tr>
-							@if(isset($result_grade_round1) && isset($result_grade_round3))
-								<td>exam round 3</td><td>{{$result_grade_round3}} <span class="$score_level3">{{$result_score_level_round3}}</span></td>
-								@else
-							<td width="50%">exam round 1</td><td width="50%"> <span class="$score_level3"></span></td>
+							@if(isset($result_grade_round3))
+								<td width="50%">exam round 3</td><td width="50%">{{$result_grade_round3}} <span class="$score_level3">{{$result_score_level_round3}}</span></td>
+							@else
+							<td width="50%">exam round 3</td><td width="50%"> <span class="$score_level3"></span></td>
 							@endif
 							</tr>
 							<tr>
-								<td>exam round 4</td><td></td>
+							@if(isset($result_grade_round4))
+								<td width="50%">exam round 4</td><td width="50%">{{$result_grade_round4}} <span class="$score_level4">{{$result_score_level_round4}}</span></td>
+							@else
+							<td width="50%">exam round 4</td><td width="50%"> <span class="$score_level4"></span></td>
+							@endif
 							</tr>
 						</tbody>
 					</table>
@@ -325,6 +332,6 @@ $("#pjtable_filter").append($tmp );
         // Toggle the visibility
         column.visible( ! column.visible() );
     } );
-	} );	
+	} );
 </script>
 	@stop

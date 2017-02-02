@@ -161,8 +161,6 @@ class ScoreRecordController extends Controller
 
     return view('admin.scoreRecord',$obj);
   }
-
-
   public function viewScore($id)
   {
     $data['id'] = $id;
@@ -219,6 +217,21 @@ class ScoreRecordController extends Controller
                           ->get();
       }
     }
+    $total1 = DB::table('score_tests')
+              ->where('score_test_round',1)
+              ->where('project_pkid',$groupId)
+              ->value('score_test_sum');
+    if($total1 === null){
+      $data['level1'] = null;
+    }elseif($total1>=3.5){
+      $data['level1'] = 'Very Good';
+    }elseif($total1>=3){
+      $data['level1'] = 'Good';
+    }elseif($total1>=2.5){
+      $data['level1'] = 'Fair';
+    }elseif($total1<2.5){
+      $data['level1'] = 'Poor';
+    }
     $data['scoreRound1'] = $scoreRound1;
     $data['gradeRound1'] = $gradeRound1;
 
@@ -254,6 +267,21 @@ class ScoreRecordController extends Controller
                           ->where('submit','=',1)
                           ->get();
       }
+    }
+    $total2 = DB::table('score_tests')
+              ->where('score_test_round',2)
+              ->where('project_pkid',$groupId)
+              ->value('score_test_sum');
+    if($total2 === null){
+      $data['level2'] = null;
+    }elseif($total2>=3.5){
+      $data['level2'] = 'Very Good';
+    }elseif($total2>=3){
+      $data['level2'] = 'Good';
+    }elseif($total2>=2.5){
+      $data['level2'] = 'Fair';
+    }elseif($total2<2.5){
+      $data['level2'] = 'Poor';
     }
     $data['scoreRound2'] = $scoreRound2;
     $data['gradeRound2'] = $gradeRound2;
@@ -291,6 +319,21 @@ class ScoreRecordController extends Controller
                           ->get();
       }
     }
+    $total3 = DB::table('score_tests')
+              ->where('score_test_round',3)
+              ->where('project_pkid',$groupId)
+              ->value('score_test_sum');
+    if($total3 === null){
+      $data['level3'] = null;
+    }elseif($total3>=3.5){
+      $data['level3'] = 'Very Good';
+    }elseif($total3>=3){
+      $data['level3'] = 'Good';
+    }elseif($total3>=2.5){
+      $data['level3'] = 'Fair';
+    }elseif($total3<2.5){
+      $data['level3'] = 'Poor';
+    }
     $data['scoreRound3'] = $scoreRound3;
     $data['gradeRound3'] = $gradeRound3;
 
@@ -327,364 +370,29 @@ class ScoreRecordController extends Controller
                           ->get();
       }
     }
+    $total4 = DB::table('score_tests')
+              ->where('score_test_round',4)
+              ->where('project_pkid',$groupId)
+              ->value('score_test_sum');
+    if($total4 === null){
+      $data['level4'] = null;
+    }elseif($total4>=3.5){
+      $data['level4'] = 'Very Good';
+    }elseif($total4>=3){
+      $data['level4'] = 'Good';
+    }elseif($total4>=2.5){
+      $data['level4'] = 'Fair';
+    }elseif($total4<2.5){
+      $data['level4'] = 'Poor';
+    }
     $data['scoreRound4'] = $scoreRound4;
     $data['gradeRound4'] = $gradeRound4;
 
 
-    // $advId = $adv[0]->id;
-    // $mainAdvScore1 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound1'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id',$advId)
-    //                 ->value('grade');
-    // if($mainAdvScore1 == 'A'){
-    //   $mainGrade1 = (4*40)/100;
-    // }elseif($mainAdvScore1 == 'B+'){
-    //   $mainGrade1 = (3.5*40)/100;
-    // }elseif($mainAdvScore1 == 'B'){
-    //   $mainGrade1 = (3*40)/100;
-    // }elseif($mainAdvScore1 == 'C+'){
-    //   $mainGrade1 = (2.5*40)/100;
-    // }elseif($mainAdvScore1 == 'C'){
-    //   $mainGrade1 = (2*40)/100;
-    // }elseif($mainAdvScore1 == 'D+'){
-    //   $mainGrade1 = (1.5*40)/100;
-    // }elseif($mainAdvScore1 == 'D'){
-    //   $mainGrade1 = (1*40)/100;
-    // }elseif($mainAdvScore1 == null){
-    //   $mainGrade1 = 0;
-    // }
-    // $comScore1 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound1'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id','!=',$advId)
-    //                 ->get();
-    // $sum = 0;
-    // foreach($comScore1 as $com1){
-    //   $commitee = $com1->grade;
-    //   if($commitee == 'A'){
-    //     $calGrade1 = 4;
-    //   }elseif($commitee == 'B+'){
-    //     $calGrade1 = 3.5;
-    //   }elseif($commitee == 'B'){
-    //     $calGrade1 = 3;
-    //   }elseif($commitee == 'C+'){
-    //     $calGrade1 = 2.5;
-    //   }elseif($commitee == 'C'){
-    //     $calGrade1 = 2;
-    //   }elseif($commitee == 'D+'){
-    //     $calGrade1 = 1.5;
-    //   }elseif($commitee == 'D'){
-    //     $calGrade1 = 1;
-    //   }
-    //   $sum += $calGrade1;
-    // }
-    //
-    // if($sum != 0){
-    //   $calSum1 = ($sum/count($comScore1))*60/100;
-    //   $total1 = $mainGrade1+$calSum1;
-    //   if($total1>=3.5){
-    //     $data['level1'] = 'Very Good';
-    //   }elseif($total1>=3){
-    //     $data['level1'] = 'Good';
-    //   }elseif($total1>=2.5){
-    //     $data['level1'] = 'Fair';
-    //   }elseif($total1<2.5){
-    //     $data['level1'] = 'Poor';
-    //   }
-    // }
-    //
-    // $mainAdvScore2 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound2'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id',$advId)
-    //                 ->value('grade');
-    // if($mainAdvScore2 == 'A'){
-    //   $mainGrade2 = (4*40)/100;
-    // }elseif($mainAdvScore2 == 'B+'){
-    //   $mainGrade2 = (3.5*40)/100;
-    // }elseif($mainAdvScore2 == 'B'){
-    //   $mainGrade2 = (3*40)/100;
-    // }elseif($mainAdvScore2 == 'C+'){
-    //   $mainGrade2 = (2.5*40)/100;
-    // }elseif($mainAdvScore2 == 'C'){
-    //   $mainGrade2 = (2*40)/100;
-    // }elseif($mainAdvScore2 == 'D+'){
-    //   $mainGrade2 = (1.5*40)/100;
-    // }elseif($mainAdvScore2 == 'D'){
-    //   $mainGrade2 = (1*40)/100;
-    // }elseif($mainAdvScore2 == null){
-    //   $mainGrade2 = 0;
-    // }
-    // $comScore2 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound2'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id','!=',$advId)
-    //                 ->get();
-    // $sum = 0;
-    // foreach($comScore2 as $com2){
-    //   $commitee = $com2->grade;
-    //   if($commitee == 'A'){
-    //     $calGrade2 = 4;
-    //   }elseif($commitee == 'B+'){
-    //     $calGrade2 = 3.5;
-    //   }elseif($commitee == 'B'){
-    //     $calGrade2 = 3;
-    //   }elseif($commitee == 'C+'){
-    //     $calGrade2 = 2.5;
-    //   }elseif($commitee == 'C'){
-    //     $calGrade2 = 2;
-    //   }elseif($commitee == 'D+'){
-    //     $calGrade2 = 1.5;
-    //   }elseif($commitee == 'D'){
-    //     $calGrade2 = 1;
-    //   }
-    //   $sum += $calGrade2;
-    // }
-    // if($sum != 0){
-    //   $calSum2 = ($sum/count($comScore2))*60/100;
-    //   $total2 = $mainGrade2+$calSum2;
-    //   if($total2>=3.5){
-    //     $data['level2'] = 'Very Good';
-    //   }elseif($total2>=3){
-    //     $data['level2'] = 'Good';
-    //   }elseif($total2>=2.5){
-    //     $data['level2'] = 'Fair';
-    //   }elseif($total2<2.5){
-    //     $data['level2'] = 'Poor';
-    //   }
-    // }
-    //
-    // $mainAdvScore3 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound3'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id',$advId)
-    //                 ->value('grade');
-    // if($mainAdvScore3 == 'A'){
-    //   $mainGrade3 = (4*40)/100;
-    // }elseif($mainAdvScore3 == 'B+'){
-    //   $mainGrade3 = (3.5*40)/100;
-    // }elseif($mainAdvScore3 == 'B'){
-    //   $mainGrade3 = (3*40)/100;
-    // }elseif($mainAdvScore3 == 'C+'){
-    //   $mainGrade3 = (2.5*40)/100;
-    // }elseif($mainAdvScore3 == 'C'){
-    //   $mainGrade3 = (2*40)/100;
-    // }elseif($mainAdvScore3 == 'D+'){
-    //   $mainGrade3 = (1.5*40)/100;
-    // }elseif($mainAdvScore3 == 'D'){
-    //   $mainGrade3 = (1*40)/100;
-    // }elseif($mainAdvScore3 == null){
-    //   $mainGrade3 = 0;
-    // }
-    // $comScore3 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound3'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id','!=',$advId)
-    //                 ->get();
-    // $sum = 0;
-    // foreach($comScore3 as $com3){
-    //   $commitee = $com3->grade;
-    //   if($commitee == 'A'){
-    //     $calGrade3 = 4;
-    //   }elseif($commitee == 'B+'){
-    //     $calGrade3 = 3.5;
-    //   }elseif($commitee == 'B'){
-    //     $calGrade3 = 3;
-    //   }elseif($commitee == 'C+'){
-    //     $calGrade3 = 2.5;
-    //   }elseif($commitee == 'C'){
-    //     $calGrade3 = 2;
-    //   }elseif($commitee == 'D+'){
-    //     $calGrade3 = 1.5;
-    //   }elseif($commitee == 'D'){
-    //     $calGrade3 = 1;
-    //   }
-    //   $sum += $calGrade3;
-    // }
-    // if($sum != 0){
-    //   $calSum3 = ($sum/count($comScore3))*60/100;
-    //   $total3 = $mainGrade3+$calSum3;
-    //   if($total3>=3.5){
-    //     $data['level3'] = 'Very Good';
-    //   }elseif($total3>=3){
-    //     $data['level3'] = 'Good';
-    //   }elseif($total3>=2.5){
-    //     $data['level3'] = 'Fair';
-    //   }elseif($total3<2.5){
-    //     $data['level3'] = 'Poor';
-    //   }
-    // }
-    //
-    // $mainAdvScore4 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound4'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id',$advId)
-    //                 ->value('grade');
-    // if($mainAdvScore4 == 'A'){
-    //   $mainGrade4 = (4*40)/100;
-    // }elseif($mainAdvScore4 == 'B+'){
-    //   $mainGrade4 = (3.5*40)/100;
-    // }elseif($mainAdvScore4 == 'B'){
-    //   $mainGrade4 = (3*40)/100;
-    // }elseif($mainAdvScore4 == 'C+'){
-    //   $mainGrade4 = (2.5*40)/100;
-    // }elseif($mainAdvScore4 == 'C'){
-    //   $mainGrade4 = (2*40)/100;
-    // }elseif($mainAdvScore4 == 'D+'){
-    //   $mainGrade4 = (1.5*40)/100;
-    // }elseif($mainAdvScore4 == 'D'){
-    //   $mainGrade4 = (1*40)/100;
-    // }elseif($mainAdvScore4 == null){
-    //   $mainGrade4 = 0;
-    // }
-    // $comScore4 = DB::table('grade_advisor')
-    //                 ->where('main_template_id',$data['mainRound4'][0]->template_main_id)
-    //                 ->where('project_pkid',$groupId)
-    //                 ->where('advisor_id','!=',$advId)
-    //                 ->get();
-    // $sum = 0;
-    // foreach($comScore4 as $com4){
-    //   $commitee = $com4->grade;
-    //   if($commitee == 'A'){
-    //     $calGrade4 = 4;
-    //   }elseif($commitee == 'B+'){
-    //     $calGrade4 = 3.5;
-    //   }elseif($commitee == 'B'){
-    //     $calGrade4 = 3;
-    //   }elseif($commitee == 'C+'){
-    //     $calGrade4 = 2.5;
-    //   }elseif($commitee == 'C'){
-    //     $calGrade4 = 2;
-    //   }elseif($commitee == 'D+'){
-    //     $calGrade4 = 1.5;
-    //   }elseif($commitee == 'D'){
-    //     $calGrade4 = 1;
-    //   }
-    //   $sum += $calGrade4;
-    // }
-    // if($sum != 0){
-    //   $calSum4 = ($sum/count($comScore4))*60/100;
-    //   $total4 = $mainGrade4+$calSum4;
-    //   if($total4>=3.5){
-    //     $data['level4'] = 'Very Good';
-    //   }elseif($total4>=3){
-    //     $data['level4'] = 'Good';
-    //   }elseif($total4>=2.5){
-    //     $data['level4'] = 'Fair';
-    //   }elseif($total4<2.5){
-    //     $data['level4'] = 'Poor';
-    //   }
-    // }
-    // dd($calGrade1);
 
     return view('admin.viewScore',$data);
   }
 
-  public function storeScoreLevel($id)
-  {
-    $id = $id;
-    $project = GroupProject::where('group_project_id',$id)->get();
-    $groupId = $project[0]->id;
-    $adv = DB::table('project_advisors')
-            ->join('advisors','advisors.id','=','advisor_id')
-            ->where('project_pkid',$groupId)
-            ->where('advisor_position_id','=',1)
-            ->select('advisor_name','advisors.id')->get();
-    $typeId = $project[0]->type_id;
-    $yearId = $project[0]->year_id;
-
-    $commitee = DB::table('rooms_exam')
-                        ->join('rooms_advisor','room_exam_id','=','rooms_exam.id')
-                        ->join('advisors','advisors.id','=','advisor_id')
-                        ->where('project_pkid',$groupId)
-                        ->select('advisor_id','advisor_name')
-                        ->get();
-    $quantity = count($commitee);
-
-    $mainRound1 = DB::table('main_templates_score')
-                  ->join('templates_main','templates_main.id','=','template_main_id')
-                  ->join('criteria_mains','criteria_mains.id','=','criteria_main_id')
-                  ->where('type_id',$typeId)
-                  ->where('year_id',$yearId)
-                  ->where('round',1)
-                  ->select('main_templates_score.id','round','criteria_main_name','template_main_id','score','type_id')
-                  ->get();
-    // for($i=0;$i<$quantity;$i++){
-    //   $commitee[$i] = $commitee[$i]->advisor_id;
-    //   $gradeRound1[$i] = DB::table('grade_advisor')
-    //                     ->where('project_pkid','=',$groupId)
-    //                     ->where('main_template_id','=',$mainRound1[0]->template_main_id)
-    //                     ->where('advisor_id','=',$commitee[$i])
-    //                     ->where('submit','=',1)
-    //                     ->get();
-    // }
-
-    $advId = $adv[0]->id;
-    $mainAdvScore1 = DB::table('grade_advisor')
-                    ->where('main_template_id',$mainRound1[0]->template_main_id)
-                    ->where('project_pkid',$groupId)
-                    ->where('advisor_id',$advId)
-                    ->value('grade');
-    if($mainAdvScore1 == 'A'){
-      $mainGrade1 = (4*40)/100;
-    }elseif($mainAdvScore1 == 'B+'){
-      $mainGrade1 = (3.5*40)/100;
-    }elseif($mainAdvScore1 == 'B'){
-      $mainGrade1 = (3*40)/100;
-    }elseif($mainAdvScore1 == 'C+'){
-      $mainGrade1 = (2.5*40)/100;
-    }elseif($mainAdvScore1 == 'C'){
-      $mainGrade1 = (2*40)/100;
-    }elseif($mainAdvScore1 == 'D+'){
-      $mainGrade1 = (1.5*40)/100;
-    }elseif($mainAdvScore1 == 'D'){
-      $mainGrade1 = (1*40)/100;
-    }elseif($mainAdvScore1 == null){
-      $mainGrade1 = 0;
-    }
-    $comScore1 = DB::table('grade_advisor')
-                    ->where('main_template_id',$mainRound1[0]->template_main_id)
-                    ->where('project_pkid',$groupId)
-                    ->where('advisor_id','!=',$advId)
-                    ->get();
-    $sum = 0;
-    foreach($comScore1 as $com1){
-      $commitee = $com1->grade;
-      if($commitee == 'A'){
-        $calGrade1 = 4;
-      }elseif($commitee == 'B+'){
-        $calGrade1 = 3.5;
-      }elseif($commitee == 'B'){
-        $calGrade1 = 3;
-      }elseif($commitee == 'C+'){
-        $calGrade1 = 2.5;
-      }elseif($commitee == 'C'){
-        $calGrade1 = 2;
-      }elseif($commitee == 'D+'){
-        $calGrade1 = 1.5;
-      }elseif($commitee == 'D'){
-        $calGrade1 = 1;
-      }
-      $sum += $calGrade1;
-    }
-
-    if($sum != 0){
-      $calSum1 = ($sum/count($comScore1))*60/100;
-      $total1 = $mainGrade1+$calSum1;
-      if($total1>=3.5){
-        $data = 'Very Good';
-      }elseif($total1>=3){
-        $data = 'Good';
-      }elseif($total1>=2.5){
-        $data = 'Fair';
-      }elseif($total1<2.5){
-        $data = 'Poor';
-      }
-    }
-
-    return $data;
-  }
 
   public function ScoreLevel(Request $request){
     $score_verygood = $request->score_verygood;

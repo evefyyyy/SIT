@@ -93,7 +93,9 @@
 					</tr>
 	      </tfoot>
 	 	</table>
-	 	<button class="btn btn-primary calgrade" id="cal1">calculate</button>
+
+			<button class="btn btn-primary calgrade" id="cal1">calculate</button>
+
 	  </div>
 	  <div class="col-xs-1 col-md-1 col-lg-2"></div>
 	</div>
@@ -120,7 +122,7 @@
 				 <tr>
 						<th>criteria</th>
 						@for($i=0; $i<$quantity; $i++)
-						<th width="8%">c{{$i+2}}</th>
+						<th width="8%">c{{$i+1}}</th>
 						@endfor
 						<th width="15%">full marks</th>
 				 </tr>
@@ -162,7 +164,7 @@
 						<input type="hidden" name="level2" id="getLevel2">
 				</tfoot>
 		</table>
-		<button class="btn btn-primary calgrade">calculate</button>
+		<button class="btn btn-primary calgrade" id="cal2">calculate</button>
 		</div>
 		<div class="col-xs-1 col-md-1 col-lg-2"></div>
 	</div>
@@ -190,7 +192,7 @@
 			 <tr>
 					<th>criteria</th>
 					@for($i=0; $i<$quantity; $i++)
-					<th width="8%">c{{$i+2}}</th>
+					<th width="8%">c{{$i+1}}</th>
 					@endfor
 					<th width="15%">full marks</th>
 			 </tr>
@@ -261,7 +263,7 @@
 			 <tr>
 					<th>criteria</th>
 					@for($i=0; $i<$quantity; $i++)
-					<th width="8%">c{{$i+2}}</th>
+					<th width="8%">c{{$i+1}}</th>
 					@endfor
 					<th width="15%">full marks</th>
 			 </tr>
@@ -353,6 +355,11 @@
 @endforeach
 
 <script type="text/javascript">
+	$.ajaxSetup({
+	  headers: {
+	    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	  }
+	});
 	$(document).ready(function(){
 		$('#cal1').click(function(){
 			$.get('/exam/scorerecord/viewscore/{{$id}}/cal1',function(data){
@@ -360,5 +367,28 @@
 			});
 		});
 	});
+	$(document).ready(function(){
+		$('#cal2').click(function(){
+			$.get('/exam/scorerecord/viewscore/{{$id}}/cal2',function(data){
+				$('#level2').html(data);
+			});
+		});
+	});
+	$(document).ready(function(){
+		$('#cal3').click(function(){
+			$.get('/exam/scorerecord/viewscore/{{$id}}/cal3',function(data){
+				$('#level3').html(data);
+			});
+		});
+	});
+	$(document).ready(function(){
+		$('#cal4').click(function(){
+			$.get('/exam/scorerecord/viewscore/{{$id}}/cal4',function(data){
+				$('#level4').html(data);
+			});
+		});
+	});
+
+
 </script>
 @stop

@@ -54,8 +54,12 @@
 				</tbody>
 			</table>
 			<div id="center">
-			  <a href="/exam/round"><button class="action-button" type="button">back</button></a>
-			  <button class="action-button cd-popup-trigger">submit</button>
+				@if($submitted == null)
+			  	<a href="/exam/round"><button class="action-button" type="button">back</button></a>
+			  	<button class="action-button cd-popup-trigger">submit</button>
+				@else
+					<a href="/exam/round"><button class="action-button" type="button">back</button></a>
+				@endif
 			</div>
 	</div>
 		</form>
