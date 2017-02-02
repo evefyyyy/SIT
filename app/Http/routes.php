@@ -1,4 +1,4 @@
-1<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +94,11 @@ Route::get('exam/scorerecord','ScoreRecordController@index');
 Route::get('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@viewScore');
 
 Route::post('exam/scorerecord/viewscore/{id}', 'ScoreRecordController@storeScoreLevel');
+
+Route::get('exam/scorerecord/viewscore/{projectId}/cal1','calculateScoreController@storeScoreLevel1');
+Route::get('exam/scorerecord/viewscore/{projectId}/cal2','calculateScoreController@storeScoreLevel2');
+Route::get('exam/scorerecord/viewscore/{projectId}/cal3','calculateScoreController@storeScoreLevel3');
+Route::get('exam/scorerecord/viewscore/{projectId}/cal4','calculateScoreController@storeScoreLevel4');
 
 Route::post('exam/scorerecord/level','ScoreRecordController@ScoreLevel');
 
@@ -317,5 +322,3 @@ Route::post('student/myproject/create/{id}/stdId3',function(){
 //     return 'getRequest complte';
 //
 // });
-
-Route::get('exam/scorerecord/viewscore/{projectId}/cal1','ScoreRecordController@storeScoreLevel');

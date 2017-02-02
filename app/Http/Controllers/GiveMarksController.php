@@ -43,12 +43,6 @@ class GiveMarksController extends Controller
       for($i=0; $i<4; $i++){
         $round = $i+1;
         $data['round'][$i] = $round;
-        $data['submitted'][$i] = DB::table('grade_advisor')
-                      ->join('templates_main','templates_main.id','=','main_template_id')
-                      ->where('advisor_id','=',$adv)
-                      ->where('round','=',$round)
-                      ->where('submit','=',1)
-                      ->value('round');
       }
 
       return view('advisor.selectRound',$data);
@@ -65,36 +59,44 @@ class GiveMarksController extends Controller
                         ->where('advisor_id',$adv)
                         ->select('advisor_name','room_name','exam_datetime','project_pkid','rooms.id','exam_starttime','exam_endtime')
                         ->get();
-    if($data['roomExam'] != null){
-      for($i=0; $i<count($data['roomExam']); $i++){
-        $projectId = $data['roomExam'][$i]->project_pkid;
-        $data['project'][$i] = DB::table('group_projects')->where('id',$projectId)->get();
-        $grade = DB::table('grade_advisor')
-                          ->join('templates_main','templates_main.id','=','main_template_id')
-                          ->where('project_pkid',$projectId)
-                          ->where('round',$round)
-                          ->where('advisor_id',$adv)
-                          ->value('grade_advisor.id');
-        $data['project'][$i]['grade'] = $grade;
-      }
-      $getRoom = $data['roomExam'][0]->id;
+      $data['submitted'] = DB::table('grade_advisor')
+                            ->join('templates_main','templates_main.id','=','main_template_id')
+                            ->where('advisor_id','=',$adv)
+                            ->where('round','=',$round)
+                            ->where('submit','=',1)
+                            ->value('round');
+                            
+      if($data['roomExam'] != null){
+        for($i=0; $i<count($data['roomExam']); $i++){
+          $projectId = $data['roomExam'][$i]->project_pkid;
+          $data['project'][$i] = DB::table('group_projects')->where('id',$projectId)->get();
+          $grade = DB::table('grade_advisor')
+                            ->join('templates_main','templates_main.id','=','main_template_id')
+                            ->where('project_pkid',$projectId)
+                            ->where('round',$round)
+                            ->where('advisor_id',$adv)
+                            ->value('grade_advisor.id');
+          $data['project'][$i]['grade'] = $grade;
+        }
+        $getRoom = $data['roomExam'][0]->id;
 
-      $getAdv =  DB::table('rooms_advisor')
-                  ->join('rooms_exam','rooms_exam.id','=','room_exam_id')
-                  ->join('rooms','rooms.id','=','room_id')
-                  ->join('advisors','advisors.id','=','advisor_id')
-                  ->where('room_id',$getRoom)
-                  ->groupBy('advisor_id')
-                  ->select('advisor_name')
-                  ->get();
+        $getAdv =  DB::table('rooms_advisor')
+                    ->join('rooms_exam','rooms_exam.id','=','room_exam_id')
+                    ->join('rooms','rooms.id','=','room_id')
+                    ->join('advisors','advisors.id','=','advisor_id')
+                    ->where('room_id',$getRoom)
+                    ->groupBy('advisor_id')
+                    ->select('advisor_name')
+                    ->get();
 
-      foreach($getAdv as $adv){
-        $explode[] = explode(' ',$adv->advisor_name);
+        foreach($getAdv as $adv){
+          $explode[] = explode(' ',$adv->advisor_name);
+        }
+        foreach($explode as $ex){
+          $data['advName'][] = $ex[0];
+        }
       }
-      foreach($explode as $ex){
-        $data['advName'][] = $ex[0];
-      }
-    }
+
       return view('advisor.examDetail',$data);
     }
 
