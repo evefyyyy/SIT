@@ -20,7 +20,7 @@
 					<td>{{$stf_user->name}}</td>
 					<td>{{$stf_user->user_type->user_type_name}}</td>
 					<td>
-						<buton class="btn btn-apply" value=1>
+						<buton class="btn btn-apply setstftouser" value="{{$stf_user->id}}">
 							<i class="glyphicon glyphicon-remove"></i>
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
@@ -35,7 +35,7 @@
 					<td>{{$adv_user->advisor_name}}</td>
 					<td>{{$adv_user->user_type->user_type_name}}</td>
 					<td>
-						<buton class="btn btn-unapply" value=1 focmaction = "/admin/setting/on">
+						<buton class="btn btn-apply setadvtouser" value="{{$adv_user->id}}">
 							<i class="glyphicon glyphicon-remove"></i>
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
@@ -50,7 +50,7 @@
 					<td>{{$stf_user->name}}</td>
 					<td>{{$stf_user->user_type->user_type_name}}</td>
 					<td>
-						<buton class="btn btn-apply" id="settoadmin" value="{{$stf_user->id}}" >
+						<buton class="btn btn-unapply setstftoadmin" value="{{$stf_user->id}}" >
 							<i class="glyphicon glyphicon-remove"></i>
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
@@ -65,7 +65,7 @@
 					<td>{{$adv_user->advisor_name}}</td>
 					<td>{{$adv_user->user_type->user_type_name}}</td>
 					<td>
-						<buton class="btn btn-unapply" >
+						<buton class="btn btn-unapply setadvtoadmin" value="{{$adv_user->id}}">
 							<i class="glyphicon glyphicon-remove"></i>
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
@@ -84,35 +84,25 @@
 		} );
 	} );
 
-	$('#settoadmin').click(function() {
-		var userid = $(".rejectbt").attr("value");
-		$.ajax({
-			type: 'get',
-			url:'/setting/admin/settoadmin',
-			data: {
-				gencode: $("#gencode").val(),
-				pjid: $("#pjid").val(),
-				_token: "{{csrf_token()}}"
-			},
-		   	success:function(result){
-		   			if (result=="success") {
-		       		$('.cd-load').hide();
-		      		$('.cd-success').show();
-		      	} else if (result=="used") {
-		      		$('.cd-load').hide();
-		      		$('.cd-content').show();
-		      		$('.alert').show();
-		      		$('.alert front').append("This code has already used");
-		      		$('#gencode').val("");
-		      	} else if (result=="invalid") {
-		      		$('.cd-load').hide();
-		      		$('.cd-content').show();
-		      		$('.alert').show();
-		      		$('.alert front').append("invalid code");
-		      		$('#gencode').val("");
-			   }
-		    }
-		});
+	$('.setadvtoadmin').click(function() {
+		var userid = $(this).attr("value");
+		window.location="/setting/settoadmin/"+userid+"/"+"adv";
+		console.log(userid);
+	});
+	$('.setstftoadmin').click(function() {
+		var userid = $(this).attr("value");
+		window.location="/setting/settoadmin/"+userid+"/"+"stf";
+		console.log(userid);
+	});
+	$('.setadvtouser').click(function() {
+		var userid = $(this).attr("value");
+		window.location="/setting/settouser/"+userid+"/"+"adv";
+		console.log(userid);
+	});
+	$('.setstftouser').click(function() {
+		var userid = $(this).attr("value");
+		window.location="/setting/settouser/"+userid+"/"+"stf";
+		console.log(userid);
 	});
 </script>
 @stop

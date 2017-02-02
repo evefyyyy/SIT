@@ -42,6 +42,8 @@ Route::get('exam/managescore/criteria',function(){
   return view('admin.manageCriteria');
 });
 Route::get('setting/admin', 'SetAdminController@index');
+Route::get('setting/settoadmin/{userid}/{position}', 'SetAdminController@setToAdmin');
+Route::get('setting/settouser/{userid}/{position}', 'SetAdminController@setToUser');
 Route::get('setting/student',function(){
   return view('admin.setStudent');
 });
