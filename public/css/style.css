@@ -1349,9 +1349,9 @@ a.add-examroom:hover {
   text-decoration: none;
 }
 #scoresheet .input-group-btn > .btn-remove, #detail .input-group-btn > .btn-danger, #set .input-group-btn > .btn-danger {
-  padding: 9px 11px;
+  padding: 6px 11px;
 }
-#scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success, #set .input-group-btn > .btn-success {
+#scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success {
   padding: 10px 12px;
 }
 #scoresheet .input-group > .form-control {
