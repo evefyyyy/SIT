@@ -1226,6 +1226,9 @@ img#cover {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.search > .input-group-btn > .btn {
+  padding: 6px 10px !important;
+}
 .panel-body .titlee {
   color: #40c3a7;
   font-weight: 600;
