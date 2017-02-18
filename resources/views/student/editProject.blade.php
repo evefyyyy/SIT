@@ -42,7 +42,7 @@
 		</div>
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
-	<div class="row">
+	<div class="row" style="margin-top:20px">
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-sm-10 col-md-5 col-lg-5">
 				<img id="group-member" src="{{$groupPic or '/img/no-image.png'}}" alt="your image" />
