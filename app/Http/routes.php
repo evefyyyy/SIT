@@ -57,6 +57,9 @@ Route::get('setting/category', 'AdminSettingController@managecategory');
 Route::get('setting/room',function(){
   return view('admin.testroom');
 });
+Route::get('setting/current/type',function(){
+  return view('admin.currenttype');
+});
 
 Route::get('exam/managescore/{year}','ScoreSheetController@viewScoreSheet');
 

@@ -1432,6 +1432,10 @@ a.add-examroom:hover {
 #scoresheet .cri .titlee {
   font-size: 1.125em;
 }
+.ctype > .ms-container .ms-selection li.ms-elem-selection,
+.ctype > .ms-container .ms-selectable li.ms-elem-selectable {
+  font-size: 1.1em;
+}
 #scoreyear table {
   margin: 20px auto 0 auto;
 }

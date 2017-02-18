@@ -31,6 +31,16 @@
 							<a class="{{ strrpos(Request::path(),'setting/year') === 0 ? 'active' : ''  }}" href="/setting/year">year</a>
 						</li>
 					</div>
+				</ul> 
+				<ul>
+					<li class="menu-head">
+						current year<a href="#" class="push_menu"></a>
+					</li>
+					<div class="menu">
+						<li>
+							<a class="{{ strrpos(Request::path(),'setting/current/type') === 0 ? 'active' : ''  }}" href="/setting/current/type">type</a>
+						</li>
+					</div>
 
 				</ul>
 			</div>   
