@@ -1288,11 +1288,14 @@ a.add-examroom:hover {
 #addroomTB thead, #addroomTB tbody {
   font-size: 0.9em;
 }
+.modal-body #addroomTB a:hover {
+  color: #ff7f7f;
+}
 #roomTB table {
   width: 98%;
 }
 #addproject .modal-body {
-  padding: 15px 30px;
+  padding: 30px;
 }
 #roomTB tbody > tr > td {
   text-transform: none;
@@ -1330,7 +1333,7 @@ a.add-examroom:hover {
   border: none !important;
   padding-right: 0
 }
-#roomTB td.del-btn {
+#roomTB td.del-btn, #addroomTB td.del-btn {
   border: none !important;
 }
 .table-hover td.move-btn:hover,
@@ -1370,8 +1373,11 @@ a.add-examroom:hover {
   color: #40c3a7;
   text-align: left;
 }
-#scoresheet .glyphicon-plus:before, #detail .glyphicon-plus:before, #set .glyphicon-plus:before {
+#scoresheet .glyphicon-plus:before, #detail .glyphicon-plus:before, #set .glyphicon-plus:before, #addroomTB .glyphicon-plus:before {
   padding-right: 0;
+}
+#addroomTB .glyphicon {
+  font-size: 1.5em;
 }
 #scoresheet .row {
   margin-top: 30px;
