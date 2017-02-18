@@ -32,7 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
-<?php $countrow = 0; ?>
+				<?php $countrow = 0; ?>
 					@if(isset($project))
 					@foreach($project as $key=>$data)
 					@for($i=0;$i<sizeOf($arrayproject);$i++)
