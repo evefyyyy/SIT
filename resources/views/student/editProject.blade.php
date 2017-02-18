@@ -12,19 +12,19 @@
 				<img class="img-responsive" id="cover" src="{{$poster or '/img/no-poster.png'}}"/>
 				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse">Select new image</label>
-				<label class="pic-size">poster 1920 x 1080 px</label>
+				<label class="pic-size">poster 1920 x 1080 px</label><div class="pull-right">PROJECT ID : IT56-38</div>
 		</div>
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
-		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 btn-save">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 btn-save">
 				<a class="btn btn-default" onclick="goBack()">back</a>
-				<button type="submit" class="btn btn-primary">save & show my project</button>
+				<button type="submit" class="btn btn-primary">save changes</button>
 		</div>
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>

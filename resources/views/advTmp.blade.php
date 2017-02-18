@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                    <a class="navbar-brand" href="#"><img height="53" src="/img/logo.png"><img style="margin-left:5px" height="25" src="/img/blackribbon.png"></a>
+                    <a class="navbar-brand" href="/"><img height="53" src="/img/logo.png"><img style="margin-left:5px" height="25" src="/img/blackribbon.png"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">

@@ -1016,6 +1016,9 @@ h6 img {
 #detail .text {
   margin-bottom: 5px;
 }
+#detail .dropdown-menu > li > a .text {
+  margin: 0;
+}
 #detail .mail {
   margin-bottom: 10px;
   font-size: 0.895em;
@@ -1067,6 +1070,11 @@ h6 img {
 }
 #detail .image-view ul {
   list-style-type: none;
+}
+.image-view .noproject {
+  text-align: center;
+  color: #999;
+  padding: 30px;
 }
 .btn-save {
   text-align: right;
@@ -1575,12 +1583,24 @@ a.delete:focus{
 }
 #detail .textt {
   padding-top: 6px;
+  text-transform: capitalize;
 } 
 #detail .controls {
   margin-bottom: 5px;
 }
 #detail .input-group-btn > button.embed {
   padding: 6px 12px;
+}
+#detail .btn-group.bootstrap-select.selectType, #detail .btn-group.bootstrap-select.selectCategory  {
+  display: inline;
+}
+#detail .btn-group.bootstrap-select.selectType > .dropdown-toggle, #detail .btn-group.bootstrap-select.selectCategory > .dropdown-toggle {
+  width: 150px;
+  margin-left: 20px;
+}
+#detail .bootstrap-select.btn-group.selectType .dropdown-menu, #detail .bootstrap-select.btn-group.selectCategory .dropdown-menu  {
+  min-width: 150px;
+  text-transform: capitalize;
 }
   @media print
 {

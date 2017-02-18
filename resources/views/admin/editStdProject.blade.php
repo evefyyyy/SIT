@@ -9,19 +9,36 @@
 				<img class="img-responsive" id="cover" src="/img/no-poster.png"/>
 				<input type="file" id="img-cover" name="poster"/>
 				<label for="img-cover" class="btn btn-browse">Select new image</label>
-				<label class="pic-size">poster 1920 x 1080 px</label>
+				<label class="pic-size">poster 1920 x 1080 px</label><div class="pull-right">PROJECT ID : IT56-38</div>
 		</div>
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
 	<div class="row">
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-			<h3><input class="form-control" /></h3>
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
 			<h4><input class="form-control" /></h4>
+			<h4><input class="form-control" /></h4>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<span class="textt pull-left">type</span>
+				<select class="selectType">
+				  <option>business</option>
+				  <option>research</option>
+				  <option>social</option>
+				</select>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<span class="textt pull-left">category</span>
+				<select class="selectCategory">
+				  <option>business</option>
+				  <option>education</option>
+				  <option>elderly</option>
+				  <option>games</option>
+				</select>
+			</div>
 		</div>
-		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 btn-save">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 btn-save">
 				<a class="btn btn-default" onclick="goBack()">back</a>
-				<button type="submit" class="btn btn-primary">save & show my project</button>
+				<button type="submit" class="btn btn-primary">save changes</button>
 		</div>
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -105,14 +122,14 @@ Graphic : Adobe Photoshop, Illustrator" name="tools"></textarea>
 			<div class="panel-body">
 			<div class="col-lg-3 textt">Main advisor</div>
 			<div class="col-lg-9">
-				<select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
+				<select class="selectMainadv advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
 					<option value="1">Pichet Limvachiranan</option>
 					<option value="2">Umaporn Supasitthimethee</option>
 			 	</select>
 			</div>
 			<div class="col-lg-3 textt">Co-advisor</div>
 			<div class="col-lg-9">
-				<select class="selectpicker advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
+				<select class="selectCoadv advisor" multiple data-width="100%" data-max-options="1" id="mainAdvisor" name="mainAdv">
 					<option value="1">Pichet Limvachiranan</option>
 					<option value="2">Umaporn Supasitthimethee</option>
 			 	</select>
@@ -135,16 +152,18 @@ Graphic : Adobe Photoshop, Illustrator" name="tools"></textarea>
 <script src="{!! URL::asset('js/edit.js') !!}"></script>
 <script>
 $(function () {
-	$('.selectpicker').selectpicker({
+	$('.selectMainadv').selectpicker({
 		liveSearch: true,
 
 		noneSelectedText: 'no advisor selected',
 	});
-	$('.selectpicker1').selectpicker({
+	$('.selectCoadv').selectpicker({
 		liveSearch: true,
 
 		noneSelectedText: 'no advisor selected',
 	});
+	$('.selectType').selectpicker();
+	$('.selectCategory').selectpicker();
 });
 
 $(".btn-success").click(function () {

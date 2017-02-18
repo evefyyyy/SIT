@@ -7041,7 +7041,7 @@ select.selectpicker {
   position: absolute;
   display: inline-block;
   right: 15px;
-  margin-top: 5px;
+  padding: 10px 0;
 }
 .bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text {
   margin-right: 34px;

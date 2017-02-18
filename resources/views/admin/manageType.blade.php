@@ -1,7 +1,7 @@
 @extends('setting')
 @section('content')
 <div id="set">
-<h2><img height="45" src="/img/setting.png">type</h2>
+<h2><img height="45" src="/img/setting.png">project type</h2>
 <div class="row">
 		<div class="col-xs-1 col-md-3 col-lg-4"></div>
 		<div class="col-xs-10 col-md-6 col-lg-4">

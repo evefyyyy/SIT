@@ -1,6 +1,6 @@
 @extends('setting')
 @section('content')
-<h2><img height="45" src="/img/setting.png">type</h2>
+<h2><img height="45" src="/img/setting.png">project type (YEAR 2016)</h2>
 <div id="scoresheet">
       <div class="row">
           <div class="col-xs-1 col-md-2 col-lg-2"></div>

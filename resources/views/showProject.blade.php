@@ -90,7 +90,7 @@
 				<iframe width="1280" height="720" src="{!! $video !!}" frameborder="0" allowfullscreen></iframe>
 			</div>
 			@endif
-		<div class="panel panel-info" style="margin-top:20px">
+<!-- 		<div class="panel panel-info" style="margin-top:20px">
 				<div class="panel-heading">documents</div>
 				<div class="panel-body" id="center">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -100,7 +100,7 @@
 						<a class="tblink" data-toggle="modal" data-target="#loginModal"><span class="flaticon-zip-compressed-files-extension"></span><br><font>Source Code</font></a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-hidden-xs col-sm-12 hidden-md hidden-lg"></div>
