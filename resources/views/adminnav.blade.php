@@ -86,11 +86,7 @@
                     </ul>
                   </li>
                   <li class="{{ strrpos(Request::path(),'setting') === 0 ? 'active' : ''  }}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">setting</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="/setting/admin">global setting</a></li>
-                      <li><a href="/setting/current">current year</a></li>
-                    </ul>
+                    <a href="/setting/admin">setting</a>
                   </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

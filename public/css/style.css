@@ -1226,9 +1226,6 @@ img#cover {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.search > .input-group-btn > .btn {
-  padding: 9px 10px !important;
-}
 .panel-body .titlee {
   color: #40c3a7;
   font-weight: 600;
@@ -1352,7 +1349,7 @@ a.add-examroom:hover {
   padding: 6px 11px;
 }
 #scoresheet .input-group-btn > .btn-success, #detail .input-group-btn > .btn-success {
-  padding: 10px 12px;
+  padding: 7px 11px;
 }
 #scoresheet .input-group > .form-control {
   width: 100%;

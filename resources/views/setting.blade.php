@@ -16,7 +16,6 @@
 							<a class="{{ strrpos(Request::path(),'setting/student') === 0 ? 'active' : ''  }}" href="/setting/student">students</a>
 						</li>
 						<li>
-
 							<a class="{{ strrpos(Request::path(),'setting/recommend') === 0 ? 'active' : ''  }}" href="/setting/recommend">recommend</a>
 						</li>
 						<li>
@@ -27,6 +26,9 @@
 						</li>
 						<li>
 							<a class="{{ strrpos(Request::path(),'setting/room') === 0 ? 'active' : ''  }}" href="/setting/room">test room</a>
+						</li>
+						<li>
+							<a class="{{ strrpos(Request::path(),'setting/year') === 0 ? 'active' : ''  }}" href="/setting/year">year</a>
 						</li>
 					</div>
 

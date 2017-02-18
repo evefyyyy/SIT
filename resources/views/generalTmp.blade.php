@@ -76,7 +76,7 @@
                   $years = $_GET['year'];
                 }
                ?>
-              <select id="ddlsearch" class="selectpicker form-control" data-style="btn-default" name="year">
+              <select id="3" class="selectpicker form-control" data-style="btn-default" name="year">
 
                 <option value="0">all years</option>
                 @foreach($year as $y)
