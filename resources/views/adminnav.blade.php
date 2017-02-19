@@ -90,11 +90,20 @@
                   </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/index" class="navbar-link logout">Logout</a></p>  
+                  <p class="navbar-text navbar-right"><img height="18" src="/img/user.png"> <span class="firstname">Admin</span><span class="lol">|</span><a href="/logout" class="navbar-link logout">Logout</a></p>  
                   <p class="navbar-text year">
-                    <select class="selectpicker" data-width="80px">
-                        <option>2016</option>
-                        <option>2017</option>
+                    <select class="selectpicker" data-width="80px" onchange="location = this.value;">
+                      <?php
+                        $years = DB::table('years')->get();
+                        $current_years = DB::table('all_settings')->first();
+                      ?>
+                      @foreach($years as $year)
+                      @if($current_years->current_year === $year->year)
+                        <option value="/changeyear/{{$year->year}}" selected>{{$year->year}}</option>
+                      @else
+                        <option value="/changeyear/{{$year->year}}">{{$year->year}}</option>
+                      @endif
+                      @endforeach
                     </select>
                   </p>
                 </ul> 
