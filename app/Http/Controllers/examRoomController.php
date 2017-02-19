@@ -17,7 +17,6 @@ use App\GroupProject;
 use App\Advisor;
 use App\ProjectStudent;
 use App\Student;
-      $roomexam = RoomExam::get();
 use App\UserStudent;
 use App\ScoreTest;
 use App\ProjectAdvisor;

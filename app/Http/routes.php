@@ -120,6 +120,8 @@ Route::post('news/delete', function(){
   return Response::json($type);
 });
 
+Route::get('/changeyear/{current_year}', 'CurrentYearController@changeYear');
+
 //advisor
 Route::get('exam/round','GiveMarksController@selectRound');
 Route::get('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarksData');
@@ -131,6 +133,7 @@ Route::resource('exam/allowtest', 'AllowTestController');
 Route::resource('advproject','AdvisorProjectController');
 Route::resource('advisor/news/announcement', 'AdvisorAnnoucementController');
 Route::resource('advisor/news/document', 'AdvisorDocumentController');
+
 
 //student
 Route::group(['middleware' => 'studentcheck'], function () {

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Student;
 
 class GetStudentController extends Controller
 {
     public function index(){
 
-    	return view('admin.setStudent');
+    	$allstudent = Student::get();
+    	return view('admin.setStudent', compact('allstudent'));
     }
 
     public function getStudentName(Request $request){
@@ -23,7 +25,7 @@ class GetStudentController extends Controller
     			$info = ldap_get_entries($ds, $sr);
     			if(isset($info[0]['cn'])){
                 $getname = array_pull($info[0], 'cn');
-    				DB::table('students')->insert(
+    				Student::insert(
                         ['student_id' => $i."", 'student_name' => $getname[0], 'user_type_id' => 3]
                         );
     			}
