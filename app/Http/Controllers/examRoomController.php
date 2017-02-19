@@ -35,7 +35,7 @@ class examRoomController extends Controller
       $current_year = 2016;
       $get_year = Year::where('year', $current_year)->first();
       $count_round_exam = MainScore::where('year_id', $get_year->id)->get();
-      dd($count_round_exam);
+      
       return view('admin.manageRoom', compact('roomexam', 'room', 'room_advisor', 'test'));
     }
 
