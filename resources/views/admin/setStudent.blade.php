@@ -51,7 +51,10 @@
 				<div class="modal-body">
 					<p>Enter the range of student no.</p>
 					<div class="form-group">
-						<input type="text" class="form-control" id="title" name="title" placeholder="Student no." required/><label>TO</label><input type="text" class="form-control" id="title" name="title" placeholder="Student no." required/>
+						<form class="form" role="form" method="post" action="/setting/student/getnamestudent">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="text" class="form-control" id="title" name="firstnum" placeholder="Student no." required/><label>TO</label><input type="text" class="form-control" id="title" name="lastnum" placeholder="Student no." required/>
+						</form>
 					</div>
 				</div>
 				<div class="modal-footer">
