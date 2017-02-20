@@ -32,7 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
-<?php $countrow = 0; ?>
+				<?php $countrow = 0; ?>
 					@if(isset($project))
 					@foreach($project as $key=>$data)
 					@for($i=0;$i<sizeOf($arrayproject);$i++)
@@ -121,7 +121,7 @@
 					</div>
 					<div class="modal-body">
 						<div id="addroomTB">
-							<table class="table table-bordered">
+							<table class="table table-bordered table-hover">
 								<thead>
 								<tr>
 									<td style="width:2%" class="move-btn disfix"></td>
@@ -198,7 +198,7 @@
 						</td>
 						
 						
-						<td class="del-btn"><a href="/exam/manageroom/addDatas/{{$data->id}}" class="btn btn-danger btn-circle btn-sm"><i class="glyphicon glyphicon-remove"></i></a></td>
+						<td class="del-btn"><a href="/exam/manageroom/addDatas/{{$data->id}}"><i class="glyphicon glyphicon-plus"></i></a></td>
 					</tr>
 
 					@endif
@@ -262,7 +262,7 @@
 						</td>
 						
 						
-						<td class="del-btn"><a href="/exam/manageroom/addDatas/{{$data->id}}" class="btn btn-danger btn-circle btn-sm"><i class="glyphicon glyphicon-remove"></i></a></td>
+						<td class="del-btn"><a href="/exam/manageroom/addDatas/{{$data->id}}"><i class="glyphicon glyphicon-plus"></i></a></td>
 					</tr>
 					
 				@endforeach
@@ -276,10 +276,6 @@
 								</tdoby>
 							</table>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="pjselect()">add</button>
 					</div>
 				</div>
 			</div>

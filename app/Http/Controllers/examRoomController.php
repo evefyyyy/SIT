@@ -17,11 +17,12 @@ use App\GroupProject;
 use App\Advisor;
 use App\ProjectStudent;
 use App\Student;
-      $roomexam = RoomExam::get();
+use App\MainScore;
 use App\UserStudent;
 use App\ScoreTest;
 use App\ProjectAdvisor;
 use App\Type;
+use App\Year;
 
 class examRoomController extends Controller
 {
@@ -30,6 +31,11 @@ class examRoomController extends Controller
       $room = Room::all();
       $room_advisor = RoomAdvisor::all();
       $test = ScoreTest::all();
+      $roomexam = RoomExam::get();
+      $current_year = 2016;
+      $get_year = Year::where('year', $current_year)->first();
+      $count_round_exam = MainScore::where('year_id', $get_year->id)->get();
+      
       return view('admin.manageRoom', compact('roomexam', 'room', 'room_advisor', 'test'));
     }
 
@@ -58,7 +64,7 @@ class examRoomController extends Controller
       $minute=$request->session()->get('minute');
       $types = Type::all();
       $project = ProjectAdvisor::join('group_projects','group_projects.id','=','project_advisors.project_pkid')->where('advisor_position_id','=',1)->whereRaw('advisor_id in ('.$selectAdv.')')->get();    
-        $room_names = Room::where('id', $selectRoom)->first();
+      $room_names = Room::where('id', $selectRoom)->first();
       $student = Student::all();
       $advisors = Advisor::all();
       $projectstudent = ProjectStudent::all();

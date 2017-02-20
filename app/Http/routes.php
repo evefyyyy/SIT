@@ -44,11 +44,13 @@ Route::get('exam/managescore/criteria',function(){
 Route::get('setting/admin', 'SetAdminController@index');
 Route::get('setting/settoadmin/{userid}/{position}', 'SetAdminController@setToAdmin');
 Route::get('setting/settouser/{userid}/{position}', 'SetAdminController@setToUser');
+
 Route::get('setting/student',function(){
   return view('admin.setStudent');
 });
 Route::get('project/{groupId}/edit','adminEditProjectController@index');
 Route::put('project/{groupId}/edit','adminEditProjectController@update');
+
 
 Route::get('setting/year',function(){
   return view('admin.manageYear');
@@ -121,6 +123,8 @@ Route::post('news/delete', function(){
   return Response::json($type);
 });
 
+Route::get('/changeyear/{current_year}', 'CurrentYearController@changeYear');
+
 //advisor
 Route::get('exam/round','GiveMarksController@selectRound');
 Route::get('exam/round/{round}/givemarks/{id}', 'GiveMarksController@giveMarksData');
@@ -132,6 +136,7 @@ Route::resource('exam/allowtest', 'AllowTestController');
 Route::resource('advproject','AdvisorProjectController');
 Route::resource('advisor/news/announcement', 'AdvisorAnnoucementController');
 Route::resource('advisor/news/document', 'AdvisorDocumentController');
+
 
 //student
 Route::group(['middleware' => 'studentcheck'], function () {

@@ -20,21 +20,17 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($allstudent as $astd)
 				<tr>
-					<td>56130500060</td>
-					<td>Mr.Woramet Meethong</td>
-					<td>IT56-11</td>
+					<td>{{$astd->student_id}}</td>
+					<td>{{$astd->student_name}}</td>
+					@if($astd->projectStudent == null)
+					<td></td>
+					@else
+					<td>{{$astd->projectStudent->groupProject->group_project_id}}</td>
+					@endif
 				</tr>
-				<tr>
-					<td>56130500126</td>
-					<td>Ms.Artima Chanthasangsawang</td>
-					<td>IT56-38</td>
-				</tr>
-				<tr>
-					<td>56130500081</td>
-					<td>Mr.Aphisit Jankiaw</td>
-					<td>IT56-32</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
@@ -51,7 +47,10 @@
 				<div class="modal-body">
 					<p>Enter the range of student no.</p>
 					<div class="form-group">
-						<input type="text" class="form-control" id="title" name="title" placeholder="Student no." required/><label>TO</label><input type="text" class="form-control" id="title" name="title" placeholder="Student no." required/>
+						<form class="form" role="form" method="post" action="/setting/student/getnamestudent">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="text" class="form-control" id="title" name="firstnum" placeholder="Student no." required/><label>TO</label><input type="text" class="form-control" id="title" name="lastnum" placeholder="Student no." required/>
+						</form>
 					</div>
 				</div>
 				<div class="modal-footer">
