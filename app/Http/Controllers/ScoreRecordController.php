@@ -51,19 +51,19 @@ class ScoreRecordController extends Controller
                     ->where('score_test_round','=','1')
                     ->where('project_pkid',$get[$i])->get();
       foreach($score1[$i] as $s1){
-        if($s1->score_test_sum == 4){
+        if($s1->score_test_sum >= 3.5){
           $obj['project'][$i]['grade1'] = 'A';
           $obj['project'][$i]['level1'] = 'Very Good';
           $obj['project'][$i]['class1'] = 'verygood';
-        }elseif($s1->score_test_sum == 3){
+        }elseif($s1->score_test_sum >= 3){
           $obj['project'][$i]['grade1'] = 'B';
           $obj['project'][$i]['level1'] = 'Good';
           $obj['project'][$i]['class1'] = 'good';
-        }elseif($s1->score_test_sum == 2.5){
+        }elseif($s1->score_test_sum >= 2.5){
           $obj['project'][$i]['grade1'] = 'C+';
           $obj['project'][$i]['level1'] = 'Fair';
           $obj['project'][$i]['class1'] = 'fair';
-        }elseif ($s1->score_test_sum == 1) {
+        }elseif ($s1->score_test_sum < 2.5) {
           $obj['project'][$i]['grade1'] = 'D+';
           $obj['project'][$i]['level1'] = 'Poor';
           $obj['project'][$i]['class1'] = 'poor';
@@ -78,19 +78,19 @@ class ScoreRecordController extends Controller
                 ->where('project_pkid',$get[$i])->get();
       // $obj['project'][$i]['score2'] = $score2[$i];
       foreach($score2[$i] as $s2){
-        if($s2->score_test_sum == 4){
+        if($s2->score_test_sum >= 3.5){
           $obj['project'][$i]['grade2'] = 'A';
           $obj['project'][$i]['level2'] = 'Very Good';
           $obj['project'][$i]['class2'] = 'verygood';
-        }elseif($s2->score_test_sum == 3){
+        }elseif($s2->score_test_sum >= 3){
           $obj['project'][$i]['grade2'] = 'B';
           $obj['project'][$i]['level2'] = 'Good';
           $obj['project'][$i]['class2'] = 'good';
-        }elseif($s2->score_test_sum == 2.5){
+        }elseif($s2->score_test_sum >= 2.5){
           $obj['project'][$i]['grade2'] = 'C+';
           $obj['project'][$i]['level2'] = 'Fair';
           $obj['project'][$i]['class2'] = 'fair';
-        }elseif ($s2->score_test_sum == 1) {
+        }elseif ($s2->score_test_sum < 2.5) {
           $obj['project'][$i]['grade2'] = 'D+';
           $obj['project'][$i]['level2'] = 'Poor';
           $obj['project'][$i]['class2'] = 'poor';
@@ -104,19 +104,19 @@ class ScoreRecordController extends Controller
                 ->where('project_pkid',$get[$i])->get();
       // $obj['project'][$i]['score3'] = $score3[$i];
       foreach($score3[$i] as $s3){
-        if($s3->score_test_sum == 4){
+        if($s3->score_test_sum >= 3.5){
           $obj['project'][$i]['grade3'] = 'A';
           $obj['project'][$i]['level3'] = 'Very Good';
           $obj['project'][$i]['class3'] = 'verygood';
-        }elseif($s3->score_test_sum == 3){
+        }elseif($s3->score_test_sum >= 3){
           $obj['project'][$i]['grade3'] = 'B';
           $obj['project'][$i]['level3'] = 'Good';
           $obj['project'][$i]['class3'] = 'good';
-        }elseif($s3->score_test_sum == 2.5){
+        }elseif($s3->score_test_sum >= 2.5){
           $obj['project'][$i]['grade3'] = 'C+';
           $obj['project'][$i]['level3'] = 'Fair';
           $obj['project'][$i]['class3'] = 'fair';
-        }elseif ($s3->score_test_sum == 1) {
+        }elseif ($s3->score_test_sum < 2.5) {
           $obj['project'][$i]['grade3'] = 'D+';
           $obj['project'][$i]['level3'] = 'Poor';
           $obj['project'][$i]['class3'] = 'poor';
@@ -130,19 +130,19 @@ class ScoreRecordController extends Controller
                 ->where('project_pkid',$get[$i])->get();
       // $obj['project'][$i]['score4'] = $score4[$i];
       foreach($score4[$i] as $s4){
-        if($s4->score_test_sum == 4){
+        if($s4->score_test_sum >= 3.5){
           $obj['project'][$i]['grade4'] = 'A';
           $obj['project'][$i]['level4'] = 'Very Good';
           $obj['project'][$i]['class4'] = 'verygood';
-        }elseif($s4->score_test_sum == 3){
+        }elseif($s4->score_test_sum >= 3){
           $obj['project'][$i]['grade4'] = 'B';
           $obj['project'][$i]['level4'] = 'Good';
           $obj['project'][$i]['class4'] = 'good';
-        }elseif($s4->score_test_sum == 2.5){
+        }elseif($s4->score_test_sum >= 2.5){
           $obj['project'][$i]['grade4'] = 'C+';
           $obj['project'][$i]['level4'] = 'Fair';
           $obj['project'][$i]['class4'] = 'fair';
-        }elseif ($s4->score_test_sum == 1) {
+        }elseif ($s4->score_test_sum < 2.5) {
           $obj['project'][$i]['grade4'] = 'D+';
           $obj['project'][$i]['level4'] = 'Poor';
           $obj['project'][$i]['class4'] = 'poor';

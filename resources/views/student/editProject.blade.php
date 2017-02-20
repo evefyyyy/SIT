@@ -60,7 +60,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 				</div>
 			</div>
 			<!-- gallery pic -->
-			<!-- <input type="file" name="screenshot[]" id="uploader" multiple/>
+			<input type="file" name="screenshot[]" id="uploader" multiple/>
 			<input type='hidden' name="uploadIndex" id='uploaderIndex' />
 			<label for="uploader" class="btn btn-browse">Select image</label>
 			<span class="upload-btn">
@@ -80,14 +80,15 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 												 			<input type="hidden" id="ssid{{$count++}}" value="{{$img->id}}"/>
 												 		</li>
 									 			@endforeach
-
+											@else
+												<div class="noproject">no image uploaded</div>
 							 				@endif
 
 		                </ul>
 		            </div>
 		        </div>
 		    </div>
-		    <input type="hidden" id="cpic" value="{{$count}}"> -->
+		    <input type="hidden" id="cpic" value="{{$count}}">
 				<div id="upload-pic">
 
 				</div>

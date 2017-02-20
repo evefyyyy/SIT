@@ -47,9 +47,9 @@ Route::get('setting/settouser/{userid}/{position}', 'SetAdminController@setToUse
 Route::get('setting/student',function(){
   return view('admin.setStudent');
 });
-Route::get('project/edit',function(){
-  return view('admin.editStdProject');
-});
+Route::get('project/{groupId}/edit','adminEditProjectController@index');
+Route::put('project/{groupId}/edit','adminEditProjectController@update');
+
 Route::get('setting/year',function(){
   return view('admin.manageYear');
 });

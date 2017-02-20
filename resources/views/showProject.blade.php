@@ -20,37 +20,33 @@
 	</div>
 	<div class="row">
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-		@if(Auth::check())
-		@if(Auth::user()->user_student != null)
-		<?php
-		$objs = Auth::user()->user_student->student->student_id;
-		$checkStd = DB::table('students')->where('student_id',$objs)->value('id');
-		$projectId = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
-		?>
-		@if($projectId == $checkProject)
 		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 			<h3>{{$projectNameEN}}</h3>
 			<h4>{{$projectNameTH}}</h4>
 		</div>
-		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 btn-save">
-
-			<form action="{{url('student/myproject/edit')}}" method="get">
-				<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
-			</form>
-		</div>
-		@else
-		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-			<h3>{{$projectNameEN}}</h3>
-			<h4>{{$projectNameTH}}</h4>
-		</div>
-		@endif
-
-		@endif
-		@else
-		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-			<h3>{{$projectNameEN}}</h3>
-			<h4>{{$projectNameTH}}</h4>
-		</div>
+		@if(Auth::check())
+			@if(Auth::user()->user_student != null)
+			<?php
+			$objs = Auth::user()->user_student->student->student_id;
+			$checkStd = DB::table('students')->where('student_id',$objs)->value('id');
+			$projectId = DB::table('project_students')->where('student_pkid',$checkStd)->value('project_pkid');
+			?>
+				@if($projectId == $checkProject)
+				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 btn-save">
+					<form action="{{url('student/myproject/edit')}}" method="get">
+						<button style="float:right" class="btn btn-browse" onclick="window.location.href='/student/myproject/edit'">edit my project</button>
+					</form>
+				</div>
+				@else
+				@endif
+			@endif
+			@if(Auth::user()->user_staff != null)
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 btn-save">
+				<form action="{{url('project/'.$groupId.'/edit')}}" method="get">
+					<button style="float:right" class="btn btn-browse" onclick="window.location.href='/project/'.$groupId.'/edit'">edit project</button>
+				</form>
+			</div>
+			@endif
 		<!-- <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
 			<a href="#" class="btn3 btn-3 btn-3e">vote<i class="glyphicon glyphicon-star"></i></a>
 		</div> -->
@@ -196,7 +192,7 @@
 
 $(document).keypress(function(e) {
     if (e.which == 13) {
-        vote();    
+        vote();
     }
 });
 

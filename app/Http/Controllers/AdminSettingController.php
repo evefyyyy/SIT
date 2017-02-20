@@ -20,7 +20,7 @@ use DB;
 
 class AdminSettingController extends Controller
 {
-    
+
 	public function index(){
 		$current_year = AllSetting::where('id', 1)->first()->current_year;
 		$dday_gencode = Dday::where('year', $current_year)->get();
@@ -80,4 +80,6 @@ class AdminSettingController extends Controller
       	$group_project->group_project_recommend = 0;
       	$group_project->save();
 	}
+
+  
 }

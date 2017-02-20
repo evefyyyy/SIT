@@ -314,14 +314,4 @@ class editProjectController extends Controller {
 			return redirect('/showproject'.'/'.$groupId);
 	}
 
-	public function upload(Request $requst)
-	{
-		dd($request);
-		$stdId = Auth::user()->user_student->student_pkid;
-		$id = DB::table('project_students')->where('student_pkid',$stdId)->value('project_pkid');
-		$groupId = DB::table('group_projects')->where('id',$id)->value('group_project_id');
-
-		$obj = GroupProject::find($id);
-		$getId = $obj->id;
-	}
 }

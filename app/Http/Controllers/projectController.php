@@ -55,7 +55,7 @@ class projectController extends Controller
 
    $obj['search'] = $search;
 
-   if($search == "" || $search == " " && $year==0){
+   if($year==0 && $search == "" || $search == " "){
      $result = DB::table('group_projects')
      ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
      ->join('pictures','pictures.project_pkid','=','group_projects.id')
@@ -88,7 +88,7 @@ class projectController extends Controller
       ->groupBy('project_detail.project_pkid')
       ->select('project_detail.project_pkid')->get();
     }else{
-      if($year != 0 && $search != null){
+      if($year != 0 && $search != ""){
         $result = DB::table('group_projects')
         ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
         ->join('pictures','pictures.project_pkid','=','group_projects.id')
@@ -99,35 +99,35 @@ class projectController extends Controller
         ->where('year_id',$year)
         ->groupBy('project_detail.project_pkid')
         ->select('project_detail.project_pkid')->get();
-        if($result == null){
-          $result = DB::table('group_projects')
-          ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
-          ->join('pictures','pictures.project_pkid','=','group_projects.id')
-          ->where('group_project_approve','=','1')
-          ->where('picture_type_id',1)
-          ->whereNotNull('group_project_detail')
-          ->where('group_project_detail','like','%'.$search.'%')
-          ->where('year_id',$year)
-          ->groupBy('project_detail.project_pkid')
-          ->select('project_detail.project_pkid')->get();
-        }
-      }else{
-        if($year != 0 && $search == null){
-          $result = DB::table('group_projects')
-          ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
-          ->join('pictures','pictures.project_pkid','=','group_projects.id')
-          ->where('group_project_approve','=','1')
-          ->where('picture_type_id',1)
-          ->whereNotNull('group_project_detail')
-          ->where('year_id',$year)
-          ->groupBy('project_detail.project_pkid')
-          ->select('project_detail.project_pkid')->get();
+          if($result == ""){
+            $result = DB::table('group_projects')
+            ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
+            ->join('pictures','pictures.project_pkid','=','group_projects.id')
+            ->where('group_project_approve','=','1')
+            ->where('picture_type_id',1)
+            ->whereNotNull('group_project_detail')
+            ->where('group_project_detail','like','%'.$search.'%')
+            ->where('year_id',$year)
+            ->groupBy('project_detail.project_pkid')
+            ->select('project_detail.project_pkid')->get();
+          }
+        }else{
+          if($year != 0 && $search == ""){
+            $result = DB::table('group_projects')
+            ->join('project_detail','group_projects.id','=','project_detail.project_pkid')
+            ->join('pictures','pictures.project_pkid','=','group_projects.id')
+            ->where('year_id',$year)
+            ->where('group_project_approve','=','1')
+            ->where('picture_type_id',1)
+            ->whereNotNull('group_project_detail')
+            ->groupBy('project_detail.project_pkid')
+            ->select('project_detail.project_pkid')->get();
+          }
         }
       }
-    }
 
     $obj['groupProject']  = [];
-    if(count($result) != null){
+    if(count($result) != ""){
       $countObj = count($result);
       for($i=0; $i< $countObj; $i++){
         $id[$i] = $result[$i]->project_pkid;
@@ -137,8 +137,6 @@ class projectController extends Controller
       }
     }
   }
-
-
 
   return view(('searchResult'),$obj);
 }
