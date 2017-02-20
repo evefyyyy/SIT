@@ -14,8 +14,10 @@
 				@else
 				<img src="/img/no-poster.png" class="img-responsive" id="cover">
 				@endif
-				<label for="img-cover" class="btn btn-browse">delete</label>
-				<label class="pic-size">poster 1920 x 1080 px</label><div class="pull-right">PROJECT ID : {{$groupId}}</div>
+				<div>
+           			<a class="btn btn-danger del" id="dposter" title="delete poster" >Delete</a>
+					<label class="pic-size">poster 1920 x 1080 px</label><div class="pull-right">PROJECT ID : {{$groupId}}</div>
+				</div>
 		</div>
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 	</div>
@@ -73,13 +75,14 @@
 		<div class="col-hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 		<div class="col-xs-12 col-sm-10 col-md-5 col-lg-5">
 			@if($groupPic != null)
-			<img src="{{$groupPic}}" class="group-member img-thumbnail">
+			<img src="{{$groupPic}}" class="img-thumbnail" id="group-member">
 			@else
-			<img src="/img/no-image.png" class="group-member img-thumbnail">
+			<img src="/img/no-image.png" class="img-thumbnail" id="group-member">
 			@endif
-				<input type="file" id="imgInp" name="groupPicture"/>
-				<label for="imgInp" class="btn btn-browse group">delete</label>
-				<label class="pic-size">group member photo (4:3)</label>
+				<div style="margin-bottom:20px">
+					<a class="btn btn-danger del" id="dgroup" title="delete photo" >Delete</a>
+					<label class="pic-size">group member photo (4:3)</label>
+				</div>
 			<div class="panel panel-info">
 				<div class="panel-heading">tools & techniques</div>
 				<div class="panel-body">
@@ -91,12 +94,9 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 				</div>
 			</div>
 			<!-- gallery pic -->
-			<input type="file" name="screenshot[]" id="uploader" multiple/>
-			<input type='hidden' name="uploadIndex" id='uploaderIndex' />
-			<label for="uploader" class="btn btn-browse">Select image</label>
-			<span class="upload-btn">
-            <a class="btn btn-danger del" name="btn-delete" title="Delete Multiple image" >Delete</a>
-        	</span>
+			<div>
+            <a class="btn btn-danger del" name="btn-delete" title="delete multiple image" >Delete</a>
+        	</div>
             <div class="panel panel-default" style="margin-top:10px">
 		        <div class="panel-body">
 		            <div class="dataTable_wrapper">
@@ -210,6 +210,12 @@ $(".btn-success").click(function () {
 	    $(this).closest('.controls').remove();
    	});
 });
+$("#dposter").click(function(){
+	$('#cover').attr('src','/img/no-poster.png');
+})
+$("#dgroup").click(function(){
+	$('#group-member').attr('src','/img/no-image.png');
+})
 </script>
 <script type="text/javascript">
 
