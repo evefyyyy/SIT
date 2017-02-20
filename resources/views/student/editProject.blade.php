@@ -131,7 +131,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		</form>
 </div>
 <script src="{!! URL::asset('js/edit.js') !!}"></script>
-<script src="{!! URL::asset('js/bundle.js') !!}">
+<!-- <script src="{!! URL::asset('js/bundle.js') !!}"> -->
 
 </script>
 @stop

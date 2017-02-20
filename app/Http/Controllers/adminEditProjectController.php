@@ -138,7 +138,41 @@ class adminEditProjectController extends Controller
         $obj->advisor_position_id = 2;
         $obj->save();
       }
-      dd($request['stdId']);
+
+      if($request['delPoster'] === 'no-poster'){
+        $poster = DB::table('pictures')
+                  ->where('project_pkid',$id)
+                  ->where('picture_type_id',1)
+                  ->select('id','picture_path_name')->get();
+        $path = base_path('public_html');
+        if($poster != null){
+          File::delete($path.$poster[0]->picture_path_name);
+          $obj = Picture::find($poster[0]->id);
+          $obj->delete();
+        }
+        $thumbnail = DB::table('pictures')
+                    ->where('project_pkid',$id)
+                    ->where('picture_type_id',4)
+                    ->select('id','picture_path_name')->get();
+        if($thumbnail != null){
+          File::delete($path.$thumbnail[0]->picture_path_name);
+          $obj = Picture::find($thumbnail[0]->id);
+          $obj->delete();
+        }
+      }
+
+      if($request['delGroupPic'] === 'no-image'){
+        $groupPic = DB::table('pictures')
+                    ->where('project_pkid',$id)
+                    ->where('picture_type_id',2)
+                    ->select('id','picture_path_name')->get();
+        $path = base_path('public_html');
+        if($groupPic != null){
+          File::delete($path.$groupPic[0]->picture_path_name);
+          $obj = Picture::find($groupPic[0]->id);
+          $obj->delete();
+        }
+      }
 
       return redirect('/showproject'.'/'.$groupId);
     }

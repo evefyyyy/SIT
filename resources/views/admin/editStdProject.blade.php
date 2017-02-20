@@ -15,7 +15,8 @@
 				<img src="/img/no-poster.png" class="img-responsive" id="cover">
 				@endif
 				<div>
-           			<a class="btn btn-danger del" id="dposter" title="delete poster" >Delete</a>
+          <a class="btn btn-danger del" id="dposter" title="delete poster">Delete</a>
+					<input type="hidden" name="delPoster" id="delPoster">
 					<label class="pic-size">poster 1920 x 1080 px</label><div class="pull-right">PROJECT ID : {{$groupId}}</div>
 				</div>
 		</div>
@@ -81,6 +82,7 @@
 			@endif
 				<div style="margin-bottom:20px">
 					<a class="btn btn-danger del" id="dgroup" title="delete photo" >Delete</a>
+					<input type="hidden" name="delGroupPic" id="delGroupPic">
 					<label class="pic-size">group member photo (4:3)</label>
 				</div>
 			<div class="panel panel-info">
@@ -95,6 +97,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 			</div>
 			<!-- gallery pic -->
 			<div>
+						<input type='hidden' name="uploadIndex" id='uploaderIndex' />
             <a class="btn btn-danger del" name="btn-delete" title="delete multiple image" >Delete</a>
         	</div>
             <div class="panel panel-default" style="margin-top:10px">
@@ -118,6 +121,7 @@ Graphic : Adobe Photoshop, Illustrator" name="tools">{{$tools or ''}}</textarea>
 		            </div>
 		        </div>
 		    </div>
+				<input type="hidden" id="cpic" value="{{$count}}">
 		</div>
 		<div class="col-hidden-xs col-sm-1 hidden-md hidden-lg"></div>
 		<div class="col-hidden-xs col-sm-12 hidden-md hidden-lg"></div>
@@ -212,12 +216,11 @@ $(".btn-success").click(function () {
 });
 $("#dposter").click(function(){
 	$('#cover').attr('src','/img/no-poster.png');
+	$('#delPoster').val('no-poster');
 })
 $("#dgroup").click(function(){
 	$('#group-member').attr('src','/img/no-image.png');
+	$('#delGroupPic').val('no-image');
 })
-</script>
-<script type="text/javascript">
-
 </script>
 @stop
